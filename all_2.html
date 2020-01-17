@@ -1,0 +1,2093 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  Sajor's Blog
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="Sajor's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+ 
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:blog.sajor.top ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; Sajor's Blog</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html">数据结构与算法</a></li>
+        
+            <li><a href="SSM.html">SSM</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
+</script>
+<div class="row">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="15647285252626.html">
+                
+                  <h1>从零开始SSM开发系列十二：使用 DAO 方式整合 MyBatis-Spring</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>1、引用 MyBatis-Spring 集成 jar 包</p>
+
+<p>在工程中引用 mybatis-spring-1.3.1.jar包</p>
+
+<p>点击 File&gt;Project Structure...，选中 Libraries，添加 java 引用</p>
+
+<p><img src="media/15647285252626/15647286399391.jpg" alt="" style="width:1106px;"/></p>
+
+<p>2、创建新的 Package</p>
+
+<blockquote>
+<p>com.sajor.study.c07<br/>
+com.sajor.study.c07.dao <br/>
+test.com.sajor.study.c07</p>
+</blockquote>
+
+<p>3、在 dao 包中创建一个 User 类</p>
+
+<p>在类中声明id、name、sex和email属性，及其对应的getter/setter方法。</p>
+
+<pre><code class="language-text">package com.sajor.study.c07.dao;
+
+import java.io.Serializable;
+
+public class User implements Serializable {
+    private static final long serialVersionUID = 1L;
+    private int id = 20190802;
+    private String name = &quot;&quot;;
+    private String sex;
+    private String email;
+
+    @Override
+    public String toString() {
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append(&quot;id=&quot;);
+        stringBuffer.append(id);
+        stringBuffer.append(&quot;\n&quot;);
+        stringBuffer.append(&quot;name=&quot;);
+        stringBuffer.append(name);
+        return stringBuffer.toString();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+}
+</code></pre>
+
+<p>4、在 dao 包中创建一个映射文件 UserMapper.xml</p>
+
+<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+
+&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+&lt;mapper namespace=&quot;com.sajor.study.c07.dao.UserMapper&quot;&gt;
+    &lt;resultMap id=&quot;UserResultMap&quot; type=&quot;com.sajor.study.c07.dao.User&quot;&gt;
+        &lt;result column=&quot;id&quot; property=&quot;id&quot; jdbcType=&quot;BIGINT&quot;/&gt;
+        &lt;result column=&quot;name&quot; property=&quot;name&quot; jdbcType=&quot;VARCHAR&quot;/&gt;
+        &lt;result column=&quot;sex&quot; property=&quot;sex&quot; jdbcType=&quot;VARCHAR&quot;/&gt;
+        &lt;result column=&quot;email&quot; property=&quot;email&quot; jdbcType=&quot;VARCHAR&quot;/&gt;
+    &lt;/resultMap&gt;
+
+    &lt;select id=&quot;findUserById&quot; parameterType=&quot;java.lang.Integer&quot; resultMap=&quot;UserResultMap&quot;&gt;
+        &lt;!--根据 id 查询用户信息 --&gt;
+        select * from USER where id = #{id,jdbcType=BIGINT}
+    &lt;/select&gt;
+
+    &lt;insert id=&quot;addUser&quot; parameterType=&quot;user&quot;&gt;
+        &lt;!--添加用户信息 --&gt;
+        insert into USER(name,sex,email)
+        values(#{name},#{sex},#{email})
+    &lt;/insert&gt;
+
+    &lt;select id=&quot;findAllUsers&quot; resultMap=&quot;UserResultMap&quot;&gt;
+        select * from USER
+    &lt;/select&gt;
+
+&lt;/mapper&gt;
+</code></pre>
+
+<p>5、在 dao 中创建一个 UserDAO 类</p>
+
+<p>UserDAO 继承 SqlSessionDaoSupport</p>
+
+<pre><code class="language-text">package com.sajor.study.c07.dao;
+
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+
+public class UserDAO extends SqlSessionDaoSupport {
+    // 通过id查询
+    public User findUserById(Integer id) {
+        return this.getSqlSession().selectOne( &quot;com.sajor.study.c07.dao.UserMapper.findUserById&quot;, id);
+    }
+}
+</code></pre>
+
+<p>6、创建 MyBatis 的核心配置文件 c07-mybatis-spring-config-dao.xml</p>
+
+<p>对比前面 mybatis 的配置文件，这里不再需要配置数据源，直接使用 spring 里面配置的数据源即可。</p>
+
+<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+
+&lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
+
+&lt;configuration&gt;
+    &lt;!--配置别名 --&gt;
+    &lt;typeAliases&gt;
+        &lt;package name=&quot;com.sajor.study.c07.dao&quot;/&gt;
+    &lt;/typeAliases&gt;
+    &lt;!--配置 Mapper 的位置 --&gt;
+    &lt;mappers&gt;
+        &lt;mapper resource=&quot;com/sajor/study/c07/dao/UserMapper.xml&quot;/&gt;
+    &lt;/mappers&gt;
+&lt;/configuration&gt;
+</code></pre>
+
+<p>7、新建一个 Spring 配置文件 c07-spring-mybatis-config-dao.xml</p>
+
+<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+    &lt;!--1. 定义数据源，mybatis 直接使用 spring 中定义的数据源--&gt;
+    &lt;bean id=&quot;dataSource&quot; class=&quot;org.springframework.jdbc.datasource.DriverManagerDataSource&quot;&gt;
+        &lt;property name=&quot;driverClassName&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;
+        &lt;property name=&quot;url&quot;
+                  value=&quot;jdbc:mysql://localhost:3306/TestDB?autoReconnect=true&amp;amp;characterEncoding=utf8&amp;amp;useUnicode=true&amp;amp;useSSL=false&quot;/&gt;
+        &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
+        &lt;property name=&quot;password&quot; value=&quot;123456&quot;/&gt;
+    &lt;/bean&gt;
+
+    &lt;!--2. 配置 MyBatis 工厂 --&gt;
+    &lt;bean id=&quot;sqlSessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
+        &lt;!--注入数据源 --&gt;
+        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;
+        &lt;!--指定核心配置文件位置 --&gt;
+        &lt;property name=&quot;configLocation&quot; value=&quot;classpath:c07-mybatis-spring-config-dao.xml&quot;/&gt;
+    &lt;/bean&gt;
+
+    &lt;!--3. 实例化 Dao --&gt;
+    &lt;bean id=&quot;userDAO&quot; class=&quot;com.sajor.study.c07.dao.UserDAO&quot;&gt;
+        &lt;!-- 注入 SqlSessionFactory 对象实例--&gt;
+        &lt;property name=&quot;sqlSessionFactory&quot; ref=&quot;sqlSessionFactory&quot;/&gt;
+    &lt;/bean&gt;
+&lt;/beans&gt;
+</code></pre>
+
+<p>8、创建测试类 MyBatisSpringDAOTest</p>
+
+<pre><code class="language-text">package test.com.sajor.study.c07;
+
+import com.sajor.study.c07.dao.User;
+import com.sajor.study.c07.dao.UserDAO;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class MyBatisSpringDAOTest {
+    public static void main(String[] args) {
+        try {
+            ApplicationContext ctx = new ClassPathXmlApplicationContext(&quot;c07-spring-mybatis-config-dao.xml&quot;);
+            UserDAO userDAO = (UserDAO) ctx.getBean(&quot;userDAO&quot;);
+            User user = userDAO.findUserById(2);
+            System.out.println(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+
+<p>9、运行测试类<br/>
+<img src="media/15647285252626/15647299241064.jpg" alt="" style="width:985px;"/></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/8/2</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='ssm.html'>SSM练习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15647140106325.html">
+                
+                  <h1>从零开始SSM开发系列十一：MyBatis 多对多关联关系</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>在上一章的基础上，我们还使用c06包接着添加功能。</p>
+
+<p>1、数据库表准备<br/>
+新建一个数据库表:jo􏰀b、j􏰀obresume 并添加几条数据</p>
+
+<p>jo􏰀b 表</p>
+
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>jobid</td>
+<td>int</td>
+<td>11（主键）</td>
+</tr>
+<tr>
+<td>jobtitle</td>
+<td>varchar</td>
+<td>127</td>
+</tr>
+</tbody>
+</table>
+
+<p>jobresume表</p>
+
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>11（主键）</td>
+</tr>
+<tr>
+<td>jobid</td>
+<td>int</td>
+<td>11</td>
+</tr>
+<tr>
+<td>resumeid</td>
+<td>int</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+
+<p>2、在 model 包中创建 Job 类</p>
+
+<pre><code class="language-text">package com.sajor.study.c06.model;
+
+import java.util.List;
+
+public class Job {
+    private Integer jobId;
+    private String jobTitle;
+    private List&lt;Resume&gt; resumeList; // 岗位关联的简历
+
+    @Override
+    public String toString() {
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append(&quot;jobid=&quot;);
+        stringBuffer.append(jobId);
+        stringBuffer.append(&quot;\n&quot;);
+        stringBuffer.append(&quot;jobtitle=&quot;);
+        stringBuffer.append(jobTitle);
+        for (Resume rs : resumeList) {
+            stringBuffer.append(&quot;\n&quot;);
+            stringBuffer.append(&quot;Resume:[&quot;);
+            stringBuffer.append(rs.getResumeId());
+            stringBuffer.append(&quot;,&quot;);
+            stringBuffer.append(rs.getResumeName());
+            stringBuffer.append(&quot;,&quot;);
+            stringBuffer.append(rs.getResumeDesc());
+            stringBuffer.append(&quot;]&quot;);
+        }
+        return stringBuffer.toString();
+    }
+
+    public Integer getJobId() {
+        return jobId;
+    }
+
+    public void setJobId(Integer jobId) {
+        this.jobId = jobId;
+    }
+
+    public String getJobTitle() {
+        return jobTitle;
+    }
+
+    public void setJobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
+    }
+
+    public List&lt;Resume&gt; getResumeList() {
+        return resumeList;
+    }
+
+    public void setResumeList(List&lt;Resume&gt; resumeList) {
+        this.resumeList = resumeList;
+    }
+}
+</code></pre>
+
+<p>3、在 mapper 包中创建映射文件 JobMapper.xml、修改 ResumeMapper.xml</p>
+
+<p>JobMapper.xml</p>
+
+<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+&lt;!-- namespace 表示命名空间 --&gt;
+&lt;mapper namespace=&quot;com.sajor.study.c06.mapper.JobMapper&quot;&gt;
+
+    &lt;!-- 多对多嵌套查询:通过执行另外一条 SQL 映射语句来返回预期的特殊类型 --&gt;
+    &lt;select id=&quot;findJobWithResumesByID&quot; parameterType=&quot;Integer&quot; resultMap=&quot;JobWithResumeResult&quot;&gt;
+        select * from job WHERE jobid=#{id}
+    &lt;/select&gt;
+
+    &lt;resultMap type=&quot;com.sajor.study.c06.model.Job&quot; id=&quot;JobWithResumeResult&quot;&gt;
+        &lt;id property=&quot;jobId&quot; column=&quot;jobid&quot;/&gt;
+        &lt;result property=&quot;jobTitle&quot; column=&quot;jobtitle&quot;/&gt;
+        &lt;collection property=&quot;resumeList&quot; column=&quot;jobid&quot;
+                    ofType=&quot;com.sajor.study.c06.model.Resume&quot;
+                    select=&quot;com.sajor.study.c06.mapper.ResumeMapper.findResumeById&quot;&gt;&lt;/collection&gt;
+    &lt;/resultMap&gt;
+
+    &lt;!-- 多对多嵌套结果查询:查询某岗位及其关联的简历详情 --&gt;
+    &lt;select id=&quot;findJobWithResumesByID2&quot; parameterType=&quot;Integer&quot; resultMap=&quot;JobWithResumeResult2&quot;&gt;
+        select job.*,resume.*
+        from job,resume,jobresume
+        WHERE job.jobid=jobresume.jobid
+        and resume.resumeid=jobresume.resumeid and job.jobid=#{id}
+    &lt;/select&gt;
+
+    &lt;!-- 自定义手动映射类型 --&gt;
+    &lt;resultMap type=&quot;com.sajor.study.c06.model.Job&quot; id=&quot;JobWithResumeResult2&quot;&gt;
+        &lt;id property=&quot;jobId&quot; column=&quot;jobid&quot;/&gt;
+        &lt;result property=&quot;jobTitle&quot; column=&quot;jobtitle&quot;/&gt;
+        &lt;!-- 多对多关联映射:collection --&gt;
+        &lt;collection property=&quot;resumeList&quot;
+                    ofType=&quot;com.sajor.study.c06.model.Resume&quot;&gt;
+            &lt;id property=&quot;resumeId&quot; column=&quot;resumeid&quot;/&gt;
+            &lt;result property=&quot;resumeName&quot; column=&quot;resumename&quot;/&gt;
+            &lt;result property=&quot;resumeDesc&quot; column=&quot;resumedesc&quot;/&gt;
+        &lt;/collection&gt;
+    &lt;/resultMap&gt;
+&lt;/mapper&gt;
+</code></pre>
+
+<p>ResumeMapper.xml</p>
+
+<pre><code class="language-text">&lt;!--下面是新增内容:通过 jobid 查关联简历--&gt;
+    &lt;select id=&quot;findResumeById&quot; parameterType=&quot;Integer&quot; resultType=&quot;com.sajor.study.c06.model.Resume&quot;&gt;
+        SELECT * from Resume where resumeid IN(
+            SELECT resumeid FROM jobresume WHERE jobid = #{id}
+        )
+    &lt;/select&gt;
+</code></pre>
+
+<p>4、修改配置文件 mybatis-config-c06-relation.xml</p>
+
+<p>配置JobMapper.xml的位置</p>
+
+<pre><code class="language-text">&lt;mapper resource=&quot;com/sajor/study/c06/mapper/JobMapper.xml&quot; /&gt;
+</code></pre>
+
+<p>5、修 改 Spring 配 置 文 件 spring-config-mybatis-c06-relation.xml</p>
+
+<p>在 spring 配置文件中配置 bean</p>
+
+<pre><code class="language-text">&lt;bean id=&quot;jobDAO&quot; class=&quot;com.sajor.study.c06.dao.JobDAO&quot;/&gt;
+</code></pre>
+
+<p>6、新建一个 DAO 类 JobDAO</p>
+
+<p>对数据库进行关联查询</p>
+
+<pre><code class="language-text">package com.sajor.study.c06.dao;
+
+import com.sajor.study.c06.model.Job;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import java.io.InputStream;
+
+public class JobDAO {
+    /**
+     * 根据用户编号查询用户及简历信息
+     */
+    public Job findJobsWithResumeByID(int id) throws Exception {
+        // 1、读取配置文件
+        String resource = &quot;mybatis-config-c06-relation.xml&quot;;
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+
+        // 2、根据配置文件构建 SqlSessionFactory
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        // 3、通过 SqlSessionFactory 创建 SqlSession
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        // 4、SqlSession 执行映射文件中定义的 SQL，并返回映射结果
+        Job job = sqlSession.selectOne(&quot;com.sajor.study.c06.mapper.JobMapper.findJobWithResumesByID&quot;, id);
+//        Job job = sqlSession.selectOne(&quot;com.sajor.study.c06.mapper.JobMapper.findJobWithResumesByID2&quot;, id);
+
+        // 5、关闭 SqlSession
+        sqlSession.close();
+        return job;
+    }
+
+}
+</code></pre>
+
+<p>7、修改测试类 MyBatisRelationTest</p>
+
+<pre><code class="language-text">JobDAO jobDAO = (JobDAO) ctx.getBean(&quot;jobDAO&quot;);
+Job job = jobDAO.findJobsWithResumeByID(2);
+System.out.println(job);
+</code></pre>
+
+<p>8、运行测试类</p>
+
+<p><img src="media/15647140106325/15647283462344.jpg" alt="" style="width:1335px;"/></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/8/2</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='ssm.html'>SSM练习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15647098694474.html">
+                
+                  <h1>从零开始SSM开发系列十：MyBatis 一对多关联关系</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>在上一章的基础上，我们还使用c06包接着添加功能。</p>
+
+<p>1、数据库表准备<br/>
+新建一个数据库表:resume 并添加几条数据</p>
+
+<p>resume 表</p>
+
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>resumeid</td>
+<td>int</td>
+<td>11（主键）</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>int</td>
+<td>11</td>
+</tr>
+<tr>
+<td>resumename</td>
+<td>varchar</td>
+<td>255</td>
+</tr>
+<tr>
+<td>resumedesc</td>
+<td>varchar</td>
+<td>255</td>
+</tr>
+</tbody>
+</table>
+
+<p>2、在 model 包中创建 Resume 类</p>
+
+<pre><code class="language-text">package com.sajor.study.c06.model;
+
+public class Resume {
+    private Integer resumeId;
+    private Integer userId;
+    private String resumeName;
+    private String resumeDesc;
+
+    public Integer getResumeId() {
+        return resumeId;
+    }
+
+    public void setResumeId(Integer resumeId) {
+        this.resumeId = resumeId;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public String getResumeName() {
+        return resumeName;
+    }
+
+    public void setResumeName(String resumeName) {
+        this.resumeName = resumeName;
+    }
+
+    public String getResumeDesc() {
+        return resumeDesc;
+    }
+
+    public void setResumeDesc(String resumeDesc) {
+        this.resumeDesc = resumeDesc;
+    }
+}
+</code></pre>
+
+<p>3、修改 User 类</p>
+
+<p>1)添加 resumeList 属性及其 getter、setter</p>
+
+<pre><code class="language-text">private List&lt;Resume&gt; resumeList;//个人关联的简历 
+</code></pre>
+
+<p>2)完善 toString 方法</p>
+
+<pre><code class="language-text">package com.sajor.study.c06.model;
+
+import java.util.List;
+
+public class User {
+    private int id = 20190801;
+    private String name = &quot;&quot;;
+    private String sex;
+    private String email;
+
+    private Card card; //个人关联的证件
+
+    private List&lt;Resume&gt; resumeList;//个人关联的简历
+
+    @Override
+    public String toString() {
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append(&quot;id=&quot;);
+        stringBuffer.append(id);
+        stringBuffer.append(&quot;\n&quot;);
+        stringBuffer.append(&quot;name=&quot;);
+        stringBuffer.append(name);
+        if (card != null) {
+            stringBuffer.append(&quot;\n&quot;);
+            stringBuffer.append(&quot;CardID=&quot;);
+            stringBuffer.append(card.getId());
+            stringBuffer.append(&quot;\n&quot;);
+            stringBuffer.append(&quot;CardCode=&quot;);
+            stringBuffer.append(card.getCode());
+        }
+        for (Resume rs : resumeList) {
+            stringBuffer.append(&quot;\n&quot;);
+            stringBuffer.append(&quot;Resume:[&quot;);
+            stringBuffer.append(rs.getResumeId());
+            stringBuffer.append(&quot;,&quot;);
+            stringBuffer.append(rs.getResumeName());
+            stringBuffer.append(&quot;,&quot;);
+            stringBuffer.append(rs.getResumeDesc());
+            stringBuffer.append(&quot;]&quot;);
+        }
+        return stringBuffer.toString();
+    }
+
+    public List&lt;Resume&gt; getResumeList() {
+        return resumeList;
+    }
+
+    public void setResumeList(List&lt;Resume&gt; resumeList) {
+        this.resumeList = resumeList;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Card getCard() {
+        return card;
+    }
+
+    public void setCard(Card card) {
+        this.card = card;
+    }
+}
+</code></pre>
+
+<p>4、创建简历映射文件 ResumeMapper.xml</p>
+
+<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+&lt;!-- namespace 表示命名空间 --&gt;
+&lt;mapper namespace=&quot;com.sajor.study.c06.mapper.ResumeMapper&quot;&gt;
+    &lt;select id=&quot;findResumeByUserId&quot; parameterType=&quot;Integer&quot; resultType=&quot;com.sajor.study.c06.model.Resume&quot;&gt;
+        SELECT * from Resume where userid = #{id}
+    &lt;/select&gt;
+&lt;/mapper&gt;
+</code></pre>
+
+<p>5、修改映射文件 UserMapper.xml</p>
+
+<p>添加相应方法(将下列代码添加到<mapper>标签里):</p>
+
+<pre><code class="language-text">&lt;!--下面是新增对简历的查询--&gt;
+
+    &lt;!-- 一对多:查看某一用户及其关联的简历信息 注意:子查询方式 --&gt;
+    &lt;select id=&quot;findUserWithResumesByID&quot; parameterType=&quot;Integer&quot;
+            resultMap=&quot;UserWithResumesResult&quot;&gt;
+        SELECT user.* from user WHERE user.id=#{id}
+    &lt;/select&gt;
+    &lt;resultMap type=&quot;com.sajor.study.c06.model.User&quot; id=&quot;UserWithResumesResult&quot;&gt;
+        &lt;id property=&quot;id&quot; column=&quot;id&quot;/&gt;
+        &lt;result property=&quot;name&quot; column=&quot;name&quot;/&gt;
+        &lt;result property=&quot;sex&quot; column=&quot;sex&quot;/&gt;
+        &lt;result property=&quot;email&quot; column=&quot;email&quot;/&gt;
+        &lt;!-- 一对多关联映射:collection
+            ofType 表示属性集合中元素的类型，List&lt;Resume&gt;属性即 Resume 类 --&gt;
+        &lt;collection property=&quot;resumeList&quot; column=&quot;id&quot;
+                    ofType=&quot;com.sajor.study.c06.model.Resume&quot;
+                    select=&quot;com.sajor.study.c06.mapper.ResumeMapper.findResumeByUserId&quot;&gt;
+            &lt;id property=&quot;resumeId&quot; column=&quot;resumeid&quot;/&gt;
+            &lt;result property=&quot;userId&quot; column=&quot;userid&quot;/&gt;
+            &lt;result property=&quot;resumeName&quot; column=&quot;resumename&quot;/&gt;
+            &lt;result property=&quot;resumeDesc&quot; column=&quot;resumedesc&quot;/&gt;
+        &lt;/collection&gt;
+    &lt;/resultMap&gt;
+
+    &lt;!-- 一对多:查看某一用户及其关联的简历信息
+    注意:当关联查询出的列名相同，则需要使用别名区分(比如:表名.列名 as 列的别名) --&gt;
+    &lt;select id=&quot;findUserWithResumesByID2&quot; parameterType=&quot;Integer&quot; resultMap=&quot;UserWithResumesResult2&quot;&gt;
+        SELECT user.*,resume.* from user,resume WHERE user.id=resume.userid and user.id=#{id}
+    &lt;/select&gt;
+    &lt;resultMap type=&quot;com.sajor.study.c06.model.User&quot; id=&quot;UserWithResumesResult2&quot;&gt;
+        &lt;id property=&quot;id&quot; column=&quot;id&quot;/&gt;
+        &lt;result property=&quot;name&quot; column=&quot;name&quot;/&gt;
+        &lt;result property=&quot;sex&quot; column=&quot;sex&quot;/&gt;
+        &lt;result property=&quot;email&quot; column=&quot;email&quot;/&gt;
+        &lt;!-- 一对多关联映射:collection
+            ofType 表示属性集合中元素的类型，List&lt;Resume&gt;属性即 Resume 类 --&gt;
+        &lt;collection property=&quot;resumeList&quot; ofType=&quot;com.sajor.study.c06.model.Resume&quot;&gt;
+            &lt;id property=&quot;resumeId&quot; column=&quot;resumeid&quot;/&gt;
+            &lt;result property=&quot;userId&quot; column=&quot;userid&quot;/&gt;
+            &lt;result property=&quot;resumeName&quot; column=&quot;resumename&quot;/&gt;
+            &lt;result property=&quot;resumeDesc&quot; column=&quot;resumedesc&quot;/&gt;
+        &lt;/collection&gt;
+    &lt;/resultMap&gt;
+</code></pre>
+
+<p>6、修改配置文件 mybatis-config-c06-relation.xml</p>
+
+<p>配置ResumeMapper.xml的位置(在<mappers>标签中添加如下代码)：</p>
+
+<pre><code class="language-text">&lt;mapper resource=&quot;com/sajor/study/c06/mapper/ResumeMapper.xml&quot;/&gt;
+</code></pre>
+
+<p>7、修改 UserDAO 类</p>
+
+<p>添加响应方法(添加到UserDAO类里)。</p>
+
+<pre><code class="language-text">
+    //下面是新增方法
+
+    /**
+     * 根据用户编号查询用户及简历信息
+     */
+    public User findUserWithResumesByID(int id) throws Exception {
+        // 1、读取配置文件
+        String resource = &quot;mybatis-config-c06-relation.xml&quot;;
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+
+        // 2、根据配置文件构建 SqlSessionFactory
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        // 3、通过 SqlSessionFactory 创建 SqlSession
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        // 4、SqlSession 执行映射文件中定义的 SQL，并返回映射结果
+//        User user = sqlSession.selectOne(&quot;com.sajor.study.c06.mapper.UserMapper.findUserWithResumesByID&quot;, id);
+        User user = sqlSession.selectOne(&quot;com.sajor.study.c06.mapper.UserMapper.findUserWithResumesByID2&quot;, id);
+        // 5、关闭 SqlSession
+        sqlSession.close();
+        return user;
+    }
+</code></pre>
+
+<p>8、修改测试类 MyBatisRelationTest</p>
+
+<pre><code class="language-text">//            User user = userDAO.findUserById(2);
+            User user = userDAO.findUserWithResumesByID(2);
+</code></pre>
+
+<p>9、运行测试类<br/>
+ <img src="media/15647098694474/15647139309257.jpg" alt="" style="width:576px;"/></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/8/2</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='ssm.html'>SSM练习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15643240518555.html">
+                
+                  <h1>从零开始SSM开发系列九：MyBatis 一对一关联关系</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>1、数据库表准备</p>
+
+<p>新建一个数据库表:card 并添加几条数据</p>
+
+<p>Card 表</p>
+
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>11（主键）</td>
+</tr>
+<tr>
+<td>code</td>
+<td>varchar</td>
+<td>18</td>
+</tr>
+</tbody>
+</table>
+
+<p>2、创建新的 Package</p>
+
+<blockquote>
+<p>com.sajor.study.c06<br/>
+com.sajor.study.c06.model : 存放 vo 对象(业务模型对象) <br/>
+com.sajor.study.c06.dao : 存放 dao 对象(数据库访问对象) <br/>
+com.sajor.study.mapper : 存放 mybatis 数据库表-对象映射文件 <br/>
+test.com.sajor.study.c06 </p>
+</blockquote>
+
+<p>创建完成，包结构如下:</p>
+
+<p><img src="media/15643240518555/15646746698065.jpg" alt="" style="width:314px;"/></p>
+
+<p>3、在 model 包中创建 User 类，Card 类</p>
+
+<p>User 类</p>
+
+<pre><code class="language-text">package com.sajor.study.c06.model;
+
+public class User {
+    private int id = 20190801;
+    private String name = &quot;&quot;;
+    private String sex;
+    private String email;
+
+    private Card card; //个人关联的证件
+
+    @Override
+    public String toString() {
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append(&quot;id=&quot;);
+        stringBuffer.append(id);
+        stringBuffer.append(&quot;\n&quot;);
+        stringBuffer.append(&quot;name=&quot;);
+        stringBuffer.append(name);
+        stringBuffer.append(&quot;\n&quot;);
+        stringBuffer.append(&quot;CardID=&quot;);
+        stringBuffer.append(card.getId());
+        stringBuffer.append(&quot;\n&quot;);
+        stringBuffer.append(&quot;CardCode=&quot;);
+        stringBuffer.append(card.getCode());
+        return stringBuffer.toString();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Card getCard() {
+        return card;
+    }
+
+    public void setCard(Card card) {
+        this.card = card;
+    }
+}
+</code></pre>
+
+<p>Card 类</p>
+
+<pre><code class="language-text">package com.sajor.study.c06.model;
+
+public class Card {
+    private Integer id;
+    private String code;
+
+    @Override
+    public String toString() {
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append(&quot;Card [CardId=&quot;);
+        stringBuffer.append(id);
+        stringBuffer.append(&quot;, CardCode=&quot;);
+        stringBuffer.append(code);
+        stringBuffer.append(&quot;]&quot;);
+        return stringBuffer.toString();
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+}
+</code></pre>
+
+<p>4、在 mapper 包中创建映射文件 UserMapper.xml、 CardMapper.xml</p>
+
+<p>UserMapper.xml</p>
+
+<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+&lt;!-- namespace 表示命名空间 --&gt;
+&lt;mapper namespace=&quot;com.sajor.study.c06.mapper.UserMapper&quot;&gt;
+
+    &lt;select id=&quot;findUserById&quot; parameterType=&quot;Integer&quot; resultMap=&quot;CardWithUserResult&quot;&gt;
+        SELECT * from USER where id=#{id}
+    &lt;/select&gt;
+
+
+    &lt;resultMap type=&quot;com.sajor.study.c06.model.User&quot; id=&quot;CardWithUserResult&quot;&gt;
+        &lt;id property=&quot;id&quot; column=&quot;id&quot;/&gt;
+        &lt;result property=&quot;name&quot; column=&quot;name&quot;/&gt;
+        &lt;result property=&quot;sex&quot; column=&quot;sex&quot;/&gt;
+        &lt;result property=&quot;email&quot; column=&quot;email&quot;/&gt;
+        &lt;!-- 一对一:association 使用 select 属性引入另外一条 SQL 语句 --&gt;
+        &lt;association property=&quot;card&quot; column=&quot;id&quot; javaType=&quot;com.sajor.study.c06.model.Card&quot;
+                     select=&quot;com.sajor.study.c06.mapper.CardMapper.findCodeById&quot;/&gt;
+    &lt;/resultMap&gt;
+
+
+    &lt;!-- 嵌套结果:使用嵌套结果映射来处理重复的联合结果的子集 --&gt;
+    &lt;select id=&quot;findUserById2&quot; parameterType=&quot;Integer&quot; resultMap=&quot;CardWithUserResult2&quot;&gt;
+        SELECT user.*,card.code from user,card
+        where user.id=card.id and user.id= #{id}
+    &lt;/select&gt;
+
+    &lt;resultMap type=&quot;com.sajor.study.c06.model.User&quot; id=&quot;CardWithUserResult2&quot;&gt;
+        &lt;id property=&quot;id&quot; column=&quot;id&quot;/&gt;
+        &lt;result property=&quot;name&quot; column=&quot;name&quot;/&gt;
+        &lt;result property=&quot;sex&quot; column=&quot;sex&quot;/&gt;
+        &lt;result property=&quot;email&quot; column=&quot;email&quot;/&gt;
+        &lt;association property=&quot;card&quot; javaType=&quot;com.sajor.study.c06.model.Card&quot;&gt;
+            &lt;id property=&quot;id&quot; column=&quot;id&quot;/&gt;
+            &lt;result property=&quot;code&quot; column=&quot;code&quot;/&gt;
+        &lt;/association&gt;
+    &lt;/resultMap&gt;
+&lt;/mapper&gt;
+</code></pre>
+
+<p>CardMapper.xml</p>
+
+<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+&lt;!-- namespace 表示命名空间 --&gt;
+&lt;mapper namespace=&quot;com.sajor.study.c06.mapper.CardMapper&quot;&gt;
+    &lt;select id=&quot;findCodeById&quot; parameterType=&quot;Integer&quot;
+            resultType=&quot;com.sajor.study.c06.model.Card&quot;&gt;
+        SELECT * from card where id=#{id}
+    &lt;/select&gt;
+&lt;/mapper&gt;
+</code></pre>
+
+<p>5、新建一个 MyBatis 的核心配置文件 mybatis-config-c06-relation.xml</p>
+
+<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
+&lt;configuration&gt;
+    &lt;!--1.配置环境 ，默认的环境id为msql--&gt;
+    &lt;environments default=&quot;dev&quot;&gt;
+
+        &lt;!--1.2.配置 id 为 mysql 的数据库环境 --&gt;
+        &lt;environment id=&quot;dev&quot;&gt;
+
+            &lt;!-- 使用 JDBC 的事务管理 --&gt;
+            &lt;transactionManager type=&quot;JDBC&quot;/&gt;
+
+            &lt;!--数据库连接池 --&gt;
+            &lt;dataSource type=&quot;POOLED&quot;&gt;
+                &lt;property name=&quot;driver&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;
+                &lt;property name=&quot;url&quot;
+                          value=&quot;jdbc:mysql://localhost:3306/TestDB?autoReconnect=true&amp;amp;characterEncoding=utf8&amp;amp;useUnicode=true&amp;amp;useSSL=false&quot;/&gt;
+                &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
+                &lt;property name=&quot;password&quot; value=&quot;123456&quot;/&gt;
+            &lt;/dataSource&gt;
+        &lt;/environment&gt;
+    &lt;/environments&gt;
+
+    &lt;!--2.配置 Mapper 的位置 --&gt;
+    &lt;mappers&gt;
+        &lt;mapper resource=&quot;com/sajor/study/c06/mapper/UserMapper.xml&quot;/&gt;
+        &lt;mapper resource=&quot;com/sajor/study/c06/mapper/CardMapper.xml&quot;/&gt;
+
+    &lt;/mappers&gt;
+&lt;/configuration&gt;
+</code></pre>
+
+<p>6、新建一个 Spring 配置文件 spring-config-mybatis-c06-relation.xml</p>
+
+<p>在 spring 配置文件中配置 bean</p>
+
+<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+
+        &lt;bean id=&quot;userDAO&quot; class=&quot;com.sajor.study.c06.dao.UserDAO&quot; /&gt;
+        &lt;bean id=&quot;user&quot; class=&quot;com.sajor.study.c06.model.User&quot; /&gt; &lt;bean id=&quot;card&quot; class=&quot;com.sajor.study.c06.model.Card&quot; /&gt;
+&lt;/beans&gt;
+</code></pre>
+
+<p>7、新建一个 DAO 类 UserDAO</p>
+
+<p>对数据库进行关联查询</p>
+
+<pre><code class="language-text">package com.sajor.study.c06.dao;
+
+import com.sajor.study.c06.model.User;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.apache.ibatis.session.SqlSessionManager;
+
+import java.io.InputStream;
+
+public class UserDAO {
+    /**
+     * 根据用户编号查询用户信息
+     */
+    public User findUserById(int id) throws Exception {
+        // 1、读取配置文件
+        String resource = &quot;mybatis-config-c06-relation.xml&quot;;
+        InputStream inputStream =
+                Resources.getResourceAsStream(resource);
+        // 2、根据配置文件构建 SqlSessionFactory
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        // 3、通过 SqlSessionFactory 创建 SqlSession
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        // 4、SqlSession 执行映射文件中定义的 SQL，并返回映射结果
+        User user = sqlSession.selectOne(&quot;com.sajor.study.c06.mapper.UserMapper.findUserById&quot;, id);
+
+        //User user = sqlSession.selectOne(&quot;com.sajor.study.c06.mapper.UserMapper.findUserById2&quot;, id);
+        // 5、关闭 SqlSession
+        sqlSession.close();
+        return user;
+    }
+}
+</code></pre>
+
+<p>8、创建测试类 MyBatisRelationTest</p>
+
+<pre><code class="language-text">package test.com.sajor.study.c06;
+
+import com.sajor.study.c06.dao.UserDAO;
+import com.sajor.study.c06.model.User;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class MyBatisRelationTest {
+    public static void main(String[] args) {
+        try {
+            ApplicationContext ctx =
+                    new ClassPathXmlApplicationContext(&quot;spring-config-mybatis-c06-relation.xml&quot;);
+            UserDAO userDAO = (UserDAO) ctx.getBean(&quot;userDAO&quot;);
+            User user = userDAO.findUserById(2);
+            System.out.println(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+
+<p>9、运行测试类<br/>
+<img src="media/15643240518555/15647098563873.jpg" alt="" style="width:973px;"/></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/28</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='ssm.html'>SSM练习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15643212338496.html">
+                
+                  <h1>从零开始SSM开发系列八：MyBatis 入门</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>1、配置 MyBatis 开发环境</p>
+
+<p>在工程里面引用 MyBatis 核心 jar 包，以及 MyBatis 依赖的第三方 jar 包。<br/>
+点击 File&gt;Project Structure...，选中 Libraries，添加 java 引用<br/>
+选择 l􏰀ib 中的 􏰁Mybatis-3.4.5.jar 包。</p>
+
+<p>再次添加 java 引用，选中 lib 中的 mybatis-3.4.5-lib 文件夹<br/>
+确认。MyBatis 开发环境即搭建好了。</p>
+
+<p><img src="media/15643212338496/15643213413978.jpg" alt="" style="width:1024px;"/></p>
+
+<p>2、创建新的 Package</p>
+
+<blockquote>
+<p>com.sajor.study.c05<br/>
+com.sajor.study.c05.model:存放 vo 对象(业务模型对象) <br/>
+com.sajor.study.c05.dao:存放 dao 对象(数据库访问对象) <br/>
+com.sajor.study.c05.mapper:存放 mybatis 数据库表-对象映射文件 <br/>
+test.com.sajor.study.c05<br/>
+创建完成，包结构如下:</p>
+</blockquote>
+
+<p><img src="media/15643212338496/15643214751761.jpg" alt="" style="width:338px;"/></p>
+
+<p>3、在 model 包中创建一个 User 类<br/>
+在类中声明id、name、sex和email属性，及其对应的getter/setter方法。</p>
+
+<pre><code class="language-text">package com.sajor.study.c05.model;
+
+public class User {
+    private int id = 20180101;
+    private String name = &quot;&quot;;
+    private String sex;
+    private String email;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append(&quot;id=&quot;);
+        stringBuffer.append(id);
+        stringBuffer.append(&quot;\n&quot;);
+        stringBuffer.append(&quot;name=&quot;);
+        stringBuffer.append(name);
+        return stringBuffer.toString();
+    }
+}
+</code></pre>
+
+<p>4、在 mapper 包中创建一个映射文件 UserMapper.xml</p>
+
+<p>定义 SQL;<br/>
+ 1)根据用户编号获取用户信息;<br/>
+ 2)根据用户名模糊查询用户信息列表;<br/>
+ 3) 添加用户信息;<br/>
+ 4)更新用户信息;<br/>
+ 5)删除用户</p>
+
+<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+&lt;!-- namespace 表示命名空间 --&gt;
+&lt;mapper namespace=&quot;com.sajor.study.c05.mapper.UserMapper&quot;&gt;
+
+    &lt;!--根据用户编号获取用户信息 --&gt;
+    &lt;select id=&quot;findUserById&quot; parameterType=&quot;Integer&quot; resultType=&quot;com.sajor.study.c05.model.User&quot;&gt;
+        select * from USER where id = #{id}
+    &lt;/select&gt;
+
+    &lt;!--根据用户名模糊查询用户信息列表--&gt;
+    &lt;select id=&quot;findUserByName&quot; parameterType=&quot;String&quot; resultType=&quot;com.sajor.study.c05.model.User&quot;&gt;
+        select * from USER where name like concat(&#39;%&#39;,#{value},&#39;%&#39;)
+    &lt;/select&gt;
+
+    &lt;!-- 添加用户信息 --&gt;
+    &lt;insert id=&quot;addUser&quot; parameterType=&quot;com.sajor.study.c05.model.User&quot;&gt;
+        insert into USER(name,sex,email) values(#{name},#{sex},#{email})
+    &lt;/insert&gt;
+
+    &lt;!-- 更新用户信息 --&gt;
+    &lt;update id=&quot;updateUser&quot; parameterType=&quot;com.sajor.study.c05.model.User&quot;&gt;
+        update USER set name=#{name},sex=#{sex},email=#{email} where id=#{id}
+    &lt;/update&gt;
+
+    &lt;!-- 删除用户 --&gt;
+    &lt;delete id=&quot;deleteUser&quot; parameterType=&quot;Integer&quot;&gt;
+        delete from USER where id=#{id}
+    &lt;/delete&gt;
+&lt;/mapper&gt;
+
+</code></pre>
+
+<p>5、创建 MyBatis 的核心配置文件 mybatis-config.xml</p>
+
+<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
+&lt;configuration&gt;
+    &lt;!--1.配置环境 ，默认的环境为mysql--&gt;
+    &lt;environments default=&quot;dev&quot;&gt;
+        &lt;!--1.2.配置 id 为 mysql 的数据库环境 --&gt;
+        &lt;environment id=&quot;dev&quot;&gt;
+
+            &lt;!-- 使用 JDBC 的事务管理 --&gt;
+            &lt;transactionManager type=&quot;JDBC&quot;/&gt;
+
+            &lt;!--数据库连接池 --&gt;
+            &lt;dataSource type=&quot;POOLED&quot;&gt;
+                &lt;property name=&quot;driver&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;
+                &lt;property name=&quot;url&quot;
+                          value=&quot;jdbc:mysql://localhost:3306/TestDB?autoReconnect=true&amp;amp;characterEncoding=utf8&amp;amp;useUnicode=true&amp;amp;useSSL=false&quot;/&gt;
+                &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
+                &lt;property name=&quot;password&quot; value=&quot;123456&quot;/&gt;
+            &lt;/dataSource&gt;
+        &lt;/environment&gt;
+    &lt;/environments&gt;
+
+    &lt;!--2.配置 Mapper 的位置 --&gt;
+    &lt;mappers&gt;
+        &lt;mapper resource=&quot;com/sajor/study/c05/mapper/UserMapper.xml&quot;/&gt;
+    &lt;/mappers&gt;
+&lt;/configuration&gt;
+</code></pre>
+
+<p>6、创建一个 DAO 类 UserDAO</p>
+
+<p>对数据库进行增删改查</p>
+
+<pre><code class="language-text">package com.sajor.study.c05.dao;
+
+import com.sajor.study.c05.model.User;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import java.io.InputStream;
+import java.util.List;
+
+public class UserDAO {
+    /**
+     * 根据用户编号查询用户信息
+     */
+
+    public User findUserById(int id) throws Exception {
+
+        // 1、读取配置文件
+        String resource = &quot;mybatis-config.xml&quot;;
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+
+        // 2、根据配置文件构建 SqlSessionFactory
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        // 3、通过 SqlSessionFactory 创建 SqlSession
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        // 4、SqlSession 执行映射文件中定义的 SQL，并返回映射结果
+        User user = sqlSession.selectOne(&quot;com.sajor.study.c05.mapper.UserMapper.findUserById&quot;, id);
+
+        // 5、关闭 SqlSession
+        sqlSession.close();
+        return user;
+    }
+
+    /**
+     * 根据用户名称来模糊查询用户信息列表
+     */
+    public List&lt;User&gt; findUserByName(String s) throws Exception {
+
+        // 1、读取配置文件
+        String resource = &quot;mybatis-config.xml&quot;;
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+
+        // 2、根据配置文件构建 SqlSessionFactory
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        // 3、通过 SqlSessionFactory 创建 SqlSession
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        // 4、SqlSession 执行映射文件中定义的 SQL，并返回映射结果
+        List&lt;User&gt; users = sqlSession.selectList(&quot;com.sajor.study.c05.mapper.UserMapper.findUserByName&quot;, s);
+
+        // 5、关闭 SqlSession
+        sqlSession.close();
+        return users;
+    }
+
+    /**
+     * 添加用户
+     */
+    public void addUser(User user) throws Exception {
+        // 1、读取配置文件
+        String resource = &quot;mybatis-config.xml&quot;;
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+
+        // 2、根据配置文件构建 SqlSessionFactory
+        SqlSessionFactory sqlSessionFactory =
+                new SqlSessionFactoryBuilder().build(inputStream);
+
+        // 3、通过 SqlSessionFactory 创建 SqlSession
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        // 4、SqlSession 执行添加操作
+        // 4.1 执行 SqlSession 的插入方法，返回的是 SQL 语句影响的行数
+        int rows = sqlSession.insert(&quot;com.sajor.study.c05.mapper.UserMapper.addUser&quot;, user);
+
+        // 4.2 通过返回结果判断插入操作是否执行成功
+        if (rows &gt; 0) {
+            System.out.println(&quot;您成功插入了&quot; + rows + &quot;条数据!&quot;);
+        } else {
+            System.out.println(&quot;执行插入操作失败!!!&quot;);
+        }
+
+        // 4.3 提交事务
+        sqlSession.commit();
+
+        // 5、关闭 SqlSession
+        sqlSession.close();
+    }
+
+    /**
+     * 更新用户
+     */
+    public void updateUser(User user) throws Exception {
+        // 1、读取配置文件
+        String resource = &quot;mybatis-config.xml&quot;;
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+
+        // 2、根据配置文件构建 SqlSessionFactory
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        // 3、通过 SqlSessionFactory 创建 SqlSession
+        SqlSession sqlSession = sqlSessionFactory.openSession(); // 4、SqlSession 执行更新操作
+
+        // 4.1 执行 SqlSession 的更新方法，返回的是 SQL 语句影响的行数
+        int rows = sqlSession.update(&quot;com.sajor.study.c05.mapper.UserMapper.updateUser&quot;, user);
+
+        // 4.2 通过返回结果判断更新操作是否执行成功
+        if (rows &gt; 0) {
+            System.out.println(&quot;您成功修改了&quot; + rows + &quot;条数据!&quot;);
+        } else {
+            System.out.println(&quot;执行修改操作失败!!!&quot;);
+        }
+
+        // 4.3 提交事务
+        sqlSession.commit();
+
+        // 5、关闭 SqlSession
+        sqlSession.close();
+    }
+
+    /**
+     * 删除用户
+     */
+    public void deleteUser(int id) throws Exception {
+        // 1、读取配置文件
+        String resource = &quot;mybatis-config.xml&quot;;
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+
+        // 2、根据配置文件构建 SqlSessionFactory
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        // 3、通过 SqlSessionFactory 创建 SqlSession
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        // 4、SqlSession 执行删除操作
+        // 4.1 执行 SqlSession 的删除方法，返回的是 SQL 语句影响的行数
+        int rows = sqlSession.delete(&quot;com.sajor.study.c05.mapper.UserMapper.deleteUser&quot;, id);
+
+        // 4.2 通过返回结果判断删除操作是否执行成功
+        if (rows &gt; 0) {
+            System.out.println(&quot;您成功删除了&quot; + rows + &quot;条数据!&quot;);
+        } else {
+            System.out.println(&quot;执行删除操作失败!!!&quot;);
+        }
+
+        // 4.3 提交事务
+        sqlSession.commit();
+
+        // 5、关闭 SqlSession
+        sqlSession.close();
+    }
+}
+</code></pre>
+
+<p>7、新建一个 Spring 配置文件 spring-config-mybatis.xml<br/>
+在 spring 配置文件中配置 bean </p>
+
+<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+    &lt;bean id=&quot;userDAO&quot; class=&quot;com.sajor.study.c05.dao.UserDAO&quot; /&gt;
+    &lt;bean id=&quot;user&quot; class=&quot;com.sajor.study.c05.model.User&quot; /&gt;
+&lt;/beans&gt;
+</code></pre>
+
+<p>8、创建测试类 MyBatisTest</p>
+
+<p>先使用插入数据部分插入几条数据，之后再查询、修改、删除。</p>
+
+<pre><code class="language-text">package test.com.sajor.study.c05;
+
+import com.sajor.study.c05.dao.UserDAO;
+import com.sajor.study.c05.model.User;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.List;
+
+public class MyBatisTest {
+    public static void main(String[] args) {
+        try {
+            ApplicationContext ctx = new ClassPathXmlApplicationContext(&quot;spring-config-mybatis.xml&quot;);
+
+            // 按id查找数据
+            UserDAO userDAO = (UserDAO) ctx.getBean(&quot;userDAO&quot;);
+            User user = userDAO.findUserById(2);
+            System.out.println(user);
+
+            // 按名字查找数据
+            List&lt;User&gt; users = userDAO.findUserByName(&quot;萧&quot;);
+            for (User u : users) {
+                System.out.println(u);
+            }
+
+
+            // 插入数据
+//            UserDAO userDAO = (UserDAO) ctx.getBean(&quot;userDAO&quot;);
+//            User user = (User) ctx.getBean(&quot;user&quot;);
+//            user.setName(&quot;萧大侠&quot;);
+//            user.setSex(&quot;11&quot;);
+//            user.setEmail(&quot;xiaodaxia@cn.cn&quot;);
+//            userDAO.addUser(user);
+
+
+//            // 修改数据
+//            UserDAO userDAO = (UserDAO) ctx.getBean(&quot;userDAO&quot;);
+//            User user = (User) ctx.getBean(&quot;user&quot;);
+//            user.setId(2);
+//            user.setName(&quot;萧大侠gai&quot;);
+//            user.setSex(&quot;01&quot;);
+//            user.setEmail(&quot;xiaodaxia@cn.cn&quot;);
+//            userDAO.updateUser(user);
+
+            // 删除数据
+//            UserDAO userDAO = (UserDAO) ctx.getBean(&quot;userDAO&quot;);
+//            userDAO.deleteUser(1);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+
+<p>9、运行测试类</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/28</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='ssm.html'>SSM练习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
+
+
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   <a href="all_1.html">&laquo; Prev Page</a>  
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			 <a href="all_3.html">&raquo; Next Page</a> 
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>Sajor's Blog</h1>
+                <div class="site-des">Sajor's Blog</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html"><strong>数据结构与算法</strong></a>
+        
+            <a href="SSM.html"><strong>SSM</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15769918912350.html">比特币</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15768275980852.html">『互联网架构』软件架构-API接口安全网关《service变controller》（16）</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15768270099640.html">面试被问烂的 Spring IOC(求求你别再问了)</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15665458213371.html">idea 类注释和方法注释</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15659629846282.html">idea 热部署</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+figure{margin: 0;padding: 0;}
+figcaption{text-align:center;}
+
+/* PrismJS 1.14.0
+ http://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: black;
+    background: none;
+    text-shadow: 0 1px white;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+    text-shadow: none;
+    background:#b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+    text-shadow: none;
+    background: #b3d4fc;
+}
+
+@media print {
+    code[class*="language-"],
+    pre[class*="language-"] {
+        text-shadow: none;
+    }
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+    padding: 1em;
+    margin: .5em 0;
+    overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+    background: #F7F7F7;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+    padding: .1em;
+    border-radius: .3em;
+    white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: slategray;
+}
+
+.token.punctuation {
+    color: #999;
+}
+
+.namespace {
+    opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: #9a6e3a;
+    background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #07a;
+}
+
+.token.function,
+.token.class-name {
+    color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+    color: #e90;
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+
+pre[class*="language-"].line-numbers {
+    position: relative;
+    padding-left: 3.8em;
+    counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+    position: relative;
+    white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    font-size: 100%;
+    left: -3.8em;
+    width: 3em; /* works for line-numbers below 1000 lines */
+    letter-spacing: -1px;
+    border-right: 1px solid #999;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+    .line-numbers-rows > span {
+        pointer-events: none;
+        display: block;
+        counter-increment: linenumber;
+    }
+
+        .line-numbers-rows > span:before {
+            content: counter(linenumber);
+            color: #999;
+            display: block;
+            padding-right: 0.8em;
+            text-align: right;
+        }
+
+</style>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+
+
+  </body>
+</html>

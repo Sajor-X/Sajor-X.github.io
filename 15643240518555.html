@@ -1,0 +1,850 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  从零开始SSM开发系列九：MyBatis 一对一关联关系 - Sajor's Blog
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="Sajor's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+ 
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:blog.sajor.top ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; Sajor's Blog</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html">数据结构与算法</a></li>
+        
+            <li><a href="SSM.html">SSM</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>从零开始SSM开发系列九：MyBatis 一对一关联关系</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2019/7/28</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='ssm.html'>SSM练习</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <p>1、数据库表准备</p>
+
+<p>新建一个数据库表:card 并添加几条数据</p>
+
+<p>Card 表</p>
+
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>11（主键）</td>
+</tr>
+<tr>
+<td>code</td>
+<td>varchar</td>
+<td>18</td>
+</tr>
+</tbody>
+</table>
+
+<p>2、创建新的 Package</p>
+
+<blockquote>
+<p>com.sajor.study.c06<br/>
+com.sajor.study.c06.model : 存放 vo 对象(业务模型对象) <br/>
+com.sajor.study.c06.dao : 存放 dao 对象(数据库访问对象) <br/>
+com.sajor.study.mapper : 存放 mybatis 数据库表-对象映射文件 <br/>
+test.com.sajor.study.c06 </p>
+</blockquote>
+
+<p>创建完成，包结构如下:</p>
+
+<p><img src="media/15643240518555/15646746698065.jpg" alt="" style="width:314px;"/></p>
+
+<p>3、在 model 包中创建 User 类，Card 类</p>
+
+<p>User 类</p>
+
+<pre><code class="language-text">package com.sajor.study.c06.model;
+
+public class User {
+    private int id = 20190801;
+    private String name = &quot;&quot;;
+    private String sex;
+    private String email;
+
+    private Card card; //个人关联的证件
+
+    @Override
+    public String toString() {
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append(&quot;id=&quot;);
+        stringBuffer.append(id);
+        stringBuffer.append(&quot;\n&quot;);
+        stringBuffer.append(&quot;name=&quot;);
+        stringBuffer.append(name);
+        stringBuffer.append(&quot;\n&quot;);
+        stringBuffer.append(&quot;CardID=&quot;);
+        stringBuffer.append(card.getId());
+        stringBuffer.append(&quot;\n&quot;);
+        stringBuffer.append(&quot;CardCode=&quot;);
+        stringBuffer.append(card.getCode());
+        return stringBuffer.toString();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Card getCard() {
+        return card;
+    }
+
+    public void setCard(Card card) {
+        this.card = card;
+    }
+}
+</code></pre>
+
+<p>Card 类</p>
+
+<pre><code class="language-text">package com.sajor.study.c06.model;
+
+public class Card {
+    private Integer id;
+    private String code;
+
+    @Override
+    public String toString() {
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append(&quot;Card [CardId=&quot;);
+        stringBuffer.append(id);
+        stringBuffer.append(&quot;, CardCode=&quot;);
+        stringBuffer.append(code);
+        stringBuffer.append(&quot;]&quot;);
+        return stringBuffer.toString();
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+}
+</code></pre>
+
+<p>4、在 mapper 包中创建映射文件 UserMapper.xml、 CardMapper.xml</p>
+
+<p>UserMapper.xml</p>
+
+<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+&lt;!-- namespace 表示命名空间 --&gt;
+&lt;mapper namespace=&quot;com.sajor.study.c06.mapper.UserMapper&quot;&gt;
+
+    &lt;select id=&quot;findUserById&quot; parameterType=&quot;Integer&quot; resultMap=&quot;CardWithUserResult&quot;&gt;
+        SELECT * from USER where id=#{id}
+    &lt;/select&gt;
+
+
+    &lt;resultMap type=&quot;com.sajor.study.c06.model.User&quot; id=&quot;CardWithUserResult&quot;&gt;
+        &lt;id property=&quot;id&quot; column=&quot;id&quot;/&gt;
+        &lt;result property=&quot;name&quot; column=&quot;name&quot;/&gt;
+        &lt;result property=&quot;sex&quot; column=&quot;sex&quot;/&gt;
+        &lt;result property=&quot;email&quot; column=&quot;email&quot;/&gt;
+        &lt;!-- 一对一:association 使用 select 属性引入另外一条 SQL 语句 --&gt;
+        &lt;association property=&quot;card&quot; column=&quot;id&quot; javaType=&quot;com.sajor.study.c06.model.Card&quot;
+                     select=&quot;com.sajor.study.c06.mapper.CardMapper.findCodeById&quot;/&gt;
+    &lt;/resultMap&gt;
+
+
+    &lt;!-- 嵌套结果:使用嵌套结果映射来处理重复的联合结果的子集 --&gt;
+    &lt;select id=&quot;findUserById2&quot; parameterType=&quot;Integer&quot; resultMap=&quot;CardWithUserResult2&quot;&gt;
+        SELECT user.*,card.code from user,card
+        where user.id=card.id and user.id= #{id}
+    &lt;/select&gt;
+
+    &lt;resultMap type=&quot;com.sajor.study.c06.model.User&quot; id=&quot;CardWithUserResult2&quot;&gt;
+        &lt;id property=&quot;id&quot; column=&quot;id&quot;/&gt;
+        &lt;result property=&quot;name&quot; column=&quot;name&quot;/&gt;
+        &lt;result property=&quot;sex&quot; column=&quot;sex&quot;/&gt;
+        &lt;result property=&quot;email&quot; column=&quot;email&quot;/&gt;
+        &lt;association property=&quot;card&quot; javaType=&quot;com.sajor.study.c06.model.Card&quot;&gt;
+            &lt;id property=&quot;id&quot; column=&quot;id&quot;/&gt;
+            &lt;result property=&quot;code&quot; column=&quot;code&quot;/&gt;
+        &lt;/association&gt;
+    &lt;/resultMap&gt;
+&lt;/mapper&gt;
+</code></pre>
+
+<p>CardMapper.xml</p>
+
+<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+&lt;!-- namespace 表示命名空间 --&gt;
+&lt;mapper namespace=&quot;com.sajor.study.c06.mapper.CardMapper&quot;&gt;
+    &lt;select id=&quot;findCodeById&quot; parameterType=&quot;Integer&quot;
+            resultType=&quot;com.sajor.study.c06.model.Card&quot;&gt;
+        SELECT * from card where id=#{id}
+    &lt;/select&gt;
+&lt;/mapper&gt;
+</code></pre>
+
+<p>5、新建一个 MyBatis 的核心配置文件 mybatis-config-c06-relation.xml</p>
+
+<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
+&lt;configuration&gt;
+    &lt;!--1.配置环境 ，默认的环境id为msql--&gt;
+    &lt;environments default=&quot;dev&quot;&gt;
+
+        &lt;!--1.2.配置 id 为 mysql 的数据库环境 --&gt;
+        &lt;environment id=&quot;dev&quot;&gt;
+
+            &lt;!-- 使用 JDBC 的事务管理 --&gt;
+            &lt;transactionManager type=&quot;JDBC&quot;/&gt;
+
+            &lt;!--数据库连接池 --&gt;
+            &lt;dataSource type=&quot;POOLED&quot;&gt;
+                &lt;property name=&quot;driver&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;
+                &lt;property name=&quot;url&quot;
+                          value=&quot;jdbc:mysql://localhost:3306/TestDB?autoReconnect=true&amp;amp;characterEncoding=utf8&amp;amp;useUnicode=true&amp;amp;useSSL=false&quot;/&gt;
+                &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
+                &lt;property name=&quot;password&quot; value=&quot;123456&quot;/&gt;
+            &lt;/dataSource&gt;
+        &lt;/environment&gt;
+    &lt;/environments&gt;
+
+    &lt;!--2.配置 Mapper 的位置 --&gt;
+    &lt;mappers&gt;
+        &lt;mapper resource=&quot;com/sajor/study/c06/mapper/UserMapper.xml&quot;/&gt;
+        &lt;mapper resource=&quot;com/sajor/study/c06/mapper/CardMapper.xml&quot;/&gt;
+
+    &lt;/mappers&gt;
+&lt;/configuration&gt;
+</code></pre>
+
+<p>6、新建一个 Spring 配置文件 spring-config-mybatis-c06-relation.xml</p>
+
+<p>在 spring 配置文件中配置 bean</p>
+
+<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+
+        &lt;bean id=&quot;userDAO&quot; class=&quot;com.sajor.study.c06.dao.UserDAO&quot; /&gt;
+        &lt;bean id=&quot;user&quot; class=&quot;com.sajor.study.c06.model.User&quot; /&gt; &lt;bean id=&quot;card&quot; class=&quot;com.sajor.study.c06.model.Card&quot; /&gt;
+&lt;/beans&gt;
+</code></pre>
+
+<p>7、新建一个 DAO 类 UserDAO</p>
+
+<p>对数据库进行关联查询</p>
+
+<pre><code class="language-text">package com.sajor.study.c06.dao;
+
+import com.sajor.study.c06.model.User;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.apache.ibatis.session.SqlSessionManager;
+
+import java.io.InputStream;
+
+public class UserDAO {
+    /**
+     * 根据用户编号查询用户信息
+     */
+    public User findUserById(int id) throws Exception {
+        // 1、读取配置文件
+        String resource = &quot;mybatis-config-c06-relation.xml&quot;;
+        InputStream inputStream =
+                Resources.getResourceAsStream(resource);
+        // 2、根据配置文件构建 SqlSessionFactory
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        // 3、通过 SqlSessionFactory 创建 SqlSession
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        // 4、SqlSession 执行映射文件中定义的 SQL，并返回映射结果
+        User user = sqlSession.selectOne(&quot;com.sajor.study.c06.mapper.UserMapper.findUserById&quot;, id);
+
+        //User user = sqlSession.selectOne(&quot;com.sajor.study.c06.mapper.UserMapper.findUserById2&quot;, id);
+        // 5、关闭 SqlSession
+        sqlSession.close();
+        return user;
+    }
+}
+</code></pre>
+
+<p>8、创建测试类 MyBatisRelationTest</p>
+
+<pre><code class="language-text">package test.com.sajor.study.c06;
+
+import com.sajor.study.c06.dao.UserDAO;
+import com.sajor.study.c06.model.User;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class MyBatisRelationTest {
+    public static void main(String[] args) {
+        try {
+            ApplicationContext ctx =
+                    new ClassPathXmlApplicationContext(&quot;spring-config-mybatis-c06-relation.xml&quot;);
+            UserDAO userDAO = (UserDAO) ctx.getBean(&quot;userDAO&quot;);
+            User user = userDAO.findUserById(2);
+            System.out.println(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+
+<p>9、运行测试类<br/>
+<img src="media/15643240518555/15647098563873.jpg" alt="" style="width:973px;"/></p>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15647098694474.html" 
+          title="Previous Post: 从零开始SSM开发系列十：MyBatis 一对多关联关系">&laquo; 从零开始SSM开发系列十：MyBatis 一对多关联关系</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15643212338496.html" 
+          title="Next Post: 从零开始SSM开发系列八：MyBatis 入门">从零开始SSM开发系列八：MyBatis 入门 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>Sajor's Blog</h1>
+                <div class="site-des">Sajor's Blog</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html"><strong>数据结构与算法</strong></a>
+        
+            <a href="SSM.html"><strong>SSM</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15769918912350.html">比特币</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15768275980852.html">『互联网架构』软件架构-API接口安全网关《service变controller》（16）</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15768270099640.html">面试被问烂的 Spring IOC(求求你别再问了)</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15665458213371.html">idea 类注释和方法注释</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15659629846282.html">idea 热部署</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="asset/prism.js"></script>
+
+
+<style type="text/css">
+figure{margin: 0;padding: 0;}
+figcaption{text-align:center;}
+
+/* PrismJS 1.14.0
+ http://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: black;
+    background: none;
+    text-shadow: 0 1px white;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+    text-shadow: none;
+    background:#b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+    text-shadow: none;
+    background: #b3d4fc;
+}
+
+@media print {
+    code[class*="language-"],
+    pre[class*="language-"] {
+        text-shadow: none;
+    }
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+    padding: 1em;
+    margin: .5em 0;
+    overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+    background: #F7F7F7;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+    padding: .1em;
+    border-radius: .3em;
+    white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: slategray;
+}
+
+.token.punctuation {
+    color: #999;
+}
+
+.namespace {
+    opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: #9a6e3a;
+    background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #07a;
+}
+
+.token.function,
+.token.class-name {
+    color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+    color: #e90;
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+
+pre[class*="language-"].line-numbers {
+    position: relative;
+    padding-left: 3.8em;
+    counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+    position: relative;
+    white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    font-size: 100%;
+    left: -3.8em;
+    width: 3em; /* works for line-numbers below 1000 lines */
+    letter-spacing: -1px;
+    border-right: 1px solid #999;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+    .line-numbers-rows > span {
+        pointer-events: none;
+        display: block;
+        counter-increment: linenumber;
+    }
+
+        .line-numbers-rows > span:before {
+            content: counter(linenumber);
+            color: #999;
+            display: block;
+            padding-right: 0.8em;
+            text-align: right;
+        }
+
+</style>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+
+
+  </body>
+</html>

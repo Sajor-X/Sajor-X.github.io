@@ -1,0 +1,1844 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  SSM练习 - Sajor's Blog
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="Sajor's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+ 
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:blog.sajor.top ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; Sajor's Blog</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html">数据结构与算法</a></li>
+        
+            <li><a href="SSM.html">SSM</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
+</script>
+<div class="row">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="15643212338496.html">
+                
+                  <h1>从零开始SSM开发系列八：MyBatis 入门</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>1、配置 MyBatis 开发环境</p>
+
+<p>在工程里面引用 MyBatis 核心 jar 包，以及 MyBatis 依赖的第三方 jar 包。<br/>
+点击 File&gt;Project Structure...，选中 Libraries，添加 java 引用<br/>
+选择 l􏰀ib 中的 􏰁Mybatis-3.4.5.jar 包。</p>
+
+<p>再次添加 java 引用，选中 lib 中的 mybatis-3.4.5-lib 文件夹<br/>
+确认。MyBatis 开发环境即搭建好了。</p>
+
+<p><img src="media/15643212338496/15643213413978.jpg" alt="" style="width:1024px;"/></p>
+
+<p>2、创建新的 Package</p>
+
+<blockquote>
+<p>com.sajor.study.c05<br/>
+com.sajor.study.c05.model:存放 vo 对象(业务模型对象) <br/>
+com.sajor.study.c05.dao:存放 dao 对象(数据库访问对象) <br/>
+com.sajor.study.c05.mapper:存放 mybatis 数据库表-对象映射文件 <br/>
+test.com.sajor.study.c05<br/>
+创建完成，包结构如下:</p>
+</blockquote>
+
+<p><img src="media/15643212338496/15643214751761.jpg" alt="" style="width:338px;"/></p>
+
+<p>3、在 model 包中创建一个 User 类<br/>
+在类中声明id、name、sex和email属性，及其对应的getter/setter方法。</p>
+
+<pre><code class="language-text">package com.sajor.study.c05.model;
+
+public class User {
+    private int id = 20180101;
+    private String name = &quot;&quot;;
+    private String sex;
+    private String email;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append(&quot;id=&quot;);
+        stringBuffer.append(id);
+        stringBuffer.append(&quot;\n&quot;);
+        stringBuffer.append(&quot;name=&quot;);
+        stringBuffer.append(name);
+        return stringBuffer.toString();
+    }
+}
+</code></pre>
+
+<p>4、在 mapper 包中创建一个映射文件 UserMapper.xml</p>
+
+<p>定义 SQL;<br/>
+ 1)根据用户编号获取用户信息;<br/>
+ 2)根据用户名模糊查询用户信息列表;<br/>
+ 3) 添加用户信息;<br/>
+ 4)更新用户信息;<br/>
+ 5)删除用户</p>
+
+<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+&lt;!-- namespace 表示命名空间 --&gt;
+&lt;mapper namespace=&quot;com.sajor.study.c05.mapper.UserMapper&quot;&gt;
+
+    &lt;!--根据用户编号获取用户信息 --&gt;
+    &lt;select id=&quot;findUserById&quot; parameterType=&quot;Integer&quot; resultType=&quot;com.sajor.study.c05.model.User&quot;&gt;
+        select * from USER where id = #{id}
+    &lt;/select&gt;
+
+    &lt;!--根据用户名模糊查询用户信息列表--&gt;
+    &lt;select id=&quot;findUserByName&quot; parameterType=&quot;String&quot; resultType=&quot;com.sajor.study.c05.model.User&quot;&gt;
+        select * from USER where name like concat(&#39;%&#39;,#{value},&#39;%&#39;)
+    &lt;/select&gt;
+
+    &lt;!-- 添加用户信息 --&gt;
+    &lt;insert id=&quot;addUser&quot; parameterType=&quot;com.sajor.study.c05.model.User&quot;&gt;
+        insert into USER(name,sex,email) values(#{name},#{sex},#{email})
+    &lt;/insert&gt;
+
+    &lt;!-- 更新用户信息 --&gt;
+    &lt;update id=&quot;updateUser&quot; parameterType=&quot;com.sajor.study.c05.model.User&quot;&gt;
+        update USER set name=#{name},sex=#{sex},email=#{email} where id=#{id}
+    &lt;/update&gt;
+
+    &lt;!-- 删除用户 --&gt;
+    &lt;delete id=&quot;deleteUser&quot; parameterType=&quot;Integer&quot;&gt;
+        delete from USER where id=#{id}
+    &lt;/delete&gt;
+&lt;/mapper&gt;
+
+</code></pre>
+
+<p>5、创建 MyBatis 的核心配置文件 mybatis-config.xml</p>
+
+<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
+&lt;configuration&gt;
+    &lt;!--1.配置环境 ，默认的环境为mysql--&gt;
+    &lt;environments default=&quot;dev&quot;&gt;
+        &lt;!--1.2.配置 id 为 mysql 的数据库环境 --&gt;
+        &lt;environment id=&quot;dev&quot;&gt;
+
+            &lt;!-- 使用 JDBC 的事务管理 --&gt;
+            &lt;transactionManager type=&quot;JDBC&quot;/&gt;
+
+            &lt;!--数据库连接池 --&gt;
+            &lt;dataSource type=&quot;POOLED&quot;&gt;
+                &lt;property name=&quot;driver&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;
+                &lt;property name=&quot;url&quot;
+                          value=&quot;jdbc:mysql://localhost:3306/TestDB?autoReconnect=true&amp;amp;characterEncoding=utf8&amp;amp;useUnicode=true&amp;amp;useSSL=false&quot;/&gt;
+                &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
+                &lt;property name=&quot;password&quot; value=&quot;123456&quot;/&gt;
+            &lt;/dataSource&gt;
+        &lt;/environment&gt;
+    &lt;/environments&gt;
+
+    &lt;!--2.配置 Mapper 的位置 --&gt;
+    &lt;mappers&gt;
+        &lt;mapper resource=&quot;com/sajor/study/c05/mapper/UserMapper.xml&quot;/&gt;
+    &lt;/mappers&gt;
+&lt;/configuration&gt;
+</code></pre>
+
+<p>6、创建一个 DAO 类 UserDAO</p>
+
+<p>对数据库进行增删改查</p>
+
+<pre><code class="language-text">package com.sajor.study.c05.dao;
+
+import com.sajor.study.c05.model.User;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import java.io.InputStream;
+import java.util.List;
+
+public class UserDAO {
+    /**
+     * 根据用户编号查询用户信息
+     */
+
+    public User findUserById(int id) throws Exception {
+
+        // 1、读取配置文件
+        String resource = &quot;mybatis-config.xml&quot;;
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+
+        // 2、根据配置文件构建 SqlSessionFactory
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        // 3、通过 SqlSessionFactory 创建 SqlSession
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        // 4、SqlSession 执行映射文件中定义的 SQL，并返回映射结果
+        User user = sqlSession.selectOne(&quot;com.sajor.study.c05.mapper.UserMapper.findUserById&quot;, id);
+
+        // 5、关闭 SqlSession
+        sqlSession.close();
+        return user;
+    }
+
+    /**
+     * 根据用户名称来模糊查询用户信息列表
+     */
+    public List&lt;User&gt; findUserByName(String s) throws Exception {
+
+        // 1、读取配置文件
+        String resource = &quot;mybatis-config.xml&quot;;
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+
+        // 2、根据配置文件构建 SqlSessionFactory
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        // 3、通过 SqlSessionFactory 创建 SqlSession
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        // 4、SqlSession 执行映射文件中定义的 SQL，并返回映射结果
+        List&lt;User&gt; users = sqlSession.selectList(&quot;com.sajor.study.c05.mapper.UserMapper.findUserByName&quot;, s);
+
+        // 5、关闭 SqlSession
+        sqlSession.close();
+        return users;
+    }
+
+    /**
+     * 添加用户
+     */
+    public void addUser(User user) throws Exception {
+        // 1、读取配置文件
+        String resource = &quot;mybatis-config.xml&quot;;
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+
+        // 2、根据配置文件构建 SqlSessionFactory
+        SqlSessionFactory sqlSessionFactory =
+                new SqlSessionFactoryBuilder().build(inputStream);
+
+        // 3、通过 SqlSessionFactory 创建 SqlSession
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        // 4、SqlSession 执行添加操作
+        // 4.1 执行 SqlSession 的插入方法，返回的是 SQL 语句影响的行数
+        int rows = sqlSession.insert(&quot;com.sajor.study.c05.mapper.UserMapper.addUser&quot;, user);
+
+        // 4.2 通过返回结果判断插入操作是否执行成功
+        if (rows &gt; 0) {
+            System.out.println(&quot;您成功插入了&quot; + rows + &quot;条数据!&quot;);
+        } else {
+            System.out.println(&quot;执行插入操作失败!!!&quot;);
+        }
+
+        // 4.3 提交事务
+        sqlSession.commit();
+
+        // 5、关闭 SqlSession
+        sqlSession.close();
+    }
+
+    /**
+     * 更新用户
+     */
+    public void updateUser(User user) throws Exception {
+        // 1、读取配置文件
+        String resource = &quot;mybatis-config.xml&quot;;
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+
+        // 2、根据配置文件构建 SqlSessionFactory
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        // 3、通过 SqlSessionFactory 创建 SqlSession
+        SqlSession sqlSession = sqlSessionFactory.openSession(); // 4、SqlSession 执行更新操作
+
+        // 4.1 执行 SqlSession 的更新方法，返回的是 SQL 语句影响的行数
+        int rows = sqlSession.update(&quot;com.sajor.study.c05.mapper.UserMapper.updateUser&quot;, user);
+
+        // 4.2 通过返回结果判断更新操作是否执行成功
+        if (rows &gt; 0) {
+            System.out.println(&quot;您成功修改了&quot; + rows + &quot;条数据!&quot;);
+        } else {
+            System.out.println(&quot;执行修改操作失败!!!&quot;);
+        }
+
+        // 4.3 提交事务
+        sqlSession.commit();
+
+        // 5、关闭 SqlSession
+        sqlSession.close();
+    }
+
+    /**
+     * 删除用户
+     */
+    public void deleteUser(int id) throws Exception {
+        // 1、读取配置文件
+        String resource = &quot;mybatis-config.xml&quot;;
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+
+        // 2、根据配置文件构建 SqlSessionFactory
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        // 3、通过 SqlSessionFactory 创建 SqlSession
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        // 4、SqlSession 执行删除操作
+        // 4.1 执行 SqlSession 的删除方法，返回的是 SQL 语句影响的行数
+        int rows = sqlSession.delete(&quot;com.sajor.study.c05.mapper.UserMapper.deleteUser&quot;, id);
+
+        // 4.2 通过返回结果判断删除操作是否执行成功
+        if (rows &gt; 0) {
+            System.out.println(&quot;您成功删除了&quot; + rows + &quot;条数据!&quot;);
+        } else {
+            System.out.println(&quot;执行删除操作失败!!!&quot;);
+        }
+
+        // 4.3 提交事务
+        sqlSession.commit();
+
+        // 5、关闭 SqlSession
+        sqlSession.close();
+    }
+}
+</code></pre>
+
+<p>7、新建一个 Spring 配置文件 spring-config-mybatis.xml<br/>
+在 spring 配置文件中配置 bean </p>
+
+<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+    &lt;bean id=&quot;userDAO&quot; class=&quot;com.sajor.study.c05.dao.UserDAO&quot; /&gt;
+    &lt;bean id=&quot;user&quot; class=&quot;com.sajor.study.c05.model.User&quot; /&gt;
+&lt;/beans&gt;
+</code></pre>
+
+<p>8、创建测试类 MyBatisTest</p>
+
+<p>先使用插入数据部分插入几条数据，之后再查询、修改、删除。</p>
+
+<pre><code class="language-text">package test.com.sajor.study.c05;
+
+import com.sajor.study.c05.dao.UserDAO;
+import com.sajor.study.c05.model.User;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.List;
+
+public class MyBatisTest {
+    public static void main(String[] args) {
+        try {
+            ApplicationContext ctx = new ClassPathXmlApplicationContext(&quot;spring-config-mybatis.xml&quot;);
+
+            // 按id查找数据
+            UserDAO userDAO = (UserDAO) ctx.getBean(&quot;userDAO&quot;);
+            User user = userDAO.findUserById(2);
+            System.out.println(user);
+
+            // 按名字查找数据
+            List&lt;User&gt; users = userDAO.findUserByName(&quot;萧&quot;);
+            for (User u : users) {
+                System.out.println(u);
+            }
+
+
+            // 插入数据
+//            UserDAO userDAO = (UserDAO) ctx.getBean(&quot;userDAO&quot;);
+//            User user = (User) ctx.getBean(&quot;user&quot;);
+//            user.setName(&quot;萧大侠&quot;);
+//            user.setSex(&quot;11&quot;);
+//            user.setEmail(&quot;xiaodaxia@cn.cn&quot;);
+//            userDAO.addUser(user);
+
+
+//            // 修改数据
+//            UserDAO userDAO = (UserDAO) ctx.getBean(&quot;userDAO&quot;);
+//            User user = (User) ctx.getBean(&quot;user&quot;);
+//            user.setId(2);
+//            user.setName(&quot;萧大侠gai&quot;);
+//            user.setSex(&quot;01&quot;);
+//            user.setEmail(&quot;xiaodaxia@cn.cn&quot;);
+//            userDAO.updateUser(user);
+
+            // 删除数据
+//            UserDAO userDAO = (UserDAO) ctx.getBean(&quot;userDAO&quot;);
+//            userDAO.deleteUser(1);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+
+<p>9、运行测试类</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/28</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='ssm.html'>SSM练习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15643155536877.html">
+                
+                  <h1>从零开始SSM开发系列七：事务管理</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>1、Spring 配置文件中声明事务</p>
+
+<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
+       xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/tx
+            http://www.springframework.org/schema/tx/spring-tx.xsd
+            http://www.springframework.org/schema/aop
+            http://www.springframework.org/schema/aop/spring-aop.xsd&quot;&gt;
+
+    &lt;bean id=&quot;student&quot; class=&quot;com.sajor.study.c01.Student&quot;&gt;
+    &lt;/bean&gt;
+    &lt;bean id=&quot;school&quot; class=&quot;com.sajor.study.c01.School&quot;&gt;
+        &lt;property name=&quot;students&quot; ref=&quot;student&quot;/&gt;
+    &lt;/bean&gt;
+
+    &lt;!-- 1.配置数据源 --&gt;
+    &lt;bean id=&quot;dataSourceJDBC&quot;
+          class=&quot;org.springframework.jdbc.datasource.DriverManagerDataSource&quot;&gt;
+        &lt;property name=&quot;driverClassName&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;
+        &lt;property name=&quot;url&quot;
+                  value=&quot;jdbc:mysql://localhost:3306/TestDB?autoReconnect=true&amp;amp;characterEncoding=utf8&amp;amp;useUnicode=true&amp;amp;useSSL=false&quot;/&gt;
+        &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
+        &lt;property name=&quot;password&quot; value=&quot;123456&quot;/&gt;
+    &lt;/bean&gt;
+
+    &lt;!-- 2.配置 JDBC 模板 --&gt;
+    &lt;bean id=&quot;jdbcTemplate&quot; class=&quot;org.springframework.jdbc.core.JdbcTemplate&quot;&gt;
+        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSourceJDBC&quot;/&gt;
+    &lt;/bean&gt;
+
+    &lt;!--3.定义使用 jdbc 模板的 jdbcTemplateUtil 类 --&gt;
+    &lt;bean id=&quot;jdbcTemplateUtil&quot; class=&quot;com.sajor.study.c04.JdbcTemplateUtil&quot;&gt;
+        &lt;property name=&quot;jdbcTemplate&quot; ref=&quot;jdbcTemplate&quot;/&gt;
+    &lt;/bean&gt;
+
+    &lt;!--4.JDBC 事务管理器，依赖于数据源--&gt;
+    &lt;bean id=&quot;transactionManagerJDBC&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;
+        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSourceJDBC&quot;/&gt;
+    &lt;/bean&gt;
+
+    &lt;!-- 5.编写通知:对事务进行增强(通知),需要编写对切入点和具体执行事务细节 --&gt;
+    &lt;tx:advice id=&quot;txAdvice&quot; transaction-manager=&quot;transactionManagerJDBC&quot;&gt;
+        &lt;tx:attributes&gt;
+            &lt;!-- name:*表示任意方法名称 --&gt;
+            &lt;tx:method name=&quot;*&quot; propagation=&quot;REQUIRED&quot; isolation=&quot;DEFAULT&quot;
+                       read-only=&quot;false&quot;/&gt;
+        &lt;/tx:attributes&gt;
+    &lt;/tx:advice&gt;
+
+    &lt;!-- 6.编写 aop，让 spring 自动对目标生成代理，需要使用 AspectJ 的表达式 --&gt;
+    &lt;aop:config&gt;
+        &lt;!-- 切入点 --&gt;
+        &lt;aop:pointcut expression=&quot;execution(* com.sajor.study.c04.JdbcTemplateUtil.addUser(..))&quot;
+                      id=&quot;txPointCut&quot;/&gt;
+        &lt;!-- 切面:将切入点与通知整合 --&gt;
+        &lt;aop:advisor advice-ref=&quot;txAdvice&quot; pointcut-ref=&quot;txPointCut&quot;/&gt;
+    &lt;/aop:config&gt;
+
+&lt;/beans&gt;
+</code></pre>
+
+<p>2、在 JdbcTemplateUtil.addUser()方法中添加一个错误<br/>
+验证事务是否起作用</p>
+
+<pre><code class="language-text">public void addUser(Student student) {
+        String sql = &quot;insert into user (name,sex,email) values(?,?,?)&quot;;
+        jdbcTemplate.update(sql, student.getName(), student.getSex(), student.getEmail());
+        errorTest.length();//故意执行一个未初始化对象的方法
+    }
+</code></pre>
+
+<p>3、运行测试类</p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/28</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='ssm.html'>SSM练习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15643143335228.html">
+                
+                  <h1>从零开始SSM开发系列六：数据库开发</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">创建MySQL数据库</h2>
+
+<p>首先进入MySQL数据库创建 <strong>TestDB</strong> 数据库</p>
+
+<pre><code class="language-text">create database TestDB charset=utf8;
+</code></pre>
+
+<p><img src="media/15643143335228/15643149566034.jpg" alt="" style="width:585px;"/></p>
+
+<p>到IDEA右侧点击Database，之后点击加号添加数据库，选择Data Source&gt;MySQL 填写连接信息<br/>
+<img src="media/15643143335228/15643225927422.jpg" alt="" style="width:1440px;"/></p>
+
+<p>填写好数据库信息后点击 Download 下载驱动包，下载完成后点击Test Connection 测试连接情况，之后点击ok。<br/>
+<img src="media/15643143335228/15643225034011.jpg" alt="" style="width:800px;"/></p>
+
+<p><strong>注意</strong></p>
+
+<blockquote>
+<p>如果你要直接粘贴下面代码的话，请记得修改这些内容<br/>
+数据库名： TestDB<br/>
+数据库用户： root<br/>
+数据库密码： 123456</p>
+</blockquote>
+
+<h2 id="toc_1">创建项目</h2>
+
+<p>1、引用 MySQL 数据库 jar 包<br/>
+点击 File&gt;Project Structure...，选中 Libraries，添加 java 引用<br/>
+在 lib 中选择 mysql-connector-java-5.x.x.jar确认</p>
+
+<p>2、创建两个新的包</p>
+
+<blockquote>
+<p>com.sajor.study.c04<br/>
+test.com.sajor.study.c04</p>
+</blockquote>
+
+<p>3、新建一个类 JdbcTemplateUtil</p>
+
+<pre><code class="language-text">package com.sajor.study.c04;
+
+import com.sajor.study.c01.Student;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
+public class JdbcTemplateUtil {
+    private JdbcTemplate jdbcTemplate;
+    private String errorTest;
+
+    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
+    public void createTable() {
+        jdbcTemplate.execute(&quot;DROP TABLE IF EXISTS user&quot;);
+        jdbcTemplate.execute(&quot;CREATE TABLE user (\n&quot; +
+                &quot; id int(11) NOT NULL AUTO_INCREMENT,\n&quot; +
+                &quot; name varchar(50) DEFAULT NULL,\n&quot; +
+                &quot; sex varchar(2) DEFAULT NULL,\n&quot; +
+                &quot; email varchar(125) DEFAULT NULL,\n&quot; +
+                &quot; PRIMARY KEY (`id`)\n&quot; +
+                &quot;)&quot;
+        );
+    }
+
+    public void addUser(Student student) {
+        String sql = &quot;insert into user (name,sex,email) values(?,?,?)&quot;;
+        jdbcTemplate.update(sql, student.getName(), student.getSex(), student.getEmail());
+    }
+
+    public void deleteUser(int id) {
+        String sql = &quot;delete from user where id=?&quot;;
+        jdbcTemplate.update(sql, id);
+    }
+
+    public void updateUser(Student student) {
+        String sql = &quot;update user set name=?,sex=?,email=? where id=?&quot;;
+        jdbcTemplate.update(sql, student.getName(), student.getSex(), student.getEmail(),
+                student.getId());
+    }
+
+    // 简单查询，按照 ID 查询，返回字符串
+    public String searchUserName(int id) {
+        String sql = &quot;select name from user where id=?&quot;;
+        return jdbcTemplate.queryForObject(sql, String.class, id);
+    }
+
+    // 复杂查询返回 List 集合
+    public List&lt;Student&gt; findAll() {
+        String sql = &quot;select * from user&quot;;
+        return jdbcTemplate.query(sql, new StudentRowMapper());
+    }
+
+    //根据 id 查询
+    public Student searchUser(int id) {
+        String sql = &quot;select * from user where id=?&quot;;
+        return jdbcTemplate.queryForObject(sql, new StudentRowMapper(), id);
+    }
+
+    //使用 spring RowMapper 进行数据集和对象映射
+    class StudentRowMapper implements RowMapper&lt;Student&gt; {
+        //rs 为返回结果集，以每行为单位封装着
+        public Student mapRow(ResultSet rs, int rowNum) throws SQLException {
+            Student student = new Student();
+            student.setId(rs.getInt(&quot;id&quot;));
+            student.setName(rs.getString(&quot;name&quot;));
+            student.setSex(rs.getString(&quot;sex&quot;));
+            student.setEmail(rs.getString(&quot;email&quot;));
+            return student;
+        }
+    }
+
+}
+
+</code></pre>
+
+<p>4、在 Spring 配置文件中配置数据库信息及 Bean</p>
+
+<p>创建spring-config-c04.xml 将spring-config.xml的内容粘贴过来，我们根据之前的内容进行拓展</p>
+
+<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+    &lt;bean id=&quot;student&quot; class=&quot;com.sajor.study.c01.Student&quot;&gt;
+    &lt;/bean&gt;
+    &lt;bean id=&quot;school&quot; class=&quot;com.sajor.study.c01.School&quot;&gt;
+        &lt;property name=&quot;students&quot; ref=&quot;student&quot;/&gt;
+    &lt;/bean&gt;
+
+    &lt;!-- 1.配置数据源 --&gt;
+    &lt;bean id=&quot;dataSourceJDBC&quot;
+          class=&quot;org.springframework.jdbc.datasource.DriverManagerDataSource&quot;&gt;
+        &lt;property name=&quot;driverClassName&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;
+        &lt;property name=&quot;url&quot;
+                  value=&quot;jdbc:mysql://localhost:3306/TestDB?autoReconnect=true&amp;amp;characterEncoding=utf8&amp;amp;useUnicode=true&amp;useSSL=false&quot;/&gt;
+        &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
+        &lt;property name=&quot;password&quot; value=&quot;123456&quot;/&gt;
+    &lt;/bean&gt;
+
+    &lt;!-- 2.配置 JDBC 模板 --&gt;
+    &lt;bean id=&quot;jdbcTemplate&quot; class=&quot;org.springframework.jdbc.core.JdbcTemplate&quot;&gt;
+        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSourceJDBC&quot;/&gt;
+    &lt;/bean&gt;
+
+    &lt;!--3.定义使用 jdbc 模板的 jdbcTemplateUtil 类 --&gt;
+    &lt;bean id=&quot;jdbcTemplateUtil&quot; class=&quot;com.sajor.study.c04.JdbcTemplateUtil&quot;&gt;
+        &lt;property name=&quot;jdbcTemplate&quot; ref=&quot;jdbcTemplate&quot;/&gt;
+    &lt;/bean&gt;
+
+&lt;/beans&gt;
+</code></pre>
+
+<p>5、新建一个测试类 JdbcTemplateTest</p>
+
+<pre><code class="language-text">package test.com.sajor.study.c04;
+
+import com.sajor.study.c01.Student;
+import com.sajor.study.c04.JdbcTemplateUtil;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.List;
+
+public class JdbcTemplateTest {
+    public static void main(String[] args) {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext(&quot;spring-config-c04.xml&quot;);
+        JdbcTemplateUtil jdbcTemplateUtil = (JdbcTemplateUtil) ctx.getBean(&quot;jdbcTemplateUtil&quot;);
+
+        //第一次测试时，运行创建库表方法。后面注释掉
+        jdbcTemplateUtil.createTable();
+
+        Student student = (Student) ctx.getBean(&quot;student&quot;);
+        student.setName(&quot;李四&quot;);
+        student.setSex(&quot;01&quot;);
+        student.setEmail(&quot;lisi@cn.cn&quot;);
+
+        jdbcTemplateUtil.addUser(student);
+
+        Student student1 = jdbcTemplateUtil.searchUser(1);
+        System.out.println(&quot;id=&quot; + student1.getId() + &quot; &quot; + &quot;name=&quot; + student1.getName());
+
+        List&lt;Student&gt; list = jdbcTemplateUtil.findAll();
+        System.out.println(&quot;所有用户数=&quot; + list.size());
+
+        for (int i = 0; i &lt; list.size(); i++) {
+            Student student2 = (Student) list.get(i);
+            System.out.println(&quot;id=&quot; + student2.getId() + &quot; &quot; + &quot;name=&quot; + student2.getName());
+        }
+    }
+}
+</code></pre>
+
+<p>6、运行测试类</p>
+
+<p>右键 JdbcTemplateTest 类，点击 Run 或 Debug JdbcTemplateTest.main() 运行结果</p>
+
+<p><img src="media/15643143335228/15643153296887.jpg" alt="" style="width:1027px;"/></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/28</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='ssm.html'>SSM练习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15643132029446.html">
+                
+                  <h1>从零开始SSM开发系列五：AOP</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p>1、引用 AspectJ jar 包</p>
+
+<p>点击 File&gt;Project Structure...，选中 Libraries，添加 java 引用<br/>
+在 lib 中选择 aspectj-1.8.13 文件夹</p>
+
+<p><img src="media/15643132029446/15643133513348.jpg" alt="" style="width:1018px;"/></p>
+
+<p><img src="media/15643132029446/15643133198359.jpg" alt="" style="width:712px;"/></p>
+
+<p>2、创建两个新的包</p>
+
+<blockquote>
+<p>com.sajor.study.c03<br/>
+test.com.sajor.study.c03</p>
+</blockquote>
+
+<p>3、创建一个业务类 UserXML</p>
+
+<pre><code class="language-text">package com.sajor.study.c03;
+
+public class UserXML {
+    private int id = 20180101;
+    private String name = &quot;AspectJXML 测试用户&quot;;
+    private String sex;
+    private String email;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append(&quot;id=&quot;);
+        stringBuffer.append(id);
+        stringBuffer.append(&quot;\n&quot;);
+        stringBuffer.append(&quot;name=&quot;);
+        stringBuffer.append(name);
+        return stringBuffer.toString();
+    }
+
+    public void saveUser() {
+        System.out.println(&quot;保存用户信息...&quot;);
+    }
+
+    public void queryUser() {
+        System.out.println(&quot;查看用户信息...&quot;);
+        //email.length();
+        System.out.println(this.toString());
+    }
+
+}
+</code></pre>
+
+<p>4、创建一个 AOP 切面类 UserXMLAspectJ</p>
+
+<pre><code class="language-text">package com.sajor.study.c03;
+
+//定义代理通知类(切面类)
+public class UserXMLAspectJ {
+    public void aspectBefore() {
+        System.out.println(&quot;方法执行之前...&quot;);
+    }
+
+    public void aspectAfter() {
+        System.out.println(&quot;方法执行之后...&quot;);
+    }
+}
+
+</code></pre>
+
+<p>2、创建配置类 spring-config-c03-aop.xml</p>
+
+<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/aop
+            http://www.springframework.org/schema/aop/spring-aop.xsd&quot;&gt;
+    &lt;!-- 1.定义业务 bean(目标类) --&gt;
+    &lt;bean id=&quot;userxml&quot; class=&quot;com.sajor.study.c03.UserXML&quot;/&gt;
+    &lt;!-- 2.定义代理类(切面类) --&gt;
+    &lt;bean id=&quot;myAspectJ&quot; class=&quot;com.sajor.study.c03.UserXMLAspectJ&quot;/&gt;
+    &lt;!-- 3.定义 aspectj--&gt;
+
+    &lt;aop:config&gt;
+        &lt;aop:aspect id=&quot;userAspect&quot; ref=&quot;myAspectJ&quot;&gt;
+            &lt;!--3.1 定义切点--&gt;
+            &lt;aop:pointcut id=&quot;userQueryUser&quot; expression=&quot;execution(* com.sajor.study.c03.UserXML.queryUser(..))&quot;/&gt;
+            &lt;!--3.2 定义通知--&gt;
+            &lt;aop:before pointcut-ref=&quot;userQueryUser&quot; method=&quot;aspectBefore&quot; /&gt;
+            &lt;aop:after-returning pointcut-ref=&quot;userQueryUser&quot; method=&quot;aspectAfter&quot;/&gt;
+        &lt;/aop:aspect&gt;
+    &lt;/aop:config&gt;
+&lt;/beans&gt;
+</code></pre>
+
+<p>3、新建一个测试类 AspecJXMLTest</p>
+
+<pre><code class="language-text">package test.com.sajor.study.c03;
+
+import com.sajor.study.c03.UserXML;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class AspecJXMLTest {
+    public static void main(String[] args) {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext(&quot;spring-config-c03-aop.xml&quot;);
+        UserXML user = (UserXML) ctx.getBean(&quot;userxml&quot;);
+        user.queryUser();
+    }
+}
+
+</code></pre>
+
+<p>4、运行测试类</p>
+
+<p>运行结果</p>
+
+<p><img src="media/15643132029446/15643142498931.jpg" alt="" style="width:1202px;"/></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/28</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='ssm.html'>SSM练习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15642871336794.html">
+                
+                  <h1>从零开始SSM开发系列四：依赖注入及 Bean 管理</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h2 id="toc_0">一、依赖注入</h2>
+
+<p>1、新建一个 School 类<br/>
+右键 src&gt;main&gt;java&gt;com.sajor.study.c01，点击 New&gt;Java Class</p>
+
+<p>在 School 中引用 Student 类，并可以获得含有 Student 对象的一个 List:</p>
+
+<pre><code class="language-text">    private int id = 2000;
+    private String name = &quot;Sajor&quot;;
+    private Student student;
+    private List&lt;Student&gt; students = new ArrayList();
+</code></pre>
+
+<p>并使用代码生成器Genetater添加Getter and Setter方法完整代码如下</p>
+
+<pre><code class="language-text">package com.sajor.study.c01;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class School {
+    private int id = 2000;
+    private String name = &quot;Sajor&quot;;
+    private Student student;
+    private List&lt;Student&gt; students = new ArrayList();
+
+    public School(){
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List&lt;Student&gt; getStudents() {
+        return students;
+    }
+
+    public void setStudents(List&lt;Student&gt; students) {
+        this.students = students;
+    }
+}
+</code></pre>
+
+<p>2、在 Spring 配置文件中声明 Bean，以及依赖注入</p>
+
+<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+    &lt;bean id=&quot;student&quot; class=&quot;com.sajor.study.c01.Student&quot;&gt;
+        &lt;property name=&quot;id&quot; value=&quot;101&quot;&gt;&lt;/property&gt;
+        &lt;property name=&quot;name&quot; value=&quot;张三丰&quot;&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+    &lt;bean id=&quot;school&quot; class=&quot;com.sajor.study.c01.School&quot;&gt;
+        &lt;property name=&quot;students&quot; ref=&quot;student&quot;/&gt;
+    &lt;/bean&gt;
+
+&lt;/beans&gt;
+</code></pre>
+
+<p>3、新建一个测试类，获得 school 对象，通过 school 对象 获得 student 对象<br/>
+右键 src&gt;test&gt;java&gt;test.com.sajor.study.c01，点击 New&gt;Java Class，新建 SchoolTest 类<br/>
+在 SchoolTest 中:<br/>
+1)实例化 Spring 容器<br/>
+2)获得 school 对象<br/>
+3)通过 school 对象的 getStudents()方法获得 student 对象 4)调用 student 对象的 toString()方法</p>
+
+<pre><code class="language-text">package test.com.sajor.study.c01;
+
+import com.sajor.study.c01.School;
+import com.sajor.study.c01.Student;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.ArrayList;
+
+public class SchoolTest {
+    public static void main(String[] args) {
+        //1、实例化 spring 容器
+        ApplicationContext ac = new ClassPathXmlApplicationContext(&quot;spring-config.xml&quot;);
+
+        //获得 school 对象
+        School sc = (School) ac.getBean(&quot;school&quot;);
+
+        //3、调用 school 对象的 getStudents 方法
+        ArrayList&lt;Student&gt; sl = (ArrayList&lt;Student&gt;) sc.getStudents();
+
+        //4、获得 school 里面的 student 对象
+        for (Student s : sl) {
+            System.out.println(s.toString());
+        }
+    }
+}
+</code></pre>
+
+<p>4、运行测试类<br/>
+右键 SchoolTest 类，点击 Run 或 Debug SchoolTest.main()运行结果<br/>
+<img src="media/15642871336794/15642894116662.jpg" alt="" style="width:1440px;"/></p>
+
+<h2 id="toc_1">二、基于 XML 的 Bean 装配</h2>
+
+<p>1、新建一个 User 类<br/>
+新建一个包，com.sajor.study.c02.xml<br/>
+右键 src&gt;main&gt;java&gt;com.sajor.study.c02，点击 New&gt;Java Class，在 c02 中新建一个 User 类，创建两个构造函数。</p>
+
+<pre><code class="language-text">package com.sajor.study.c02;
+
+public class User {
+    private int id = 20180101;
+    private String name = &quot;&quot;;
+    private String sex;
+    private String email;
+
+    public User(int id, String name, String sex, String email) {
+        this.id = id;
+        this.name = name;
+        this.sex = sex;
+        this.email = email;
+    }
+
+    public User() {
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String toString() {
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append(&quot;id=&quot;);
+        stringBuffer.append(id);
+        stringBuffer.append(&quot;\n&quot;);
+        stringBuffer.append(&quot;name=&quot;);
+        stringBuffer.append(name);
+        return stringBuffer.toString();
+    }
+}
+</code></pre>
+
+<p>2、新建一个spring-config-c01-xml.xml文件，并在 Spring 配置文件中声明 Bean</p>
+
+<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+
+    &lt;bean id=&quot;user1&quot; class=&quot;com.sajor.study.c02.xml.User&quot;&gt;
+        &lt;constructor-arg index=&quot;0&quot; value=&quot;20180501&quot;/&gt;
+        &lt;constructor-arg index=&quot;1&quot; value=&quot;张一帆&quot;/&gt;
+        &lt;constructor-arg index=&quot;2&quot; value=&quot;男&quot;/&gt;
+        &lt;constructor-arg index=&quot;3&quot; value=&quot;zhangyifan@hbxy.cn&quot;/&gt;
+    &lt;/bean&gt;
+
+    &lt;bean id=&quot;user2&quot; class=&quot;com.sajor.study.c02.xml.User&quot;&gt;
+        &lt;property name=&quot;id&quot; value=&quot;20180502&quot;/&gt;
+        &lt;property name=&quot;name&quot; value=&quot;李大壮&quot;/&gt;
+        &lt;property name=&quot;sex&quot; value=&quot;男&quot;/&gt;
+        &lt;property name=&quot;email&quot; value=&quot;lidazhuang@hbxy.cn&quot;/&gt;
+    &lt;/bean&gt;
+&lt;/beans&gt;
+</code></pre>
+
+<p>3、创建测试类 XmlBeanAssembleTest</p>
+
+<pre><code class="language-text">package test.com.sajor.study.c02;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class XmlBeanAssembleTest {
+    public static void main(String[] args) {
+
+        //1、实例化 spring 容器
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext(&quot;spring-config-c02-xml.xml&quot;);
+
+        //2、获得并打印 user 对象
+        System.out.println(applicationContext.getBean(&quot;user1&quot;));
+        System.out.println(applicationContext.getBean(&quot;user2&quot;));
+    }
+}
+</code></pre>
+
+<p>4、运行测试类</p>
+
+<p><img src="media/15642871336794/15643066371448.jpg" alt="" style="width:1440px;"/></p>
+
+<p>三、基于注解的 Bean 装配<br/>
+1、新建一个包</p>
+
+<p>新建包:com.sajor.study.c02.annotation</p>
+
+<p>2、新建 TeacherAnnotation 类</p>
+
+<p>使用注解@Component 声明 TeacherAnnotation 类</p>
+
+<pre><code class="language-text">package com.sajor.study.c02.annotation;
+
+import org.springframework.stereotype.Component;
+
+@Component(&quot;teacherAnnotation&quot;)
+public class TeacherAnnotation {
+    private int id = 20180101;
+    private String name = &quot;李老师&quot;;
+    private String sex;
+    private String email;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append(&quot;id=&quot;);
+        stringBuffer.append(id);
+        stringBuffer.append(&quot;\n&quot;);
+        stringBuffer.append(&quot;name=&quot;);
+        stringBuffer.append(name);
+        return stringBuffer.toString();
+    }
+}
+</code></pre>
+
+<p>3、新建 ClazzAnnotation 类</p>
+
+<p>同样使用注解@Component 声明 ClazzAnnotation 类，并使用注解 @Autowired 自动绑定 TeacherAnnotation 类对象(注入)</p>
+
+<pre><code class="language-text">package com.sajor.study.c02.annotation;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component(&quot;clazzAnnotation&quot;)
+public class ClazzAnnotation {
+    private int id = 2015001;
+    private String name = &quot;2015001 班&quot;;
+    private TeacherAnnotation teacherAnnotation;//班主任
+
+    @Autowired
+    public ClazzAnnotation(TeacherAnnotation teacherAnnotation) {
+        this.teacherAnnotation = teacherAnnotation;
+    }
+
+    public TeacherAnnotation getTeacherAnnotation() {
+        return teacherAnnotation;
+    }
+
+    @Override
+    public String toString() {
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append(&quot;基于注解注入:&quot;);
+        stringBuffer.append(&quot;\n&quot;);
+        stringBuffer.append(&quot;id=&quot;);
+        stringBuffer.append(id);
+        stringBuffer.append(&quot;\n&quot;);
+        stringBuffer.append(&quot;name=&quot;);
+        stringBuffer.append(name);
+        stringBuffer.append(&quot;\n&quot;);
+        stringBuffer.append(&quot;班主任:&quot;);
+        stringBuffer.append(this.getTeacherAnnotation().getId());
+        stringBuffer.append(&quot; &quot;);
+        stringBuffer.append(this.getTeacherAnnotation().getName());
+        return stringBuffer.toString();
+    }
+}
+
+</code></pre>
+
+<p>4、在配置文件中定义扫描包</p>
+
+<p>新建 spring-config-c02-annotation.xml 配置文件，并配置扫描包路径:</p>
+
+<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;
+    &lt;context:component-scan base-package=&quot;com.sajor.study.c02.annotation&quot;/&gt;
+&lt;/beans&gt;
+</code></pre>
+
+<p>5、创建测试类</p>
+
+<pre><code class="language-text">package test.com.sajor.study.c02;
+
+import com.sajor.study.c02.annotation.ClazzAnnotation;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class AnnotationTest {
+    public static void main(String[] args) {
+        ApplicationContext ac = new ClassPathXmlApplicationContext(new String[]{&quot;spring-config-c02-annotation.xml&quot;});
+        ClazzAnnotation c = (ClazzAnnotation) ac.getBean(&quot;clazzAnnotation&quot;);
+        System.out.println(c.toString());
+    }
+}
+
+</code></pre>
+
+<p>6、运行测试类</p>
+
+<p><img src="media/15642871336794/15643075920352.jpg" alt="" style="width:576px;"/></p>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/7/28</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='ssm.html'>SSM练习</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
+
+
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   <a href="ssm.html">&laquo; Prev Page</a>  
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			 <a href="ssm_2.html">&raquo; Next Page</a> 
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>Sajor's Blog</h1>
+                <div class="site-des">Sajor's Blog</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html"><strong>数据结构与算法</strong></a>
+        
+            <a href="SSM.html"><strong>SSM</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15769918912350.html">比特币</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15768275980852.html">『互联网架构』软件架构-API接口安全网关《service变controller》（16）</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15768270099640.html">面试被问烂的 Spring IOC(求求你别再问了)</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15665458213371.html">idea 类注释和方法注释</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15659629846282.html">idea 热部署</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+figure{margin: 0;padding: 0;}
+figcaption{text-align:center;}
+
+/* PrismJS 1.14.0
+ http://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: black;
+    background: none;
+    text-shadow: 0 1px white;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+    text-shadow: none;
+    background:#b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+    text-shadow: none;
+    background: #b3d4fc;
+}
+
+@media print {
+    code[class*="language-"],
+    pre[class*="language-"] {
+        text-shadow: none;
+    }
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+    padding: 1em;
+    margin: .5em 0;
+    overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+    background: #F7F7F7;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+    padding: .1em;
+    border-radius: .3em;
+    white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: slategray;
+}
+
+.token.punctuation {
+    color: #999;
+}
+
+.namespace {
+    opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: #9a6e3a;
+    background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #07a;
+}
+
+.token.function,
+.token.class-name {
+    color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+    color: #e90;
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+
+pre[class*="language-"].line-numbers {
+    position: relative;
+    padding-left: 3.8em;
+    counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+    position: relative;
+    white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    font-size: 100%;
+    left: -3.8em;
+    width: 3em; /* works for line-numbers below 1000 lines */
+    letter-spacing: -1px;
+    border-right: 1px solid #999;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+    .line-numbers-rows > span {
+        pointer-events: none;
+        display: block;
+        counter-increment: linenumber;
+    }
+
+        .line-numbers-rows > span:before {
+            content: counter(linenumber);
+            color: #999;
+            display: block;
+            padding-right: 0.8em;
+            text-align: right;
+        }
+
+</style>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+
+
+  </body>
+</html>

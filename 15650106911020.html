@@ -1,0 +1,681 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  排序算法 - Sajor's Blog
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="Sajor's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+ 
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:blog.sajor.top ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; Sajor's Blog</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html">数据结构与算法</a></li>
+        
+            <li><a href="SSM.html">SSM</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>排序算法</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2019/8/5</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html'>数据结构与算法</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <h1 id="toc_0">排序算法说明</h1>
+
+<ol>
+<li>排序的定义<br/>
+对一序列对象根据某个关键字进行排序。</li>
+<li>术语说明<br/>
+稳定：如果a原本在b前面，而a=b，排序之后a仍然在b的前面；<br/>
+不稳定：如果a原本在b的前面，而a=b，排序之后a可能会出现在b的后面；<br/>
+内排序：所有排序操作都在内存中完成；<br/>
+外排序：由于数据太大，因此把数据放在磁盘中，而排序通过磁盘和内存的数据传输才能进行；<br/>
+时间复杂度： 一个算法执行所耗费的时间。<br/>
+空间复杂度：运行完一个程序所需内存的大小。</li>
+<li><p>算法总结<br/>
+<img src="media/15650106911020/15650122429787.jpg" alt=""/><br/>
+图片名词解释：<br/>
+n: 数据规模<br/>
+k: “桶”的个数<br/>
+In-place: 占用常数内存，不占用额外内存<br/>
+Out-place: 占用额外内存</p></li>
+<li><p>比较和非比较的区别<br/>
+常见的快速排序、归并排序、堆排序、冒泡排序等属于比较排序。在排序的最终结果里，元素之间的次序依赖于它们之间的比较。每个数都必须和其他数进行比较，才能确定自己的位置。<br/>
+在冒泡排序之类的排序中，问题规模为n，又因为需要比较n次，所以平均时间复杂度为O(n²)。在归并排序、快速排序之类的排序中，问题规模通过分治法消减为logN次，所以时间复杂度平均O(nlogn)。<br/>
+比较排序的优势是，适用于各种规模的数据，也不在乎数据的分布，都能进行排序。可以说，比较排序适用于一切需要排序的情况。<br/>
+计数排序、基数排序、桶排序则属于非比较排序。非比较排序是通过确定每个元素之前，应该有多少个元素来排序。针对数组arr，计算arr之前有多少个元素，则唯一确定了arr在排序后数组中的位置。<br/>
+非比较排序只要确定每个元素之前的已有的元素个数即可，所有一次遍历即可解决。算法时间复杂度O(n)。<br/>
+非比较排序时间复杂度底，但由于非比较排序需要占用空间来确定唯一位置。所以对数据规模和数据分布有一定的要求。</p></li>
+</ol>
+
+<h1 id="toc_1">排序算法</h1>
+
+<p>首先定义一个接口 <code>void X_Sort ( ElementType A[], int N )</code><br/>
+本文为简单起见，大多数情况下，讨论<strong>从小大的整数</strong>排序</p>
+
+<ul>
+<li>N是正整数</li>
+<li>只讨论基于比较的排序(&gt; = &lt; 有定义)</li>
+<li>只讨论内部排序</li>
+<li>稳定性:任意两个相等的数据，排序前后的相对位置不发生改变</li>
+<li>没有一种排序是任何情况下 都表现最好的</li>
+</ul>
+
+<h2 id="toc_2">冒泡排序(Bubble Sort)</h2>
+
+<p>冒泡排序每次比较相邻两个数，<code>A[i] &gt; A[i + 1]</code> 则交换位置。可以确定的是，在经过一趟排序后，整个序列的最大值一定被放到了数组的最后一位。所以只需要进行N-1次循环则可以将整个序列都排好。<br/>
+<img src="media/15650106911020/140153i7562exzjrnagaja.gif" alt="140153i7562exzjrnagaja"/></p>
+
+<pre><code class="language-text">void Bubble_Sort(ElementType A[], int N)
+{
+   for (P = N - 1; P &gt;= 0; P--) {
+        for (i = 0; i &lt; P; i++) { /* 一趟冒泡 */
+            if (A[i] &gt; A[i + 1]) {
+                Swap(A[i], A[i + 1]);
+            }
+        }
+    }
+}
+</code></pre>
+
+<p>但是这样做还有一些问题，如果在其中某一步就排好序了，但是还需要接着进行比较。所以进行如下改动。</p>
+
+<pre><code class="language-text">void Bubble_Sort(ElementType A[], int N)
+{
+    flag = 0;
+    for (P = N - 1; P &gt;= 0; P--) {
+        for (i = 0; i &lt; P; i++) { /* 一趟冒泡 */
+            if (A[i] &gt; A[i + 1]) {
+                Swap(A[i], A[i + 1]);
+                flag = 1; /* 标识发生了交换 */
+            }
+        }
+        if (flag == 0)
+            break; /* 全程无交换 */
+    }
+}
+</code></pre>
+
+<p>最好情况：顺序T = O( N ) <br/>
+最坏情况：逆序T = O( N<sup>2</sup> )</p>
+
+<h2 id="toc_3">插入排序</h2>
+
+<p>像玩牌一样，一张一张摸牌，从后往前依次比较手中有序的序列，将抽到的牌插入到第一张小于这张牌的后面。其余的牌向后错一位。<br/>
+<img src="media/15650106911020/140155h0at131fkz33j1af.gif" alt="140155h0at131fkz33j1af"/></p>
+
+<pre><code class="language-text">void Insertion_Sort(ElementType A[], int N)
+{
+
+    for (P = 1; P &lt; N; P++)
+    {
+        Tmp = A[P]; /* 摸下一张牌 */
+        for (i = P; i &gt; 0 &amp;&amp; A[i - 1] &gt; Tmp; i--)
+            A[i] = A[i - 1]; /* 移出空位 */
+        A[i] = Tmp;          /* 新牌落位 */
+    }
+}
+</code></pre>
+
+<p>最好情况：顺序T = O( N ) <br/>
+最坏情况：逆序T = O( N<sup>2</sup> )</p>
+
+<p><strong>思考</strong>：给定初始序列{34, 8, 64, 51, 32, 21}，冒泡排序和插入排序分别需要多少次元素交换才能完成?</p>
+
+<p>对于下标i<j，如果A[i]>A[j]，则称(i,j)是一对逆序对(inversion)。问题:序列{34, 8, 64, 51, 32, 21}中有多少逆序对? </p>
+
+<p>(34, 8) (34, 32) (34, 21) (64, 51) (64, 32) (64, 21) (51, 32) (51, 21) (32, 21)</p>
+
+<p>所以交换2个相邻元素正好消去1个逆序对! 假设需要排序的序列有N个元素I个逆序对则 </p>
+
+<p><strong>插入排序：T( N, I ) = O( N+I )</strong></p>
+
+<p>所以如果序列基本有序，则插入排序简单且高效</p>
+
+<p>结论：<br/>
+定理:任意N个不同元素组成的序列平均具有 N ( N - 1 ) / 4 个逆序对。<br/>
+定理:任何仅以交换相邻两元素来排序的算 法，其平均时间复杂度为 \(\Omega\) ( N<sup>2</sup> )。<br/>
+这意味着:要提高算法效率，我们必须 </p>
+
+<ul>
+<li>每次消去不止1个逆序对!</li>
+<li>每次交换相隔较远的2个元素!</li>
+</ul>
+
+<h2 id="toc_4">希尔排序</h2>
+
+<p>定义增量序列 DM &gt; DM-1 &gt; … &gt; D1 = 1<br/>
+对每个 Dk 进行“Dk-间隔”排序( k = M, M-1, … 1 )<br/>
+注意：“Dk-间隔”有序的序列，在执行“Dk-1-间隔”排序后，仍然是“Dk间隔”有序的</p>
+
+<p><img src="media/15650106911020/15650150247137.jpg" alt=""/></p>
+
+<p>原始希尔排序<code>DM = N / 2, Dk = Dk+1 / 2</code>希尔排序的增量序列的选择与证明是个数学难题，我们选择的这个增量序列是比较常用的，也是希尔建议的增量，称为希尔增量，但其实这个增量序列不是最优的。此处我们做示例使用希尔增量。</p>
+
+<pre><code class="language-text">void Shell_sort(ElementType A[], int N)
+{
+    for (D = N / 2; D &gt; 0; D /= 2) { /* 希尔增量序列 */
+        for (P = D; P &lt; N; P++) { /* 插入排序 */
+            Tmp = A[P];
+            for (i = P; i &gt;= D &amp;&amp; A[iD] &gt; Tmp; i -= D)
+                A[i] = A[i - D];
+            A[i] = Tmp;
+        }
+    }
+}
+</code></pre>
+
+<p>最坏情况：T = \(\Theta    \)( N<sup>2</sup> )</p>
+
+<p>举个坏例子：<br/>
+<img src="media/15650106911020/15650151790050.jpg" alt="" style="width:920px;"/><br/>
+<img src="media/15650106911020/15650154742297.jpg" alt="" style="width:694px;"/></p>
+
+<p>参考：<a href="https://blog.csdn.net/hellozhxy/article/details/79911867">十大经典排序算法最强总结</a></p>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15651008291490.html" 
+          title="Previous Post: 密码学原理">&laquo; 密码学原理</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15647321562727.html" 
+          title="Next Post: Spring入门">Spring入门 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>Sajor's Blog</h1>
+                <div class="site-des">Sajor's Blog</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html"><strong>数据结构与算法</strong></a>
+        
+            <a href="SSM.html"><strong>SSM</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15769918912350.html">比特币</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15768275980852.html">『互联网架构』软件架构-API接口安全网关《service变controller》（16）</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15768270099640.html">面试被问烂的 Spring IOC(求求你别再问了)</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15665458213371.html">idea 类注释和方法注释</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15659629846282.html">idea 热部署</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="asset/prism.js"></script>
+
+
+<style type="text/css">
+figure{margin: 0;padding: 0;}
+figcaption{text-align:center;}
+
+/* PrismJS 1.14.0
+ http://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: black;
+    background: none;
+    text-shadow: 0 1px white;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+    text-shadow: none;
+    background:#b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+    text-shadow: none;
+    background: #b3d4fc;
+}
+
+@media print {
+    code[class*="language-"],
+    pre[class*="language-"] {
+        text-shadow: none;
+    }
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+    padding: 1em;
+    margin: .5em 0;
+    overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+    background: #F7F7F7;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+    padding: .1em;
+    border-radius: .3em;
+    white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: slategray;
+}
+
+.token.punctuation {
+    color: #999;
+}
+
+.namespace {
+    opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: #9a6e3a;
+    background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #07a;
+}
+
+.token.function,
+.token.class-name {
+    color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+    color: #e90;
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+
+pre[class*="language-"].line-numbers {
+    position: relative;
+    padding-left: 3.8em;
+    counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+    position: relative;
+    white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    font-size: 100%;
+    left: -3.8em;
+    width: 3em; /* works for line-numbers below 1000 lines */
+    letter-spacing: -1px;
+    border-right: 1px solid #999;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+    .line-numbers-rows > span {
+        pointer-events: none;
+        display: block;
+        counter-increment: linenumber;
+    }
+
+        .line-numbers-rows > span:before {
+            content: counter(linenumber);
+            color: #999;
+            display: block;
+            padding-right: 0.8em;
+            text-align: right;
+        }
+
+</style>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+
+
+  </body>
+</html>

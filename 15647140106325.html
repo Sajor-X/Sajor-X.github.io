@@ -1,0 +1,764 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  从零开始SSM开发系列十一：MyBatis 多对多关联关系 - Sajor's Blog
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="Sajor's Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+ 
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:blog.sajor.top ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="_self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; Sajor's Blog</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="_self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html">数据结构与算法</a></li>
+        
+            <li><a href="SSM.html">SSM</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>从零开始SSM开发系列十一：MyBatis 多对多关联关系</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2019/8/2</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='ssm.html'>SSM练习</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <p>在上一章的基础上，我们还使用c06包接着添加功能。</p>
+
+<p>1、数据库表准备<br/>
+新建一个数据库表:jo􏰀b、j􏰀obresume 并添加几条数据</p>
+
+<p>jo􏰀b 表</p>
+
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>jobid</td>
+<td>int</td>
+<td>11（主键）</td>
+</tr>
+<tr>
+<td>jobtitle</td>
+<td>varchar</td>
+<td>127</td>
+</tr>
+</tbody>
+</table>
+
+<p>jobresume表</p>
+
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>长度</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+<td>11（主键）</td>
+</tr>
+<tr>
+<td>jobid</td>
+<td>int</td>
+<td>11</td>
+</tr>
+<tr>
+<td>resumeid</td>
+<td>int</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+
+<p>2、在 model 包中创建 Job 类</p>
+
+<pre><code class="language-text">package com.sajor.study.c06.model;
+
+import java.util.List;
+
+public class Job {
+    private Integer jobId;
+    private String jobTitle;
+    private List&lt;Resume&gt; resumeList; // 岗位关联的简历
+
+    @Override
+    public String toString() {
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append(&quot;jobid=&quot;);
+        stringBuffer.append(jobId);
+        stringBuffer.append(&quot;\n&quot;);
+        stringBuffer.append(&quot;jobtitle=&quot;);
+        stringBuffer.append(jobTitle);
+        for (Resume rs : resumeList) {
+            stringBuffer.append(&quot;\n&quot;);
+            stringBuffer.append(&quot;Resume:[&quot;);
+            stringBuffer.append(rs.getResumeId());
+            stringBuffer.append(&quot;,&quot;);
+            stringBuffer.append(rs.getResumeName());
+            stringBuffer.append(&quot;,&quot;);
+            stringBuffer.append(rs.getResumeDesc());
+            stringBuffer.append(&quot;]&quot;);
+        }
+        return stringBuffer.toString();
+    }
+
+    public Integer getJobId() {
+        return jobId;
+    }
+
+    public void setJobId(Integer jobId) {
+        this.jobId = jobId;
+    }
+
+    public String getJobTitle() {
+        return jobTitle;
+    }
+
+    public void setJobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
+    }
+
+    public List&lt;Resume&gt; getResumeList() {
+        return resumeList;
+    }
+
+    public void setResumeList(List&lt;Resume&gt; resumeList) {
+        this.resumeList = resumeList;
+    }
+}
+</code></pre>
+
+<p>3、在 mapper 包中创建映射文件 JobMapper.xml、修改 ResumeMapper.xml</p>
+
+<p>JobMapper.xml</p>
+
+<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+&lt;!-- namespace 表示命名空间 --&gt;
+&lt;mapper namespace=&quot;com.sajor.study.c06.mapper.JobMapper&quot;&gt;
+
+    &lt;!-- 多对多嵌套查询:通过执行另外一条 SQL 映射语句来返回预期的特殊类型 --&gt;
+    &lt;select id=&quot;findJobWithResumesByID&quot; parameterType=&quot;Integer&quot; resultMap=&quot;JobWithResumeResult&quot;&gt;
+        select * from job WHERE jobid=#{id}
+    &lt;/select&gt;
+
+    &lt;resultMap type=&quot;com.sajor.study.c06.model.Job&quot; id=&quot;JobWithResumeResult&quot;&gt;
+        &lt;id property=&quot;jobId&quot; column=&quot;jobid&quot;/&gt;
+        &lt;result property=&quot;jobTitle&quot; column=&quot;jobtitle&quot;/&gt;
+        &lt;collection property=&quot;resumeList&quot; column=&quot;jobid&quot;
+                    ofType=&quot;com.sajor.study.c06.model.Resume&quot;
+                    select=&quot;com.sajor.study.c06.mapper.ResumeMapper.findResumeById&quot;&gt;&lt;/collection&gt;
+    &lt;/resultMap&gt;
+
+    &lt;!-- 多对多嵌套结果查询:查询某岗位及其关联的简历详情 --&gt;
+    &lt;select id=&quot;findJobWithResumesByID2&quot; parameterType=&quot;Integer&quot; resultMap=&quot;JobWithResumeResult2&quot;&gt;
+        select job.*,resume.*
+        from job,resume,jobresume
+        WHERE job.jobid=jobresume.jobid
+        and resume.resumeid=jobresume.resumeid and job.jobid=#{id}
+    &lt;/select&gt;
+
+    &lt;!-- 自定义手动映射类型 --&gt;
+    &lt;resultMap type=&quot;com.sajor.study.c06.model.Job&quot; id=&quot;JobWithResumeResult2&quot;&gt;
+        &lt;id property=&quot;jobId&quot; column=&quot;jobid&quot;/&gt;
+        &lt;result property=&quot;jobTitle&quot; column=&quot;jobtitle&quot;/&gt;
+        &lt;!-- 多对多关联映射:collection --&gt;
+        &lt;collection property=&quot;resumeList&quot;
+                    ofType=&quot;com.sajor.study.c06.model.Resume&quot;&gt;
+            &lt;id property=&quot;resumeId&quot; column=&quot;resumeid&quot;/&gt;
+            &lt;result property=&quot;resumeName&quot; column=&quot;resumename&quot;/&gt;
+            &lt;result property=&quot;resumeDesc&quot; column=&quot;resumedesc&quot;/&gt;
+        &lt;/collection&gt;
+    &lt;/resultMap&gt;
+&lt;/mapper&gt;
+</code></pre>
+
+<p>ResumeMapper.xml</p>
+
+<pre><code class="language-text">&lt;!--下面是新增内容:通过 jobid 查关联简历--&gt;
+    &lt;select id=&quot;findResumeById&quot; parameterType=&quot;Integer&quot; resultType=&quot;com.sajor.study.c06.model.Resume&quot;&gt;
+        SELECT * from Resume where resumeid IN(
+            SELECT resumeid FROM jobresume WHERE jobid = #{id}
+        )
+    &lt;/select&gt;
+</code></pre>
+
+<p>4、修改配置文件 mybatis-config-c06-relation.xml</p>
+
+<p>配置JobMapper.xml的位置</p>
+
+<pre><code class="language-text">&lt;mapper resource=&quot;com/sajor/study/c06/mapper/JobMapper.xml&quot; /&gt;
+</code></pre>
+
+<p>5、修 改 Spring 配 置 文 件 spring-config-mybatis-c06-relation.xml</p>
+
+<p>在 spring 配置文件中配置 bean</p>
+
+<pre><code class="language-text">&lt;bean id=&quot;jobDAO&quot; class=&quot;com.sajor.study.c06.dao.JobDAO&quot;/&gt;
+</code></pre>
+
+<p>6、新建一个 DAO 类 JobDAO</p>
+
+<p>对数据库进行关联查询</p>
+
+<pre><code class="language-text">package com.sajor.study.c06.dao;
+
+import com.sajor.study.c06.model.Job;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import java.io.InputStream;
+
+public class JobDAO {
+    /**
+     * 根据用户编号查询用户及简历信息
+     */
+    public Job findJobsWithResumeByID(int id) throws Exception {
+        // 1、读取配置文件
+        String resource = &quot;mybatis-config-c06-relation.xml&quot;;
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+
+        // 2、根据配置文件构建 SqlSessionFactory
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        // 3、通过 SqlSessionFactory 创建 SqlSession
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        // 4、SqlSession 执行映射文件中定义的 SQL，并返回映射结果
+        Job job = sqlSession.selectOne(&quot;com.sajor.study.c06.mapper.JobMapper.findJobWithResumesByID&quot;, id);
+//        Job job = sqlSession.selectOne(&quot;com.sajor.study.c06.mapper.JobMapper.findJobWithResumesByID2&quot;, id);
+
+        // 5、关闭 SqlSession
+        sqlSession.close();
+        return job;
+    }
+
+}
+</code></pre>
+
+<p>7、修改测试类 MyBatisRelationTest</p>
+
+<pre><code class="language-text">JobDAO jobDAO = (JobDAO) ctx.getBean(&quot;jobDAO&quot;);
+Job job = jobDAO.findJobsWithResumeByID(2);
+System.out.println(job);
+</code></pre>
+
+<p>8、运行测试类</p>
+
+<p><img src="media/15647140106325/15647283462344.jpg" alt="" style="width:1335px;"/></p>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15647285252626.html" 
+          title="Previous Post: 从零开始SSM开发系列十二：使用 DAO 方式整合 MyBatis-Spring">&laquo; 从零开始SSM开发系列十二：使用 DAO 方式整合 MyBatis-Spring</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15647098694474.html" 
+          title="Next Post: 从零开始SSM开发系列十：MyBatis 一对多关联关系">从零开始SSM开发系列十：MyBatis 一对多关联关系 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>Sajor's Blog</h1>
+                <div class="site-des">Sajor's Blog</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html"><strong>数据结构与算法</strong></a>
+        
+            <a href="SSM.html"><strong>SSM</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15769918912350.html">比特币</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15768275980852.html">『互联网架构』软件架构-API接口安全网关《service变controller》（16）</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15768270099640.html">面试被问烂的 Spring IOC(求求你别再问了)</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15665458213371.html">idea 类注释和方法注释</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15659629846282.html">idea 热部署</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="asset/prism.js"></script>
+
+
+<style type="text/css">
+figure{margin: 0;padding: 0;}
+figcaption{text-align:center;}
+
+/* PrismJS 1.14.0
+ http://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: black;
+    background: none;
+    text-shadow: 0 1px white;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+    text-shadow: none;
+    background:#b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+    text-shadow: none;
+    background: #b3d4fc;
+}
+
+@media print {
+    code[class*="language-"],
+    pre[class*="language-"] {
+        text-shadow: none;
+    }
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+    padding: 1em;
+    margin: .5em 0;
+    overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+    background: #F7F7F7;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+    padding: .1em;
+    border-radius: .3em;
+    white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: slategray;
+}
+
+.token.punctuation {
+    color: #999;
+}
+
+.namespace {
+    opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: #9a6e3a;
+    background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #07a;
+}
+
+.token.function,
+.token.class-name {
+    color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+    color: #e90;
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+
+pre[class*="language-"].line-numbers {
+    position: relative;
+    padding-left: 3.8em;
+    counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+    position: relative;
+    white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    font-size: 100%;
+    left: -3.8em;
+    width: 3em; /* works for line-numbers below 1000 lines */
+    letter-spacing: -1px;
+    border-right: 1px solid #999;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+    .line-numbers-rows > span {
+        pointer-events: none;
+        display: block;
+        counter-increment: linenumber;
+    }
+
+        .line-numbers-rows > span:before {
+            content: counter(linenumber);
+            color: #999;
+            display: block;
+            padding-right: 0.8em;
+            text-align: right;
+        }
+
+</style>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+
+
+  </body>
+</html>
