@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-transform"/>
+
+
+    <title>
+      
+    PHP 安装和卸载方法 - Sajor's Blog
+    
+    </title>
+
+
+  <link href="asset/css/style.css" rel="stylesheet" > 
+  <link href="asset/js/xcode.min.css" rel="stylesheet">
+  <script src="asset/js/headroom.js"></script>
+
+  <!-- <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="asset/css/font-awesome.css">
+ -->
+
+  <!-- <script src="asset/highlightjs/highlight.pack.js"></script> -->
+  <!-- <link href="asset/highlightjs/styles/solarized_light.css" media="screen, projection" rel="stylesheet" type="text/css"> -->
+  <!-- <script>hljs.initHighlightingOnLoad();</script> -->
+
+
+  </head>
+
+  <!-- 主体开始 -->
+  <!-- <body class="" gtools_scp_screen_capture_injected="true"> -->
+  <!-- 上面为主页白底色版本 -->
+    
+<body class="bg-grey" gtools_scp_screen_capture_injected="true" data-feedly-mini="yes">
+<!-- 上面是主页灰底色版本 -->
+
+<!--[if lt IE 8]>
+<div class="browsehappy" role="dialog">
+    当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/" target="_blank">升级你的浏览器</a>。
+</div>
+<![endif]-->
+<!-- 头部位置 -->
+
+<header id="header" class="header bg-white headroom">
+  <div class="navbar-container"> 
+    <a href="index.html" class="navbar-logo"><img src="asset/img/K-logo.png"> </a>
+    <div class="navbar-menu"> 
+
+        
+        <a href="index.html">Home</a>
+        
+        <a href="archives.html">Archives</a>
+        
+        
+    </div> 
+    <!-- 搜索框体 -->
+    <!--  <div class="navbar-search" onclick="">
+        <span class="icon-search"></span>
+        <form id="search" method="post" action="/" role="search">
+          <span class="search-box">
+            <input type="text" id="input" class="input" name="s" required="true" placeholder="Search..." maxlength="30" autocomplete="off">
+          </span>
+        </form>
+    </div> -->
+
+    <div class="navbar-mobile-menu" onclick=""> 
+      <span class="icon-menu cross"><span class="middle"></span></span> 
+        <ul> 
+          
+          <li>
+          <a href="index.html">Home</a>
+          </li>
+          
+          <li>
+          <a href="archives.html">Archives</a>
+          </li>
+          
+        </ul> 
+    </div> 
+  </div> 
+</header>
+<!-- 头部结束 --> <!-- post 开始 -->
+<div class="bg-white" gtools_scp_screen_capture_injected="true" data-feedly-mini="yes">
+	<article class="main-content page-page" style="max-width: 700px;padding: 110px 25px 20px" itemscope="" itemtype="http://schema.org/Article">
+		<div class="post-header">
+			<!-- title -->
+			<div class="post-header">
+				<h1 class="post-title itemprop="name headline">PHP 安装和卸载方法</h1>	
+				<div class="post-data">
+					<time datetime="2019-08-04T18:27:02+08:00" pubdate data-updated="true">2019/08/04</time>
+				</div>
+			</div>
+		</div>
+	<div id="post-content" class="post-content" itemprop="articleBody"> 
+		<p class="post-tags"> 
+		
+		<a href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>&nbsp;
+		
+		</p>
+	<!-- 正文 -->
+		<p>
+		<p>由于linux的yum源不存在php7.x，所以我们要更改yum源</p>
+
+<pre><code class="language-text">rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
+rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm 
+</code></pre>
+
+<p>安装</p>
+
+<pre><code class="language-text">yum -y install php72w php72w-cli php72w-common php72w-devel php72w-embedded php72w-fpm php72w-gd php72w-mbstring php72w-mysqlnd php72w-opcache php72w-pdo php72w-xml
+</code></pre>
+
+<h2 id="toc_0">卸载</h2>
+
+<p>很无语，CentOS居然php版本才5.1.6，很多开源的CMS无法安装。</p>
+
+<p>查看php版本命令：</p>
+
+<blockquote>
+<p>php -v</p>
+</blockquote>
+
+<p>下面的命令是删除不干净的</p>
+
+<blockquote>
+<p>yum remove php</p>
+</blockquote>
+
+<p>因为使用这个命令以后再用</p>
+
+<blockquote>
+<p>php -v</p>
+</blockquote>
+
+<p>还是会看到有版本信息的。。。。。</p>
+
+<p>必须强制删除，使用下面命令查看全部php软件包</p>
+
+<blockquote>
+<p>rpm -qa|grep php</p>
+</blockquote>
+
+<p>提示如下：</p>
+
+<blockquote>
+<p>php-pdo-5.1.6-27.el5_5.3<br/>
+php-mysql-5.1.6-27.el5_5.3<br/>
+php-xml-5.1.6-27.el5_5.3<br/>
+php-cli-5.1.6-27.el5_5.3<br/>
+php-common-5.1.6-27.el5_5.3<br/>
+php-gd-5.1.6-27.el5_5.3</p>
+</blockquote>
+
+<p>注意卸载要先卸载没有依赖的</p>
+
+<p>pdo是mysql的依赖项；common是gd的依赖项；<br/>
+例如：# rpm -e php-pdo-5.1.6-27.el5_5.3<br/>
+error: Failed dependencies:<br/>
+        php-pdo is needed by (installed) php-mysql-5.1.6-27.el5_5.3.i386</p>
+
+<p>所以正确的卸载顺序是：</p>
+
+<blockquote>
+<p>rpm -e php-mysql-5.1.6-27.el5_5.3 <br/>
+rpm -e php-pdo-5.1.6-27.el5_5.3 <br/>
+rpm -e php-xml-5.1.6-27.el5_5.3 <br/>
+rpm -e php-cli-5.1.6-27.el5_5.3 <br/>
+rpm -e php-gd-5.1.6-27.el5_5.3 <br/>
+rpm -e php-common-5.1.6-27.el5_5.3 </p>
+</blockquote>
+
+<p>再用</p>
+
+<blockquote>
+<p>php -v</p>
+</blockquote>
+
+<p>查看版本信息已经没有提示</p>
+
+<h2 id="toc_1">安装httpd并支持php</h2>
+
+<p><a href="https://zhuanlan.zhihu.com/p/59466324">知乎</a><br/>
+编译php需要装好多包</p>
+
+<pre><code class="language-text">yum -y install wget vim pcre pcre-devel openssl openssl-devel httpd-devel libicu-devel gcc gcc-c++ autoconf libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel libxml2 libxml2-devel zlib zlib-devel glibc glibc-devel glib2 glib2-devel ncurses ncurses-devel curl curl-devel krb5-devel libidn 
+sudo yum -y install libidn-devel 
+sudo yum -y install openldap 
+sudo yum -y install openldap-devel 
+sudo yum -y install nss_ldap 
+sudo yum -y install cmake 
+sudo yum -y install boost-devel 
+sudo yum -y install bison 
+sudo yum -y install automake 
+sudo yum -y install libevent 
+sudo yum -y install libevent-devel 
+sudo yum -y install gd 
+sudo yum -y install gd-devel 
+sudo yum -y install libtool* 
+
+sudo yum -y install libxslt 
+sudo yum -y install libxslt-devel 
+sudo yum -y install readline 
+sudo yum -y install readline-devel 
+sudo yum -y install gmp 
+sudo yum -y install gmp-devel 
+sudo yum -y install libcurl 
+sudo yum -y install libcurl-devel 
+sudo yum -y install openjpeg-devel
+</code></pre>
+
+<p>参考：<a href="https://www.cnblogs.com/sunshine-H/p/8117105.html">Linux CentOS完全卸载PHP</a></p>
+
+		</p>
+		<!-- 侧边导航条 -->
+		<div id="directory-content" class="directory-content">
+    		<div id="directory" style="margin-left: 50px;margin-top: 120px"></div>
+		</div>
+	<!-- JS -->
+	<script>
+		var postDirectoryBuild = function() {
+		    var postChildren = function children(childNodes, reg) {
+		        var result = [],
+		            isReg = typeof reg === 'object',
+		            isStr = typeof reg === 'string',
+		            node, i, len;
+		        for (i = 0, len = childNodes.length; i < len; i++) {
+		            node = childNodes[i];
+		            if ((node.nodeType === 1 || node.nodeType === 9) &&
+		                (!reg ||
+		                isReg && reg.test(node.tagName.toLowerCase()) ||
+		                isStr && node.tagName.toLowerCase() === reg)) {
+		                result.push(node);
+		            }
+		        }
+		        return result;
+		    },
+		    createPostDirectory = function(article, directory, isDirNum) {
+		        var contentArr = [],
+		            titleId = [],
+		            levelArr, root, level,
+		            currentList, list, li, link, i, len;
+		        levelArr = (function(article, contentArr, titleId) {
+		            var titleElem = postChildren(article.childNodes, /^h\d$/),
+		                levelArr = [],
+		                lastNum = 1,
+		                lastRevNum = 1,
+		                count = 0,
+		                guid = 1,
+		                id = 'directory' + (Math.random() + '').replace(/\D/, ''),
+		                lastRevNum, num, elem;
+		            while (titleElem.length) {
+		                elem = titleElem.shift();
+		                contentArr.push(elem.innerHTML);
+		                num = +elem.tagName.match(/\d/)[0];
+		                if (num > lastNum) {
+		                    levelArr.push(1);
+		                    lastRevNum += 1;
+		                } else if (num === lastRevNum ||
+		                    num > lastRevNum && num <= lastNum) {
+		                    levelArr.push(0);
+		                    lastRevNum = lastRevNum;
+		                } else if (num < lastRevNum) {
+		                    levelArr.push(num - lastRevNum);
+		                    lastRevNum = num;
+		                }
+		                count += levelArr[levelArr.length - 1];
+		                lastNum = num;
+		                elem.id = elem.id || (id + guid++);
+		                titleId.push(elem.id);
+		            }
+		            if (count !== 0 && levelArr[0] === 1) levelArr[0] = 0;
+
+		            return levelArr;
+		        })(article, contentArr, titleId);
+		        currentList = root = document.createElement('ul');
+		        dirNum = [0];
+		        for (i = 0, len = levelArr.length; i < len; i++) {
+		            level = levelArr[i];
+		            if (level === 1) {
+		                list = document.createElement('ul');
+		                if (!currentList.lastElementChild) {
+		                    currentList.appendChild(document.createElement('li'));
+		                }
+		                currentList.lastElementChild.appendChild(list);
+		                currentList = list;
+		                dirNum.push(0);
+		            } else if (level < 0) {
+		                level *= 2;
+		                while (level++) {
+		                    if (level % 2) dirNum.pop();
+		                    currentList = currentList.parentNode;
+		                }
+		            }
+		            dirNum[dirNum.length - 1]++;
+		            li = document.createElement('li');
+		            link = document.createElement('a');
+		            link.href = '#' + titleId[i];
+		            link.innerHTML = !isDirNum ? contentArr[i] :
+		                dirNum.join('.') + ' ' + contentArr[i] ;
+		            li.appendChild(link);
+		            currentList.appendChild(li);
+		        }
+		        directory.appendChild(root);
+		    };
+		    createPostDirectory(document.getElementById('post-content'),document.getElementById('directory'), true);
+		};
+		postDirectoryBuild();
+	</script>	
+	<!-- 版权声明 -->
+		<p class="post-info" style="color: #BCBDB6">
+				本文由 <a style="color: #BCBDB6" href="#">Sajor
+				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2019-08-04T18:27:02+08:00
+		</p>
+	<!-- 导航 -->
+			<div id="comments" class="clearfix" style="padding: 0px;">
+				<footer class="post-footer clearfix">	    			
+				    <div class="meta">
+					    
+					    <P style="float: left;">
+					    	<a href="15649246400338.html" 
+					        title="Previous Post: WordPress 博客遇到的问题">&laquo; WordPress 博客遇到的问题</a>
+					    </p>
+					    <p style="float:right; ">
+					    	
+					    	
+					        <a href="15648434329273.html" 
+					        title="Next Post: mysql经典的8小时问题-wait_timeout">mysql经典的8小时问题-wait_timeout &raquo;</a>
+					    </p> 
+					    
+				    </div>
+			  	</footer>
+	<!-- footer end -->
+			</div>		
+	</div>
+</article>
+			<!-- 评论区 -->
+			<div id="respond-post-269" class="comment-container"> 
+				<div id="comments" class="clearfix">
+
+				<script type="text/javascript" src="/pm/hashover/hashover.js"></script>
+<noscript>You must have JavaScript enabled to use the comments.</noscript>
+
+<!-- 评论区结束 -->
+					<div>
+					
+					</div>
+
+				</div>
+			</div>
+</div>
+<!-- headroom -->
+<script type="text/javascript"> 
+(function() {
+    var header = new Headroom(document.querySelector("#header"), {
+        tolerance: 3,
+        offset : 80,
+        classes: {
+          initial: "animated",
+          pinned: "slideDown",
+          unpinned: "slideUp"
+        }
+    });
+    header.init();
+}());
+</script>  <footer id="footer" class="footer" style="background-color: #030501;color: #FFFFFE;">
+  <div class="footer-meta">
+    <div class="footer-container">
+      <!-- 版权说明 -->
+      <div class="meta-item meta-copyright">
+        <div class="meta-copyright-info">
+          <h2 class="meta-title">INFO</h2>
+          <div class="info-text">  
+              <p>Copyright &copy; 2017 <br>
+              <span class="credit">Powered by 
+              <a target="_blank" href="http://zh.mweb.im/">MWeb</a> 
+              </span>
+              <p>Theme Design by <a href="https://www.linpx.com/" target="_blank">Chakhsu</a></p>
+              <p>Migrating to Mweb by <a href="http://metaidea.cn">idken</a></p>
+              </p> 
+          </div>                  
+        </div>
+      </div>  
+      <!-- Categories -->
+      <div class="meta-item meta-comments">
+          <h2 class="meta-title">CATEGORIES</h2>  
+             
+            
+            <li>
+            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(13)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html">数据库相关&nbsp;(11)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html">数据结构与算法&nbsp;(4)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="SSM.html">SSM&nbsp;(18)</a>
+            <p>
+            
+            <a href="ssm.html">SSM练习&nbsp;(13)</a>&nbsp;&nbsp;
+            
+            <a href="java.html">ssm课程&nbsp;(5)</a>&nbsp;&nbsp;
+            
+            </p>
+            </li>
+            
+             
+      </div>
+      <!-- 最新文章 -->
+      <div class="meta-item meta-comments">
+          <h2 class="meta-title">RECENT POSTS</h2>
+
+          
+          
+         <li>
+           <a href="15802234606202.html">cheat.sh</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="15776732342055.html">crontab 定时任务</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="15773499726644.html">监控Python 运行</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="15769921068601.html">ssh</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="15769920752565.html">pscp</a><br>
+         </li>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+           
+
+      </div>
+  </div>
+</div>
+</footer>
+
+<!--评论变量判断 -->
+      
+<!-- 评论end -->
+
+
+
+</body>
+</html>

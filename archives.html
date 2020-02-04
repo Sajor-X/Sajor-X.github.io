@@ -1,858 +1,1569 @@
-<!doctype html>
-<html class="no-js" lang="en">
+<!DOCTYPE html>
+<html lang="zh-CN">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-transform"/>
+
+
     <title>
+      
+    Archives - Sajor's Blog
     
-  Archives - Sajor's Blog
-  
-  </title>
-  
-  
-  <link href="atom.xml" rel="alternate" title="Sajor's Blog" type="application/atom+xml">
-    <link rel="stylesheet" href="asset/css/foundation.min.css" />
-    <link rel="stylesheet" href="asset/css/docs.css" />
-    <script src="asset/js/vendor/modernizr.js"></script>
-    <script src="asset/js/vendor/jquery.js"></script>
- 
-<script type="text/javascript">
-  function before_search(){
-    var searchVal = 'site:blog.sajor.top ' + document.getElementById('search_input').value;
-    document.getElementById('search_q').value = searchVal;
-    return true;
-  }
-</script>
+    </title>
+
+
+  <link href="asset/css/style.css" rel="stylesheet" > 
+  <link href="asset/js/xcode.min.css" rel="stylesheet">
+  <script src="asset/js/headroom.js"></script>
+
+  <!-- <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="asset/css/font-awesome.css">
+ -->
+
+  <!-- <script src="asset/highlightjs/highlight.pack.js"></script> -->
+  <!-- <link href="asset/highlightjs/styles/solarized_light.css" media="screen, projection" rel="stylesheet" type="text/css"> -->
+  <!-- <script>hljs.initHighlightingOnLoad();</script> -->
+
+
   </head>
-  <body class="antialiased hide-extras">
+
+  <!-- 主体开始 -->
+  <!-- <body class="" gtools_scp_screen_capture_injected="true"> -->
+  <!-- 上面为主页白底色版本 -->
     
-    <div class="marketing off-canvas-wrap" data-offcanvas>
-      <div class="inner-wrap">
+<body class="bg-grey" gtools_scp_screen_capture_injected="true" data-feedly-mini="yes">
+<!-- 上面是主页灰底色版本 -->
 
+<!--[if lt IE 8]>
+<div class="browsehappy" role="dialog">
+    当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/" target="_blank">升级你的浏览器</a>。
+</div>
+<![endif]-->
+<!-- 头部位置 -->
 
-<nav class="top-bar docs-bar hide-for-small" data-topbar>
+<header id="header" class="header bg-white headroom">
+  <div class="navbar-container"> 
+    <a href="index.html" class="navbar-logo"><img src="asset/img/K-logo.png"> </a>
+    <div class="navbar-menu"> 
 
-
-  <section class="top-bar-section">
-  <div class="row">
-      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
-        <ul id="main-menu" class="left">
         
-        <li id=""><a target="_self" href="index.html">Home</a></li>
+        <a href="index.html">Home</a>
         
-        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        <a href="archives.html">Archives</a>
         
-        </ul>
+        
+    </div> 
+    <!-- 搜索框体 -->
+    <!--  <div class="navbar-search" onclick="">
+        <span class="icon-search"></span>
+        <form id="search" method="post" action="/" role="search">
+          <span class="search-box">
+            <input type="text" id="input" class="input" name="s" required="true" placeholder="Search..." maxlength="30" autocomplete="off">
+          </span>
+        </form>
+    </div> -->
 
-        <ul class="right" id="search-wrap">
+    <div class="navbar-mobile-menu" onclick=""> 
+      <span class="icon-menu cross"><span class="middle"></span></span> 
+        <ul> 
+          
           <li>
-<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
-    <input type="hidden" id="search_q" name="q" value="" />
-    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
-</form>
-</li>
-          </ul>
-      </div></div>
-  </div>
-  </section>
+          <a href="index.html">Home</a>
+          </li>
+          
+          <li>
+          <a href="archives.html">Archives</a>
+          </li>
+          
+        </ul> 
+    </div> 
+  </div> 
+</header>
+<!-- 头部结束 --> <!-- archives 开始 -->
+<div class="main-content archive-page clearfix" style="padding-bottom: 80px">
+    <div class="categorys-item">
+		<!-- <h1 class="title">Categories</h1> -->
 
-</nav>
-
-        <nav class="tab-bar show-for-small">
-  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-    <span> &nbsp; Sajor's Blog</span>
-  </a>
-</nav>
-
-<aside class="left-off-canvas-menu">
-      <ul class="off-canvas-list">
+	<div class="categorys-title">
+    	<a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关</a>
+		<div class="post-lists">
         
-        <li><a target="_self" href="index.html">Home</a></li>
-        
-        <li><a target="_self" href="archives.html">Archives</a></li>
-        
-
-    <li><label>Categories</label></li>
-
-        
-            <li><a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html">数据结构与算法</a></li>
-        
-            <li><a href="SSM.html">SSM</a></li>
-         
-
-      </ul>
-    </aside>
-
-<a class="exit-off-canvas" href="#"></a>
+			<div class="post-lists-body">
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+				
+					<div class="post-list-item-container">
+						<div class="item-label">
+							<div class="item-title">
+							<a href="15802234606202.html">cheat.sh</a>
 
 
-        <section id="main-content" role="main" class="scroll-container">
-        
-       
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2020-01-28T22:57:40+08:00" pubdate>
+									<span class='year'>2020/01/28</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			 
 
- <script type="text/javascript">
-  $(function(){
-    $('#menu_item_archives').addClass('is_active');
-  });
-</script>
-<div class="row">
-  <div class="large-8 medium-8 columns">
-    <div id="archives-page-wrap">
-        <h1>Archives</h1>
-        <div class="markdown-body archives-wrap">
-          
-             
-                <h1>2019</h1>
             
-            <div class="article">
-              <a class="clearlink" href="15769918912350.html">
-                <h1>比特币</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/12/22</span>
-                
-                 
-              </div>
-            </div><!-- article -->
+			<div class="post-lists-body">
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+				
+					<div class="post-list-item-container">
+						<div class="item-label">
+							<div class="item-title">
+							<a href="15776732342055.html">crontab 定时任务</a>
 
-          
+
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-12-30T10:33:54+08:00" pubdate>
+									<span class='year'>2019/12/30</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			 
+
             
-            <div class="article">
-              <a class="clearlink" href="15768275980852.html">
-                <h1>『互联网架构』软件架构-API接口安全网关《service变controller》（16）</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/12/20</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='java.html'>ssm课程</a></span>
-                 
-              </div>
-            </div><!-- article -->
+			<div class="post-lists-body">
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+				
+					<div class="post-list-item-container">
+						<div class="item-label">
+							<div class="item-title">
+							<a href="15773499726644.html">监控Python 运行</a>
 
-          
+
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-12-26T16:46:12+08:00" pubdate>
+									<span class='year'>2019/12/26</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			 
+
             
-            <div class="article">
-              <a class="clearlink" href="15768270099640.html">
-                <h1>面试被问烂的 Spring IOC(求求你别再问了)</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/12/20</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='java.html'>ssm课程</a></span>
-                 
-              </div>
-            </div><!-- article -->
+			<div class="post-lists-body">
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+				
+					<div class="post-list-item-container">
+						<div class="item-label">
+							<div class="item-title">
+							<a href="15769921068601.html">ssh</a>
 
-          
+
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-12-22T13:21:46+08:00" pubdate>
+									<span class='year'>2019/12/22</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			 
+
             
-            <div class="article">
-              <a class="clearlink" href="15665458213371.html">
-                <h1>idea 类注释和方法注释</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/8/23</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='java.html'>ssm课程</a></span>
-                 
-              </div>
-            </div><!-- article -->
+			<div class="post-lists-body">
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+				
+					<div class="post-list-item-container">
+						<div class="item-label">
+							<div class="item-title">
+							<a href="15769920752565.html">pscp</a>
 
-          
+
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-12-22T13:21:15+08:00" pubdate>
+									<span class='year'>2019/12/22</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			 
+
             
-            <div class="article">
-              <a class="clearlink" href="15659629846282.html">
-                <h1>idea 热部署</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/8/16</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='java.html'>ssm课程</a></span>
-                 
-              </div>
-            </div><!-- article -->
+			<div class="post-lists-body">
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+				
+					<div class="post-list-item-container">
+						<div class="item-label">
+							<div class="item-title">
+							<a href="15769919595310.html">Git</a>
 
-          
+
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-12-22T13:19:19+08:00" pubdate>
+									<span class='year'>2019/12/22</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			 
+
             
-            <div class="article">
-              <a class="clearlink" href="15659217621647.html">
-                <h1>Maven</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/8/16</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='java.html'>ssm课程</a></span>
-                 
-              </div>
-            </div><!-- article -->
+			<div class="post-lists-body">
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+				
+					<div class="post-list-item-container">
+						<div class="item-label">
+							<div class="item-title">
+							<a href="15765692780377.html">brew update 缓慢</a>
 
-          
+
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-12-17T15:54:38+08:00" pubdate>
+									<span class='year'>2019/12/17</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			 
+
             
-            <div class="article">
-              <a class="clearlink" href="15651008291490.html">
-                <h1>密码学原理</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/8/6</span>
-                
-                 
-              </div>
-            </div><!-- article -->
+			<div class="post-lists-body">
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+				
+					<div class="post-list-item-container">
+						<div class="item-label">
+							<div class="item-title">
+							<a href="15753573808254.html">Linux安全查找原因</a>
 
-          
+
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-12-03T15:16:20+08:00" pubdate>
+									<span class='year'>2019/12/03</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			 
+
             
-            <div class="article">
-              <a class="clearlink" href="15650106911020.html">
-                <h1>排序算法</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/8/5</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html'>数据结构与算法</a></span>
-                 
-              </div>
-            </div><!-- article -->
+			<div class="post-lists-body">
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+				
+					<div class="post-list-item-container">
+						<div class="item-label">
+							<div class="item-title">
+							<a href="15751320029536.html">Linux 新建用户和组命令</a>
 
-          
+
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-12-01T00:40:02+08:00" pubdate>
+									<span class='year'>2019/12/01</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			 
+
             
-            <div class="article">
-              <a class="clearlink" href="15647321562727.html">
-                <h1>Spring入门</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/8/2</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='java.html'>ssm课程</a></span>
-                 
-              </div>
-            </div><!-- article -->
+			<div class="post-lists-body">
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+				
+					<div class="post-list-item-container">
+						<div class="item-label">
+							<div class="item-title">
+							<a href="15740860526446.html">Linux安全加固脚本</a>
 
-          
+
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-11-18T22:07:32+08:00" pubdate>
+									<span class='year'>2019/11/18</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			 
+
             
-            <div class="article">
-              <a class="clearlink" href="15647300073307.html">
-                <h1>从零开始SSM开发系列十三：使用 Mapper 接口方式整合 MyBatis-Spring</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/8/2</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='ssm.html'>SSM练习</a></span>
-                 
-              </div>
-            </div><!-- article -->
+			<div class="post-lists-body">
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+				
+					<div class="post-list-item-container">
+						<div class="item-label">
+							<div class="item-title">
+							<a href="15730029503820.html">命令</a>
 
-          
+
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-11-06T09:15:50+08:00" pubdate>
+									<span class='year'>2019/11/06</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			 
+
             
-            <div class="article">
-              <a class="clearlink" href="15647285252626.html">
-                <h1>从零开始SSM开发系列十二：使用 DAO 方式整合 MyBatis-Spring</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/8/2</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='ssm.html'>SSM练习</a></span>
-                 
-              </div>
-            </div><!-- article -->
+			<div class="post-lists-body">
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+				
+					<div class="post-list-item-container">
+						<div class="item-label">
+							<div class="item-title">
+							<a href="15649246400338.html">WordPress 博客遇到的问题</a>
 
-          
+
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-08-04T21:17:20+08:00" pubdate>
+									<span class='year'>2019/08/04</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			 
+
             
-            <div class="article">
-              <a class="clearlink" href="15647140106325.html">
-                <h1>从零开始SSM开发系列十一：MyBatis 多对多关联关系</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/8/2</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='ssm.html'>SSM练习</a></span>
-                 
-              </div>
-            </div><!-- article -->
+			<div class="post-lists-body">
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+				
+					<div class="post-list-item-container">
+						<div class="item-label">
+							<div class="item-title">
+							<a href="15649144225977.html">PHP 安装和卸载方法</a>
 
-          
+
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-08-04T18:27:02+08:00" pubdate>
+									<span class='year'>2019/08/04</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			 
+
             
-            <div class="article">
-              <a class="clearlink" href="15647098694474.html">
-                <h1>从零开始SSM开发系列十：MyBatis 一对多关联关系</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/8/2</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='ssm.html'>SSM练习</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15643240518555.html">
-                <h1>从零开始SSM开发系列九：MyBatis 一对一关联关系</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/7/28</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='ssm.html'>SSM练习</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15643212338496.html">
-                <h1>从零开始SSM开发系列八：MyBatis 入门</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/7/28</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='ssm.html'>SSM练习</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15643155536877.html">
-                <h1>从零开始SSM开发系列七：事务管理</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/7/28</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='ssm.html'>SSM练习</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15643143335228.html">
-                <h1>从零开始SSM开发系列六：数据库开发</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/7/28</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='ssm.html'>SSM练习</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15643132029446.html">
-                <h1>从零开始SSM开发系列五：AOP</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/7/28</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='ssm.html'>SSM练习</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15642871336794.html">
-                <h1>从零开始SSM开发系列四：依赖注入及 Bean 管理</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/7/28</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='ssm.html'>SSM练习</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15642457728170.html">
-                <h1>从零开始SSM开发系列三：第一个Spring应用</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/7/28</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='ssm.html'>SSM练习</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15642432857493.html">
-                <h1>从零开始SSM开发系列二：GitHub配置（可以跳过）</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/7/28</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='ssm.html'>SSM练习</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15642402893897.html">
-                <h1>学习资料</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/7/27</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='java.html'>ssm课程</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15642392486315.html">
-                <h1>从零开始SSM开发系列一：JAVA 开发环境配置</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/7/27</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='ssm.html'>SSM练习</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15638028537342.html">
-                <h1>线性表</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/7/22</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html'>数据结构与算法</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15637226788918.html">
-                <h1>数据结构简介</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/7/21</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html'>数据结构与算法</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-          
-            
-            <div class="article">
-              <a class="clearlink" href="15621228295819.html">
-                <h1>位运算中异或的常见用法总结</h1>
-              </a>
-              <div class="read-more clearfix">
-                <span class="date">2019/7/3</span>
-                <span>posted in&nbsp;</span> 
-                
-                    <span class="posted-in"><a href='%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html'>数据结构与算法</a></span>
-                 
-              </div>
-            </div><!-- article -->
-
-           
-        </div>
-      </div>
-  </div>
-
- <div class="large-4 medium-4 columns">
-  <div class="hide-for-small">
-    <div id="sidebar" class="sidebar">
-          <div id="site-info" class="site-info">
-            
-                <h1>Sajor's Blog</h1>
-                <div class="site-des">Sajor's Blog</div>
-                <div class="social">
-
-
-
-
-
-
-
-
-
-
-
-  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
-                
-              	 </div>
-          	</div>
-
-             
-
-              <div id="site-categories" class="side-item ">
-                <div class="side-header">
-                  <h2>Categories</h2>
-                </div>
-                <div class="side-content">
-
-      	<p class="cat-list">
-        
-            <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html"><strong>数据结构与算法</strong></a>
-        
-            <a href="SSM.html"><strong>SSM</strong></a>
-         
-        </p>
-
-
-                </div>
-              </div>
-
-              <div id="site-categories" class="side-item">
-                <div class="side-header">
-                  <h2>Recent Posts</h2>
-                </div>
-                <div class="side-content">
-                <ul class="posts-list">
+			
 	      
-		      
-			      <li class="post">
-			        <a href="15769918912350.html">比特币</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15768275980852.html">『互联网架构』软件架构-API接口安全网关《service变controller》（16）</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15768270099640.html">面试被问烂的 Spring IOC(求求你别再问了)</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15665458213371.html">idea 类注释和方法注释</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15659629846282.html">idea 热部署</a>
-			      </li>
-		     
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		   
-		  		</ul>
-                </div>
-              </div>
-        </div><!-- sidebar -->
-      </div><!-- hide for small -->
-</div><!-- large 4 -->
+			</div>
+		</div>
+	
+	<div class="categorys-title">
+    	<a href="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html">数据库相关</a>
+		<div class="post-lists">
+        
+			<div class="post-lists-body">
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+				
+					<div class="post-list-item-container">
+						<div class="item-label">
+							<div class="item-title">
+							<a href="15754473183515.html">Redis使用场景</a>
 
-</div><!-- row -->
 
- <div class="page-bottom clearfix">
-  <div class="row">
-   <p class="copyright">Copyright &copy; 2015
-Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
-Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
-  </div>
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-12-04T16:15:18+08:00" pubdate>
+									<span class='year'>2019/12/04</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			 
+
+            
+			<div class="post-lists-body">
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+				
+					<div class="post-list-item-container">
+						<div class="item-label">
+							<div class="item-title">
+							<a href="15754418238619.html">自建redis集群规范</a>
+
+
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-12-04T14:43:43+08:00" pubdate>
+									<span class='year'>2019/12/04</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			 
+
+            
+			<div class="post-lists-body">
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+				
+					<div class="post-list-item-container">
+						<div class="item-label">
+							<div class="item-title">
+							<a href="15754270430043.html">redis 集群</a>
+
+
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-12-04T10:37:23+08:00" pubdate>
+									<span class='year'>2019/12/04</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			 
+
+            
+			<div class="post-lists-body">
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+				
+					<div class="post-list-item-container">
+						<div class="item-label">
+							<div class="item-title">
+							<a href="15749080605397.html">redis 参数配置</a>
+
+
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-11-28T10:27:40+08:00" pubdate>
+									<span class='year'>2019/11/28</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			 
+
+            
+			<div class="post-lists-body">
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+				
+					<div class="post-list-item-container">
+						<div class="item-label">
+							<div class="item-title">
+							<a href="15748392035708.html">redis部署规范</a>
+
+
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-11-27T15:20:03+08:00" pubdate>
+									<span class='year'>2019/11/27</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			 
+
+            
+			<div class="post-lists-body">
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+				
+					<div class="post-list-item-container">
+						<div class="item-label">
+							<div class="item-title">
+							<a href="15700237274379.html">redis命令</a>
+
+
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-10-02T21:42:07+08:00" pubdate>
+									<span class='year'>2019/10/02</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			 
+
+            
+			<div class="post-lists-body">
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+				
+					<div class="post-list-item-container">
+						<div class="item-label">
+							<div class="item-title">
+							<a href="15650106911020.html">排序算法</a>
+
+
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-08-05T21:11:31+08:00" pubdate>
+									<span class='year'>2019/08/05</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			 
+
+            
+			<div class="post-lists-body">
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+				
+					<div class="post-list-item-container">
+						<div class="item-label">
+							<div class="item-title">
+							<a href="15648434329273.html">mysql经典的8小时问题-wait_timeout</a>
+
+
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-08-03T22:43:52+08:00" pubdate>
+									<span class='year'>2019/08/03</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			 
+
+            
+			<div class="post-lists-body">
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+				
+					<div class="post-list-item-container">
+						<div class="item-label">
+							<div class="item-title">
+							<a href="15646739216640.html">列举常见的关系型数据库和非关系型都有那些？</a>
+
+
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-08-01T23:38:41+08:00" pubdate>
+									<span class='year'>2019/08/01</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			 
+
+            
+			<div class="post-lists-body">
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+				
+					<div class="post-list-item-container">
+						<div class="item-label">
+							<div class="item-title">
+							<a href="15641490587108.html">在使用Mybatis generator时提示MySQL写入过大</a>
+
+
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-07-26T21:50:58+08:00" pubdate>
+									<span class='year'>2019/07/26</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			 
+
+            
+			<div class="post-lists-body">
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+				
+					<div class="post-list-item-container">
+						<div class="item-label">
+							<div class="item-title">
+							<a href="15638863087177.html">MySQL高性能优化规范建议</a>
+
+
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-07-23T20:51:48+08:00" pubdate>
+									<span class='year'>2019/07/23</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			 
+
+            
+			
+	      
+			</div>
+		</div>
+	
+	<div class="categorys-title">
+    	<a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html">数据结构与算法</a>
+		<div class="post-lists">
+        
+			<div class="post-lists-body">
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+				
+					<div class="post-list-item-container">
+						<div class="item-label">
+							<div class="item-title">
+							<a href="15638028537342.html">线性表</a>
+
+
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-07-22T21:40:53+08:00" pubdate>
+									<span class='year'>2019/07/22</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			 
+
+            
+			<div class="post-lists-body">
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+				
+					<div class="post-list-item-container">
+						<div class="item-label">
+							<div class="item-title">
+							<a href="15637226788918.html">数据结构简介</a>
+
+
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-07-21T23:24:38+08:00" pubdate>
+									<span class='year'>2019/07/21</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			 
+
+            
+			<div class="post-lists-body">
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+				
+					<div class="post-list-item-container">
+						<div class="item-label">
+							<div class="item-title">
+							<a href="15621228295819.html">位运算中异或的常见用法总结</a>
+
+
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-07-03T11:00:29+08:00" pubdate>
+									<span class='year'>2019/07/03</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			 
+
+            
+			<div class="post-lists-body">
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+				
+					<div class="post-list-item-container">
+						<div class="item-label">
+							<div class="item-title">
+							<a href="15518630086345.html">Redis</a>
+
+
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-03-06T17:03:28+08:00" pubdate>
+									<span class='year'>2019/03/06</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			 
+
+            
+			
+	      
+			</div>
+		</div>
+	
+	<div class="categorys-title">
+    	<a href="SSM.html">SSM</a>
+		<div class="post-lists">
+        
+			
+<!-- 这里可以插入二级目录名字及链接 -->
+
+            
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+					
+						<div class="post-list-item-container">
+							<div class="item-label">
+							
+							<div class="item-title">
+							 <a title="从零开始SSM开发系列十三：使用 Mapper 接口方式整合 MyBatis-Spring" href="15647300073307.html">从零开始SSM开发系列十三：使用 Mapper 接口方式整合 MyBatis-Spring</a>
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-08-02T15:13:27+08:00" pubdate>
+									<span class='year'>2019/08/02</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+					
+						<div class="post-list-item-container">
+							<div class="item-label">
+							
+							<div class="item-title">
+							 <a title="从零开始SSM开发系列十二：使用 DAO 方式整合 MyBatis-Spring" href="15647285252626.html">从零开始SSM开发系列十二：使用 DAO 方式整合 MyBatis-Spring</a>
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-08-02T14:48:45+08:00" pubdate>
+									<span class='year'>2019/08/02</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+					
+						<div class="post-list-item-container">
+							<div class="item-label">
+							
+							<div class="item-title">
+							 <a title="从零开始SSM开发系列十一：MyBatis 多对多关联关系" href="15647140106325.html">从零开始SSM开发系列十一：MyBatis 多对多关联关系</a>
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-08-02T10:46:50+08:00" pubdate>
+									<span class='year'>2019/08/02</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+					
+						<div class="post-list-item-container">
+							<div class="item-label">
+							
+							<div class="item-title">
+							 <a title="从零开始SSM开发系列十：MyBatis 一对多关联关系" href="15647098694474.html">从零开始SSM开发系列十：MyBatis 一对多关联关系</a>
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-08-02T09:37:49+08:00" pubdate>
+									<span class='year'>2019/08/02</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+					
+						<div class="post-list-item-container">
+							<div class="item-label">
+							
+							<div class="item-title">
+							 <a title="从零开始SSM开发系列九：MyBatis 一对一关联关系" href="15643240518555.html">从零开始SSM开发系列九：MyBatis 一对一关联关系</a>
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-07-28T22:27:31+08:00" pubdate>
+									<span class='year'>2019/07/28</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+					
+						<div class="post-list-item-container">
+							<div class="item-label">
+							
+							<div class="item-title">
+							 <a title="从零开始SSM开发系列八：MyBatis 入门" href="15643212338496.html">从零开始SSM开发系列八：MyBatis 入门</a>
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-07-28T21:40:33+08:00" pubdate>
+									<span class='year'>2019/07/28</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+					
+						<div class="post-list-item-container">
+							<div class="item-label">
+							
+							<div class="item-title">
+							 <a title="从零开始SSM开发系列七：事务管理" href="15643155536877.html">从零开始SSM开发系列七：事务管理</a>
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-07-28T20:05:53+08:00" pubdate>
+									<span class='year'>2019/07/28</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+					
+						<div class="post-list-item-container">
+							<div class="item-label">
+							
+							<div class="item-title">
+							 <a title="从零开始SSM开发系列六：数据库开发" href="15643143335228.html">从零开始SSM开发系列六：数据库开发</a>
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-07-28T19:45:33+08:00" pubdate>
+									<span class='year'>2019/07/28</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+					
+						<div class="post-list-item-container">
+							<div class="item-label">
+							
+							<div class="item-title">
+							 <a title="从零开始SSM开发系列五：AOP" href="15643132029446.html">从零开始SSM开发系列五：AOP</a>
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-07-28T19:26:42+08:00" pubdate>
+									<span class='year'>2019/07/28</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+					
+						<div class="post-list-item-container">
+							<div class="item-label">
+							
+							<div class="item-title">
+							 <a title="从零开始SSM开发系列四：依赖注入及 Bean 管理" href="15642871336794.html">从零开始SSM开发系列四：依赖注入及 Bean 管理</a>
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-07-28T12:12:13+08:00" pubdate>
+									<span class='year'>2019/07/28</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+					
+						<div class="post-list-item-container">
+							<div class="item-label">
+							
+							<div class="item-title">
+							 <a title="从零开始SSM开发系列三：第一个Spring应用" href="15642457728170.html">从零开始SSM开发系列三：第一个Spring应用</a>
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-07-28T00:42:52+08:00" pubdate>
+									<span class='year'>2019/07/28</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+					
+						<div class="post-list-item-container">
+							<div class="item-label">
+							
+							<div class="item-title">
+							 <a title="从零开始SSM开发系列二：GitHub配置（可以跳过）" href="15642432857493.html">从零开始SSM开发系列二：GitHub配置（可以跳过）</a>
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-07-28T00:01:25+08:00" pubdate>
+									<span class='year'>2019/07/28</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+					
+						<div class="post-list-item-container">
+							<div class="item-label">
+							
+							<div class="item-title">
+							 <a title="从零开始SSM开发系列一：JAVA 开发环境配置" href="15642392486315.html">从零开始SSM开发系列一：JAVA 开发环境配置</a>
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-07-27T22:54:08+08:00" pubdate>
+									<span class='year'>2019/07/27</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            
+	      
+<!-- 这里可以插入二级目录名字及链接 -->
+
+            
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+					
+						<div class="post-list-item-container">
+							<div class="item-label">
+							
+							<div class="item-title">
+							 <a title="idea 类注释和方法注释" href="15665458213371.html">idea 类注释和方法注释</a>
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-08-23T15:37:01+08:00" pubdate>
+									<span class='year'>2019/08/23</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+					
+						<div class="post-list-item-container">
+							<div class="item-label">
+							
+							<div class="item-title">
+							 <a title="idea 热部署" href="15659629846282.html">idea 热部署</a>
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-08-16T21:43:04+08:00" pubdate>
+									<span class='year'>2019/08/16</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+					
+						<div class="post-list-item-container">
+							<div class="item-label">
+							
+							<div class="item-title">
+							 <a title="Maven" href="15659217621647.html">Maven</a>
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-08-16T10:16:02+08:00" pubdate>
+									<span class='year'>2019/08/16</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+					
+						<div class="post-list-item-container">
+							<div class="item-label">
+							
+							<div class="item-title">
+							 <a title="Spring入门" href="15647321562727.html">Spring入门</a>
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-08-02T15:49:16+08:00" pubdate>
+									<span class='year'>2019/08/02</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            
+				<div class="post-list-item">
+<!-- 自定义颜色 -->
+					
+						<div class="post-list-item-container">
+							<div class="item-label">
+							
+							<div class="item-title">
+							 <a title="学习资料" href="15642402893897.html">学习资料</a>
+							</div>
+							<div class="item-meta clearfix">
+<!-- 自定义icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+								<div class="item-meta-date"> 
+									<time datetime="2019-07-27T23:11:29+08:00" pubdate>
+									<span class='year'>2019/07/27</span>
+									</time>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            
+	      
+			</div>
+		</div>
+	
+	</div>
 </div>
 
-        </section>
+<!-- 导航 -->	
+<!-- <div class="lists-navigator clearfix"></div> -->
+  <footer id="footer" class="footer" style="background-color: #030501;color: #FFFFFE;">
+  <div class="footer-meta">
+    <div class="footer-container">
+      <!-- 版权说明 -->
+      <div class="meta-item meta-copyright">
+        <div class="meta-copyright-info">
+          <h2 class="meta-title">INFO</h2>
+          <div class="info-text">  
+              <p>Copyright &copy; 2017 <br>
+              <span class="credit">Powered by 
+              <a target="_blank" href="http://zh.mweb.im/">MWeb</a> 
+              </span>
+              <p>Theme Design by <a href="https://www.linpx.com/" target="_blank">Chakhsu</a></p>
+              <p>Migrating to Mweb by <a href="http://metaidea.cn">idken</a></p>
+              </p> 
+          </div>                  
+        </div>
+      </div>  
+      <!-- Categories -->
+      <div class="meta-item meta-comments">
+          <h2 class="meta-title">CATEGORIES</h2>  
+             
+            
+            <li>
+            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(13)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html">数据库相关&nbsp;(11)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html">数据结构与算法&nbsp;(4)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="SSM.html">SSM&nbsp;(18)</a>
+            <p>
+            
+            <a href="ssm.html">SSM练习&nbsp;(13)</a>&nbsp;&nbsp;
+            
+            <a href="java.html">ssm课程&nbsp;(5)</a>&nbsp;&nbsp;
+            
+            </p>
+            </li>
+            
+             
       </div>
-    </div>
+      <!-- 最新文章 -->
+      <div class="meta-item meta-comments">
+          <h2 class="meta-title">RECENT POSTS</h2>
+
+          
+          
+         <li>
+           <a href="15802234606202.html">cheat.sh</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="15776732342055.html">crontab 定时任务</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="15773499726644.html">监控Python 运行</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="15769921068601.html">ssh</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="15769920752565.html">pscp</a><br>
+         </li>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+           
+
+      </div>
+  </div>
+</div>
+</footer>
+
+<!--评论变量判断 -->
+      
+<!-- 评论end -->
 
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<style type="text/css">
-figure{margin: 0;padding: 0;}
-figcaption{text-align:center;}
-
-/* PrismJS 1.14.0
- http://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript */
-/**
- * prism.js default theme for JavaScript, CSS and HTML
- * Based on dabblet (http://dabblet.com)
- * @author Lea Verou
- */
-
-code[class*="language-"],
-pre[class*="language-"] {
-    color: black;
-    background: none;
-    text-shadow: 0 1px white;
-    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-    text-align: left;
-    white-space: pre;
-    word-spacing: normal;
-    word-break: normal;
-    word-wrap: normal;
-    line-height: 1.5;
-    
-    -moz-tab-size: 4;
-    -o-tab-size: 4;
-    tab-size: 4;
-    
-    -webkit-hyphens: none;
-    -moz-hyphens: none;
-    -ms-hyphens: none;
-    hyphens: none;
-}
-
-pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
-    text-shadow: none;
-    background:#b3d4fc;
-}
-
-pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
-code[class*="language-"]::selection, code[class*="language-"] ::selection {
-    text-shadow: none;
-    background: #b3d4fc;
-}
-
-@media print {
-    code[class*="language-"],
-    pre[class*="language-"] {
-        text-shadow: none;
-    }
-}
-
-/* Code blocks */
-pre[class*="language-"] {
-    padding: 1em;
-    margin: .5em 0;
-    overflow: auto;
-}
-
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-    background: #F7F7F7;
-}
-
-/* Inline code */
-:not(pre) > code[class*="language-"] {
-    padding: .1em;
-    border-radius: .3em;
-    white-space: normal;
-}
-
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-    color: slategray;
-}
-
-.token.punctuation {
-    color: #999;
-}
-
-.namespace {
-    opacity: .7;
-}
-
-.token.property,
-.token.tag,
-.token.boolean,
-.token.number,
-.token.constant,
-.token.symbol,
-.token.deleted {
-    color: #905;
-}
-
-.token.selector,
-.token.attr-name,
-.token.string,
-.token.char,
-.token.builtin,
-.token.inserted {
-    color: #690;
-}
-
-.token.operator,
-.token.entity,
-.token.url,
-.language-css .token.string,
-.style .token.string {
-    color: #9a6e3a;
-    background: hsla(0, 0%, 100%, .5);
-}
-
-.token.atrule,
-.token.attr-value,
-.token.keyword {
-    color: #07a;
-}
-
-.token.function,
-.token.class-name {
-    color: #DD4A68;
-}
-
-.token.regex,
-.token.important,
-.token.variable {
-    color: #e90;
-}
-
-.token.important,
-.token.bold {
-    font-weight: bold;
-}
-.token.italic {
-    font-style: italic;
-}
-
-.token.entity {
-    cursor: help;
-}
-
-
-pre[class*="language-"].line-numbers {
-    position: relative;
-    padding-left: 3.8em;
-    counter-reset: linenumber;
-}
-
-pre[class*="language-"].line-numbers > code {
-    position: relative;
-    white-space: inherit;
-}
-
-.line-numbers .line-numbers-rows {
-    position: absolute;
-    pointer-events: none;
-    top: 0;
-    font-size: 100%;
-    left: -3.8em;
-    width: 3em; /* works for line-numbers below 1000 lines */
-    letter-spacing: -1px;
-    border-right: 1px solid #999;
-
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-
-}
-
-    .line-numbers-rows > span {
-        pointer-events: none;
-        display: block;
-        counter-increment: linenumber;
-    }
-
-        .line-numbers-rows > span:before {
-            content: counter(linenumber);
-            color: #999;
-            display: block;
-            padding-right: 0.8em;
-            text-align: right;
-        }
-
-</style>
-
-  
-    
-
-    <script src="asset/js/foundation.min.js"></script>
-    <script>
-      $(document).foundation();
-      function fixSidebarHeight(){
-        var w1 = $('.markdown-body').height();
-          var w2 = $('#sidebar').height();
-          if (w1 > w2) { $('#sidebar').height(w1); };
-      }
-      $(function(){
-        fixSidebarHeight();
-      })
-      $(window).load(function(){
-          fixSidebarHeight();
-      });
-     
-    </script>
-
-
-
-  </body>
+</body>
 </html>

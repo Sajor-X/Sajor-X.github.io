@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-transform"/>
+
+
+    <title>
+      
+    Linux 新建用户和组命令 - Sajor's Blog
+    
+    </title>
+
+
+  <link href="asset/css/style.css" rel="stylesheet" > 
+  <link href="asset/js/xcode.min.css" rel="stylesheet">
+  <script src="asset/js/headroom.js"></script>
+
+  <!-- <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="asset/css/font-awesome.css">
+ -->
+
+  <!-- <script src="asset/highlightjs/highlight.pack.js"></script> -->
+  <!-- <link href="asset/highlightjs/styles/solarized_light.css" media="screen, projection" rel="stylesheet" type="text/css"> -->
+  <!-- <script>hljs.initHighlightingOnLoad();</script> -->
+
+
+  </head>
+
+  <!-- 主体开始 -->
+  <!-- <body class="" gtools_scp_screen_capture_injected="true"> -->
+  <!-- 上面为主页白底色版本 -->
+    
+<body class="bg-grey" gtools_scp_screen_capture_injected="true" data-feedly-mini="yes">
+<!-- 上面是主页灰底色版本 -->
+
+<!--[if lt IE 8]>
+<div class="browsehappy" role="dialog">
+    当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/" target="_blank">升级你的浏览器</a>。
+</div>
+<![endif]-->
+<!-- 头部位置 -->
+
+<header id="header" class="header bg-white headroom">
+  <div class="navbar-container"> 
+    <a href="index.html" class="navbar-logo"><img src="asset/img/K-logo.png"> </a>
+    <div class="navbar-menu"> 
+
+        
+        <a href="index.html">Home</a>
+        
+        <a href="archives.html">Archives</a>
+        
+        
+    </div> 
+    <!-- 搜索框体 -->
+    <!--  <div class="navbar-search" onclick="">
+        <span class="icon-search"></span>
+        <form id="search" method="post" action="/" role="search">
+          <span class="search-box">
+            <input type="text" id="input" class="input" name="s" required="true" placeholder="Search..." maxlength="30" autocomplete="off">
+          </span>
+        </form>
+    </div> -->
+
+    <div class="navbar-mobile-menu" onclick=""> 
+      <span class="icon-menu cross"><span class="middle"></span></span> 
+        <ul> 
+          
+          <li>
+          <a href="index.html">Home</a>
+          </li>
+          
+          <li>
+          <a href="archives.html">Archives</a>
+          </li>
+          
+        </ul> 
+    </div> 
+  </div> 
+</header>
+<!-- 头部结束 --> <!-- post 开始 -->
+<div class="bg-white" gtools_scp_screen_capture_injected="true" data-feedly-mini="yes">
+	<article class="main-content page-page" style="max-width: 700px;padding: 110px 25px 20px" itemscope="" itemtype="http://schema.org/Article">
+		<div class="post-header">
+			<!-- title -->
+			<div class="post-header">
+				<h1 class="post-title itemprop="name headline">Linux 新建用户和组命令</h1>	
+				<div class="post-data">
+					<time datetime="2019-12-01T00:40:02+08:00" pubdate data-updated="true">2019/12/01</time>
+				</div>
+			</div>
+		</div>
+	<div id="post-content" class="post-content" itemprop="articleBody"> 
+		<p class="post-tags"> 
+		
+		<a href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>&nbsp;
+		
+		</p>
+	<!-- 正文 -->
+		<p>
+		<p>用户的角色是通过UID和GID识别的。</p>
+
+<p>UID用户ID：相当于各为的身份证，在系统中是唯一的</p>
+
+<p>GID组ID：相当于各为的家庭或者你们的学校。</p>
+
+<h3 id="toc_0">新建用户及设置密码命令如下：</h3>
+
+<pre><code class="language-text">useradd 【参数】 用户名
+
+-g 属组
+-u 设置uid
+-m 创建家目录
+-M 没有家目录
+-G 指定属于多个组
+-s 指定登录shell
+-d 指定家目录
+-c 注释
+-D 改变它默认的属性
+-e 指定的日期是帐号失效的日期,
+</code></pre>
+
+<h3 id="toc_1">新建用户及设置密码命令如下：</h3>
+
+<pre><code class="language-text">passwd 参数 用户名
+
+-l：锁定已经命名的账户名称
+-u：解开账户锁定状态
+-x, --maximum=DAYS：密码使用最大时间（天）
+-n, --minimum=DAYS：密码使用最小时间（天）
+-d：删除使用者的密码
+-S：检查指定使用者的密码认证种类
+
+--stdin：非交互式修改/设置密码，弊端是操作日志能查密码，需要用 history -c 干掉。
+echo 123345|passwd --stdin 用户名
+history -c
+</code></pre>
+
+<h3 id="toc_2">修改用户：</h3>
+
+<pre><code class="language-text">usermod 参数 用户名
+
+-c：修改用户帐号的备注文字。
+-d：修改用户登入时的目录。
+-e：修改帐号的有效期限。
+-f： 改在密码过期后多少天即关闭该帐号。
+-g：修改用户所属的群组。
+-G：修改用户所属的附加群组。
+-l：修改用户帐号名称。
+-L：锁定用户密码，使密码无效。
+-s：修改用户登入后所使用的shell。
+-u：修改用户ID。
+-U：解除密码锁定。
+
+常用的参数包括-c， -d， -m， -g， -G， -s， -u以及-o等，与useradd命令中的选项一样，可以为用户指定新的资源值。
+</code></pre>
+
+<h3 id="toc_3">删除用户：</h3>
+
+<pre><code class="language-text">userdel 参数 用户名
+
+常用的选项是-r，它的作用是把用户的家目录一起删除。
+
+userdel -r abc
+</code></pre>
+
+<h3 id="toc_4">创建用户组：</h3>
+
+<pre><code class="language-text">groupadd  参数  用户组名
+
+-g：指定新建用户组的gid；
+-r：创建系统工作组，系统用户的组ID小于500；
+-K：覆盖配置文件“/ect/login.defs”；
+-o：允许添加组ID号不唯一的工作组。
+</code></pre>
+
+<h3 id="toc_5">修改组：</h3>
+
+<pre><code class="language-text">groupmod 参数 用户组名
+
+-g： GID 为用户组指定新的组标识号。
+-o：与-g选项同时使用，用户组的新GID可以与系统已有用户组的GID相同。
+-n：新用户组 将用户组的名字改为新名字
+</code></pre>
+
+<h3 id="toc_6">删除用户组：</h3>
+
+<pre><code class="language-text">groupdel  用户名
+</code></pre>
+
+<h3 id="toc_7">用户查询相关命令：</h3>
+
+<pre><code class="language-text">id   //查询用户信息，例如用户归属那个用户组，及uid和gid等。
+
+w   //查看谁登录了，并且做了什么，切换的不行，从新登录的才行。
+
+who  //查看哪些用户在登录，终端及登录时间，来源主机。
+
+users  //仅显示哪些用户在登录。 
+
+last   //显示的用户曾经加目前登录以及退出登录列表
+
+lastlog  //可以查看是否有用户登录系统了（未启用的账户）
+</code></pre>
+
+<h3 id="toc_8">解决用userdel删除不掉用户的问题</h3>
+
+<p>vipw命令<br/>
+详情请看 vipw --help</p>
+
+		</p>
+		<!-- 侧边导航条 -->
+		<div id="directory-content" class="directory-content">
+    		<div id="directory" style="margin-left: 50px;margin-top: 120px"></div>
+		</div>
+	<!-- JS -->
+	<script>
+		var postDirectoryBuild = function() {
+		    var postChildren = function children(childNodes, reg) {
+		        var result = [],
+		            isReg = typeof reg === 'object',
+		            isStr = typeof reg === 'string',
+		            node, i, len;
+		        for (i = 0, len = childNodes.length; i < len; i++) {
+		            node = childNodes[i];
+		            if ((node.nodeType === 1 || node.nodeType === 9) &&
+		                (!reg ||
+		                isReg && reg.test(node.tagName.toLowerCase()) ||
+		                isStr && node.tagName.toLowerCase() === reg)) {
+		                result.push(node);
+		            }
+		        }
+		        return result;
+		    },
+		    createPostDirectory = function(article, directory, isDirNum) {
+		        var contentArr = [],
+		            titleId = [],
+		            levelArr, root, level,
+		            currentList, list, li, link, i, len;
+		        levelArr = (function(article, contentArr, titleId) {
+		            var titleElem = postChildren(article.childNodes, /^h\d$/),
+		                levelArr = [],
+		                lastNum = 1,
+		                lastRevNum = 1,
+		                count = 0,
+		                guid = 1,
+		                id = 'directory' + (Math.random() + '').replace(/\D/, ''),
+		                lastRevNum, num, elem;
+		            while (titleElem.length) {
+		                elem = titleElem.shift();
+		                contentArr.push(elem.innerHTML);
+		                num = +elem.tagName.match(/\d/)[0];
+		                if (num > lastNum) {
+		                    levelArr.push(1);
+		                    lastRevNum += 1;
+		                } else if (num === lastRevNum ||
+		                    num > lastRevNum && num <= lastNum) {
+		                    levelArr.push(0);
+		                    lastRevNum = lastRevNum;
+		                } else if (num < lastRevNum) {
+		                    levelArr.push(num - lastRevNum);
+		                    lastRevNum = num;
+		                }
+		                count += levelArr[levelArr.length - 1];
+		                lastNum = num;
+		                elem.id = elem.id || (id + guid++);
+		                titleId.push(elem.id);
+		            }
+		            if (count !== 0 && levelArr[0] === 1) levelArr[0] = 0;
+
+		            return levelArr;
+		        })(article, contentArr, titleId);
+		        currentList = root = document.createElement('ul');
+		        dirNum = [0];
+		        for (i = 0, len = levelArr.length; i < len; i++) {
+		            level = levelArr[i];
+		            if (level === 1) {
+		                list = document.createElement('ul');
+		                if (!currentList.lastElementChild) {
+		                    currentList.appendChild(document.createElement('li'));
+		                }
+		                currentList.lastElementChild.appendChild(list);
+		                currentList = list;
+		                dirNum.push(0);
+		            } else if (level < 0) {
+		                level *= 2;
+		                while (level++) {
+		                    if (level % 2) dirNum.pop();
+		                    currentList = currentList.parentNode;
+		                }
+		            }
+		            dirNum[dirNum.length - 1]++;
+		            li = document.createElement('li');
+		            link = document.createElement('a');
+		            link.href = '#' + titleId[i];
+		            link.innerHTML = !isDirNum ? contentArr[i] :
+		                dirNum.join('.') + ' ' + contentArr[i] ;
+		            li.appendChild(link);
+		            currentList.appendChild(li);
+		        }
+		        directory.appendChild(root);
+		    };
+		    createPostDirectory(document.getElementById('post-content'),document.getElementById('directory'), true);
+		};
+		postDirectoryBuild();
+	</script>	
+	<!-- 版权声明 -->
+		<p class="post-info" style="color: #BCBDB6">
+				本文由 <a style="color: #BCBDB6" href="#">Sajor
+				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2019-12-01T00:40:02+08:00
+		</p>
+	<!-- 导航 -->
+			<div id="comments" class="clearfix" style="padding: 0px;">
+				<footer class="post-footer clearfix">	    			
+				    <div class="meta">
+					    
+					    <P style="float: left;">
+					    	<a href="15753573808254.html" 
+					        title="Previous Post: Linux安全查找原因">&laquo; Linux安全查找原因</a>
+					    </p>
+					    <p style="float:right; ">
+					    	
+					    	
+					        <a href="15749080605397.html" 
+					        title="Next Post: redis 参数配置">redis 参数配置 &raquo;</a>
+					    </p> 
+					    
+				    </div>
+			  	</footer>
+	<!-- footer end -->
+			</div>		
+	</div>
+</article>
+			<!-- 评论区 -->
+			<div id="respond-post-269" class="comment-container"> 
+				<div id="comments" class="clearfix">
+
+				<script type="text/javascript" src="/pm/hashover/hashover.js"></script>
+<noscript>You must have JavaScript enabled to use the comments.</noscript>
+
+<!-- 评论区结束 -->
+					<div>
+					
+					</div>
+
+				</div>
+			</div>
+</div>
+<!-- headroom -->
+<script type="text/javascript"> 
+(function() {
+    var header = new Headroom(document.querySelector("#header"), {
+        tolerance: 3,
+        offset : 80,
+        classes: {
+          initial: "animated",
+          pinned: "slideDown",
+          unpinned: "slideUp"
+        }
+    });
+    header.init();
+}());
+</script>  <footer id="footer" class="footer" style="background-color: #030501;color: #FFFFFE;">
+  <div class="footer-meta">
+    <div class="footer-container">
+      <!-- 版权说明 -->
+      <div class="meta-item meta-copyright">
+        <div class="meta-copyright-info">
+          <h2 class="meta-title">INFO</h2>
+          <div class="info-text">  
+              <p>Copyright &copy; 2017 <br>
+              <span class="credit">Powered by 
+              <a target="_blank" href="http://zh.mweb.im/">MWeb</a> 
+              </span>
+              <p>Theme Design by <a href="https://www.linpx.com/" target="_blank">Chakhsu</a></p>
+              <p>Migrating to Mweb by <a href="http://metaidea.cn">idken</a></p>
+              </p> 
+          </div>                  
+        </div>
+      </div>  
+      <!-- Categories -->
+      <div class="meta-item meta-comments">
+          <h2 class="meta-title">CATEGORIES</h2>  
+             
+            
+            <li>
+            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(13)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html">数据库相关&nbsp;(11)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html">数据结构与算法&nbsp;(4)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="SSM.html">SSM&nbsp;(18)</a>
+            <p>
+            
+            <a href="ssm.html">SSM练习&nbsp;(13)</a>&nbsp;&nbsp;
+            
+            <a href="java.html">ssm课程&nbsp;(5)</a>&nbsp;&nbsp;
+            
+            </p>
+            </li>
+            
+             
+      </div>
+      <!-- 最新文章 -->
+      <div class="meta-item meta-comments">
+          <h2 class="meta-title">RECENT POSTS</h2>
+
+          
+          
+         <li>
+           <a href="15802234606202.html">cheat.sh</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="15776732342055.html">crontab 定时任务</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="15773499726644.html">监控Python 运行</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="15769921068601.html">ssh</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="15769920752565.html">pscp</a><br>
+         </li>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+           
+
+      </div>
+  </div>
+</div>
+</footer>
+
+<!--评论变量判断 -->
+      
+<!-- 评论end -->
+
+
+
+</body>
+</html>

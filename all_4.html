@@ -1,999 +1,524 @@
-<!doctype html>
-<html class="no-js" lang="en">
+<!DOCTYPE html>
+<html lang="zh-CN">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-transform"/>
+
+
     <title>
+      
+    Sajor's Blog
     
-  Sajor's Blog
-  
-  </title>
-  
-  
-  <link href="atom.xml" rel="alternate" title="Sajor's Blog" type="application/atom+xml">
-    <link rel="stylesheet" href="asset/css/foundation.min.css" />
-    <link rel="stylesheet" href="asset/css/docs.css" />
-    <script src="asset/js/vendor/modernizr.js"></script>
-    <script src="asset/js/vendor/jquery.js"></script>
- 
-<script type="text/javascript">
-  function before_search(){
-    var searchVal = 'site:blog.sajor.top ' + document.getElementById('search_input').value;
-    document.getElementById('search_q').value = searchVal;
-    return true;
-  }
-</script>
+    </title>
+
+
+  <link href="asset/css/style.css" rel="stylesheet" > 
+  <link href="asset/js/xcode.min.css" rel="stylesheet">
+  <script src="asset/js/headroom.js"></script>
+
+  <!-- <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="asset/css/font-awesome.css">
+ -->
+
+  <!-- <script src="asset/highlightjs/highlight.pack.js"></script> -->
+  <!-- <link href="asset/highlightjs/styles/solarized_light.css" media="screen, projection" rel="stylesheet" type="text/css"> -->
+  <!-- <script>hljs.initHighlightingOnLoad();</script> -->
+
+
   </head>
-  <body class="antialiased hide-extras">
+
+  <!-- 主体开始 -->
+  <!-- <body class="" gtools_scp_screen_capture_injected="true"> -->
+  <!-- 上面为主页白底色版本 -->
     
-    <div class="marketing off-canvas-wrap" data-offcanvas>
-      <div class="inner-wrap">
+<body class="bg-grey" gtools_scp_screen_capture_injected="true" data-feedly-mini="yes">
+<!-- 上面是主页灰底色版本 -->
 
+<!--[if lt IE 8]>
+<div class="browsehappy" role="dialog">
+    当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/" target="_blank">升级你的浏览器</a>。
+</div>
+<![endif]-->
+<!-- 头部位置 -->
 
-<nav class="top-bar docs-bar hide-for-small" data-topbar>
+<header id="header" class="header bg-white headroom">
+  <div class="navbar-container"> 
+    <a href="index.html" class="navbar-logo"><img src="asset/img/K-logo.png"> </a>
+    <div class="navbar-menu"> 
 
-
-  <section class="top-bar-section">
-  <div class="row">
-      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
-        <ul id="main-menu" class="left">
         
-        <li id=""><a target="_self" href="index.html">Home</a></li>
+        <a href="index.html">Home</a>
         
-        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        <a href="archives.html">Archives</a>
         
-        </ul>
+        
+    </div> 
+    <!-- 搜索框体 -->
+    <!--  <div class="navbar-search" onclick="">
+        <span class="icon-search"></span>
+        <form id="search" method="post" action="/" role="search">
+          <span class="search-box">
+            <input type="text" id="input" class="input" name="s" required="true" placeholder="Search..." maxlength="30" autocomplete="off">
+          </span>
+        </form>
+    </div> -->
 
-        <ul class="right" id="search-wrap">
+    <div class="navbar-mobile-menu" onclick=""> 
+      <span class="icon-menu cross"><span class="middle"></span></span> 
+        <ul> 
+          
           <li>
-<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
-    <input type="hidden" id="search_q" name="q" value="" />
-    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
-</form>
-</li>
-          </ul>
-      </div></div>
-  </div>
-  </section>
-
-</nav>
-
-        <nav class="tab-bar show-for-small">
-  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-    <span> &nbsp; Sajor's Blog</span>
-  </a>
-</nav>
-
-<aside class="left-off-canvas-menu">
-      <ul class="off-canvas-list">
-        
-        <li><a target="_self" href="index.html">Home</a></li>
-        
-        <li><a target="_self" href="archives.html">Archives</a></li>
-        
-
-    <li><label>Categories</label></li>
-
-        
-            <li><a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html">数据结构与算法</a></li>
-        
-            <li><a href="SSM.html">SSM</a></li>
-         
-
-      </ul>
-    </aside>
-
-<a class="exit-off-canvas" href="#"></a>
-
-
-        <section id="main-content" role="main" class="scroll-container">
-        
-       
-
- <script type="text/javascript">
-	$(function(){
-		$('#menu_item_index').addClass('is_active');
-	});
-</script>
-<div class="row">
-	<div class="large-8 medium-8 columns">
-		<div class="markdown-body home-categories">
-		
-			<div class="article">
-                <a class="clearlink" href="15642432857493.html">
-                
-                  <h1>从零开始SSM开发系列二：GitHub配置（可以跳过）</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">创建远程仓库</h2>
-
-<p>首先申请github账号这个不讲了，然后创建一个项目名为 <strong>SSMClass</strong> ，信息填写好之后，点击create repository</p>
-
-<p><img src="media/15642392486315/15642795121667.jpg" alt="" style="width:1439px;"/></p>
-
-<p>之后点击Clone or download，选择use ssh，之后复制一下这个链接留作备用</p>
-
-<pre><code class="language-text">git@github.com:565785929/SSMClass.git
-</code></pre>
-
-<p><img src="media/15642392486315/15642796035009.jpg" alt="" style="width:1100px;"/></p>
-
-<h2 id="toc_1">创建本地仓库并远程</h2>
-
-<p>1、 初始化本地git仓库<br/>
-然后使用IDEA打开这个文件夹，点击VCS -&gt; Import into Version Control -&gt; Create Git Repository。 相当于这条git命令</p>
-
-<pre><code class="language-text">git init
-</code></pre>
-
-<p><img src="media/15642392486315/15642755901479.jpg" alt="" style="width:1440px;"/></p>
-
-<p>因为之后还会提交新的工程所以我们选择此工程的上一级目录<br/>
-<img src="media/15642392486315/15642759535494.jpg" alt="" style="width:712px;"/></p>
-
-<p>2、 连接远程仓库<br/>
-相当于这条git命令</p>
-
-<pre><code class="language-text">git remote add origin git@github.com:565785929/SSMClass.git
-</code></pre>
-
-<p>选择要远程的仓库地址<br/>
-<img src="media/15642392486315/15642783028040.jpg" alt="" style="width:1440px;"/></p>
-
-<p>点击+号，将刚刚创建的github仓库的地址粘贴进去，点击ok</p>
-
-<p><img src="media/15642392486315/15642783906688.jpg" alt="" style="width:446px;"/></p>
-
-<p>3、 拉取远程仓库文件<br/>
-相当于这条git命令, 更新本地仓库</p>
-
-<pre><code class="language-text">git pull
-</code></pre>
-
-<p><img src="media/15642392486315/15642785969845.jpg" alt="" style="width:1440px;"/></p>
-
-<p>点击刷新， 待加载出来之后，勾选origin/master 之后pull<br/>
-<img src="media/15642392486315/15642786469241.jpg" alt="" style="width:597px;"/></p>
-
-<p>之后SSMClass文件夹下会出现README.md文件，如此便成功了。</p>
-
-<p><img src="media/15642392486315/15642788905686.jpg" alt="" style="width:1440px;"/></p>
-
-<p>4、 添加已经修改文件，之后上传到本地仓库<br/>
-相当于这两条git命令</p>
-
-<pre><code class="language-text">git add
-git commit
-</code></pre>
-
-<p>首先修改一下Pull下来的README.md文件</p>
-
-<p><img src="media/15642392486315/15642792058556.jpg" alt="" style="width:1440px;"/></p>
-
-<p>之后先点击add  再点击commit</p>
-
-<p><img src="media/15642392486315/15642392513487.jpg" alt="" style="width:1440px;"/></p>
-
-<p>之后是这样输入一些commit message方便了解你每个版本都做了啥子，点击commit</p>
-
-<p><img src="media/15642392486315/15642792810390.jpg" alt="" style="width:812px;"/></p>
-
-<p>之后点击Push便可以上传到远程仓库了</p>
-
-<p><img src="media/15642392486315/15642790029414.jpg" alt="" style="width:1440px;"/></p>
-
-<p>点击push</p>
-
-<p><img src="media/15642392486315/15642793395797.jpg" alt="" style="width:631px;"/></p>
-
-<p>之后可以到github上查看一下</p>
-
-<p><img src="media/15642392486315/15642793725533.jpg" alt="" style="width:1439px;"/></p>
-
-<p>之后每章代码我都会提交一下，所以我提交的顺序也是章节的顺序，和每次的修改</p>
-
-<h2 id="toc_2">管理工具</h2>
-
-<p>Git管理工具:可以用Eclipse、Intellij IDEA带的git客户端。 强烈建议使用下面这个免费工具<a href="https://www.sourcetreeapp.com/">SourceTree</a></p>
-
-<p><img src="media/15642392486315/15642798412203.jpg" alt="" style="width:1050px;"/></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/28</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='ssm.html'>SSM练习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15642402893897.html">
-                
-                  <h1>学习资料</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>▪ 官网 <a href="http://www.oracle.com/technetwork/java/javaee/overview/index.html">http://www.oracle.com/technetwork/java/javaee/overview/index.html</a> java 入门指导<br/>
-▪ 博客园 <a href="https://www.cnblogs.com/">https://www.cnblogs.com/</a> 开发者的网上家园<br/>
-▪ 开源中国 <a href="http://www.oschina.net/">http://www.oschina.net/</a> 找到想要的开源项目，分享和交流<br/>
-▪ CSDN <a href="https://www.csdn.net/">https://www.csdn.net/</a> 最大的程序员中文社区<br/>
-▪ ITPub <a href="http://www.itpub.net/">http://www.itpub.net/</a> 数据库最好的社区<br/>
-▪ iteye <a href="http://www.iteye.com/">http://www.iteye.com/</a> 曾经最好的java社区<br/>
-▪ Stackoverflow:<a href="https://stackoverflow.com/">https://stackoverflow.com/</a> 国外技术问答网站 ▪Segmentfault:<a href="https://segmentfault.com/">https://segmentfault.com/</a> 国内技术问答网站 ▪ 自媒体:码农周刊、开发者头条<br/>
-▪ Github: <a href="https://github.com/">https://github.com/</a> 能找到很多有用的源码</p>
-
-<h3 id="toc_0">Tomcat JavaEE 标准支持</h3>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th>JDK</th>
-<th>Servlet</th>
-<th>JSP、Expression Language</th>
-<th style="text-align: right">其他</th>
-<th style="text-align: right">JavaEE规范</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>Tomcat6</td>
-<td>JDK5</td>
-<td>Servlet2.5</td>
-<td>JSP 2.1 EL 2.1</td>
-<td style="text-align: right"></td>
-<td style="text-align: right">JavaEE5</td>
-</tr>
-<tr>
-<td>Tomcat7</td>
-<td>JDK6</td>
-<td>Servlet3.0</td>
-<td>JSP 2.2 EL 2.2</td>
-<td style="text-align: right">注解WebSocket1.1</td>
-<td style="text-align: right">JavaEE6</td>
-</tr>
-<tr>
-<td>Tomcat8</td>
-<td>JDK7</td>
-<td>Servlet3.1</td>
-<td>JSP 2.3 EL 3.0</td>
-<td style="text-align: right">注解WebSocket1.1</td>
-<td style="text-align: right">JavaEE7</td>
-</tr>
-<tr>
-<td>Tomcat9</td>
-<td>JDK8</td>
-<td>Servlet4.0</td>
-<td>JSP 2.3 EL 3.0</td>
-<td style="text-align: right">注解WebSocket1.1</td>
-<td style="text-align: right">JavaEE8</td>
-</tr>
-</tbody>
-</table>
-
-<p>参考：<a href="http://tomcat.apache.org/whichversion.html">Apache Tomcat Versions</a><br/>
-<strong>备注：</strong></p>
-
-<ol>
-<li>Spring 4.3.16 兼容JDK6 update 18以上，推荐JDK7、 JDK8以上;JavaEE6、7 </li>
-<li>Spring 5 兼容 JDK8 、JDK9; JavaEE 7</li>
-</ol>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/27</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='java.html'>ssm课程</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15642392486315.html">
-                
-                  <h1>从零开始SSM开发系列一：JAVA 开发环境配置</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">Java 开发环境配置</h2>
-
-<p>1、新建 Java 工程</p>
-
-<p>打开开发工具 Intellij IDEA，点击菜单 File &gt; New &gt; Project...<br/>
-<img src="media/15642432857493/15642438138896.jpg" alt="" style="width:800px;"/><br/>
-2、配置 JDK</p>
-
-<p>点击右上角“New”按钮，选择 JDK 安装的路径(Windows 与 MacOS 不一样，选择你自己安装 JDK 的 路径)<br/>
-<img src="media/15642432857493/15642439440496.jpg" alt="" style="width:986px;"/></p>
-
-<p>配置好 JDK，点击下一步“Next”<br/>
- <img src="media/15642432857493/15642439725311.jpg" alt="" style="width:800px;"/></p>
-
-<p>再下一步“Next”</p>
-
-<p>3、设置项目信息<br/>
-设置项目存放地址，选择刚刚新建的文件夹。<br/>
-<img src="media/15642432857493/15642771250988.jpg" alt="" style="width:712px;"/></p>
-
-<p>设置项目名称，之后点击完成“Finish”:<br/>
-<img src="media/15642432857493/15642772588821.jpg" alt="" style="width:800px;"/><br/>
-选择ok<br/>
-<img src="media/15642432857493/15642773052214.jpg" alt="" style="width:416px;"/></p>
-
-<p>4、拷贝开发 Spring 引用的 jar 包<br/>
-在工程根目录创建 lib 目录。右键点击工程名称，New&gt;Directory<br/>
-<img src="media/15642432857493/15642442093118.jpg" alt="" style="width:1440px;"/></p>
-
-<p>输入 lib<br/>
- <img src="media/15642432857493/15642441851509.jpg" alt="" style="width:1440px;"/></p>
-
-<p>点击 ok</p>
-
-<p>把附件中给的 spring 相关 jar 包拷贝进工程刚刚新建的 lib 目录<br/>
- 拷贝完成的结果如下图:<br/>
-<img src="media/15642432857493/15642443298074.jpg" alt="" style="width:1440px;"/></p>
-
-<p>5、设置 Libraries(设置 IDEA 的 classpath)<br/>
-点击菜单 File&gt;Project Structure...<br/>
-<img src="media/15642432857493/15642443729367.jpg" alt="" style="width:1440px;"/></p>
-
-<p>选中“Librries”， 点击“+”按钮， 选择“Java”<br/>
-<img src="media/15642432857493/15642444249260.jpg" alt="" style="width:1023px;"/></p>
-
-<p>选择 lib 目录中的 spring4.1.13， 点击open<br/>
-<img src="media/15642432857493/15642444886289.jpg" alt="" style="width:712px;"/></p>
-
-<p>点击 ok<br/>
-<img src="media/15642432857493/15642445169642.jpg" alt="" style="width:476px;"/></p>
-
-<p>重复上一步骤，引用 commons-logging-1.2.jar 包，选择 commons-logging-1.2.jar，点击 ok<br/>
-<img src="media/15642432857493/15642446031572.jpg" alt="" style="width:712px;"/></p>
-
-<p>再点击 ok 退出。目前开发 spring 用到的 jar 已经全部引用了。<br/>
-<img src="media/15642432857493/15642446263398.jpg" alt="" style="width:1024px;"/></p>
-
-<p>6、设置项目代码和资源目录<br/>
-点击菜单 File&gt;Project Structure...选择 Modules，选择 Sources，点击右侧 src------后面的“x”号 点击 ok 按钮。<br/>
-<img src="media/15642432857493/15642449697140.jpg" alt="" style="width:1024px;"/></p>
-
-<p>右键点击 src 目录，New Folder...<br/>
-<img src="media/15642432857493/15642448371800.jpg" alt="" style="width:1016px;"/></p>
-
-<p>创建一个 main 目录, 重复创建目录步骤，在 src 下再创建一个 test 目录，用于存放测试代码。<br/>
-用同样的方法，在 main、test 目录下分别再创建 java、resources 目录，最后 的目录结构如下:<br/>
-<img src="media/15642432857493/15642450386610.jpg" alt="" style="width:1024px;"/></p>
-
-<p>下一步设置 IDEA 的 modules，告诉开发工具你开发的代码、配置资源文件放 在哪个目录</p>
-
-<p>选择 Modules，选择 Sources，选中 src&gt;main&gt;java，点击上面的 Sources<br/>
- <img src="media/15642432857493/15642450814029.jpg" alt="" style="width:1024px;"/></p>
-
-<p>选中 src&gt;main&gt;resources，点击上面的 Resources<br/>
-<img src="media/15642432857493/15642451348043.jpg" alt="" style="width:1024px;"/></p>
-
-<p>同样的方法设置 test 的代码路径，资源路径<br/>
-<img src="media/15642432857493/15642452046888.jpg" alt="" style="width:1024px;"/></p>
-
-<p>到这，项目已经配置完成。<br/>
-7、创建包结构<br/>
-右键 src&gt;main&gt;java，点击 New&gt;Package<br/>
-<img src="media/15642432857493/15642452530260.jpg" alt="" style="width:1440px;"/></p>
-
-<p>创建包 com.sajor.study<br/>
-<img src="media/15642432857493/15642453633454.jpg" alt="" style="width:439px;"/></p>
-
-<p>右键 src&gt;test&gt;java，点击 New&gt;Package 创建包 test.com.sajor.study。 到这，代码资源目录搭建完成。<br/>
-<img src="media/15642432857493/15642454016034.jpg" alt="" style="width:321px;"/></p>
-
-<ol>
-<li>src&gt;main&gt;java:存放代码 </li>
-<li>src&gt;main&gt;resources:存放配置资源文件(xml、property 文件)</li>
-<li>src&gt;test&gt;java:存放测试代码</li>
-<li>src&gt;test&gt;resources:存放测试配置资源文件(xml、property 文件)</li>
-</ol>
-
-<p><strong>GitHub</strong> 本系列文章代码均上传至本人的<a href="https://github.com/565785929/SSMClass">GitHub</a>，每完成一章上传一次，所以每一次<a href="https://github.com/565785929/SSMClass/commits/master">commits</a>的修改内容均可以在这里看到，方便大家学习。</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/27</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='ssm.html'>SSM练习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15638028537342.html">
-                
-                  <h1>线性表</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">什么是线性表？</h2>
-
-<p>多项式表示问题的启示:</p>
-
-<ol>
-<li>同一个问题可以有不同的表示(存储)方法 </li>
-<li>有一类共性问题:有序线性序列的组织和管理<br/>
-“线性表(Linear List)”:由同类型数据元素构成有序序列的线性结构 </li>
-<li>表中元素个数称为线性表的长度</li>
-<li>线性表没有元素时，称为空表</li>
-<li>表起始位置称表头，表结束位置称表尾</li>
-</ol>
-
-<h2 id="toc_1">线性表的抽象数据类型描述</h2>
-
-<p>类型名称:线性表(List)<br/>
-数据对象集:线性表是 \(n (\geq0)\)个元素构成的有序序列( \(a_1\), \(a_2\), ..., \(a_n\) )<br/>
-操作集:线性表\(L \in  List\)，整数i表示位置，元素\(X \in  ElementType\)， 线性表基本操作主要有:</p>
-
-<ol>
-<li>List MakeEmpty():初始化一个空线性表L;</li>
-<li>ElementType FindKth( int K, List L ):根据位序K，返回相应元素 ; </li>
-<li>int Find( ElementType X, List L ):在线性表L中查找X的第一次出现位置; </li>
-<li>void Insert( ElementType X, int i, List L):在位序i前插入一个新元素X; </li>
-<li>void Delete( int i, List L ):删除指定位序i的元素;</li>
-<li>int Length( List L ):返回线性表L的长度n。</li>
-</ol>
-
-<h1 id="toc_2">多重链表</h1>
-
-<p>多重链表:链表中的节点可能同时隶属于多个链</p>
-
-<ul>
-<li>多重链表中结点的指针域会有多个，如前面例子包含了Next和 SubList两个指针域;</li>
-<li>但包含两个指针域的链表并不一定是多重链表，比如在双向链表 不是多重链表。</li>
-<li>多重链表有广泛的用途: 基本上如树、图这样相对 复杂的数据结构都可以采 用多重链表方式实现存储。<br/>
-矩阵可以用二维数组表示，但二维数组表示有两个缺陷:  一是数组的大小需要事先确定，<br/>
-对于“稀疏矩阵 ”，将造成大量的存储空间浪费。<br/>
-采用一种典型的多重链表——十字链表来存储稀疏矩阵 </li>
-<li>只存储矩阵非0元素项<br/>
-结点的数据域:行坐标Row、列坐标Col、数值Value </li>
-<li>每个结点通过两个指针域，把同行、同列串起来;
-<ul>
-<li>行指针(或称为向右指针)Right</li>
-<li>列指针(或称为向下指针)Down</li>
-</ul></li>
-<li>用一个标识域Tag来区分头结点和非0元素结点:</li>
-<li>头节点的标识值为“Head”，矩阵非0元素结点的标识值为“Term”。
-<img src="media/15638028537342/15638085446581.jpg" alt="" style="width:559px;"/></li>
-</ul>
-
-<p><img src="media/15638028537342/15638085311004.jpg" alt="" style="width:678px;"/></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/22</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html'>数据结构与算法</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15637226788918.html">
-                
-                  <h1>数据结构简介</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">什么是好的算法?</h2>
-
-<ol>
-<li>空间复杂度S(n) —— 根据算法写成的程序在执行时 占用存储单元的长度。这个长度往往与输入数据的 规模有关。空间复杂度过高的算法可能导致使用的 内存超限，造成程序非正常中断。</li>
-<li>时间复杂度T(n) —— 根据算法写成的程序在执行时 耗费时间的长度。这个长度往往也与输入数据的规 模有关。时间复杂度过高的低效算法可能导致我们 在有生之年都等不到运行结果。</li>
-</ol>
-
-<p>在分析一般算法的效率时，我们经常关注下面 两种复杂度</p>
-
-<ul>
-<li>最坏情况复杂度 \(T_{worst}(n)\) </li>
-<li>平均复杂度 \(T_{avg}(n)\)<br/>
-\(T_{avg}(n) \le T_{worst}(n)\)</li>
-</ul>
-
-<h2 id="toc_1">复杂度的渐进表示法</h2>
-
-<ul>
-<li>\(T(n) = O(f(n))\) 表示存在常数\(C&gt;0, n0&gt;0\) 使得当 \(n \ge n_0\) 时有\(T(n) \le C·f(n)\)</li>
-<li>\(T(n) = \Omega(g(n))\) 表示存在常数\(C&gt;0, n0&gt;0\) 使得当 \(n \ge n_0\) 时有\(T(n) \ge C·g(n)\)</li>
-<li>\(T(n) = \Theta(h(n))\) 表示同时有\(T(n) = O(h(n))\) 和 \(T(n) = \Omega(h(n))\)</li>
-</ul>
-
-<p><img src="media/15637226788918/15637237066558.jpg" alt="" style="width:910px;"/><br/>
-<img src="media/15637226788918/15637237251584.jpg" alt="" style="width:710px;"/><br/>
-<img src="media/15637226788918/15637237406869.jpg" alt="" style="width:675px;"/></p>
-
-<h2 id="toc_2">复杂度分析小窍门</h2>
-
-<ul>
-<li>若两段算法分别有复杂度\(T1(n) = O(f1(n)) 和T2(n) = O(f2(n))\)，则
-<ul>
-<li>\(T_1(n) + T_2(n) = max( O(f_1(n)), O(f_2(n)) )\)</li>
-<li>\(T_1(n) * T_2(n) = O( f_1(n) * f_2(n) )\)</li>
-</ul></li>
-<li>若T(n)是关于n的k阶多项式，那么\(T(n) = \Theta(n^k)\)</li>
-<li>一个for循环的时间复杂度等于循环次数乘以循环体代码的复杂度</li>
-<li>if-else 结构的复杂度取决于if的条件判断复杂度和两个分枝部分的复杂度，总体复杂度取三者中最大</li>
-</ul>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/7/21</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html'>数据结构与算法</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-              
-
-
-			<div class="row">
-			  <div class="large-6 columns">
-			  <p class="text-left" style="padding-top:25px;">
-			   <a href="all_3.html">&laquo; Prev Page</a>  
-			  </p>
-			  </div>
-			  <div class="large-6 columns">
-			<p class="text-right" style="padding-top:25px;">
-			 <a href="all_5.html">&raquo; Next Page</a> 
-			</p>
-			  </div>
-			</div>
+          <a href="index.html">Home</a>
+          </li>
+          
+          <li>
+          <a href="archives.html">Archives</a>
+          </li>
+          
+        </ul> 
+    </div> 
+  </div> 
+</header>
+<!-- 头部结束 -->  <!-- 这里是category的开始 -->
+<div class="main-content index-page clearfix">
+    <div class="post-lists">
+        <div class="post-lists-body">
+			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
+						
+						</div> 
+						<a href="15659217621647.html"> 
+							<div class="item-desc"> 
+								<p>一个项目管理工具 
+
+
+统一开发规范与工具
+统一管理jar包
+
+
+pom.xml (Project Object Model)
+
+项目对象模型：用于描述整个Maven项目，也称为Maven描述文件。
+
+pom.xml 最基础是这样的
+
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+    xsi:schemaLocation=&quot;http://maven.apache.o</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15659217621647.html">Maven</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='java.html'>ssm课程</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
+						
+						</div> 
+						<a href="15651008291490.html"> 
+							<div class="item-desc"> 
+								<p>哈希
+
+输出空间 2256
+
+
+collision resistance 哈希碰撞（没有数学方法可以证明，只有实战经验）
+
+
+没有一个好的方法可以算出 X 的hash值正好等于 Y 的hash值，可以使用穷举方法 brute-force
+用处： 在上传文件时，可以先算一个 digest 在下载的时候，再算一次查看是否和之前的相等，即可发现文件是否被篡改。
+MD5 原来以为具有这个性质，但是后来被证明是可以被人为制造碰撞的。
+
+
+hiding 单向的 
+
+
+前提：输入空间比较大，且分布均匀
+X -&gt; H(X) 知道了 H(X) 并不能知道 X 的值
+
+digital commitment </p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15651008291490.html">密码学原理</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
+						
+						</div> 
+						<a href="15650106911020.html"> 
+							<div class="item-desc"> 
+								<p>排序算法说明
+
+
+排序的定义
+对一序列对象根据某个关键字进行排序。
+术语说明
+稳定：如果a原本在b前面，而a=b，排序之后a仍然在b的前面；
+不稳定：如果a原本在b的前面，而a=b，排序之后a可能会出现在b的后面；
+内排序：所有排序操作都在内存中完成；
+外排序：由于数据太大，因此把数据放在磁盘中，而排序通过磁盘和内存的数据传输才能进行；
+时间复杂度： 一个算法执行所耗费的时间。
+空间复杂度：运行完一个程序所需内存的大小。
+算法总结
+
+图片名词解释：
+n: 数据规模
+k: “桶”的个数
+In-place: 占用常数内存，不占用额外内存
+Out-place: 占用额外内存
+比较和非比较的区别
+常见</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15650106911020.html">排序算法</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
+						
+						</div> 
+						<a href="15649246400338.html"> 
+							<div class="item-desc"> 
+								<p>关于wordpress更新提示无法创建目录问题
+
+
+进入wordpress安装目录下，修改wp-config.php文件添加：define(&quot;FS_METHOD&quot;,&quot;direct&quot;);
+chown -R sajor.sajor  xxx/wordpress/ 将存放wordpress博客的文件夹设置成sajor用户。
+修改php配置
+
+vim /etc/php-fpm.d/www.conf
+user = sajor
+group = sajor
+
+重启php-fpm
+
+systemctl restart php-fpm
+
+
+</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15649246400338.html">WordPress 博客遇到的问题</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
+						
+						</div> 
+						<a href="15649144225977.html"> 
+							<div class="item-desc"> 
+								<p>由于linux的yum源不存在php7.x，所以我们要更改yum源
+
+rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
+rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm 
+
+
+安装
+
+yum -y install php72w php72w-cli php72w-common php72w-devel php72w-embedded php72w-fpm php72w-gd php72w-mbstrin</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15649144225977.html">PHP 安装和卸载方法</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			 
 		</div>
-	</div><!-- large 8 -->
-
- <div class="large-4 medium-4 columns">
-  <div class="hide-for-small">
-    <div id="sidebar" class="sidebar">
-          <div id="site-info" class="site-info">
+	</div>
+<!-- 底部导航条 -->
+	<nav class="lists-navigator clearfix" style="clear: all;">
+            <ol class="page-navigator">
             
-                <h1>Sajor's Blog</h1>
-                <div class="site-des">Sajor's Blog</div>
-                <div class="social">
+            	<li class=""><a href="all_3.html"><span aria-hidden="true">&larr;</span> 上一页</a></li>
+            
 
+				<li class=""><a href="archives.html">归档</a></li>
 
-
-
-
-
-
-
-
-
-
-  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
-                
-              	 </div>
-          	</div>
-
+			
+			<li class=""><a href="all_5.html">下一页 <span aria-hidden="true">&rarr;</span></a></li>
+			
+            </ol>
+     </nav>
+</div>
+</div>  <footer id="footer" class="footer" style="background-color: #030501;color: #FFFFFE;">
+  <div class="footer-meta">
+    <div class="footer-container">
+      <!-- 版权说明 -->
+      <div class="meta-item meta-copyright">
+        <div class="meta-copyright-info">
+          <h2 class="meta-title">INFO</h2>
+          <div class="info-text">  
+              <p>Copyright &copy; 2017 <br>
+              <span class="credit">Powered by 
+              <a target="_blank" href="http://zh.mweb.im/">MWeb</a> 
+              </span>
+              <p>Theme Design by <a href="https://www.linpx.com/" target="_blank">Chakhsu</a></p>
+              <p>Migrating to Mweb by <a href="http://metaidea.cn">idken</a></p>
+              </p> 
+          </div>                  
+        </div>
+      </div>  
+      <!-- Categories -->
+      <div class="meta-item meta-comments">
+          <h2 class="meta-title">CATEGORIES</h2>  
              
+            
+            <li>
+            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(13)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html">数据库相关&nbsp;(11)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html">数据结构与算法&nbsp;(4)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="SSM.html">SSM&nbsp;(18)</a>
+            <p>
+            
+            <a href="ssm.html">SSM练习&nbsp;(13)</a>&nbsp;&nbsp;
+            
+            <a href="java.html">ssm课程&nbsp;(5)</a>&nbsp;&nbsp;
+            
+            </p>
+            </li>
+            
+             
+      </div>
+      <!-- 最新文章 -->
+      <div class="meta-item meta-comments">
+          <h2 class="meta-title">RECENT POSTS</h2>
 
-              <div id="site-categories" class="side-item ">
-                <div class="side-header">
-                  <h2>Categories</h2>
-                </div>
-                <div class="side-content">
+          
+          
+         <li>
+           <a href="15802234606202.html">cheat.sh</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="15776732342055.html">crontab 定时任务</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="15773499726644.html">监控Python 运行</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="15769921068601.html">ssh</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="15769920752565.html">pscp</a><br>
+         </li>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+           
 
-      	<p class="cat-list">
-        
-            <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html"><strong>数据结构与算法</strong></a>
-        
-            <a href="SSM.html"><strong>SSM</strong></a>
-         
-        </p>
-
-
-                </div>
-              </div>
-
-              <div id="site-categories" class="side-item">
-                <div class="side-header">
-                  <h2>Recent Posts</h2>
-                </div>
-                <div class="side-content">
-                <ul class="posts-list">
-	      
-		      
-			      <li class="post">
-			        <a href="15769918912350.html">比特币</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15768275980852.html">『互联网架构』软件架构-API接口安全网关《service变controller》（16）</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15768270099640.html">面试被问烂的 Spring IOC(求求你别再问了)</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15665458213371.html">idea 类注释和方法注释</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15659629846282.html">idea 热部署</a>
-			      </li>
-		     
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		   
-		  		</ul>
-                </div>
-              </div>
-        </div><!-- sidebar -->
-      </div><!-- hide for small -->
-</div><!-- large 4 -->
-
-</div><!-- row -->
-
- <div class="page-bottom clearfix">
-  <div class="row">
-   <p class="copyright">Copyright &copy; 2015
-Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
-Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+      </div>
   </div>
 </div>
+</footer>
 
-        </section>
-      </div>
-    </div>
-
-
-
-  
+<!--评论变量判断 -->
+      
+<!-- 评论end -->
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-<style type="text/css">
-figure{margin: 0;padding: 0;}
-figcaption{text-align:center;}
-
-/* PrismJS 1.14.0
- http://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript */
-/**
- * prism.js default theme for JavaScript, CSS and HTML
- * Based on dabblet (http://dabblet.com)
- * @author Lea Verou
- */
-
-code[class*="language-"],
-pre[class*="language-"] {
-    color: black;
-    background: none;
-    text-shadow: 0 1px white;
-    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-    text-align: left;
-    white-space: pre;
-    word-spacing: normal;
-    word-break: normal;
-    word-wrap: normal;
-    line-height: 1.5;
-    
-    -moz-tab-size: 4;
-    -o-tab-size: 4;
-    tab-size: 4;
-    
-    -webkit-hyphens: none;
-    -moz-hyphens: none;
-    -ms-hyphens: none;
-    hyphens: none;
-}
-
-pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
-    text-shadow: none;
-    background:#b3d4fc;
-}
-
-pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
-code[class*="language-"]::selection, code[class*="language-"] ::selection {
-    text-shadow: none;
-    background: #b3d4fc;
-}
-
-@media print {
-    code[class*="language-"],
-    pre[class*="language-"] {
-        text-shadow: none;
-    }
-}
-
-/* Code blocks */
-pre[class*="language-"] {
-    padding: 1em;
-    margin: .5em 0;
-    overflow: auto;
-}
-
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-    background: #F7F7F7;
-}
-
-/* Inline code */
-:not(pre) > code[class*="language-"] {
-    padding: .1em;
-    border-radius: .3em;
-    white-space: normal;
-}
-
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-    color: slategray;
-}
-
-.token.punctuation {
-    color: #999;
-}
-
-.namespace {
-    opacity: .7;
-}
-
-.token.property,
-.token.tag,
-.token.boolean,
-.token.number,
-.token.constant,
-.token.symbol,
-.token.deleted {
-    color: #905;
-}
-
-.token.selector,
-.token.attr-name,
-.token.string,
-.token.char,
-.token.builtin,
-.token.inserted {
-    color: #690;
-}
-
-.token.operator,
-.token.entity,
-.token.url,
-.language-css .token.string,
-.style .token.string {
-    color: #9a6e3a;
-    background: hsla(0, 0%, 100%, .5);
-}
-
-.token.atrule,
-.token.attr-value,
-.token.keyword {
-    color: #07a;
-}
-
-.token.function,
-.token.class-name {
-    color: #DD4A68;
-}
-
-.token.regex,
-.token.important,
-.token.variable {
-    color: #e90;
-}
-
-.token.important,
-.token.bold {
-    font-weight: bold;
-}
-.token.italic {
-    font-style: italic;
-}
-
-.token.entity {
-    cursor: help;
-}
-
-
-pre[class*="language-"].line-numbers {
-    position: relative;
-    padding-left: 3.8em;
-    counter-reset: linenumber;
-}
-
-pre[class*="language-"].line-numbers > code {
-    position: relative;
-    white-space: inherit;
-}
-
-.line-numbers .line-numbers-rows {
-    position: absolute;
-    pointer-events: none;
-    top: 0;
-    font-size: 100%;
-    left: -3.8em;
-    width: 3em; /* works for line-numbers below 1000 lines */
-    letter-spacing: -1px;
-    border-right: 1px solid #999;
-
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-
-}
-
-    .line-numbers-rows > span {
-        pointer-events: none;
-        display: block;
-        counter-increment: linenumber;
-    }
-
-        .line-numbers-rows > span:before {
-            content: counter(linenumber);
-            color: #999;
-            display: block;
-            padding-right: 0.8em;
-            text-align: right;
-        }
-
-</style>
-
-  
-    
-
-    <script src="asset/js/foundation.min.js"></script>
-    <script>
-      $(document).foundation();
-      function fixSidebarHeight(){
-        var w1 = $('.markdown-body').height();
-          var w2 = $('#sidebar').height();
-          if (w1 > w2) { $('#sidebar').height(w1); };
-      }
-      $(function(){
-        fixSidebarHeight();
-      })
-      $(window).load(function(){
-          fixSidebarHeight();
-      });
-     
-    </script>
-
-
-
-  </body>
+</body>
 </html>

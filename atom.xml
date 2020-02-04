@@ -4,13 +4,351 @@
   <title><![CDATA[Sajor's Blog]]></title>
   <link href="blog.sajor.top/atom.xml" rel="self"/>
   <link href="blog.sajor.top/"/>
-  <updated>2020-01-17T16:53:38+08:00</updated>
+  <updated>2020-02-04T16:54:12+08:00</updated>
   <id>blog.sajor.top/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
-  <generator uri="http://www.mweb.im/">MWeb</generator>
+  <generator uri="http://www.coderforart.com/">CoderForArt</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[cheat.sh]]></title>
+    <link href="blog.sajor.top/15802234606202.html"/>
+    <updated>2020-01-28T22:57:40+08:00</updated>
+    <id>blog.sajor.top/15802234606202.html</id>
+    <content type="html"><![CDATA[
+<p>cheat是在GNU通用公共许可证下，为Linux命令行用户发行的交互式备忘单应用程序。简单来说，它没有提供其他额外多余的信息，只通过使用实例告诉你一个命令参数如何使用。</p>
+
+<h2 id="toc_0">使用</h2>
+
+<p>它无需安装，提供网络查询方式，要从命令行获取UNIX / Linux命令的备忘单，请使用curl或任何其他在查询中指定命令名称的HTTP / HTTPS客户端来查询服务：</p>
+
+<pre><code class="language-bash">    curl cheat.sh/tar
+    curl cht.sh/curl
+    curl https://cheat.sh/rsync
+    curl https://cht.sh/tr
+</code></pre>
+
+<h2 id="toc_1">安装</h2>
+
+<p>想离线使用，也可以安装客户端，非常简单<br/>
+To install the client:</p>
+
+<pre><code class="language-bash">    mkdir -p ~/bin/
+    curl https://cht.sh/:cht.sh &gt; ~/bin/cht.sh
+    chmod +x ~/bin/cht.sh
+</code></pre>
+
+<p>or to install it globally (for all users):</p>
+
+<pre><code class="language-bash">    curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh
+    chmod +x /usr/local/bin/cht.sh
+</code></pre>
+
+<p>之后可以使用cht.sh获取命令示例<br/>
+<img src="media/15802234606202/15802244400106.jpg" alt="" style="width:682px;"/></p>
+
+<p>如果输出的不是你需要的答案，你可以选择带入参数， 例如/1, /2 :</p>
+
+<pre><code class="language-text">    curl cht.sh/python/random+string
+    curl cht.sh/python/random+string/1
+    curl cht.sh/python/random+string/2
+</code></pre>
+
+<p><a href="https://github.com/chubin/cheat.sh">github</a></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[crontab 定时任务]]></title>
+    <link href="blog.sajor.top/15776732342055.html"/>
+    <updated>2019-12-30T10:33:54+08:00</updated>
+    <id>blog.sajor.top/15776732342055.html</id>
+    <content type="html"><![CDATA[
+<h3 id="toc_0">Linux</h3>
+
+<p><img src="media/15776732342055/15776733247221.jpg" alt="" style="width:634px;"/></p>
+
+<p>crontab -e <br/>
+打开编辑表达式</p>
+
+<p>表达式必须使用绝对路径</p>
+
+<p>sudo systemctl restart crond.service<br/>
+重启生效</p>
+
+<p>crontab -l<br/>
+查看所有定时任务表达式</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[监控Python 运行]]></title>
+    <link href="blog.sajor.top/15773499726644.html"/>
+    <updated>2019-12-26T16:46:12+08:00</updated>
+    <id>blog.sajor.top/15773499726644.html</id>
+    <content type="html"><![CDATA[
+<p>使用memory_profiler模块</p>
+
+<p>memory_profiler模块用来基于逐行测量代码的内存使用。使用这个模块会让代码运行的更慢。</p>
+
+<p>安装方法如下：<br/>
+<code>pip install memory_profiler</code></p>
+
+<p>另外，建议安装psutil包，这样memory_profile会运行的快一点：<br/>
+<code>pip install psutil</code></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ssh]]></title>
+    <link href="blog.sajor.top/15769921068601.html"/>
+    <updated>2019-12-22T13:21:46+08:00</updated>
+    <id>blog.sajor.top/15769921068601.html</id>
+    <content type="html"><![CDATA[
+<p>systemctl stop sshd.service <br/>
+停止转发</p>
+
+<p>lsof -i :80|grep -v &quot;PID&quot;|awk &#39;{print &quot;kill -9&quot;,$2}&#39;|sh<br/>
+关闭80端口程序</p>
+
+<p>pscp -r -l root -pw 5657 e:\htk 118.24.163.26:/root<br/>
+e:\htk -&gt; /root 传送文件</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[pscp]]></title>
+    <link href="blog.sajor.top/15769920752565.html"/>
+    <updated>2019-12-22T13:21:15+08:00</updated>
+    <id>blog.sajor.top/15769920752565.html</id>
+    <content type="html"><![CDATA[
+<p>远程传输命令 </p>
+
+<p>pscp和scp功能相同，但pscp同时支持windows下使用，它有效解 决了windows系统向linux服务器传输文件，而且它只有一个文件，即pscp.exe，建议将该文件放到C:\WINDOWS\system32 下面，这样就可以在任何地方调用该文件命令，你也可以放在任意你指定文件夹下。</p>
+
+<p><img src="media/15769920752565/15802251740483.jpg" alt="" style="width:682px;"/></p>
+
+<ol>
+<li>环境变量改好后，在命令行下输入 pscp就可以拷文件了：</li>
+</ol>
+
+<p>命令格式：pscp localfile rootuser@remoteip:/fileDirectory</p>
+
+<p>拷贝整个文件夹： pscp -r localDir rootuser@remoteip:/fileDirectory</p>
+
+<p>如果是从linux拷贝文件，是同样的方法，只不过是把前后地址对换一下即可;</p>
+
+<ol>
+<li>比如我想把windows下e:\htk 整个目录的所有文件复制到linux /root目录下，命令如下：</li>
+</ol>
+
+<p><strong>pscp -r -l root -pw 1234567890 e:\htk 192.168.0.204:/root</strong></p>
+
+<p>说明：</p>
+
+<p>-r 复制目录下所有文件;</p>
+
+<p>-l 对方机器(linux)的用户名(root);</p>
+
+<p>-pw 密码(1234567890 );</p>
+
+<p>e:\htk 源文件/文件夹的地址;</p>
+
+<p>192.168.0.204:/root 目的文件/文件夹的地址。192.168.0.204为linux机器的ip地址。</p>
+
+<ol>
+<li>反过来，把linux soundRcg目录下的test.txt文件传输到windows e:\下，同样在windows命令行中敲入命令： </li>
+</ol>
+
+<p>*<em>pscp -l root -pw 1234567890 192.168.0.204:/soundRcg/test.txt E:*</em></p>
+
+<p>备注：pscp似乎传输速度不是很快。</p>
+
+<p>lsof -i :80|grep -v &quot;PID&quot;|awk &#39;{print &quot;kill -9&quot;,$2}&#39;|sh</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Git]]></title>
+    <link href="blog.sajor.top/15769919595310.html"/>
+    <updated>2019-12-22T13:19:19+08:00</updated>
+    <id>blog.sajor.top/15769919595310.html</id>
+    <content type="html"><![CDATA[
+<h3 id="toc_0">Git是分布式版本控制系统 自报家门</h3>
+
+<p>git config --global user.name &quot;Sajor&quot;<br/>
+git config --global user.email &quot;<a href="mailto:565785929@qq.com">565785929@qq.com</a>&quot;</p>
+
+<h2 id="toc_1">一</h2>
+
+<p>初始化一个Git仓库，使用git init命令。</p>
+
+<p>添加文件到Git仓库，分两步：</p>
+
+<p>第一步，使用命令git add <file>，注意，可反复多次使用，添加多个文件；</p>
+
+<p>第二步，使用命令git commit，完成。</p>
+
+<h3 id="toc_2">windows中的换行符为 CRLF， 而在linux下的换行符为LF，所以在执行add . 时出现提示，解决办法：</h3>
+
+<pre><code class="language-text">rm -rf .git  // 删除.git  
+git config --global core.autocrlf false  //禁用自动转换    
+
+git init    // 重新执行
+git add .  
+</code></pre>
+
+<h3 id="toc_3">文件添加到仓库 add</h3>
+
+<pre><code class="language-text">git add readme.txt     // filename = readme.txt
+</code></pre>
+
+<h3 id="toc_4">用命令 git commit 告诉Git 文件提交到仓库</h3>
+
+<pre><code class="language-text">git commit -m &quot;wrote a readme file&quot; 
+-m后面输入的是本次提交的说明
+commit可以一次提交很多文件，所以你可以多次add不同的文件
+</code></pre>
+
+<hr/>
+
+<h2 id="toc_5">二</h2>
+
+<p>要随时掌握工作区的状态，使用git status命令。</p>
+
+<p>如果git status告诉你有文件被修改过，用git diff可以查看修改内容。</p>
+
+<h3 id="toc_6">git status 查看当前状态</h3>
+
+<pre><code class="language-text">git status 
+</code></pre>
+
+<h3 id="toc_7">git diff 查看做了哪些修改</h3>
+
+<pre><code class="language-text">git diff readme.txt    // filename = readme.txt
+git diff    #是工作区(work dict)和暂存区(stage)的比较
+git diff --cached    #是暂存区(stage)和分支(master)的比较（add之后）
+</code></pre>
+
+<hr/>
+
+<h2 id="toc_8">三</h2>
+
+<p>HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令git reset --hard commit_id。</p>
+
+<p>穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。</p>
+
+<p>要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。</p>
+
+<h3 id="toc_9">git log 显示从最近到最远的提交日志</h3>
+
+<pre><code class="language-text">git log 
+// --pretty=oneline参数 可以在一行显示
+git log --pretty=oneline 
+前面的是commit id（版本号）
+</code></pre>
+
+<h3 id="toc_10">回退版本</h3>
+
+<pre><code class="language-text">git reset -- hard HEAD^  
+// 上一个版本是HEAD^ , 上上一个版本就是HEAD^^, 往上100个是HEAD~100
+</code></pre>
+
+<h3 id="toc_11">再返回未来的版本可以用commit id 返回</h3>
+
+<pre><code class="language-text">git reset --hard 3628164  // commit id = 3628164
+</code></pre>
+
+<h3 id="toc_12">git reflog 记录你的每一次命令</h3>
+
+<pre><code class="language-text">git reflog  前面会加你的commit id
+</code></pre>
+
+<hr/>
+
+<h2 id="toc_13">四</h2>
+
+<p>场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout -- file。</p>
+
+<p>场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD file，就回到了场景1，第二步按场景1操作。</p>
+
+<p>场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库。</p>
+
+<p>命令git rm用于删除一个文件。如果一个文件已经被提交到版本库，那么你永远不用担心误删，但是要小心，你只能恢复文件到最新版本，你会丢失最近一次提交后你修改的内容。</p>
+
+<h3 id="toc_14">撤销工作区的修改</h3>
+
+<pre><code class="language-text">git checkout -- readme.txt   // filename = readme.txt
+</code></pre>
+
+<h3 id="toc_15">撤销缓存区的提交</h3>
+
+<pre><code class="language-text">git reset HEAD readme.txt   // filename = readme.txt
+</code></pre>
+
+<h3 id="toc_16">工作区删除</h3>
+
+<pre><code class="language-text">rm test.txt
+</code></pre>
+
+<h3 id="toc_17">从版本库中删除该文件 git rm 删掉 并提交</h3>
+
+<pre><code class="language-text">git rm test.txt    // filename = test.txt
+git commit -m &quot;remove test.txt&quot;
+</code></pre>
+
+<h3 id="toc_18">也可以使用 git checkout 恢复</h3>
+
+<pre><code class="language-text">git checkout -- test.txt
+</code></pre>
+
+<hr/>
+
+<h2 id="toc_19">五</h2>
+
+<p>要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git；</p>
+
+<p>关联后，使用命令git push -u origin master第一次推送master分支的所有内容；</p>
+
+<p>此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；</p>
+
+<p>分布式版本系统的最大好处之一是在本地工作完全不需要考虑远程库的存在，也就是有没有联网都可以正常工作，而SVN在没有联网的时候是拒绝干活的！当有网络的时候，再把本地提交推送一下就完成了同步，真是太方便了！</p>
+
+<p>要克隆一个仓库，首先必须知道仓库的地址，然后使用git clone命令克隆。<br/>
+Git支持多种协议，包括https，但通过ssh支持的原生git协议速度最快。</p>
+
+<h3 id="toc_20">在GitHub 添加ssh秘钥</h3>
+
+<pre><code class="language-text">ssh-keygen -t rsa    生成ssh秘钥 
+cat C://Users/zzx/.ssh/id_rsa.pub   默认位置
+</code></pre>
+
+<h3 id="toc_21">推送到远程仓库</h3>
+
+<pre><code class="language-text">git remote add origin git@github.com:565785929/learngit.git
+git push -u origin master
+</code></pre>
+
+<h3 id="toc_22">本地做了提交再更新远程仓库</h3>
+
+<pre><code class="language-text">git push origin master 
+</code></pre>
+
+<h3 id="toc_23">远程库已经准备好了 git clone克隆一个本地库</h3>
+
+<pre><code class="language-text">git clone git@github.com:565785929/gitskills.git     // proname = gitskills
+</code></pre>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[比特币]]></title>
@@ -75,23 +413,1219 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[『互联网架构』软件架构-API接口安全网关《service变controller》（16）]]></title>
-    <link href="blog.sajor.top/15768275980852.html"/>
-    <updated>2019-12-20T15:39:58+08:00</updated>
-    <id>blog.sajor.top/15768275980852.html</id>
+    <title type="html"><![CDATA[brew update 缓慢]]></title>
+    <link href="blog.sajor.top/15765692780377.html"/>
+    <updated>2019-12-17T15:54:38+08:00</updated>
+    <id>blog.sajor.top/15765692780377.html</id>
     <content type="html"><![CDATA[
-<p><a href="https://www.jianshu.com/p/27f4382365a7">jianshu</a></p>
+<p>更新时 使用 --verbose命令可以看到运行情况</p>
+
+<p><code>brew update --verbose</code></p>
+
+<p>查看brew的当前源:<br/>
+执行下面命令可以看到, brew的官方镜像源为: <a href="https://github.com/Homebrew/homebrew">https://github.com/Homebrew/homebrew</a></p>
+
+<pre><code class="language-text">cd /usr/local/Homebrew
+git remote -v
+</code></pre>
+
+<p>更改brew镜像源</p>
+
+<pre><code class="language-text">cd /usr/local/Homebrew
+git remote set-url origin git://mirrors.tuna.tsinghua.edu.cn/homebrew.git
+</code></pre>
+
+<p>可以选择下面镜像源中的一个 (第一个亲测可用)<br/>
+清华镜像源: git://mirrors.tuna.tsinghua.edu.cn/homebrew.git<br/>
+中科大镜像源: <a href="http://mirrors.ustc.edu.cn/homebrew.git">http://mirrors.ustc.edu.cn/homebrew.git</a></p>
+
+<h2 id="toc_0">mirrors.tuna.tsinghua.edu.cn[0: 101.6.8.193]: errno=Operation timed out</h2>
+
+<p>Homebrew 镜像使用帮助<br/>
+注:该镜像是 Homebrew 的 formula 索引的镜像（即 brew update 时所更新内容）。本镜像站同时提供 Homebrew 二进制预编译包的镜像</p>
+
+<p>替换现有上游</p>
+
+<pre><code class="language-text">cd &quot;$(brew --repo)&quot;
+git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
+ 
+cd &quot;$(brew --repo)/Library/Taps/homebrew/homebrew-core&quot;
+git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
+ 
+brew update
+</code></pre>
+
+<p>使用homebrew-science或者homebrew-python</p>
+
+<pre><code class="language-text">cd &quot;$(brew --repo)/Library/Taps/homebrew/homebrew-science&quot;
+git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-science.git
+ 
+cd &quot;$(brew --repo)/Library/Taps/homebrew/homebrew-python&quot;
+git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-python.git
+ 
+brew update
+</code></pre>
+
+<p><a href="https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/">https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/</a></p>
+
+<p><a href="https://blog.csdn.net/poem_2010/article/details/85049044">https://blog.csdn.net/poem_2010/article/details/85049044</a></p>
 
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[面试被问烂的 Spring IOC(求求你别再问了)]]></title>
-    <link href="blog.sajor.top/15768270099640.html"/>
-    <updated>2019-12-20T15:30:09+08:00</updated>
-    <id>blog.sajor.top/15768270099640.html</id>
+    <title type="html"><![CDATA[Redis使用场景]]></title>
+    <link href="blog.sajor.top/15754473183515.html"/>
+    <updated>2019-12-04T16:15:18+08:00</updated>
+    <id>blog.sajor.top/15754473183515.html</id>
     <content type="html"><![CDATA[
-<p><a href="https://www.jianshu.com/p/17b66e6390fd">jianshu</a></p>
+<h2 id="toc_0">缓存数据</h2>
+
+<p>最常用，对经常需要查询且变动不是很频繁的数据</p>
+
+<h2 id="toc_1">排行榜应用</h2>
+
+<p>利用Redis的有序集合zset，每次插入数据时自动调整顺序值，根据插入时的score值将value按一定顺序连续排列。</p>
+
+<h2 id="toc_2">计数器应用</h2>
+
+<p>利用Redis的incr、decr命令进行原子性操作，来构建计数系统<br/>
+比如在一个web应用程序中，如果想知道用户在一年中每天的点击量，只要将用户id和相关日期信息作为键，并在每次用户点击页面时，执行一次自增操作即可。</p>
+
+<h2 id="toc_3">数据去重</h2>
+
+<p>当需要存储一个列表数据，又不希望出现重复数据时，可以使用Redis的Set数据结构<br/>
+set内部实现是一个value永远是null的hashmap，通过hash计算的方式判断一个成员是否在集合内，从而进行快速排重。</p>
+
+<h2 id="toc_4">队列应用</h2>
+
+<p>使用Redis的list类型的lpush、rpop、lpop可实现</p>
+
+<p><a href="https://mp.weixin.qq.com/s/No0YW65zLQ9Pq25ynqSzgQ">https://mp.weixin.qq.com/s/No0YW65zLQ9Pq25ynqSzgQ</a></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[自建redis集群规范]]></title>
+    <link href="blog.sajor.top/15754418238619.html"/>
+    <updated>2019-12-04T14:43:43+08:00</updated>
+    <id>blog.sajor.top/15754418238619.html</id>
+    <content type="html"><![CDATA[
+<ul>
+<li>可靠性低：如果数据走云盘做高可靠存储容易受网络波动干扰，如果不走云盘宕机数据易丢失，自建多副本运维很复杂，而且Redis本身的断网导致的全量同步机制对网络和运维的要求极高；</li>
+<li>可用性低：自建单副本无法保证可用性，多副本对心跳检查和链路切换要求极高，传统的sentinel有很多缺陷，在执行复杂的keys flushdb等命令时很容易造成误切和雪崩；</li>
+<li>诸多限制：自建集群方案如redis cluster，codis也有诸多限制，redis cluster需要smart client和非常</li>
+</ul>
+
+<h2 id="toc_0">键值设计</h2>
+
+<p>key名设计</p>
+
+<p>可读性和可管理性</p>
+
+<p>以业务名(或数据库名)为前缀(防止key冲突)，用冒号分隔，比如业务名:表名:id</p>
+
+<p>ugc:video:1</p>
+
+<p>简洁性</p>
+
+<p>保证语义的前提下，控制key的长度，当key较多时，内存占用也不容忽视，例如：</p>
+
+<p>user:{uid}:friends:messages:{mid}简化为u:{uid}:fr:m:{mid}。<br/>
+不要包含特殊字符</p>
+
+<p>反例：包含空格、换行、单双引号以及其他转义字符</p>
+
+<p><a href="https://www.cnblogs.com/-wenli/p/10941249.html">完整阿里云Redis开发规范</a></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[redis 集群]]></title>
+    <link href="blog.sajor.top/15754270430043.html"/>
+    <updated>2019-12-04T10:37:23+08:00</updated>
+    <id>blog.sajor.top/15754270430043.html</id>
+    <content type="html"><![CDATA[
+<p>首先安装redis<br/>
+brew install redis</p>
+
+<p>将/usr/local/redis/bin<br/>
+建立redis-cluster文件夹，复制六份， 三主三备份， 分别叫redis01-redis-06<br/>
+<img src="media/15662634729470/15663492850811.jpg" alt="" style="width:423px;"/></p>
+
+<p>将每个文件夹中的redis.conf都修改一下<br/>
+例如： redis01/redis.conf</p>
+
+<pre><code class="language-text">port 7001
+
+cluster-enabled yes
+
+cluster-config-file  nodes_7001.conf  
+
+cluster-node-timeout  15000 
+
+pidfile  /var/run/redis_7001.pid
+</code></pre>
+
+<p>redis02-redis06 的配置文件参照01的配置，将其中7001都改为2-6即可。</p>
+
+<p>编写bash脚本启动</p>
+
+<pre><code class="language-text">./redis01/redis-server ./redis01/redis.conf
+./redis02/redis-server ./redis02/redis.conf
+./redis03/redis-server ./redis03/redis.conf
+./redis04/redis-server ./redis04/redis.conf
+./redis05/redis-server ./redis05/redis.conf
+./redis06/redis-server ./redis06/redis.conf
+</code></pre>
+
+<p>运行后查看进程<br/>
+ps -ef | grep redis<br/>
+<img src="media/15662634729470/15663495776677.jpg" alt="" style="width:707px;"/></p>
+
+<p>安装ruby<br/>
+brew install ruby</p>
+
+<p>到rubypems.org下载redis工具，也可以直接wget<br/>
+brew install wget<br/>
+wget <a href="http://rubygems.org/downloads/redis-3.3.0.gem">http://rubygems.org/downloads/redis-3.3.0.gem</a><br/>
+gem install -l redis-3.3.0.gem</p>
+
+<p>创建集群</p>
+
+<pre><code class="language-text">./redis-cli --cluster create 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005 127.0.0.1:7006 --cluster-replicas 1
+</code></pre>
+
+<p>报错</p>
+
+<blockquote>
+<p>[ERR] Node 127.0.0.1:7001 is not empty. Either the node already knows other nodes (check with CLUSTER NODES) or contains some key in database 0.</p>
+</blockquote>
+
+<p>连接到每个redis 运行</p>
+
+<p>flushdb</p>
+
+<blockquote>
+<p>Node is not empty</p>
+</blockquote>
+
+<p>运行fix</p>
+
+<p>./redis-cli --cluster fix 127.0.0.1:7001</p>
+
+<p>cluster命令</p>
+
+<pre><code class="language-text">cluster info 
+cluster nodes
+</code></pre>
+
+<p>参考：<a href="https://blog.csdn.net/qq_42815754/article/details/82912130">redis集群搭建（非常详细，适合新手）</a><br/>
+<a href="https://www.jianshu.com/p/dfc6656d4287">Redis 5.0.3集群搭建</a></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Linux安全查找原因]]></title>
+    <link href="blog.sajor.top/15753573808254.html"/>
+    <updated>2019-12-03T15:16:20+08:00</updated>
+    <id>blog.sajor.top/15753573808254.html</id>
+    <content type="html"><![CDATA[
+<h3 id="toc_0">备份重要命令</h3>
+
+<p>高手入侵可能会修改集群中的重要命令，例如：top、ps、kill等重要命令<br/>
+建议备份好</p>
+
+<p><a href="https://blog.csdn.net/xinxin_2011/article/details/84936581">Linux系统发现占用CPU达100%的进程并处理</a></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Linux 新建用户和组命令]]></title>
+    <link href="blog.sajor.top/15751320029536.html"/>
+    <updated>2019-12-01T00:40:02+08:00</updated>
+    <id>blog.sajor.top/15751320029536.html</id>
+    <content type="html"><![CDATA[
+<p>用户的角色是通过UID和GID识别的。</p>
+
+<p>UID用户ID：相当于各为的身份证，在系统中是唯一的</p>
+
+<p>GID组ID：相当于各为的家庭或者你们的学校。</p>
+
+<h3 id="toc_0">新建用户及设置密码命令如下：</h3>
+
+<pre><code class="language-text">useradd 【参数】 用户名
+
+-g 属组
+-u 设置uid
+-m 创建家目录
+-M 没有家目录
+-G 指定属于多个组
+-s 指定登录shell
+-d 指定家目录
+-c 注释
+-D 改变它默认的属性
+-e 指定的日期是帐号失效的日期,
+</code></pre>
+
+<h3 id="toc_1">新建用户及设置密码命令如下：</h3>
+
+<pre><code class="language-text">passwd 参数 用户名
+
+-l：锁定已经命名的账户名称
+-u：解开账户锁定状态
+-x, --maximum=DAYS：密码使用最大时间（天）
+-n, --minimum=DAYS：密码使用最小时间（天）
+-d：删除使用者的密码
+-S：检查指定使用者的密码认证种类
+
+--stdin：非交互式修改/设置密码，弊端是操作日志能查密码，需要用 history -c 干掉。
+echo 123345|passwd --stdin 用户名
+history -c
+</code></pre>
+
+<h3 id="toc_2">修改用户：</h3>
+
+<pre><code class="language-text">usermod 参数 用户名
+
+-c：修改用户帐号的备注文字。
+-d：修改用户登入时的目录。
+-e：修改帐号的有效期限。
+-f： 改在密码过期后多少天即关闭该帐号。
+-g：修改用户所属的群组。
+-G：修改用户所属的附加群组。
+-l：修改用户帐号名称。
+-L：锁定用户密码，使密码无效。
+-s：修改用户登入后所使用的shell。
+-u：修改用户ID。
+-U：解除密码锁定。
+
+常用的参数包括-c， -d， -m， -g， -G， -s， -u以及-o等，与useradd命令中的选项一样，可以为用户指定新的资源值。
+</code></pre>
+
+<h3 id="toc_3">删除用户：</h3>
+
+<pre><code class="language-text">userdel 参数 用户名
+
+常用的选项是-r，它的作用是把用户的家目录一起删除。
+
+userdel -r abc
+</code></pre>
+
+<h3 id="toc_4">创建用户组：</h3>
+
+<pre><code class="language-text">groupadd  参数  用户组名
+
+-g：指定新建用户组的gid；
+-r：创建系统工作组，系统用户的组ID小于500；
+-K：覆盖配置文件“/ect/login.defs”；
+-o：允许添加组ID号不唯一的工作组。
+</code></pre>
+
+<h3 id="toc_5">修改组：</h3>
+
+<pre><code class="language-text">groupmod 参数 用户组名
+
+-g： GID 为用户组指定新的组标识号。
+-o：与-g选项同时使用，用户组的新GID可以与系统已有用户组的GID相同。
+-n：新用户组 将用户组的名字改为新名字
+</code></pre>
+
+<h3 id="toc_6">删除用户组：</h3>
+
+<pre><code class="language-text">groupdel  用户名
+</code></pre>
+
+<h3 id="toc_7">用户查询相关命令：</h3>
+
+<pre><code class="language-text">id   //查询用户信息，例如用户归属那个用户组，及uid和gid等。
+
+w   //查看谁登录了，并且做了什么，切换的不行，从新登录的才行。
+
+who  //查看哪些用户在登录，终端及登录时间，来源主机。
+
+users  //仅显示哪些用户在登录。 
+
+last   //显示的用户曾经加目前登录以及退出登录列表
+
+lastlog  //可以查看是否有用户登录系统了（未启用的账户）
+</code></pre>
+
+<h3 id="toc_8">解决用userdel删除不掉用户的问题</h3>
+
+<p>vipw命令<br/>
+详情请看 vipw --help</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[redis 参数配置]]></title>
+    <link href="blog.sajor.top/15749080605397.html"/>
+    <updated>2019-11-28T10:27:40+08:00</updated>
+    <id>blog.sajor.top/15749080605397.html</id>
+    <content type="html"><![CDATA[
+<ul>
+<li>安装目录创建</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>目录名</th>
+<th>用途</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>/redis/bin</td>
+<td>存放redis软件本体</td>
+</tr>
+<tr>
+<td>/redis/conf</td>
+<td>存放redis实例配置文件</td>
+</tr>
+<tr>
+<td>/redis/logs</td>
+<td>存放redis标准输出日志</td>
+</tr>
+<tr>
+<td>/redis/backup</td>
+<td>存放备节点配置文件，其他备份文件</td>
+</tr>
+<tr>
+<td>/redis/var</td>
+<td>存放redis进程文件</td>
+</tr>
+<tr>
+<td>/redis/nodes</td>
+<td>存放redis集群模式nodes配置文件</td>
+</tr>
+<tr>
+<td>/redisdump</td>
+<td>存放redis持久化数据，独立的文件系统</td>
+</tr>
+<tr>
+<td>/redis/tmp</td>
+<td>存放哨兵工作目录，redis集群最初配置状态</td>
+</tr>
+</tbody>
+</table>
+
+<p>执行转换文件权限命令：</p>
+
+<pre><code class="language-text">chown -R redis:redisgrp
+chomd -R 755
+</code></pre>
+
+<p>上述文件系统目录以及子目录所有属组为redis:redisgrp, 所有权限为755</p>
+
+<p>注意： 如果开启redis持久化，需要单独创建另一文件系统/redisdump,将Redis的持久化数据放到该文件系统下。</p>
+
+<ul>
+<li>将Redis集群各成员的主机名/ip 映射信息加入到/etc/hosts当中</li>
+</ul>
+
+<h4 id="toc_0">集群配置（redis.conf重点参数配置）</h4>
+
+<p>针对每个Redis 服务器的不同端口均需要单独存放配置文件（redis.conf）， 配置文件位置为/redis/conf/redis_[redis_port].conf，其中Redis端口建议使用7003以上端口，如部分系统使用软件较多存在端口冲突， 也可根据自身情况进行更改，但不建议使用7000以下端口。每个端口的配置文件均需满足如下配置要求：</p>
+
+<pre><code class="language-text">daemonize yes     # daemonize no 配置redis以守护进程方式运行。
+bind 本机ip
+port 7003
+pidfile /redis/var/redis_[redis_port].pid   # 修改pid文件位置及名称
+logfile /redis/logs/redis_[redis_port].log  # 设置redis日志
+loglevel notice                             # 设置redis的日志级别
+stop-writes-on-bgsave-error no              # 设置节点bgsave操作时
+
+
+</code></pre>
+
+<ol>
+<li>修改daemonize no 为 daemonize yes， 即配置redis以守护进程方式运行。</li>
+<li>修改bind地址为本机IP地址</li>
+<li>修改端口为指定端口，根据所进目录如port 7003</li>
+<li>修改pid文件位置及名称pidfile /redis/var/redis_[redis_port].pid</li>
+<li>设置redis日志，logfile /redis/logs/redis_[redis_port].log</li>
+<li>设置redis的日志级别， loglevel notice</li>
+<li>持久化功能：注意：持久化分为RDB和AOF两种模式，由于开启持久化会产生比较大的文件，例如：dump.rdb或appednonly.aof，造成IO读写性能下降，但同时，开启持久化是为了保障Redis数据的完备性，可以在宕机后及时回复所需数据，是Redis非常重要的备份恢复机制。因此持久化部分需要与项目协商讨论是否开启。</li>
+<li>RDB持久化功能，如果Redis作为缓存服务器，建议关闭，尽量选择：
+<code>
+# save 900 1<br/>
+# save 300 10<br/>
+# save 60 10000
+</code>
+设置RDB的储存文件名为：<br/>
+dbfilename &quot;dump_[redis_port].rdb&quot;<br/>
+设置RDB储存路径为：<br/>
+dir /redisdump</li>
+<li>AOF持久化功能，默认建议关闭改功能，如需开启，请参考如下内容：<br/>
+开启AOF选项：<br/>
+appendonly yes<br/>
+appendfilename &quot;/redis/dump/appendonly_[redis_port].aof&quot;</li>
+<li>设置节点bgsave操作时，可以写操作stop-writes-on-bgsave-error no</li>
+<li>设置重命名机制，禁止Redis系统上线后，客户端以及redis-cli端使用config、flushdb、flushall命令操作redis<br/>
+rename-command CONFIG ADMCONFIG<br/>
+rename-command FLUSHDB ADMFLUSHDB<br/>
+rename-command FLUSHALL ADMFLUSHALL<br/>
+rename-command KEYS ADMKEYS<br/>
+注明：对于更换后的命令，例如ADMCONFIG等，可以由系统管理员自行指定更复杂命令。</li>
+<li>根据系统内存情况，设置支持的最大内存数（最大内存数必须设置，依实际情况设置，该主机上的Redis最大内存总和不要超过物理内存的50%（如果该主机只独立部署Redis软件，该主机上的Redis最大内存总和不要超过物理内存的75%，建议maxmemory最大值不超过10G） maxmemory 10gb</li>
+<li>设置达到最大内存后的内存清理策略（依实际情况设置）<br/>
+如果数据可以淘汰，建议设置：maxmemory-policy allkeys-lru<br/>
+如果数据不可淘汰，建议设置：maxmemory-policy noeviction</li>
+<li><p>开启集群模式 cluster-enabled yes<br/>
+如果开启集群模式建议设置：</p>
+<ul>
+<li>设置集群节点配置文件（启动自动生成） cluster-config-file /redis/nodes/nodes_[redis_port].conf</li>
+<li>设置集群节点宕机时间（节点之间互相通信时，某主节点多少毫秒失去联系既被认为是该节点宕机） cluster-node-timeout 15000</li>
+<li>设置cluster-migration-barrier X(X=每个主机节点上设计跟随的从节点数量)</li>
+<li>设置cluster-require-full-coverage no(即部分节点宕机，其节点仍对外提供服务，默认不提供服务)</li>
+</ul></li>
+<li><p>为Redis集群设置访问密码（requirepass和masterauth都需要设置，否则发送主从切换时，就会遇到授权问题。（注意各个节点的密码都必须一致）<br/>
+密码设置规范： 要求密码数超过10位；大小写、字母、数字、特殊字符（单双引号不要使用）相结合；不允许使用redis、root等敏感字符</p>
+<pre><code class="language-text"># requirepass foobared 
+修改为<br/>
+requirepass ****<br/>
+masterauth ****
+</code></pre>
+<p>注意： 使用redis-trib.rb工具构建集群，集群构建前不要设置密码，构建后通过config set + config rewrite 命令逐个机器设置密码，所以此步跳过。</p></li>
+<li><p>修改复制客户端缓存区永不溢出</p>
+<pre><code class="language-text">client-output-buffer-limit normal 0 0 0 
+client-output-buffer-limit slave 0 0 0 
+</code></pre></li>
+<li><p>修改复制去backlog buffer大小： repl-backlog-size 30mb</p></li>
+<li><p>修改配置文件属性，每台服务器的每个端口都需执行 chmod or-r /redis/conf/redis_[redis_port].conf</p></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[redis部署规范]]></title>
+    <link href="blog.sajor.top/15748392035708.html"/>
+    <updated>2019-11-27T15:20:03+08:00</updated>
+    <id>blog.sajor.top/15748392035708.html</id>
+    <content type="html"><![CDATA[
+<h2 id="toc_0">简介</h2>
+
+<h3 id="toc_1">背景和目的</h3>
+
+<p>为规范生产环境部署和资源规划，更好实施资源池管理策略。用于指导Redis产品的安装配置，Redis哨兵和集群模式创建</p>
+
+<h3 id="toc_2">使用范围</h3>
+
+<ul>
+<li>适用对象： 系统规划设计人员、系统部署实施人员、系统维护人员、IT管理人员。</li>
+<li>适用范围：</li>
+<li>使用场景： 传统架构及PaaS平台均需遵守该规范</li>
+<li>试用版本： 目前我行生产环境使用的所有Redis版本</li>
+</ul>
+
+<h3 id="toc_3">术语定义</h3>
+
+<table>
+<thead>
+<tr>
+<th>简称\术语</th>
+<th>说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>分布式缓存</td>
+<td>为了提升指令和数据存取速度，通过分布式技术实现的缓存系统。</td>
+</tr>
+<tr>
+<td>Redis</td>
+<td>开源分布式缓存产品。网址：redis.io 使用C语言编写，支持网络、可基于内存有可以支持持久化的key-value数据缓存实现，并提供多种语言的API。</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="toc_4">本规范主要内容说明</h2>
+
+<p>本文仅适用于Linux环境下的Redis产品部署</p>
+
+<h2 id="toc_5">规范详细内容</h2>
+
+<h3 id="toc_6">系统规划</h3>
+
+<h4 id="toc_7">Redis版本选择</h4>
+
+<p>没有特殊要求下，建议选择Redis4.0.10及之后版本</p>
+
+<h4 id="toc_8">Redis架构选择</h4>
+
+<p>Redis常用部署模式包括：</p>
+
+<p>一. 集群模式：</p>
+
+<p>集群模式下， 每个Redis组内包含至少一个Master主节点和至少一个它的Slave从节点。当发现某个Master节点不可用后，该Redis集群会发起投票机制重新选择一个它的Slave从节点作为主节点。</p>
+
+<p><strong>使用要求</strong><br/>
+使用单一操作系统物理内存80%不满足redis所承载应用需求，并且业务估算Redis使用内存高于10G，建议使用集群模式。</p>
+
+<p><strong>生产环境集群架构部署要求</strong><br/>
+对于A/A+类系统，至少使用“五个主节点十个从节点”（主节点分别部署到不同物理机上）的架构。根据业务要求，可以增加主节点数量，但主节点的总数量必须为奇数。对于高可用性要求较高的重点系统，可以加入备节点增加系统健壮性。</p>
+
+<p>对于其他系统， 至少使用“三个主节点三个从节点”（主节点分别部署到不同物理机、虚拟机上）的架构。根据业务要求，可以增加主从节点数量，但主从节点的总数量必须为奇数。</p>
+
+<p><strong>测试环境集群部署模式</strong><br/>
+对于业务压力性能测试，需要与生产环境架构部署保持一致。<br/>
+对于业务功能性测试，可以在满足业务功能性测试的条件下进行减配。</p>
+
+<p>二. 哨兵模式</p>
+
+<p>主从模式的升级版，通过监听sentinel端口状态，其中包含若干个Sentinel和Redis数据节点，每个Sentinel会对Redis数据节点和其余Sentinel进行监控，当发现Redis主节点不可达时，会对节点做下线表示，自动故障转移到从节点。</p>
+
+<p><strong>使用要求</strong><br/>
+单一操作系统物理内存80%可满足redis所承载应用需求，并且业务估算Redis使用内存低于10G，建议使用哨兵模式。</p>
+
+<p><strong>生产环境集群架构部署要求</strong><br/>
+对于A/A+类系统，至少使用三个哨兵节点（分别部署在不同机器上），且哨兵节点总数量必须为奇数；至少使用两个从节点（分别部署在不同机器上）</p>
+
+<p><strong>测试环境集群部署模式</strong><br/>
+对于业务压力性能测试，需要与生产环境架构部署保持一致。<br/>
+对于业务性功能测试，可以在满足业务功能测试的条件下进行减配。</p>
+
+<p>三. 单节点模式： 无高可用配置，原则上不允许生产环境使用。</p>
+
+<h4 id="toc_9">Redis文件系统</h4>
+
+<p>Redis文件系统： 为Redis创建单独的文件系统/redis。 大小建议至少为30GB，可扩容至100GB。</p>
+
+<p>Redis持久化文件系统： Redis 需要生产 RDB 或开启 AOF 持久化机制，为Redis创建单独的文件系统/redisdump，用于存放Redis 产生的持久化文件。大小建议至少为该分区Redis主从节点数*15GB。</p>
+
+<h3 id="toc_10">操作系统参数配置</h3>
+
+<ul>
+<li>关闭THP<br/>
+&gt; echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled<br/>
+&gt; 注意： 为了使机器重启后THP配置依然生效，可以在/etc/rc.local中追加上述命令</li>
+<li>内存分配策略<br/>
+&gt; vi /etc/sysctl.conf<br/>
+&gt; 添加或更改vm.overcommit_memory = 1<br/>
+&gt; sysctl -p</li>
+<li>优化redis监听端口的队列长度<br/>
+&gt; vi /etc/sysctl.conf<br/>
+&gt; 添加或更改net.core.somaxconn = 30000<br/>
+&gt; sysctl -p</li>
+<li>针对can not open too many file问题的优化<br/>
+&gt; 修改/etc/security/limits.conf<br/>
+&gt; * soft nofile 65535<br/>
+&gt; * hard nofile 65535</li>
+</ul>
+
+<h3 id="toc_11">Redis安装规范</h3>
+
+<h4 id="toc_12">Redis安装准备</h4>
+
+<ul>
+<li>Redis用户\组</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>标识</th>
+<th>主组</th>
+<th>主目录</th>
+<th>描述</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>redisgrp</td>
+<td>组</td>
+<td></td>
+<td></td>
+<td></td>
+<td>redis用户组</td>
+</tr>
+<tr>
+<td>redis</td>
+<td>用户</td>
+<td></td>
+<td>redis</td>
+<td>/redis</td>
+<td>redis用户</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>Redis软件包： 需准备Redis 软件安装包及Redis依赖软件Ruby、gem-redis安装包。</li>
+<li>安装目录创建</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>目录名</th>
+<th>用途</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>/redis/bin</td>
+<td>存放redis软件本体</td>
+</tr>
+<tr>
+<td>/redis/conf</td>
+<td>存放redis实例配置文件</td>
+</tr>
+<tr>
+<td>/redis/logs</td>
+<td>存放redis标准输出日志</td>
+</tr>
+<tr>
+<td>/redis/backup</td>
+<td>存放备节点配置文件，其他备份文件</td>
+</tr>
+<tr>
+<td>/redis/var</td>
+<td>存放redis进程文件</td>
+</tr>
+<tr>
+<td>/redis/nodes</td>
+<td>存放redis集群模式nodes配置文件</td>
+</tr>
+<tr>
+<td>/redisdump</td>
+<td>存放redis持久化数据，独立的文件系统</td>
+</tr>
+<tr>
+<td>/redis/tmp</td>
+<td>存放哨兵工作目录，redis集群最初配置状态</td>
+</tr>
+</tbody>
+</table>
+
+<p>执行转换文件权限命令：</p>
+
+<pre><code class="language-text">chown -R redis:redisgrp
+chomd -R 755
+</code></pre>
+
+<p>上述文件系统目录以及子目录所有属组为redis:redisgrp, 所有权限为755</p>
+
+<p>注意： 如果开启redis持久化，需要单独创建另一文件系统/redisdump,将Redis的持久化数据放到该文件系统下。</p>
+
+<ul>
+<li>将Redis集群各成员的主机名/ip 映射信息加入到/etc/hosts当中</li>
+</ul>
+
+<h4 id="toc_13">安装Redis依赖软件包</h4>
+
+<p>部署Redis集群时需要用到一个管理Redis集群的工具redis-trib.rb，它是基于Redis提供的集群命令封装成简单、便捷、实用的操作工具，redis-trib.rb是用ruby完成的，所以redis集群需要先安装ruby环境。</p>
+
+<p>使用redis用户安装（也可通过root用户安装后整体赋权给redisadm用户）分别安装Ruby、gem-redis两个组件，推荐使用官方rpm包安装。</p>
+
+<p>注意： 在安装rubygem时，需要zlib-devel以及openssl-devel组件，请提前检查操作系统是否有相关组件。</p>
+
+<h4 id="toc_14">安装redis</h4>
+
+<p>安装要求： 通过root安装后整体赋权给redis用户，推荐使用源码进行编译安装。</p>
+
+<h3 id="toc_15">集群模式配置规范</h3>
+
+<h4 id="toc_16">集群设计要求</h4>
+
+<ul>
+<li>提前设计好集群架构， 分配好主节点和从节点架构关系。</li>
+<li>集群主节点不能跟其从节点在同一台机器上。</li>
+<li>开通主从节点的网络通信，确保主从节点的redis_port以及10000+redis_port 可以互相telnet通。</li>
+<li>端口设置：所有主节点，无论是否在同一机器上，端口不能重复，需要从7003开始，依次递增，其从节点的端口与主节点保持一致。</li>
+<li>配置结束后，将cluster nodes 的节点出事状态，记录到backup目录当中
+<code>redis-cli -h redis_ip -p redis_port cluster nodes &gt; /redis/bacnup/nodestats.txt</code></li>
+<li>配置结束后，执行命令，将Redis出事状态进行备份：<code>tar cf /redis/redis_all.tar bin nodes conf logs tmp var backup</code></li>
+</ul>
+
+<h4 id="toc_17">集群配置（redis.conf重点参数配置）</h4>
+
+<p>针对每个Redis 服务器的不同端口均需要单独存放配置文件（redis.conf）， 配置文件位置为/redis/conf/redis_[redis_port].conf，其中Redis端口建议使用7003以上端口，如部分系统使用软件较多存在端口冲突， 也可根据自身情况进行更改，但不建议使用7000以下端口。每个端口的配置文件均需满足如下配置要求：</p>
+
+<ol>
+<li>修改daemonize no 为 daemonize yes， 即配置redis以守护进程方式运行。</li>
+<li>修改bind地址为本机IP地址</li>
+<li>修改端口为指定端口，根据所进目录如port 7003</li>
+<li>修改pid文件位置及名称pidfile /redis/var/redis_[redis_port].pid</li>
+<li>设置redis日志，logfile /redis/logs/redis_[redis_port].log</li>
+<li>设置redis的日志级别， loglevel notice</li>
+<li>持久化功能：注意：持久化分为RDB和AOF两种模式，由于开启持久化会产生比较大的文件，例如：dump.rdb或appednonly.aof，造成IO读写性能下降，但同时，开启持久化是为了保障Redis数据的完备性，可以在宕机后及时回复所需数据，是Redis非常重要的备份恢复机制。因此持久化部分需要与项目协商讨论是否开启。</li>
+<li>RDB持久化功能，如果Redis作为缓存服务器，建议关闭，尽量选择：
+<code>
+# save 900 1<br/>
+# save 300 10<br/>
+# save 60 10000
+</code>
+设置RDB的储存文件名为：<br/>
+dbfilename &quot;dump_[redis_port].rdb&quot;<br/>
+设置RDB储存路径为：<br/>
+dir /redisdump</li>
+<li>AOF持久化功能，默认建议关闭改功能，如需开启，请参考如下内容：<br/>
+开启AOF选项：<br/>
+appendonly yes<br/>
+appendfilename &quot;/redis/dump/appendonly_[redis_port].aof&quot;</li>
+<li>设置节点bgsave操作时，可以写操作stop-writes-on-bgsave-error no</li>
+<li>设置重命名机制，禁止Redis系统上线后，客户端以及redis-cli端使用config、flushdb、flushall命令操作redis<br/>
+rename-command CONFIG ADMCONFIG<br/>
+rename-command FLUSHDB ADMFLUSHDB<br/>
+rename-command FLUSHALL ADMFLUSHALL<br/>
+rename-command KEYS ADMKEYS<br/>
+注明：对于更换后的命令，例如ADMCONFIG等，可以由系统管理员自行指定更复杂命令。</li>
+<li>根据系统内存情况，设置支持的最大内存数（最大内存数必须设置，依实际情况设置，该主机上的Redis最大内存总和不要超过物理内存的50%（如果该主机只独立部署Redis软件，该主机上的Redis最大内存总和不要超过物理内存的75%，建议maxmemory最大值不超过10G） maxmemory 10gb</li>
+<li>设置达到最大内存后的内存清理策略（依实际情况设置）<br/>
+如果数据可以淘汰，建议设置：maxmemory-policy allkeys-lru<br/>
+如果数据不可淘汰，建议设置：maxmemory-policy noeviction</li>
+<li><p>开启集群模式 cluster-enabled yes<br/>
+如果开启集群模式建议设置：</p>
+<ul>
+<li>设置集群节点配置文件（启动自动生成） cluster-config-file /redis/nodes/nodes_[redis_port].conf</li>
+<li>设置集群节点宕机时间（节点之间互相通信时，某主节点多少毫秒失去联系既被认为是该节点宕机） cluster-node-timeout 15000</li>
+<li>设置cluster-migration-barrier X(X=每个主机节点上设计跟随的从节点数量)</li>
+<li>设置cluster-require-full-coverage no(即部分节点宕机，其节点仍对外提供服务，默认不提供服务)</li>
+</ul></li>
+<li><p>为Redis集群设置访问密码（requirepass和masterauth都需要设置，否则发送主从切换时，就会遇到授权问题。（注意各个节点的密码都必须一致）<br/>
+密码设置规范： 要求密码数超过10位；大小写、字母、数字、特殊字符（单双引号不要使用）相结合；不允许使用redis、root等敏感字符</p>
+<pre><code class="language-text"># requirepass foobared 
+修改为<br/>
+requirepass ****<br/>
+masterauth ****
+</code></pre>
+<p>注意： 使用redis-trib.rb工具构建集群，集群构建前不要设置密码，构建后通过config set + config rewrite 命令逐个机器设置密码，所以此步跳过。</p></li>
+<li><p>修改复制客户端缓存区永不溢出</p>
+<pre><code class="language-text">client-output-buffer-limit normal 0 0 0 
+client-output-buffer-limit slave 0 0 0 
+</code></pre></li>
+<li><p>修改复制去backlog buffer大小： repl-backlog-size 30mb</p></li>
+<li><p>修改配置文件属性，每台服务器的每个端口都需执行 chmod or-r /redis/conf/redis_[redis_port].conf</p></li>
+</ol>
+
+<h3 id="toc_18">集群搭建步骤</h3>
+
+<h4 id="toc_19">使用redis-trib.rb脚本搭建集群</h4>
+
+<ol>
+<li>按照《运维规范》启动所有Redis节点</li>
+<li>只需在其中一台服务器上执行创建集群命令（命令中具体ip以实际情况为准）： 
+<code>
+redis-trib.rb create --replicas 1 192.168.1.1:7001 1 192.168.1.1:7002 1 192.168.1.2:7001 1 192.168.1.2:7002 1 192.168.1.3:7001 1 192.168.1.3:7002 <br/>
+解释说明： redis-trib.rb create 是创建命令：
+</code> </li>
+<li></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Linux安全加固脚本]]></title>
+    <link href="blog.sajor.top/15740860526446.html"/>
+    <updated>2019-11-18T22:07:32+08:00</updated>
+    <id>blog.sajor.top/15740860526446.html</id>
+    <content type="html"><![CDATA[
+<h3 id="toc_0">设定密码策略</h3>
+
+<p>修改  /etc/login.defs 配置文件</p>
+
+<p>PASS_MAX_DAYS      90               密码最长有效期<br/>
+PASS_MIN_DAYS       10               密码修改之间最小的天数<br/>
+PASS_MIN_LEN          8                密码长度<br/>
+PASS_WARN_AGE     7                 口令失效前多少天开始通知用户修改密码</p>
+
+<p>脚本</p>
+
+<pre><code class="language-text">#! /bin/bash
+# Author: Sajor
+# Date: 2018-10-12
+# Function: 实现对用户密码策略的设定，如密码最长有效期等
+read -p  &quot;设置密码最多可多少天不修改：&quot; A
+read -p  &quot;设置密码修改之间最小的天数：&quot; B
+read -p  &quot;设置密码最短的长度：&quot; C
+read -p  &quot;设置密码失效前多少天通知用户：&quot; D
+sed -i &#39;/^PASS_MAX_DAYS/c\PASS_MAX_DAYS   &#39;$A&#39;&#39; /etc/login.defs
+sed -i &#39;/^PASS_MIN_DAYS/c\PASS_MIN_DAYS   &#39;$B&#39;&#39; /etc/login.defs
+sed -i &#39;/^PASS_MIN_LEN/c\PASS_MIN_LEN     &#39;$C&#39;&#39; /etc/login.defs
+sed -i &#39;/^PASS_WARN_AGE/c\PASS_WARN_AGE   &#39;$D&#39;&#39; /etc/login.defs
+echo &quot;已设置好密码策略......&quot;
+</code></pre>
+
+<h3 id="toc_1">对用户密码强度的设定</h3>
+
+<p>打开 /etc/pam.d/system-auth 文件 ，修改如下。我们设置新密码不能和旧密码相同，同时新密码至少8位，还要同时包含大字母、小写字母和数字</p>
+
+<pre><code class="language-text">password    requisite     pam_pwquality.so try_first_pass local_users_only retry=3 authtok_type=  difok=1 minlen=8 ucredit=-1 lcredit=-1 dcredit=-1
+</code></pre>
+
+<ul>
+<li>difok= ：此选项用来定义新密码中必须要有几个字符和旧密码不同</li>
+<li>minlen=：此选项用来设置新密码的最小长度</li>
+<li>ucredit= ：此选项用来设定新密码中可以包含的大写字母的最大数目。-1 至少一个</li>
+<li>lcredit=：此选项用来设定新密码中可以包含的小写字母的最大数目</li>
+<li>dcredit=：此选项用来设定新密码中可以包含的数字的最大数目 </li>
+</ul>
+
+<p><strong>注</strong>：这个密码强度的设定只对普通用户有限制作用，root用户无论修改自己的密码还是修改普通用户的时候，不符合强度设置依然可以设置成功</p>
+
+<p>脚本</p>
+
+<pre><code class="language-text">#! /bin/bash
+# Author: Sajor
+# Date: 2018-10-12
+# Function: 对用户密码强度的设定，新密码不能和旧密码相同，同时新密码至少8位，还要同时包含大字母、小写字母和数字
+sed -i &#39;/pam_pwquality.so/c\password    requisite     pam_pwquality.so try_first_pass local_users_only retry=3 authtok_type=  difok=1 minlen=8 ucredit=-1 lcredit=-1 dcredit=-1&#39; /etc/pam.d/system-auth
+</code></pre>
+
+<h3 id="toc_2">对用户的登录次数进行限制</h3>
+
+<p>有一些攻击性的软件是专门采用暴力破解密码的形式反复进行登录尝试，对于这种情况，我们可以调整用户登录次数限制，使其密码输入3次后自动锁定，并且设置锁定时间，在锁定时间内即使密码输入正确也无法登录</p>
+
+<p>打开 /etc/pam.d/sshd  文件，在 #%PAM-1.0 的下面，加入下面的内容，表示当密码输入错误达到3次，就锁定用户150秒，如果root用户输入密码错误达到3次，锁定300秒。锁定的意思是即使密码正确了也登录不了</p>
+
+<pre><code class="language-text">pam_tally2   查看被锁定的用户
+pam_tally2  --reset  -u  username      将被锁定的用户解锁
+</code></pre>
+
+<p>脚本</p>
+
+<pre><code class="language-text">#! /bin/bash
+# Author: Sajor
+# Date: 2018-10-12
+# Function: 对用户登录输入错误密码次数做限制
+n=`cat /etc/pam.d/sshd | grep &quot;auth required pam_tally2.so &quot;|wc -l`
+if [ $n -eq 0 ];then
+sed -i &#39;/%PAM-1.0/a\auth required pam_tally2.so deny=3 unlock_time=150 even_deny_root root_unlock_time300&#39; /etc/pam.d/sshd
+fi
+</code></pre>
+
+<h3 id="toc_3">创建新用户</h3>
+
+<p>useradd -m user_name<br/>
+passwd user_name</p>
+
+<p>添加sudo 权限<br/>
+vim /etc/sudoers<br/>
+<img src="media/15740860526446/15740869479305.jpg" alt=""/><br/>
+不过如图中所示去添加，在user_name执行sudo时，会要求输入密码，<br/>
+不想输入密码可以将最后的那个 ALL 改为 NOPASSWD:ALL <br/>
+　 </p>
+
+<h3 id="toc_4">禁止ROOT用户远程登录</h3>
+
+<p>打开  /etc/ssh/sshd_config<br/><br/>
+<img src="media/15740860526446/15740861517503.jpg" alt="" style="width:185px;"/></p>
+
+<p>脚本设置禁止ROOT用户远程登录</p>
+
+<pre><code class="language-text">sed -i &#39;/PermitRootLogin/c\PermitRootLogin no&#39;  /etc/ssh/sshd_config
+</code></pre>
+
+<h3 id="toc_5">设置历史命令保存条数和账户超时时间</h3>
+
+<p>设置账户保存历史命令条数，超时时间  。打开  /etc/profile ,修改如下<br/>
+<img src="media/15740860526446/15740865014227.jpg" alt="" style="width:128px;"/></p>
+
+<p>使用脚本修改配置文件</p>
+
+<pre><code class="language-text">read -p &quot;设置历史命令保存条数：&quot; E
+read -p &quot;设置账户自动注销时间：&quot; F
+sed -i &#39;/^HISTSIZE/c\HISTSIZE=&#39;$E&#39;&#39; /etc/profile
+sed -i &#39;/^HISTSIZE/a\TMOUT=&#39;$F&#39;&#39; /etc/profile
+</code></pre>
+
+<h3 id="toc_6">设置只有指定用户组才能使用su命令切换到root用户</h3>
+
+<p>在linux中，有一个默认的管理组 wheel。在实际生产环境中，即使我们有系统管理员root的权限，也不推荐用root用户登录。一般情况下用普通用户登录就可以了，在需要root权限执行一些操作时，再su登录成为root用户。但是，任何人只要知道了root的密码，就都可以通过su命令来登录为root用户，这无疑为系统带来了安全隐患。所以，将普通用户加入到wheel组，被加入的这个普通用户就成了管理员组内的用户。然后设置只有wheel组内的成员可以使用su命令切换到root用户。</p>
+
+<p>比如，我们将普通用户Sajor加入wheel组。   <br/>
+usermod  -G  wheel  Sajor </p>
+
+<p>然后，我们修改配置文件 /etc/pam.d/su  ，将这行的注释给去掉<br/>
+<img src="media/15740860526446/15740870943234.jpg" alt="" style="width:691px;"/></p>
+
+<p>然后去 /etc/login.defs 末尾加入   SU_WHEEL_ONLY yes  即可。</p>
+
+<p><img src="media/15740860526446/15740871391834.jpg" alt="" style="width:207px;"/></p>
+
+<p>使用脚本设置配置文件</p>
+
+<pre><code class="language-text">sed -i &#39;/pam_wheel.so use_uid/c\auth            required        pam_wheel.so use_uid &#39; /etc/pam.d/su
+n=`cat /etc/login.defs | grep SU_WHEEL_ONLY | wc -l`
+if [ $n -eq 0 ];then
+echo SU_WHEEL_ONLY yes &gt;&gt; /etc/login.defs
+fi 
+</code></pre>
+
+<h3 id="toc_7">对Linux账户进行管理</h3>
+
+<p>使用命令 userdel  -r 用户名  删除不必要的账号<br/>
+使用命令 passwd -l  用户名  锁定不必要的账号<br/>
+使用命令 awk -F: &#39;(\(7==&quot;/bin/bash&quot;){print \)1}&#39; /etc/passwd   查看具有登录权限的用户<br/>
+使用命令 awk -F: &#39;(\(3==0)&#39; /etc/passwd    查看UID为0的账号，UID为0的用户会自动切换到root用户，所以危害很大<br/>
+使用命令 awk -F: &#39;(\)2==&quot;&quot;)&#39; /etc/shadow   查看空口令账号，如果存在空口令用户的话必须设置密码 <br/>
+使用脚本对账户进行管理</p>
+
+<pre><code class="language-text">#! /bin/bash
+# Author: Sajor
+# Date: 2018-10-11
+# Function: 对系统中的用户做检查，加固系统
+echo &quot;系统中有登录权限的用户有：&quot;
+awk -F: &#39;($7==&quot;/bin/bash&quot;){print $1}&#39; /etc/passwd
+echo &quot;********************************************&quot;
+echo &quot;系统中UID=0的用户有：&quot;
+awk -F: &#39;($3==&quot;0&quot;){print $1}&#39; /etc/passwd
+echo &quot;********************************************&quot;
+N=`awk -F: &#39;($2==&quot;&quot;){print $1}&#39; /etc/shadow|wc -l`
+echo &quot;系统中空密码用户有：$N&quot;
+if [ $N -eq 0 ];then
+ echo &quot;恭喜你，系统中无空密码用户！！&quot;
+ echo &quot;********************************************&quot;
+else
+ i=1
+ while [ $N -gt 0 ]
+ do
+    None=`awk -F: &#39;($2==&quot;&quot;){print $1}&#39; /etc/shadow|awk &#39;NR==&#39;$i&#39;{print}&#39;`
+    echo &quot;------------------------&quot;
+    echo $None
+    echo &quot;必须为空用户设置密码！！&quot;
+    passwd $None
+    let N--
+ done
+ M=`awk -F: &#39;($2==&quot;&quot;){print $1}&#39; /etc/shadow|wc -l`
+ if [ $M -eq 0 ];then
+  echo &quot;恭喜，系统中已经没有空密码用户了！&quot;
+ else
+echo &quot;系统中还存在空密码用户：$M&quot;
+ fi
+fi
+ 
+</code></pre>
+
+<h3 id="toc_8">对重要的文件进行锁定，即使ROOT用户也无法删除</h3>
+
+<p>chattr    改变文件或目录的扩展属性<br/>
+    Usage: chattr [-RVf] [-+=aAcCdDeijsStTu] [-v version] files...<br/>
+lsattr    查看文件目录的扩展属性</p>
+
+<ul>
+<li>a：只能附加数据</li>
+<li>A：不修改访问时间</li>
+<li>c：压缩文件</li>
+<li>C：不执行写入时复制（COW） 。多个调用者获取同一个资源，这时，另一个调用者对这资源进行了修改，不生成一个副本给</li>
+<li>d：不 dump </li>
+<li>D: 同步更新目录</li>
+<li>e：extent格式（一种文件系统格式）</li>
+<li>i：不能修改。不能删除或重命名，不能创建到该文件的链接，也不能向该文件写入数据。只有超级用户或拥有 CAP_LINUX_IMMUTABLE 能力的进程才能设置或清除此属性。</li>
+<li>j：数据日志</li>
+<li>s：安全删除</li>
+<li>S：同步更新</li>
+<li>t：不知道文件尾部合并</li>
+<li>T：目录层次的顶部</li>
+<li>u：文件被删除时，其内容会被保存，后面可以请求恢复</li>
+</ul>
+
+<p>下面的只读属性，可以使用 lsattr列出，但不能被 chattr 修改：</p>
+
+<ul>
+<li>E：压缩错误</li>
+<li>h：巨大的文件</li>
+<li>I：索引目录</li>
+<li>N：内联数据</li>
+<li>X：压缩原始访问</li>
+<li>Z：压缩文件是脏的</li>
+</ul>
+
+<p>并不是所有文件系统都支持所有标志；参考文件系统手册了解如btrfs(5), ext4(5), 和 xfs(5)文件格式的更多详情。</p>
+
+<pre><code class="language-text">chattr  +i  /etc/passwd /etc/shadow                 //增加属性
+chattr  -i  /etc/passwd /etc/shadow                 //移除属性  
+lsattr  /etc/passwd /etc/shadow
+</code></pre>
+
+<p>参考： <a href="https://www.linuxprobe.com/linux-chattr-root.html">chattr命令详解</a></p>
+
+<p>使用脚本对重要文件进行锁定</p>
+
+<pre><code class="language-text">#! /bin/bash
+# Author: Sajor
+# Date：2018-10-10
+# Function: 锁定创建用户和组的文件，使之无法对用户和组进行操作！
+read -p &quot;警告：此脚本运行后将无法添加删除用户和组！！确定输入Y，取消输入N；Y/N：&quot; i
+case $i in
+      [Y,y])
+            chattr +i /etc/passwd
+            chattr +i /etc/shadow
+            chattr +i /etc/group
+            chattr +i /etc/gshadow
+            echo &quot;锁定成功！&quot;
+;;
+      [N,n])
+            chattr -i /etc/passwd
+            chattr -i /etc/shadow
+            chattr -i /etc/group
+            chattr -i /etc/gshadow
+            echo &quot;取消锁定成功！！&quot;
+;;
+       *)
+            echo &quot;请输入Y/y or  N/n&quot;
+esac
+</code></pre>
+
+<h3 id="toc_9">总结</h3>
+
+<p>脚本</p>
+
+<pre><code class="language-text">#! /bin/bash
+# Author:Sajor
+# Date:2018-10-11
+# Function:对账户的密码的一些加固
+read -p  &quot;设置密码最多可多少天不修改：&quot; A
+read -p  &quot;设置密码修改之间最小的天数：&quot; B
+read -p  &quot;设置密码最短的长度：&quot; C
+read -p  &quot;设置密码失效前多少天通知用户：&quot; D
+sed -i &#39;/^PASS_MAX_DAYS/c\PASS_MAX_DAYS   &#39;$A&#39;&#39; /etc/login.defs
+sed -i &#39;/^PASS_MIN_DAYS/c\PASS_MIN_DAYS   &#39;$B&#39;&#39; /etc/login.defs
+sed -i &#39;/^PASS_MIN_LEN/c\PASS_MIN_LEN     &#39;$C&#39;&#39; /etc/login.defs
+sed -i &#39;/^PASS_WARN_AGE/c\PASS_WARN_AGE    &#39;$D&#39;&#39; /etc/login.defs
+ 
+echo &quot;已对密码进行加固，新用户不得和旧密码相同，且新密码必须同时包含数字、小写字母，大写字母！！&quot;
+sed -i &#39;/pam_pwquality.so/c\password    requisite     pam_pwquality.so try_first_pass local_users_only retry=3 authtok_type=  difok=1 minlen=8 ucredit=-1 lcredit=-1 dcredit=-1&#39; /etc/pam.d/system-auth
+ 
+echo &quot;已对密码进行加固，如果输入错误密码超过3次，则锁定账户！！&quot;
+n=`cat /etc/pam.d/sshd | grep &quot;auth required pam_tally2.so &quot;|wc -l`
+if [ $n -eq 0 ];then
+sed -i &#39;/%PAM-1.0/a\auth required pam_tally2.so deny=3 unlock_time=150 even_deny_root root_unlock_time300&#39; /etc/pam.d/sshd
+fi
+ 
+echo  &quot;已设置禁止root用户远程登录！！&quot;
+sed -i &#39;/PermitRootLogin/c\PermitRootLogin no&#39;  /etc/ssh/sshd_config
+ 
+read -p &quot;设置历史命令保存条数：&quot; E
+read -p &quot;设置账户自动注销时间：&quot; F
+sed -i &#39;/^HISTSIZE/c\HISTSIZE=&#39;$E&#39;&#39; /etc/profile
+sed -i &#39;/^HISTSIZE/a\TMOUT=&#39;$F&#39;&#39; /etc/profile
+ 
+echo &quot;已设置只允许wheel组的用户可以使用su命令切换到root用户！&quot;
+sed -i &#39;/pam_wheel.so use_uid/c\auth            required        pam_wheel.so use_uid &#39; /etc/pam.d/su
+n=`cat /etc/login.defs | grep SU_WHEEL_ONLY | wc -l`
+if [ $n -eq 0 ];then
+echo SU_WHEEL_ONLY yes &gt;&gt; /etc/login.defs
+fi
+ 
+echo &quot;即将对系统中的账户进行检查....&quot;
+echo &quot;系统中有登录权限的用户有：&quot;
+awk -F: &#39;($7==&quot;/bin/bash&quot;){print $1}&#39; /etc/passwd
+echo &quot;********************************************&quot;
+echo &quot;系统中UID=0的用户有：&quot;
+awk -F: &#39;($3==&quot;0&quot;){print $1}&#39; /etc/passwd
+echo &quot;********************************************&quot;
+N=`awk -F: &#39;($2==&quot;&quot;){print $1}&#39; /etc/shadow|wc -l`
+echo &quot;系统中空密码用户有：$N&quot;
+if [ $N -eq 0 ];then
+ echo &quot;恭喜你，系统中无空密码用户！！&quot;
+ echo &quot;********************************************&quot;
+else
+ i=1
+ while [ $N -gt 0 ]
+ do
+    None=`awk -F: &#39;($2==&quot;&quot;){print $1}&#39; /etc/shadow|awk &#39;NR==&#39;$i&#39;{print}&#39;`
+    echo &quot;------------------------&quot;
+    echo $None
+    echo &quot;必须为空用户设置密码！！&quot;
+    passwd $None
+    let N--
+ done
+ M=`awk -F: &#39;($2==&quot;&quot;){print $1}&#39; /etc/shadow|wc -l`
+ if [ $M -eq 0 ];then
+  echo &quot;恭喜，系统中已经没有空密码用户了！&quot;
+ else
+echo &quot;系统中还存在空密码用户：$M&quot;
+ fi
+fi
+ 
+echo &quot;即将对系统中重要文件进行锁定，锁定后将无法添加删除用户和组&quot;
+read -p &quot;警告：此脚本运行后将无法添加删除用户和组！！确定输入Y，取消输入N；Y/N：&quot; i
+case $i in
+      [Y,y])
+            chattr +i /etc/passwd
+            chattr +i /etc/shadow
+            chattr +i /etc/group
+            chattr +i /etc/gshadow
+            echo &quot;锁定成功！&quot;
+;;
+      [N,n])
+            chattr -i /etc/passwd
+            chattr -i /etc/shadow
+            chattr -i /etc/group
+            chattr -i /etc/gshadow
+            echo &quot;取消锁定成功！！&quot;
+;;
+       *)
+            echo &quot;请输入Y/y or  N/n&quot;
+esac
+</code></pre>
+
+<h2 id="toc_10">建立日志服务器</h2>
+
+<p><a href="https://blog.csdn.net/qq_36119192/article/details/82906799#%E7%A6%81%E6%AD%A2ROOT%E7%94%A8%E6%88%B7%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95">十分钟加固Linux服务器</a></p>
+
+<p><a href="https://blog.csdn.net/samtaoys/article/details/88817482">加固Linux服务器</a></p>
+
+<p><a href="https://www.cnblogs.com/richardlee97/p/10671322.html">安全加固cr</a></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[命令]]></title>
+    <link href="blog.sajor.top/15730029503820.html"/>
+    <updated>2019-11-06T09:15:50+08:00</updated>
+    <id>blog.sajor.top/15730029503820.html</id>
+    <content type="html"><![CDATA[
+<h3 id="toc_0">.java结尾的文件 行数</h3>
+
+<p>wc -l <code>find ./$1 -name &#39;*.java&#39;</code></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[redis命令]]></title>
+    <link href="blog.sajor.top/15700237274379.html"/>
+    <updated>2019-10-02T21:42:07+08:00</updated>
+    <id>blog.sajor.top/15700237274379.html</id>
+    <content type="html"><![CDATA[
+<h3 id="toc_0">append 追加</h3>
+
+<p><code>append key value</code></p>
+
+<p>返回值<br/>
+Integer reply：返回append后字符串值（value）的长度。</p>
+
+<p>例子<br/>
+<code><br/>
+redis&gt; EXISTS mykey<br/>
+(integer) 0<br/>
+redis&gt; APPEND mykey &quot;Hello&quot;<br/>
+(integer) 5<br/>
+redis&gt; APPEND mykey &quot; World&quot;<br/>
+(integer) 11<br/>
+redis&gt; GET mykey<br/>
+&quot;Hello World&quot;<br/>
+redis&gt;<br/>
+</code></p>
 
 ]]></content>
   </entry>
@@ -157,3218 +1691,6 @@ public class ${NAME} {
 <p>完</p>
 
 <p>参考：<a href="https://blog.csdn.net/z15732621582/article/details/79439359">idea热部署且开启自动编译</a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Maven]]></title>
-    <link href="blog.sajor.top/15659217621647.html"/>
-    <updated>2019-08-16T10:16:02+08:00</updated>
-    <id>blog.sajor.top/15659217621647.html</id>
-    <content type="html"><![CDATA[
-<p>一个项目管理工具 </p>
-
-<ul>
-<li>统一开发规范与工具</li>
-<li>统一管理jar包</li>
-</ul>
-
-<h2 id="toc_0">pom.xml (Project Object Model)</h2>
-
-<p>项目对象模型：用于描述整个Maven项目，也称为Maven描述文件。</p>
-
-<p>pom.xml 最基础是这样的</p>
-
-<pre><code class="language-text">&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
-    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-    xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
-     
-  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
-  &lt;groupId&gt;com.xrq.withmaven&lt;/groupId&gt;
-  &lt;artifactId&gt;withmaven&lt;/artifactId&gt;
-  &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
-  &lt;build/&gt;
-&lt;/project&gt;
-</code></pre>
-
-<p>modelVersion </p>
-
-<p>指定Maven模型版本号， 对于Maven2和Maven3来说，只能是4.0.0</p>
-
-<p>groupId</p>
-
-<p>顾名思义，这个应该是公司名或是组织名。一般来说groupId是由三个部分组成，每个部分之间以&quot;.&quot;分隔，第一部分是项目用途，比如用于商业的就是&quot;com&quot;，用于非营利性组织的就是&quot;org&quot;；第二部分是公司名，比如&quot;tengxun&quot;、&quot;baidu&quot;、&quot;alibaba&quot;；第三部分是你的项目名</p>
-
-<p>artifactId</p>
-
-<p>可以认为是Maven构建的项目名，比如你的项目中有子项目，就可以使用&quot;项目名-子项目名&quot;的命名方式</p>
-
-<p>version</p>
-
-<p>本号，SNAPSHOT意为快照，说明该项目还在开发中，是不稳定的版本。在Maven中很重要的一点是，groupId、artifactId、version三个元素生成了一个Maven项目的基本坐标，这非常重要，我在使用和研究Maven的时候多次感受到了这点。</p>
-
-<hr/>
-
-<p>还有另外一些元素：</p>
-
-<p>packing</p>
-
-<p>项目打包的类型，可以使jar, war, rar, ear, pom 默认是jar</p>
-
-<p>dependencies 和 dependency</p>
-
-<p>前者包含后者。前面说了，Maven的一个重要作用就是统一管理jar包，为了一个项目可以build或运行，项目中不可避免的，会依赖很多其他的jar包，在Maven中，这些依赖就被称为dependency。</p>
-
-<p>说到这里，就有一个本地仓库和远程仓库的概念了。官方下载的本地仓库的配置在&quot;%MAVEN_HOME%\conf\settings.xml&quot;里面，找一下&quot;localRepository&quot;就可以了；MyEclipse默认的本地仓库的地址在&quot;{user.home}/.m2/repository&quot;路径下，同样找一下&quot;localRepository&quot;就可以找到MyEclipse默认的本地仓库了。</p>
-
-<p>本地仓库和远程仓库是这样的，Maven工程首先会从本地仓库中获取jar包，当无法获取指定jar包时，本地仓库会从远程仓库（中央仓库）中下载jar包，并放入本地仓库以备将来使用。</p>
-
-<p>举例：比如项目使用MyBatis可以这么配置：</p>
-
-<pre><code class="language-text">&lt;dependencies&gt;
-    &lt;dependency&gt;
-        &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
-        &lt;artifactId&gt;mybatis&lt;/artifactId&gt;
-        &lt;version&gt;3.2.5&lt;/version&gt;
-    &lt;/dependency&gt;
-&lt;/dependencies&gt;
-</code></pre>
-
-<p>之前有说过groupId、artifactId、version唯一标识一个Maven项目，有了这三个元素，我们就可以去远程仓库下载MyBatis3.2.5.jar到本地仓库了。回想我们之前的做法，如果要MyBatis的jar包，发现没有，然后去网上下载一个，需要另外的jar包，然后去网上下载一个，但是有了Maven，就方便多了，只需要配置jar包对应的dependency依赖，Maven会自动帮助我们去远程仓库中下载jar包到本地仓库中。</p>
-
-<p>properties</p>
-
-<p>properties是用来定义一些配置属性的，例如project.build.sourceEncoding（项目构建源码编码方式），可以设置为UTF-8，防止中文乱码，也可定义相关构建版本号，便于日后统一升级。</p>
-
-<p>build </p>
-
-<p>build表示与构建相关的配置，比如build下有finalName，表示的就是最终构建之后的名称。</p>
-
-<p>接着解释一下Maven的目录结构：<br/>
-•   main目录下是项目的主要代码，test目录下存放测试相关的代码<br/>
-•   编译输出后的代码会放在target目录下<br/>
-•   src/main/java下存放Java代码，src/main/resources下存放配置文件<br/>
-•   这里没有webapp，Web项目会有webapp目录，webapp下存放Web应用相关代码<br/>
-•   pom.xml是Maven项目的配置文件</p>
-
-<p>maven <a href="http://maven.apache.org/download.cgi">官网</a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[密码学原理]]></title>
-    <link href="blog.sajor.top/15651008291490.html"/>
-    <updated>2019-08-06T22:13:49+08:00</updated>
-    <id>blog.sajor.top/15651008291490.html</id>
-    <content type="html"><![CDATA[
-<h2 id="toc_0">哈希</h2>
-
-<p>输出空间 2<sup>256</sup></p>
-
-<ul>
-<li>collision resistance 哈希碰撞（没有数学方法可以证明，只有实战经验）</li>
-</ul>
-
-<p>没有一个好的方法可以算出 X 的hash值正好等于 Y 的hash值，可以使用穷举方法 brute-force<br/>
-<strong>用处</strong>： 在上传文件时，可以先算一个 digest 在下载的时候，再算一次查看是否和之前的相等，即可发现文件是否被篡改。<br/>
-MD5 原来以为具有这个性质，但是后来被证明是可以被人为制造碰撞的。</p>
-
-<ul>
-<li>hiding 单向的 </li>
-</ul>
-
-<p>前提：输入空间比较大，且分布均匀<br/>
-X -&gt; H(X) 知道了 H(X) 并不能知道 X 的值</p>
-
-<p>digital commitment <br/>
-(digital equivalent of a sealed envelope)<br/>
-例如：某人要预测股市，需要第一天公布预测信息，但是如果提前公布则会对股市产生影响。所以可以使用这种方式，将预测结果放到信封里，由公证处保管，等股市结果出来后，再由公证处打开信封。<br/>
-这种方式在信息学中可以使用hash实现，先将预测结果进行哈希运算，等股市结果出来后再公布明文结果，计算哈希值是否和之前公布的相等即可。</p>
-
-<p>但是要保证输入空间足够大，所以可以拼接一个随机数 nonce 去算哈希来保证输入空间足够大。</p>
-
-<ul>
-<li>puzzle friendly </li>
-</ul>
-
-<p>比特币要求的性质。要求已知的哈希值 H(X) 不能反推 X 的值或 X 值的范围。<br/>
-挖矿的过程就是 H(block header) &lt;= target 区块头中可以改变 nonce 的值，通过改变随机数的值来控制哈希小于目标值来挖矿。 (Proof Of Work)</p>
-
-<ul>
-<li>difficult to solve, but easy to verify</li>
-</ul>
-
-<p>比特币中用的哈希函数是 SHA-256(Secure Hash Algorithm)</p>
-
-<h2 id="toc_1">非对称加密</h2>
-
-<p>对称加密的问题在于分发秘钥的途径不安全。</p>
-
-<p>a good source of randomness 好的随机源</p>
-
-<p>比特币中是先对转账信息 message 取哈希，再对哈希值签名</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[排序算法]]></title>
-    <link href="blog.sajor.top/15650106911020.html"/>
-    <updated>2019-08-05T21:11:31+08:00</updated>
-    <id>blog.sajor.top/15650106911020.html</id>
-    <content type="html"><![CDATA[
-<h1 id="toc_0">排序算法说明</h1>
-
-<ol>
-<li>排序的定义<br/>
-对一序列对象根据某个关键字进行排序。</li>
-<li>术语说明<br/>
-稳定：如果a原本在b前面，而a=b，排序之后a仍然在b的前面；<br/>
-不稳定：如果a原本在b的前面，而a=b，排序之后a可能会出现在b的后面；<br/>
-内排序：所有排序操作都在内存中完成；<br/>
-外排序：由于数据太大，因此把数据放在磁盘中，而排序通过磁盘和内存的数据传输才能进行；<br/>
-时间复杂度： 一个算法执行所耗费的时间。<br/>
-空间复杂度：运行完一个程序所需内存的大小。</li>
-<li><p>算法总结<br/>
-<img src="media/15650106911020/15650122429787.jpg" alt=""/><br/>
-图片名词解释：<br/>
-n: 数据规模<br/>
-k: “桶”的个数<br/>
-In-place: 占用常数内存，不占用额外内存<br/>
-Out-place: 占用额外内存</p></li>
-<li><p>比较和非比较的区别<br/>
-常见的快速排序、归并排序、堆排序、冒泡排序等属于比较排序。在排序的最终结果里，元素之间的次序依赖于它们之间的比较。每个数都必须和其他数进行比较，才能确定自己的位置。<br/>
-在冒泡排序之类的排序中，问题规模为n，又因为需要比较n次，所以平均时间复杂度为O(n²)。在归并排序、快速排序之类的排序中，问题规模通过分治法消减为logN次，所以时间复杂度平均O(nlogn)。<br/>
-比较排序的优势是，适用于各种规模的数据，也不在乎数据的分布，都能进行排序。可以说，比较排序适用于一切需要排序的情况。<br/>
-计数排序、基数排序、桶排序则属于非比较排序。非比较排序是通过确定每个元素之前，应该有多少个元素来排序。针对数组arr，计算arr之前有多少个元素，则唯一确定了arr在排序后数组中的位置。<br/>
-非比较排序只要确定每个元素之前的已有的元素个数即可，所有一次遍历即可解决。算法时间复杂度O(n)。<br/>
-非比较排序时间复杂度底，但由于非比较排序需要占用空间来确定唯一位置。所以对数据规模和数据分布有一定的要求。</p></li>
-</ol>
-
-<h1 id="toc_1">排序算法</h1>
-
-<p>首先定义一个接口 <code>void X_Sort ( ElementType A[], int N )</code><br/>
-本文为简单起见，大多数情况下，讨论<strong>从小大的整数</strong>排序</p>
-
-<ul>
-<li>N是正整数</li>
-<li>只讨论基于比较的排序(&gt; = &lt; 有定义)</li>
-<li>只讨论内部排序</li>
-<li>稳定性:任意两个相等的数据，排序前后的相对位置不发生改变</li>
-<li>没有一种排序是任何情况下 都表现最好的</li>
-</ul>
-
-<h2 id="toc_2">冒泡排序(Bubble Sort)</h2>
-
-<p>冒泡排序每次比较相邻两个数，<code>A[i] &gt; A[i + 1]</code> 则交换位置。可以确定的是，在经过一趟排序后，整个序列的最大值一定被放到了数组的最后一位。所以只需要进行N-1次循环则可以将整个序列都排好。<br/>
-<img src="media/15650106911020/140153i7562exzjrnagaja.gif" alt="140153i7562exzjrnagaja"/></p>
-
-<pre><code class="language-text">void Bubble_Sort(ElementType A[], int N)
-{
-   for (P = N - 1; P &gt;= 0; P--) {
-        for (i = 0; i &lt; P; i++) { /* 一趟冒泡 */
-            if (A[i] &gt; A[i + 1]) {
-                Swap(A[i], A[i + 1]);
-            }
-        }
-    }
-}
-</code></pre>
-
-<p>但是这样做还有一些问题，如果在其中某一步就排好序了，但是还需要接着进行比较。所以进行如下改动。</p>
-
-<pre><code class="language-text">void Bubble_Sort(ElementType A[], int N)
-{
-    flag = 0;
-    for (P = N - 1; P &gt;= 0; P--) {
-        for (i = 0; i &lt; P; i++) { /* 一趟冒泡 */
-            if (A[i] &gt; A[i + 1]) {
-                Swap(A[i], A[i + 1]);
-                flag = 1; /* 标识发生了交换 */
-            }
-        }
-        if (flag == 0)
-            break; /* 全程无交换 */
-    }
-}
-</code></pre>
-
-<p>最好情况：顺序T = O( N ) <br/>
-最坏情况：逆序T = O( N<sup>2</sup> )</p>
-
-<h2 id="toc_3">插入排序</h2>
-
-<p>像玩牌一样，一张一张摸牌，从后往前依次比较手中有序的序列，将抽到的牌插入到第一张小于这张牌的后面。其余的牌向后错一位。<br/>
-<img src="media/15650106911020/140155h0at131fkz33j1af.gif" alt="140155h0at131fkz33j1af"/></p>
-
-<pre><code class="language-text">void Insertion_Sort(ElementType A[], int N)
-{
-
-    for (P = 1; P &lt; N; P++)
-    {
-        Tmp = A[P]; /* 摸下一张牌 */
-        for (i = P; i &gt; 0 &amp;&amp; A[i - 1] &gt; Tmp; i--)
-            A[i] = A[i - 1]; /* 移出空位 */
-        A[i] = Tmp;          /* 新牌落位 */
-    }
-}
-</code></pre>
-
-<p>最好情况：顺序T = O( N ) <br/>
-最坏情况：逆序T = O( N<sup>2</sup> )</p>
-
-<p><strong>思考</strong>：给定初始序列{34, 8, 64, 51, 32, 21}，冒泡排序和插入排序分别需要多少次元素交换才能完成?</p>
-
-<p>对于下标i<j，如果A[i]>A[j]，则称(i,j)是一对逆序对(inversion)。问题:序列{34, 8, 64, 51, 32, 21}中有多少逆序对? </p>
-
-<p>(34, 8) (34, 32) (34, 21) (64, 51) (64, 32) (64, 21) (51, 32) (51, 21) (32, 21)</p>
-
-<p>所以交换2个相邻元素正好消去1个逆序对! 假设需要排序的序列有N个元素I个逆序对则 </p>
-
-<p><strong>插入排序：T( N, I ) = O( N+I )</strong></p>
-
-<p>所以如果序列基本有序，则插入排序简单且高效</p>
-
-<p>结论：<br/>
-定理:任意N个不同元素组成的序列平均具有 N ( N - 1 ) / 4 个逆序对。<br/>
-定理:任何仅以交换相邻两元素来排序的算 法，其平均时间复杂度为 \(\Omega\) ( N<sup>2</sup> )。<br/>
-这意味着:要提高算法效率，我们必须 </p>
-
-<ul>
-<li>每次消去不止1个逆序对!</li>
-<li>每次交换相隔较远的2个元素!</li>
-</ul>
-
-<h2 id="toc_4">希尔排序</h2>
-
-<p>定义增量序列 DM &gt; DM-1 &gt; … &gt; D1 = 1<br/>
-对每个 Dk 进行“Dk-间隔”排序( k = M, M-1, … 1 )<br/>
-注意：“Dk-间隔”有序的序列，在执行“Dk-1-间隔”排序后，仍然是“Dk间隔”有序的</p>
-
-<p><img src="media/15650106911020/15650150247137.jpg" alt=""/></p>
-
-<p>原始希尔排序<code>DM = N / 2, Dk = Dk+1 / 2</code>希尔排序的增量序列的选择与证明是个数学难题，我们选择的这个增量序列是比较常用的，也是希尔建议的增量，称为希尔增量，但其实这个增量序列不是最优的。此处我们做示例使用希尔增量。</p>
-
-<pre><code class="language-text">void Shell_sort(ElementType A[], int N)
-{
-    for (D = N / 2; D &gt; 0; D /= 2) { /* 希尔增量序列 */
-        for (P = D; P &lt; N; P++) { /* 插入排序 */
-            Tmp = A[P];
-            for (i = P; i &gt;= D &amp;&amp; A[iD] &gt; Tmp; i -= D)
-                A[i] = A[i - D];
-            A[i] = Tmp;
-        }
-    }
-}
-</code></pre>
-
-<p>最坏情况：T = \(\Theta    \)( N<sup>2</sup> )</p>
-
-<p>举个坏例子：<br/>
-<img src="media/15650106911020/15650151790050.jpg" alt="" style="width:920px;"/><br/>
-<img src="media/15650106911020/15650154742297.jpg" alt="" style="width:694px;"/></p>
-
-<p>参考：<a href="https://blog.csdn.net/hellozhxy/article/details/79911867">十大经典排序算法最强总结</a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Spring入门]]></title>
-    <link href="blog.sajor.top/15647321562727.html"/>
-    <updated>2019-08-02T15:49:16+08:00</updated>
-    <id>blog.sajor.top/15647321562727.html</id>
-    <content type="html"><![CDATA[
-<h2 id="toc_0">Spring概述</h2>
-
-<h3 id="toc_1">Spring是什么</h3>
-
-<blockquote>
-<p>Spring是分层的JavaSE/EE full-stack 轻量级开源框架，Rod Johnson在《Expert One-on-One:J2EE Design and Development》(2002年)提出一种新的编程思想，2003 年发布 了一个新的Java开发框架-SpringFramework</p>
-</blockquote>
-
-<p>Spring以IoC（Inverse of Control 控制反转）和 AOP（Aspect Oriented Programming 面向切面编程）为内核，使用基本的JavaBean来完成以前只可能由EJB完成的工作，取代了EJB的臃肿、低效的开发模式。</p>
-
-<p>简单说 Spring 是一个轻量级的控制反转(IoC)和面向切面编程(AOP)的容器框架。 核心功能:</p>
-
-<ol>
-<li>bean实例管理 </li>
-<li>bean之间依赖关系管理</li>
-</ol>
-
-<p>在实际开发中，通常服务器端在采用三层体系架构，分别为表示层(Web) 、业务逻辑层(Service)、持久层(Dao)， Spring对每一层都提供了技术支持。</p>
-
-<table>
-<thead>
-<tr>
-<th>架构</th>
-<th>功能</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>表示层</td>
-<td>提供了与Struts等框架的整合</td>
-</tr>
-<tr>
-<td>业务逻辑层</td>
-<td>可以管理事务，记录日志等</td>
-</tr>
-<tr>
-<td>持久层</td>
-<td>可以整合Hibernate、JdbcTemplate等技术</td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="toc_2">Spring框架的优点</h3>
-
-<p>Spring具有简单、可测试和松耦合等特点。Spring不仅可以用于服务器端 开发，也可以应用于任何Java应用的开发中。</p>
-
-<p>Spring框架七大优点</p>
-
-<ol>
-<li>非入侵式设计</li>
-<li>方便解耦、简化开发</li>
-<li>支持AOP</li>
-<li>支持声明式事务处理</li>
-<li>方便程序测试</li>
-<li>方便集成各种优秀框架</li>
-<li>降低Java EE API的使用难度</li>
-</ol>
-
-<h3 id="toc_3">Spring体系结构</h3>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[从零开始SSM开发系列十三：使用 Mapper 接口方式整合 MyBatis-Spring]]></title>
-    <link href="blog.sajor.top/15647300073307.html"/>
-    <updated>2019-08-02T15:13:27+08:00</updated>
-    <id>blog.sajor.top/15647300073307.html</id>
-    <content type="html"><![CDATA[
-<p>在上一章的基础上，继续使用c07包</p>
-
-<p>1、创建新的 Package</p>
-
-<blockquote>
-<p>com.sajor.study.c07.user<br/>
-com.sajor.study.c07.user.model:存放 vo 对象(业务模型对象) <br/>
-com.sajor.study.c07.user.dao:存放 dao 对象(数据库访问对象) <br/>
-com.sajor.study.c07.user.mapper:存放 mybatis 数据库表-对象映射文件 <br/>
-com.sajor.study.c07.user.service:存放服务接口 <br/>
-com.sajor.study.c07.user.service.impl:存放接口实现 </p>
-</blockquote>
-
-<p>创建完成，包结构如下:<br/>
-<img src="media/15647300073307/15647302640035.jpg" alt="" style="width:278px;"/></p>
-
-<p>2、在 model 包中创建一个 User 类</p>
-
-<pre><code class="language-java">package com.sajor.study.c07.user.model;
-
-import java.io.Serializable;
-
-public class User implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    private int id = 20190802;
-    private String name = &quot;&quot;;
-    private String sex;
-    private String email;
-
-    @Override
-    public String toString() {
-        StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append(&quot;id=&quot;);
-        stringBuffer.append(id);
-        stringBuffer.append(&quot;\n&quot;);
-        stringBuffer.append(&quot;name=&quot;);
-        stringBuffer.append(name);
-        return stringBuffer.toString();
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-}
-</code></pre>
-
-<p>3、在 dao 包中创建一个接口 UserMapper</p>
-
-<pre><code class="language-java">package com.sajor.study.c07.user.dao;
-
-import com.sajor.study.c07.user.model.User;
-
-import java.util.List;
-
-public interface UserMapper {
-    // 通过id查询
-    public User findUserById(int id);
-
-    // 添加
-    public void addUser(User user);
-
-    // 查询所有
-    public List&lt;User&gt; findAllUsers();
-}
-</code></pre>
-
-<p>4、在 mapper 包中创建一个映射文件 UserMapper.xml</p>
-
-<pre><code class="language-java">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
-        &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
-&lt;mapper namespace=&quot;com.sajor.study.c07.user.dao.UserMapper&quot;&gt;
-    &lt;resultMap id=&quot;UserResultMap&quot; type=&quot;com.sajor.study.c07.user.model.User&quot;&gt;
-        &lt;result column=&quot;id&quot; property=&quot;id&quot; jdbcType=&quot;BIGINT&quot;/&gt;
-        &lt;result column=&quot;name&quot; property=&quot;name&quot; jdbcType=&quot;VARCHAR&quot;/&gt;
-        &lt;result column=&quot;sex&quot; property=&quot;sex&quot; jdbcType=&quot;VARCHAR&quot;/&gt;
-        &lt;result column=&quot;email&quot; property=&quot;email&quot; jdbcType=&quot;VARCHAR&quot;/&gt;
-    &lt;/resultMap&gt;
-    &lt;!--根据 id 查询用户信息 --&gt;
-    &lt;select id=&quot;findUserById&quot; parameterType=&quot;java.lang.Integer&quot; resultMap=&quot;UserResultMap&quot;&gt;
-        select * from USER where id = #{id}
-    &lt;/select&gt;
-    &lt;!--添加用户信息 --&gt;
-    &lt;insert id=&quot;addUser&quot; parameterType=&quot;user&quot;&gt;
-        insert into USER(name,sex,email)
-        values(#{name},#{sex},#{email})
-    &lt;/insert&gt;
-    &lt;!--查询所有用户--&gt;
-    &lt;select id=&quot;findAllUsers&quot; resultMap=&quot;UserResultMap&quot;&gt;
-        select * from USER
-    &lt;/select&gt;
-&lt;/mapper&gt;
-</code></pre>
-
-<p>5、在 service 包中创建一个服务接口 UserService</p>
-
-<pre><code class="language-java">package com.sajor.study.c07.user.service;
-
-import com.sajor.study.c07.user.model.User;
-
-public interface UserService {
-    // 通过id查询
-    public User findUserById(int id); // 添加
-
-    public void addUser(User user);
-
-    public int getUsersCount();
-}
-</code></pre>
-
-<p>6、在 service.impl 包中创建服务接口的实现类 UserServiceImpl</p>
-
-<p>这里用到了注解方式:声明了 service、以及自动绑定(当然也可以在 spring 中声明 bean，以及把 userMapper 注入)</p>
-
-<pre><code class="language-java">package com.sajor.study.c07.user.service.impl;
-
-import com.sajor.study.c07.user.dao.UserMapper;
-import com.sajor.study.c07.user.model.User;
-import com.sajor.study.c07.user.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-@Service
-public class UserServiceImpl implements UserService {
-    @Autowired
-    private UserMapper userMapper;
-
-    @Override
-    public User findUserById(int id) {
-        return userMapper.findUserById(id);
-    }
-
-    @Override
-    public void addUser(User user) {
-        userMapper.addUser(user);
-    }
-
-    @Override
-    public int getUsersCount() {
-        return userMapper.findAllUsers().size();
-    }
-}
-</code></pre>
-
-<p>7、新建一个 MyBatis 的核心配置文件 c07-mybatis-spring-config-mapper.xml</p>
-
-<pre><code class="language-java">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
-&lt;configuration&gt;
-    &lt;!--配置别名 --&gt;
-    &lt;typeAliases&gt;
-        &lt;!--定义 Mapper 中引用到的业务对象类的位置--&gt;
-        &lt;package name=&quot;com.sajor.study.c07.user.model&quot;/&gt;
-    &lt;/typeAliases&gt;
-    &lt;!--配置 Mapper 的位置 --&gt;
-    &lt;mappers&gt;
-        &lt;mapper resource=&quot;com/sajor/study/c07/user/mapper/UserMapper.xml&quot;/&gt;
-    &lt;/mappers&gt;
-&lt;/configuration&gt;
-
-</code></pre>
-
-<p>8、新建一个 Spring 配置文件 c07-spring-config-mybatisspring-mapper.xml</p>
-
-<pre><code class="language-java">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-       xmlns:context=&quot;http://www.springframework.org/schema/context&quot; xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
-http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;
-    &lt;!--1. 定义数据源，mybatis 直接使用 spring 中定义的数据源--&gt;
-    &lt;bean id=&quot;dataSource&quot; class=&quot;org.springframework.jdbc.datasource.DriverManagerDataSource&quot;&gt;
-        &lt;property name=&quot;driverClassName&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;
-        &lt;property name=&quot;url&quot;
-                  value=&quot;jdbc:mysql://localhost:3306/TestDB?autoReconnect=true&amp;amp;characterEncoding=utf8&amp;amp;useUnicode=true&amp;amp;useSSL=false&quot;/&gt;
-        &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
-        &lt;property name=&quot;password&quot; value=&quot;123456&quot;/&gt;
-    &lt;/bean&gt;
-    &lt;!--2. 配置 MyBatis 工厂 --&gt;
-    &lt;bean id=&quot;sqlSessionFactory&quot;
-          class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
-        &lt;!--注入数据源 --&gt;
-        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;
-        &lt;!--指定核心配置文件位置 --&gt;
-        &lt;property name=&quot;configLocation&quot; value=&quot;classpath:c07-mybatis-spring-config-mapper.xml&quot;/&gt;
-    &lt;/bean&gt;
-
-    &lt;!--3. Mapper 代理开发(基于 MapperScannerConfigurer) --&gt;
-    &lt;bean class=&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;&gt;
-        &lt;!--定义接口所在位置--&gt;
-        &lt;property name=&quot;basePackage&quot; value=&quot;com.sajor.study.c07.user.dao&quot;/&gt;
-    &lt;/bean&gt;
-    &lt;!--4. 开启扫描 --&gt;
-    &lt;context:component-scan base-package=&quot;com.sajor.study.c07.user.service&quot;/&gt;
-&lt;/beans&gt;
-
-</code></pre>
-
-<p>9、创建测试类 MyBatisSpringMapperTest</p>
-
-<pre><code class="language-java">package test.com.sajor.study.c07;
-
-import com.sajor.study.c07.user.model.User;
-import com.sajor.study.c07.user.service.UserService;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-public class MyBatisSpringMapperTest {
-    public static void main(String[] args) {
-        try {
-            ApplicationContext ctx =
-                    new ClassPathXmlApplicationContext(&quot;c07-spring-config-mybatisspring-mapper.xml&quot;);
-            UserService userService = (UserService) ctx.getBean(UserService.class);
-            User user = userService.findUserById(2);
-            System.out.println(user);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-}
-</code></pre>
-
-<p>10、运行测试类</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[从零开始SSM开发系列十二：使用 DAO 方式整合 MyBatis-Spring]]></title>
-    <link href="blog.sajor.top/15647285252626.html"/>
-    <updated>2019-08-02T14:48:45+08:00</updated>
-    <id>blog.sajor.top/15647285252626.html</id>
-    <content type="html"><![CDATA[
-<p>1、引用 MyBatis-Spring 集成 jar 包</p>
-
-<p>在工程中引用 mybatis-spring-1.3.1.jar包</p>
-
-<p>点击 File&gt;Project Structure...，选中 Libraries，添加 java 引用</p>
-
-<p><img src="media/15647285252626/15647286399391.jpg" alt="" style="width:1106px;"/></p>
-
-<p>2、创建新的 Package</p>
-
-<blockquote>
-<p>com.sajor.study.c07<br/>
-com.sajor.study.c07.dao <br/>
-test.com.sajor.study.c07</p>
-</blockquote>
-
-<p>3、在 dao 包中创建一个 User 类</p>
-
-<p>在类中声明id、name、sex和email属性，及其对应的getter/setter方法。</p>
-
-<pre><code class="language-text">package com.sajor.study.c07.dao;
-
-import java.io.Serializable;
-
-public class User implements Serializable {
-    private static final long serialVersionUID = 1L;
-    private int id = 20190802;
-    private String name = &quot;&quot;;
-    private String sex;
-    private String email;
-
-    @Override
-    public String toString() {
-        StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append(&quot;id=&quot;);
-        stringBuffer.append(id);
-        stringBuffer.append(&quot;\n&quot;);
-        stringBuffer.append(&quot;name=&quot;);
-        stringBuffer.append(name);
-        return stringBuffer.toString();
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-}
-</code></pre>
-
-<p>4、在 dao 包中创建一个映射文件 UserMapper.xml</p>
-
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-
-&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
-&lt;mapper namespace=&quot;com.sajor.study.c07.dao.UserMapper&quot;&gt;
-    &lt;resultMap id=&quot;UserResultMap&quot; type=&quot;com.sajor.study.c07.dao.User&quot;&gt;
-        &lt;result column=&quot;id&quot; property=&quot;id&quot; jdbcType=&quot;BIGINT&quot;/&gt;
-        &lt;result column=&quot;name&quot; property=&quot;name&quot; jdbcType=&quot;VARCHAR&quot;/&gt;
-        &lt;result column=&quot;sex&quot; property=&quot;sex&quot; jdbcType=&quot;VARCHAR&quot;/&gt;
-        &lt;result column=&quot;email&quot; property=&quot;email&quot; jdbcType=&quot;VARCHAR&quot;/&gt;
-    &lt;/resultMap&gt;
-
-    &lt;select id=&quot;findUserById&quot; parameterType=&quot;java.lang.Integer&quot; resultMap=&quot;UserResultMap&quot;&gt;
-        &lt;!--根据 id 查询用户信息 --&gt;
-        select * from USER where id = #{id,jdbcType=BIGINT}
-    &lt;/select&gt;
-
-    &lt;insert id=&quot;addUser&quot; parameterType=&quot;user&quot;&gt;
-        &lt;!--添加用户信息 --&gt;
-        insert into USER(name,sex,email)
-        values(#{name},#{sex},#{email})
-    &lt;/insert&gt;
-
-    &lt;select id=&quot;findAllUsers&quot; resultMap=&quot;UserResultMap&quot;&gt;
-        select * from USER
-    &lt;/select&gt;
-
-&lt;/mapper&gt;
-</code></pre>
-
-<p>5、在 dao 中创建一个 UserDAO 类</p>
-
-<p>UserDAO 继承 SqlSessionDaoSupport</p>
-
-<pre><code class="language-text">package com.sajor.study.c07.dao;
-
-import org.mybatis.spring.support.SqlSessionDaoSupport;
-
-public class UserDAO extends SqlSessionDaoSupport {
-    // 通过id查询
-    public User findUserById(Integer id) {
-        return this.getSqlSession().selectOne( &quot;com.sajor.study.c07.dao.UserMapper.findUserById&quot;, id);
-    }
-}
-</code></pre>
-
-<p>6、创建 MyBatis 的核心配置文件 c07-mybatis-spring-config-dao.xml</p>
-
-<p>对比前面 mybatis 的配置文件，这里不再需要配置数据源，直接使用 spring 里面配置的数据源即可。</p>
-
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-
-&lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
-
-&lt;configuration&gt;
-    &lt;!--配置别名 --&gt;
-    &lt;typeAliases&gt;
-        &lt;package name=&quot;com.sajor.study.c07.dao&quot;/&gt;
-    &lt;/typeAliases&gt;
-    &lt;!--配置 Mapper 的位置 --&gt;
-    &lt;mappers&gt;
-        &lt;mapper resource=&quot;com/sajor/study/c07/dao/UserMapper.xml&quot;/&gt;
-    &lt;/mappers&gt;
-&lt;/configuration&gt;
-</code></pre>
-
-<p>7、新建一个 Spring 配置文件 c07-spring-mybatis-config-dao.xml</p>
-
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
-http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
-    &lt;!--1. 定义数据源，mybatis 直接使用 spring 中定义的数据源--&gt;
-    &lt;bean id=&quot;dataSource&quot; class=&quot;org.springframework.jdbc.datasource.DriverManagerDataSource&quot;&gt;
-        &lt;property name=&quot;driverClassName&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;
-        &lt;property name=&quot;url&quot;
-                  value=&quot;jdbc:mysql://localhost:3306/TestDB?autoReconnect=true&amp;amp;characterEncoding=utf8&amp;amp;useUnicode=true&amp;amp;useSSL=false&quot;/&gt;
-        &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
-        &lt;property name=&quot;password&quot; value=&quot;123456&quot;/&gt;
-    &lt;/bean&gt;
-
-    &lt;!--2. 配置 MyBatis 工厂 --&gt;
-    &lt;bean id=&quot;sqlSessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
-        &lt;!--注入数据源 --&gt;
-        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;
-        &lt;!--指定核心配置文件位置 --&gt;
-        &lt;property name=&quot;configLocation&quot; value=&quot;classpath:c07-mybatis-spring-config-dao.xml&quot;/&gt;
-    &lt;/bean&gt;
-
-    &lt;!--3. 实例化 Dao --&gt;
-    &lt;bean id=&quot;userDAO&quot; class=&quot;com.sajor.study.c07.dao.UserDAO&quot;&gt;
-        &lt;!-- 注入 SqlSessionFactory 对象实例--&gt;
-        &lt;property name=&quot;sqlSessionFactory&quot; ref=&quot;sqlSessionFactory&quot;/&gt;
-    &lt;/bean&gt;
-&lt;/beans&gt;
-</code></pre>
-
-<p>8、创建测试类 MyBatisSpringDAOTest</p>
-
-<pre><code class="language-text">package test.com.sajor.study.c07;
-
-import com.sajor.study.c07.dao.User;
-import com.sajor.study.c07.dao.UserDAO;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-public class MyBatisSpringDAOTest {
-    public static void main(String[] args) {
-        try {
-            ApplicationContext ctx = new ClassPathXmlApplicationContext(&quot;c07-spring-mybatis-config-dao.xml&quot;);
-            UserDAO userDAO = (UserDAO) ctx.getBean(&quot;userDAO&quot;);
-            User user = userDAO.findUserById(2);
-            System.out.println(user);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-}
-</code></pre>
-
-<p>9、运行测试类<br/>
-<img src="media/15647285252626/15647299241064.jpg" alt="" style="width:985px;"/></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[从零开始SSM开发系列十一：MyBatis 多对多关联关系]]></title>
-    <link href="blog.sajor.top/15647140106325.html"/>
-    <updated>2019-08-02T10:46:50+08:00</updated>
-    <id>blog.sajor.top/15647140106325.html</id>
-    <content type="html"><![CDATA[
-<p>在上一章的基础上，我们还使用c06包接着添加功能。</p>
-
-<p>1、数据库表准备<br/>
-新建一个数据库表:jo􏰀b、j􏰀obresume 并添加几条数据</p>
-
-<p>jo􏰀b 表</p>
-
-<table>
-<thead>
-<tr>
-<th>字段名称</th>
-<th>类型</th>
-<th>长度</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>jobid</td>
-<td>int</td>
-<td>11（主键）</td>
-</tr>
-<tr>
-<td>jobtitle</td>
-<td>varchar</td>
-<td>127</td>
-</tr>
-</tbody>
-</table>
-
-<p>jobresume表</p>
-
-<table>
-<thead>
-<tr>
-<th>字段名称</th>
-<th>类型</th>
-<th>长度</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>id</td>
-<td>int</td>
-<td>11（主键）</td>
-</tr>
-<tr>
-<td>jobid</td>
-<td>int</td>
-<td>11</td>
-</tr>
-<tr>
-<td>resumeid</td>
-<td>int</td>
-<td>11</td>
-</tr>
-</tbody>
-</table>
-
-<p>2、在 model 包中创建 Job 类</p>
-
-<pre><code class="language-text">package com.sajor.study.c06.model;
-
-import java.util.List;
-
-public class Job {
-    private Integer jobId;
-    private String jobTitle;
-    private List&lt;Resume&gt; resumeList; // 岗位关联的简历
-
-    @Override
-    public String toString() {
-        StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append(&quot;jobid=&quot;);
-        stringBuffer.append(jobId);
-        stringBuffer.append(&quot;\n&quot;);
-        stringBuffer.append(&quot;jobtitle=&quot;);
-        stringBuffer.append(jobTitle);
-        for (Resume rs : resumeList) {
-            stringBuffer.append(&quot;\n&quot;);
-            stringBuffer.append(&quot;Resume:[&quot;);
-            stringBuffer.append(rs.getResumeId());
-            stringBuffer.append(&quot;,&quot;);
-            stringBuffer.append(rs.getResumeName());
-            stringBuffer.append(&quot;,&quot;);
-            stringBuffer.append(rs.getResumeDesc());
-            stringBuffer.append(&quot;]&quot;);
-        }
-        return stringBuffer.toString();
-    }
-
-    public Integer getJobId() {
-        return jobId;
-    }
-
-    public void setJobId(Integer jobId) {
-        this.jobId = jobId;
-    }
-
-    public String getJobTitle() {
-        return jobTitle;
-    }
-
-    public void setJobTitle(String jobTitle) {
-        this.jobTitle = jobTitle;
-    }
-
-    public List&lt;Resume&gt; getResumeList() {
-        return resumeList;
-    }
-
-    public void setResumeList(List&lt;Resume&gt; resumeList) {
-        this.resumeList = resumeList;
-    }
-}
-</code></pre>
-
-<p>3、在 mapper 包中创建映射文件 JobMapper.xml、修改 ResumeMapper.xml</p>
-
-<p>JobMapper.xml</p>
-
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
-&lt;!-- namespace 表示命名空间 --&gt;
-&lt;mapper namespace=&quot;com.sajor.study.c06.mapper.JobMapper&quot;&gt;
-
-    &lt;!-- 多对多嵌套查询:通过执行另外一条 SQL 映射语句来返回预期的特殊类型 --&gt;
-    &lt;select id=&quot;findJobWithResumesByID&quot; parameterType=&quot;Integer&quot; resultMap=&quot;JobWithResumeResult&quot;&gt;
-        select * from job WHERE jobid=#{id}
-    &lt;/select&gt;
-
-    &lt;resultMap type=&quot;com.sajor.study.c06.model.Job&quot; id=&quot;JobWithResumeResult&quot;&gt;
-        &lt;id property=&quot;jobId&quot; column=&quot;jobid&quot;/&gt;
-        &lt;result property=&quot;jobTitle&quot; column=&quot;jobtitle&quot;/&gt;
-        &lt;collection property=&quot;resumeList&quot; column=&quot;jobid&quot;
-                    ofType=&quot;com.sajor.study.c06.model.Resume&quot;
-                    select=&quot;com.sajor.study.c06.mapper.ResumeMapper.findResumeById&quot;&gt;&lt;/collection&gt;
-    &lt;/resultMap&gt;
-
-    &lt;!-- 多对多嵌套结果查询:查询某岗位及其关联的简历详情 --&gt;
-    &lt;select id=&quot;findJobWithResumesByID2&quot; parameterType=&quot;Integer&quot; resultMap=&quot;JobWithResumeResult2&quot;&gt;
-        select job.*,resume.*
-        from job,resume,jobresume
-        WHERE job.jobid=jobresume.jobid
-        and resume.resumeid=jobresume.resumeid and job.jobid=#{id}
-    &lt;/select&gt;
-
-    &lt;!-- 自定义手动映射类型 --&gt;
-    &lt;resultMap type=&quot;com.sajor.study.c06.model.Job&quot; id=&quot;JobWithResumeResult2&quot;&gt;
-        &lt;id property=&quot;jobId&quot; column=&quot;jobid&quot;/&gt;
-        &lt;result property=&quot;jobTitle&quot; column=&quot;jobtitle&quot;/&gt;
-        &lt;!-- 多对多关联映射:collection --&gt;
-        &lt;collection property=&quot;resumeList&quot;
-                    ofType=&quot;com.sajor.study.c06.model.Resume&quot;&gt;
-            &lt;id property=&quot;resumeId&quot; column=&quot;resumeid&quot;/&gt;
-            &lt;result property=&quot;resumeName&quot; column=&quot;resumename&quot;/&gt;
-            &lt;result property=&quot;resumeDesc&quot; column=&quot;resumedesc&quot;/&gt;
-        &lt;/collection&gt;
-    &lt;/resultMap&gt;
-&lt;/mapper&gt;
-</code></pre>
-
-<p>ResumeMapper.xml</p>
-
-<pre><code class="language-text">&lt;!--下面是新增内容:通过 jobid 查关联简历--&gt;
-    &lt;select id=&quot;findResumeById&quot; parameterType=&quot;Integer&quot; resultType=&quot;com.sajor.study.c06.model.Resume&quot;&gt;
-        SELECT * from Resume where resumeid IN(
-            SELECT resumeid FROM jobresume WHERE jobid = #{id}
-        )
-    &lt;/select&gt;
-</code></pre>
-
-<p>4、修改配置文件 mybatis-config-c06-relation.xml</p>
-
-<p>配置JobMapper.xml的位置</p>
-
-<pre><code class="language-text">&lt;mapper resource=&quot;com/sajor/study/c06/mapper/JobMapper.xml&quot; /&gt;
-</code></pre>
-
-<p>5、修 改 Spring 配 置 文 件 spring-config-mybatis-c06-relation.xml</p>
-
-<p>在 spring 配置文件中配置 bean</p>
-
-<pre><code class="language-text">&lt;bean id=&quot;jobDAO&quot; class=&quot;com.sajor.study.c06.dao.JobDAO&quot;/&gt;
-</code></pre>
-
-<p>6、新建一个 DAO 类 JobDAO</p>
-
-<p>对数据库进行关联查询</p>
-
-<pre><code class="language-text">package com.sajor.study.c06.dao;
-
-import com.sajor.study.c06.model.Job;
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-
-import java.io.InputStream;
-
-public class JobDAO {
-    /**
-     * 根据用户编号查询用户及简历信息
-     */
-    public Job findJobsWithResumeByID(int id) throws Exception {
-        // 1、读取配置文件
-        String resource = &quot;mybatis-config-c06-relation.xml&quot;;
-        InputStream inputStream = Resources.getResourceAsStream(resource);
-
-        // 2、根据配置文件构建 SqlSessionFactory
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-
-        // 3、通过 SqlSessionFactory 创建 SqlSession
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-
-        // 4、SqlSession 执行映射文件中定义的 SQL，并返回映射结果
-        Job job = sqlSession.selectOne(&quot;com.sajor.study.c06.mapper.JobMapper.findJobWithResumesByID&quot;, id);
-//        Job job = sqlSession.selectOne(&quot;com.sajor.study.c06.mapper.JobMapper.findJobWithResumesByID2&quot;, id);
-
-        // 5、关闭 SqlSession
-        sqlSession.close();
-        return job;
-    }
-
-}
-</code></pre>
-
-<p>7、修改测试类 MyBatisRelationTest</p>
-
-<pre><code class="language-text">JobDAO jobDAO = (JobDAO) ctx.getBean(&quot;jobDAO&quot;);
-Job job = jobDAO.findJobsWithResumeByID(2);
-System.out.println(job);
-</code></pre>
-
-<p>8、运行测试类</p>
-
-<p><img src="media/15647140106325/15647283462344.jpg" alt="" style="width:1335px;"/></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[从零开始SSM开发系列十：MyBatis 一对多关联关系]]></title>
-    <link href="blog.sajor.top/15647098694474.html"/>
-    <updated>2019-08-02T09:37:49+08:00</updated>
-    <id>blog.sajor.top/15647098694474.html</id>
-    <content type="html"><![CDATA[
-<p>在上一章的基础上，我们还使用c06包接着添加功能。</p>
-
-<p>1、数据库表准备<br/>
-新建一个数据库表:resume 并添加几条数据</p>
-
-<p>resume 表</p>
-
-<table>
-<thead>
-<tr>
-<th>字段名称</th>
-<th>类型</th>
-<th>长度</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>resumeid</td>
-<td>int</td>
-<td>11（主键）</td>
-</tr>
-<tr>
-<td>userid</td>
-<td>int</td>
-<td>11</td>
-</tr>
-<tr>
-<td>resumename</td>
-<td>varchar</td>
-<td>255</td>
-</tr>
-<tr>
-<td>resumedesc</td>
-<td>varchar</td>
-<td>255</td>
-</tr>
-</tbody>
-</table>
-
-<p>2、在 model 包中创建 Resume 类</p>
-
-<pre><code class="language-text">package com.sajor.study.c06.model;
-
-public class Resume {
-    private Integer resumeId;
-    private Integer userId;
-    private String resumeName;
-    private String resumeDesc;
-
-    public Integer getResumeId() {
-        return resumeId;
-    }
-
-    public void setResumeId(Integer resumeId) {
-        this.resumeId = resumeId;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public String getResumeName() {
-        return resumeName;
-    }
-
-    public void setResumeName(String resumeName) {
-        this.resumeName = resumeName;
-    }
-
-    public String getResumeDesc() {
-        return resumeDesc;
-    }
-
-    public void setResumeDesc(String resumeDesc) {
-        this.resumeDesc = resumeDesc;
-    }
-}
-</code></pre>
-
-<p>3、修改 User 类</p>
-
-<p>1)添加 resumeList 属性及其 getter、setter</p>
-
-<pre><code class="language-text">private List&lt;Resume&gt; resumeList;//个人关联的简历 
-</code></pre>
-
-<p>2)完善 toString 方法</p>
-
-<pre><code class="language-text">package com.sajor.study.c06.model;
-
-import java.util.List;
-
-public class User {
-    private int id = 20190801;
-    private String name = &quot;&quot;;
-    private String sex;
-    private String email;
-
-    private Card card; //个人关联的证件
-
-    private List&lt;Resume&gt; resumeList;//个人关联的简历
-
-    @Override
-    public String toString() {
-        StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append(&quot;id=&quot;);
-        stringBuffer.append(id);
-        stringBuffer.append(&quot;\n&quot;);
-        stringBuffer.append(&quot;name=&quot;);
-        stringBuffer.append(name);
-        if (card != null) {
-            stringBuffer.append(&quot;\n&quot;);
-            stringBuffer.append(&quot;CardID=&quot;);
-            stringBuffer.append(card.getId());
-            stringBuffer.append(&quot;\n&quot;);
-            stringBuffer.append(&quot;CardCode=&quot;);
-            stringBuffer.append(card.getCode());
-        }
-        for (Resume rs : resumeList) {
-            stringBuffer.append(&quot;\n&quot;);
-            stringBuffer.append(&quot;Resume:[&quot;);
-            stringBuffer.append(rs.getResumeId());
-            stringBuffer.append(&quot;,&quot;);
-            stringBuffer.append(rs.getResumeName());
-            stringBuffer.append(&quot;,&quot;);
-            stringBuffer.append(rs.getResumeDesc());
-            stringBuffer.append(&quot;]&quot;);
-        }
-        return stringBuffer.toString();
-    }
-
-    public List&lt;Resume&gt; getResumeList() {
-        return resumeList;
-    }
-
-    public void setResumeList(List&lt;Resume&gt; resumeList) {
-        this.resumeList = resumeList;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Card getCard() {
-        return card;
-    }
-
-    public void setCard(Card card) {
-        this.card = card;
-    }
-}
-</code></pre>
-
-<p>4、创建简历映射文件 ResumeMapper.xml</p>
-
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
-&lt;!-- namespace 表示命名空间 --&gt;
-&lt;mapper namespace=&quot;com.sajor.study.c06.mapper.ResumeMapper&quot;&gt;
-    &lt;select id=&quot;findResumeByUserId&quot; parameterType=&quot;Integer&quot; resultType=&quot;com.sajor.study.c06.model.Resume&quot;&gt;
-        SELECT * from Resume where userid = #{id}
-    &lt;/select&gt;
-&lt;/mapper&gt;
-</code></pre>
-
-<p>5、修改映射文件 UserMapper.xml</p>
-
-<p>添加相应方法(将下列代码添加到<mapper>标签里):</p>
-
-<pre><code class="language-text">&lt;!--下面是新增对简历的查询--&gt;
-
-    &lt;!-- 一对多:查看某一用户及其关联的简历信息 注意:子查询方式 --&gt;
-    &lt;select id=&quot;findUserWithResumesByID&quot; parameterType=&quot;Integer&quot;
-            resultMap=&quot;UserWithResumesResult&quot;&gt;
-        SELECT user.* from user WHERE user.id=#{id}
-    &lt;/select&gt;
-    &lt;resultMap type=&quot;com.sajor.study.c06.model.User&quot; id=&quot;UserWithResumesResult&quot;&gt;
-        &lt;id property=&quot;id&quot; column=&quot;id&quot;/&gt;
-        &lt;result property=&quot;name&quot; column=&quot;name&quot;/&gt;
-        &lt;result property=&quot;sex&quot; column=&quot;sex&quot;/&gt;
-        &lt;result property=&quot;email&quot; column=&quot;email&quot;/&gt;
-        &lt;!-- 一对多关联映射:collection
-            ofType 表示属性集合中元素的类型，List&lt;Resume&gt;属性即 Resume 类 --&gt;
-        &lt;collection property=&quot;resumeList&quot; column=&quot;id&quot;
-                    ofType=&quot;com.sajor.study.c06.model.Resume&quot;
-                    select=&quot;com.sajor.study.c06.mapper.ResumeMapper.findResumeByUserId&quot;&gt;
-            &lt;id property=&quot;resumeId&quot; column=&quot;resumeid&quot;/&gt;
-            &lt;result property=&quot;userId&quot; column=&quot;userid&quot;/&gt;
-            &lt;result property=&quot;resumeName&quot; column=&quot;resumename&quot;/&gt;
-            &lt;result property=&quot;resumeDesc&quot; column=&quot;resumedesc&quot;/&gt;
-        &lt;/collection&gt;
-    &lt;/resultMap&gt;
-
-    &lt;!-- 一对多:查看某一用户及其关联的简历信息
-    注意:当关联查询出的列名相同，则需要使用别名区分(比如:表名.列名 as 列的别名) --&gt;
-    &lt;select id=&quot;findUserWithResumesByID2&quot; parameterType=&quot;Integer&quot; resultMap=&quot;UserWithResumesResult2&quot;&gt;
-        SELECT user.*,resume.* from user,resume WHERE user.id=resume.userid and user.id=#{id}
-    &lt;/select&gt;
-    &lt;resultMap type=&quot;com.sajor.study.c06.model.User&quot; id=&quot;UserWithResumesResult2&quot;&gt;
-        &lt;id property=&quot;id&quot; column=&quot;id&quot;/&gt;
-        &lt;result property=&quot;name&quot; column=&quot;name&quot;/&gt;
-        &lt;result property=&quot;sex&quot; column=&quot;sex&quot;/&gt;
-        &lt;result property=&quot;email&quot; column=&quot;email&quot;/&gt;
-        &lt;!-- 一对多关联映射:collection
-            ofType 表示属性集合中元素的类型，List&lt;Resume&gt;属性即 Resume 类 --&gt;
-        &lt;collection property=&quot;resumeList&quot; ofType=&quot;com.sajor.study.c06.model.Resume&quot;&gt;
-            &lt;id property=&quot;resumeId&quot; column=&quot;resumeid&quot;/&gt;
-            &lt;result property=&quot;userId&quot; column=&quot;userid&quot;/&gt;
-            &lt;result property=&quot;resumeName&quot; column=&quot;resumename&quot;/&gt;
-            &lt;result property=&quot;resumeDesc&quot; column=&quot;resumedesc&quot;/&gt;
-        &lt;/collection&gt;
-    &lt;/resultMap&gt;
-</code></pre>
-
-<p>6、修改配置文件 mybatis-config-c06-relation.xml</p>
-
-<p>配置ResumeMapper.xml的位置(在<mappers>标签中添加如下代码)：</p>
-
-<pre><code class="language-text">&lt;mapper resource=&quot;com/sajor/study/c06/mapper/ResumeMapper.xml&quot;/&gt;
-</code></pre>
-
-<p>7、修改 UserDAO 类</p>
-
-<p>添加响应方法(添加到UserDAO类里)。</p>
-
-<pre><code class="language-text">
-    //下面是新增方法
-
-    /**
-     * 根据用户编号查询用户及简历信息
-     */
-    public User findUserWithResumesByID(int id) throws Exception {
-        // 1、读取配置文件
-        String resource = &quot;mybatis-config-c06-relation.xml&quot;;
-        InputStream inputStream = Resources.getResourceAsStream(resource);
-
-        // 2、根据配置文件构建 SqlSessionFactory
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-
-        // 3、通过 SqlSessionFactory 创建 SqlSession
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-
-        // 4、SqlSession 执行映射文件中定义的 SQL，并返回映射结果
-//        User user = sqlSession.selectOne(&quot;com.sajor.study.c06.mapper.UserMapper.findUserWithResumesByID&quot;, id);
-        User user = sqlSession.selectOne(&quot;com.sajor.study.c06.mapper.UserMapper.findUserWithResumesByID2&quot;, id);
-        // 5、关闭 SqlSession
-        sqlSession.close();
-        return user;
-    }
-</code></pre>
-
-<p>8、修改测试类 MyBatisRelationTest</p>
-
-<pre><code class="language-text">//            User user = userDAO.findUserById(2);
-            User user = userDAO.findUserWithResumesByID(2);
-</code></pre>
-
-<p>9、运行测试类<br/>
- <img src="media/15647098694474/15647139309257.jpg" alt="" style="width:576px;"/></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[从零开始SSM开发系列九：MyBatis 一对一关联关系]]></title>
-    <link href="blog.sajor.top/15643240518555.html"/>
-    <updated>2019-07-28T22:27:31+08:00</updated>
-    <id>blog.sajor.top/15643240518555.html</id>
-    <content type="html"><![CDATA[
-<p>1、数据库表准备</p>
-
-<p>新建一个数据库表:card 并添加几条数据</p>
-
-<p>Card 表</p>
-
-<table>
-<thead>
-<tr>
-<th>字段名称</th>
-<th>类型</th>
-<th>长度</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>id</td>
-<td>int</td>
-<td>11（主键）</td>
-</tr>
-<tr>
-<td>code</td>
-<td>varchar</td>
-<td>18</td>
-</tr>
-</tbody>
-</table>
-
-<p>2、创建新的 Package</p>
-
-<blockquote>
-<p>com.sajor.study.c06<br/>
-com.sajor.study.c06.model : 存放 vo 对象(业务模型对象) <br/>
-com.sajor.study.c06.dao : 存放 dao 对象(数据库访问对象) <br/>
-com.sajor.study.mapper : 存放 mybatis 数据库表-对象映射文件 <br/>
-test.com.sajor.study.c06 </p>
-</blockquote>
-
-<p>创建完成，包结构如下:</p>
-
-<p><img src="media/15643240518555/15646746698065.jpg" alt="" style="width:314px;"/></p>
-
-<p>3、在 model 包中创建 User 类，Card 类</p>
-
-<p>User 类</p>
-
-<pre><code class="language-text">package com.sajor.study.c06.model;
-
-public class User {
-    private int id = 20190801;
-    private String name = &quot;&quot;;
-    private String sex;
-    private String email;
-
-    private Card card; //个人关联的证件
-
-    @Override
-    public String toString() {
-        StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append(&quot;id=&quot;);
-        stringBuffer.append(id);
-        stringBuffer.append(&quot;\n&quot;);
-        stringBuffer.append(&quot;name=&quot;);
-        stringBuffer.append(name);
-        stringBuffer.append(&quot;\n&quot;);
-        stringBuffer.append(&quot;CardID=&quot;);
-        stringBuffer.append(card.getId());
-        stringBuffer.append(&quot;\n&quot;);
-        stringBuffer.append(&quot;CardCode=&quot;);
-        stringBuffer.append(card.getCode());
-        return stringBuffer.toString();
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Card getCard() {
-        return card;
-    }
-
-    public void setCard(Card card) {
-        this.card = card;
-    }
-}
-</code></pre>
-
-<p>Card 类</p>
-
-<pre><code class="language-text">package com.sajor.study.c06.model;
-
-public class Card {
-    private Integer id;
-    private String code;
-
-    @Override
-    public String toString() {
-        StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append(&quot;Card [CardId=&quot;);
-        stringBuffer.append(id);
-        stringBuffer.append(&quot;, CardCode=&quot;);
-        stringBuffer.append(code);
-        stringBuffer.append(&quot;]&quot;);
-        return stringBuffer.toString();
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-}
-</code></pre>
-
-<p>4、在 mapper 包中创建映射文件 UserMapper.xml、 CardMapper.xml</p>
-
-<p>UserMapper.xml</p>
-
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
-&lt;!-- namespace 表示命名空间 --&gt;
-&lt;mapper namespace=&quot;com.sajor.study.c06.mapper.UserMapper&quot;&gt;
-
-    &lt;select id=&quot;findUserById&quot; parameterType=&quot;Integer&quot; resultMap=&quot;CardWithUserResult&quot;&gt;
-        SELECT * from USER where id=#{id}
-    &lt;/select&gt;
-
-
-    &lt;resultMap type=&quot;com.sajor.study.c06.model.User&quot; id=&quot;CardWithUserResult&quot;&gt;
-        &lt;id property=&quot;id&quot; column=&quot;id&quot;/&gt;
-        &lt;result property=&quot;name&quot; column=&quot;name&quot;/&gt;
-        &lt;result property=&quot;sex&quot; column=&quot;sex&quot;/&gt;
-        &lt;result property=&quot;email&quot; column=&quot;email&quot;/&gt;
-        &lt;!-- 一对一:association 使用 select 属性引入另外一条 SQL 语句 --&gt;
-        &lt;association property=&quot;card&quot; column=&quot;id&quot; javaType=&quot;com.sajor.study.c06.model.Card&quot;
-                     select=&quot;com.sajor.study.c06.mapper.CardMapper.findCodeById&quot;/&gt;
-    &lt;/resultMap&gt;
-
-
-    &lt;!-- 嵌套结果:使用嵌套结果映射来处理重复的联合结果的子集 --&gt;
-    &lt;select id=&quot;findUserById2&quot; parameterType=&quot;Integer&quot; resultMap=&quot;CardWithUserResult2&quot;&gt;
-        SELECT user.*,card.code from user,card
-        where user.id=card.id and user.id= #{id}
-    &lt;/select&gt;
-
-    &lt;resultMap type=&quot;com.sajor.study.c06.model.User&quot; id=&quot;CardWithUserResult2&quot;&gt;
-        &lt;id property=&quot;id&quot; column=&quot;id&quot;/&gt;
-        &lt;result property=&quot;name&quot; column=&quot;name&quot;/&gt;
-        &lt;result property=&quot;sex&quot; column=&quot;sex&quot;/&gt;
-        &lt;result property=&quot;email&quot; column=&quot;email&quot;/&gt;
-        &lt;association property=&quot;card&quot; javaType=&quot;com.sajor.study.c06.model.Card&quot;&gt;
-            &lt;id property=&quot;id&quot; column=&quot;id&quot;/&gt;
-            &lt;result property=&quot;code&quot; column=&quot;code&quot;/&gt;
-        &lt;/association&gt;
-    &lt;/resultMap&gt;
-&lt;/mapper&gt;
-</code></pre>
-
-<p>CardMapper.xml</p>
-
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
-&lt;!-- namespace 表示命名空间 --&gt;
-&lt;mapper namespace=&quot;com.sajor.study.c06.mapper.CardMapper&quot;&gt;
-    &lt;select id=&quot;findCodeById&quot; parameterType=&quot;Integer&quot;
-            resultType=&quot;com.sajor.study.c06.model.Card&quot;&gt;
-        SELECT * from card where id=#{id}
-    &lt;/select&gt;
-&lt;/mapper&gt;
-</code></pre>
-
-<p>5、新建一个 MyBatis 的核心配置文件 mybatis-config-c06-relation.xml</p>
-
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
-&lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
-&lt;configuration&gt;
-    &lt;!--1.配置环境 ，默认的环境id为msql--&gt;
-    &lt;environments default=&quot;dev&quot;&gt;
-
-        &lt;!--1.2.配置 id 为 mysql 的数据库环境 --&gt;
-        &lt;environment id=&quot;dev&quot;&gt;
-
-            &lt;!-- 使用 JDBC 的事务管理 --&gt;
-            &lt;transactionManager type=&quot;JDBC&quot;/&gt;
-
-            &lt;!--数据库连接池 --&gt;
-            &lt;dataSource type=&quot;POOLED&quot;&gt;
-                &lt;property name=&quot;driver&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;
-                &lt;property name=&quot;url&quot;
-                          value=&quot;jdbc:mysql://localhost:3306/TestDB?autoReconnect=true&amp;amp;characterEncoding=utf8&amp;amp;useUnicode=true&amp;amp;useSSL=false&quot;/&gt;
-                &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
-                &lt;property name=&quot;password&quot; value=&quot;123456&quot;/&gt;
-            &lt;/dataSource&gt;
-        &lt;/environment&gt;
-    &lt;/environments&gt;
-
-    &lt;!--2.配置 Mapper 的位置 --&gt;
-    &lt;mappers&gt;
-        &lt;mapper resource=&quot;com/sajor/study/c06/mapper/UserMapper.xml&quot;/&gt;
-        &lt;mapper resource=&quot;com/sajor/study/c06/mapper/CardMapper.xml&quot;/&gt;
-
-    &lt;/mappers&gt;
-&lt;/configuration&gt;
-</code></pre>
-
-<p>6、新建一个 Spring 配置文件 spring-config-mybatis-c06-relation.xml</p>
-
-<p>在 spring 配置文件中配置 bean</p>
-
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
-
-        &lt;bean id=&quot;userDAO&quot; class=&quot;com.sajor.study.c06.dao.UserDAO&quot; /&gt;
-        &lt;bean id=&quot;user&quot; class=&quot;com.sajor.study.c06.model.User&quot; /&gt; &lt;bean id=&quot;card&quot; class=&quot;com.sajor.study.c06.model.Card&quot; /&gt;
-&lt;/beans&gt;
-</code></pre>
-
-<p>7、新建一个 DAO 类 UserDAO</p>
-
-<p>对数据库进行关联查询</p>
-
-<pre><code class="language-text">package com.sajor.study.c06.dao;
-
-import com.sajor.study.c06.model.User;
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.apache.ibatis.session.SqlSessionManager;
-
-import java.io.InputStream;
-
-public class UserDAO {
-    /**
-     * 根据用户编号查询用户信息
-     */
-    public User findUserById(int id) throws Exception {
-        // 1、读取配置文件
-        String resource = &quot;mybatis-config-c06-relation.xml&quot;;
-        InputStream inputStream =
-                Resources.getResourceAsStream(resource);
-        // 2、根据配置文件构建 SqlSessionFactory
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-        // 3、通过 SqlSessionFactory 创建 SqlSession
-
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-        // 4、SqlSession 执行映射文件中定义的 SQL，并返回映射结果
-        User user = sqlSession.selectOne(&quot;com.sajor.study.c06.mapper.UserMapper.findUserById&quot;, id);
-
-        //User user = sqlSession.selectOne(&quot;com.sajor.study.c06.mapper.UserMapper.findUserById2&quot;, id);
-        // 5、关闭 SqlSession
-        sqlSession.close();
-        return user;
-    }
-}
-</code></pre>
-
-<p>8、创建测试类 MyBatisRelationTest</p>
-
-<pre><code class="language-text">package test.com.sajor.study.c06;
-
-import com.sajor.study.c06.dao.UserDAO;
-import com.sajor.study.c06.model.User;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-public class MyBatisRelationTest {
-    public static void main(String[] args) {
-        try {
-            ApplicationContext ctx =
-                    new ClassPathXmlApplicationContext(&quot;spring-config-mybatis-c06-relation.xml&quot;);
-            UserDAO userDAO = (UserDAO) ctx.getBean(&quot;userDAO&quot;);
-            User user = userDAO.findUserById(2);
-            System.out.println(user);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-}
-</code></pre>
-
-<p>9、运行测试类<br/>
-<img src="media/15643240518555/15647098563873.jpg" alt="" style="width:973px;"/></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[从零开始SSM开发系列八：MyBatis 入门]]></title>
-    <link href="blog.sajor.top/15643212338496.html"/>
-    <updated>2019-07-28T21:40:33+08:00</updated>
-    <id>blog.sajor.top/15643212338496.html</id>
-    <content type="html"><![CDATA[
-<p>1、配置 MyBatis 开发环境</p>
-
-<p>在工程里面引用 MyBatis 核心 jar 包，以及 MyBatis 依赖的第三方 jar 包。<br/>
-点击 File&gt;Project Structure...，选中 Libraries，添加 java 引用<br/>
-选择 l􏰀ib 中的 􏰁Mybatis-3.4.5.jar 包。</p>
-
-<p>再次添加 java 引用，选中 lib 中的 mybatis-3.4.5-lib 文件夹<br/>
-确认。MyBatis 开发环境即搭建好了。</p>
-
-<p><img src="media/15643212338496/15643213413978.jpg" alt="" style="width:1024px;"/></p>
-
-<p>2、创建新的 Package</p>
-
-<blockquote>
-<p>com.sajor.study.c05<br/>
-com.sajor.study.c05.model:存放 vo 对象(业务模型对象) <br/>
-com.sajor.study.c05.dao:存放 dao 对象(数据库访问对象) <br/>
-com.sajor.study.c05.mapper:存放 mybatis 数据库表-对象映射文件 <br/>
-test.com.sajor.study.c05<br/>
-创建完成，包结构如下:</p>
-</blockquote>
-
-<p><img src="media/15643212338496/15643214751761.jpg" alt="" style="width:338px;"/></p>
-
-<p>3、在 model 包中创建一个 User 类<br/>
-在类中声明id、name、sex和email属性，及其对应的getter/setter方法。</p>
-
-<pre><code class="language-text">package com.sajor.study.c05.model;
-
-public class User {
-    private int id = 20180101;
-    private String name = &quot;&quot;;
-    private String sex;
-    private String email;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    @Override
-    public String toString() {
-        StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append(&quot;id=&quot;);
-        stringBuffer.append(id);
-        stringBuffer.append(&quot;\n&quot;);
-        stringBuffer.append(&quot;name=&quot;);
-        stringBuffer.append(name);
-        return stringBuffer.toString();
-    }
-}
-</code></pre>
-
-<p>4、在 mapper 包中创建一个映射文件 UserMapper.xml</p>
-
-<p>定义 SQL;<br/>
- 1)根据用户编号获取用户信息;<br/>
- 2)根据用户名模糊查询用户信息列表;<br/>
- 3) 添加用户信息;<br/>
- 4)更新用户信息;<br/>
- 5)删除用户</p>
-
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
-&lt;!-- namespace 表示命名空间 --&gt;
-&lt;mapper namespace=&quot;com.sajor.study.c05.mapper.UserMapper&quot;&gt;
-
-    &lt;!--根据用户编号获取用户信息 --&gt;
-    &lt;select id=&quot;findUserById&quot; parameterType=&quot;Integer&quot; resultType=&quot;com.sajor.study.c05.model.User&quot;&gt;
-        select * from USER where id = #{id}
-    &lt;/select&gt;
-
-    &lt;!--根据用户名模糊查询用户信息列表--&gt;
-    &lt;select id=&quot;findUserByName&quot; parameterType=&quot;String&quot; resultType=&quot;com.sajor.study.c05.model.User&quot;&gt;
-        select * from USER where name like concat(&#39;%&#39;,#{value},&#39;%&#39;)
-    &lt;/select&gt;
-
-    &lt;!-- 添加用户信息 --&gt;
-    &lt;insert id=&quot;addUser&quot; parameterType=&quot;com.sajor.study.c05.model.User&quot;&gt;
-        insert into USER(name,sex,email) values(#{name},#{sex},#{email})
-    &lt;/insert&gt;
-
-    &lt;!-- 更新用户信息 --&gt;
-    &lt;update id=&quot;updateUser&quot; parameterType=&quot;com.sajor.study.c05.model.User&quot;&gt;
-        update USER set name=#{name},sex=#{sex},email=#{email} where id=#{id}
-    &lt;/update&gt;
-
-    &lt;!-- 删除用户 --&gt;
-    &lt;delete id=&quot;deleteUser&quot; parameterType=&quot;Integer&quot;&gt;
-        delete from USER where id=#{id}
-    &lt;/delete&gt;
-&lt;/mapper&gt;
-
-</code></pre>
-
-<p>5、创建 MyBatis 的核心配置文件 mybatis-config.xml</p>
-
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
-&lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
-&lt;configuration&gt;
-    &lt;!--1.配置环境 ，默认的环境为mysql--&gt;
-    &lt;environments default=&quot;dev&quot;&gt;
-        &lt;!--1.2.配置 id 为 mysql 的数据库环境 --&gt;
-        &lt;environment id=&quot;dev&quot;&gt;
-
-            &lt;!-- 使用 JDBC 的事务管理 --&gt;
-            &lt;transactionManager type=&quot;JDBC&quot;/&gt;
-
-            &lt;!--数据库连接池 --&gt;
-            &lt;dataSource type=&quot;POOLED&quot;&gt;
-                &lt;property name=&quot;driver&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;
-                &lt;property name=&quot;url&quot;
-                          value=&quot;jdbc:mysql://localhost:3306/TestDB?autoReconnect=true&amp;amp;characterEncoding=utf8&amp;amp;useUnicode=true&amp;amp;useSSL=false&quot;/&gt;
-                &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
-                &lt;property name=&quot;password&quot; value=&quot;123456&quot;/&gt;
-            &lt;/dataSource&gt;
-        &lt;/environment&gt;
-    &lt;/environments&gt;
-
-    &lt;!--2.配置 Mapper 的位置 --&gt;
-    &lt;mappers&gt;
-        &lt;mapper resource=&quot;com/sajor/study/c05/mapper/UserMapper.xml&quot;/&gt;
-    &lt;/mappers&gt;
-&lt;/configuration&gt;
-</code></pre>
-
-<p>6、创建一个 DAO 类 UserDAO</p>
-
-<p>对数据库进行增删改查</p>
-
-<pre><code class="language-text">package com.sajor.study.c05.dao;
-
-import com.sajor.study.c05.model.User;
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-
-import java.io.InputStream;
-import java.util.List;
-
-public class UserDAO {
-    /**
-     * 根据用户编号查询用户信息
-     */
-
-    public User findUserById(int id) throws Exception {
-
-        // 1、读取配置文件
-        String resource = &quot;mybatis-config.xml&quot;;
-        InputStream inputStream = Resources.getResourceAsStream(resource);
-
-        // 2、根据配置文件构建 SqlSessionFactory
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-
-        // 3、通过 SqlSessionFactory 创建 SqlSession
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-
-        // 4、SqlSession 执行映射文件中定义的 SQL，并返回映射结果
-        User user = sqlSession.selectOne(&quot;com.sajor.study.c05.mapper.UserMapper.findUserById&quot;, id);
-
-        // 5、关闭 SqlSession
-        sqlSession.close();
-        return user;
-    }
-
-    /**
-     * 根据用户名称来模糊查询用户信息列表
-     */
-    public List&lt;User&gt; findUserByName(String s) throws Exception {
-
-        // 1、读取配置文件
-        String resource = &quot;mybatis-config.xml&quot;;
-        InputStream inputStream = Resources.getResourceAsStream(resource);
-
-        // 2、根据配置文件构建 SqlSessionFactory
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-
-        // 3、通过 SqlSessionFactory 创建 SqlSession
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-
-        // 4、SqlSession 执行映射文件中定义的 SQL，并返回映射结果
-        List&lt;User&gt; users = sqlSession.selectList(&quot;com.sajor.study.c05.mapper.UserMapper.findUserByName&quot;, s);
-
-        // 5、关闭 SqlSession
-        sqlSession.close();
-        return users;
-    }
-
-    /**
-     * 添加用户
-     */
-    public void addUser(User user) throws Exception {
-        // 1、读取配置文件
-        String resource = &quot;mybatis-config.xml&quot;;
-        InputStream inputStream = Resources.getResourceAsStream(resource);
-
-        // 2、根据配置文件构建 SqlSessionFactory
-        SqlSessionFactory sqlSessionFactory =
-                new SqlSessionFactoryBuilder().build(inputStream);
-
-        // 3、通过 SqlSessionFactory 创建 SqlSession
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-
-        // 4、SqlSession 执行添加操作
-        // 4.1 执行 SqlSession 的插入方法，返回的是 SQL 语句影响的行数
-        int rows = sqlSession.insert(&quot;com.sajor.study.c05.mapper.UserMapper.addUser&quot;, user);
-
-        // 4.2 通过返回结果判断插入操作是否执行成功
-        if (rows &gt; 0) {
-            System.out.println(&quot;您成功插入了&quot; + rows + &quot;条数据!&quot;);
-        } else {
-            System.out.println(&quot;执行插入操作失败!!!&quot;);
-        }
-
-        // 4.3 提交事务
-        sqlSession.commit();
-
-        // 5、关闭 SqlSession
-        sqlSession.close();
-    }
-
-    /**
-     * 更新用户
-     */
-    public void updateUser(User user) throws Exception {
-        // 1、读取配置文件
-        String resource = &quot;mybatis-config.xml&quot;;
-        InputStream inputStream = Resources.getResourceAsStream(resource);
-
-        // 2、根据配置文件构建 SqlSessionFactory
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-
-        // 3、通过 SqlSessionFactory 创建 SqlSession
-        SqlSession sqlSession = sqlSessionFactory.openSession(); // 4、SqlSession 执行更新操作
-
-        // 4.1 执行 SqlSession 的更新方法，返回的是 SQL 语句影响的行数
-        int rows = sqlSession.update(&quot;com.sajor.study.c05.mapper.UserMapper.updateUser&quot;, user);
-
-        // 4.2 通过返回结果判断更新操作是否执行成功
-        if (rows &gt; 0) {
-            System.out.println(&quot;您成功修改了&quot; + rows + &quot;条数据!&quot;);
-        } else {
-            System.out.println(&quot;执行修改操作失败!!!&quot;);
-        }
-
-        // 4.3 提交事务
-        sqlSession.commit();
-
-        // 5、关闭 SqlSession
-        sqlSession.close();
-    }
-
-    /**
-     * 删除用户
-     */
-    public void deleteUser(int id) throws Exception {
-        // 1、读取配置文件
-        String resource = &quot;mybatis-config.xml&quot;;
-        InputStream inputStream = Resources.getResourceAsStream(resource);
-
-        // 2、根据配置文件构建 SqlSessionFactory
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-
-        // 3、通过 SqlSessionFactory 创建 SqlSession
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-
-        // 4、SqlSession 执行删除操作
-        // 4.1 执行 SqlSession 的删除方法，返回的是 SQL 语句影响的行数
-        int rows = sqlSession.delete(&quot;com.sajor.study.c05.mapper.UserMapper.deleteUser&quot;, id);
-
-        // 4.2 通过返回结果判断删除操作是否执行成功
-        if (rows &gt; 0) {
-            System.out.println(&quot;您成功删除了&quot; + rows + &quot;条数据!&quot;);
-        } else {
-            System.out.println(&quot;执行删除操作失败!!!&quot;);
-        }
-
-        // 4.3 提交事务
-        sqlSession.commit();
-
-        // 5、关闭 SqlSession
-        sqlSession.close();
-    }
-}
-</code></pre>
-
-<p>7、新建一个 Spring 配置文件 spring-config-mybatis.xml<br/>
-在 spring 配置文件中配置 bean </p>
-
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
-    &lt;bean id=&quot;userDAO&quot; class=&quot;com.sajor.study.c05.dao.UserDAO&quot; /&gt;
-    &lt;bean id=&quot;user&quot; class=&quot;com.sajor.study.c05.model.User&quot; /&gt;
-&lt;/beans&gt;
-</code></pre>
-
-<p>8、创建测试类 MyBatisTest</p>
-
-<p>先使用插入数据部分插入几条数据，之后再查询、修改、删除。</p>
-
-<pre><code class="language-text">package test.com.sajor.study.c05;
-
-import com.sajor.study.c05.dao.UserDAO;
-import com.sajor.study.c05.model.User;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.util.List;
-
-public class MyBatisTest {
-    public static void main(String[] args) {
-        try {
-            ApplicationContext ctx = new ClassPathXmlApplicationContext(&quot;spring-config-mybatis.xml&quot;);
-
-            // 按id查找数据
-            UserDAO userDAO = (UserDAO) ctx.getBean(&quot;userDAO&quot;);
-            User user = userDAO.findUserById(2);
-            System.out.println(user);
-
-            // 按名字查找数据
-            List&lt;User&gt; users = userDAO.findUserByName(&quot;萧&quot;);
-            for (User u : users) {
-                System.out.println(u);
-            }
-
-
-            // 插入数据
-//            UserDAO userDAO = (UserDAO) ctx.getBean(&quot;userDAO&quot;);
-//            User user = (User) ctx.getBean(&quot;user&quot;);
-//            user.setName(&quot;萧大侠&quot;);
-//            user.setSex(&quot;11&quot;);
-//            user.setEmail(&quot;xiaodaxia@cn.cn&quot;);
-//            userDAO.addUser(user);
-
-
-//            // 修改数据
-//            UserDAO userDAO = (UserDAO) ctx.getBean(&quot;userDAO&quot;);
-//            User user = (User) ctx.getBean(&quot;user&quot;);
-//            user.setId(2);
-//            user.setName(&quot;萧大侠gai&quot;);
-//            user.setSex(&quot;01&quot;);
-//            user.setEmail(&quot;xiaodaxia@cn.cn&quot;);
-//            userDAO.updateUser(user);
-
-            // 删除数据
-//            UserDAO userDAO = (UserDAO) ctx.getBean(&quot;userDAO&quot;);
-//            userDAO.deleteUser(1);
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-}
-</code></pre>
-
-<p>9、运行测试类</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[从零开始SSM开发系列七：事务管理]]></title>
-    <link href="blog.sajor.top/15643155536877.html"/>
-    <updated>2019-07-28T20:05:53+08:00</updated>
-    <id>blog.sajor.top/15643155536877.html</id>
-    <content type="html"><![CDATA[
-<p>1、Spring 配置文件中声明事务</p>
-
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-       xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
-       xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;
-       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
-            http://www.springframework.org/schema/beans/spring-beans.xsd
-            http://www.springframework.org/schema/tx
-            http://www.springframework.org/schema/tx/spring-tx.xsd
-            http://www.springframework.org/schema/aop
-            http://www.springframework.org/schema/aop/spring-aop.xsd&quot;&gt;
-
-    &lt;bean id=&quot;student&quot; class=&quot;com.sajor.study.c01.Student&quot;&gt;
-    &lt;/bean&gt;
-    &lt;bean id=&quot;school&quot; class=&quot;com.sajor.study.c01.School&quot;&gt;
-        &lt;property name=&quot;students&quot; ref=&quot;student&quot;/&gt;
-    &lt;/bean&gt;
-
-    &lt;!-- 1.配置数据源 --&gt;
-    &lt;bean id=&quot;dataSourceJDBC&quot;
-          class=&quot;org.springframework.jdbc.datasource.DriverManagerDataSource&quot;&gt;
-        &lt;property name=&quot;driverClassName&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;
-        &lt;property name=&quot;url&quot;
-                  value=&quot;jdbc:mysql://localhost:3306/TestDB?autoReconnect=true&amp;amp;characterEncoding=utf8&amp;amp;useUnicode=true&amp;amp;useSSL=false&quot;/&gt;
-        &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
-        &lt;property name=&quot;password&quot; value=&quot;123456&quot;/&gt;
-    &lt;/bean&gt;
-
-    &lt;!-- 2.配置 JDBC 模板 --&gt;
-    &lt;bean id=&quot;jdbcTemplate&quot; class=&quot;org.springframework.jdbc.core.JdbcTemplate&quot;&gt;
-        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSourceJDBC&quot;/&gt;
-    &lt;/bean&gt;
-
-    &lt;!--3.定义使用 jdbc 模板的 jdbcTemplateUtil 类 --&gt;
-    &lt;bean id=&quot;jdbcTemplateUtil&quot; class=&quot;com.sajor.study.c04.JdbcTemplateUtil&quot;&gt;
-        &lt;property name=&quot;jdbcTemplate&quot; ref=&quot;jdbcTemplate&quot;/&gt;
-    &lt;/bean&gt;
-
-    &lt;!--4.JDBC 事务管理器，依赖于数据源--&gt;
-    &lt;bean id=&quot;transactionManagerJDBC&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;
-        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSourceJDBC&quot;/&gt;
-    &lt;/bean&gt;
-
-    &lt;!-- 5.编写通知:对事务进行增强(通知),需要编写对切入点和具体执行事务细节 --&gt;
-    &lt;tx:advice id=&quot;txAdvice&quot; transaction-manager=&quot;transactionManagerJDBC&quot;&gt;
-        &lt;tx:attributes&gt;
-            &lt;!-- name:*表示任意方法名称 --&gt;
-            &lt;tx:method name=&quot;*&quot; propagation=&quot;REQUIRED&quot; isolation=&quot;DEFAULT&quot;
-                       read-only=&quot;false&quot;/&gt;
-        &lt;/tx:attributes&gt;
-    &lt;/tx:advice&gt;
-
-    &lt;!-- 6.编写 aop，让 spring 自动对目标生成代理，需要使用 AspectJ 的表达式 --&gt;
-    &lt;aop:config&gt;
-        &lt;!-- 切入点 --&gt;
-        &lt;aop:pointcut expression=&quot;execution(* com.sajor.study.c04.JdbcTemplateUtil.addUser(..))&quot;
-                      id=&quot;txPointCut&quot;/&gt;
-        &lt;!-- 切面:将切入点与通知整合 --&gt;
-        &lt;aop:advisor advice-ref=&quot;txAdvice&quot; pointcut-ref=&quot;txPointCut&quot;/&gt;
-    &lt;/aop:config&gt;
-
-&lt;/beans&gt;
-</code></pre>
-
-<p>2、在 JdbcTemplateUtil.addUser()方法中添加一个错误<br/>
-验证事务是否起作用</p>
-
-<pre><code class="language-text">public void addUser(Student student) {
-        String sql = &quot;insert into user (name,sex,email) values(?,?,?)&quot;;
-        jdbcTemplate.update(sql, student.getName(), student.getSex(), student.getEmail());
-        errorTest.length();//故意执行一个未初始化对象的方法
-    }
-</code></pre>
-
-<p>3、运行测试类</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[从零开始SSM开发系列六：数据库开发]]></title>
-    <link href="blog.sajor.top/15643143335228.html"/>
-    <updated>2019-07-28T19:45:33+08:00</updated>
-    <id>blog.sajor.top/15643143335228.html</id>
-    <content type="html"><![CDATA[
-<h2 id="toc_0">创建MySQL数据库</h2>
-
-<p>首先进入MySQL数据库创建 <strong>TestDB</strong> 数据库</p>
-
-<pre><code class="language-text">create database TestDB charset=utf8;
-</code></pre>
-
-<p><img src="media/15643143335228/15643149566034.jpg" alt="" style="width:585px;"/></p>
-
-<p>到IDEA右侧点击Database，之后点击加号添加数据库，选择Data Source&gt;MySQL 填写连接信息<br/>
-<img src="media/15643143335228/15643225927422.jpg" alt="" style="width:1440px;"/></p>
-
-<p>填写好数据库信息后点击 Download 下载驱动包，下载完成后点击Test Connection 测试连接情况，之后点击ok。<br/>
-<img src="media/15643143335228/15643225034011.jpg" alt="" style="width:800px;"/></p>
-
-<p><strong>注意</strong></p>
-
-<blockquote>
-<p>如果你要直接粘贴下面代码的话，请记得修改这些内容<br/>
-数据库名： TestDB<br/>
-数据库用户： root<br/>
-数据库密码： 123456</p>
-</blockquote>
-
-<h2 id="toc_1">创建项目</h2>
-
-<p>1、引用 MySQL 数据库 jar 包<br/>
-点击 File&gt;Project Structure...，选中 Libraries，添加 java 引用<br/>
-在 lib 中选择 mysql-connector-java-5.x.x.jar确认</p>
-
-<p>2、创建两个新的包</p>
-
-<blockquote>
-<p>com.sajor.study.c04<br/>
-test.com.sajor.study.c04</p>
-</blockquote>
-
-<p>3、新建一个类 JdbcTemplateUtil</p>
-
-<pre><code class="language-text">package com.sajor.study.c04;
-
-import com.sajor.study.c01.Student;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.List;
-
-public class JdbcTemplateUtil {
-    private JdbcTemplate jdbcTemplate;
-    private String errorTest;
-
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
-
-    public void createTable() {
-        jdbcTemplate.execute(&quot;DROP TABLE IF EXISTS user&quot;);
-        jdbcTemplate.execute(&quot;CREATE TABLE user (\n&quot; +
-                &quot; id int(11) NOT NULL AUTO_INCREMENT,\n&quot; +
-                &quot; name varchar(50) DEFAULT NULL,\n&quot; +
-                &quot; sex varchar(2) DEFAULT NULL,\n&quot; +
-                &quot; email varchar(125) DEFAULT NULL,\n&quot; +
-                &quot; PRIMARY KEY (`id`)\n&quot; +
-                &quot;)&quot;
-        );
-    }
-
-    public void addUser(Student student) {
-        String sql = &quot;insert into user (name,sex,email) values(?,?,?)&quot;;
-        jdbcTemplate.update(sql, student.getName(), student.getSex(), student.getEmail());
-    }
-
-    public void deleteUser(int id) {
-        String sql = &quot;delete from user where id=?&quot;;
-        jdbcTemplate.update(sql, id);
-    }
-
-    public void updateUser(Student student) {
-        String sql = &quot;update user set name=?,sex=?,email=? where id=?&quot;;
-        jdbcTemplate.update(sql, student.getName(), student.getSex(), student.getEmail(),
-                student.getId());
-    }
-
-    // 简单查询，按照 ID 查询，返回字符串
-    public String searchUserName(int id) {
-        String sql = &quot;select name from user where id=?&quot;;
-        return jdbcTemplate.queryForObject(sql, String.class, id);
-    }
-
-    // 复杂查询返回 List 集合
-    public List&lt;Student&gt; findAll() {
-        String sql = &quot;select * from user&quot;;
-        return jdbcTemplate.query(sql, new StudentRowMapper());
-    }
-
-    //根据 id 查询
-    public Student searchUser(int id) {
-        String sql = &quot;select * from user where id=?&quot;;
-        return jdbcTemplate.queryForObject(sql, new StudentRowMapper(), id);
-    }
-
-    //使用 spring RowMapper 进行数据集和对象映射
-    class StudentRowMapper implements RowMapper&lt;Student&gt; {
-        //rs 为返回结果集，以每行为单位封装着
-        public Student mapRow(ResultSet rs, int rowNum) throws SQLException {
-            Student student = new Student();
-            student.setId(rs.getInt(&quot;id&quot;));
-            student.setName(rs.getString(&quot;name&quot;));
-            student.setSex(rs.getString(&quot;sex&quot;));
-            student.setEmail(rs.getString(&quot;email&quot;));
-            return student;
-        }
-    }
-
-}
-
-</code></pre>
-
-<p>4、在 Spring 配置文件中配置数据库信息及 Bean</p>
-
-<p>创建spring-config-c04.xml 将spring-config.xml的内容粘贴过来，我们根据之前的内容进行拓展</p>
-
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
-    &lt;bean id=&quot;student&quot; class=&quot;com.sajor.study.c01.Student&quot;&gt;
-    &lt;/bean&gt;
-    &lt;bean id=&quot;school&quot; class=&quot;com.sajor.study.c01.School&quot;&gt;
-        &lt;property name=&quot;students&quot; ref=&quot;student&quot;/&gt;
-    &lt;/bean&gt;
-
-    &lt;!-- 1.配置数据源 --&gt;
-    &lt;bean id=&quot;dataSourceJDBC&quot;
-          class=&quot;org.springframework.jdbc.datasource.DriverManagerDataSource&quot;&gt;
-        &lt;property name=&quot;driverClassName&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;
-        &lt;property name=&quot;url&quot;
-                  value=&quot;jdbc:mysql://localhost:3306/TestDB?autoReconnect=true&amp;amp;characterEncoding=utf8&amp;amp;useUnicode=true&amp;useSSL=false&quot;/&gt;
-        &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
-        &lt;property name=&quot;password&quot; value=&quot;123456&quot;/&gt;
-    &lt;/bean&gt;
-
-    &lt;!-- 2.配置 JDBC 模板 --&gt;
-    &lt;bean id=&quot;jdbcTemplate&quot; class=&quot;org.springframework.jdbc.core.JdbcTemplate&quot;&gt;
-        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSourceJDBC&quot;/&gt;
-    &lt;/bean&gt;
-
-    &lt;!--3.定义使用 jdbc 模板的 jdbcTemplateUtil 类 --&gt;
-    &lt;bean id=&quot;jdbcTemplateUtil&quot; class=&quot;com.sajor.study.c04.JdbcTemplateUtil&quot;&gt;
-        &lt;property name=&quot;jdbcTemplate&quot; ref=&quot;jdbcTemplate&quot;/&gt;
-    &lt;/bean&gt;
-
-&lt;/beans&gt;
-</code></pre>
-
-<p>5、新建一个测试类 JdbcTemplateTest</p>
-
-<pre><code class="language-text">package test.com.sajor.study.c04;
-
-import com.sajor.study.c01.Student;
-import com.sajor.study.c04.JdbcTemplateUtil;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.util.List;
-
-public class JdbcTemplateTest {
-    public static void main(String[] args) {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext(&quot;spring-config-c04.xml&quot;);
-        JdbcTemplateUtil jdbcTemplateUtil = (JdbcTemplateUtil) ctx.getBean(&quot;jdbcTemplateUtil&quot;);
-
-        //第一次测试时，运行创建库表方法。后面注释掉
-        jdbcTemplateUtil.createTable();
-
-        Student student = (Student) ctx.getBean(&quot;student&quot;);
-        student.setName(&quot;李四&quot;);
-        student.setSex(&quot;01&quot;);
-        student.setEmail(&quot;lisi@cn.cn&quot;);
-
-        jdbcTemplateUtil.addUser(student);
-
-        Student student1 = jdbcTemplateUtil.searchUser(1);
-        System.out.println(&quot;id=&quot; + student1.getId() + &quot; &quot; + &quot;name=&quot; + student1.getName());
-
-        List&lt;Student&gt; list = jdbcTemplateUtil.findAll();
-        System.out.println(&quot;所有用户数=&quot; + list.size());
-
-        for (int i = 0; i &lt; list.size(); i++) {
-            Student student2 = (Student) list.get(i);
-            System.out.println(&quot;id=&quot; + student2.getId() + &quot; &quot; + &quot;name=&quot; + student2.getName());
-        }
-    }
-}
-</code></pre>
-
-<p>6、运行测试类</p>
-
-<p>右键 JdbcTemplateTest 类，点击 Run 或 Debug JdbcTemplateTest.main() 运行结果</p>
-
-<p><img src="media/15643143335228/15643153296887.jpg" alt="" style="width:1027px;"/></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[从零开始SSM开发系列五：AOP]]></title>
-    <link href="blog.sajor.top/15643132029446.html"/>
-    <updated>2019-07-28T19:26:42+08:00</updated>
-    <id>blog.sajor.top/15643132029446.html</id>
-    <content type="html"><![CDATA[
-<p>1、引用 AspectJ jar 包</p>
-
-<p>点击 File&gt;Project Structure...，选中 Libraries，添加 java 引用<br/>
-在 lib 中选择 aspectj-1.8.13 文件夹</p>
-
-<p><img src="media/15643132029446/15643133513348.jpg" alt="" style="width:1018px;"/></p>
-
-<p><img src="media/15643132029446/15643133198359.jpg" alt="" style="width:712px;"/></p>
-
-<p>2、创建两个新的包</p>
-
-<blockquote>
-<p>com.sajor.study.c03<br/>
-test.com.sajor.study.c03</p>
-</blockquote>
-
-<p>3、创建一个业务类 UserXML</p>
-
-<pre><code class="language-text">package com.sajor.study.c03;
-
-public class UserXML {
-    private int id = 20180101;
-    private String name = &quot;AspectJXML 测试用户&quot;;
-    private String sex;
-    private String email;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    @Override
-    public String toString() {
-        StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append(&quot;id=&quot;);
-        stringBuffer.append(id);
-        stringBuffer.append(&quot;\n&quot;);
-        stringBuffer.append(&quot;name=&quot;);
-        stringBuffer.append(name);
-        return stringBuffer.toString();
-    }
-
-    public void saveUser() {
-        System.out.println(&quot;保存用户信息...&quot;);
-    }
-
-    public void queryUser() {
-        System.out.println(&quot;查看用户信息...&quot;);
-        //email.length();
-        System.out.println(this.toString());
-    }
-
-}
-</code></pre>
-
-<p>4、创建一个 AOP 切面类 UserXMLAspectJ</p>
-
-<pre><code class="language-text">package com.sajor.study.c03;
-
-//定义代理通知类(切面类)
-public class UserXMLAspectJ {
-    public void aspectBefore() {
-        System.out.println(&quot;方法执行之前...&quot;);
-    }
-
-    public void aspectAfter() {
-        System.out.println(&quot;方法执行之后...&quot;);
-    }
-}
-
-</code></pre>
-
-<p>2、创建配置类 spring-config-c03-aop.xml</p>
-
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-       xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;
-       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
-            http://www.springframework.org/schema/beans/spring-beans.xsd
-            http://www.springframework.org/schema/aop
-            http://www.springframework.org/schema/aop/spring-aop.xsd&quot;&gt;
-    &lt;!-- 1.定义业务 bean(目标类) --&gt;
-    &lt;bean id=&quot;userxml&quot; class=&quot;com.sajor.study.c03.UserXML&quot;/&gt;
-    &lt;!-- 2.定义代理类(切面类) --&gt;
-    &lt;bean id=&quot;myAspectJ&quot; class=&quot;com.sajor.study.c03.UserXMLAspectJ&quot;/&gt;
-    &lt;!-- 3.定义 aspectj--&gt;
-
-    &lt;aop:config&gt;
-        &lt;aop:aspect id=&quot;userAspect&quot; ref=&quot;myAspectJ&quot;&gt;
-            &lt;!--3.1 定义切点--&gt;
-            &lt;aop:pointcut id=&quot;userQueryUser&quot; expression=&quot;execution(* com.sajor.study.c03.UserXML.queryUser(..))&quot;/&gt;
-            &lt;!--3.2 定义通知--&gt;
-            &lt;aop:before pointcut-ref=&quot;userQueryUser&quot; method=&quot;aspectBefore&quot; /&gt;
-            &lt;aop:after-returning pointcut-ref=&quot;userQueryUser&quot; method=&quot;aspectAfter&quot;/&gt;
-        &lt;/aop:aspect&gt;
-    &lt;/aop:config&gt;
-&lt;/beans&gt;
-</code></pre>
-
-<p>3、新建一个测试类 AspecJXMLTest</p>
-
-<pre><code class="language-text">package test.com.sajor.study.c03;
-
-import com.sajor.study.c03.UserXML;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-public class AspecJXMLTest {
-    public static void main(String[] args) {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext(&quot;spring-config-c03-aop.xml&quot;);
-        UserXML user = (UserXML) ctx.getBean(&quot;userxml&quot;);
-        user.queryUser();
-    }
-}
-
-</code></pre>
-
-<p>4、运行测试类</p>
-
-<p>运行结果</p>
-
-<p><img src="media/15643132029446/15643142498931.jpg" alt="" style="width:1202px;"/></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[从零开始SSM开发系列四：依赖注入及 Bean 管理]]></title>
-    <link href="blog.sajor.top/15642871336794.html"/>
-    <updated>2019-07-28T12:12:13+08:00</updated>
-    <id>blog.sajor.top/15642871336794.html</id>
-    <content type="html"><![CDATA[
-<h2 id="toc_0">一、依赖注入</h2>
-
-<p>1、新建一个 School 类<br/>
-右键 src&gt;main&gt;java&gt;com.sajor.study.c01，点击 New&gt;Java Class</p>
-
-<p>在 School 中引用 Student 类，并可以获得含有 Student 对象的一个 List:</p>
-
-<pre><code class="language-text">    private int id = 2000;
-    private String name = &quot;Sajor&quot;;
-    private Student student;
-    private List&lt;Student&gt; students = new ArrayList();
-</code></pre>
-
-<p>并使用代码生成器Genetater添加Getter and Setter方法完整代码如下</p>
-
-<pre><code class="language-text">package com.sajor.study.c01;
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class School {
-    private int id = 2000;
-    private String name = &quot;Sajor&quot;;
-    private Student student;
-    private List&lt;Student&gt; students = new ArrayList();
-
-    public School(){
-
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List&lt;Student&gt; getStudents() {
-        return students;
-    }
-
-    public void setStudents(List&lt;Student&gt; students) {
-        this.students = students;
-    }
-}
-</code></pre>
-
-<p>2、在 Spring 配置文件中声明 Bean，以及依赖注入</p>
-
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
-    &lt;bean id=&quot;student&quot; class=&quot;com.sajor.study.c01.Student&quot;&gt;
-        &lt;property name=&quot;id&quot; value=&quot;101&quot;&gt;&lt;/property&gt;
-        &lt;property name=&quot;name&quot; value=&quot;张三丰&quot;&gt;&lt;/property&gt;
-    &lt;/bean&gt;
-    &lt;bean id=&quot;school&quot; class=&quot;com.sajor.study.c01.School&quot;&gt;
-        &lt;property name=&quot;students&quot; ref=&quot;student&quot;/&gt;
-    &lt;/bean&gt;
-
-&lt;/beans&gt;
-</code></pre>
-
-<p>3、新建一个测试类，获得 school 对象，通过 school 对象 获得 student 对象<br/>
-右键 src&gt;test&gt;java&gt;test.com.sajor.study.c01，点击 New&gt;Java Class，新建 SchoolTest 类<br/>
-在 SchoolTest 中:<br/>
-1)实例化 Spring 容器<br/>
-2)获得 school 对象<br/>
-3)通过 school 对象的 getStudents()方法获得 student 对象 4)调用 student 对象的 toString()方法</p>
-
-<pre><code class="language-text">package test.com.sajor.study.c01;
-
-import com.sajor.study.c01.School;
-import com.sajor.study.c01.Student;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.util.ArrayList;
-
-public class SchoolTest {
-    public static void main(String[] args) {
-        //1、实例化 spring 容器
-        ApplicationContext ac = new ClassPathXmlApplicationContext(&quot;spring-config.xml&quot;);
-
-        //获得 school 对象
-        School sc = (School) ac.getBean(&quot;school&quot;);
-
-        //3、调用 school 对象的 getStudents 方法
-        ArrayList&lt;Student&gt; sl = (ArrayList&lt;Student&gt;) sc.getStudents();
-
-        //4、获得 school 里面的 student 对象
-        for (Student s : sl) {
-            System.out.println(s.toString());
-        }
-    }
-}
-</code></pre>
-
-<p>4、运行测试类<br/>
-右键 SchoolTest 类，点击 Run 或 Debug SchoolTest.main()运行结果<br/>
-<img src="media/15642871336794/15642894116662.jpg" alt="" style="width:1440px;"/></p>
-
-<h2 id="toc_1">二、基于 XML 的 Bean 装配</h2>
-
-<p>1、新建一个 User 类<br/>
-新建一个包，com.sajor.study.c02.xml<br/>
-右键 src&gt;main&gt;java&gt;com.sajor.study.c02，点击 New&gt;Java Class，在 c02 中新建一个 User 类，创建两个构造函数。</p>
-
-<pre><code class="language-text">package com.sajor.study.c02;
-
-public class User {
-    private int id = 20180101;
-    private String name = &quot;&quot;;
-    private String sex;
-    private String email;
-
-    public User(int id, String name, String sex, String email) {
-        this.id = id;
-        this.name = name;
-        this.sex = sex;
-        this.email = email;
-    }
-
-    public User() {
-
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String toString() {
-        StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append(&quot;id=&quot;);
-        stringBuffer.append(id);
-        stringBuffer.append(&quot;\n&quot;);
-        stringBuffer.append(&quot;name=&quot;);
-        stringBuffer.append(name);
-        return stringBuffer.toString();
-    }
-}
-</code></pre>
-
-<p>2、新建一个spring-config-c01-xml.xml文件，并在 Spring 配置文件中声明 Bean</p>
-
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
-
-    &lt;bean id=&quot;user1&quot; class=&quot;com.sajor.study.c02.xml.User&quot;&gt;
-        &lt;constructor-arg index=&quot;0&quot; value=&quot;20180501&quot;/&gt;
-        &lt;constructor-arg index=&quot;1&quot; value=&quot;张一帆&quot;/&gt;
-        &lt;constructor-arg index=&quot;2&quot; value=&quot;男&quot;/&gt;
-        &lt;constructor-arg index=&quot;3&quot; value=&quot;zhangyifan@hbxy.cn&quot;/&gt;
-    &lt;/bean&gt;
-
-    &lt;bean id=&quot;user2&quot; class=&quot;com.sajor.study.c02.xml.User&quot;&gt;
-        &lt;property name=&quot;id&quot; value=&quot;20180502&quot;/&gt;
-        &lt;property name=&quot;name&quot; value=&quot;李大壮&quot;/&gt;
-        &lt;property name=&quot;sex&quot; value=&quot;男&quot;/&gt;
-        &lt;property name=&quot;email&quot; value=&quot;lidazhuang@hbxy.cn&quot;/&gt;
-    &lt;/bean&gt;
-&lt;/beans&gt;
-</code></pre>
-
-<p>3、创建测试类 XmlBeanAssembleTest</p>
-
-<pre><code class="language-text">package test.com.sajor.study.c02;
-
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-public class XmlBeanAssembleTest {
-    public static void main(String[] args) {
-
-        //1、实例化 spring 容器
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext(&quot;spring-config-c02-xml.xml&quot;);
-
-        //2、获得并打印 user 对象
-        System.out.println(applicationContext.getBean(&quot;user1&quot;));
-        System.out.println(applicationContext.getBean(&quot;user2&quot;));
-    }
-}
-</code></pre>
-
-<p>4、运行测试类</p>
-
-<p><img src="media/15642871336794/15643066371448.jpg" alt="" style="width:1440px;"/></p>
-
-<p>三、基于注解的 Bean 装配<br/>
-1、新建一个包</p>
-
-<p>新建包:com.sajor.study.c02.annotation</p>
-
-<p>2、新建 TeacherAnnotation 类</p>
-
-<p>使用注解@Component 声明 TeacherAnnotation 类</p>
-
-<pre><code class="language-text">package com.sajor.study.c02.annotation;
-
-import org.springframework.stereotype.Component;
-
-@Component(&quot;teacherAnnotation&quot;)
-public class TeacherAnnotation {
-    private int id = 20180101;
-    private String name = &quot;李老师&quot;;
-    private String sex;
-    private String email;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    @Override
-    public String toString() {
-        StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append(&quot;id=&quot;);
-        stringBuffer.append(id);
-        stringBuffer.append(&quot;\n&quot;);
-        stringBuffer.append(&quot;name=&quot;);
-        stringBuffer.append(name);
-        return stringBuffer.toString();
-    }
-}
-</code></pre>
-
-<p>3、新建 ClazzAnnotation 类</p>
-
-<p>同样使用注解@Component 声明 ClazzAnnotation 类，并使用注解 @Autowired 自动绑定 TeacherAnnotation 类对象(注入)</p>
-
-<pre><code class="language-text">package com.sajor.study.c02.annotation;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-@Component(&quot;clazzAnnotation&quot;)
-public class ClazzAnnotation {
-    private int id = 2015001;
-    private String name = &quot;2015001 班&quot;;
-    private TeacherAnnotation teacherAnnotation;//班主任
-
-    @Autowired
-    public ClazzAnnotation(TeacherAnnotation teacherAnnotation) {
-        this.teacherAnnotation = teacherAnnotation;
-    }
-
-    public TeacherAnnotation getTeacherAnnotation() {
-        return teacherAnnotation;
-    }
-
-    @Override
-    public String toString() {
-        StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append(&quot;基于注解注入:&quot;);
-        stringBuffer.append(&quot;\n&quot;);
-        stringBuffer.append(&quot;id=&quot;);
-        stringBuffer.append(id);
-        stringBuffer.append(&quot;\n&quot;);
-        stringBuffer.append(&quot;name=&quot;);
-        stringBuffer.append(name);
-        stringBuffer.append(&quot;\n&quot;);
-        stringBuffer.append(&quot;班主任:&quot;);
-        stringBuffer.append(this.getTeacherAnnotation().getId());
-        stringBuffer.append(&quot; &quot;);
-        stringBuffer.append(this.getTeacherAnnotation().getName());
-        return stringBuffer.toString();
-    }
-}
-
-</code></pre>
-
-<p>4、在配置文件中定义扫描包</p>
-
-<p>新建 spring-config-c02-annotation.xml 配置文件，并配置扫描包路径:</p>
-
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-       xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
-       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
-            http://www.springframework.org/schema/beans/spring-beans.xsd
-            http://www.springframework.org/schema/context
-            http://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;
-    &lt;context:component-scan base-package=&quot;com.sajor.study.c02.annotation&quot;/&gt;
-&lt;/beans&gt;
-</code></pre>
-
-<p>5、创建测试类</p>
-
-<pre><code class="language-text">package test.com.sajor.study.c02;
-
-import com.sajor.study.c02.annotation.ClazzAnnotation;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-public class AnnotationTest {
-    public static void main(String[] args) {
-        ApplicationContext ac = new ClassPathXmlApplicationContext(new String[]{&quot;spring-config-c02-annotation.xml&quot;});
-        ClazzAnnotation c = (ClazzAnnotation) ac.getBean(&quot;clazzAnnotation&quot;);
-        System.out.println(c.toString());
-    }
-}
-
-</code></pre>
-
-<p>6、运行测试类</p>
-
-<p><img src="media/15642871336794/15643075920352.jpg" alt="" style="width:576px;"/></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[从零开始SSM开发系列三：第一个Spring应用]]></title>
-    <link href="blog.sajor.top/15642457728170.html"/>
-    <updated>2019-07-28T00:42:52+08:00</updated>
-    <id>blog.sajor.top/15642457728170.html</id>
-    <content type="html"><![CDATA[
-<p>1、新建一个包 com.sajor.study.c01</p>
-
-<p>打开开发工具 Intellij IDEA，打开之前创建的工程右键 src&gt;main&gt;java&gt;com.sajor.study，点击 New&gt;Package</p>
-
-<p><img src="media/15642457728170/15642804469364.jpg" alt="" style="width:1440px;"/></p>
-
-<p>创建包 c01</p>
-
-<p><img src="media/15642457728170/15642804957751.jpg" alt="" style="width:439px;"/></p>
-
-<p>2、新建一个 Student 类<br/>
-右键 src&gt;main&gt;java&gt;com.sajor.study.c01，点击 New&gt;Java Class</p>
-
-<p><img src="media/15642457728170/15642805665034.jpg" alt="" style="width:1440px;"/></p>
-
-<p>创建Student类</p>
-
-<p><img src="media/15642457728170/15642805813614.jpg" alt="" style="width:349px;"/></p>
-
-<p>Student 类包含 4 个属性</p>
-
-<pre><code class="language-text">package com.sajor.study.c01;
-
-public class Student {
-    private int id;
-    private String name;
-    private String sex;
-    private String email;
-}
-</code></pre>
-
-<p>使用 IDEA 代码生成器，帮助生成属性的 getter，setter 方法 点击菜单 Code&gt;Genetater...</p>
-
-<p><img src="media/15642457728170/15642807806663.jpg" alt="" style="width:1440px;"/></p>
-
-<p>选择 Getter and Setter</p>
-
-<p><img src="media/15642457728170/15642808683154.jpg" alt="" style="width:199px;"/></p>
-
-<p>选择全部属性(按住 control，鼠标点击)，点击 ok。</p>
-
-<p><img src="media/15642457728170/15642808444644.jpg" alt="" style="width:374px;"/></p>
-
-<p>生成 Student 类</p>
-
-<pre><code class="language-text">package com.sajor.study.c01;
-
-public class Student {
-    private int id;
-    private String name;
-    private String sex;
-    private String email;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-}
-</code></pre>
-
-<p>再次使用 IDEA 代码生成器，帮助生成对象的toString方法 点击菜单 Code&gt;Genetater... <br/>
-<img src="media/15642457728170/15642809490846.jpg" alt="" style="width:199px;"/></p>
-
-<p>重写 toString 方法</p>
-
-<pre><code class="language-text">  @Override
-    public String toString() {
-        StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append(&quot;id=&quot;);
-        stringBuffer.append(id);
-        stringBuffer.append(&quot;\n&quot;);
-        stringBuffer.append(&quot;name=&quot;);
-        stringBuffer.append(name);
-        return stringBuffer.toString();
-    }
-</code></pre>
-
-<p>完整的 Student 代码:</p>
-
-<pre><code class="language-text">package com.sajor.study.c01;
-
-public class Student {
-    private int id;
-    private String name;
-    private String sex;
-    private String email;
-
-    @Override
-    public String toString() {
-        StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append(&quot;id=&quot;);
-        stringBuffer.append(id);
-        stringBuffer.append(&quot;\n&quot;);
-        stringBuffer.append(&quot;name=&quot;);
-        stringBuffer.append(name);
-        return stringBuffer.toString();
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-}
-
-</code></pre>
-
-<p>3、在 Spring 配置文件中声明 Bean<br/>
-右键 src&gt;main&gt;resources，点击 New&gt;XML Configuration File&gt;Spring Config</p>
-
-<p><img src="media/15642457728170/15642811121537.jpg" alt="" style="width:1440px;"/></p>
-
-<p>新建一个 spring-config.xml 文件, 点击 ok</p>
-
-<p><img src="media/15642457728170/15642811358415.jpg" alt="" style="width:360px;"/></p>
-
-<p>在 srping-config.xml 中声明 bean</p>
-
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
-    &lt;bean id=&quot;student&quot; class=&quot;com.sajor.study.c01.Student&quot; &gt;&lt;/bean&gt;
-&lt;/beans&gt;
-</code></pre>
-
-<p>4、新建一个测试包 c01<br/>
-右键 src&gt;test&gt;java&gt;test.com.sajor.study，点击 New&gt;Package，新建包 c01，新建一个测试类，获得 student 对象<br/>
-右键 src&gt;test&gt;java&gt;text.com.sajor.study.c01，点击 New&gt;Java Class，新建 StudentTest 类</p>
-
-<p><img src="media/15642457728170/15642813943817.jpg" alt="" style="width:1440px;"/></p>
-
-<p>在 StudentTest 中:<br/>
-1)实例化 Spring 容器<br/>
-2)获得 student 对象<br/>
-3)调用 student 对象的 toString()方法</p>
-
-<pre><code class="language-text">package test.com.sajor.study.c01;
-
-import com.sajor.study.c01.Student;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-public class StudentTest {
-    public static void main(String[] args) {
-        // 1、实例化 spring 容器
-        ApplicationContext ac = new ClassPathXmlApplicationContext(&quot;spring-config.xml&quot;);
-
-        // 2、获得 student 对象
-        Student s = (Student) ac.getBean(&quot;student&quot;);
-        s.setId(100);
-        s.setName(&quot;张三&quot;);
-
-        // 3、调用 student 对象的 toString 方法
-        System.out.println(s.toString());
-    }
-}
-</code></pre>
-
-<p>6、运行测试类</p>
-
-<p>右键 StudenTest 类，点击 Run 或 Debug StudentTest.main()</p>
-
-<p><img src="media/15642457728170/15642816403902.jpg" alt="" style="width:1440px;"/></p>
-
-<p>运行结果</p>
-
-<p><img src="media/15642457728170/15642816642702.jpg" alt="" style="width:1436px;"/></p>
 
 ]]></content>
   </entry>

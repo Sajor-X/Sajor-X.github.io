@@ -1,1245 +1,517 @@
-<!doctype html>
-<html class="no-js" lang="en">
+<!DOCTYPE html>
+<html lang="zh-CN">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-transform"/>
+
+
     <title>
+      
+    Sajor's Blog
     
-  Sajor's Blog
-  
-  </title>
-  
-  
-  <link href="atom.xml" rel="alternate" title="Sajor's Blog" type="application/atom+xml">
-    <link rel="stylesheet" href="asset/css/foundation.min.css" />
-    <link rel="stylesheet" href="asset/css/docs.css" />
-    <script src="asset/js/vendor/modernizr.js"></script>
-    <script src="asset/js/vendor/jquery.js"></script>
- 
-<script type="text/javascript">
-  function before_search(){
-    var searchVal = 'site:blog.sajor.top ' + document.getElementById('search_input').value;
-    document.getElementById('search_q').value = searchVal;
-    return true;
-  }
-</script>
+    </title>
+
+
+  <link href="asset/css/style.css" rel="stylesheet" > 
+  <link href="asset/js/xcode.min.css" rel="stylesheet">
+  <script src="asset/js/headroom.js"></script>
+
+  <!-- <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="asset/css/font-awesome.css">
+ -->
+
+  <!-- <script src="asset/highlightjs/highlight.pack.js"></script> -->
+  <!-- <link href="asset/highlightjs/styles/solarized_light.css" media="screen, projection" rel="stylesheet" type="text/css"> -->
+  <!-- <script>hljs.initHighlightingOnLoad();</script> -->
+
+
   </head>
-  <body class="antialiased hide-extras">
+
+  <!-- 主体开始 -->
+  <!-- <body class="" gtools_scp_screen_capture_injected="true"> -->
+  <!-- 上面为主页白底色版本 -->
     
-    <div class="marketing off-canvas-wrap" data-offcanvas>
-      <div class="inner-wrap">
+<body class="bg-grey" gtools_scp_screen_capture_injected="true" data-feedly-mini="yes">
+<!-- 上面是主页灰底色版本 -->
 
+<!--[if lt IE 8]>
+<div class="browsehappy" role="dialog">
+    当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/" target="_blank">升级你的浏览器</a>。
+</div>
+<![endif]-->
+<!-- 头部位置 -->
 
-<nav class="top-bar docs-bar hide-for-small" data-topbar>
+<header id="header" class="header bg-white headroom">
+  <div class="navbar-container"> 
+    <a href="index.html" class="navbar-logo"><img src="asset/img/K-logo.png"> </a>
+    <div class="navbar-menu"> 
 
-
-  <section class="top-bar-section">
-  <div class="row">
-      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
-        <ul id="main-menu" class="left">
         
-        <li id=""><a target="_self" href="index.html">Home</a></li>
+        <a href="index.html">Home</a>
         
-        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        <a href="archives.html">Archives</a>
         
-        </ul>
+        
+    </div> 
+    <!-- 搜索框体 -->
+    <!--  <div class="navbar-search" onclick="">
+        <span class="icon-search"></span>
+        <form id="search" method="post" action="/" role="search">
+          <span class="search-box">
+            <input type="text" id="input" class="input" name="s" required="true" placeholder="Search..." maxlength="30" autocomplete="off">
+          </span>
+        </form>
+    </div> -->
 
-        <ul class="right" id="search-wrap">
+    <div class="navbar-mobile-menu" onclick=""> 
+      <span class="icon-menu cross"><span class="middle"></span></span> 
+        <ul> 
+          
           <li>
-<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
-    <input type="hidden" id="search_q" name="q" value="" />
-    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
-</form>
-</li>
-          </ul>
-      </div></div>
-  </div>
-  </section>
-
-</nav>
-
-        <nav class="tab-bar show-for-small">
-  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
-    <span> &nbsp; Sajor's Blog</span>
-  </a>
-</nav>
-
-<aside class="left-off-canvas-menu">
-      <ul class="off-canvas-list">
-        
-        <li><a target="_self" href="index.html">Home</a></li>
-        
-        <li><a target="_self" href="archives.html">Archives</a></li>
-        
-
-    <li><label>Categories</label></li>
-
-        
-            <li><a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html">数据结构与算法</a></li>
-        
-            <li><a href="SSM.html">SSM</a></li>
-         
-
-      </ul>
-    </aside>
-
-<a class="exit-off-canvas" href="#"></a>
-
-
-        <section id="main-content" role="main" class="scroll-container">
-        
-       
-
- <script type="text/javascript">
-	$(function(){
-		$('#menu_item_index').addClass('is_active');
-	});
-</script>
-<div class="row">
-	<div class="large-8 medium-8 columns">
-		<div class="markdown-body home-categories">
-		
-			<div class="article">
-                <a class="clearlink" href="15659217621647.html">
-                
-                  <h1>Maven</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>一个项目管理工具 </p>
-
-<ul>
-<li>统一开发规范与工具</li>
-<li>统一管理jar包</li>
-</ul>
-
-<h2 id="toc_0">pom.xml (Project Object Model)</h2>
-
-<p>项目对象模型：用于描述整个Maven项目，也称为Maven描述文件。</p>
-
-<p>pom.xml 最基础是这样的</p>
-
-<pre><code class="language-text">&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
-    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-    xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
-     
-  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
-  &lt;groupId&gt;com.xrq.withmaven&lt;/groupId&gt;
-  &lt;artifactId&gt;withmaven&lt;/artifactId&gt;
-  &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
-  &lt;build/&gt;
-&lt;/project&gt;
-</code></pre>
-
-<p>modelVersion </p>
-
-<p>指定Maven模型版本号， 对于Maven2和Maven3来说，只能是4.0.0</p>
-
-<p>groupId</p>
-
-<p>顾名思义，这个应该是公司名或是组织名。一般来说groupId是由三个部分组成，每个部分之间以&quot;.&quot;分隔，第一部分是项目用途，比如用于商业的就是&quot;com&quot;，用于非营利性组织的就是&quot;org&quot;；第二部分是公司名，比如&quot;tengxun&quot;、&quot;baidu&quot;、&quot;alibaba&quot;；第三部分是你的项目名</p>
-
-<p>artifactId</p>
-
-<p>可以认为是Maven构建的项目名，比如你的项目中有子项目，就可以使用&quot;项目名-子项目名&quot;的命名方式</p>
-
-<p>version</p>
-
-<p>本号，SNAPSHOT意为快照，说明该项目还在开发中，是不稳定的版本。在Maven中很重要的一点是，groupId、artifactId、version三个元素生成了一个Maven项目的基本坐标，这非常重要，我在使用和研究Maven的时候多次感受到了这点。</p>
-
-<hr/>
-
-<p>还有另外一些元素：</p>
-
-<p>packing</p>
-
-<p>项目打包的类型，可以使jar, war, rar, ear, pom 默认是jar</p>
-
-<p>dependencies 和 dependency</p>
-
-<p>前者包含后者。前面说了，Maven的一个重要作用就是统一管理jar包，为了一个项目可以build或运行，项目中不可避免的，会依赖很多其他的jar包，在Maven中，这些依赖就被称为dependency。</p>
-
-<p>说到这里，就有一个本地仓库和远程仓库的概念了。官方下载的本地仓库的配置在&quot;%MAVEN_HOME%\conf\settings.xml&quot;里面，找一下&quot;localRepository&quot;就可以了；MyEclipse默认的本地仓库的地址在&quot;{user.home}/.m2/repository&quot;路径下，同样找一下&quot;localRepository&quot;就可以找到MyEclipse默认的本地仓库了。</p>
-
-<p>本地仓库和远程仓库是这样的，Maven工程首先会从本地仓库中获取jar包，当无法获取指定jar包时，本地仓库会从远程仓库（中央仓库）中下载jar包，并放入本地仓库以备将来使用。</p>
-
-<p>举例：比如项目使用MyBatis可以这么配置：</p>
-
-<pre><code class="language-text">&lt;dependencies&gt;
-    &lt;dependency&gt;
-        &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
-        &lt;artifactId&gt;mybatis&lt;/artifactId&gt;
-        &lt;version&gt;3.2.5&lt;/version&gt;
-    &lt;/dependency&gt;
-&lt;/dependencies&gt;
-</code></pre>
-
-<p>之前有说过groupId、artifactId、version唯一标识一个Maven项目，有了这三个元素，我们就可以去远程仓库下载MyBatis3.2.5.jar到本地仓库了。回想我们之前的做法，如果要MyBatis的jar包，发现没有，然后去网上下载一个，需要另外的jar包，然后去网上下载一个，但是有了Maven，就方便多了，只需要配置jar包对应的dependency依赖，Maven会自动帮助我们去远程仓库中下载jar包到本地仓库中。</p>
-
-<p>properties</p>
-
-<p>properties是用来定义一些配置属性的，例如project.build.sourceEncoding（项目构建源码编码方式），可以设置为UTF-8，防止中文乱码，也可定义相关构建版本号，便于日后统一升级。</p>
-
-<p>build </p>
-
-<p>build表示与构建相关的配置，比如build下有finalName，表示的就是最终构建之后的名称。</p>
-
-<p>接着解释一下Maven的目录结构：<br/>
-•   main目录下是项目的主要代码，test目录下存放测试相关的代码<br/>
-•   编译输出后的代码会放在target目录下<br/>
-•   src/main/java下存放Java代码，src/main/resources下存放配置文件<br/>
-•   这里没有webapp，Web项目会有webapp目录，webapp下存放Web应用相关代码<br/>
-•   pom.xml是Maven项目的配置文件</p>
-
-<p>maven <a href="http://maven.apache.org/download.cgi">官网</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/8/16</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='java.html'>ssm课程</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15651008291490.html">
-                
-                  <h1>密码学原理</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">哈希</h2>
-
-<p>输出空间 2<sup>256</sup></p>
-
-<ul>
-<li>collision resistance 哈希碰撞（没有数学方法可以证明，只有实战经验）</li>
-</ul>
-
-<p>没有一个好的方法可以算出 X 的hash值正好等于 Y 的hash值，可以使用穷举方法 brute-force<br/>
-<strong>用处</strong>： 在上传文件时，可以先算一个 digest 在下载的时候，再算一次查看是否和之前的相等，即可发现文件是否被篡改。<br/>
-MD5 原来以为具有这个性质，但是后来被证明是可以被人为制造碰撞的。</p>
-
-<ul>
-<li>hiding 单向的 </li>
-</ul>
-
-<p>前提：输入空间比较大，且分布均匀<br/>
-X -&gt; H(X) 知道了 H(X) 并不能知道 X 的值</p>
-
-<p>digital commitment <br/>
-(digital equivalent of a sealed envelope)<br/>
-例如：某人要预测股市，需要第一天公布预测信息，但是如果提前公布则会对股市产生影响。所以可以使用这种方式，将预测结果放到信封里，由公证处保管，等股市结果出来后，再由公证处打开信封。<br/>
-这种方式在信息学中可以使用hash实现，先将预测结果进行哈希运算，等股市结果出来后再公布明文结果，计算哈希值是否和之前公布的相等即可。</p>
-
-<p>但是要保证输入空间足够大，所以可以拼接一个随机数 nonce 去算哈希来保证输入空间足够大。</p>
-
-<ul>
-<li>puzzle friendly </li>
-</ul>
-
-<p>比特币要求的性质。要求已知的哈希值 H(X) 不能反推 X 的值或 X 值的范围。<br/>
-挖矿的过程就是 H(block header) &lt;= target 区块头中可以改变 nonce 的值，通过改变随机数的值来控制哈希小于目标值来挖矿。 (Proof Of Work)</p>
-
-<ul>
-<li>difficult to solve, but easy to verify</li>
-</ul>
-
-<p>比特币中用的哈希函数是 SHA-256(Secure Hash Algorithm)</p>
-
-<h2 id="toc_1">非对称加密</h2>
-
-<p>对称加密的问题在于分发秘钥的途径不安全。</p>
-
-<p>a good source of randomness 好的随机源</p>
-
-<p>比特币中是先对转账信息 message 取哈希，再对哈希值签名</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/8/6</span>
-                    
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15650106911020.html">
-                
-                  <h1>排序算法</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h1 id="toc_0">排序算法说明</h1>
-
-<ol>
-<li>排序的定义<br/>
-对一序列对象根据某个关键字进行排序。</li>
-<li>术语说明<br/>
-稳定：如果a原本在b前面，而a=b，排序之后a仍然在b的前面；<br/>
-不稳定：如果a原本在b的前面，而a=b，排序之后a可能会出现在b的后面；<br/>
-内排序：所有排序操作都在内存中完成；<br/>
-外排序：由于数据太大，因此把数据放在磁盘中，而排序通过磁盘和内存的数据传输才能进行；<br/>
-时间复杂度： 一个算法执行所耗费的时间。<br/>
-空间复杂度：运行完一个程序所需内存的大小。</li>
-<li><p>算法总结<br/>
-<img src="media/15650106911020/15650122429787.jpg" alt=""/><br/>
-图片名词解释：<br/>
-n: 数据规模<br/>
-k: “桶”的个数<br/>
-In-place: 占用常数内存，不占用额外内存<br/>
-Out-place: 占用额外内存</p></li>
-<li><p>比较和非比较的区别<br/>
-常见的快速排序、归并排序、堆排序、冒泡排序等属于比较排序。在排序的最终结果里，元素之间的次序依赖于它们之间的比较。每个数都必须和其他数进行比较，才能确定自己的位置。<br/>
-在冒泡排序之类的排序中，问题规模为n，又因为需要比较n次，所以平均时间复杂度为O(n²)。在归并排序、快速排序之类的排序中，问题规模通过分治法消减为logN次，所以时间复杂度平均O(nlogn)。<br/>
-比较排序的优势是，适用于各种规模的数据，也不在乎数据的分布，都能进行排序。可以说，比较排序适用于一切需要排序的情况。<br/>
-计数排序、基数排序、桶排序则属于非比较排序。非比较排序是通过确定每个元素之前，应该有多少个元素来排序。针对数组arr，计算arr之前有多少个元素，则唯一确定了arr在排序后数组中的位置。<br/>
-非比较排序只要确定每个元素之前的已有的元素个数即可，所有一次遍历即可解决。算法时间复杂度O(n)。<br/>
-非比较排序时间复杂度底，但由于非比较排序需要占用空间来确定唯一位置。所以对数据规模和数据分布有一定的要求。</p></li>
-</ol>
-
-<h1 id="toc_1">排序算法</h1>
-
-<p>首先定义一个接口 <code>void X_Sort ( ElementType A[], int N )</code><br/>
-本文为简单起见，大多数情况下，讨论<strong>从小大的整数</strong>排序</p>
-
-<ul>
-<li>N是正整数</li>
-<li>只讨论基于比较的排序(&gt; = &lt; 有定义)</li>
-<li>只讨论内部排序</li>
-<li>稳定性:任意两个相等的数据，排序前后的相对位置不发生改变</li>
-<li>没有一种排序是任何情况下 都表现最好的</li>
-</ul>
-
-<h2 id="toc_2">冒泡排序(Bubble Sort)</h2>
-
-<p>冒泡排序每次比较相邻两个数，<code>A[i] &gt; A[i + 1]</code> 则交换位置。可以确定的是，在经过一趟排序后，整个序列的最大值一定被放到了数组的最后一位。所以只需要进行N-1次循环则可以将整个序列都排好。<br/>
-<img src="media/15650106911020/140153i7562exzjrnagaja.gif" alt="140153i7562exzjrnagaja"/></p>
-
-<pre><code class="language-text">void Bubble_Sort(ElementType A[], int N)
-{
-   for (P = N - 1; P &gt;= 0; P--) {
-        for (i = 0; i &lt; P; i++) { /* 一趟冒泡 */
-            if (A[i] &gt; A[i + 1]) {
-                Swap(A[i], A[i + 1]);
-            }
-        }
-    }
-}
-</code></pre>
-
-<p>但是这样做还有一些问题，如果在其中某一步就排好序了，但是还需要接着进行比较。所以进行如下改动。</p>
-
-<pre><code class="language-text">void Bubble_Sort(ElementType A[], int N)
-{
-    flag = 0;
-    for (P = N - 1; P &gt;= 0; P--) {
-        for (i = 0; i &lt; P; i++) { /* 一趟冒泡 */
-            if (A[i] &gt; A[i + 1]) {
-                Swap(A[i], A[i + 1]);
-                flag = 1; /* 标识发生了交换 */
-            }
-        }
-        if (flag == 0)
-            break; /* 全程无交换 */
-    }
-}
-</code></pre>
-
-<p>最好情况：顺序T = O( N ) <br/>
-最坏情况：逆序T = O( N<sup>2</sup> )</p>
-
-<h2 id="toc_3">插入排序</h2>
-
-<p>像玩牌一样，一张一张摸牌，从后往前依次比较手中有序的序列，将抽到的牌插入到第一张小于这张牌的后面。其余的牌向后错一位。<br/>
-<img src="media/15650106911020/140155h0at131fkz33j1af.gif" alt="140155h0at131fkz33j1af"/></p>
-
-<pre><code class="language-text">void Insertion_Sort(ElementType A[], int N)
-{
-
-    for (P = 1; P &lt; N; P++)
-    {
-        Tmp = A[P]; /* 摸下一张牌 */
-        for (i = P; i &gt; 0 &amp;&amp; A[i - 1] &gt; Tmp; i--)
-            A[i] = A[i - 1]; /* 移出空位 */
-        A[i] = Tmp;          /* 新牌落位 */
-    }
-}
-</code></pre>
-
-<p>最好情况：顺序T = O( N ) <br/>
-最坏情况：逆序T = O( N<sup>2</sup> )</p>
-
-<p><strong>思考</strong>：给定初始序列{34, 8, 64, 51, 32, 21}，冒泡排序和插入排序分别需要多少次元素交换才能完成?</p>
-
-<p>对于下标i<j，如果A[i]>A[j]，则称(i,j)是一对逆序对(inversion)。问题:序列{34, 8, 64, 51, 32, 21}中有多少逆序对? </p>
-
-<p>(34, 8) (34, 32) (34, 21) (64, 51) (64, 32) (64, 21) (51, 32) (51, 21) (32, 21)</p>
-
-<p>所以交换2个相邻元素正好消去1个逆序对! 假设需要排序的序列有N个元素I个逆序对则 </p>
-
-<p><strong>插入排序：T( N, I ) = O( N+I )</strong></p>
-
-<p>所以如果序列基本有序，则插入排序简单且高效</p>
-
-<p>结论：<br/>
-定理:任意N个不同元素组成的序列平均具有 N ( N - 1 ) / 4 个逆序对。<br/>
-定理:任何仅以交换相邻两元素来排序的算 法，其平均时间复杂度为 \(\Omega\) ( N<sup>2</sup> )。<br/>
-这意味着:要提高算法效率，我们必须 </p>
-
-<ul>
-<li>每次消去不止1个逆序对!</li>
-<li>每次交换相隔较远的2个元素!</li>
-</ul>
-
-<h2 id="toc_4">希尔排序</h2>
-
-<p>定义增量序列 DM &gt; DM-1 &gt; … &gt; D1 = 1<br/>
-对每个 Dk 进行“Dk-间隔”排序( k = M, M-1, … 1 )<br/>
-注意：“Dk-间隔”有序的序列，在执行“Dk-1-间隔”排序后，仍然是“Dk间隔”有序的</p>
-
-<p><img src="media/15650106911020/15650150247137.jpg" alt=""/></p>
-
-<p>原始希尔排序<code>DM = N / 2, Dk = Dk+1 / 2</code>希尔排序的增量序列的选择与证明是个数学难题，我们选择的这个增量序列是比较常用的，也是希尔建议的增量，称为希尔增量，但其实这个增量序列不是最优的。此处我们做示例使用希尔增量。</p>
-
-<pre><code class="language-text">void Shell_sort(ElementType A[], int N)
-{
-    for (D = N / 2; D &gt; 0; D /= 2) { /* 希尔增量序列 */
-        for (P = D; P &lt; N; P++) { /* 插入排序 */
-            Tmp = A[P];
-            for (i = P; i &gt;= D &amp;&amp; A[iD] &gt; Tmp; i -= D)
-                A[i] = A[i - D];
-            A[i] = Tmp;
-        }
-    }
-}
-</code></pre>
-
-<p>最坏情况：T = \(\Theta    \)( N<sup>2</sup> )</p>
-
-<p>举个坏例子：<br/>
-<img src="media/15650106911020/15650151790050.jpg" alt="" style="width:920px;"/><br/>
-<img src="media/15650106911020/15650154742297.jpg" alt="" style="width:694px;"/></p>
-
-<p>参考：<a href="https://blog.csdn.net/hellozhxy/article/details/79911867">十大经典排序算法最强总结</a></p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/8/5</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html'>数据结构与算法</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15647321562727.html">
-                
-                  <h1>Spring入门</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h2 id="toc_0">Spring概述</h2>
-
-<h3 id="toc_1">Spring是什么</h3>
-
-<blockquote>
-<p>Spring是分层的JavaSE/EE full-stack 轻量级开源框架，Rod Johnson在《Expert One-on-One:J2EE Design and Development》(2002年)提出一种新的编程思想，2003 年发布 了一个新的Java开发框架-SpringFramework</p>
-</blockquote>
-
-<p>Spring以IoC（Inverse of Control 控制反转）和 AOP（Aspect Oriented Programming 面向切面编程）为内核，使用基本的JavaBean来完成以前只可能由EJB完成的工作，取代了EJB的臃肿、低效的开发模式。</p>
-
-<p>简单说 Spring 是一个轻量级的控制反转(IoC)和面向切面编程(AOP)的容器框架。 核心功能:</p>
-
-<ol>
-<li>bean实例管理 </li>
-<li>bean之间依赖关系管理</li>
-</ol>
-
-<p>在实际开发中，通常服务器端在采用三层体系架构，分别为表示层(Web) 、业务逻辑层(Service)、持久层(Dao)， Spring对每一层都提供了技术支持。</p>
-
-<table>
-<thead>
-<tr>
-<th>架构</th>
-<th>功能</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>表示层</td>
-<td>提供了与Struts等框架的整合</td>
-</tr>
-<tr>
-<td>业务逻辑层</td>
-<td>可以管理事务，记录日志等</td>
-</tr>
-<tr>
-<td>持久层</td>
-<td>可以整合Hibernate、JdbcTemplate等技术</td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="toc_2">Spring框架的优点</h3>
-
-<p>Spring具有简单、可测试和松耦合等特点。Spring不仅可以用于服务器端 开发，也可以应用于任何Java应用的开发中。</p>
-
-<p>Spring框架七大优点</p>
-
-<ol>
-<li>非入侵式设计</li>
-<li>方便解耦、简化开发</li>
-<li>支持AOP</li>
-<li>支持声明式事务处理</li>
-<li>方便程序测试</li>
-<li>方便集成各种优秀框架</li>
-<li>降低Java EE API的使用难度</li>
-</ol>
-
-<h3 id="toc_3">Spring体系结构</h3>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/8/2</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='java.html'>ssm课程</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="15647300073307.html">
-                
-                  <h1>从零开始SSM开发系列十三：使用 Mapper 接口方式整合 MyBatis-Spring</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>在上一章的基础上，继续使用c07包</p>
-
-<p>1、创建新的 Package</p>
-
-<blockquote>
-<p>com.sajor.study.c07.user<br/>
-com.sajor.study.c07.user.model:存放 vo 对象(业务模型对象) <br/>
-com.sajor.study.c07.user.dao:存放 dao 对象(数据库访问对象) <br/>
-com.sajor.study.c07.user.mapper:存放 mybatis 数据库表-对象映射文件 <br/>
-com.sajor.study.c07.user.service:存放服务接口 <br/>
-com.sajor.study.c07.user.service.impl:存放接口实现 </p>
-</blockquote>
-
-<p>创建完成，包结构如下:<br/>
-<img src="media/15647300073307/15647302640035.jpg" alt="" style="width:278px;"/></p>
-
-<p>2、在 model 包中创建一个 User 类</p>
-
-<pre><code class="language-java">package com.sajor.study.c07.user.model;
-
-import java.io.Serializable;
-
-public class User implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    private int id = 20190802;
-    private String name = &quot;&quot;;
-    private String sex;
-    private String email;
-
-    @Override
-    public String toString() {
-        StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append(&quot;id=&quot;);
-        stringBuffer.append(id);
-        stringBuffer.append(&quot;\n&quot;);
-        stringBuffer.append(&quot;name=&quot;);
-        stringBuffer.append(name);
-        return stringBuffer.toString();
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-}
-</code></pre>
-
-<p>3、在 dao 包中创建一个接口 UserMapper</p>
-
-<pre><code class="language-java">package com.sajor.study.c07.user.dao;
-
-import com.sajor.study.c07.user.model.User;
-
-import java.util.List;
-
-public interface UserMapper {
-    // 通过id查询
-    public User findUserById(int id);
-
-    // 添加
-    public void addUser(User user);
-
-    // 查询所有
-    public List&lt;User&gt; findAllUsers();
-}
-</code></pre>
-
-<p>4、在 mapper 包中创建一个映射文件 UserMapper.xml</p>
-
-<pre><code class="language-java">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
-        &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
-&lt;mapper namespace=&quot;com.sajor.study.c07.user.dao.UserMapper&quot;&gt;
-    &lt;resultMap id=&quot;UserResultMap&quot; type=&quot;com.sajor.study.c07.user.model.User&quot;&gt;
-        &lt;result column=&quot;id&quot; property=&quot;id&quot; jdbcType=&quot;BIGINT&quot;/&gt;
-        &lt;result column=&quot;name&quot; property=&quot;name&quot; jdbcType=&quot;VARCHAR&quot;/&gt;
-        &lt;result column=&quot;sex&quot; property=&quot;sex&quot; jdbcType=&quot;VARCHAR&quot;/&gt;
-        &lt;result column=&quot;email&quot; property=&quot;email&quot; jdbcType=&quot;VARCHAR&quot;/&gt;
-    &lt;/resultMap&gt;
-    &lt;!--根据 id 查询用户信息 --&gt;
-    &lt;select id=&quot;findUserById&quot; parameterType=&quot;java.lang.Integer&quot; resultMap=&quot;UserResultMap&quot;&gt;
-        select * from USER where id = #{id}
-    &lt;/select&gt;
-    &lt;!--添加用户信息 --&gt;
-    &lt;insert id=&quot;addUser&quot; parameterType=&quot;user&quot;&gt;
-        insert into USER(name,sex,email)
-        values(#{name},#{sex},#{email})
-    &lt;/insert&gt;
-    &lt;!--查询所有用户--&gt;
-    &lt;select id=&quot;findAllUsers&quot; resultMap=&quot;UserResultMap&quot;&gt;
-        select * from USER
-    &lt;/select&gt;
-&lt;/mapper&gt;
-</code></pre>
-
-<p>5、在 service 包中创建一个服务接口 UserService</p>
-
-<pre><code class="language-java">package com.sajor.study.c07.user.service;
-
-import com.sajor.study.c07.user.model.User;
-
-public interface UserService {
-    // 通过id查询
-    public User findUserById(int id); // 添加
-
-    public void addUser(User user);
-
-    public int getUsersCount();
-}
-</code></pre>
-
-<p>6、在 service.impl 包中创建服务接口的实现类 UserServiceImpl</p>
-
-<p>这里用到了注解方式:声明了 service、以及自动绑定(当然也可以在 spring 中声明 bean，以及把 userMapper 注入)</p>
-
-<pre><code class="language-java">package com.sajor.study.c07.user.service.impl;
-
-import com.sajor.study.c07.user.dao.UserMapper;
-import com.sajor.study.c07.user.model.User;
-import com.sajor.study.c07.user.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-@Service
-public class UserServiceImpl implements UserService {
-    @Autowired
-    private UserMapper userMapper;
-
-    @Override
-    public User findUserById(int id) {
-        return userMapper.findUserById(id);
-    }
-
-    @Override
-    public void addUser(User user) {
-        userMapper.addUser(user);
-    }
-
-    @Override
-    public int getUsersCount() {
-        return userMapper.findAllUsers().size();
-    }
-}
-</code></pre>
-
-<p>7、新建一个 MyBatis 的核心配置文件 c07-mybatis-spring-config-mapper.xml</p>
-
-<pre><code class="language-java">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
-&lt;configuration&gt;
-    &lt;!--配置别名 --&gt;
-    &lt;typeAliases&gt;
-        &lt;!--定义 Mapper 中引用到的业务对象类的位置--&gt;
-        &lt;package name=&quot;com.sajor.study.c07.user.model&quot;/&gt;
-    &lt;/typeAliases&gt;
-    &lt;!--配置 Mapper 的位置 --&gt;
-    &lt;mappers&gt;
-        &lt;mapper resource=&quot;com/sajor/study/c07/user/mapper/UserMapper.xml&quot;/&gt;
-    &lt;/mappers&gt;
-&lt;/configuration&gt;
-
-</code></pre>
-
-<p>8、新建一个 Spring 配置文件 c07-spring-config-mybatisspring-mapper.xml</p>
-
-<pre><code class="language-java">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-       xmlns:context=&quot;http://www.springframework.org/schema/context&quot; xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
-http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;
-    &lt;!--1. 定义数据源，mybatis 直接使用 spring 中定义的数据源--&gt;
-    &lt;bean id=&quot;dataSource&quot; class=&quot;org.springframework.jdbc.datasource.DriverManagerDataSource&quot;&gt;
-        &lt;property name=&quot;driverClassName&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;
-        &lt;property name=&quot;url&quot;
-                  value=&quot;jdbc:mysql://localhost:3306/TestDB?autoReconnect=true&amp;amp;characterEncoding=utf8&amp;amp;useUnicode=true&amp;amp;useSSL=false&quot;/&gt;
-        &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
-        &lt;property name=&quot;password&quot; value=&quot;123456&quot;/&gt;
-    &lt;/bean&gt;
-    &lt;!--2. 配置 MyBatis 工厂 --&gt;
-    &lt;bean id=&quot;sqlSessionFactory&quot;
-          class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
-        &lt;!--注入数据源 --&gt;
-        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;
-        &lt;!--指定核心配置文件位置 --&gt;
-        &lt;property name=&quot;configLocation&quot; value=&quot;classpath:c07-mybatis-spring-config-mapper.xml&quot;/&gt;
-    &lt;/bean&gt;
-
-    &lt;!--3. Mapper 代理开发(基于 MapperScannerConfigurer) --&gt;
-    &lt;bean class=&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;&gt;
-        &lt;!--定义接口所在位置--&gt;
-        &lt;property name=&quot;basePackage&quot; value=&quot;com.sajor.study.c07.user.dao&quot;/&gt;
-    &lt;/bean&gt;
-    &lt;!--4. 开启扫描 --&gt;
-    &lt;context:component-scan base-package=&quot;com.sajor.study.c07.user.service&quot;/&gt;
-&lt;/beans&gt;
-
-</code></pre>
-
-<p>9、创建测试类 MyBatisSpringMapperTest</p>
-
-<pre><code class="language-java">package test.com.sajor.study.c07;
-
-import com.sajor.study.c07.user.model.User;
-import com.sajor.study.c07.user.service.UserService;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-public class MyBatisSpringMapperTest {
-    public static void main(String[] args) {
-        try {
-            ApplicationContext ctx =
-                    new ClassPathXmlApplicationContext(&quot;c07-spring-config-mybatisspring-mapper.xml&quot;);
-            UserService userService = (UserService) ctx.getBean(UserService.class);
-            User user = userService.findUserById(2);
-            System.out.println(user);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-}
-</code></pre>
-
-<p>10、运行测试类</p>
-
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2019/8/2</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='ssm.html'>SSM练习</a></span>
-          				   
-                    
-
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
-
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-              
-
-
-			<div class="row">
-			  <div class="large-6 columns">
-			  <p class="text-left" style="padding-top:25px;">
-			   <a href="all.html">&laquo; Prev Page</a>  
-			  </p>
-			  </div>
-			  <div class="large-6 columns">
-			<p class="text-right" style="padding-top:25px;">
-			 <a href="all_2.html">&raquo; Next Page</a> 
-			</p>
-			  </div>
-			</div>
+          <a href="index.html">Home</a>
+          </li>
+          
+          <li>
+          <a href="archives.html">Archives</a>
+          </li>
+          
+        </ul> 
+    </div> 
+  </div> 
+</header>
+<!-- 头部结束 -->  <!-- 这里是category的开始 -->
+<div class="main-content index-page clearfix">
+    <div class="post-lists">
+        <div class="post-lists-body">
+			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
+						
+						</div> 
+						<a href="15769919595310.html"> 
+							<div class="item-desc"> 
+								<p>Git是分布式版本控制系统 自报家门
+
+git config --global user.name &quot;Sajor&quot;
+git config --global user.email &quot;565785929@qq.com&quot;
+
+一
+
+初始化一个Git仓库，使用git init命令。
+
+添加文件到Git仓库，分两步：
+
+第一步，使用命令git add ，注意，可反复多次使用，添加多个文件；
+
+第二步，使用命令git commit，完成。
+
+windows中的换行符为 CRLF， 而在linux下的换行符为LF，所以在执行add . 时出现提示，解决办法：
+
+rm -</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15769919595310.html">Git</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
+						
+						</div> 
+						<a href="15769918912350.html"> 
+							<div class="item-desc"> 
+								<p>EC私钥 Elliptic Curve private key
+
+比特币私钥为一个256位的二进制随机大数 一共32字节（Random 256 bit integer）
+
+比特币私钥只是一个数字。你可以用硬币、铅笔和纸来随机生成你的私钥：掷硬币256次，用纸和笔记录正反面并转换为0和1，随机得到的256位二进制数字可作为比特币钱包的私钥。 
+
+将256位二进制大数转为十六进制（每四位二进制数转为一位十六进制数）得到一个64位的十进制字符串，这就是ec私钥（95e7e1e73b70965d31c3e56121ce14dd4f88431c8d5e7645e8fb4a73ba72ad29）
+
+提示比</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15769918912350.html">比特币</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
+						
+						</div> 
+						<a href="15765692780377.html"> 
+							<div class="item-desc"> 
+								<p>更新时 使用 --verbose命令可以看到运行情况
+
+brew update --verbose
+
+查看brew的当前源:
+执行下面命令可以看到, brew的官方镜像源为: https://github.com/Homebrew/homebrew
+
+cd /usr/local/Homebrew
+git remote -v
+
+
+更改brew镜像源
+
+cd /usr/local/Homebrew
+git remote set-url origin git://mirrors.tuna.tsinghua.edu.cn/homebrew.git
+
+
+可以选择下面镜像源中的一个 (第一个亲测可用)
+清</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15765692780377.html">brew update 缓慢</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
+						
+						</div> 
+						<a href="15754473183515.html"> 
+							<div class="item-desc"> 
+								<p>缓存数据
+
+最常用，对经常需要查询且变动不是很频繁的数据
+
+排行榜应用
+
+利用Redis的有序集合zset，每次插入数据时自动调整顺序值，根据插入时的score值将value按一定顺序连续排列。
+
+计数器应用
+
+利用Redis的incr、decr命令进行原子性操作，来构建计数系统
+比如在一个web应用程序中，如果想知道用户在一年中每天的点击量，只要将用户id和相关日期信息作为键，并在每次用户点击页面时，执行一次自增操作即可。
+
+数据去重
+
+当需要存储一个列表数据，又不希望出现重复数据时，可以使用Redis的Set数据结构
+set内部实现是一个value永远是null的hashmap，通过has</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15754473183515.html">Redis使用场景</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
+						
+						</div> 
+						<a href="15754418238619.html"> 
+							<div class="item-desc"> 
+								<p>
+可靠性低：如果数据走云盘做高可靠存储容易受网络波动干扰，如果不走云盘宕机数据易丢失，自建多副本运维很复杂，而且Redis本身的断网导致的全量同步机制对网络和运维的要求极高；
+可用性低：自建单副本无法保证可用性，多副本对心跳检查和链路切换要求极高，传统的sentinel有很多缺陷，在执行复杂的keys flushdb等命令时很容易造成误切和雪崩；
+诸多限制：自建集群方案如redis cluster，codis也有诸多限制，redis cluster需要smart client和非常
+
+
+键值设计
+
+key名设计
+
+可读性和可管理性
+
+以业务名(或数据库名)为前缀(防止key冲突)，用冒号分隔，</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15754418238619.html">自建redis集群规范</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			 
 		</div>
-	</div><!-- large 8 -->
-
- <div class="large-4 medium-4 columns">
-  <div class="hide-for-small">
-    <div id="sidebar" class="sidebar">
-          <div id="site-info" class="site-info">
+	</div>
+<!-- 底部导航条 -->
+	<nav class="lists-navigator clearfix" style="clear: all;">
+            <ol class="page-navigator">
             
-                <h1>Sajor's Blog</h1>
-                <div class="site-des">Sajor's Blog</div>
-                <div class="social">
+            	<li class=""><a href="all.html"><span aria-hidden="true">&larr;</span> 上一页</a></li>
+            
 
+				<li class=""><a href="archives.html">归档</a></li>
 
-
-
-
-
-
-
-
-
-
-  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
-                
-              	 </div>
-          	</div>
-
+			
+			<li class=""><a href="all_2.html">下一页 <span aria-hidden="true">&rarr;</span></a></li>
+			
+            </ol>
+     </nav>
+</div>
+</div>  <footer id="footer" class="footer" style="background-color: #030501;color: #FFFFFE;">
+  <div class="footer-meta">
+    <div class="footer-container">
+      <!-- 版权说明 -->
+      <div class="meta-item meta-copyright">
+        <div class="meta-copyright-info">
+          <h2 class="meta-title">INFO</h2>
+          <div class="info-text">  
+              <p>Copyright &copy; 2017 <br>
+              <span class="credit">Powered by 
+              <a target="_blank" href="http://zh.mweb.im/">MWeb</a> 
+              </span>
+              <p>Theme Design by <a href="https://www.linpx.com/" target="_blank">Chakhsu</a></p>
+              <p>Migrating to Mweb by <a href="http://metaidea.cn">idken</a></p>
+              </p> 
+          </div>                  
+        </div>
+      </div>  
+      <!-- Categories -->
+      <div class="meta-item meta-comments">
+          <h2 class="meta-title">CATEGORIES</h2>  
              
+            
+            <li>
+            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(13)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html">数据库相关&nbsp;(11)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html">数据结构与算法&nbsp;(4)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="SSM.html">SSM&nbsp;(18)</a>
+            <p>
+            
+            <a href="ssm.html">SSM练习&nbsp;(13)</a>&nbsp;&nbsp;
+            
+            <a href="java.html">ssm课程&nbsp;(5)</a>&nbsp;&nbsp;
+            
+            </p>
+            </li>
+            
+             
+      </div>
+      <!-- 最新文章 -->
+      <div class="meta-item meta-comments">
+          <h2 class="meta-title">RECENT POSTS</h2>
 
-              <div id="site-categories" class="side-item ">
-                <div class="side-header">
-                  <h2>Categories</h2>
-                </div>
-                <div class="side-content">
+          
+          
+         <li>
+           <a href="15802234606202.html">cheat.sh</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="15776732342055.html">crontab 定时任务</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="15773499726644.html">监控Python 运行</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="15769921068601.html">ssh</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="15769920752565.html">pscp</a><br>
+         </li>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+           
 
-      	<p class="cat-list">
-        
-            <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html"><strong>数据结构与算法</strong></a>
-        
-            <a href="SSM.html"><strong>SSM</strong></a>
-         
-        </p>
-
-
-                </div>
-              </div>
-
-              <div id="site-categories" class="side-item">
-                <div class="side-header">
-                  <h2>Recent Posts</h2>
-                </div>
-                <div class="side-content">
-                <ul class="posts-list">
-	      
-		      
-			      <li class="post">
-			        <a href="15769918912350.html">比特币</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15768275980852.html">『互联网架构』软件架构-API接口安全网关《service变controller》（16）</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15768270099640.html">面试被问烂的 Spring IOC(求求你别再问了)</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15665458213371.html">idea 类注释和方法注释</a>
-			      </li>
-		     
-		  
-		      
-			      <li class="post">
-			        <a href="15659629846282.html">idea 热部署</a>
-			      </li>
-		     
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		  
-		      
-		   
-		  		</ul>
-                </div>
-              </div>
-        </div><!-- sidebar -->
-      </div><!-- hide for small -->
-</div><!-- large 4 -->
-
-</div><!-- row -->
-
- <div class="page-bottom clearfix">
-  <div class="row">
-   <p class="copyright">Copyright &copy; 2015
-Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
-Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+      </div>
   </div>
 </div>
+</footer>
 
-        </section>
-      </div>
-    </div>
-
-
-
-  
+<!--评论变量判断 -->
+      
+<!-- 评论end -->
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-<style type="text/css">
-figure{margin: 0;padding: 0;}
-figcaption{text-align:center;}
-
-/* PrismJS 1.14.0
- http://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript */
-/**
- * prism.js default theme for JavaScript, CSS and HTML
- * Based on dabblet (http://dabblet.com)
- * @author Lea Verou
- */
-
-code[class*="language-"],
-pre[class*="language-"] {
-    color: black;
-    background: none;
-    text-shadow: 0 1px white;
-    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-    text-align: left;
-    white-space: pre;
-    word-spacing: normal;
-    word-break: normal;
-    word-wrap: normal;
-    line-height: 1.5;
-    
-    -moz-tab-size: 4;
-    -o-tab-size: 4;
-    tab-size: 4;
-    
-    -webkit-hyphens: none;
-    -moz-hyphens: none;
-    -ms-hyphens: none;
-    hyphens: none;
-}
-
-pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
-    text-shadow: none;
-    background:#b3d4fc;
-}
-
-pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
-code[class*="language-"]::selection, code[class*="language-"] ::selection {
-    text-shadow: none;
-    background: #b3d4fc;
-}
-
-@media print {
-    code[class*="language-"],
-    pre[class*="language-"] {
-        text-shadow: none;
-    }
-}
-
-/* Code blocks */
-pre[class*="language-"] {
-    padding: 1em;
-    margin: .5em 0;
-    overflow: auto;
-}
-
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-    background: #F7F7F7;
-}
-
-/* Inline code */
-:not(pre) > code[class*="language-"] {
-    padding: .1em;
-    border-radius: .3em;
-    white-space: normal;
-}
-
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-    color: slategray;
-}
-
-.token.punctuation {
-    color: #999;
-}
-
-.namespace {
-    opacity: .7;
-}
-
-.token.property,
-.token.tag,
-.token.boolean,
-.token.number,
-.token.constant,
-.token.symbol,
-.token.deleted {
-    color: #905;
-}
-
-.token.selector,
-.token.attr-name,
-.token.string,
-.token.char,
-.token.builtin,
-.token.inserted {
-    color: #690;
-}
-
-.token.operator,
-.token.entity,
-.token.url,
-.language-css .token.string,
-.style .token.string {
-    color: #9a6e3a;
-    background: hsla(0, 0%, 100%, .5);
-}
-
-.token.atrule,
-.token.attr-value,
-.token.keyword {
-    color: #07a;
-}
-
-.token.function,
-.token.class-name {
-    color: #DD4A68;
-}
-
-.token.regex,
-.token.important,
-.token.variable {
-    color: #e90;
-}
-
-.token.important,
-.token.bold {
-    font-weight: bold;
-}
-.token.italic {
-    font-style: italic;
-}
-
-.token.entity {
-    cursor: help;
-}
-
-
-pre[class*="language-"].line-numbers {
-    position: relative;
-    padding-left: 3.8em;
-    counter-reset: linenumber;
-}
-
-pre[class*="language-"].line-numbers > code {
-    position: relative;
-    white-space: inherit;
-}
-
-.line-numbers .line-numbers-rows {
-    position: absolute;
-    pointer-events: none;
-    top: 0;
-    font-size: 100%;
-    left: -3.8em;
-    width: 3em; /* works for line-numbers below 1000 lines */
-    letter-spacing: -1px;
-    border-right: 1px solid #999;
-
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-
-}
-
-    .line-numbers-rows > span {
-        pointer-events: none;
-        display: block;
-        counter-increment: linenumber;
-    }
-
-        .line-numbers-rows > span:before {
-            content: counter(linenumber);
-            color: #999;
-            display: block;
-            padding-right: 0.8em;
-            text-align: right;
-        }
-
-</style>
-
-  
-    
-
-    <script src="asset/js/foundation.min.js"></script>
-    <script>
-      $(document).foundation();
-      function fixSidebarHeight(){
-        var w1 = $('.markdown-body').height();
-          var w2 = $('#sidebar').height();
-          if (w1 > w2) { $('#sidebar').height(w1); };
-      }
-      $(function(){
-        fixSidebarHeight();
-      })
-      $(window).load(function(){
-          fixSidebarHeight();
-      });
-     
-    </script>
-
-
-
-  </body>
+</body>
 </html>
