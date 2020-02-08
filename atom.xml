@@ -4,7 +4,7 @@
   <title><![CDATA[Sajor's Blog]]></title>
   <link href="blog.sajor.top/atom.xml" rel="self"/>
   <link href="blog.sajor.top/"/>
-  <updated>2020-02-04T16:55:11+08:00</updated>
+  <updated>2020-02-08T12:54:53+08:00</updated>
   <id>blog.sajor.top/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -12,6 +12,125 @@
   </author>
   <generator uri="http://www.coderforart.com/">CoderForArt</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[使用模拟退火来构造极值图]]></title>
+    <link href="blog.sajor.top/15809082865015.html"/>
+    <updated>2020-02-05T21:11:26+08:00</updated>
+    <id>blog.sajor.top/15809082865015.html</id>
+    <content type="html"><![CDATA[
+<p>Author：P. Wang ∗, G.W. Dueck, S. MacMillan</p>
+
+<ul>
+<li>他研究的这个极图和我们的不太一样，我们是不含某一个，他是不含一系列的。</li>
+<li>第一部分概述，第二部分数学理论，第三部分模拟退火引入程序，第四部分实验</li>
+<li>他利用这些特点来让他的图的数量变少，也就是增加限制条件让图少点</li>
+<li>第三部分他就用了模拟退火，他不是像我们一样列出所有的，他就是利用模拟退火找到个满足条件的全局最优解，但是这个结果有的时候和穷举可能不一样，可是大体上效果挺好</li>
+</ul>
+
+<h2 id="toc_0">名词解释</h2>
+
+<ul>
+<li><p>正则图（regular graph）：正则图是指各顶点的度均相同的无向简单图。<br/>
+在图论中，正则图中每个顶点具有相同数量的邻点； 即每个顶点具有相同的度或价态。 正则的有向图也必须满足更多的条件，即每个顶点的内外自由度都要彼此相等。具有k个自由度的顶点的正则图被称为k度的k-正则图。 此外，奇数程度的正则图形将包含偶数个顶点。<br/>
+<img src="media/15809082865015/15809945534836.jpg" alt=""/></p></li>
+<li><p>笼子（cage）：在图论的数学领域里，笼子是一个正则图，其周长具有尽可能少的顶点。一个（r,g）笼就是说每一个顶点都正好有r个邻居，而且最短的环路是g。</p></li>
+</ul>
+
+<p>The only (3,5)-cage is the Petersen graph. <img src="media/15809082865015/15809194745456.png" alt=""/><br/>
+The only (3,6)-cage is the Heawood graph.<br/>
+<img src="media/15809082865015/15809953759482.jpg" alt=""/></p>
+
+<p>The only (3,7)-cage is the McGee graph.<br/>
+<img src="media/15809082865015/15809953875256.jpg" alt=""/></p>
+
+<p>The only (3,8)-cage is the Tutte–Coxeter graph.<br/>
+<img src="media/15809082865015/15809953993956.jpg" alt=""/></p>
+
+<h3 id="toc_1">摘要</h3>
+
+<p>图G中的最短环的长度为图G的周长；如果图G中没有环，我们认为这种图的周长是无穷大的。本文研究了v阶和周长至少为n+1的图中最多边数的值，用\(ex(v;\{C_3, C_4, ..., C_n\})\) 表示。我们将讨论图的一个重要的性质，即极图中度的分布。然后我们描述如何将此特性和模拟退火算法结合在一起，并用来开发可用于生成极图的算法。我们的算法是第一个可用于生成周长大于 5 的极图的算法，并在 \(n\ge6\) 时给出 \(ex(v;\{C_3, C_4, ..., C_n\})\) 的下界。</p>
+
+<h3 id="toc_2">介绍</h3>
+
+<p>我们将使用图论的符号[4]。我们认为所有的图都是简单的，即无向图，没有自循环和多个边。<br/>
+图具有顶点集\(V(G)\)，边集\(E(G)\)，\(v(G)\)顶点和\(\varepsilon(G)\)边。我们使用\(\Delta(G)\)表示图G最大度，\(\delta(G)\)表示图G最小度。图G的度序列由 \(D = \{d_i | d表示度；i (1 \le i \le v) 表示度为d的图G中的定点数\}\)表示。令\(|D|\)作为D的基数。很明显，如果\(|D|=1\)，图G是一个正则图。我们说一个\(|D|\)较小的图\((|D| \lt o(\sqrt {v}))\)接近正则图。图G的周长是G中最短环的长度；如果图G没有环，我们认为这种图的周长是无穷大的。通过\(ex(v;\{C_3, C_4, ..., C_n\})\)，我们表示v阶图中最大的边数，并且周长至少有n+1；并通过\(EX(v;\{C_3, C_4, ..., C_n\})\)我们表示周长至少为n+1，有\(ex(v;\{C_3, C_4, ..., C_n\})\)条边的v阶所有图的集合。本文大部分内容中，我们考虑<br/>
+\(EX(v;\{C_3, C_4 \})\)中的图，并将它们称为极图。我们将参考图\(EX(v;\{C_3, C_4, ..., C_n\})\)  周长\(\ge {n+1}\)的极图。</p>
+
+<p>一个d-regular图，周长为g，且具有尽可能少顶点数图，记为(d,g)-cage.在Erdo ̋s 和 Sachs[4]证明了笼子存在后，他们对这些图进行了集中深入研究。通常很难找到笼子。Wong[23]在这个问题上有很好的调查论文。</p>
+
+<p>在1975年，Erdo ̋s [10]提到了确定\(f(v)\)的值的问题，即v阶 最大边数的图的周长至少为5。<br/>
+。。。。</p>
+
+<p>在第二部分，我们将讨论在极图上发现的重要属性。然后第三部分，我们描述了如何将该特性与模拟退火算法相结合，以开发可用于生成极图的算法。第四部分，我们将介绍一些获得的成果。</p>
+
+<h3 id="toc_3">度序列（degree sequence）</h3>
+
+<p>对称性无处不在。我们看到许多自然形式的对称性。例如人类就是左右对称的，花朵是中心对称的，贝壳是螺旋对称和鱼鳞的平移对称。对称性在数学中也起着举足轻重的作用。从几何学到群论，再到图论中的顶点传递性和正则性。正则图构成了一个特别有趣的类。它们似乎捕获了一般图的大部分复杂性，有趣的例子比比皆是，Headwood图，Petersen图和Coxeter图。</p>
+
+<p><strong>定理2.1</strong> 对于任何\(v\ge5\)的极图G，G中最多有一个度为1的顶点<br/>
+<strong>证明</strong> </p>
+
+<p><strong>定理2.2</strong> 存在\(v\ge5\)的极图G，最小度\(\delta(G)\ge2\)<br/>
+<strong>证明</strong> </p>
+
+<p><strong>定理2.3</strong> <br/>
+<strong>证明</strong> </p>
+
+<p><strong>定理2.4</strong><br/><br/>
+<strong>证明</strong> </p>
+
+<p><strong>定理2.5</strong><br/><br/>
+<strong>证明</strong> </p>
+
+<h3 id="toc_4">模拟退火（Simulated annealing）</h3>
+
+<p>模拟退火（SA）是组合优化问题的一种好的解决方法。此项技术的基本操作是移动，移动是从解决方案空间中的一个元素到另一个元素的过渡。在本文中，移动是指在两个随机生成的不相邻顶点之间插入一条边。如果此次插入所创建的图的周长小于等于n，则必须删除一些边。我们通过􏰉\(\varepsilon(G)\)的减少来定义移动的成本。每一步都会影响当前解决方案的成本。直观地讲，人们倾向于降低成本的举动，因为目标是采用最低或接近最低的成本的解决方案。但是，仅允许这种移动，最终的解决方案很可能是局部最小值，而不是绝对最小值。为了摆脱局部最小值，必须采取增加成本的措施。</p>
+
+<p>在模拟退火中，随机选择预期移动。如果移动减少了成本，则可以接受。否则，它可接受概率为\(e^{-\Delta E/T}\)，其中\(T\)是温度，\(\Delta E\)是此预期移动将导致成本的增量。最初，\(T\)很大，几乎所有移动都被接受。随着T的减小，逐渐降低了对成本增加动作的接受。最终，系统将很少接受移动动作。系统将这种状态称为冻结状态。温度降低的顺序称为退火时间表。下一个温度通过\(T_{n+1} = \alpha 􏰁T_n\)获得，其中􏰁\(\alpha\)是冷却速率。通常􏰁\(\alpha\)在0.75~0.98之间。</p>
+
+<p>通常具有积极成本的移动会被概率\(e^{-\Delta E/T}\)接受。最初，我们使用这种方法不能有效地获取已知的极值图。在某些情况下，我们甚至无法获得已知的极值图。然后，我们检查了生成的图，发现其中大部分图的顶点有很高的度。实际上，这就是写第2节内容的动机。正如我们在第2节中发现的那样，极值图往往与正则图非常接近。我们修改了传统方法来提现极值图中的规律。我们不是随机选择一对不相邻的顶点，然后随机决定是否在它们之间添加边，而是添加一个程序以确保将大多数边均匀地插入到图形中。</p>
+
+<p>第一步：</p>
+
+<h3 id="toc_5">References</h3>
+
+<p>[1] C.R.J. Clapham, A. Flockart, J. Sheehan, Graphs without four-cycles, J. Graph Theory 13 (1989) 29–47.<br/>
+[2] A.E. Brouwer, A.M. Cohen, A. Neumaier, Distance — Regular Graphs, Springer, Heidelberg, 1989.<br/>
+[3] B. Bolloba􏰆s, Extremal Graph Theory, Academic Press, London, 1978.<br/>
+[4] J.A. Bondy, U.S.R. Murty, Graph Theory with Applications, North-Holland, Amsterdam, 1976.<br/>
+[5] J.A. Bondy, M. Simonovits, Cycles of even length in graphs, J. Combin. Theory Ser. B 16 (1974) 97–105.<br/>
+[6] S. Kirkpatrick, C.D. Gellate Jr., M.P. Vecchi, Optimization of simulated annealing, Science 220 (1983) 671– 680.<br/>
+[7] F.R.K. Chung, Constructing random-like graphs, in: B. Bollobas (Ed.), Probabilistic Combinatorics and its Applications, Amer. Math. Soc., Providence, RI, Vol. 1991.<br/>
+[8] Y.H.H. Kwong, D.K. Garnick, F. Lazebnik, Extremal graphs without three-cycles or four-cycles, J. Graph Theory 17 (5) (1993) 633–645.<br/>
+[9] P. Erdo ̋s, Some recent progress on extremal graphs in graph theory, Congres. Numer. 14 (1975) 3–14.<br/>
+[10] P. Erdo ̋s, H. Sachs, Regula􏰇re graphen gegebener taillenweite me minimaler knotenzahl, Wiss. Z. Univ.<br/>
+Halle Matrin Luther Univ. Halle-Wittenberg Math. — Natur 12 (1963) 251–257.<br/>
+[11] Z. Fu ̋redi, On the number of edges of quadrilateral-free graphs, J. Combin. Theory Ser. B 68 (1996)<br/>
+1–6.<br/>
+[12] M.R. Garey, D.S. Johnson, Computer and Intractability, Freeman, New York, 1979.<br/>
+[13] D.K. Garnick, N.A. Nieuwejaar, Non-isomorphic extremal graphs with three-cycles or four-cycles,<br/>
+J. Combin. Math. Combin. Comput. 12 (1993) 33–56.<br/>
+[14] F. Lazebnik, P. Wang, On the structure of extremal graphs of high girth, J. Graph Theory 26 (1997)<br/>
+147–153.<br/>
+[15] B.D. MaKay, http:==cs.anu.edu.au=people/bdm=.<br/>
+[16] B.D. MaKay, Practicle graph isomorphism, Congres. Numer. 30 (1981) 45–87.<br/>
+[17] P. Wang, G. Dueck, An algorithm to 􏰀nd the upper bound of the distance between graphs, J. Combin.<br/>
+Math. Combin. Comput. 19 (1995) 97–107.<br/>
+[18] I. Reiman, U􏰇ber ein problem von k. zarankiewicz, Acta Math. Acad. Sci. Hungar. 9 (1958) 169–279.<br/>
+[19] R.W. Robinson, N.C. Wormald, Almost all cubic graphs are hamiltonian, Random Structures Algorithms<br/>
+3 (1992) 117–225.<br/>
+[20] M. Simonovits, Extremal graph theory, in: L.W. Beineke, R.J. Wilson (Eds.), Selected Topics in Graph<br/>
+Theory, Vol. 2, Academic Press, London, 1993, pp. 161–200.<br/>
+[21] F. Lazebnik, V.A. Ustimenko, A.J. Woldar, A new series of dense graphs of high girth, Bull. Amer.<br/>
+Math. Soc. 32 (1) (1995) 73–79.<br/>
+[22] P. Wang, An upper bound of the (n; 5)-cages, Ars Combin. 47 (1997) 121–128.<br/>
+[23] P.K. Wong, Cages — a survey, J. Graph Theory 6 (1982) 1–22.</p>
+
+<p><img src="media/15809082865015/15810919588257.jpg" alt=""/></p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[cheat.sh]]></title>
@@ -1650,47 +1769,6 @@ redis&gt;<br/>
 public class ${NAME} {
 }
 </code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[idea 热部署]]></title>
-    <link href="blog.sajor.top/15659629846282.html"/>
-    <updated>2019-08-16T21:43:04+08:00</updated>
-    <id>blog.sajor.top/15659629846282.html</id>
-    <content type="html"><![CDATA[
-<p>最近调试代码需要起服务并修改代码这就导致重复工作，目前是修改服务器配置，即当idea失去焦点时更新类和资源，但是这种只支持在debug模式且是在idea失去焦点才会触发热部署，这就相对加载的慢了。此法的配置方法：</p>
-
-<p>Run –&gt;Edit Configgurations</p>
-
-<p><img src="media/15659629846282/15659630233075.jpg" alt="" style="width:411px;"/></p>
-
-<p>如果你sever 选项卡下没有On frame deactivation，那么就需要配置 Deployment 选项卡，点击右边绿色+，选择自己对应的项目，建议选择带 exploded， 这个相当于改 Tomcat 的 CATALINA_HOME， 效率比较高。</p>
-
-<p><img src="media/15659629846282/15659630849569.jpg" alt="" style="width:950px;"/></p>
-
-<p><img src="media/15659629846282/15659631761726.jpg" alt="" style="width:949px;"/></p>
-
-<p>选择好后， 删掉默认的Build， 提高效率</p>
-
-<p>虽然配置了热部署但是感觉还是有点慢，发现idea没有默认自动编译，因此开启后将省去了每次修改代码又要重新启动的步骤：</p>
-
-<p>*进入设置setting，Build,Execut, Deployment -&gt; Compiler 勾选右侧的Build Project automatically</p>
-
-<p><img src="media/15659629846282/15659629885946.jpg" alt="" style="width:1109px;"/></p>
-
-<ul>
-<li>开启项目运行时自动build，在打开的页面上快捷键ctrl + shift + a 搜索命令：registry –&gt; 勾选compiler.automake.allow.when.app.running*</li>
-</ul>
-
-<p><img src="media/15659629846282/15659632690639.jpg" alt="" style="width:670px;"/></p>
-
-<p><img src="media/15659629846282/15659633447369.jpg" alt="" style="width:913px;"/></p>
-
-<p>完</p>
-
-<p>参考：<a href="https://blog.csdn.net/z15732621582/article/details/79439359">idea热部署且开启自动编译</a></p>
 
 ]]></content>
   </entry>
