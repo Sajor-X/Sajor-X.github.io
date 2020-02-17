@@ -163,20 +163,71 @@ The only (3,6)-cage is the Heawood graph.<br/>
 <p><strong>定理2.4</strong><br/><br/>
 <strong>证明</strong> </p>
 
-<p><strong>定理2.5</strong><br/><br/>
+<p><strong>定理2.5</strong> 对于任何图G \(\{C_3, C_4\}-free, v \ge \delta(G) \Delta(G)\)<br/>
 <strong>证明</strong> </p>
+
+<p><strong>猜想2.1</strong> 对于任何极值图G，\(\Delta(G) \le v/2\)<br/>
+<strong>证明</strong> 根据定理2.1，最多有一个度为1的顶点。定理2.5的结果可以推广为\(v \ge 1 +\Delta(G) + \Delta(G)(2-1)-1 = 2\Delta(G)\)</p>
 
 <h3 id="toc_4">模拟退火（Simulated annealing）</h3>
 
 <p>模拟退火（SA）是组合优化问题的一种好的解决方法。此项技术的基本操作是移动，移动是从解决方案空间中的一个元素到另一个元素的过渡。在本文中，移动是指在两个随机生成的不相邻顶点之间插入一条边。如果此次插入所创建的图的周长小于等于n，则必须删除一些边。我们通过􏰉\(\varepsilon(G)\)的减少来定义移动的成本。每一步都会影响当前解决方案的成本。直观地讲，人们倾向于降低成本的举动，因为目标是采用最低或接近最低的成本的解决方案。但是，仅允许这种移动，最终的解决方案很可能是局部最小值，而不是绝对最小值。为了摆脱局部最小值，必须采取增加成本的措施。</p>
 
-<p>在模拟退火中，随机选择预期移动。如果移动减少了成本，则可以接受。否则，它可接受概率为\(e^{-\Delta E/T}\)，其中\(T\)是温度，\(\Delta E\)是此预期移动将导致成本的增量。最初，\(T\)很大，几乎所有移动都被接受。随着T的减小，逐渐降低了对成本增加动作的接受。最终，系统将很少接受移动动作。系统将这种状态称为冻结状态。温度降低的顺序称为退火时间表。下一个温度通过\(T_{n+1} = \alpha 􏰁T_n\)获得，其中􏰁\(\alpha\)是冷却速率。通常􏰁\(\alpha\)在0.75~0.98之间。</p>
+<p>在模拟退火中，随机选择预期移动。如果移动减少了成本，则可以接受。否则，它可接受概率为\(e^{-\Delta E/T}\)，其中\(T\)是温度，\(\Delta E\)是此预期移动将导致成本的增量。最初，\(T\)很大，几乎所有移动都被接受。随着T的减小，逐渐降低了对成本增加动作的接受。最终，系统将很少接受移动动作。系统将这种状态称为冻结状态。温度降低的顺序称为退火时间表。下一个温度通过\(T_{n+1}=\alpha{T_n}\)获得，其中􏰁\(\alpha\)是冷却速率。通常􏰁\(\alpha\)在0.75~0.98之间。</p>
 
-<p>通常具有积极成本的移动会被概率\(e^{-\Delta E/T}\)接受。最初，我们使用这种方法不能有效地获取已知的极值图。在某些情况下，我们甚至无法获得已知的极值图。然后，我们检查了生成的图，发现其中大部分图的顶点有很高的度。实际上，这就是写第2节内容的动机。正如我们在第2节中发现的那样，极值图往往与正则图非常接近。我们修改了传统方法来提现极值图中的规律。我们不是随机选择一对不相邻的顶点，然后随机决定是否在它们之间添加边，而是添加一个程序以确保将大多数边均匀地插入到图形中。</p>
+<p>通常具有积极成本的移动会被概率\(e^{-\Delta E/T}\)接受。最初，我们使用这种方法不能有效地获取已知的极值图。在某些情况下，我们甚至无法获得已知的极值图。然后，我们检查了生成的图，发现其中大部分图的顶点有很高的度。实际上，这就是写第2节内容的动机。正如我们在第2节中发现的那样，极值图往往与正则图非常接近。我们修改了传统方法来提现极值图中的规律。我们不是随机选择一对不相邻的顶点，然后随机决定是否在它们之间添加边，而是添加一个程序以确保将边在图中均匀分布。</p>
 
-<p>第一步：</p>
+<p>步骤一：<br/>
+首先，我们将所有顶点按照其度数升序排序。<del>对于每对随机选择的不相邻顶点，我们将这对顶点的等级定义为度序列中度数较大的顶点的位置。</del> 其次，我们定义Prob 1 = 1 - (这对顶点的秩/\(v(G)\))而且如果Prob 1 大于一个随机生成的数字，这对顶点将被接受。这使具有较小度数的顶点有更好的机会在它们之间插入新边。模拟退火不直接通过序列中的秩来接受对，因此秩最小的顶点对不能保证一定被接受。其背后的原因是，在某些极值图中，几乎没有度数较小的顶点。例如，\(ex(11;\{C_3, C_4\}) = 16\)，它是Petersen图加上一个顶点，该顶点链接到Petersen图中的一个顶点。显然，如果模拟退火算法坚持在顶点上以最小的阶数添加边，那么它将无法构造它。实际上，该程序通过使用Prob 1 = 1 −\(（max \{d(x), d{y}\}/\lceil \sqrt{v} \rceil）\)，在我们的测试运行中会产生更好的结果，其中x和y是一对随机选择的不相邻的对顶点。它基于<strong>猜想2.1</strong>。</p>
 
-<h3 id="toc_5">References</h3>
+<p>步骤二：<br/>
+对于在步骤一中选择好的一对顶点，将在它们之间插入一条边。然后，我们使用广度优先搜索来找到它们之间的距离，并且如果距离小于\((n − 1)\)，则必须从度更大的顶点删除边，以便消除长度小于\(n\)的环。重复的从度较大的顶点删除边，直到这对儿顶点之间的距离大于或等于\((n − 1)\)。我们将生成的结果图称为\(G_{new}\)，将插入边之前的图称为\(G_{old}\)。我们定义\(cost = \varepsilon(G_{old}) - \varepsilon(G_{new}) = \Delta E, Prob 2 = e^{-\Delta E/T}\)  总是接受成本为负的边插入。否则，如果Prob 2 &gt; 在0到1之间随机生成的数字会被接受。</p>
+
+<p>下面给出我们实现的伪代码。在内部循环中，随机选择移动。在每个温度水平上都接受有限数量的移动。我们使用\(20 ∗ |V (G)|\)作为限制。这意味着对于较大的图形，可以接受更多的移动。此外，在每个温度下尝试移动的次数都有限制。对于每个接受的动作，我们希望尝试不超过60个动作。一旦达到了可接受的最大移动次数或最大尝试次数，温度就会降低，并开始新的迭代。当接受的移动次数未达到最大水平（最大移动）超过给定数量的连续迭代时，该过程将停止。也就是说，如果接受的尝试移动次数少于60，则我们认为系统处于冻结状态。</p>
+
+<pre><code class="language-text">anneal(G)
+    temp = initial_temp = 1.0
+    cool_rate = 0.95
+    max_moves=20∗|V|
+    max_attempted_moves = 60 ∗ max_moves
+    max_frozen = 100
+    frozen = 0
+    best_count = 0 (the number of edges in the result graph)    
+    while(frozen6 = max frozen)
+        moves = attempted_moves = 0 
+        while((moves6max moves) and (attempted_moves &lt;= max_attempted_moves))
+            increment attempted_moves
+            pick a random move (randomly select two non-adjacent vertices)  
+            if the move is accepted by the two steps process
+                increment moves 
+                if(􏰈(Dold )&lt;=(Gnew ))
+                    increment best_count 
+            else restore Gold
+        end while
+        temp = temp ∗ cool_rate
+        if(attempted_moves &gt; max_attempted_moves)
+            increment frozen 
+    else
+            frozen = 0 
+        end if
+    end while 
+end anneal
+</code></pre>
+
+<p><img src="media/15809082865015/15813452069915.jpg" alt=""/></p>
+
+<p><img src="media/15809082865015/15811719484894.jpg" alt=""/><br/>
+以下变量：初始温度(initial_temp)，冷却速率(cool_rate)，最大移动(max_moves)，最大尝试移动(max_attempted_moves)和最大冻结(max_frozen)的设置可能有所不同。通过实验和经验观察，我们得出了上面伪代码中所示的设置。这些变量的更改将影响结果和程序的执行时间。</p>
+
+<h3 id="toc_5">结果</h3>
+
+<p>表一给出了\(0 \le v \le 29\)，\(ex(v, \{C_3, C_4\})\)的精确值。我们在合理的时间内获得了它们。请注意，这些是\(ex(v, \{C_3, C_4\})\)的准确值，这些值已在[8]中得到了作者的证明。此外，\(v = 1; 2; 3; 5; 7; 8; 9; 10; 13; 15; 19; 20\)的极值图是唯一的。其中一些是著名的图，需要花费研究人员数年的时间才能获得。例如，如果\(v = 10\)，则该图为Petersen图，(3, 5)-cage，如果\(v = 18\)，则为Robertson图，(4, 5)-cage。这表明计算出的下限是好的。</p>
+
+<p>在我们验证了我们的算法可以为具有较小周长的极图产生良好的结果之后，我们还针对较大周长的极图运行了它。例如，已知（参见[14]）\(ex(2n + 2; \{C_3, C_4, ..., C_n\}) = 2n + 4; ex(3n; {C_3, C_4, ..., C_n}）= 3n + 5\)。极值图的周长\(\ge n + 1\)。在上述两种情况下，通过运行我们的程序，它确实为\(n \ge 15\)提供了最佳解决方案。我们还使用它来验证Garnick在[13]中对周长较大的极值图提出的以下问题。</p>
+
+<p>是否存在一个常数\(c\)，使得对于所有\(n \ge 5\)和所有\(v \ge cn\)，任何一个周长\(\ge n + 1\)的极值图的周长为\(n + 1\)？</p>
+
+<h3 id="toc_6">References</h3>
 
 <p>[1] C.R.J. Clapham, A. Flockart, J. Sheehan, Graphs without four-cycles, J. Graph Theory 13 (1989) 29–47.<br/>
 [2] A.E. Brouwer, A.M. Cohen, A. Neumaier, Distance — Regular Graphs, Springer, Heidelberg, 1989.<br/>
@@ -318,6 +369,12 @@ Math. Soc. 32 (1) (1995) 73–79.<br/>
 				<footer class="post-footer clearfix">	    			
 				    <div class="meta">
 					    
+					    <P style="float: left;">
+					    	<a href="15819525546014.html" 
+					        title="Previous Post: 网易云 最嗨电音 爬虫">&laquo; 网易云 最嗨电音 爬虫</a>
+					    </p>
+					    <p style="float:right; ">
+					    	
 					    	
 					        <a href="15802234606202.html" 
 					        title="Next Post: cheat.sh">cheat.sh &raquo;</a>
@@ -400,7 +457,7 @@ Math. Soc. 32 (1) (1995) 73–79.<br/>
              
             
             <li>
-            <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html">数据结构与算法&nbsp;(5)</a>
+            <a href="%E7%88%AC%E8%99%AB.html">爬虫&nbsp;(1)</a>
             <p>
             
             </p>
@@ -409,15 +466,13 @@ Math. Soc. 32 (1) (1995) 73–79.<br/>
              
             
             <li>
-            <a href="SSM.html">SSM&nbsp;(18)</a>
+            <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html">数据结构与算法&nbsp;(5)</a>
             <p>
-            
-            <a href="ssm.html">SSM练习&nbsp;(13)</a>&nbsp;&nbsp;
-            
-            <a href="java.html">ssm课程&nbsp;(5)</a>&nbsp;&nbsp;
             
             </p>
             </li>
+            
+             
             
              
       </div>
@@ -425,6 +480,12 @@ Math. Soc. 32 (1) (1995) 73–79.<br/>
       <div class="meta-item meta-comments">
           <h2 class="meta-title">RECENT POSTS</h2>
 
+          
+          
+         <li>
+           <a href="15819525546014.html">网易云 最嗨电音 爬虫</a><br>
+         </li>
+          
           
           
          <li>
@@ -447,12 +508,6 @@ Math. Soc. 32 (1) (1995) 73–79.<br/>
           
          <li>
            <a href="15773499726644.html">监控Python 运行</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="15769921068601.html">ssh</a><br>
          </li>
           
           

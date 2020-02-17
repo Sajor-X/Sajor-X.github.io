@@ -10,7 +10,7 @@
 
     <title>
       
-    密码学原理 - Sajor's Blog
+    网易云 最嗨电音 爬虫 - Sajor's Blog
     
     </title>
 
@@ -88,64 +88,72 @@
 		<div class="post-header">
 			<!-- title -->
 			<div class="post-header">
-				<h1 class="post-title itemprop="name headline">密码学原理</h1>	
+				<h1 class="post-title itemprop="name headline">网易云 最嗨电音 爬虫</h1>	
 				<div class="post-data">
-					<time datetime="2019-08-06T22:13:49+08:00" pubdate data-updated="true">2019/08/06</time>
+					<time datetime="2020-02-17T23:15:54+08:00" pubdate data-updated="true">2020/02/17</time>
 				</div>
 			</div>
 		</div>
 	<div id="post-content" class="post-content" itemprop="articleBody"> 
 		<p class="post-tags"> 
 		
+		<a href='%E7%88%AC%E8%99%AB.html'>爬虫</a>&nbsp;
+		
 		</p>
 	<!-- 正文 -->
 		<p>
-		<h2 id="toc_0">哈希</h2>
+		<p>抓手机包找到音乐链接 Size最大</p>
 
-<p>输出空间 2<sup>256</sup></p>
+<p><img src="media/15819525546014/15819533512601.jpg" alt="" style="width:1062px;"/></p>
 
-<ul>
-<li>collision resistance 哈希碰撞（没有数学方法可以证明，只有实战经验）</li>
-</ul>
+<p>贴到浏览器发现可以打开，确实为此音乐</p>
 
-<p>没有一个好的方法可以算出 X 的hash值正好等于 Y 的hash值，可以使用穷举方法 brute-force<br/>
-<strong>用处</strong>： 在上传文件时，可以先算一个 digest 在下载的时候，再算一次查看是否和之前的相等，即可发现文件是否被篡改。<br/>
-MD5 原来以为具有这个性质，但是后来被证明是可以被人为制造碰撞的。</p>
+<p><img src="media/15819525546014/15819534156184.jpg" alt="" style="width:546px;"/></p>
 
-<ul>
-<li>hiding 单向的 </li>
-</ul>
+<p>筛选所有音乐链接 <code>m\d.music.126.net</code><br/>
+<img src="media/15819525546014/15819537374098.jpg" alt="" style="width:1152px;"/></p>
 
-<p>前提：输入空间比较大，且分布均匀<br/>
-X -&gt; H(X) 知道了 H(X) 并不能知道 X 的值</p>
+<p>积攒一段时间，将这些链接拷贝到文件里<br/>
+<img src="media/15819525546014/15819535577751.jpg" alt="" style="width:973px;"/></p>
 
-<p>digital commitment <br/>
-(digital equivalent of a sealed envelope)<br/>
-例如：某人要预测股市，需要第一天公布预测信息，但是如果提前公布则会对股市产生影响。所以可以使用这种方式，将预测结果放到信封里，由公证处保管，等股市结果出来后，再由公证处打开信封。<br/>
-这种方式在信息学中可以使用hash实现，先将预测结果进行哈希运算，等股市结果出来后再公布明文结果，计算哈希值是否和之前公布的相等即可。</p>
+<p>编写Python代码，统一下载</p>
 
-<p>但是要保证输入空间足够大，所以可以拼接一个随机数 nonce 去算哈希来保证输入空间足够大。</p>
+<pre><code class="language-python">import requests
+from urllib import request
 
-<ul>
-<li>puzzle friendly </li>
-</ul>
 
-<p>比特币要求的性质。要求已知的哈希值 H(X) 不能反推 X 的值或 X 值的范围。<br/>
-挖矿的过程就是 H(block header) &lt;= target 区块头中可以改变 nonce 的值，通过改变随机数的值来控制哈希小于目标值来挖矿。 (Proof Of Work)</p>
+class Electronic:
 
-<ul>
-<li>difficult to solve, but easy to verify</li>
-</ul>
+    def __init__(self) -&gt; None:
+        self.s = requests.session()
+        self.dir = &quot;music/&quot;
+        self.file = &quot;music.txt&quot;
 
-<p>比特币中用的哈希函数是 SHA-256(Secure Hash Algorithm)</p>
+    def open_file(self):
+        with open(self.file, &#39;r&#39;) as f:
+            for number, line in enumerate(f, start=1):
+                yield line
 
-<h2 id="toc_1">非对称加密</h2>
+    def get_music(self, url, name):
+        try:
+            self.s.get(url)
+            request.urlretrieve(url, name)
+        except Exception as ex:
+            print(url, ex)
 
-<p>对称加密的问题在于分发秘钥的途径不安全。</p>
+    def start(self):
+        for url in self.open_file():
+            print(url)
+            name = url.split(&#39;/&#39;)[-1].strip()
+            self.get_music(url, self.dir + name)
 
-<p>a good source of randomness 好的随机源</p>
 
-<p>比特币中是先对转账信息 message 取哈希，再对哈希值签名</p>
+if __name__ == &#39;__main__&#39;:
+
+    e = Electronic()
+    e.start()
+
+</code></pre>
 
 		</p>
 		<!-- 侧边导航条 -->
@@ -246,22 +254,16 @@ X -&gt; H(X) 知道了 H(X) 并不能知道 X 的值</p>
 	<!-- 版权声明 -->
 		<p class="post-info" style="color: #BCBDB6">
 				本文由 <a style="color: #BCBDB6" href="#">Sajor
-				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2019-08-06T22:13:49+08:00
+				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2020-02-17T23:15:54+08:00
 		</p>
 	<!-- 导航 -->
 			<div id="comments" class="clearfix" style="padding: 0px;">
 				<footer class="post-footer clearfix">	    			
 				    <div class="meta">
 					    
-					    <P style="float: left;">
-					    	<a href="15659217621647.html" 
-					        title="Previous Post: Maven">&laquo; Maven</a>
-					    </p>
-					    <p style="float:right; ">
 					    	
-					    	
-					        <a href="15650106911020.html" 
-					        title="Next Post: 排序算法">排序算法 &raquo;</a>
+					        <a href="15809082865015.html" 
+					        title="Next Post: 使用模拟退火来构造极值图">使用模拟退火来构造极值图 &raquo;</a>
 					    </p> 
 					    
 				    </div>
