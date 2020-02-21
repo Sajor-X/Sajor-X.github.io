@@ -4,7 +4,7 @@
   <title><![CDATA[Sajor's Blog]]></title>
   <link href="blog.sajor.top/atom.xml" rel="self"/>
   <link href="blog.sajor.top/"/>
-  <updated>2020-02-17T23:39:17+08:00</updated>
+  <updated>2020-02-21T23:32:49+08:00</updated>
   <id>blog.sajor.top/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -12,6 +12,92 @@
   </author>
   <generator uri="http://www.coderforart.com/">CoderForArt</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[jdk]]></title>
+    <link href="blog.sajor.top/15822108701088.html"/>
+    <updated>2020-02-20T23:01:10+08:00</updated>
+    <id>blog.sajor.top/15822108701088.html</id>
+    <content type="html"><![CDATA[
+<p>首先下载jdk，<a href="https://www.oracle.com/java/technologies/javase-jdk8-downloads.html">jdk下载页面</a></p>
+
+<h2 id="toc_0">卸载原有jdk</h2>
+
+<p>检查操作系统是否自带openjdk </p>
+
+<p>输入<code>java -version</code>若出现java版本信息，表明操作系统目前自带的jdk，按以下方式进行卸载。</p>
+
+<p>检查操作系统上自带的jdk <br/>
+<code>rpm -qa|grep jdk</code> </p>
+
+<p>如果显示jdk的相关信息，则继续，否则跳过这一步， 卸载原有的jdk <br/>
+<code>yum remove java*</code></p>
+
+<p>检索所有的java套件 <code>rpm -qa | grep java</code></p>
+
+<p>如果显示：</p>
+
+<pre><code class="language-text">java-x.x.x-openjdk-x.x.x.xxx-x.x.x.x.el7.x86_64
+…
+java-x.x.x-openjdk-headless-x.x.x.xxx-x.b14.el7.x86_64
+…
+</code></pre>
+
+<p>则继续，否则跳过这一步。</p>
+
+<p>删除所有包含有openjdk的套件</p>
+
+<pre><code class="language-text">rpm -e --nodeps java-x.x.x-openjdk-x.x.x.xxx-x.x.x.x.el7.x86_64
+rpm -e --nodeps java-x.x.x-openjdk-headless-x.x.x.xxx-x.b14.el7.x86_64
+...
+</code></pre>
+
+<h2 id="toc_1">安装</h2>
+
+<p>java安装文件夹准备</p>
+
+<p>在/usr/local/目录下创建名称为java的文件夹：<br/>
+<code>mkdir -p /usr/local/java</code></p>
+
+<p>将下载好的jdk安装包上传到服务器上。<br/>
+之后解压到<code>/usr/local/java</code>中</p>
+
+<p><code>tar -xvf jdk-8u241.tar.gz</code></p>
+
+<h2 id="toc_2">配置</h2>
+
+<p>编辑配置文件<code>vim /etc/profile</code></p>
+
+<p>定位到最后一行，添加如下内容（版本注意修改）</p>
+
+<pre><code class="language-text">export JAVA_HOME=/usr/local/java/jdk1.8.0_241/
+export CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+export PATH=$PATH:$JAVA_HOME/bin
+</code></pre>
+
+<p>之后重新加载此配置文件 <code>source /etc/profile</code></p>
+
+<p>输入</p>
+
+<pre><code class="language-text">java -version
+javac -version
+</code></pre>
+
+<p>查看是否安装成功</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[spark]]></title>
+    <link href="blog.sajor.top/15822104759867.html"/>
+    <updated>2020-02-20T22:54:35+08:00</updated>
+    <id>blog.sajor.top/15822104759867.html</id>
+    <content type="html"><![CDATA[
+<p>下载安装包 <code>spark.apache.org</code></p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[网易云 最嗨电音 爬虫]]></title>
@@ -1816,48 +1902,6 @@ esac
 <p><a href="https://blog.csdn.net/samtaoys/article/details/88817482">加固Linux服务器</a></p>
 
 <p><a href="https://www.cnblogs.com/richardlee97/p/10671322.html">安全加固cr</a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[命令]]></title>
-    <link href="blog.sajor.top/15730029503820.html"/>
-    <updated>2019-11-06T09:15:50+08:00</updated>
-    <id>blog.sajor.top/15730029503820.html</id>
-    <content type="html"><![CDATA[
-<h3 id="toc_0">.java结尾的文件 行数</h3>
-
-<p>wc -l <code>find ./$1 -name &#39;*.java&#39;</code></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[redis命令]]></title>
-    <link href="blog.sajor.top/15700237274379.html"/>
-    <updated>2019-10-02T21:42:07+08:00</updated>
-    <id>blog.sajor.top/15700237274379.html</id>
-    <content type="html"><![CDATA[
-<h3 id="toc_0">append 追加</h3>
-
-<p><code>append key value</code></p>
-
-<p>返回值<br/>
-Integer reply：返回append后字符串值（value）的长度。</p>
-
-<p>例子<br/>
-<code><br/>
-redis&gt; EXISTS mykey<br/>
-(integer) 0<br/>
-redis&gt; APPEND mykey &quot;Hello&quot;<br/>
-(integer) 5<br/>
-redis&gt; APPEND mykey &quot; World&quot;<br/>
-(integer) 11<br/>
-redis&gt; GET mykey<br/>
-&quot;Hello World&quot;<br/>
-redis&gt;<br/>
-</code></p>
 
 ]]></content>
   </entry>

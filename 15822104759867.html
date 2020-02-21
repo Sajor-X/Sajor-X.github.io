@@ -10,7 +10,7 @@
 
     <title>
       
-    从零开始SSM开发系列十三：使用 Mapper 接口方式整合 MyBatis-Spring - Sajor's Blog
+    spark - Sajor's Blog
     
     </title>
 
@@ -88,271 +88,21 @@
 		<div class="post-header">
 			<!-- title -->
 			<div class="post-header">
-				<h1 class="post-title itemprop="name headline">从零开始SSM开发系列十三：使用 Mapper 接口方式整合 MyBatis-Spring</h1>	
+				<h1 class="post-title itemprop="name headline">spark</h1>	
 				<div class="post-data">
-					<time datetime="2019-08-02T15:13:27+08:00" pubdate data-updated="true">2019/08/02</time>
+					<time datetime="2020-02-20T22:54:35+08:00" pubdate data-updated="true">2020/02/20</time>
 				</div>
 			</div>
 		</div>
 	<div id="post-content" class="post-content" itemprop="articleBody"> 
 		<p class="post-tags"> 
 		
-		<a href='ssm.html'>SSM练习</a>&nbsp;
+		<a href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>&nbsp;
 		
 		</p>
 	<!-- 正文 -->
 		<p>
-		<p>在上一章的基础上，继续使用c07包</p>
-
-<p>1、创建新的 Package</p>
-
-<blockquote>
-<p>com.sajor.study.c07.user<br/>
-com.sajor.study.c07.user.model:存放 vo 对象(业务模型对象) <br/>
-com.sajor.study.c07.user.dao:存放 dao 对象(数据库访问对象) <br/>
-com.sajor.study.c07.user.mapper:存放 mybatis 数据库表-对象映射文件 <br/>
-com.sajor.study.c07.user.service:存放服务接口 <br/>
-com.sajor.study.c07.user.service.impl:存放接口实现 </p>
-</blockquote>
-
-<p>创建完成，包结构如下:<br/>
-<img src="media/15647300073307/15647302640035.jpg" alt="" style="width:278px;"/></p>
-
-<p>2、在 model 包中创建一个 User 类</p>
-
-<pre><code class="language-java">package com.sajor.study.c07.user.model;
-
-import java.io.Serializable;
-
-public class User implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    private int id = 20190802;
-    private String name = &quot;&quot;;
-    private String sex;
-    private String email;
-
-    @Override
-    public String toString() {
-        StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append(&quot;id=&quot;);
-        stringBuffer.append(id);
-        stringBuffer.append(&quot;\n&quot;);
-        stringBuffer.append(&quot;name=&quot;);
-        stringBuffer.append(name);
-        return stringBuffer.toString();
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-}
-</code></pre>
-
-<p>3、在 dao 包中创建一个接口 UserMapper</p>
-
-<pre><code class="language-java">package com.sajor.study.c07.user.dao;
-
-import com.sajor.study.c07.user.model.User;
-
-import java.util.List;
-
-public interface UserMapper {
-    // 通过id查询
-    public User findUserById(int id);
-
-    // 添加
-    public void addUser(User user);
-
-    // 查询所有
-    public List&lt;User&gt; findAllUsers();
-}
-</code></pre>
-
-<p>4、在 mapper 包中创建一个映射文件 UserMapper.xml</p>
-
-<pre><code class="language-java">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
-        &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
-&lt;mapper namespace=&quot;com.sajor.study.c07.user.dao.UserMapper&quot;&gt;
-    &lt;resultMap id=&quot;UserResultMap&quot; type=&quot;com.sajor.study.c07.user.model.User&quot;&gt;
-        &lt;result column=&quot;id&quot; property=&quot;id&quot; jdbcType=&quot;BIGINT&quot;/&gt;
-        &lt;result column=&quot;name&quot; property=&quot;name&quot; jdbcType=&quot;VARCHAR&quot;/&gt;
-        &lt;result column=&quot;sex&quot; property=&quot;sex&quot; jdbcType=&quot;VARCHAR&quot;/&gt;
-        &lt;result column=&quot;email&quot; property=&quot;email&quot; jdbcType=&quot;VARCHAR&quot;/&gt;
-    &lt;/resultMap&gt;
-    &lt;!--根据 id 查询用户信息 --&gt;
-    &lt;select id=&quot;findUserById&quot; parameterType=&quot;java.lang.Integer&quot; resultMap=&quot;UserResultMap&quot;&gt;
-        select * from USER where id = #{id}
-    &lt;/select&gt;
-    &lt;!--添加用户信息 --&gt;
-    &lt;insert id=&quot;addUser&quot; parameterType=&quot;user&quot;&gt;
-        insert into USER(name,sex,email)
-        values(#{name},#{sex},#{email})
-    &lt;/insert&gt;
-    &lt;!--查询所有用户--&gt;
-    &lt;select id=&quot;findAllUsers&quot; resultMap=&quot;UserResultMap&quot;&gt;
-        select * from USER
-    &lt;/select&gt;
-&lt;/mapper&gt;
-</code></pre>
-
-<p>5、在 service 包中创建一个服务接口 UserService</p>
-
-<pre><code class="language-java">package com.sajor.study.c07.user.service;
-
-import com.sajor.study.c07.user.model.User;
-
-public interface UserService {
-    // 通过id查询
-    public User findUserById(int id); // 添加
-
-    public void addUser(User user);
-
-    public int getUsersCount();
-}
-</code></pre>
-
-<p>6、在 service.impl 包中创建服务接口的实现类 UserServiceImpl</p>
-
-<p>这里用到了注解方式:声明了 service、以及自动绑定(当然也可以在 spring 中声明 bean，以及把 userMapper 注入)</p>
-
-<pre><code class="language-java">package com.sajor.study.c07.user.service.impl;
-
-import com.sajor.study.c07.user.dao.UserMapper;
-import com.sajor.study.c07.user.model.User;
-import com.sajor.study.c07.user.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-@Service
-public class UserServiceImpl implements UserService {
-    @Autowired
-    private UserMapper userMapper;
-
-    @Override
-    public User findUserById(int id) {
-        return userMapper.findUserById(id);
-    }
-
-    @Override
-    public void addUser(User user) {
-        userMapper.addUser(user);
-    }
-
-    @Override
-    public int getUsersCount() {
-        return userMapper.findAllUsers().size();
-    }
-}
-</code></pre>
-
-<p>7、新建一个 MyBatis 的核心配置文件 c07-mybatis-spring-config-mapper.xml</p>
-
-<pre><code class="language-java">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
-&lt;configuration&gt;
-    &lt;!--配置别名 --&gt;
-    &lt;typeAliases&gt;
-        &lt;!--定义 Mapper 中引用到的业务对象类的位置--&gt;
-        &lt;package name=&quot;com.sajor.study.c07.user.model&quot;/&gt;
-    &lt;/typeAliases&gt;
-    &lt;!--配置 Mapper 的位置 --&gt;
-    &lt;mappers&gt;
-        &lt;mapper resource=&quot;com/sajor/study/c07/user/mapper/UserMapper.xml&quot;/&gt;
-    &lt;/mappers&gt;
-&lt;/configuration&gt;
-
-</code></pre>
-
-<p>8、新建一个 Spring 配置文件 c07-spring-config-mybatisspring-mapper.xml</p>
-
-<pre><code class="language-java">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-       xmlns:context=&quot;http://www.springframework.org/schema/context&quot; xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
-http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;
-    &lt;!--1. 定义数据源，mybatis 直接使用 spring 中定义的数据源--&gt;
-    &lt;bean id=&quot;dataSource&quot; class=&quot;org.springframework.jdbc.datasource.DriverManagerDataSource&quot;&gt;
-        &lt;property name=&quot;driverClassName&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;
-        &lt;property name=&quot;url&quot;
-                  value=&quot;jdbc:mysql://localhost:3306/TestDB?autoReconnect=true&amp;amp;characterEncoding=utf8&amp;amp;useUnicode=true&amp;amp;useSSL=false&quot;/&gt;
-        &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
-        &lt;property name=&quot;password&quot; value=&quot;123456&quot;/&gt;
-    &lt;/bean&gt;
-    &lt;!--2. 配置 MyBatis 工厂 --&gt;
-    &lt;bean id=&quot;sqlSessionFactory&quot;
-          class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
-        &lt;!--注入数据源 --&gt;
-        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;
-        &lt;!--指定核心配置文件位置 --&gt;
-        &lt;property name=&quot;configLocation&quot; value=&quot;classpath:c07-mybatis-spring-config-mapper.xml&quot;/&gt;
-    &lt;/bean&gt;
-
-    &lt;!--3. Mapper 代理开发(基于 MapperScannerConfigurer) --&gt;
-    &lt;bean class=&quot;org.mybatis.spring.mapper.MapperScannerConfigurer&quot;&gt;
-        &lt;!--定义接口所在位置--&gt;
-        &lt;property name=&quot;basePackage&quot; value=&quot;com.sajor.study.c07.user.dao&quot;/&gt;
-    &lt;/bean&gt;
-    &lt;!--4. 开启扫描 --&gt;
-    &lt;context:component-scan base-package=&quot;com.sajor.study.c07.user.service&quot;/&gt;
-&lt;/beans&gt;
-
-</code></pre>
-
-<p>9、创建测试类 MyBatisSpringMapperTest</p>
-
-<pre><code class="language-java">package test.com.sajor.study.c07;
-
-import com.sajor.study.c07.user.model.User;
-import com.sajor.study.c07.user.service.UserService;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-public class MyBatisSpringMapperTest {
-    public static void main(String[] args) {
-        try {
-            ApplicationContext ctx =
-                    new ClassPathXmlApplicationContext(&quot;c07-spring-config-mybatisspring-mapper.xml&quot;);
-            UserService userService = (UserService) ctx.getBean(UserService.class);
-            User user = userService.findUserById(2);
-            System.out.println(user);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-}
-</code></pre>
-
-<p>10、运行测试类</p>
+		<p>下载安装包 <code>spark.apache.org</code></p>
 
 		</p>
 		<!-- 侧边导航条 -->
@@ -453,7 +203,7 @@ public class MyBatisSpringMapperTest {
 	<!-- 版权声明 -->
 		<p class="post-info" style="color: #BCBDB6">
 				本文由 <a style="color: #BCBDB6" href="#">Sajor
-				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2019-08-02T15:13:27+08:00
+				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2020-02-20T22:54:35+08:00
 		</p>
 	<!-- 导航 -->
 			<div id="comments" class="clearfix" style="padding: 0px;">
@@ -461,14 +211,14 @@ public class MyBatisSpringMapperTest {
 				    <div class="meta">
 					    
 					    <P style="float: left;">
-					    	<a href="15647321562727.html" 
-					        title="Previous Post: Spring入门">&laquo; Spring入门</a>
+					    	<a href="15822108701088.html" 
+					        title="Previous Post: jdk">&laquo; jdk</a>
 					    </p>
 					    <p style="float:right; ">
 					    	
 					    	
-					        <a href="15647285252626.html" 
-					        title="Next Post: 从零开始SSM开发系列十二：使用 DAO 方式整合 MyBatis-Spring">从零开始SSM开发系列十二：使用 DAO 方式整合 MyBatis-Spring &raquo;</a>
+					        <a href="15819525546014.html" 
+					        title="Next Post: 网易云 最嗨电音 爬虫">网易云 最嗨电音 爬虫 &raquo;</a>
 					    </p> 
 					    
 				    </div>
