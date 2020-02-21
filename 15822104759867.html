@@ -102,7 +102,39 @@
 		</p>
 	<!-- 正文 -->
 		<p>
-		<p>下载安装包 <code>spark.apache.org</code></p>
+		<p>首先到官网<code>spark.apache.org</code>下载spark，<a href="https://spark.apache.org/downloads.html">spark下载页面</a> </p>
+
+<h2 id="toc_0">安装</h2>
+
+<p>spark安装文件夹准备</p>
+
+<p>在/usr/local/目录下创建名称为spark的文件夹：<br/>
+<code>mkdir -p /usr/local/spark</code></p>
+
+<p>将下载好的spark安装包上传到服务器上。<br/>
+之后解压到<code>/usr/local/spark</code>中</p>
+
+<p><code>tar -zxvf spark-2.4.5-bin-hadoop2.7.tgz</code></p>
+
+<h2 id="toc_1">配置</h2>
+
+<p>编辑配置文件<code>vim /etc/profile</code></p>
+
+<p>定位到最后一行，添加如下内容（版本注意修改）</p>
+
+<pre><code class="language-text"># spark
+export SPARK_HOME=/usr/local/spark/spark-2.4.5-bin-hadoop2.7/
+export PATH=$PATH:$SPARK_HOME/bin
+</code></pre>
+
+<p>之后重新加载此配置文件 <code>source /etc/profile</code></p>
+
+<p>输入</p>
+
+<pre><code class="language-text">spark-shell
+</code></pre>
+
+<p>查看是否安装成功</p>
 
 		</p>
 		<!-- 侧边导航条 -->

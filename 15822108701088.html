@@ -145,7 +145,7 @@ rpm -e --nodeps java-x.x.x-openjdk-headless-x.x.x.xxx-x.b14.el7.x86_64
 <p>将下载好的jdk安装包上传到服务器上。<br/>
 之后解压到<code>/usr/local/java</code>中</p>
 
-<p><code>tar -xvf jdk-8u241.tar.gz</code></p>
+<p><code>tar -zxvf jdk-8u241-linux-x64.tar.gz</code></p>
 
 <h2 id="toc_2">配置</h2>
 
@@ -153,7 +153,8 @@ rpm -e --nodeps java-x.x.x-openjdk-headless-x.x.x.xxx-x.b14.el7.x86_64
 
 <p>定位到最后一行，添加如下内容（版本注意修改）</p>
 
-<pre><code class="language-text">export JAVA_HOME=/usr/local/java/jdk1.8.0_241/
+<pre><code class="language-text"># jdk
+export JAVA_HOME=/usr/local/java/jdk1.8.0_241/
 export CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 export PATH=$PATH:$JAVA_HOME/bin
 </code></pre>
