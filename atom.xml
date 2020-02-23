@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Sajor's Blog]]></title>
-  <link href="blog.sajor.top/atom.xml" rel="self"/>
-  <link href="blog.sajor.top/"/>
-  <updated>2020-02-22T00:08:19+08:00</updated>
-  <id>blog.sajor.top/</id>
+  <link href="http://blog.sajor.top/atom.xml" rel="self"/>
+  <link href="http://blog.sajor.top/"/>
+  <updated>2020-02-23T19:08:50+08:00</updated>
+  <id>http://blog.sajor.top/</id>
   <author>
     <name><![CDATA[]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[jdk]]></title>
-    <link href="blog.sajor.top/15822108701088.html"/>
+    <link href="http://blog.sajor.top/15822108701088.html"/>
     <updated>2020-02-20T23:01:10+08:00</updated>
-    <id>blog.sajor.top/15822108701088.html</id>
+    <id>http://blog.sajor.top/15822108701088.html</id>
     <content type="html"><![CDATA[
 <p>首先下载jdk，<a href="https://www.oracle.com/java/technologies/javase-jdk8-downloads.html">jdk下载页面</a></p>
 
@@ -57,16 +57,16 @@ rpm -e --nodeps java-x.x.x-openjdk-headless-x.x.x.xxx-x.b14.el7.x86_64
 <p>java安装文件夹准备</p>
 
 <p>在/usr/local/目录下创建名称为java的文件夹：<br/>
-<code>mkdir -p /usr/local/java</code></p>
+<code>sudo mkdir -p /usr/local/java</code></p>
 
 <p>将下载好的jdk安装包上传到服务器上。<br/>
 之后解压到<code>/usr/local/java</code>中</p>
 
-<p><code>tar -zxvf jdk-8u241-linux-x64.tar.gz</code></p>
+<p><code>sudo tar -zxvf jdk-8u241-linux-x64.tar.gz</code></p>
 
 <h2 id="toc_2">配置</h2>
 
-<p>编辑配置文件<code>vim /etc/profile</code></p>
+<p>编辑配置文件<code>sudo vim /etc/profile</code></p>
 
 <p>定位到最后一行，添加如下内容（版本注意修改）</p>
 
@@ -91,9 +91,9 @@ javac -version
   
   <entry>
     <title type="html"><![CDATA[spark]]></title>
-    <link href="blog.sajor.top/15822104759867.html"/>
+    <link href="http://blog.sajor.top/15822104759867.html"/>
     <updated>2020-02-20T22:54:35+08:00</updated>
-    <id>blog.sajor.top/15822104759867.html</id>
+    <id>http://blog.sajor.top/15822104759867.html</id>
     <content type="html"><![CDATA[
 <p>首先到官网<code>spark.apache.org</code>下载spark，<a href="https://spark.apache.org/downloads.html">spark下载页面</a> </p>
 
@@ -102,16 +102,16 @@ javac -version
 <p>spark安装文件夹准备</p>
 
 <p>在/usr/local/目录下创建名称为spark的文件夹：<br/>
-<code>mkdir -p /usr/local/spark</code></p>
+<code>sudo mkdir -p /usr/local/spark</code></p>
 
 <p>将下载好的spark安装包上传到服务器上。<br/>
 之后解压到<code>/usr/local/spark</code>中</p>
 
-<p><code>tar -zxvf spark-2.4.5-bin-hadoop2.7.tgz</code></p>
+<p><code>sudo tar -zxvf spark-2.4.5-bin-hadoop2.7.tgz</code></p>
 
 <h2 id="toc_1">配置</h2>
 
-<p>编辑配置文件<code>vim /etc/profile</code></p>
+<p>编辑配置文件<code>sudo vim /etc/profile</code></p>
 
 <p>定位到最后一行，添加如下内容（版本注意修改）</p>
 
@@ -134,9 +134,9 @@ export PATH=$PATH:$SPARK_HOME/bin
   
   <entry>
     <title type="html"><![CDATA[网易云 最嗨电音 爬虫]]></title>
-    <link href="blog.sajor.top/15819525546014.html"/>
+    <link href="http://blog.sajor.top/15819525546014.html"/>
     <updated>2020-02-17T23:15:54+08:00</updated>
-    <id>blog.sajor.top/15819525546014.html</id>
+    <id>http://blog.sajor.top/15819525546014.html</id>
     <content type="html"><![CDATA[
 <p>抓手机包找到音乐链接 Size最大</p>
 
@@ -196,9 +196,9 @@ if __name__ == &#39;__main__&#39;:
   
   <entry>
     <title type="html"><![CDATA[使用模拟退火来构造极值图]]></title>
-    <link href="blog.sajor.top/15809082865015.html"/>
+    <link href="http://blog.sajor.top/15809082865015.html"/>
     <updated>2020-02-05T21:11:26+08:00</updated>
-    <id>blog.sajor.top/15809082865015.html</id>
+    <id>http://blog.sajor.top/15809082865015.html</id>
     <content type="html"><![CDATA[
 <p>Author：P. Wang ∗, G.W. Dueck, S. MacMillan</p>
 
@@ -366,9 +366,9 @@ Math. Soc. 32 (1) (1995) 73–79.<br/>
   
   <entry>
     <title type="html"><![CDATA[cheat.sh]]></title>
-    <link href="blog.sajor.top/15802234606202.html"/>
+    <link href="http://blog.sajor.top/15802234606202.html"/>
     <updated>2020-01-28T22:57:40+08:00</updated>
-    <id>blog.sajor.top/15802234606202.html</id>
+    <id>http://blog.sajor.top/15802234606202.html</id>
     <content type="html"><![CDATA[
 <p>cheat是在GNU通用公共许可证下，为Linux命令行用户发行的交互式备忘单应用程序。简单来说，它没有提供其他额外多余的信息，只通过使用实例告诉你一个命令参数如何使用。</p>
 
@@ -415,9 +415,9 @@ To install the client:</p>
   
   <entry>
     <title type="html"><![CDATA[crontab 定时任务]]></title>
-    <link href="blog.sajor.top/15776732342055.html"/>
+    <link href="http://blog.sajor.top/15776732342055.html"/>
     <updated>2019-12-30T10:33:54+08:00</updated>
-    <id>blog.sajor.top/15776732342055.html</id>
+    <id>http://blog.sajor.top/15776732342055.html</id>
     <content type="html"><![CDATA[
 <h3 id="toc_0">Linux</h3>
 
@@ -439,9 +439,9 @@ To install the client:</p>
   
   <entry>
     <title type="html"><![CDATA[监控Python 运行]]></title>
-    <link href="blog.sajor.top/15773499726644.html"/>
+    <link href="http://blog.sajor.top/15773499726644.html"/>
     <updated>2019-12-26T16:46:12+08:00</updated>
-    <id>blog.sajor.top/15773499726644.html</id>
+    <id>http://blog.sajor.top/15773499726644.html</id>
     <content type="html"><![CDATA[
 <p>使用memory_profiler模块</p>
 
@@ -458,9 +458,9 @@ To install the client:</p>
   
   <entry>
     <title type="html"><![CDATA[ssh]]></title>
-    <link href="blog.sajor.top/15769921068601.html"/>
+    <link href="http://blog.sajor.top/15769921068601.html"/>
     <updated>2019-12-22T13:21:46+08:00</updated>
-    <id>blog.sajor.top/15769921068601.html</id>
+    <id>http://blog.sajor.top/15769921068601.html</id>
     <content type="html"><![CDATA[
 <p>systemctl stop sshd.service <br/>
 停止转发</p>
@@ -476,9 +476,9 @@ e:\htk -&gt; /root 传送文件</p>
   
   <entry>
     <title type="html"><![CDATA[pscp]]></title>
-    <link href="blog.sajor.top/15769920752565.html"/>
+    <link href="http://blog.sajor.top/15769920752565.html"/>
     <updated>2019-12-22T13:21:15+08:00</updated>
-    <id>blog.sajor.top/15769920752565.html</id>
+    <id>http://blog.sajor.top/15769920752565.html</id>
     <content type="html"><![CDATA[
 <p>远程传输命令 </p>
 
@@ -529,9 +529,9 @@ e:\htk -&gt; /root 传送文件</p>
   
   <entry>
     <title type="html"><![CDATA[Git]]></title>
-    <link href="blog.sajor.top/15769919595310.html"/>
+    <link href="http://blog.sajor.top/15769919595310.html"/>
     <updated>2019-12-22T13:19:19+08:00</updated>
-    <id>blog.sajor.top/15769919595310.html</id>
+    <id>http://blog.sajor.top/15769919595310.html</id>
     <content type="html"><![CDATA[
 <h3 id="toc_0">Git是分布式版本控制系统 自报家门</h3>
 
@@ -703,9 +703,9 @@ git push -u origin master
   
   <entry>
     <title type="html"><![CDATA[比特币]]></title>
-    <link href="blog.sajor.top/15769918912350.html"/>
+    <link href="http://blog.sajor.top/15769918912350.html"/>
     <updated>2019-12-22T13:18:11+08:00</updated>
-    <id>blog.sajor.top/15769918912350.html</id>
+    <id>http://blog.sajor.top/15769918912350.html</id>
     <content type="html"><![CDATA[
 <h3 id="toc_0">EC私钥 Elliptic Curve private key</h3>
 
@@ -765,9 +765,9 @@ git push -u origin master
   
   <entry>
     <title type="html"><![CDATA[brew update 缓慢]]></title>
-    <link href="blog.sajor.top/15765692780377.html"/>
+    <link href="http://blog.sajor.top/15765692780377.html"/>
     <updated>2019-12-17T15:54:38+08:00</updated>
-    <id>blog.sajor.top/15765692780377.html</id>
+    <id>http://blog.sajor.top/15765692780377.html</id>
     <content type="html"><![CDATA[
 <p>更新时 使用 --verbose命令可以看到运行情况</p>
 
@@ -826,9 +826,9 @@ brew update
   
   <entry>
     <title type="html"><![CDATA[Redis使用场景]]></title>
-    <link href="blog.sajor.top/15754473183515.html"/>
+    <link href="http://blog.sajor.top/15754473183515.html"/>
     <updated>2019-12-04T16:15:18+08:00</updated>
-    <id>blog.sajor.top/15754473183515.html</id>
+    <id>http://blog.sajor.top/15754473183515.html</id>
     <content type="html"><![CDATA[
 <h2 id="toc_0">缓存数据</h2>
 
@@ -859,9 +859,9 @@ set内部实现是一个value永远是null的hashmap，通过hash计算的方式
   
   <entry>
     <title type="html"><![CDATA[自建redis集群规范]]></title>
-    <link href="blog.sajor.top/15754418238619.html"/>
+    <link href="http://blog.sajor.top/15754418238619.html"/>
     <updated>2019-12-04T14:43:43+08:00</updated>
-    <id>blog.sajor.top/15754418238619.html</id>
+    <id>http://blog.sajor.top/15754418238619.html</id>
     <content type="html"><![CDATA[
 <ul>
 <li>可靠性低：如果数据走云盘做高可靠存储容易受网络波动干扰，如果不走云盘宕机数据易丢失，自建多副本运维很复杂，而且Redis本身的断网导致的全量同步机制对网络和运维的要求极高；</li>
@@ -895,9 +895,9 @@ set内部实现是一个value永远是null的hashmap，通过hash计算的方式
   
   <entry>
     <title type="html"><![CDATA[redis 集群]]></title>
-    <link href="blog.sajor.top/15754270430043.html"/>
+    <link href="http://blog.sajor.top/15754270430043.html"/>
     <updated>2019-12-04T10:37:23+08:00</updated>
-    <id>blog.sajor.top/15754270430043.html</id>
+    <id>http://blog.sajor.top/15754270430043.html</id>
     <content type="html"><![CDATA[
 <p>首先安装redis<br/>
 brew install redis</p>
@@ -981,9 +981,9 @@ cluster nodes
   
   <entry>
     <title type="html"><![CDATA[Linux安全查找原因]]></title>
-    <link href="blog.sajor.top/15753573808254.html"/>
+    <link href="http://blog.sajor.top/15753573808254.html"/>
     <updated>2019-12-03T15:16:20+08:00</updated>
-    <id>blog.sajor.top/15753573808254.html</id>
+    <id>http://blog.sajor.top/15753573808254.html</id>
     <content type="html"><![CDATA[
 <h3 id="toc_0">备份重要命令</h3>
 
@@ -997,9 +997,9 @@ cluster nodes
   
   <entry>
     <title type="html"><![CDATA[Linux 新建用户和组命令]]></title>
-    <link href="blog.sajor.top/15751320029536.html"/>
+    <link href="http://blog.sajor.top/15751320029536.html"/>
     <updated>2019-12-01T00:40:02+08:00</updated>
-    <id>blog.sajor.top/15751320029536.html</id>
+    <id>http://blog.sajor.top/15751320029536.html</id>
     <content type="html"><![CDATA[
 <p>用户的角色是通过UID和GID识别的。</p>
 
@@ -1116,9 +1116,9 @@ lastlog  //可以查看是否有用户登录系统了（未启用的账户）
   
   <entry>
     <title type="html"><![CDATA[redis 参数配置]]></title>
-    <link href="blog.sajor.top/15749080605397.html"/>
+    <link href="http://blog.sajor.top/15749080605397.html"/>
     <updated>2019-11-28T10:27:40+08:00</updated>
-    <id>blog.sajor.top/15749080605397.html</id>
+    <id>http://blog.sajor.top/15749080605397.html</id>
     <content type="html"><![CDATA[
 <ul>
 <li>安装目录创建</li>
@@ -1259,9 +1259,9 @@ client-output-buffer-limit slave 0 0 0
   
   <entry>
     <title type="html"><![CDATA[redis部署规范]]></title>
-    <link href="blog.sajor.top/15748392035708.html"/>
+    <link href="http://blog.sajor.top/15748392035708.html"/>
     <updated>2019-11-27T15:20:03+08:00</updated>
-    <id>blog.sajor.top/15748392035708.html</id>
+    <id>http://blog.sajor.top/15748392035708.html</id>
     <content type="html"><![CDATA[
 <h2 id="toc_0">简介</h2>
 
@@ -1583,9 +1583,9 @@ redis-trib.rb create --replicas 1 192.168.1.1:7001 1 192.168.1.1:7002 1 192.168.
   
   <entry>
     <title type="html"><![CDATA[Linux安全加固脚本]]></title>
-    <link href="blog.sajor.top/15740860526446.html"/>
+    <link href="http://blog.sajor.top/15740860526446.html"/>
     <updated>2019-11-18T22:07:32+08:00</updated>
-    <id>blog.sajor.top/15740860526446.html</id>
+    <id>http://blog.sajor.top/15740860526446.html</id>
     <content type="html"><![CDATA[
 <h3 id="toc_0">设定密码策略</h3>
 
