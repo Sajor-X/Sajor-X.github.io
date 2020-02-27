@@ -4,7 +4,7 @@
   <title><![CDATA[Sajor's Blog]]></title>
   <link href="http://blog.sajor.top/atom.xml" rel="self"/>
   <link href="http://blog.sajor.top/"/>
-  <updated>2020-02-27T18:19:12+08:00</updated>
+  <updated>2020-02-27T18:22:03+08:00</updated>
   <id>http://blog.sajor.top/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -435,6 +435,10 @@ globally: <code>sudo vi /etc/profile</code></p>
 <pre><code class="language-text"># cheat
 alias cht=cht.sh
 </code></pre>
+
+<p>重新加载一下配置文件<br/>
+client: <code>source ~/.bashrc</code><br/>
+globally: <code>source /etc/profile</code></p>
 
 <p>之后可以使用cht获取命令示例<br/>
 <img src="media/15802234606202/15802244400106.jpg" alt="" style="width:682px;"/></p>
