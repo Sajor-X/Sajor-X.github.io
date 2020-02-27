@@ -117,6 +117,37 @@
 <p>crontab -l<br/>
 查看所有定时任务表达式</p>
 
+<h3 id="toc_1">cht</h3>
+
+<p><img src="media/15776732342055/15826461147316.jpg" alt="" style="width:767px;"/></p>
+
+<pre><code class="language-bash">&gt; cht crontab
+# crontab
+# Schedule cron jobs to run on a time interval for the current user.
+# Job definition format: &quot;(min) (hour) (day_of_month) (month) (day_of_week) command_to_execute&quot;.
+
+# Edit the crontab file for the current user:
+crontab -e
+
+# Edit the crontab file for a specific user:
+sudo crontab -e -u user
+
+# View a list of existing cron jobs for current user:
+crontab -l
+
+# Remove all cron jobs for the current user:
+crontab -r
+
+# Sample job which runs at 10:00 every day (* means any value):
+0 10 * * * command_to_execute
+
+# Sample job which runs every minute on the 3rd of April:
+* * 3 Apr * command_to_execute
+
+# Sample job which runs a certain script at 02:30 every Friday:
+30 2 * * Fri /absolute/path/to/script.sh
+</code></pre>
+
 		</p>
 		<!-- 侧边导航条 -->
 		<div id="directory-content" class="directory-content">
@@ -342,6 +373,12 @@
           
           
          <li>
+           <a href="15826152154212.html">MyBatis 开启自动驼峰转换</a><br>
+         </li>
+          
+          
+          
+         <li>
            <a href="15822108701088.html">jdk</a><br>
          </li>
           
@@ -361,12 +398,6 @@
           
          <li>
            <a href="15809082865015.html">使用模拟退火来构造极值图</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="15802234606202.html">cheat.sh</a><br>
          </li>
           
           

@@ -127,10 +127,21 @@ To install the client:</p>
 <p>or to install it globally (for all users):</p>
 
 <pre><code class="language-bash">    curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh
-    chmod +x /usr/local/bin/cht.sh
+    sudo chmod +x /usr/local/bin/cht.sh
 </code></pre>
 
-<p>之后可以使用cht.sh获取命令示例<br/>
+<p>之后也可以给cht.sh创建一个别名</p>
+
+<p>client: <code>vi ~/.bashrc</code><br/>
+globally: <code>sudo vi /etc/profile</code></p>
+
+<p>在最后添加</p>
+
+<pre><code class="language-text"># cheat
+alias cht=cht.sh
+</code></pre>
+
+<p>之后可以使用cht获取命令示例<br/>
 <img src="media/15802234606202/15802244400106.jpg" alt="" style="width:682px;"/></p>
 
 <p>如果输出的不是你需要的答案，你可以选择带入参数， 例如/1, /2 :</p>
@@ -367,6 +378,12 @@ To install the client:</p>
           
           
          <li>
+           <a href="15826152154212.html">MyBatis 开启自动驼峰转换</a><br>
+         </li>
+          
+          
+          
+         <li>
            <a href="15822108701088.html">jdk</a><br>
          </li>
           
@@ -386,12 +403,6 @@ To install the client:</p>
           
          <li>
            <a href="15809082865015.html">使用模拟退火来构造极值图</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="15802234606202.html">cheat.sh</a><br>
          </li>
           
           

@@ -10,7 +10,7 @@
 
     <title>
       
-    Spring入门 - Sajor's Blog
+    MyBatis 开启自动驼峰转换 - Sajor's Blog
     
     </title>
 
@@ -88,9 +88,9 @@
 		<div class="post-header">
 			<!-- title -->
 			<div class="post-header">
-				<h1 class="post-title itemprop="name headline">Spring入门</h1>	
+				<h1 class="post-title itemprop="name headline">MyBatis 开启自动驼峰转换</h1>	
 				<div class="post-data">
-					<time datetime="2019-08-02T15:49:16+08:00" pubdate data-updated="true">2019/08/02</time>
+					<time datetime="2020-02-25T15:20:15+08:00" pubdate data-updated="true">2020/02/25</time>
 				</div>
 			</div>
 		</div>
@@ -102,66 +102,23 @@
 		</p>
 	<!-- 正文 -->
 		<p>
-		<h2 id="toc_0">Spring概述</h2>
+		<p>在mybatis-config.xml文件中加入此设置</p>
+<?xml version="1.0" encoding="UTF-8" ?>
+<p>&lt;!DOCTYPE configuration<br/><br/>
+PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;<br/><br/>
+&quot;<a href="http://mybatis.org/dtd/mybatis-3-config.dtd%22%3E">http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;</a><br/><br/>
+<configuration><br/><br/>
+    <settings><br/><br/>
+        <setting name="mapUnderscoreToCamelCase" value="true" /><br/><br/>
+    </settings><br/><br/>
+</configuration></p>
 
-<h3 id="toc_1">Spring是什么</h3>
+<p><img src="media/15826152154212/15826153307445.jpg" alt=""/></p>
 
-<blockquote>
-<p>Spring是分层的JavaSE/EE full-stack 轻量级开源框架，Rod Johnson在《Expert One-on-One:J2EE Design and Development》(2002年)提出一种新的编程思想，2003 年发布 了一个新的Java开发框架-SpringFramework</p>
-</blockquote>
-
-<p>Spring以IoC（Inverse of Control 控制反转）和 AOP（Aspect Oriented Programming 面向切面编程）为内核，使用基本的JavaBean来完成以前只可能由EJB完成的工作，取代了EJB的臃肿、低效的开发模式。</p>
-
-<p>简单说 Spring 是一个轻量级的控制反转(IoC)和面向切面编程(AOP)的容器框架。 核心功能:</p>
-
-<ol>
-<li>bean实例管理 </li>
-<li>bean之间依赖关系管理</li>
-</ol>
-
-<p>在实际开发中，通常服务器端在采用三层体系架构，分别为表示层(Web) 、业务逻辑层(Service)、持久层(Dao)， Spring对每一层都提供了技术支持。</p>
-
-<table>
-<thead>
-<tr>
-<th>架构</th>
-<th>功能</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>表示层</td>
-<td>提供了与Struts等框架的整合</td>
-</tr>
-<tr>
-<td>业务逻辑层</td>
-<td>可以管理事务，记录日志等</td>
-</tr>
-<tr>
-<td>持久层</td>
-<td>可以整合Hibernate、JdbcTemplate等技术</td>
-</tr>
-</tbody>
-</table>
-
-<h3 id="toc_2">Spring框架的优点</h3>
-
-<p>Spring具有简单、可测试和松耦合等特点。Spring不仅可以用于服务器端 开发，也可以应用于任何Java应用的开发中。</p>
-
-<p>Spring框架七大优点</p>
-
-<ol>
-<li>非入侵式设计</li>
-<li>方便解耦、简化开发</li>
-<li>支持AOP</li>
-<li>支持声明式事务处理</li>
-<li>方便程序测试</li>
-<li>方便集成各种优秀框架</li>
-<li>降低Java EE API的使用难度</li>
-</ol>
-
-<h3 id="toc_3">Spring体系结构</h3>
+<p>参考:<br/>
+<a href="https://yq.aliyun.com/articles/662319">https://yq.aliyun.com/articles/662319</a><br/>
+<a href="https://www.cnblogs.com/pjfmeng/p/7677773.html">https://www.cnblogs.com/pjfmeng/p/7677773.html</a><br/>
+<a href="https://www.cnblogs.com/zhouricong/p/9483099.html">https://www.cnblogs.com/zhouricong/p/9483099.html</a></p>
 
 		</p>
 		<!-- 侧边导航条 -->
@@ -262,22 +219,16 @@
 	<!-- 版权声明 -->
 		<p class="post-info" style="color: #BCBDB6">
 				本文由 <a style="color: #BCBDB6" href="#">Sajor
-				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2019-08-02T15:49:16+08:00
+				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2020-02-25T15:20:15+08:00
 		</p>
 	<!-- 导航 -->
 			<div id="comments" class="clearfix" style="padding: 0px;">
 				<footer class="post-footer clearfix">	    			
 				    <div class="meta">
 					    
-					    <P style="float: left;">
-					    	<a href="15648434329273.html" 
-					        title="Previous Post: mysql经典的8小时问题-wait_timeout">&laquo; mysql经典的8小时问题-wait_timeout</a>
-					    </p>
-					    <p style="float:right; ">
 					    	
-					    	
-					        <a href="15647300073307.html" 
-					        title="Next Post: 从零开始SSM开发系列十三：使用 Mapper 接口方式整合 MyBatis-Spring">从零开始SSM开发系列十三：使用 Mapper 接口方式整合 MyBatis-Spring &raquo;</a>
+					        <a href="15822108701088.html" 
+					        title="Next Post: jdk">jdk &raquo;</a>
 					    </p> 
 					    
 				    </div>

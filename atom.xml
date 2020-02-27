@@ -4,7 +4,7 @@
   <title><![CDATA[Sajor's Blog]]></title>
   <link href="http://blog.sajor.top/atom.xml" rel="self"/>
   <link href="http://blog.sajor.top/"/>
-  <updated>2020-02-23T19:08:50+08:00</updated>
+  <updated>2020-02-27T18:16:20+08:00</updated>
   <id>http://blog.sajor.top/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -12,6 +12,33 @@
   </author>
   <generator uri="http://www.coderforart.com/">CoderForArt</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[MyBatis 开启自动驼峰转换]]></title>
+    <link href="http://blog.sajor.top/15826152154212.html"/>
+    <updated>2020-02-25T15:20:15+08:00</updated>
+    <id>http://blog.sajor.top/15826152154212.html</id>
+    <content type="html"><![CDATA[
+<p>在mybatis-config.xml文件中加入此设置</p>
+<?xml version="1.0" encoding="UTF-8" ?>
+<p>&lt;!DOCTYPE configuration<br/><br/>
+PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;<br/><br/>
+&quot;<a href="http://mybatis.org/dtd/mybatis-3-config.dtd%22%3E">http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;</a><br/><br/>
+<configuration><br/><br/>
+    <settings><br/><br/>
+        <setting name="mapUnderscoreToCamelCase" value="true" /><br/><br/>
+    </settings><br/><br/>
+</configuration></p>
+
+<p><img src="media/15826152154212/15826153307445.jpg" alt=""/></p>
+
+<p>参考:<br/>
+<a href="https://yq.aliyun.com/articles/662319">https://yq.aliyun.com/articles/662319</a><br/>
+<a href="https://www.cnblogs.com/pjfmeng/p/7677773.html">https://www.cnblogs.com/pjfmeng/p/7677773.html</a><br/>
+<a href="https://www.cnblogs.com/zhouricong/p/9483099.html">https://www.cnblogs.com/zhouricong/p/9483099.html</a></p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[jdk]]></title>
@@ -395,10 +422,21 @@ To install the client:</p>
 <p>or to install it globally (for all users):</p>
 
 <pre><code class="language-bash">    curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh
-    chmod +x /usr/local/bin/cht.sh
+    sudo chmod +x /usr/local/bin/cht.sh
 </code></pre>
 
-<p>之后可以使用cht.sh获取命令示例<br/>
+<p>之后也可以给cht.sh创建一个别名</p>
+
+<p>client: <code>vi ~/.bashrc</code><br/>
+globally: <code>sudo vi /etc/profile</code></p>
+
+<p>在最后添加</p>
+
+<pre><code class="language-text"># cheat
+alias cht=cht.sh
+</code></pre>
+
+<p>之后可以使用cht获取命令示例<br/>
 <img src="media/15802234606202/15802244400106.jpg" alt="" style="width:682px;"/></p>
 
 <p>如果输出的不是你需要的答案，你可以选择带入参数， 例如/1, /2 :</p>
@@ -433,6 +471,37 @@ To install the client:</p>
 
 <p>crontab -l<br/>
 查看所有定时任务表达式</p>
+
+<h3 id="toc_1">cht</h3>
+
+<p><img src="media/15776732342055/15826461147316.jpg" alt="" style="width:767px;"/></p>
+
+<pre><code class="language-bash">&gt; cht crontab
+# crontab
+# Schedule cron jobs to run on a time interval for the current user.
+# Job definition format: &quot;(min) (hour) (day_of_month) (month) (day_of_week) command_to_execute&quot;.
+
+# Edit the crontab file for the current user:
+crontab -e
+
+# Edit the crontab file for a specific user:
+sudo crontab -e -u user
+
+# View a list of existing cron jobs for current user:
+crontab -l
+
+# Remove all cron jobs for the current user:
+crontab -r
+
+# Sample job which runs at 10:00 every day (* means any value):
+0 10 * * * command_to_execute
+
+# Sample job which runs every minute on the 3rd of April:
+* * 3 Apr * command_to_execute
+
+# Sample job which runs a certain script at 02:30 every Friday:
+30 2 * * Fri /absolute/path/to/script.sh
+</code></pre>
 
 ]]></content>
   </entry>
@@ -1577,364 +1646,6 @@ redis-trib.rb create --replicas 1 192.168.1.1:7001 1 192.168.1.1:7002 1 192.168.
 </code> </li>
 <li></li>
 </ol>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Linux安全加固脚本]]></title>
-    <link href="http://blog.sajor.top/15740860526446.html"/>
-    <updated>2019-11-18T22:07:32+08:00</updated>
-    <id>http://blog.sajor.top/15740860526446.html</id>
-    <content type="html"><![CDATA[
-<h3 id="toc_0">设定密码策略</h3>
-
-<p>修改  /etc/login.defs 配置文件</p>
-
-<p>PASS_MAX_DAYS      90               密码最长有效期<br/>
-PASS_MIN_DAYS       10               密码修改之间最小的天数<br/>
-PASS_MIN_LEN          8                密码长度<br/>
-PASS_WARN_AGE     7                 口令失效前多少天开始通知用户修改密码</p>
-
-<p>脚本</p>
-
-<pre><code class="language-text">#! /bin/bash
-# Author: Sajor
-# Date: 2018-10-12
-# Function: 实现对用户密码策略的设定，如密码最长有效期等
-read -p  &quot;设置密码最多可多少天不修改：&quot; A
-read -p  &quot;设置密码修改之间最小的天数：&quot; B
-read -p  &quot;设置密码最短的长度：&quot; C
-read -p  &quot;设置密码失效前多少天通知用户：&quot; D
-sed -i &#39;/^PASS_MAX_DAYS/c\PASS_MAX_DAYS   &#39;$A&#39;&#39; /etc/login.defs
-sed -i &#39;/^PASS_MIN_DAYS/c\PASS_MIN_DAYS   &#39;$B&#39;&#39; /etc/login.defs
-sed -i &#39;/^PASS_MIN_LEN/c\PASS_MIN_LEN     &#39;$C&#39;&#39; /etc/login.defs
-sed -i &#39;/^PASS_WARN_AGE/c\PASS_WARN_AGE   &#39;$D&#39;&#39; /etc/login.defs
-echo &quot;已设置好密码策略......&quot;
-</code></pre>
-
-<h3 id="toc_1">对用户密码强度的设定</h3>
-
-<p>打开 /etc/pam.d/system-auth 文件 ，修改如下。我们设置新密码不能和旧密码相同，同时新密码至少8位，还要同时包含大字母、小写字母和数字</p>
-
-<pre><code class="language-text">password    requisite     pam_pwquality.so try_first_pass local_users_only retry=3 authtok_type=  difok=1 minlen=8 ucredit=-1 lcredit=-1 dcredit=-1
-</code></pre>
-
-<ul>
-<li>difok= ：此选项用来定义新密码中必须要有几个字符和旧密码不同</li>
-<li>minlen=：此选项用来设置新密码的最小长度</li>
-<li>ucredit= ：此选项用来设定新密码中可以包含的大写字母的最大数目。-1 至少一个</li>
-<li>lcredit=：此选项用来设定新密码中可以包含的小写字母的最大数目</li>
-<li>dcredit=：此选项用来设定新密码中可以包含的数字的最大数目 </li>
-</ul>
-
-<p><strong>注</strong>：这个密码强度的设定只对普通用户有限制作用，root用户无论修改自己的密码还是修改普通用户的时候，不符合强度设置依然可以设置成功</p>
-
-<p>脚本</p>
-
-<pre><code class="language-text">#! /bin/bash
-# Author: Sajor
-# Date: 2018-10-12
-# Function: 对用户密码强度的设定，新密码不能和旧密码相同，同时新密码至少8位，还要同时包含大字母、小写字母和数字
-sed -i &#39;/pam_pwquality.so/c\password    requisite     pam_pwquality.so try_first_pass local_users_only retry=3 authtok_type=  difok=1 minlen=8 ucredit=-1 lcredit=-1 dcredit=-1&#39; /etc/pam.d/system-auth
-</code></pre>
-
-<h3 id="toc_2">对用户的登录次数进行限制</h3>
-
-<p>有一些攻击性的软件是专门采用暴力破解密码的形式反复进行登录尝试，对于这种情况，我们可以调整用户登录次数限制，使其密码输入3次后自动锁定，并且设置锁定时间，在锁定时间内即使密码输入正确也无法登录</p>
-
-<p>打开 /etc/pam.d/sshd  文件，在 #%PAM-1.0 的下面，加入下面的内容，表示当密码输入错误达到3次，就锁定用户150秒，如果root用户输入密码错误达到3次，锁定300秒。锁定的意思是即使密码正确了也登录不了</p>
-
-<pre><code class="language-text">pam_tally2   查看被锁定的用户
-pam_tally2  --reset  -u  username      将被锁定的用户解锁
-</code></pre>
-
-<p>脚本</p>
-
-<pre><code class="language-text">#! /bin/bash
-# Author: Sajor
-# Date: 2018-10-12
-# Function: 对用户登录输入错误密码次数做限制
-n=`cat /etc/pam.d/sshd | grep &quot;auth required pam_tally2.so &quot;|wc -l`
-if [ $n -eq 0 ];then
-sed -i &#39;/%PAM-1.0/a\auth required pam_tally2.so deny=3 unlock_time=150 even_deny_root root_unlock_time300&#39; /etc/pam.d/sshd
-fi
-</code></pre>
-
-<h3 id="toc_3">创建新用户</h3>
-
-<p>useradd -m user_name<br/>
-passwd user_name</p>
-
-<p>添加sudo 权限<br/>
-vim /etc/sudoers<br/>
-<img src="media/15740860526446/15740869479305.jpg" alt=""/><br/>
-不过如图中所示去添加，在user_name执行sudo时，会要求输入密码，<br/>
-不想输入密码可以将最后的那个 ALL 改为 NOPASSWD:ALL <br/>
-　 </p>
-
-<h3 id="toc_4">禁止ROOT用户远程登录</h3>
-
-<p>打开  /etc/ssh/sshd_config<br/><br/>
-<img src="media/15740860526446/15740861517503.jpg" alt="" style="width:185px;"/></p>
-
-<p>脚本设置禁止ROOT用户远程登录</p>
-
-<pre><code class="language-text">sed -i &#39;/PermitRootLogin/c\PermitRootLogin no&#39;  /etc/ssh/sshd_config
-</code></pre>
-
-<h3 id="toc_5">设置历史命令保存条数和账户超时时间</h3>
-
-<p>设置账户保存历史命令条数，超时时间  。打开  /etc/profile ,修改如下<br/>
-<img src="media/15740860526446/15740865014227.jpg" alt="" style="width:128px;"/></p>
-
-<p>使用脚本修改配置文件</p>
-
-<pre><code class="language-text">read -p &quot;设置历史命令保存条数：&quot; E
-read -p &quot;设置账户自动注销时间：&quot; F
-sed -i &#39;/^HISTSIZE/c\HISTSIZE=&#39;$E&#39;&#39; /etc/profile
-sed -i &#39;/^HISTSIZE/a\TMOUT=&#39;$F&#39;&#39; /etc/profile
-</code></pre>
-
-<h3 id="toc_6">设置只有指定用户组才能使用su命令切换到root用户</h3>
-
-<p>在linux中，有一个默认的管理组 wheel。在实际生产环境中，即使我们有系统管理员root的权限，也不推荐用root用户登录。一般情况下用普通用户登录就可以了，在需要root权限执行一些操作时，再su登录成为root用户。但是，任何人只要知道了root的密码，就都可以通过su命令来登录为root用户，这无疑为系统带来了安全隐患。所以，将普通用户加入到wheel组，被加入的这个普通用户就成了管理员组内的用户。然后设置只有wheel组内的成员可以使用su命令切换到root用户。</p>
-
-<p>比如，我们将普通用户Sajor加入wheel组。   <br/>
-usermod  -G  wheel  Sajor </p>
-
-<p>然后，我们修改配置文件 /etc/pam.d/su  ，将这行的注释给去掉<br/>
-<img src="media/15740860526446/15740870943234.jpg" alt="" style="width:691px;"/></p>
-
-<p>然后去 /etc/login.defs 末尾加入   SU_WHEEL_ONLY yes  即可。</p>
-
-<p><img src="media/15740860526446/15740871391834.jpg" alt="" style="width:207px;"/></p>
-
-<p>使用脚本设置配置文件</p>
-
-<pre><code class="language-text">sed -i &#39;/pam_wheel.so use_uid/c\auth            required        pam_wheel.so use_uid &#39; /etc/pam.d/su
-n=`cat /etc/login.defs | grep SU_WHEEL_ONLY | wc -l`
-if [ $n -eq 0 ];then
-echo SU_WHEEL_ONLY yes &gt;&gt; /etc/login.defs
-fi 
-</code></pre>
-
-<h3 id="toc_7">对Linux账户进行管理</h3>
-
-<p>使用命令 userdel  -r 用户名  删除不必要的账号<br/>
-使用命令 passwd -l  用户名  锁定不必要的账号<br/>
-使用命令 awk -F: &#39;(\(7==&quot;/bin/bash&quot;){print \)1}&#39; /etc/passwd   查看具有登录权限的用户<br/>
-使用命令 awk -F: &#39;(\(3==0)&#39; /etc/passwd    查看UID为0的账号，UID为0的用户会自动切换到root用户，所以危害很大<br/>
-使用命令 awk -F: &#39;(\)2==&quot;&quot;)&#39; /etc/shadow   查看空口令账号，如果存在空口令用户的话必须设置密码 <br/>
-使用脚本对账户进行管理</p>
-
-<pre><code class="language-text">#! /bin/bash
-# Author: Sajor
-# Date: 2018-10-11
-# Function: 对系统中的用户做检查，加固系统
-echo &quot;系统中有登录权限的用户有：&quot;
-awk -F: &#39;($7==&quot;/bin/bash&quot;){print $1}&#39; /etc/passwd
-echo &quot;********************************************&quot;
-echo &quot;系统中UID=0的用户有：&quot;
-awk -F: &#39;($3==&quot;0&quot;){print $1}&#39; /etc/passwd
-echo &quot;********************************************&quot;
-N=`awk -F: &#39;($2==&quot;&quot;){print $1}&#39; /etc/shadow|wc -l`
-echo &quot;系统中空密码用户有：$N&quot;
-if [ $N -eq 0 ];then
- echo &quot;恭喜你，系统中无空密码用户！！&quot;
- echo &quot;********************************************&quot;
-else
- i=1
- while [ $N -gt 0 ]
- do
-    None=`awk -F: &#39;($2==&quot;&quot;){print $1}&#39; /etc/shadow|awk &#39;NR==&#39;$i&#39;{print}&#39;`
-    echo &quot;------------------------&quot;
-    echo $None
-    echo &quot;必须为空用户设置密码！！&quot;
-    passwd $None
-    let N--
- done
- M=`awk -F: &#39;($2==&quot;&quot;){print $1}&#39; /etc/shadow|wc -l`
- if [ $M -eq 0 ];then
-  echo &quot;恭喜，系统中已经没有空密码用户了！&quot;
- else
-echo &quot;系统中还存在空密码用户：$M&quot;
- fi
-fi
- 
-</code></pre>
-
-<h3 id="toc_8">对重要的文件进行锁定，即使ROOT用户也无法删除</h3>
-
-<p>chattr    改变文件或目录的扩展属性<br/>
-    Usage: chattr [-RVf] [-+=aAcCdDeijsStTu] [-v version] files...<br/>
-lsattr    查看文件目录的扩展属性</p>
-
-<ul>
-<li>a：只能附加数据</li>
-<li>A：不修改访问时间</li>
-<li>c：压缩文件</li>
-<li>C：不执行写入时复制（COW） 。多个调用者获取同一个资源，这时，另一个调用者对这资源进行了修改，不生成一个副本给</li>
-<li>d：不 dump </li>
-<li>D: 同步更新目录</li>
-<li>e：extent格式（一种文件系统格式）</li>
-<li>i：不能修改。不能删除或重命名，不能创建到该文件的链接，也不能向该文件写入数据。只有超级用户或拥有 CAP_LINUX_IMMUTABLE 能力的进程才能设置或清除此属性。</li>
-<li>j：数据日志</li>
-<li>s：安全删除</li>
-<li>S：同步更新</li>
-<li>t：不知道文件尾部合并</li>
-<li>T：目录层次的顶部</li>
-<li>u：文件被删除时，其内容会被保存，后面可以请求恢复</li>
-</ul>
-
-<p>下面的只读属性，可以使用 lsattr列出，但不能被 chattr 修改：</p>
-
-<ul>
-<li>E：压缩错误</li>
-<li>h：巨大的文件</li>
-<li>I：索引目录</li>
-<li>N：内联数据</li>
-<li>X：压缩原始访问</li>
-<li>Z：压缩文件是脏的</li>
-</ul>
-
-<p>并不是所有文件系统都支持所有标志；参考文件系统手册了解如btrfs(5), ext4(5), 和 xfs(5)文件格式的更多详情。</p>
-
-<pre><code class="language-text">chattr  +i  /etc/passwd /etc/shadow                 //增加属性
-chattr  -i  /etc/passwd /etc/shadow                 //移除属性  
-lsattr  /etc/passwd /etc/shadow
-</code></pre>
-
-<p>参考： <a href="https://www.linuxprobe.com/linux-chattr-root.html">chattr命令详解</a></p>
-
-<p>使用脚本对重要文件进行锁定</p>
-
-<pre><code class="language-text">#! /bin/bash
-# Author: Sajor
-# Date：2018-10-10
-# Function: 锁定创建用户和组的文件，使之无法对用户和组进行操作！
-read -p &quot;警告：此脚本运行后将无法添加删除用户和组！！确定输入Y，取消输入N；Y/N：&quot; i
-case $i in
-      [Y,y])
-            chattr +i /etc/passwd
-            chattr +i /etc/shadow
-            chattr +i /etc/group
-            chattr +i /etc/gshadow
-            echo &quot;锁定成功！&quot;
-;;
-      [N,n])
-            chattr -i /etc/passwd
-            chattr -i /etc/shadow
-            chattr -i /etc/group
-            chattr -i /etc/gshadow
-            echo &quot;取消锁定成功！！&quot;
-;;
-       *)
-            echo &quot;请输入Y/y or  N/n&quot;
-esac
-</code></pre>
-
-<h3 id="toc_9">总结</h3>
-
-<p>脚本</p>
-
-<pre><code class="language-text">#! /bin/bash
-# Author:Sajor
-# Date:2018-10-11
-# Function:对账户的密码的一些加固
-read -p  &quot;设置密码最多可多少天不修改：&quot; A
-read -p  &quot;设置密码修改之间最小的天数：&quot; B
-read -p  &quot;设置密码最短的长度：&quot; C
-read -p  &quot;设置密码失效前多少天通知用户：&quot; D
-sed -i &#39;/^PASS_MAX_DAYS/c\PASS_MAX_DAYS   &#39;$A&#39;&#39; /etc/login.defs
-sed -i &#39;/^PASS_MIN_DAYS/c\PASS_MIN_DAYS   &#39;$B&#39;&#39; /etc/login.defs
-sed -i &#39;/^PASS_MIN_LEN/c\PASS_MIN_LEN     &#39;$C&#39;&#39; /etc/login.defs
-sed -i &#39;/^PASS_WARN_AGE/c\PASS_WARN_AGE    &#39;$D&#39;&#39; /etc/login.defs
- 
-echo &quot;已对密码进行加固，新用户不得和旧密码相同，且新密码必须同时包含数字、小写字母，大写字母！！&quot;
-sed -i &#39;/pam_pwquality.so/c\password    requisite     pam_pwquality.so try_first_pass local_users_only retry=3 authtok_type=  difok=1 minlen=8 ucredit=-1 lcredit=-1 dcredit=-1&#39; /etc/pam.d/system-auth
- 
-echo &quot;已对密码进行加固，如果输入错误密码超过3次，则锁定账户！！&quot;
-n=`cat /etc/pam.d/sshd | grep &quot;auth required pam_tally2.so &quot;|wc -l`
-if [ $n -eq 0 ];then
-sed -i &#39;/%PAM-1.0/a\auth required pam_tally2.so deny=3 unlock_time=150 even_deny_root root_unlock_time300&#39; /etc/pam.d/sshd
-fi
- 
-echo  &quot;已设置禁止root用户远程登录！！&quot;
-sed -i &#39;/PermitRootLogin/c\PermitRootLogin no&#39;  /etc/ssh/sshd_config
- 
-read -p &quot;设置历史命令保存条数：&quot; E
-read -p &quot;设置账户自动注销时间：&quot; F
-sed -i &#39;/^HISTSIZE/c\HISTSIZE=&#39;$E&#39;&#39; /etc/profile
-sed -i &#39;/^HISTSIZE/a\TMOUT=&#39;$F&#39;&#39; /etc/profile
- 
-echo &quot;已设置只允许wheel组的用户可以使用su命令切换到root用户！&quot;
-sed -i &#39;/pam_wheel.so use_uid/c\auth            required        pam_wheel.so use_uid &#39; /etc/pam.d/su
-n=`cat /etc/login.defs | grep SU_WHEEL_ONLY | wc -l`
-if [ $n -eq 0 ];then
-echo SU_WHEEL_ONLY yes &gt;&gt; /etc/login.defs
-fi
- 
-echo &quot;即将对系统中的账户进行检查....&quot;
-echo &quot;系统中有登录权限的用户有：&quot;
-awk -F: &#39;($7==&quot;/bin/bash&quot;){print $1}&#39; /etc/passwd
-echo &quot;********************************************&quot;
-echo &quot;系统中UID=0的用户有：&quot;
-awk -F: &#39;($3==&quot;0&quot;){print $1}&#39; /etc/passwd
-echo &quot;********************************************&quot;
-N=`awk -F: &#39;($2==&quot;&quot;){print $1}&#39; /etc/shadow|wc -l`
-echo &quot;系统中空密码用户有：$N&quot;
-if [ $N -eq 0 ];then
- echo &quot;恭喜你，系统中无空密码用户！！&quot;
- echo &quot;********************************************&quot;
-else
- i=1
- while [ $N -gt 0 ]
- do
-    None=`awk -F: &#39;($2==&quot;&quot;){print $1}&#39; /etc/shadow|awk &#39;NR==&#39;$i&#39;{print}&#39;`
-    echo &quot;------------------------&quot;
-    echo $None
-    echo &quot;必须为空用户设置密码！！&quot;
-    passwd $None
-    let N--
- done
- M=`awk -F: &#39;($2==&quot;&quot;){print $1}&#39; /etc/shadow|wc -l`
- if [ $M -eq 0 ];then
-  echo &quot;恭喜，系统中已经没有空密码用户了！&quot;
- else
-echo &quot;系统中还存在空密码用户：$M&quot;
- fi
-fi
- 
-echo &quot;即将对系统中重要文件进行锁定，锁定后将无法添加删除用户和组&quot;
-read -p &quot;警告：此脚本运行后将无法添加删除用户和组！！确定输入Y，取消输入N；Y/N：&quot; i
-case $i in
-      [Y,y])
-            chattr +i /etc/passwd
-            chattr +i /etc/shadow
-            chattr +i /etc/group
-            chattr +i /etc/gshadow
-            echo &quot;锁定成功！&quot;
-;;
-      [N,n])
-            chattr -i /etc/passwd
-            chattr -i /etc/shadow
-            chattr -i /etc/group
-            chattr -i /etc/gshadow
-            echo &quot;取消锁定成功！！&quot;
-;;
-       *)
-            echo &quot;请输入Y/y or  N/n&quot;
-esac
-</code></pre>
-
-<h2 id="toc_10">建立日志服务器</h2>
-
-<p><a href="https://blog.csdn.net/qq_36119192/article/details/82906799#%E7%A6%81%E6%AD%A2ROOT%E7%94%A8%E6%88%B7%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95">十分钟加固Linux服务器</a></p>
-
-<p><a href="https://blog.csdn.net/samtaoys/article/details/88817482">加固Linux服务器</a></p>
-
-<p><a href="https://www.cnblogs.com/richardlee97/p/10671322.html">安全加固cr</a></p>
 
 ]]></content>
   </entry>
