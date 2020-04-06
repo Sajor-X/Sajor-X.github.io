@@ -2,7 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
   <loc>http://blog.sajor.top/</loc>
-  <lastmod>2020-02-27T18:22:07+08:00</lastmod>
+  <lastmod>2020-04-07T00:41:31+08:00</lastmod>
+</url>
+
+<url>
+  <loc>http://blog.sajor.top/15833368444152.html</loc>
+  <lastmod>2020-03-04T23:47:24+08:00</lastmod>
 </url>
 
 <url>
@@ -23,11 +28,6 @@
 <url>
   <loc>http://blog.sajor.top/15819525546014.html</loc>
   <lastmod>2020-02-17T23:15:54+08:00</lastmod>
-</url>
-
-<url>
-  <loc>http://blog.sajor.top/15809082865015.html</loc>
-  <lastmod>2020-02-05T21:11:26+08:00</lastmod>
 </url>
 
 <url>
@@ -250,26 +250,6 @@
   <lastmod>2019-07-23T20:51:48+08:00</lastmod>
 </url>
 
-<url>
-  <loc>http://blog.sajor.top/15638028537342.html</loc>
-  <lastmod>2019-07-22T21:40:53+08:00</lastmod>
-</url>
-
-<url>
-  <loc>http://blog.sajor.top/15637226788918.html</loc>
-  <lastmod>2019-07-21T23:24:38+08:00</lastmod>
-</url>
-
-<url>
-  <loc>http://blog.sajor.top/15621228295819.html</loc>
-  <lastmod>2019-07-03T11:00:29+08:00</lastmod>
-</url>
-
-<url>
-  <loc>http://blog.sajor.top/15518630086345.html</loc>
-  <lastmod>2019-03-06T17:03:28+08:00</lastmod>
-</url>
-
 
 
 <url>
@@ -286,10 +266,6 @@
 
 <url>
   <loc>http://blog.sajor.top/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html</loc>
-</url>
-
-<url>
-  <loc>http://blog.sajor.top/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html</loc>
 </url>
 
 <url>

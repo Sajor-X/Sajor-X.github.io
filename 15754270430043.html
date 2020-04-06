@@ -112,7 +112,7 @@ brew install redis</p>
 <p>将每个文件夹中的redis.conf都修改一下<br/>
 例如： redis01/redis.conf</p>
 
-<pre><code class="language-text">port 7001
+<pre class="line-numbers"><code class="language-text">port 7001
 
 cluster-enabled yes
 
@@ -127,7 +127,7 @@ pidfile  /var/run/redis_7001.pid
 
 <p>编写bash脚本启动</p>
 
-<pre><code class="language-text">./redis01/redis-server ./redis01/redis.conf
+<pre class="line-numbers"><code class="language-text">./redis01/redis-server ./redis01/redis.conf
 ./redis02/redis-server ./redis02/redis.conf
 ./redis03/redis-server ./redis03/redis.conf
 ./redis04/redis-server ./redis04/redis.conf
@@ -149,7 +149,7 @@ gem install -l redis-3.3.0.gem</p>
 
 <p>创建集群</p>
 
-<pre><code class="language-text">./redis-cli --cluster create 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005 127.0.0.1:7006 --cluster-replicas 1
+<pre class="line-numbers"><code class="language-text">./redis-cli --cluster create 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005 127.0.0.1:7006 --cluster-replicas 1
 </code></pre>
 
 <p>报错</p>
@@ -172,7 +172,7 @@ gem install -l redis-3.3.0.gem</p>
 
 <p>cluster命令</p>
 
-<pre><code class="language-text">cluster info 
+<pre class="line-numbers"><code class="language-text">cluster info 
 cluster nodes
 </code></pre>
 
@@ -355,7 +355,7 @@ cluster nodes
              
             
             <li>
-            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(13)</a>
+            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(14)</a>
             <p>
             
             </p>
@@ -390,17 +390,18 @@ cluster nodes
             
              
             
-            </p>
-            </li>
-            
-             
-            
              
       </div>
       <!-- 最新文章 -->
       <div class="meta-item meta-comments">
           <h2 class="meta-title">RECENT POSTS</h2>
 
+          
+          
+         <li>
+           <a href="15833368444152.html">Linux</a><br>
+         </li>
+          
           
           
          <li>
@@ -423,12 +424,6 @@ cluster nodes
           
          <li>
            <a href="15819525546014.html">网易云 最嗨电音 爬虫</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="15809082865015.html">使用模拟退火来构造极值图</a><br>
          </li>
           
           

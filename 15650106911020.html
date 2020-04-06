@@ -148,7 +148,7 @@ Out-place: 占用额外内存</p></li>
 <p>冒泡排序每次比较相邻两个数，<code>A[i] &gt; A[i + 1]</code> 则交换位置。可以确定的是，在经过一趟排序后，整个序列的最大值一定被放到了数组的最后一位。所以只需要进行N-1次循环则可以将整个序列都排好。<br/>
 <img src="media/15650106911020/140153i7562exzjrnagaja.gif" alt="140153i7562exzjrnagaja"/></p>
 
-<pre><code class="language-text">void Bubble_Sort(ElementType A[], int N)
+<pre class="line-numbers"><code class="language-text">void Bubble_Sort(ElementType A[], int N)
 {
    for (P = N - 1; P &gt;= 0; P--) {
         for (i = 0; i &lt; P; i++) { /* 一趟冒泡 */
@@ -162,7 +162,7 @@ Out-place: 占用额外内存</p></li>
 
 <p>但是这样做还有一些问题，如果在其中某一步就排好序了，但是还需要接着进行比较。所以进行如下改动。</p>
 
-<pre><code class="language-text">void Bubble_Sort(ElementType A[], int N)
+<pre class="line-numbers"><code class="language-text">void Bubble_Sort(ElementType A[], int N)
 {
     flag = 0;
     for (P = N - 1; P &gt;= 0; P--) {
@@ -186,7 +186,7 @@ Out-place: 占用额外内存</p></li>
 <p>像玩牌一样，一张一张摸牌，从后往前依次比较手中有序的序列，将抽到的牌插入到第一张小于这张牌的后面。其余的牌向后错一位。<br/>
 <img src="media/15650106911020/140155h0at131fkz33j1af.gif" alt="140155h0at131fkz33j1af"/></p>
 
-<pre><code class="language-text">void Insertion_Sort(ElementType A[], int N)
+<pre class="line-numbers"><code class="language-text">void Insertion_Sort(ElementType A[], int N)
 {
 
     for (P = 1; P &lt; N; P++)
@@ -234,7 +234,7 @@ Out-place: 占用额外内存</p></li>
 
 <p>原始希尔排序<code>DM = N / 2, Dk = Dk+1 / 2</code>希尔排序的增量序列的选择与证明是个数学难题，我们选择的这个增量序列是比较常用的，也是希尔建议的增量，称为希尔增量，但其实这个增量序列不是最优的。此处我们做示例使用希尔增量。</p>
 
-<pre><code class="language-text">void Shell_sort(ElementType A[], int N)
+<pre class="line-numbers"><code class="language-text">void Shell_sort(ElementType A[], int N)
 {
     for (D = N / 2; D &gt; 0; D /= 2) { /* 希尔增量序列 */
         for (P = D; P &lt; N; P++) { /* 插入排序 */
@@ -431,7 +431,7 @@ Out-place: 占用额外内存</p></li>
              
             
             <li>
-            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(13)</a>
+            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(14)</a>
             <p>
             
             </p>
@@ -466,17 +466,18 @@ Out-place: 占用额外内存</p></li>
             
              
             
-            </p>
-            </li>
-            
-             
-            
              
       </div>
       <!-- 最新文章 -->
       <div class="meta-item meta-comments">
           <h2 class="meta-title">RECENT POSTS</h2>
 
+          
+          
+         <li>
+           <a href="15833368444152.html">Linux</a><br>
+         </li>
+          
           
           
          <li>
@@ -499,12 +500,6 @@ Out-place: 占用额外内存</p></li>
           
          <li>
            <a href="15819525546014.html">网易云 最嗨电音 爬虫</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="15809082865015.html">使用模拟退火来构造极值图</a><br>
          </li>
           
           

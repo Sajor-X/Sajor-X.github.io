@@ -304,7 +304,7 @@
 
 <p>执行转换文件权限命令：</p>
 
-<pre><code class="language-text">chown -R redis:redisgrp
+<pre class="line-numbers"><code class="language-text">chown -R redis:redisgrp
 chomd -R 755
 </code></pre>
 
@@ -389,14 +389,14 @@ rename-command KEYS ADMKEYS<br/>
 </ul></li>
 <li><p>为Redis集群设置访问密码（requirepass和masterauth都需要设置，否则发送主从切换时，就会遇到授权问题。（注意各个节点的密码都必须一致）<br/>
 密码设置规范： 要求密码数超过10位；大小写、字母、数字、特殊字符（单双引号不要使用）相结合；不允许使用redis、root等敏感字符</p>
-<pre><code class="language-text"># requirepass foobared 
+<pre class="line-numbers"><code class="language-text"># requirepass foobared 
 修改为<br/>
 requirepass ****<br/>
 masterauth ****
 </code></pre>
 <p>注意： 使用redis-trib.rb工具构建集群，集群构建前不要设置密码，构建后通过config set + config rewrite 命令逐个机器设置密码，所以此步跳过。</p></li>
 <li><p>修改复制客户端缓存区永不溢出</p>
-<pre><code class="language-text">client-output-buffer-limit normal 0 0 0 
+<pre class="line-numbers"><code class="language-text">client-output-buffer-limit normal 0 0 0 
 client-output-buffer-limit slave 0 0 0 
 </code></pre></li>
 <li><p>修改复制去backlog buffer大小： repl-backlog-size 30mb</p></li>
@@ -593,7 +593,7 @@ redis-trib.rb create --replicas 1 192.168.1.1:7001 1 192.168.1.1:7002 1 192.168.
              
             
             <li>
-            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(13)</a>
+            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(14)</a>
             <p>
             
             </p>
@@ -628,17 +628,18 @@ redis-trib.rb create --replicas 1 192.168.1.1:7001 1 192.168.1.1:7002 1 192.168.
             
              
             
-            </p>
-            </li>
-            
-             
-            
              
       </div>
       <!-- 最新文章 -->
       <div class="meta-item meta-comments">
           <h2 class="meta-title">RECENT POSTS</h2>
 
+          
+          
+         <li>
+           <a href="15833368444152.html">Linux</a><br>
+         </li>
+          
           
           
          <li>
@@ -661,12 +662,6 @@ redis-trib.rb create --replicas 1 192.168.1.1:7001 1 192.168.1.1:7002 1 192.168.
           
          <li>
            <a href="15819525546014.html">网易云 最嗨电音 爬虫</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="15809082865015.html">使用模拟退火来构造极值图</a><br>
          </li>
           
           

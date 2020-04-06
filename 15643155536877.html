@@ -104,7 +104,7 @@
 		<p>
 		<p>1、Spring 配置文件中声明事务</p>
 
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<pre class="line-numbers"><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
        xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
        xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
@@ -171,7 +171,7 @@
 <p>2、在 JdbcTemplateUtil.addUser()方法中添加一个错误<br/>
 验证事务是否起作用</p>
 
-<pre><code class="language-text">public void addUser(Student student) {
+<pre class="line-numbers"><code class="language-text">public void addUser(Student student) {
         String sql = &quot;insert into user (name,sex,email) values(?,?,?)&quot;;
         jdbcTemplate.update(sql, student.getName(), student.getSex(), student.getEmail());
         errorTest.length();//故意执行一个未初始化对象的方法
@@ -356,7 +356,7 @@
              
             
             <li>
-            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(13)</a>
+            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(14)</a>
             <p>
             
             </p>
@@ -391,17 +391,18 @@
             
              
             
-            </p>
-            </li>
-            
-             
-            
              
       </div>
       <!-- 最新文章 -->
       <div class="meta-item meta-comments">
           <h2 class="meta-title">RECENT POSTS</h2>
 
+          
+          
+         <li>
+           <a href="15833368444152.html">Linux</a><br>
+         </li>
+          
           
           
          <li>
@@ -424,12 +425,6 @@
           
          <li>
            <a href="15819525546014.html">网易云 最嗨电音 爬虫</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="15809082865015.html">使用模拟退火来构造极值图</a><br>
          </li>
           
           

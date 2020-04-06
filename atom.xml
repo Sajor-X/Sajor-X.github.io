@@ -4,7 +4,7 @@
   <title><![CDATA[Sajor's Blog]]></title>
   <link href="http://blog.sajor.top/atom.xml" rel="self"/>
   <link href="http://blog.sajor.top/"/>
-  <updated>2020-02-27T18:22:03+08:00</updated>
+  <updated>2020-04-07T00:41:28+08:00</updated>
   <id>http://blog.sajor.top/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -12,6 +12,228 @@
   </author>
   <generator uri="http://www.coderforart.com/">CoderForArt</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Linux]]></title>
+    <link href="http://blog.sajor.top/15833368444152.html"/>
+    <updated>2020-03-04T23:47:24+08:00</updated>
+    <id>http://blog.sajor.top/15833368444152.html</id>
+    <content type="html"><![CDATA[
+<p>Linux下的程序往往使你更加有效率，因为他们可以更高效的使用电脑的资源</p>
+
+<p><strong>不同的Linux发行版之间的主要区别：</strong></p>
+
+<p>1、安装方法不一样，有的复杂，有的简单。</p>
+
+<p>2、安装应用程序的方式不一样。</p>
+
+<p>3、预装的应用程序不一样。</p>
+
+<h3 id="toc_0">linux发行版</h3>
+
+<p>1、RedHat：性能稳定，老牌的linux发行版。收费的是RedHat Enterprise Linux（RHEL。redhat企业版）。目前RedHat分为两个系列：由RedHat公司提供收费技术支持。以及社区开发的免费的Fedora。</p>
+
+<p>2、Fedora：RedHat的社区免费后继版，非常强大。</p>
+
+<p>3、CentOS：国内许多企业选择CentOS，CentOS可以算是RHEL的克隆版，最大的好处就是免费。</p>
+
+<p>4、SUSE：德国最著名的Linux发行版。</p>
+
+<p>5、Debian：算是迄今为止，最遵循GNU规范的linux系统。（gnu的目标就是创建一套完全自由的操作系统。）</p>
+
+<p>6、Ubuntu：Debian的后继一个分支。也是课程使用的linux发行版。</p>
+
+<h3 id="toc_1">Ubuntu的优点</h3>
+
+<p>1、简便易用。对于初学者，Ubuntu系统算是非常简单的，除了命令。</p>
+
+<p>2、更新定期而频繁。每6个月就有一个新的Ubuntu版本，使用者非常多，支持的社区也很多。</p>
+
+<p>3、标准化。</p>
+
+<h3 id="toc_2">系统设置</h3>
+
+<p><strong>lshw</strong>    获取硬件信息</p>
+
+<p><strong>lscpu</strong>   获取CPU信息</p>
+
+<p><strong>lsusb</strong>   获取usb接口信息</p>
+
+<p><strong>uname</strong>   获取系统相关信息</p>
+
+<p><strong>df</strong>  ：查看磁盘空间</p>
+
+<p><strong>date</strong>    ：查看日期和时间</p>
+
+<blockquote>
+<p>&quot;+%j&quot; 今年中的第几天</p>
+</blockquote>
+
+<p><strong>hostname</strong>    ：显示主机名</p>
+
+<p><strong>ifconfig</strong>    ：显示网络接口参数</p>
+
+<h3 id="toc_3">关机重启命令</h3>
+
+<p><strong>reboot</strong>  ：重启系统</p>
+
+<p><strong>poweroff</strong>：   关机</p>
+
+<p><strong>shutdown</strong>：   是定时关机</p>
+
+<blockquote>
+<p>shutdown -h time  指定时间，不写，就是一分钟之后执行</p>
+
+<p>shutdown -h +5    ：五分钟后关机</p>
+
+<p>shutdown -c   ：取消定时关机</p>
+
+<p>shutdown -r now   ：立即重启</p>
+</blockquote>
+
+<h3 id="toc_4">常用指令</h3>
+
+<pre class="line-numbers"><code class="language-python">#通过上下方向键来获取过往执行过的linux命令
+#命令仅需输入前几位就可以用TAB键补全
+要想准确，高效地完成各种任务，仅依赖命令本身是不够的，还应该根据实际情况来灵活调整各种命令的参数：
+linux命令格式：
+命令名称  [命令参数] [命令对象]
+#命令名称、参数、对象之间用空格键分隔。
+
+命令参数分为：
+长格式  man --help
+短格式  man -h
+
+</code></pre>
+
+<h3 id="toc_5">man 命令中常用按键以及用途</h3>
+
+<table>
+<thead>
+<tr>
+<th>按键</th>
+<th>用处</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>空格键</td>
+<td>向下翻一页</td>
+</tr>
+<tr>
+<td>page down</td>
+<td>向下翻一页</td>
+</tr>
+<tr>
+<td>page up</td>
+<td>向上翻一页</td>
+</tr>
+<tr>
+<td>home（fn+左方向键）</td>
+<td>直接前往首页</td>
+</tr>
+<tr>
+<td>end（fn+右方向键）</td>
+<td>直接前往尾页</td>
+</tr>
+<tr>
+<td>/</td>
+<td>从上至下搜索某个关键词，如 ‘/and’</td>
+</tr>
+<tr>
+<td>?</td>
+<td>从下至上搜索某个关键词，如 ‘？and’</td>
+</tr>
+<tr>
+<td>n</td>
+<td>定位到下一个搜索到的关键词</td>
+</tr>
+<tr>
+<td>N</td>
+<td>定位到上一个搜索到的关键词</td>
+</tr>
+<tr>
+<td>q</td>
+<td>退出帮助文档</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_6">目录命令</h3>
+
+<p>1、pwd   ---print working directory</p>
+
+<p>显示用户当前所处的工作目录</p>
+
+<p>2、cd  ---change directory</p>
+
+<p>用于切换工作路径</p>
+
+<blockquote>
+<p>cd 目录名  ：进入某一目录</p>
+
+<p>cd ..    ：返回上一级目录，并显示路径</p>
+
+<p>cd -   ：返回上一次所处的目录</p>
+
+<p>cd ~     ：切换到当前用户的家目录</p>
+</blockquote>
+
+<p>3、ls ----list</p>
+
+<p>ls会列举出当前工作目录的内容（文件或文件夹）</p>
+
+<blockquote>
+<p>-a    :查看所有文件（包括隐藏文件）</p>
+
+<p>-l    ：查看文件的属性，大小等详细信息</p>
+</blockquote>
+
+<pre class="line-numbers"><code class="language-python">第一列一共十位：
+#第一位是类型：
+d代表目录
+-代表是文件
+l代表连接
+
+#第二位到十位是权限
+权限共九位，分三组，每三个一组
+-rwx：
+-r read 可读权限  4 或者 0
+-w write 可写权限  2 或者 0  如果一条线，一个减号代表0
+-x execute 可执行权限  1或者0
+
+这三个字母能表示多少值:0-7
+0：什么权限都没有
+1：文件只能执行
+2：文件只有写权限
+3：文件可写可执行
+4：文件只有读权限
+5：可读可执行
+6：可读可写
+7：可读可写可执行
+
+#对于文件而言：
+可读权限表示允许读其内容，而禁止对其做任何的更改操作
+可写权限表示可以改写编辑文件的内容或删除文件。（要有文件所在目录的写权限）
+可执行权限表示允许将该文件作为一个程序执行。
+#对于目录而言：
+可读权限表示允许显示该目录中的内容
+可写权限表示可以在目录中新建，删除，重名令文件
+可执行权限表示可以进入该目录。可执行权限是基本权限。
+
+权限共九位，每三个一组
+1、代表当前用户的权限  ---读写和执行
+2、代表当前用户所属的组的权限
+3、代表其他组的权限
+
+-w-
+
+
+</code></pre>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[MyBatis 开启自动驼峰转换]]></title>
@@ -64,7 +286,7 @@ PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;<br/><br/>
 
 <p>如果显示：</p>
 
-<pre><code class="language-text">java-x.x.x-openjdk-x.x.x.xxx-x.x.x.x.el7.x86_64
+<pre class="line-numbers"><code class="language-text">java-x.x.x-openjdk-x.x.x.xxx-x.x.x.x.el7.x86_64
 …
 java-x.x.x-openjdk-headless-x.x.x.xxx-x.b14.el7.x86_64
 …
@@ -74,7 +296,7 @@ java-x.x.x-openjdk-headless-x.x.x.xxx-x.b14.el7.x86_64
 
 <p>删除所有包含有openjdk的套件</p>
 
-<pre><code class="language-text">rpm -e --nodeps java-x.x.x-openjdk-x.x.x.xxx-x.x.x.x.el7.x86_64
+<pre class="line-numbers"><code class="language-text">rpm -e --nodeps java-x.x.x-openjdk-x.x.x.xxx-x.x.x.x.el7.x86_64
 rpm -e --nodeps java-x.x.x-openjdk-headless-x.x.x.xxx-x.b14.el7.x86_64
 ...
 </code></pre>
@@ -97,7 +319,7 @@ rpm -e --nodeps java-x.x.x-openjdk-headless-x.x.x.xxx-x.b14.el7.x86_64
 
 <p>定位到最后一行，添加如下内容（版本注意修改）</p>
 
-<pre><code class="language-text"># jdk
+<pre class="line-numbers"><code class="language-text"># jdk
 export JAVA_HOME=/usr/local/java/jdk1.8.0_241/
 export CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 export PATH=$PATH:$JAVA_HOME/bin
@@ -107,7 +329,7 @@ export PATH=$PATH:$JAVA_HOME/bin
 
 <p>输入</p>
 
-<pre><code class="language-text">java -version
+<pre class="line-numbers"><code class="language-text">java -version
 javac -version
 </code></pre>
 
@@ -142,7 +364,7 @@ javac -version
 
 <p>定位到最后一行，添加如下内容（版本注意修改）</p>
 
-<pre><code class="language-text"># spark
+<pre class="line-numbers"><code class="language-text"># spark
 export SPARK_HOME=/usr/local/spark/spark-2.4.5-bin-hadoop2.7/
 export PATH=$PATH:$SPARK_HOME/bin
 </code></pre>
@@ -151,7 +373,7 @@ export PATH=$PATH:$SPARK_HOME/bin
 
 <p>输入</p>
 
-<pre><code class="language-text">spark-shell
+<pre class="line-numbers"><code class="language-text">spark-shell
 </code></pre>
 
 <p>查看是否安装成功</p>
@@ -181,7 +403,7 @@ export PATH=$PATH:$SPARK_HOME/bin
 
 <p>编写Python代码，统一下载</p>
 
-<pre><code class="language-python">import requests
+<pre class="line-numbers"><code class="language-python">import requests
 from urllib import request
 
 
@@ -222,176 +444,6 @@ if __name__ == &#39;__main__&#39;:
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[使用模拟退火来构造极值图]]></title>
-    <link href="http://blog.sajor.top/15809082865015.html"/>
-    <updated>2020-02-05T21:11:26+08:00</updated>
-    <id>http://blog.sajor.top/15809082865015.html</id>
-    <content type="html"><![CDATA[
-<p>Author：P. Wang ∗, G.W. Dueck, S. MacMillan</p>
-
-<ul>
-<li>他研究的这个极图和我们的不太一样，我们是不含某一个，他是不含一系列的。</li>
-<li>第一部分概述，第二部分数学理论，第三部分模拟退火引入程序，第四部分实验</li>
-<li>他利用这些特点来让他的图的数量变少，也就是增加限制条件让图少点</li>
-<li>第三部分他就用了模拟退火，他不是像我们一样列出所有的，他就是利用模拟退火找到个满足条件的全局最优解，但是这个结果有的时候和穷举可能不一样，可是大体上效果挺好</li>
-</ul>
-
-<h2 id="toc_0">名词解释</h2>
-
-<ul>
-<li><p>正则图（regular graph）：正则图是指各顶点的度均相同的无向简单图。<br/>
-在图论中，正则图中每个顶点具有相同数量的邻点； 即每个顶点具有相同的度或价态。 正则的有向图也必须满足更多的条件，即每个顶点的内外自由度都要彼此相等。具有k个自由度的顶点的正则图被称为k度的k-正则图。 此外，奇数程度的正则图形将包含偶数个顶点。<br/>
-<img src="media/15809082865015/15809945534836.jpg" alt=""/></p></li>
-<li><p>笼子（cage）：在图论的数学领域里，笼子是一个正则图，其周长具有尽可能少的顶点。一个（r,g）笼就是说每一个顶点都正好有r个邻居，而且最短的环路是g。</p></li>
-</ul>
-
-<p>The only (3,5)-cage is the Petersen graph. <img src="media/15809082865015/15809194745456.png" alt=""/><br/>
-The only (3,6)-cage is the Heawood graph.<br/>
-<img src="media/15809082865015/15809953759482.jpg" alt=""/></p>
-
-<p>The only (3,7)-cage is the McGee graph.<br/>
-<img src="media/15809082865015/15809953875256.jpg" alt=""/></p>
-
-<p>The only (3,8)-cage is the Tutte–Coxeter graph.<br/>
-<img src="media/15809082865015/15809953993956.jpg" alt=""/></p>
-
-<h3 id="toc_1">摘要</h3>
-
-<p>图G中的最短环的长度为图G的周长；如果图G中没有环，我们认为这种图的周长是无穷大的。本文研究了v阶和周长至少为n+1的图中最多边数的值，用\(ex(v;\{C_3, C_4, ..., C_n\})\) 表示。我们将讨论图的一个重要的性质，即极图中度的分布。然后我们描述如何将此特性和模拟退火算法结合在一起，并用来开发可用于生成极图的算法。我们的算法是第一个可用于生成周长大于 5 的极图的算法，并在 \(n\ge6\) 时给出 \(ex(v;\{C_3, C_4, ..., C_n\})\) 的下界。</p>
-
-<h3 id="toc_2">介绍</h3>
-
-<p>我们将使用图论的符号[4]。我们认为所有的图都是简单的，即无向图，没有自循环和多个边。<br/>
-图具有顶点集\(V(G)\)，边集\(E(G)\)，\(v(G)\)顶点和\(\varepsilon(G)\)边。我们使用\(\Delta(G)\)表示图G最大度，\(\delta(G)\)表示图G最小度。图G的度序列由 \(D = \{d_i | d表示度；i (1 \le i \le v) 表示度为d的图G中的定点数\}\)表示。令\(|D|\)作为D的基数。很明显，如果\(|D|=1\)，图G是一个正则图。我们说一个\(|D|\)较小的图\((|D| \lt o(\sqrt {v}))\)接近正则图。图G的周长是G中最短环的长度；如果图G没有环，我们认为这种图的周长是无穷大的。通过\(ex(v;\{C_3, C_4, ..., C_n\})\)，我们表示v阶图中最大的边数，并且周长至少有n+1；并通过\(EX(v;\{C_3, C_4, ..., C_n\})\)我们表示周长至少为n+1，有\(ex(v;\{C_3, C_4, ..., C_n\})\)条边的v阶所有图的集合。本文大部分内容中，我们考虑<br/>
-\(EX(v;\{C_3, C_4 \})\)中的图，并将它们称为极图。我们将参考图\(EX(v;\{C_3, C_4, ..., C_n\})\)  周长\(\ge {n+1}\)的极图。</p>
-
-<p>一个d-regular图，周长为g，且具有尽可能少顶点数图，记为(d,g)-cage.在Erdo ̋s 和 Sachs[4]证明了笼子存在后，他们对这些图进行了集中深入研究。通常很难找到笼子。Wong[23]在这个问题上有很好的调查论文。</p>
-
-<p>在1975年，Erdo ̋s [10]提到了确定\(f(v)\)的值的问题，即v阶 最大边数的图的周长至少为5。<br/>
-。。。。</p>
-
-<p>在第二部分，我们将讨论在极图上发现的重要属性。然后第三部分，我们描述了如何将该特性与模拟退火算法相结合，以开发可用于生成极图的算法。第四部分，我们将介绍一些获得的成果。</p>
-
-<h3 id="toc_3">度序列（degree sequence）</h3>
-
-<p>对称性无处不在。我们看到许多自然形式的对称性。例如人类就是左右对称的，花朵是中心对称的，贝壳是螺旋对称和鱼鳞的平移对称。对称性在数学中也起着举足轻重的作用。从几何学到群论，再到图论中的顶点传递性和正则性。正则图构成了一个特别有趣的类。它们似乎捕获了一般图的大部分复杂性，有趣的例子比比皆是，Headwood图，Petersen图和Coxeter图。</p>
-
-<p><strong>定理2.1</strong> 对于任何\(v\ge5\)的极图G，G中最多有一个度为1的顶点<br/>
-<strong>证明</strong> </p>
-
-<p><strong>定理2.2</strong> 存在\(v\ge5\)的极图G，最小度\(\delta(G)\ge2\)<br/>
-<strong>证明</strong> </p>
-
-<p><strong>定理2.3</strong> <br/>
-<strong>证明</strong> </p>
-
-<p><strong>定理2.4</strong><br/><br/>
-<strong>证明</strong> </p>
-
-<p><strong>定理2.5</strong> 对于任何图G \(\{C_3, C_4\}-free, v \ge \delta(G) \Delta(G)\)<br/>
-<strong>证明</strong> </p>
-
-<p><strong>猜想2.1</strong> 对于任何极值图G，\(\Delta(G) \le v/2\)<br/>
-<strong>证明</strong> 根据定理2.1，最多有一个度为1的顶点。定理2.5的结果可以推广为\(v \ge 1 +\Delta(G) + \Delta(G)(2-1)-1 = 2\Delta(G)\)</p>
-
-<h3 id="toc_4">模拟退火（Simulated annealing）</h3>
-
-<p>模拟退火（SA）是组合优化问题的一种好的解决方法。此项技术的基本操作是移动，移动是从解决方案空间中的一个元素到另一个元素的过渡。在本文中，移动是指在两个随机生成的不相邻顶点之间插入一条边。如果此次插入所创建的图的周长小于等于n，则必须删除一些边。我们通过􏰉\(\varepsilon(G)\)的减少来定义移动的成本。每一步都会影响当前解决方案的成本。直观地讲，人们倾向于降低成本的举动，因为目标是采用最低或接近最低的成本的解决方案。但是，仅允许这种移动，最终的解决方案很可能是局部最小值，而不是绝对最小值。为了摆脱局部最小值，必须采取增加成本的措施。</p>
-
-<p>在模拟退火中，随机选择预期移动。如果移动减少了成本，则可以接受。否则，它可接受概率为\(e^{-\Delta E/T}\)，其中\(T\)是温度，\(\Delta E\)是此预期移动将导致成本的增量。最初，\(T\)很大，几乎所有移动都被接受。随着T的减小，逐渐降低了对成本增加动作的接受。最终，系统将很少接受移动动作。系统将这种状态称为冻结状态。温度降低的顺序称为退火时间表。下一个温度通过\(T_{n+1}=\alpha{T_n}\)获得，其中􏰁\(\alpha\)是冷却速率。通常􏰁\(\alpha\)在0.75~0.98之间。</p>
-
-<p>通常具有积极成本的移动会被概率\(e^{-\Delta E/T}\)接受。最初，我们使用这种方法不能有效地获取已知的极值图。在某些情况下，我们甚至无法获得已知的极值图。然后，我们检查了生成的图，发现其中大部分图的顶点有很高的度。实际上，这就是写第2节内容的动机。正如我们在第2节中发现的那样，极值图往往与正则图非常接近。我们修改了传统方法来提现极值图中的规律。我们不是随机选择一对不相邻的顶点，然后随机决定是否在它们之间添加边，而是添加一个程序以确保将边在图中均匀分布。</p>
-
-<p>步骤一：<br/>
-首先，我们将所有顶点按照其度数升序排序。<del>对于每对随机选择的不相邻顶点，我们将这对顶点的等级定义为度序列中度数较大的顶点的位置。</del> 其次，我们定义Prob 1 = 1 - (这对顶点的秩/\(v(G)\))而且如果Prob 1 大于一个随机生成的数字，这对顶点将被接受。这使具有较小度数的顶点有更好的机会在它们之间插入新边。模拟退火不直接通过序列中的秩来接受对，因此秩最小的顶点对不能保证一定被接受。其背后的原因是，在某些极值图中，几乎没有度数较小的顶点。例如，\(ex(11;\{C_3, C_4\}) = 16\)，它是Petersen图加上一个顶点，该顶点链接到Petersen图中的一个顶点。显然，如果模拟退火算法坚持在顶点上以最小的阶数添加边，那么它将无法构造它。实际上，该程序通过使用Prob 1 = 1 −\(（max \{d(x), d{y}\}/\lceil \sqrt{v} \rceil）\)，在我们的测试运行中会产生更好的结果，其中x和y是一对随机选择的不相邻的对顶点。它基于<strong>猜想2.1</strong>。</p>
-
-<p>步骤二：<br/>
-对于在步骤一中选择好的一对顶点，将在它们之间插入一条边。然后，我们使用广度优先搜索来找到它们之间的距离，并且如果距离小于\((n − 1)\)，则必须从度更大的顶点删除边，以便消除长度小于\(n\)的环。重复的从度较大的顶点删除边，直到这对儿顶点之间的距离大于或等于\((n − 1)\)。我们将生成的结果图称为\(G_{new}\)，将插入边之前的图称为\(G_{old}\)。我们定义\(cost = \varepsilon(G_{old}) - \varepsilon(G_{new}) = \Delta E, Prob 2 = e^{-\Delta E/T}\)  总是接受成本为负的边插入。否则，如果Prob 2 &gt; 在0到1之间随机生成的数字会被接受。</p>
-
-<p>下面给出我们实现的伪代码。在内部循环中，随机选择移动。在每个温度水平上都接受有限数量的移动。我们使用\(20 ∗ |V (G)|\)作为限制。这意味着对于较大的图形，可以接受更多的移动。此外，在每个温度下尝试移动的次数都有限制。对于每个接受的动作，我们希望尝试不超过60个动作。一旦达到了可接受的最大移动次数或最大尝试次数，温度就会降低，并开始新的迭代。当接受的移动次数未达到最大水平（最大移动）超过给定数量的连续迭代时，该过程将停止。也就是说，如果接受的尝试移动次数少于60，则我们认为系统处于冻结状态。</p>
-
-<pre><code class="language-text">anneal(G)
-    temp = initial_temp = 1.0
-    cool_rate = 0.95
-    max_moves=20∗|V|
-    max_attempted_moves = 60 ∗ max_moves
-    max_frozen = 100
-    frozen = 0
-    best_count = 0 (the number of edges in the result graph)    
-    while(frozen6 = max frozen)
-        moves = attempted_moves = 0 
-        while((moves6max moves) and (attempted_moves &lt;= max_attempted_moves))
-            increment attempted_moves
-            pick a random move (randomly select two non-adjacent vertices)  
-            if the move is accepted by the two steps process
-                increment moves 
-                if(􏰈(Dold )&lt;=(Gnew ))
-                    increment best_count 
-            else restore Gold
-        end while
-        temp = temp ∗ cool_rate
-        if(attempted_moves &gt; max_attempted_moves)
-            increment frozen 
-    else
-            frozen = 0 
-        end if
-    end while 
-end anneal
-</code></pre>
-
-<p><img src="media/15809082865015/15813452069915.jpg" alt=""/></p>
-
-<p><img src="media/15809082865015/15811719484894.jpg" alt=""/><br/>
-以下变量：初始温度(initial_temp)，冷却速率(cool_rate)，最大移动(max_moves)，最大尝试移动(max_attempted_moves)和最大冻结(max_frozen)的设置可能有所不同。通过实验和经验观察，我们得出了上面伪代码中所示的设置。这些变量的更改将影响结果和程序的执行时间。</p>
-
-<h3 id="toc_5">结果</h3>
-
-<p>表一给出了\(0 \le v \le 29\)，\(ex(v, \{C_3, C_4\})\)的精确值。我们在合理的时间内获得了它们。请注意，这些是\(ex(v, \{C_3, C_4\})\)的准确值，这些值已在[8]中得到了作者的证明。此外，\(v = 1; 2; 3; 5; 7; 8; 9; 10; 13; 15; 19; 20\)的极值图是唯一的。其中一些是著名的图，需要花费研究人员数年的时间才能获得。例如，如果\(v = 10\)，则该图为Petersen图，(3, 5)-cage，如果\(v = 18\)，则为Robertson图，(4, 5)-cage。这表明计算出的下限是好的。</p>
-
-<p>在我们验证了我们的算法可以为具有较小周长的极图产生良好的结果之后，我们还针对较大周长的极图运行了它。例如，已知（参见[14]）\(ex(2n + 2; \{C_3, C_4, ..., C_n\}) = 2n + 4; ex(3n; {C_3, C_4, ..., C_n}）= 3n + 5\)。极值图的周长\(\ge n + 1\)。在上述两种情况下，通过运行我们的程序，它确实为\(n \ge 15\)提供了最佳解决方案。我们还使用它来验证Garnick在[13]中对周长较大的极值图提出的以下问题。</p>
-
-<p>是否存在一个常数\(c\)，使得对于所有\(n \ge 5\)和所有\(v \ge cn\)，任何一个周长\(\ge n + 1\)的极值图的周长为\(n + 1\)？</p>
-
-<h3 id="toc_6">References</h3>
-
-<p>[1] C.R.J. Clapham, A. Flockart, J. Sheehan, Graphs without four-cycles, J. Graph Theory 13 (1989) 29–47.<br/>
-[2] A.E. Brouwer, A.M. Cohen, A. Neumaier, Distance — Regular Graphs, Springer, Heidelberg, 1989.<br/>
-[3] B. Bolloba􏰆s, Extremal Graph Theory, Academic Press, London, 1978.<br/>
-[4] J.A. Bondy, U.S.R. Murty, Graph Theory with Applications, North-Holland, Amsterdam, 1976.<br/>
-[5] J.A. Bondy, M. Simonovits, Cycles of even length in graphs, J. Combin. Theory Ser. B 16 (1974) 97–105.<br/>
-[6] S. Kirkpatrick, C.D. Gellate Jr., M.P. Vecchi, Optimization of simulated annealing, Science 220 (1983) 671– 680.<br/>
-[7] F.R.K. Chung, Constructing random-like graphs, in: B. Bollobas (Ed.), Probabilistic Combinatorics and its Applications, Amer. Math. Soc., Providence, RI, Vol. 1991.<br/>
-[8] Y.H.H. Kwong, D.K. Garnick, F. Lazebnik, Extremal graphs without three-cycles or four-cycles, J. Graph Theory 17 (5) (1993) 633–645.<br/>
-[9] P. Erdo ̋s, Some recent progress on extremal graphs in graph theory, Congres. Numer. 14 (1975) 3–14.<br/>
-[10] P. Erdo ̋s, H. Sachs, Regula􏰇re graphen gegebener taillenweite me minimaler knotenzahl, Wiss. Z. Univ.<br/>
-Halle Matrin Luther Univ. Halle-Wittenberg Math. — Natur 12 (1963) 251–257.<br/>
-[11] Z. Fu ̋redi, On the number of edges of quadrilateral-free graphs, J. Combin. Theory Ser. B 68 (1996)<br/>
-1–6.<br/>
-[12] M.R. Garey, D.S. Johnson, Computer and Intractability, Freeman, New York, 1979.<br/>
-[13] D.K. Garnick, N.A. Nieuwejaar, Non-isomorphic extremal graphs with three-cycles or four-cycles,<br/>
-J. Combin. Math. Combin. Comput. 12 (1993) 33–56.<br/>
-[14] F. Lazebnik, P. Wang, On the structure of extremal graphs of high girth, J. Graph Theory 26 (1997)<br/>
-147–153.<br/>
-[15] B.D. MaKay, http:==cs.anu.edu.au=people/bdm=.<br/>
-[16] B.D. MaKay, Practicle graph isomorphism, Congres. Numer. 30 (1981) 45–87.<br/>
-[17] P. Wang, G. Dueck, An algorithm to 􏰀nd the upper bound of the distance between graphs, J. Combin.<br/>
-Math. Combin. Comput. 19 (1995) 97–107.<br/>
-[18] I. Reiman, U􏰇ber ein problem von k. zarankiewicz, Acta Math. Acad. Sci. Hungar. 9 (1958) 169–279.<br/>
-[19] R.W. Robinson, N.C. Wormald, Almost all cubic graphs are hamiltonian, Random Structures Algorithms<br/>
-3 (1992) 117–225.<br/>
-[20] M. Simonovits, Extremal graph theory, in: L.W. Beineke, R.J. Wilson (Eds.), Selected Topics in Graph<br/>
-Theory, Vol. 2, Academic Press, London, 1993, pp. 161–200.<br/>
-[21] F. Lazebnik, V.A. Ustimenko, A.J. Woldar, A new series of dense graphs of high girth, Bull. Amer.<br/>
-Math. Soc. 32 (1) (1995) 73–79.<br/>
-[22] P. Wang, An upper bound of the (n; 5)-cages, Ars Combin. 47 (1997) 121–128.<br/>
-[23] P.K. Wong, Cages — a survey, J. Graph Theory 6 (1982) 1–22.</p>
-
-<p><img src="media/15809082865015/15810919588257.jpg" alt=""/></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[cheat.sh]]></title>
     <link href="http://blog.sajor.top/15802234606202.html"/>
     <updated>2020-01-28T22:57:40+08:00</updated>
@@ -403,7 +455,7 @@ Math. Soc. 32 (1) (1995) 73–79.<br/>
 
 <p>它无需安装，提供网络查询方式，要从命令行获取UNIX / Linux命令的备忘单，请使用curl或任何其他在查询中指定命令名称的HTTP / HTTPS客户端来查询服务：</p>
 
-<pre><code class="language-bash">    curl cheat.sh/tar
+<pre class="line-numbers"><code class="language-bash">    curl cheat.sh/tar
     curl cht.sh/curl
     curl https://cheat.sh/rsync
     curl https://cht.sh/tr
@@ -414,14 +466,14 @@ Math. Soc. 32 (1) (1995) 73–79.<br/>
 <p>想离线使用，也可以安装客户端，非常简单<br/>
 To install the client:</p>
 
-<pre><code class="language-bash">    mkdir -p ~/bin/
+<pre class="line-numbers"><code class="language-bash">    mkdir -p ~/bin/
     curl https://cht.sh/:cht.sh &gt; ~/bin/cht.sh
     chmod +x ~/bin/cht.sh
 </code></pre>
 
 <p>or to install it globally (for all users):</p>
 
-<pre><code class="language-bash">    curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh
+<pre class="line-numbers"><code class="language-bash">    curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh
     sudo chmod +x /usr/local/bin/cht.sh
 </code></pre>
 
@@ -432,7 +484,7 @@ globally: <code>sudo vi /etc/profile</code></p>
 
 <p>在最后添加</p>
 
-<pre><code class="language-text"># cheat
+<pre class="line-numbers"><code class="language-text"># cheat
 alias cht=cht.sh
 </code></pre>
 
@@ -445,7 +497,7 @@ globally: <code>source /etc/profile</code></p>
 
 <p>如果输出的不是你需要的答案，你可以选择带入参数， 例如/1, /2 :</p>
 
-<pre><code class="language-text">    curl cht.sh/python/random+string
+<pre class="line-numbers"><code class="language-text">    curl cht.sh/python/random+string
     curl cht.sh/python/random+string/1
     curl cht.sh/python/random+string/2
 </code></pre>
@@ -480,7 +532,7 @@ globally: <code>source /etc/profile</code></p>
 
 <p><img src="media/15776732342055/15826461147316.jpg" alt="" style="width:767px;"/></p>
 
-<pre><code class="language-bash">&gt; cht crontab
+<pre class="line-numbers"><code class="language-bash">&gt; cht crontab
 # crontab
 # Schedule cron jobs to run on a time interval for the current user.
 # Job definition format: &quot;(min) (hour) (day_of_month) (month) (day_of_week) command_to_execute&quot;.
@@ -623,7 +675,7 @@ git config --global user.email &quot;<a href="mailto:565785929@qq.com">565785929
 
 <h3 id="toc_2">windows中的换行符为 CRLF， 而在linux下的换行符为LF，所以在执行add . 时出现提示，解决办法：</h3>
 
-<pre><code class="language-text">rm -rf .git  // 删除.git  
+<pre class="line-numbers"><code class="language-text">rm -rf .git  // 删除.git  
 git config --global core.autocrlf false  //禁用自动转换    
 
 git init    // 重新执行
@@ -632,12 +684,12 @@ git add .
 
 <h3 id="toc_3">文件添加到仓库 add</h3>
 
-<pre><code class="language-text">git add readme.txt     // filename = readme.txt
+<pre class="line-numbers"><code class="language-text">git add readme.txt     // filename = readme.txt
 </code></pre>
 
 <h3 id="toc_4">用命令 git commit 告诉Git 文件提交到仓库</h3>
 
-<pre><code class="language-text">git commit -m &quot;wrote a readme file&quot; 
+<pre class="line-numbers"><code class="language-text">git commit -m &quot;wrote a readme file&quot; 
 -m后面输入的是本次提交的说明
 commit可以一次提交很多文件，所以你可以多次add不同的文件
 </code></pre>
@@ -652,12 +704,12 @@ commit可以一次提交很多文件，所以你可以多次add不同的文件
 
 <h3 id="toc_6">git status 查看当前状态</h3>
 
-<pre><code class="language-text">git status 
+<pre class="line-numbers"><code class="language-text">git status 
 </code></pre>
 
 <h3 id="toc_7">git diff 查看做了哪些修改</h3>
 
-<pre><code class="language-text">git diff readme.txt    // filename = readme.txt
+<pre class="line-numbers"><code class="language-text">git diff readme.txt    // filename = readme.txt
 git diff    #是工作区(work dict)和暂存区(stage)的比较
 git diff --cached    #是暂存区(stage)和分支(master)的比较（add之后）
 </code></pre>
@@ -674,7 +726,7 @@ git diff --cached    #是暂存区(stage)和分支(master)的比较（add之后�
 
 <h3 id="toc_9">git log 显示从最近到最远的提交日志</h3>
 
-<pre><code class="language-text">git log 
+<pre class="line-numbers"><code class="language-text">git log 
 // --pretty=oneline参数 可以在一行显示
 git log --pretty=oneline 
 前面的是commit id（版本号）
@@ -682,18 +734,18 @@ git log --pretty=oneline
 
 <h3 id="toc_10">回退版本</h3>
 
-<pre><code class="language-text">git reset -- hard HEAD^  
+<pre class="line-numbers"><code class="language-text">git reset -- hard HEAD^  
 // 上一个版本是HEAD^ , 上上一个版本就是HEAD^^, 往上100个是HEAD~100
 </code></pre>
 
 <h3 id="toc_11">再返回未来的版本可以用commit id 返回</h3>
 
-<pre><code class="language-text">git reset --hard 3628164  // commit id = 3628164
+<pre class="line-numbers"><code class="language-text">git reset --hard 3628164  // commit id = 3628164
 </code></pre>
 
 <h3 id="toc_12">git reflog 记录你的每一次命令</h3>
 
-<pre><code class="language-text">git reflog  前面会加你的commit id
+<pre class="line-numbers"><code class="language-text">git reflog  前面会加你的commit id
 </code></pre>
 
 <hr/>
@@ -710,28 +762,28 @@ git log --pretty=oneline
 
 <h3 id="toc_14">撤销工作区的修改</h3>
 
-<pre><code class="language-text">git checkout -- readme.txt   // filename = readme.txt
+<pre class="line-numbers"><code class="language-text">git checkout -- readme.txt   // filename = readme.txt
 </code></pre>
 
 <h3 id="toc_15">撤销缓存区的提交</h3>
 
-<pre><code class="language-text">git reset HEAD readme.txt   // filename = readme.txt
+<pre class="line-numbers"><code class="language-text">git reset HEAD readme.txt   // filename = readme.txt
 </code></pre>
 
 <h3 id="toc_16">工作区删除</h3>
 
-<pre><code class="language-text">rm test.txt
+<pre class="line-numbers"><code class="language-text">rm test.txt
 </code></pre>
 
 <h3 id="toc_17">从版本库中删除该文件 git rm 删掉 并提交</h3>
 
-<pre><code class="language-text">git rm test.txt    // filename = test.txt
+<pre class="line-numbers"><code class="language-text">git rm test.txt    // filename = test.txt
 git commit -m &quot;remove test.txt&quot;
 </code></pre>
 
 <h3 id="toc_18">也可以使用 git checkout 恢复</h3>
 
-<pre><code class="language-text">git checkout -- test.txt
+<pre class="line-numbers"><code class="language-text">git checkout -- test.txt
 </code></pre>
 
 <hr/>
@@ -751,24 +803,24 @@ Git支持多种协议，包括https，但通过ssh支持的原生git协议速度
 
 <h3 id="toc_20">在GitHub 添加ssh秘钥</h3>
 
-<pre><code class="language-text">ssh-keygen -t rsa    生成ssh秘钥 
+<pre class="line-numbers"><code class="language-text">ssh-keygen -t rsa    生成ssh秘钥 
 cat C://Users/zzx/.ssh/id_rsa.pub   默认位置
 </code></pre>
 
 <h3 id="toc_21">推送到远程仓库</h3>
 
-<pre><code class="language-text">git remote add origin git@github.com:565785929/learngit.git
+<pre class="line-numbers"><code class="language-text">git remote add origin git@github.com:565785929/learngit.git
 git push -u origin master
 </code></pre>
 
 <h3 id="toc_22">本地做了提交再更新远程仓库</h3>
 
-<pre><code class="language-text">git push origin master 
+<pre class="line-numbers"><code class="language-text">git push origin master 
 </code></pre>
 
 <h3 id="toc_23">远程库已经准备好了 git clone克隆一个本地库</h3>
 
-<pre><code class="language-text">git clone git@github.com:565785929/gitskills.git     // proname = gitskills
+<pre class="line-numbers"><code class="language-text">git clone git@github.com:565785929/gitskills.git     // proname = gitskills
 </code></pre>
 
 ]]></content>
@@ -849,13 +901,13 @@ git push -u origin master
 <p>查看brew的当前源:<br/>
 执行下面命令可以看到, brew的官方镜像源为: <a href="https://github.com/Homebrew/homebrew">https://github.com/Homebrew/homebrew</a></p>
 
-<pre><code class="language-text">cd /usr/local/Homebrew
+<pre class="line-numbers"><code class="language-text">cd /usr/local/Homebrew
 git remote -v
 </code></pre>
 
 <p>更改brew镜像源</p>
 
-<pre><code class="language-text">cd /usr/local/Homebrew
+<pre class="line-numbers"><code class="language-text">cd /usr/local/Homebrew
 git remote set-url origin git://mirrors.tuna.tsinghua.edu.cn/homebrew.git
 </code></pre>
 
@@ -870,7 +922,7 @@ git remote set-url origin git://mirrors.tuna.tsinghua.edu.cn/homebrew.git
 
 <p>替换现有上游</p>
 
-<pre><code class="language-text">cd &quot;$(brew --repo)&quot;
+<pre class="line-numbers"><code class="language-text">cd &quot;$(brew --repo)&quot;
 git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
  
 cd &quot;$(brew --repo)/Library/Taps/homebrew/homebrew-core&quot;
@@ -881,7 +933,7 @@ brew update
 
 <p>使用homebrew-science或者homebrew-python</p>
 
-<pre><code class="language-text">cd &quot;$(brew --repo)/Library/Taps/homebrew/homebrew-science&quot;
+<pre class="line-numbers"><code class="language-text">cd &quot;$(brew --repo)/Library/Taps/homebrew/homebrew-science&quot;
 git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-science.git
  
 cd &quot;$(brew --repo)/Library/Taps/homebrew/homebrew-python&quot;
@@ -982,7 +1034,7 @@ brew install redis</p>
 <p>将每个文件夹中的redis.conf都修改一下<br/>
 例如： redis01/redis.conf</p>
 
-<pre><code class="language-text">port 7001
+<pre class="line-numbers"><code class="language-text">port 7001
 
 cluster-enabled yes
 
@@ -997,7 +1049,7 @@ pidfile  /var/run/redis_7001.pid
 
 <p>编写bash脚本启动</p>
 
-<pre><code class="language-text">./redis01/redis-server ./redis01/redis.conf
+<pre class="line-numbers"><code class="language-text">./redis01/redis-server ./redis01/redis.conf
 ./redis02/redis-server ./redis02/redis.conf
 ./redis03/redis-server ./redis03/redis.conf
 ./redis04/redis-server ./redis04/redis.conf
@@ -1019,7 +1071,7 @@ gem install -l redis-3.3.0.gem</p>
 
 <p>创建集群</p>
 
-<pre><code class="language-text">./redis-cli --cluster create 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005 127.0.0.1:7006 --cluster-replicas 1
+<pre class="line-numbers"><code class="language-text">./redis-cli --cluster create 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005 127.0.0.1:7006 --cluster-replicas 1
 </code></pre>
 
 <p>报错</p>
@@ -1042,7 +1094,7 @@ gem install -l redis-3.3.0.gem</p>
 
 <p>cluster命令</p>
 
-<pre><code class="language-text">cluster info 
+<pre class="line-numbers"><code class="language-text">cluster info 
 cluster nodes
 </code></pre>
 
@@ -1082,7 +1134,7 @@ cluster nodes
 
 <h3 id="toc_0">新建用户及设置密码命令如下：</h3>
 
-<pre><code class="language-text">useradd 【参数】 用户名
+<pre class="line-numbers"><code class="language-text">useradd 【参数】 用户名
 
 -g 属组
 -u 设置uid
@@ -1098,7 +1150,7 @@ cluster nodes
 
 <h3 id="toc_1">新建用户及设置密码命令如下：</h3>
 
-<pre><code class="language-text">passwd 参数 用户名
+<pre class="line-numbers"><code class="language-text">passwd 参数 用户名
 
 -l：锁定已经命名的账户名称
 -u：解开账户锁定状态
@@ -1114,7 +1166,7 @@ history -c
 
 <h3 id="toc_2">修改用户：</h3>
 
-<pre><code class="language-text">usermod 参数 用户名
+<pre class="line-numbers"><code class="language-text">usermod 参数 用户名
 
 -c：修改用户帐号的备注文字。
 -d：修改用户登入时的目录。
@@ -1133,7 +1185,7 @@ history -c
 
 <h3 id="toc_3">删除用户：</h3>
 
-<pre><code class="language-text">userdel 参数 用户名
+<pre class="line-numbers"><code class="language-text">userdel 参数 用户名
 
 常用的选项是-r，它的作用是把用户的家目录一起删除。
 
@@ -1142,7 +1194,7 @@ userdel -r abc
 
 <h3 id="toc_4">创建用户组：</h3>
 
-<pre><code class="language-text">groupadd  参数  用户组名
+<pre class="line-numbers"><code class="language-text">groupadd  参数  用户组名
 
 -g：指定新建用户组的gid；
 -r：创建系统工作组，系统用户的组ID小于500；
@@ -1152,7 +1204,7 @@ userdel -r abc
 
 <h3 id="toc_5">修改组：</h3>
 
-<pre><code class="language-text">groupmod 参数 用户组名
+<pre class="line-numbers"><code class="language-text">groupmod 参数 用户组名
 
 -g： GID 为用户组指定新的组标识号。
 -o：与-g选项同时使用，用户组的新GID可以与系统已有用户组的GID相同。
@@ -1161,12 +1213,12 @@ userdel -r abc
 
 <h3 id="toc_6">删除用户组：</h3>
 
-<pre><code class="language-text">groupdel  用户名
+<pre class="line-numbers"><code class="language-text">groupdel  用户名
 </code></pre>
 
 <h3 id="toc_7">用户查询相关命令：</h3>
 
-<pre><code class="language-text">id   //查询用户信息，例如用户归属那个用户组，及uid和gid等。
+<pre class="line-numbers"><code class="language-text">id   //查询用户信息，例如用户归属那个用户组，及uid和gid等。
 
 w   //查看谁登录了，并且做了什么，切换的不行，从新登录的才行。
 
@@ -1243,7 +1295,7 @@ lastlog  //可以查看是否有用户登录系统了（未启用的账户）
 
 <p>执行转换文件权限命令：</p>
 
-<pre><code class="language-text">chown -R redis:redisgrp
+<pre class="line-numbers"><code class="language-text">chown -R redis:redisgrp
 chomd -R 755
 </code></pre>
 
@@ -1259,7 +1311,7 @@ chomd -R 755
 
 <p>针对每个Redis 服务器的不同端口均需要单独存放配置文件（redis.conf）， 配置文件位置为/redis/conf/redis_[redis_port].conf，其中Redis端口建议使用7003以上端口，如部分系统使用软件较多存在端口冲突， 也可根据自身情况进行更改，但不建议使用7000以下端口。每个端口的配置文件均需满足如下配置要求：</p>
 
-<pre><code class="language-text">daemonize yes     # daemonize no 配置redis以守护进程方式运行。
+<pre class="line-numbers"><code class="language-text">daemonize yes     # daemonize no 配置redis以守护进程方式运行。
 bind 本机ip
 port 7003
 pidfile /redis/var/redis_[redis_port].pid   # 修改pid文件位置及名称
@@ -1313,14 +1365,14 @@ rename-command KEYS ADMKEYS<br/>
 </ul></li>
 <li><p>为Redis集群设置访问密码（requirepass和masterauth都需要设置，否则发送主从切换时，就会遇到授权问题。（注意各个节点的密码都必须一致）<br/>
 密码设置规范： 要求密码数超过10位；大小写、字母、数字、特殊字符（单双引号不要使用）相结合；不允许使用redis、root等敏感字符</p>
-<pre><code class="language-text"># requirepass foobared 
+<pre class="line-numbers"><code class="language-text"># requirepass foobared 
 修改为<br/>
 requirepass ****<br/>
 masterauth ****
 </code></pre>
 <p>注意： 使用redis-trib.rb工具构建集群，集群构建前不要设置密码，构建后通过config set + config rewrite 命令逐个机器设置密码，所以此步跳过。</p></li>
 <li><p>修改复制客户端缓存区永不溢出</p>
-<pre><code class="language-text">client-output-buffer-limit normal 0 0 0 
+<pre class="line-numbers"><code class="language-text">client-output-buffer-limit normal 0 0 0 
 client-output-buffer-limit slave 0 0 0 
 </code></pre></li>
 <li><p>修改复制去backlog buffer大小： repl-backlog-size 30mb</p></li>
@@ -1538,7 +1590,7 @@ client-output-buffer-limit slave 0 0 0
 
 <p>执行转换文件权限命令：</p>
 
-<pre><code class="language-text">chown -R redis:redisgrp
+<pre class="line-numbers"><code class="language-text">chown -R redis:redisgrp
 chomd -R 755
 </code></pre>
 
@@ -1623,14 +1675,14 @@ rename-command KEYS ADMKEYS<br/>
 </ul></li>
 <li><p>为Redis集群设置访问密码（requirepass和masterauth都需要设置，否则发送主从切换时，就会遇到授权问题。（注意各个节点的密码都必须一致）<br/>
 密码设置规范： 要求密码数超过10位；大小写、字母、数字、特殊字符（单双引号不要使用）相结合；不允许使用redis、root等敏感字符</p>
-<pre><code class="language-text"># requirepass foobared 
+<pre class="line-numbers"><code class="language-text"># requirepass foobared 
 修改为<br/>
 requirepass ****<br/>
 masterauth ****
 </code></pre>
 <p>注意： 使用redis-trib.rb工具构建集群，集群构建前不要设置密码，构建后通过config set + config rewrite 命令逐个机器设置密码，所以此步跳过。</p></li>
 <li><p>修改复制客户端缓存区永不溢出</p>
-<pre><code class="language-text">client-output-buffer-limit normal 0 0 0 
+<pre class="line-numbers"><code class="language-text">client-output-buffer-limit normal 0 0 0 
 client-output-buffer-limit slave 0 0 0 
 </code></pre></li>
 <li><p>修改复制去backlog buffer大小： repl-backlog-size 30mb</p></li>

@@ -112,18 +112,18 @@
 
 <p>在[mysqld]节，增加wait_timeout配置，原来是5，看来不够用，改为50。</p>
 
-<pre><code class="language-text">[mysqld]
+<pre class="line-numbers"><code class="language-text">[mysqld]
 wait_timeout=50
 </code></pre>
 
 <p>重启mysqld服务，问题解决</p>
 
-<pre><code class="language-text">service mysqld restart
+<pre class="line-numbers"><code class="language-text">service mysqld restart
 </code></pre>
 
 <p>报错信息如下：</p>
 
-<pre><code class="language-text">2019-08-03 22:33:17.405  WARN 29453 --- [XNIO-1 task-27] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: S1000
+<pre class="line-numbers"><code class="language-text">2019-08-03 22:33:17.405  WARN 29453 --- [XNIO-1 task-27] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: S1000
 2019-08-03 22:33:17.405 ERROR 29453 --- [XNIO-1 task-27] o.h.engine.jdbc.spi.SqlExceptionHelper   : Packet for query is too large (5,216 &gt; 1,024). You can change this value on the server by setting the &#39;max_allowed_packet&#39; variable.
 2019-08-03 22:33:17.406  WARN 29453 --- [XNIO-1 task-27] com.zaxxer.hikari.pool.ProxyConnection   : HikariPool-1 - Connection com.mysql.cj.jdbc.ConnectionImpl@1e66d73f marked as broken because of SQLSTATE(08007), ErrorCode(0)
 
@@ -1067,7 +1067,7 @@ Caused by: java.sql.SQLNonTransientConnectionException: Communications link fail
              
             
             <li>
-            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(13)</a>
+            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(14)</a>
             <p>
             
             </p>
@@ -1102,17 +1102,18 @@ Caused by: java.sql.SQLNonTransientConnectionException: Communications link fail
             
              
             
-            </p>
-            </li>
-            
-             
-            
              
       </div>
       <!-- 最新文章 -->
       <div class="meta-item meta-comments">
           <h2 class="meta-title">RECENT POSTS</h2>
 
+          
+          
+         <li>
+           <a href="15833368444152.html">Linux</a><br>
+         </li>
+          
           
           
          <li>
@@ -1135,12 +1136,6 @@ Caused by: java.sql.SQLNonTransientConnectionException: Communications link fail
           
          <li>
            <a href="15819525546014.html">网易云 最嗨电音 爬虫</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="15809082865015.html">使用模拟退火来构造极值图</a><br>
          </li>
           
           

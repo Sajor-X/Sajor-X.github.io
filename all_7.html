@@ -94,55 +94,19 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
 						
 						</div> 
-						<a href="15647098694474.html"> 
+						<a href="15642871336794.html"> 
 							<div class="item-desc"> 
-								<p>在上一章的基础上，我们还使用c06包接着添加功能。
+								<p>一、依赖注入
 
-1、数据库表准备
-新建一个数据库表:resume 并添加几条数据
+1、新建一个 School 类
+右键 src&gt;main&gt;java&gt;com.sajor.study.c01，点击 New&gt;Java Class
 
-resume 表
+在 School 中引用 Student 类，并可以获得含有 Student 对象的一个 List:
 
-
-
-
-字段名称
-类型
-长度
-
-
-
-
-
-resumeid
-int
-11（主键）
-
-
-userid
-int
-11
-
-
-resumename
-varchar
-255
-
-
-resumedesc
-varchar
-255
-
-
-
-
-2、在 model 包中创建 Resume 类
-
-package com.sajor.study.c06.model;
-
-public class Resume {
-    private Integer resumeId;
-    pri</p> 
+    private int id = 2000;
+    private String name = &quot;Sajor&quot;;
+    private Student student;
+    private List&lt;Student&gt; students = new ArrayLis</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -153,7 +117,7 @@ public class Resume {
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15647098694474.html">从零开始SSM开发系列十：MyBatis 一对多关联关系</a>
+	  							<a href="15642871336794.html">从零开始SSM开发系列四：依赖注入及 Bean 管理</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -180,31 +144,32 @@ public class Resume {
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
 						
 						</div> 
-						<a href="15646739216640.html"> 
+						<a href="15642457728170.html"> 
 							<div class="item-desc"> 
-								<p>关系型数据库：
+								<p>1、新建一个包 com.sajor.study.c01
 
-Oracle、DB2、Microsoft SQL Server、Microsoft Access、MySQL
+打开开发工具 Intellij IDEA，打开之前创建的工程右键 src&gt;main&gt;java&gt;com.sajor.study，点击 New&gt;Package
 
-非关系型数据库：
 
-NoSql、Cloudant、MongoDb、redis、HBase
 
-两种数据库之间的区别：
+创建包 c01
 
-关系型数据库
 
-　　关系型数据库的特性
 
-　　1、关系型数据库，是指采用了关系模型来组织数据的数据库；
+2、新建一个 Student 类
+右键 src&gt;main&gt;java&gt;com.sajor.study.c01，点击 New&gt;Java Class
 
-　　2、关系型数据库的最大特点就是事务的一致性；
 
-　　3、简单来说，关系模型指的就是二维表格模型，而一个关系型数据库就是由二维表及其之间的联系所组成的一个数据组织。
 
-　　关系型数据库的优点
+创建Student类
 
-　　1、容易理解：二维表结构是非常贴近逻辑世界一个</p> 
+
+
+Student 类包含 4 个属性
+
+package com.sajor.study.c01;
+
+public class Stud</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -215,7 +180,7 @@ NoSql、Cloudant、MongoDb、redis、HBase
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15646739216640.html">列举常见的关系型数据库和非关系型都有那些？</a>
+	  							<a href="15642457728170.html">从零开始SSM开发系列三：第一个Spring应用</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -226,7 +191,7 @@ NoSql、Cloudant、MongoDb、redis、HBase
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
+			    			<a class='category' href='ssm.html'>SSM练习</a>
 								
 		   						</div> 
 		   					</div> 
@@ -242,45 +207,28 @@ NoSql、Cloudant、MongoDb、redis、HBase
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
 						
 						</div> 
-						<a href="15643240518555.html"> 
+						<a href="15642432857493.html"> 
 							<div class="item-desc"> 
-								<p>1、数据库表准备
+								<p>创建远程仓库
 
-新建一个数据库表:card 并添加几条数据
-
-Card 表
+首先申请github账号这个不讲了，然后创建一个项目名为 SSMClass ，信息填写好之后，点击create repository
 
 
 
+之后点击Clone or download，选择use ssh，之后复制一下这个链接留作备用
 
-字段名称
-类型
-长度
+git@github.com:565785929/SSMClass.git
 
 
 
 
+创建本地仓库并远程
 
-id
-int
-11（主键）
+1、 初始化本地git仓库
+然后使用IDEA打开这个文件夹，点击VCS -&gt; Import into Version Control -&gt; Create Git Repository。 相当于这条git命令
 
+git init
 
-code
-varchar
-18
-
-
-
-
-2、创建新的 Package
-
-
-com.sajor.study.c06
-com.sajor.study.c06.model : 存放 vo 对象(业务模型对象) 
-com.sajor.study.c06.dao : 存放 dao 对象(数据库访问对象) 
-com.sajor.study.mapper : 存放 mybatis 数据库表-对象映射文件 
-test.com.sajor.study.c06 
 </p> 
 							</div> 
 						</a> 
@@ -292,7 +240,7 @@ test.com.sajor.study.c06
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15643240518555.html">从零开始SSM开发系列九：MyBatis 一对一关联关系</a>
+	  							<a href="15642432857493.html">从零开始SSM开发系列二：GitHub配置（可以跳过）</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -319,24 +267,15 @@ test.com.sajor.study.c06
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
 						
 						</div> 
-						<a href="15643212338496.html"> 
+						<a href="15642402893897.html"> 
 							<div class="item-desc"> 
-								<p>1、配置 MyBatis 开发环境
-
-在工程里面引用 MyBatis 核心 jar 包，以及 MyBatis 依赖的第三方 jar 包。
-点击 File&gt;Project Structure...，选中 Libraries，添加 java 引用
-选择 l􏰀ib 中的 􏰁Mybatis-3.4.5.jar 包。
-
-再次添加 java 引用，选中 lib 中的 mybatis-3.4.5-lib 文件夹
-确认。MyBatis 开发环境即搭建好了。
-
-
-
-2、创建新的 Package
-
-
-com.sajor.study.c05
-com.sajor.study.c05.model:存放 vo </p> 
+								<p>▪ 官网 http://www.oracle.com/technetwork/java/javaee/overview/index.html java 入门指导
+▪ 博客园 https://www.cnblogs.com/ 开发者的网上家园
+▪ 开源中国 http://www.oschina.net/ 找到想要的开源项目，分享和交流
+▪ CSDN https://www.csdn.net/ 最大的程序员中文社区
+▪ ITPub http://www.itpub.net/ 数据库最好的社区
+▪ iteye http://www.iteye.com/ 曾经最好的java社区
+▪ Stackover</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -347,7 +286,73 @@ com.sajor.study.c05.model:存放 vo </p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15643212338496.html">从零开始SSM开发系列八：MyBatis 入门</a>
+	  							<a href="15642402893897.html">学习资料</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='java.html'>ssm课程</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
+						
+						</div> 
+						<a href="15642392486315.html"> 
+							<div class="item-desc"> 
+								<p>Java 开发环境配置
+
+1、新建 Java 工程
+
+打开开发工具 Intellij IDEA，点击菜单 File &gt; New &gt; Project...
+
+2、配置 JDK
+
+点击右上角“New”按钮，选择 JDK 安装的路径(Windows 与 MacOS 不一样，选择你自己安装 JDK 的 路径)
+
+
+配置好 JDK，点击下一步“Next”
+ 
+
+再下一步“Next”
+
+3、设置项目信息
+设置项目存放地址，选择刚刚新建的文件夹。
+
+
+设置项目名称，之后点击完成“Finish”:
+
+选择ok
+
+
+4、拷贝开发 Spring 引用的 jar 包
+在工程根目录创建 lib 目录。右键</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15642392486315.html">从零开始SSM开发系列一：JAVA 开发环境配置</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -374,15 +379,17 @@ com.sajor.study.c05.model:存放 vo </p>
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
 						
 						</div> 
-						<a href="15643155536877.html"> 
+						<a href="15641490587108.html"> 
 							<div class="item-desc"> 
-								<p>1、Spring 配置文件中声明事务
+								<p>今天博客突然报了这个错误：
 
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-       xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
-   </p> 
+Packet for query is too large (5,215 &gt; 1,024). You can change this value on the server by setting the &#39;max_allowed_packet&#39; variable.
+
+
+百度了一下，MySQL会根据配置文件会限制server接受的数据包的大小。如果写入大数据时，因为默认的配置太小，插入和更新操作会因为 max_allowed_packet 参数限制，而导致失败。
+在MySQL中输入这条命令查询
+
+SHOW VARIABLES LIKE &#39</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -393,7 +400,7 @@ com.sajor.study.c05.model:存放 vo </p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15643155536877.html">从零开始SSM开发系列七：事务管理</a>
+	  							<a href="15641490587108.html">在使用Mybatis generator时提示MySQL写入过大</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -404,7 +411,7 @@ com.sajor.study.c05.model:存放 vo </p>
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
 								
 		   						</div> 
 		   					</div> 
@@ -454,7 +461,7 @@ com.sajor.study.c05.model:存放 vo </p>
              
             
             <li>
-            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(13)</a>
+            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(14)</a>
             <p>
             
             </p>
@@ -489,17 +496,18 @@ com.sajor.study.c05.model:存放 vo </p>
             
              
             
-            </p>
-            </li>
-            
-             
-            
              
       </div>
       <!-- 最新文章 -->
       <div class="meta-item meta-comments">
           <h2 class="meta-title">RECENT POSTS</h2>
 
+          
+          
+         <li>
+           <a href="15833368444152.html">Linux</a><br>
+         </li>
+          
           
           
          <li>
@@ -522,12 +530,6 @@ com.sajor.study.c05.model:存放 vo </p>
           
          <li>
            <a href="15819525546014.html">网易云 最嗨电音 爬虫</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="15809082865015.html">使用模拟退火来构造极值图</a><br>
          </li>
           
           

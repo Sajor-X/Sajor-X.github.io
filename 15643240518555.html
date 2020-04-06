@@ -149,7 +149,7 @@ test.com.sajor.study.c06 </p>
 
 <p>User 类</p>
 
-<pre><code class="language-text">package com.sajor.study.c06.model;
+<pre class="line-numbers"><code class="language-text">package com.sajor.study.c06.model;
 
 public class User {
     private int id = 20190801;
@@ -220,7 +220,7 @@ public class User {
 
 <p>Card 类</p>
 
-<pre><code class="language-text">package com.sajor.study.c06.model;
+<pre class="line-numbers"><code class="language-text">package com.sajor.study.c06.model;
 
 public class Card {
     private Integer id;
@@ -259,7 +259,7 @@ public class Card {
 
 <p>UserMapper.xml</p>
 
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<pre class="line-numbers"><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
 &lt;!-- namespace 表示命名空间 --&gt;
 &lt;mapper namespace=&quot;com.sajor.study.c06.mapper.UserMapper&quot;&gt;
@@ -301,7 +301,7 @@ public class Card {
 
 <p>CardMapper.xml</p>
 
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<pre class="line-numbers"><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
 &lt;!-- namespace 表示命名空间 --&gt;
 &lt;mapper namespace=&quot;com.sajor.study.c06.mapper.CardMapper&quot;&gt;
@@ -314,7 +314,7 @@ public class Card {
 
 <p>5、新建一个 MyBatis 的核心配置文件 mybatis-config-c06-relation.xml</p>
 
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+<pre class="line-numbers"><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
 &lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
 &lt;configuration&gt;
     &lt;!--1.配置环境 ，默认的环境id为msql--&gt;
@@ -350,7 +350,7 @@ public class Card {
 
 <p>在 spring 配置文件中配置 bean</p>
 
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<pre class="line-numbers"><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
        xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
        xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
@@ -364,7 +364,7 @@ public class Card {
 
 <p>对数据库进行关联查询</p>
 
-<pre><code class="language-text">package com.sajor.study.c06.dao;
+<pre class="line-numbers"><code class="language-text">package com.sajor.study.c06.dao;
 
 import com.sajor.study.c06.model.User;
 import org.apache.ibatis.io.Resources;
@@ -402,7 +402,7 @@ public class UserDAO {
 
 <p>8、创建测试类 MyBatisRelationTest</p>
 
-<pre><code class="language-text">package test.com.sajor.study.c06;
+<pre class="line-numbers"><code class="language-text">package test.com.sajor.study.c06;
 
 import com.sajor.study.c06.dao.UserDAO;
 import com.sajor.study.c06.model.User;
@@ -603,7 +603,7 @@ public class MyBatisRelationTest {
              
             
             <li>
-            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(13)</a>
+            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(14)</a>
             <p>
             
             </p>
@@ -638,17 +638,18 @@ public class MyBatisRelationTest {
             
              
             
-            </p>
-            </li>
-            
-             
-            
              
       </div>
       <!-- 最新文章 -->
       <div class="meta-item meta-comments">
           <h2 class="meta-title">RECENT POSTS</h2>
 
+          
+          
+         <li>
+           <a href="15833368444152.html">Linux</a><br>
+         </li>
+          
           
           
          <li>
@@ -671,12 +672,6 @@ public class MyBatisRelationTest {
           
          <li>
            <a href="15819525546014.html">网易云 最嗨电音 爬虫</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="15809082865015.html">使用模拟退火来构造极值图</a><br>
          </li>
           
           

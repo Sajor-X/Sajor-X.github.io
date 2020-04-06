@@ -10,7 +10,7 @@
 
     <title>
       
-    ssh - Sajor's Blog
+    Linux - Sajor's Blog
     
     </title>
 
@@ -88,9 +88,9 @@
 		<div class="post-header">
 			<!-- title -->
 			<div class="post-header">
-				<h1 class="post-title itemprop="name headline">ssh</h1>	
+				<h1 class="post-title itemprop="name headline">Linux</h1>	
 				<div class="post-data">
-					<time datetime="2019-12-22T13:21:46+08:00" pubdate data-updated="true">2019/12/22</time>
+					<time datetime="2020-03-04T23:47:24+08:00" pubdate data-updated="true">2020/03/04</time>
 				</div>
 			</div>
 		</div>
@@ -102,14 +102,218 @@
 		</p>
 	<!-- 正文 -->
 		<p>
-		<p>systemctl stop sshd.service <br/>
-停止转发</p>
+		<p>Linux下的程序往往使你更加有效率，因为他们可以更高效的使用电脑的资源</p>
 
-<p>lsof -i :80|grep -v &quot;PID&quot;|awk &#39;{print &quot;kill -9&quot;,$2}&#39;|sh<br/>
-关闭80端口程序</p>
+<p><strong>不同的Linux发行版之间的主要区别：</strong></p>
 
-<p>pscp -r -l root -pw 5657 e:\htk 118.24.163.26:/root<br/>
-e:\htk -&gt; /root 传送文件</p>
+<p>1、安装方法不一样，有的复杂，有的简单。</p>
+
+<p>2、安装应用程序的方式不一样。</p>
+
+<p>3、预装的应用程序不一样。</p>
+
+<h3 id="toc_0">linux发行版</h3>
+
+<p>1、RedHat：性能稳定，老牌的linux发行版。收费的是RedHat Enterprise Linux（RHEL。redhat企业版）。目前RedHat分为两个系列：由RedHat公司提供收费技术支持。以及社区开发的免费的Fedora。</p>
+
+<p>2、Fedora：RedHat的社区免费后继版，非常强大。</p>
+
+<p>3、CentOS：国内许多企业选择CentOS，CentOS可以算是RHEL的克隆版，最大的好处就是免费。</p>
+
+<p>4、SUSE：德国最著名的Linux发行版。</p>
+
+<p>5、Debian：算是迄今为止，最遵循GNU规范的linux系统。（gnu的目标就是创建一套完全自由的操作系统。）</p>
+
+<p>6、Ubuntu：Debian的后继一个分支。也是课程使用的linux发行版。</p>
+
+<h3 id="toc_1">Ubuntu的优点</h3>
+
+<p>1、简便易用。对于初学者，Ubuntu系统算是非常简单的，除了命令。</p>
+
+<p>2、更新定期而频繁。每6个月就有一个新的Ubuntu版本，使用者非常多，支持的社区也很多。</p>
+
+<p>3、标准化。</p>
+
+<h3 id="toc_2">系统设置</h3>
+
+<p><strong>lshw</strong>    获取硬件信息</p>
+
+<p><strong>lscpu</strong>   获取CPU信息</p>
+
+<p><strong>lsusb</strong>   获取usb接口信息</p>
+
+<p><strong>uname</strong>   获取系统相关信息</p>
+
+<p><strong>df</strong>  ：查看磁盘空间</p>
+
+<p><strong>date</strong>    ：查看日期和时间</p>
+
+<blockquote>
+<p>&quot;+%j&quot; 今年中的第几天</p>
+</blockquote>
+
+<p><strong>hostname</strong>    ：显示主机名</p>
+
+<p><strong>ifconfig</strong>    ：显示网络接口参数</p>
+
+<h3 id="toc_3">关机重启命令</h3>
+
+<p><strong>reboot</strong>  ：重启系统</p>
+
+<p><strong>poweroff</strong>：   关机</p>
+
+<p><strong>shutdown</strong>：   是定时关机</p>
+
+<blockquote>
+<p>shutdown -h time  指定时间，不写，就是一分钟之后执行</p>
+
+<p>shutdown -h +5    ：五分钟后关机</p>
+
+<p>shutdown -c   ：取消定时关机</p>
+
+<p>shutdown -r now   ：立即重启</p>
+</blockquote>
+
+<h3 id="toc_4">常用指令</h3>
+
+<pre class="line-numbers"><code class="language-python">#通过上下方向键来获取过往执行过的linux命令
+#命令仅需输入前几位就可以用TAB键补全
+要想准确，高效地完成各种任务，仅依赖命令本身是不够的，还应该根据实际情况来灵活调整各种命令的参数：
+linux命令格式：
+命令名称  [命令参数] [命令对象]
+#命令名称、参数、对象之间用空格键分隔。
+
+命令参数分为：
+长格式  man --help
+短格式  man -h
+
+</code></pre>
+
+<h3 id="toc_5">man 命令中常用按键以及用途</h3>
+
+<table>
+<thead>
+<tr>
+<th>按键</th>
+<th>用处</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>空格键</td>
+<td>向下翻一页</td>
+</tr>
+<tr>
+<td>page down</td>
+<td>向下翻一页</td>
+</tr>
+<tr>
+<td>page up</td>
+<td>向上翻一页</td>
+</tr>
+<tr>
+<td>home（fn+左方向键）</td>
+<td>直接前往首页</td>
+</tr>
+<tr>
+<td>end（fn+右方向键）</td>
+<td>直接前往尾页</td>
+</tr>
+<tr>
+<td>/</td>
+<td>从上至下搜索某个关键词，如 ‘/and’</td>
+</tr>
+<tr>
+<td>?</td>
+<td>从下至上搜索某个关键词，如 ‘？and’</td>
+</tr>
+<tr>
+<td>n</td>
+<td>定位到下一个搜索到的关键词</td>
+</tr>
+<tr>
+<td>N</td>
+<td>定位到上一个搜索到的关键词</td>
+</tr>
+<tr>
+<td>q</td>
+<td>退出帮助文档</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_6">目录命令</h3>
+
+<p>1、pwd   ---print working directory</p>
+
+<p>显示用户当前所处的工作目录</p>
+
+<p>2、cd  ---change directory</p>
+
+<p>用于切换工作路径</p>
+
+<blockquote>
+<p>cd 目录名  ：进入某一目录</p>
+
+<p>cd ..    ：返回上一级目录，并显示路径</p>
+
+<p>cd -   ：返回上一次所处的目录</p>
+
+<p>cd ~     ：切换到当前用户的家目录</p>
+</blockquote>
+
+<p>3、ls ----list</p>
+
+<p>ls会列举出当前工作目录的内容（文件或文件夹）</p>
+
+<blockquote>
+<p>-a    :查看所有文件（包括隐藏文件）</p>
+
+<p>-l    ：查看文件的属性，大小等详细信息</p>
+</blockquote>
+
+<pre class="line-numbers"><code class="language-python">第一列一共十位：
+#第一位是类型：
+d代表目录
+-代表是文件
+l代表连接
+
+#第二位到十位是权限
+权限共九位，分三组，每三个一组
+-rwx：
+-r read 可读权限  4 或者 0
+-w write 可写权限  2 或者 0  如果一条线，一个减号代表0
+-x execute 可执行权限  1或者0
+
+这三个字母能表示多少值:0-7
+0：什么权限都没有
+1：文件只能执行
+2：文件只有写权限
+3：文件可写可执行
+4：文件只有读权限
+5：可读可执行
+6：可读可写
+7：可读可写可执行
+
+#对于文件而言：
+可读权限表示允许读其内容，而禁止对其做任何的更改操作
+可写权限表示可以改写编辑文件的内容或删除文件。（要有文件所在目录的写权限）
+可执行权限表示允许将该文件作为一个程序执行。
+#对于目录而言：
+可读权限表示允许显示该目录中的内容
+可写权限表示可以在目录中新建，删除，重名令文件
+可执行权限表示可以进入该目录。可执行权限是基本权限。
+
+权限共九位，每三个一组
+1、代表当前用户的权限  ---读写和执行
+2、代表当前用户所属的组的权限
+3、代表其他组的权限
+
+-w-
+
+
+</code></pre>
 
 		</p>
 		<!-- 侧边导航条 -->
@@ -210,22 +414,16 @@ e:\htk -&gt; /root 传送文件</p>
 	<!-- 版权声明 -->
 		<p class="post-info" style="color: #BCBDB6">
 				本文由 <a style="color: #BCBDB6" href="#">Sajor
-				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2019-12-22T13:21:46+08:00
+				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2020-03-04T23:47:24+08:00
 		</p>
 	<!-- 导航 -->
 			<div id="comments" class="clearfix" style="padding: 0px;">
 				<footer class="post-footer clearfix">	    			
 				    <div class="meta">
 					    
-					    <P style="float: left;">
-					    	<a href="15773499726644.html" 
-					        title="Previous Post: 监控Python 运行">&laquo; 监控Python 运行</a>
-					    </p>
-					    <p style="float:right; ">
 					    	
-					    	
-					        <a href="15769920752565.html" 
-					        title="Next Post: pscp">pscp &raquo;</a>
+					        <a href="15826152154212.html" 
+					        title="Next Post: MyBatis 开启自动驼峰转换">MyBatis 开启自动驼峰转换 &raquo;</a>
 					    </p> 
 					    
 				    </div>

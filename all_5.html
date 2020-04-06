@@ -94,24 +94,30 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
 						
 						</div> 
-						<a href="15659217621647.html"> 
+						<a href="15648434329273.html"> 
 							<div class="item-desc"> 
-								<p>一个项目管理工具 
+								<p>今天博客遇到如下异常
 
 
-统一开发规范与工具
-统一管理jar包
+MySQLNonTransientConnectionException: Communications link failure during rollback().
 
 
-pom.xml (Project Object Model)
+打开mysql配置文件/etc/my.cnf
 
-项目对象模型：用于描述整个Maven项目，也称为Maven描述文件。
+在[mysqld]节，增加wait_timeout配置，原来是5，看来不够用，改为50。
 
-pom.xml 最基础是这样的
+[mysqld]
+wait_timeout=50
 
-&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
-    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-    xsi:schemaLocation=&quot;http://maven.apache.o</p> 
+
+重启mysqld服务，问题解决
+
+service mysqld restart
+
+
+报错信息如下：
+
+2019-08-03 22:33:17.405  WARN 29453 --- [XNIO-1 task</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -122,124 +128,7 @@ pom.xml 最基础是这样的
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15659217621647.html">Maven</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='java.html'>ssm课程</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
-						
-						</div> 
-						<a href="15651008291490.html"> 
-							<div class="item-desc"> 
-								<p>哈希
-
-输出空间 2256
-
-
-collision resistance 哈希碰撞（没有数学方法可以证明，只有实战经验）
-
-
-没有一个好的方法可以算出 X 的hash值正好等于 Y 的hash值，可以使用穷举方法 brute-force
-用处： 在上传文件时，可以先算一个 digest 在下载的时候，再算一次查看是否和之前的相等，即可发现文件是否被篡改。
-MD5 原来以为具有这个性质，但是后来被证明是可以被人为制造碰撞的。
-
-
-hiding 单向的 
-
-
-前提：输入空间比较大，且分布均匀
-X -&gt; H(X) 知道了 H(X) 并不能知道 X 的值
-
-digital commitment </p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15651008291490.html">密码学原理</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
-						
-						</div> 
-						<a href="15650106911020.html"> 
-							<div class="item-desc"> 
-								<p>排序算法说明
-
-
-排序的定义
-对一序列对象根据某个关键字进行排序。
-术语说明
-稳定：如果a原本在b前面，而a=b，排序之后a仍然在b的前面；
-不稳定：如果a原本在b的前面，而a=b，排序之后a可能会出现在b的后面；
-内排序：所有排序操作都在内存中完成；
-外排序：由于数据太大，因此把数据放在磁盘中，而排序通过磁盘和内存的数据传输才能进行；
-时间复杂度： 一个算法执行所耗费的时间。
-空间复杂度：运行完一个程序所需内存的大小。
-算法总结
-
-图片名词解释：
-n: 数据规模
-k: “桶”的个数
-In-place: 占用常数内存，不占用额外内存
-Out-place: 占用额外内存
-比较和非比较的区别
-常见</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15650106911020.html">排序算法</a>
+	  							<a href="15648434329273.html">mysql经典的8小时问题-wait_timeout</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -266,25 +155,17 @@ Out-place: 占用额外内存
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
 						
 						</div> 
-						<a href="15649246400338.html"> 
+						<a href="15647321562727.html"> 
 							<div class="item-desc"> 
-								<p>关于wordpress更新提示无法创建目录问题
+								<p>Spring概述
+
+Spring是什么
 
 
-进入wordpress安装目录下，修改wp-config.php文件添加：define(&quot;FS_METHOD&quot;,&quot;direct&quot;);
-chown -R sajor.sajor  xxx/wordpress/ 将存放wordpress博客的文件夹设置成sajor用户。
-修改php配置
-
-vim /etc/php-fpm.d/www.conf
-user = sajor
-group = sajor
-
-重启php-fpm
-
-systemctl restart php-fpm
+Spring是分层的JavaSE/EE full-stack 轻量级开源框架，Rod Johnson在《Expert One-on-One:J2EE Design and Development》(2002年)提出一种新的编程思想，2003 年发布 了一个新的Java开发框架-SpringFramework
 
 
-</p> 
+Spring以IoC（Inverse of Control 控制反转）和 AOP（Aspect Oriented Programming 面向切面编程）为内核，使用基本的JavaBean来完成以前只可能由EJB完成的工作，取代了EJB的臃肿、</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -295,7 +176,7 @@ systemctl restart php-fpm
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15649246400338.html">WordPress 博客遇到的问题</a>
+	  							<a href="15647321562727.html">Spring入门</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -306,7 +187,7 @@ systemctl restart php-fpm
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
+			    			<a class='category' href='java.html'>ssm课程</a>
 								
 		   						</div> 
 		   					</div> 
@@ -322,17 +203,19 @@ systemctl restart php-fpm
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
 						
 						</div> 
-						<a href="15649144225977.html"> 
+						<a href="15647300073307.html"> 
 							<div class="item-desc"> 
-								<p>由于linux的yum源不存在php7.x，所以我们要更改yum源
+								<p>在上一章的基础上，继续使用c07包
 
-rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
-rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm 
+1、创建新的 Package
 
 
-安装
-
-yum -y install php72w php72w-cli php72w-common php72w-devel php72w-embedded php72w-fpm php72w-gd php72w-mbstrin</p> 
+com.sajor.study.c07.user
+com.sajor.study.c07.user.model:存放 vo 对象(业务模型对象) 
+com.sajor.study.c07.user.dao:存放 dao 对象(数据库访问对象) 
+com.sajor.study.c07.user.mapper:存放 mybatis 数据库表-对象映射文件 
+com.sajor.study.c07.user.service:存放服务接口 
+com.sajor.study.c07.user.service.impl:存放接口实现</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -343,7 +226,7 @@ yum -y install php72w php72w-cli php72w-common php72w-devel php72w-embedded php7
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15649144225977.html">PHP 安装和卸载方法</a>
+	  							<a href="15647300073307.html">从零开始SSM开发系列十三：使用 Mapper 接口方式整合 MyBatis-Spring</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -354,7 +237,257 @@ yum -y install php72w php72w-cli php72w-common php72w-devel php72w-embedded php7
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
+			    			<a class='category' href='ssm.html'>SSM练习</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
+						
+						</div> 
+						<a href="15647285252626.html"> 
+							<div class="item-desc"> 
+								<p>1、引用 MyBatis-Spring 集成 jar 包
+
+在工程中引用 mybatis-spring-1.3.1.jar包
+
+点击 File&gt;Project Structure...，选中 Libraries，添加 java 引用
+
+
+
+2、创建新的 Package
+
+
+com.sajor.study.c07
+com.sajor.study.c07.dao 
+test.com.sajor.study.c07
+
+
+3、在 dao 包中创建一个 User 类
+
+在类中声明id、name、sex和email属性，及其对应的getter/setter方法。
+
+package com.sajor</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15647285252626.html">从零开始SSM开发系列十二：使用 DAO 方式整合 MyBatis-Spring</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='ssm.html'>SSM练习</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
+						
+						</div> 
+						<a href="15647140106325.html"> 
+							<div class="item-desc"> 
+								<p>在上一章的基础上，我们还使用c06包接着添加功能。
+
+1、数据库表准备
+新建一个数据库表:jo􏰀b、j􏰀obresume 并添加几条数据
+
+jo􏰀b 表
+
+
+
+
+字段名称
+类型
+长度
+
+
+
+
+
+jobid
+int
+11（主键）
+
+
+jobtitle
+varchar
+127
+
+
+
+
+jobresume表
+
+
+
+
+字段名称
+类型
+长度
+
+
+
+
+
+id
+int
+11（主键）
+
+
+jobid
+int
+11
+
+
+resumeid
+int
+11
+
+
+
+
+2、在 model 包中创建 Job 类
+
+package com.sajor.study.c06.model;
+
+import java.util</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15647140106325.html">从零开始SSM开发系列十一：MyBatis 多对多关联关系</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='ssm.html'>SSM练习</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
+						
+						</div> 
+						<a href="15647098694474.html"> 
+							<div class="item-desc"> 
+								<p>在上一章的基础上，我们还使用c06包接着添加功能。
+
+1、数据库表准备
+新建一个数据库表:resume 并添加几条数据
+
+resume 表
+
+
+
+
+字段名称
+类型
+长度
+
+
+
+
+
+resumeid
+int
+11（主键）
+
+
+userid
+int
+11
+
+
+resumename
+varchar
+255
+
+
+resumedesc
+varchar
+255
+
+
+
+
+2、在 model 包中创建 Resume 类
+
+package com.sajor.study.c06.model;
+
+public class Resume {
+    private Integer resumeId;
+    pri</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15647098694474.html">从零开始SSM开发系列十：MyBatis 一对多关联关系</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='ssm.html'>SSM练习</a>
 								
 		   						</div> 
 		   					</div> 
@@ -404,7 +537,7 @@ yum -y install php72w php72w-cli php72w-common php72w-devel php72w-embedded php7
              
             
             <li>
-            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(13)</a>
+            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(14)</a>
             <p>
             
             </p>
@@ -439,17 +572,18 @@ yum -y install php72w php72w-cli php72w-common php72w-devel php72w-embedded php7
             
              
             
-            </p>
-            </li>
-            
-             
-            
              
       </div>
       <!-- 最新文章 -->
       <div class="meta-item meta-comments">
           <h2 class="meta-title">RECENT POSTS</h2>
 
+          
+          
+         <li>
+           <a href="15833368444152.html">Linux</a><br>
+         </li>
+          
           
           
          <li>
@@ -472,12 +606,6 @@ yum -y install php72w php72w-cli php72w-common php72w-devel php72w-embedded php7
           
          <li>
            <a href="15819525546014.html">网易云 最嗨电音 爬虫</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="15809082865015.html">使用模拟退火来构造极值图</a><br>
          </li>
           
           

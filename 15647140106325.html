@@ -164,7 +164,7 @@
 
 <p>2、在 model 包中创建 Job 类</p>
 
-<pre><code class="language-text">package com.sajor.study.c06.model;
+<pre class="line-numbers"><code class="language-text">package com.sajor.study.c06.model;
 
 import java.util.List;
 
@@ -224,7 +224,7 @@ public class Job {
 
 <p>JobMapper.xml</p>
 
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<pre class="line-numbers"><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
 &lt;!-- namespace 表示命名空间 --&gt;
 &lt;mapper namespace=&quot;com.sajor.study.c06.mapper.JobMapper&quot;&gt;
@@ -267,7 +267,7 @@ public class Job {
 
 <p>ResumeMapper.xml</p>
 
-<pre><code class="language-text">&lt;!--下面是新增内容:通过 jobid 查关联简历--&gt;
+<pre class="line-numbers"><code class="language-text">&lt;!--下面是新增内容:通过 jobid 查关联简历--&gt;
     &lt;select id=&quot;findResumeById&quot; parameterType=&quot;Integer&quot; resultType=&quot;com.sajor.study.c06.model.Resume&quot;&gt;
         SELECT * from Resume where resumeid IN(
             SELECT resumeid FROM jobresume WHERE jobid = #{id}
@@ -279,21 +279,21 @@ public class Job {
 
 <p>配置JobMapper.xml的位置</p>
 
-<pre><code class="language-text">&lt;mapper resource=&quot;com/sajor/study/c06/mapper/JobMapper.xml&quot; /&gt;
+<pre class="line-numbers"><code class="language-text">&lt;mapper resource=&quot;com/sajor/study/c06/mapper/JobMapper.xml&quot; /&gt;
 </code></pre>
 
 <p>5、修 改 Spring 配 置 文 件 spring-config-mybatis-c06-relation.xml</p>
 
 <p>在 spring 配置文件中配置 bean</p>
 
-<pre><code class="language-text">&lt;bean id=&quot;jobDAO&quot; class=&quot;com.sajor.study.c06.dao.JobDAO&quot;/&gt;
+<pre class="line-numbers"><code class="language-text">&lt;bean id=&quot;jobDAO&quot; class=&quot;com.sajor.study.c06.dao.JobDAO&quot;/&gt;
 </code></pre>
 
 <p>6、新建一个 DAO 类 JobDAO</p>
 
 <p>对数据库进行关联查询</p>
 
-<pre><code class="language-text">package com.sajor.study.c06.dao;
+<pre class="line-numbers"><code class="language-text">package com.sajor.study.c06.dao;
 
 import com.sajor.study.c06.model.Job;
 import org.apache.ibatis.io.Resources;
@@ -332,7 +332,7 @@ public class JobDAO {
 
 <p>7、修改测试类 MyBatisRelationTest</p>
 
-<pre><code class="language-text">JobDAO jobDAO = (JobDAO) ctx.getBean(&quot;jobDAO&quot;);
+<pre class="line-numbers"><code class="language-text">JobDAO jobDAO = (JobDAO) ctx.getBean(&quot;jobDAO&quot;);
 Job job = jobDAO.findJobsWithResumeByID(2);
 System.out.println(job);
 </code></pre>
@@ -517,7 +517,7 @@ System.out.println(job);
              
             
             <li>
-            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(13)</a>
+            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(14)</a>
             <p>
             
             </p>
@@ -552,17 +552,18 @@ System.out.println(job);
             
              
             
-            </p>
-            </li>
-            
-             
-            
              
       </div>
       <!-- 最新文章 -->
       <div class="meta-item meta-comments">
           <h2 class="meta-title">RECENT POSTS</h2>
 
+          
+          
+         <li>
+           <a href="15833368444152.html">Linux</a><br>
+         </li>
+          
           
           
          <li>
@@ -585,12 +586,6 @@ System.out.println(job);
           
          <li>
            <a href="15819525546014.html">网易云 最嗨电音 爬虫</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="15809082865015.html">使用模拟退火来构造极值图</a><br>
          </li>
           
           

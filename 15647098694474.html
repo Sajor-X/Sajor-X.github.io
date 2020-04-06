@@ -144,7 +144,7 @@
 
 <p>2、在 model 包中创建 Resume 类</p>
 
-<pre><code class="language-text">package com.sajor.study.c06.model;
+<pre class="line-numbers"><code class="language-text">package com.sajor.study.c06.model;
 
 public class Resume {
     private Integer resumeId;
@@ -190,12 +190,12 @@ public class Resume {
 
 <p>1)添加 resumeList 属性及其 getter、setter</p>
 
-<pre><code class="language-text">private List&lt;Resume&gt; resumeList;//个人关联的简历 
+<pre class="line-numbers"><code class="language-text">private List&lt;Resume&gt; resumeList;//个人关联的简历 
 </code></pre>
 
 <p>2)完善 toString 方法</p>
 
-<pre><code class="language-text">package com.sajor.study.c06.model;
+<pre class="line-numbers"><code class="language-text">package com.sajor.study.c06.model;
 
 import java.util.List;
 
@@ -290,7 +290,7 @@ public class User {
 
 <p>4、创建简历映射文件 ResumeMapper.xml</p>
 
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<pre class="line-numbers"><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
 &lt;!-- namespace 表示命名空间 --&gt;
 &lt;mapper namespace=&quot;com.sajor.study.c06.mapper.ResumeMapper&quot;&gt;
@@ -304,7 +304,7 @@ public class User {
 
 <p>添加相应方法(将下列代码添加到<mapper>标签里):</p>
 
-<pre><code class="language-text">&lt;!--下面是新增对简历的查询--&gt;
+<pre class="line-numbers"><code class="language-text">&lt;!--下面是新增对简历的查询--&gt;
 
     &lt;!-- 一对多:查看某一用户及其关联的简历信息 注意:子查询方式 --&gt;
     &lt;select id=&quot;findUserWithResumesByID&quot; parameterType=&quot;Integer&quot;
@@ -353,14 +353,14 @@ public class User {
 
 <p>配置ResumeMapper.xml的位置(在<mappers>标签中添加如下代码)：</p>
 
-<pre><code class="language-text">&lt;mapper resource=&quot;com/sajor/study/c06/mapper/ResumeMapper.xml&quot;/&gt;
+<pre class="line-numbers"><code class="language-text">&lt;mapper resource=&quot;com/sajor/study/c06/mapper/ResumeMapper.xml&quot;/&gt;
 </code></pre>
 
 <p>7、修改 UserDAO 类</p>
 
 <p>添加响应方法(添加到UserDAO类里)。</p>
 
-<pre><code class="language-text">
+<pre class="line-numbers"><code class="language-text">
     //下面是新增方法
 
     /**
@@ -388,7 +388,7 @@ public class User {
 
 <p>8、修改测试类 MyBatisRelationTest</p>
 
-<pre><code class="language-text">//            User user = userDAO.findUserById(2);
+<pre class="line-numbers"><code class="language-text">//            User user = userDAO.findUserById(2);
             User user = userDAO.findUserWithResumesByID(2);
 </code></pre>
 
@@ -571,7 +571,7 @@ public class User {
              
             
             <li>
-            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(13)</a>
+            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(14)</a>
             <p>
             
             </p>
@@ -606,17 +606,18 @@ public class User {
             
              
             
-            </p>
-            </li>
-            
-             
-            
              
       </div>
       <!-- 最新文章 -->
       <div class="meta-item meta-comments">
           <h2 class="meta-title">RECENT POSTS</h2>
 
+          
+          
+         <li>
+           <a href="15833368444152.html">Linux</a><br>
+         </li>
+          
           
           
          <li>
@@ -639,12 +640,6 @@ public class User {
           
          <li>
            <a href="15819525546014.html">网易云 最嗨电音 爬虫</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="15809082865015.html">使用模拟退火来构造极值图</a><br>
          </li>
           
           

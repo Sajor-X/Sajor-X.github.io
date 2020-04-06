@@ -122,7 +122,7 @@ test.com.sajor.study.c07</p>
 
 <p>在类中声明id、name、sex和email属性，及其对应的getter/setter方法。</p>
 
-<pre><code class="language-text">package com.sajor.study.c07.dao;
+<pre class="line-numbers"><code class="language-text">package com.sajor.study.c07.dao;
 
 import java.io.Serializable;
 
@@ -180,7 +180,7 @@ public class User implements Serializable {
 
 <p>4、在 dao 包中创建一个映射文件 UserMapper.xml</p>
 
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<pre class="line-numbers"><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 
 &lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
 &lt;mapper namespace=&quot;com.sajor.study.c07.dao.UserMapper&quot;&gt;
@@ -213,7 +213,7 @@ public class User implements Serializable {
 
 <p>UserDAO 继承 SqlSessionDaoSupport</p>
 
-<pre><code class="language-text">package com.sajor.study.c07.dao;
+<pre class="line-numbers"><code class="language-text">package com.sajor.study.c07.dao;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 
@@ -229,7 +229,7 @@ public class UserDAO extends SqlSessionDaoSupport {
 
 <p>对比前面 mybatis 的配置文件，这里不再需要配置数据源，直接使用 spring 里面配置的数据源即可。</p>
 
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<pre class="line-numbers"><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 
 &lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
 
@@ -247,7 +247,7 @@ public class UserDAO extends SqlSessionDaoSupport {
 
 <p>7、新建一个 Spring 配置文件 c07-spring-mybatis-config-dao.xml</p>
 
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<pre class="line-numbers"><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 
 &lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
        xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
@@ -279,7 +279,7 @@ http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
 
 <p>8、创建测试类 MyBatisSpringDAOTest</p>
 
-<pre><code class="language-text">package test.com.sajor.study.c07;
+<pre class="line-numbers"><code class="language-text">package test.com.sajor.study.c07;
 
 import com.sajor.study.c07.dao.User;
 import com.sajor.study.c07.dao.UserDAO;
@@ -479,7 +479,7 @@ public class MyBatisSpringDAOTest {
              
             
             <li>
-            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(13)</a>
+            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(14)</a>
             <p>
             
             </p>
@@ -514,17 +514,18 @@ public class MyBatisSpringDAOTest {
             
              
             
-            </p>
-            </li>
-            
-             
-            
              
       </div>
       <!-- 最新文章 -->
       <div class="meta-item meta-comments">
           <h2 class="meta-title">RECENT POSTS</h2>
 
+          
+          
+         <li>
+           <a href="15833368444152.html">Linux</a><br>
+         </li>
+          
           
           
          <li>
@@ -547,12 +548,6 @@ public class MyBatisSpringDAOTest {
           
          <li>
            <a href="15819525546014.html">网易云 最嗨电音 爬虫</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="15809082865015.html">使用模拟退火来构造极值图</a><br>
          </li>
           
           

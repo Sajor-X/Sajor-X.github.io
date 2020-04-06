@@ -113,7 +113,7 @@ PASS_WARN_AGE     7                 口令失效前多少天开始通
 
 <p>脚本</p>
 
-<pre><code class="language-text">#! /bin/bash
+<pre class="line-numbers"><code class="language-text">#! /bin/bash
 # Author: Sajor
 # Date: 2018-10-12
 # Function: 实现对用户密码策略的设定，如密码最长有效期等
@@ -132,7 +132,7 @@ echo &quot;已设置好密码策略......&quot;
 
 <p>打开 /etc/pam.d/system-auth 文件 ，修改如下。我们设置新密码不能和旧密码相同，同时新密码至少8位，还要同时包含大字母、小写字母和数字</p>
 
-<pre><code class="language-text">password    requisite     pam_pwquality.so try_first_pass local_users_only retry=3 authtok_type=  difok=1 minlen=8 ucredit=-1 lcredit=-1 dcredit=-1
+<pre class="line-numbers"><code class="language-text">password    requisite     pam_pwquality.so try_first_pass local_users_only retry=3 authtok_type=  difok=1 minlen=8 ucredit=-1 lcredit=-1 dcredit=-1
 </code></pre>
 
 <ul>
@@ -147,7 +147,7 @@ echo &quot;已设置好密码策略......&quot;
 
 <p>脚本</p>
 
-<pre><code class="language-text">#! /bin/bash
+<pre class="line-numbers"><code class="language-text">#! /bin/bash
 # Author: Sajor
 # Date: 2018-10-12
 # Function: 对用户密码强度的设定，新密码不能和旧密码相同，同时新密码至少8位，还要同时包含大字母、小写字母和数字
@@ -160,13 +160,13 @@ sed -i &#39;/pam_pwquality.so/c\password    requisite     pam_pwquality.so try_f
 
 <p>打开 /etc/pam.d/sshd  文件，在 #%PAM-1.0 的下面，加入下面的内容，表示当密码输入错误达到3次，就锁定用户150秒，如果root用户输入密码错误达到3次，锁定300秒。锁定的意思是即使密码正确了也登录不了</p>
 
-<pre><code class="language-text">pam_tally2   查看被锁定的用户
+<pre class="line-numbers"><code class="language-text">pam_tally2   查看被锁定的用户
 pam_tally2  --reset  -u  username      将被锁定的用户解锁
 </code></pre>
 
 <p>脚本</p>
 
-<pre><code class="language-text">#! /bin/bash
+<pre class="line-numbers"><code class="language-text">#! /bin/bash
 # Author: Sajor
 # Date: 2018-10-12
 # Function: 对用户登录输入错误密码次数做限制
@@ -195,7 +195,7 @@ vim /etc/sudoers<br/>
 
 <p>脚本设置禁止ROOT用户远程登录</p>
 
-<pre><code class="language-text">sed -i &#39;/PermitRootLogin/c\PermitRootLogin no&#39;  /etc/ssh/sshd_config
+<pre class="line-numbers"><code class="language-text">sed -i &#39;/PermitRootLogin/c\PermitRootLogin no&#39;  /etc/ssh/sshd_config
 </code></pre>
 
 <h3 id="toc_5">设置历史命令保存条数和账户超时时间</h3>
@@ -205,7 +205,7 @@ vim /etc/sudoers<br/>
 
 <p>使用脚本修改配置文件</p>
 
-<pre><code class="language-text">read -p &quot;设置历史命令保存条数：&quot; E
+<pre class="line-numbers"><code class="language-text">read -p &quot;设置历史命令保存条数：&quot; E
 read -p &quot;设置账户自动注销时间：&quot; F
 sed -i &#39;/^HISTSIZE/c\HISTSIZE=&#39;$E&#39;&#39; /etc/profile
 sed -i &#39;/^HISTSIZE/a\TMOUT=&#39;$F&#39;&#39; /etc/profile
@@ -227,7 +227,7 @@ usermod  -G  wheel  Sajor </p>
 
 <p>使用脚本设置配置文件</p>
 
-<pre><code class="language-text">sed -i &#39;/pam_wheel.so use_uid/c\auth            required        pam_wheel.so use_uid &#39; /etc/pam.d/su
+<pre class="line-numbers"><code class="language-text">sed -i &#39;/pam_wheel.so use_uid/c\auth            required        pam_wheel.so use_uid &#39; /etc/pam.d/su
 n=`cat /etc/login.defs | grep SU_WHEEL_ONLY | wc -l`
 if [ $n -eq 0 ];then
 echo SU_WHEEL_ONLY yes &gt;&gt; /etc/login.defs
@@ -243,7 +243,7 @@ fi
 使用命令 awk -F: &#39;(\)2==&quot;&quot;)&#39; /etc/shadow   查看空口令账号，如果存在空口令用户的话必须设置密码 <br/>
 使用脚本对账户进行管理</p>
 
-<pre><code class="language-text">#! /bin/bash
+<pre class="line-numbers"><code class="language-text">#! /bin/bash
 # Author: Sajor
 # Date: 2018-10-11
 # Function: 对系统中的用户做检查，加固系统
@@ -315,7 +315,7 @@ lsattr    查看文件目录的扩展属性</p>
 
 <p>并不是所有文件系统都支持所有标志；参考文件系统手册了解如btrfs(5), ext4(5), 和 xfs(5)文件格式的更多详情。</p>
 
-<pre><code class="language-text">chattr  +i  /etc/passwd /etc/shadow                 //增加属性
+<pre class="line-numbers"><code class="language-text">chattr  +i  /etc/passwd /etc/shadow                 //增加属性
 chattr  -i  /etc/passwd /etc/shadow                 //移除属性  
 lsattr  /etc/passwd /etc/shadow
 </code></pre>
@@ -324,7 +324,7 @@ lsattr  /etc/passwd /etc/shadow
 
 <p>使用脚本对重要文件进行锁定</p>
 
-<pre><code class="language-text">#! /bin/bash
+<pre class="line-numbers"><code class="language-text">#! /bin/bash
 # Author: Sajor
 # Date：2018-10-10
 # Function: 锁定创建用户和组的文件，使之无法对用户和组进行操作！
@@ -353,7 +353,7 @@ esac
 
 <p>脚本</p>
 
-<pre><code class="language-text">#! /bin/bash
+<pre class="line-numbers"><code class="language-text">#! /bin/bash
 # Author:Sajor
 # Date:2018-10-11
 # Function:对账户的密码的一些加固
@@ -627,7 +627,7 @@ esac
              
             
             <li>
-            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(13)</a>
+            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(14)</a>
             <p>
             
             </p>
@@ -662,17 +662,18 @@ esac
             
              
             
-            </p>
-            </li>
-            
-             
-            
              
       </div>
       <!-- 最新文章 -->
       <div class="meta-item meta-comments">
           <h2 class="meta-title">RECENT POSTS</h2>
 
+          
+          
+         <li>
+           <a href="15833368444152.html">Linux</a><br>
+         </li>
+          
           
           
          <li>
@@ -695,12 +696,6 @@ esac
           
          <li>
            <a href="15819525546014.html">网易云 最嗨电音 爬虫</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="15809082865015.html">使用模拟退火来构造极值图</a><br>
          </li>
           
           

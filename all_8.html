@@ -94,35 +94,19 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
 						
 						</div> 
-						<a href="15643143335228.html"> 
+						<a href="15638863087177.html"> 
 							<div class="item-desc"> 
-								<p>创建MySQL数据库
-
-首先进入MySQL数据库创建 TestDB 数据库
-
-create database TestDB charset=utf8;
+								<p>数据库命令规范
 
 
-
-
-到IDEA右侧点击Database，之后点击加号添加数据库，选择Data Source&gt;MySQL 填写连接信息
-
-
-填写好数据库信息后点击 Download 下载驱动包，下载完成后点击Test Connection 测试连接情况，之后点击ok。
-
-
-注意
-
-
-如果你要直接粘贴下面代码的话，请记得修改这些内容
-数据库名： TestDB
-数据库用户： root
-数据库密码： 123456
-
-
-创建项目
-
-1、引用 MySQL 数据库</p> 
+所有数据库对象名称必须使用小写字母并用下划线分割
+所有数据库对象名称禁止使用 MySQL 保留关键字（如果表名中包含关键字查询时，需要将其用单引号括起来）
+数据库对象的命名要能做到见名识意，并且最后不要超过 32 个字符
+临时库表必须以 tmp_为前缀并以日期为后缀，备份表必须以 bak_为前缀并以日期 (时间戳) 为后缀
+所有存储相同数据的列名和列类型必须一致（一般作为关联列，如果查询时关联列类型不一致会自动进行数据类型隐式转换，会造成列上的索引失效，导致查询效率降低）
+## 数据库基本设计规范
+### 所有表必须使用 Innodb 存储引擎
+没有特殊要求（即 Innod</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -133,7 +117,7 @@ create database TestDB charset=utf8;
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15643143335228.html">从零开始SSM开发系列六：数据库开发</a>
+	  							<a href="15638863087177.html">MySQL高性能优化规范建议</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -144,242 +128,7 @@ create database TestDB charset=utf8;
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
-						
-						</div> 
-						<a href="15643132029446.html"> 
-							<div class="item-desc"> 
-								<p>1、引用 AspectJ jar 包
-
-点击 File&gt;Project Structure...，选中 Libraries，添加 java 引用
-在 lib 中选择 aspectj-1.8.13 文件夹
-
-
-
-
-
-2、创建两个新的包
-
-
-com.sajor.study.c03
-test.com.sajor.study.c03
-
-
-3、创建一个业务类 UserXML
-
-package com.sajor.study.c03;
-
-public class UserXML {
-    private int id = 20180101;
-    private String name = &q</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15643132029446.html">从零开始SSM开发系列五：AOP</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
-						
-						</div> 
-						<a href="15642871336794.html"> 
-							<div class="item-desc"> 
-								<p>一、依赖注入
-
-1、新建一个 School 类
-右键 src&gt;main&gt;java&gt;com.sajor.study.c01，点击 New&gt;Java Class
-
-在 School 中引用 Student 类，并可以获得含有 Student 对象的一个 List:
-
-    private int id = 2000;
-    private String name = &quot;Sajor&quot;;
-    private Student student;
-    private List&lt;Student&gt; students = new ArrayLis</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15642871336794.html">从零开始SSM开发系列四：依赖注入及 Bean 管理</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
-						
-						</div> 
-						<a href="15642457728170.html"> 
-							<div class="item-desc"> 
-								<p>1、新建一个包 com.sajor.study.c01
-
-打开开发工具 Intellij IDEA，打开之前创建的工程右键 src&gt;main&gt;java&gt;com.sajor.study，点击 New&gt;Package
-
-
-
-创建包 c01
-
-
-
-2、新建一个 Student 类
-右键 src&gt;main&gt;java&gt;com.sajor.study.c01，点击 New&gt;Java Class
-
-
-
-创建Student类
-
-
-
-Student 类包含 4 个属性
-
-package com.sajor.study.c01;
-
-public class Stud</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15642457728170.html">从零开始SSM开发系列三：第一个Spring应用</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
-						
-						</div> 
-						<a href="15642432857493.html"> 
-							<div class="item-desc"> 
-								<p>创建远程仓库
-
-首先申请github账号这个不讲了，然后创建一个项目名为 SSMClass ，信息填写好之后，点击create repository
-
-
-
-之后点击Clone or download，选择use ssh，之后复制一下这个链接留作备用
-
-git@github.com:565785929/SSMClass.git
-
-
-
-
-创建本地仓库并远程
-
-1、 初始化本地git仓库
-然后使用IDEA打开这个文件夹，点击VCS -&gt; Import into Version Control -&gt; Create Git Repository。 相当于这条git命令
-
-git init
-
-</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15642432857493.html">从零开始SSM开发系列二：GitHub配置（可以跳过）</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
 								
 		   						</div> 
 		   					</div> 
@@ -400,8 +149,8 @@ git init
 				<li class=""><a href="archives.html">归档</a></li>
 
 			
-			<li class=""><a href="all_9.html">下一页 <span aria-hidden="true">&rarr;</span></a></li>
-			
+            	<li class=" disabled "><a href="#index">下一页 <span aria-hidden="true">&rarr;</span></a></li>
+            
             </ol>
      </nav>
 </div>
@@ -429,7 +178,7 @@ git init
              
             
             <li>
-            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(13)</a>
+            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(14)</a>
             <p>
             
             </p>
@@ -464,17 +213,18 @@ git init
             
              
             
-            </p>
-            </li>
-            
-             
-            
              
       </div>
       <!-- 最新文章 -->
       <div class="meta-item meta-comments">
           <h2 class="meta-title">RECENT POSTS</h2>
 
+          
+          
+         <li>
+           <a href="15833368444152.html">Linux</a><br>
+         </li>
+          
           
           
          <li>
@@ -497,12 +247,6 @@ git init
           
          <li>
            <a href="15819525546014.html">网易云 最嗨电音 爬虫</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="15809082865015.html">使用模拟退火来构造极值图</a><br>
          </li>
           
           

@@ -120,7 +120,7 @@ com.sajor.study.c07.user.service.impl:存放接口实现 </p>
 
 <p>2、在 model 包中创建一个 User 类</p>
 
-<pre><code class="language-java">package com.sajor.study.c07.user.model;
+<pre class="line-numbers"><code class="language-java">package com.sajor.study.c07.user.model;
 
 import java.io.Serializable;
 
@@ -180,7 +180,7 @@ public class User implements Serializable {
 
 <p>3、在 dao 包中创建一个接口 UserMapper</p>
 
-<pre><code class="language-java">package com.sajor.study.c07.user.dao;
+<pre class="line-numbers"><code class="language-java">package com.sajor.study.c07.user.dao;
 
 import com.sajor.study.c07.user.model.User;
 
@@ -200,7 +200,7 @@ public interface UserMapper {
 
 <p>4、在 mapper 包中创建一个映射文件 UserMapper.xml</p>
 
-<pre><code class="language-java">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<pre class="line-numbers"><code class="language-java">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
         &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
 &lt;mapper namespace=&quot;com.sajor.study.c07.user.dao.UserMapper&quot;&gt;
@@ -228,7 +228,7 @@ public interface UserMapper {
 
 <p>5、在 service 包中创建一个服务接口 UserService</p>
 
-<pre><code class="language-java">package com.sajor.study.c07.user.service;
+<pre class="line-numbers"><code class="language-java">package com.sajor.study.c07.user.service;
 
 import com.sajor.study.c07.user.model.User;
 
@@ -246,7 +246,7 @@ public interface UserService {
 
 <p>这里用到了注解方式:声明了 service、以及自动绑定(当然也可以在 spring 中声明 bean，以及把 userMapper 注入)</p>
 
-<pre><code class="language-java">package com.sajor.study.c07.user.service.impl;
+<pre class="line-numbers"><code class="language-java">package com.sajor.study.c07.user.service.impl;
 
 import com.sajor.study.c07.user.dao.UserMapper;
 import com.sajor.study.c07.user.model.User;
@@ -278,7 +278,7 @@ public class UserServiceImpl implements UserService {
 
 <p>7、新建一个 MyBatis 的核心配置文件 c07-mybatis-spring-config-mapper.xml</p>
 
-<pre><code class="language-java">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<pre class="line-numbers"><code class="language-java">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE configuration PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
 &lt;configuration&gt;
     &lt;!--配置别名 --&gt;
@@ -296,7 +296,7 @@ public class UserServiceImpl implements UserService {
 
 <p>8、新建一个 Spring 配置文件 c07-spring-config-mybatisspring-mapper.xml</p>
 
-<pre><code class="language-java">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<pre class="line-numbers"><code class="language-java">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
        xmlns:context=&quot;http://www.springframework.org/schema/context&quot; xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;
@@ -330,7 +330,7 @@ http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springfr
 
 <p>9、创建测试类 MyBatisSpringMapperTest</p>
 
-<pre><code class="language-java">package test.com.sajor.study.c07;
+<pre class="line-numbers"><code class="language-java">package test.com.sajor.study.c07;
 
 import com.sajor.study.c07.user.model.User;
 import com.sajor.study.c07.user.service.UserService;
@@ -530,7 +530,7 @@ public class MyBatisSpringMapperTest {
              
             
             <li>
-            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(13)</a>
+            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(14)</a>
             <p>
             
             </p>
@@ -565,17 +565,18 @@ public class MyBatisSpringMapperTest {
             
              
             
-            </p>
-            </li>
-            
-             
-            
              
       </div>
       <!-- 最新文章 -->
       <div class="meta-item meta-comments">
           <h2 class="meta-title">RECENT POSTS</h2>
 
+          
+          
+         <li>
+           <a href="15833368444152.html">Linux</a><br>
+         </li>
+          
           
           
          <li>
@@ -598,12 +599,6 @@ public class MyBatisSpringMapperTest {
           
          <li>
            <a href="15819525546014.html">网易云 最嗨电音 爬虫</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="15809082865015.html">使用模拟退火来构造极值图</a><br>
          </li>
           
           

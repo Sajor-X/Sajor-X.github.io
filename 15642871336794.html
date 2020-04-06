@@ -109,7 +109,7 @@
 
 <p>在 School 中引用 Student 类，并可以获得含有 Student 对象的一个 List:</p>
 
-<pre><code class="language-text">    private int id = 2000;
+<pre class="line-numbers"><code class="language-text">    private int id = 2000;
     private String name = &quot;Sajor&quot;;
     private Student student;
     private List&lt;Student&gt; students = new ArrayList();
@@ -117,7 +117,7 @@
 
 <p>并使用代码生成器Genetater添加Getter and Setter方法完整代码如下</p>
 
-<pre><code class="language-text">package com.sajor.study.c01;
+<pre class="line-numbers"><code class="language-text">package com.sajor.study.c01;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -160,7 +160,7 @@ public class School {
 
 <p>2、在 Spring 配置文件中声明 Bean，以及依赖注入</p>
 
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<pre class="line-numbers"><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
        xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
        xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
@@ -182,7 +182,7 @@ public class School {
 2)获得 school 对象<br/>
 3)通过 school 对象的 getStudents()方法获得 student 对象 4)调用 student 对象的 toString()方法</p>
 
-<pre><code class="language-text">package test.com.sajor.study.c01;
+<pre class="line-numbers"><code class="language-text">package test.com.sajor.study.c01;
 
 import com.sajor.study.c01.School;
 import com.sajor.study.c01.Student;
@@ -220,7 +220,7 @@ public class SchoolTest {
 新建一个包，com.sajor.study.c02.xml<br/>
 右键 src&gt;main&gt;java&gt;com.sajor.study.c02，点击 New&gt;Java Class，在 c02 中新建一个 User 类，创建两个构造函数。</p>
 
-<pre><code class="language-text">package com.sajor.study.c02;
+<pre class="line-numbers"><code class="language-text">package com.sajor.study.c02;
 
 public class User {
     private int id = 20180101;
@@ -285,7 +285,7 @@ public class User {
 
 <p>2、新建一个spring-config-c01-xml.xml文件，并在 Spring 配置文件中声明 Bean</p>
 
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<pre class="line-numbers"><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
        xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
        xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
@@ -308,7 +308,7 @@ public class User {
 
 <p>3、创建测试类 XmlBeanAssembleTest</p>
 
-<pre><code class="language-text">package test.com.sajor.study.c02;
+<pre class="line-numbers"><code class="language-text">package test.com.sajor.study.c02;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -339,7 +339,7 @@ public class XmlBeanAssembleTest {
 
 <p>使用注解@Component 声明 TeacherAnnotation 类</p>
 
-<pre><code class="language-text">package com.sajor.study.c02.annotation;
+<pre class="line-numbers"><code class="language-text">package com.sajor.study.c02.annotation;
 
 import org.springframework.stereotype.Component;
 
@@ -399,7 +399,7 @@ public class TeacherAnnotation {
 
 <p>同样使用注解@Component 声明 ClazzAnnotation 类，并使用注解 @Autowired 自动绑定 TeacherAnnotation 类对象(注入)</p>
 
-<pre><code class="language-text">package com.sajor.study.c02.annotation;
+<pre class="line-numbers"><code class="language-text">package com.sajor.study.c02.annotation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -444,7 +444,7 @@ public class ClazzAnnotation {
 
 <p>新建 spring-config-c02-annotation.xml 配置文件，并配置扫描包路径:</p>
 
-<pre><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<pre class="line-numbers"><code class="language-text">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 
 &lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
        xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
@@ -459,7 +459,7 @@ public class ClazzAnnotation {
 
 <p>5、创建测试类</p>
 
-<pre><code class="language-text">package test.com.sajor.study.c02;
+<pre class="line-numbers"><code class="language-text">package test.com.sajor.study.c02;
 
 import com.sajor.study.c02.annotation.ClazzAnnotation;
 import org.springframework.context.ApplicationContext;
@@ -655,7 +655,7 @@ public class AnnotationTest {
              
             
             <li>
-            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(13)</a>
+            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(14)</a>
             <p>
             
             </p>
@@ -690,17 +690,18 @@ public class AnnotationTest {
             
              
             
-            </p>
-            </li>
-            
-             
-            
              
       </div>
       <!-- 最新文章 -->
       <div class="meta-item meta-comments">
           <h2 class="meta-title">RECENT POSTS</h2>
 
+          
+          
+         <li>
+           <a href="15833368444152.html">Linux</a><br>
+         </li>
+          
           
           
          <li>
@@ -723,12 +724,6 @@ public class AnnotationTest {
           
          <li>
            <a href="15819525546014.html">网易云 最嗨电音 爬虫</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="15809082865015.html">使用模拟退火来构造极值图</a><br>
          </li>
           
           
