@@ -10,7 +10,7 @@
 
     <title>
       
-    SSM练习 - Sajor's Blog
+    数据库 - Sajor's Blog
     
     </title>
 
@@ -95,19 +95,60 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
 						
 						</div> 
-						<a href="15647300073307.html"> 
+						<a href="15823891714442.html"> 
 							<div class="item-desc"> 
-								<p>在上一章的基础上，继续使用c07包
-
-1、创建新的 Package
+								<p>
 
 
-com.sajor.study.c07.user
-com.sajor.study.c07.user.model:存放 vo 对象(业务模型对象) 
-com.sajor.study.c07.user.dao:存放 dao 对象(数据库访问对象) 
-com.sajor.study.c07.user.mapper:存放 mybatis 数据库表-对象映射文件 
-com.sajor.study.c07.user.service:存放服务接口 
-com.sajor.study.c07.user.service.impl:存放接口实现</p> 
+java类
+ 
+mysql数据库
+
+
+
+
+
+java.lang.Byte
+byte
+TINYINT
+
+
+java.lang.Short
+short
+SMALLINT
+
+
+java.lang.Integer
+integer
+INGEGER
+
+
+java.lang.Long
+long
+BIGINT
+
+
+java.lang.Float
+float
+FLOAT
+
+
+java.lang.Double
+double
+DOUBLE
+
+
+java.lang.BigDecimal
+big_decimal
+NUMERIC
+
+
+java.lang.Boolean
+boolean
+BIT
+
+
+java.lang</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -118,7 +159,7 @@ com.sajor.study.c07.user.service.impl:存放接口实现</p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15647300073307.html">从零开始SSM开发系列十三：使用 Mapper 接口方式整合 MyBatis-Spring</a>
+	  							<a href="15823891714442.html">java和mysql转换</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -129,7 +170,7 @@ com.sajor.study.c07.user.service.impl:存放接口实现</p>
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
+			    			<a class='category' href='MySQL.html'>MySQL</a>
 								
 		   						</div> 
 		   					</div> 
@@ -145,29 +186,34 @@ com.sajor.study.c07.user.service.impl:存放接口实现</p>
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
 						
 						</div> 
-						<a href="15647285252626.html"> 
+						<a href="15823882245344.html"> 
 							<div class="item-desc"> 
-								<p>1、引用 MyBatis-Spring 集成 jar 包
+								<p>查看注释
 
-在工程中引用 mybatis-spring-1.3.1.jar包
+查看所有表的注释
 
-点击 File&gt;Project Structure...，选中 Libraries，添加 java 引用
+SELECT
+table_name 表名,
+table_comment 表说明
+FROM
+information_schema.TABLES
+WHERE
+table_schema = &#39;数据库名&#39;
+ORDER BY
+table_name
 
 
+查询所有表及字段的注释
 
-2、创建新的 Package
-
-
-com.sajor.study.c07
-com.sajor.study.c07.dao 
-test.com.sajor.study.c07
-
-
-3、在 dao 包中创建一个 User 类
-
-在类中声明id、name、sex和email属性，及其对应的getter/setter方法。
-
-package com.sajor</p> 
+SELECT
+a.table_name 表名,
+a.table_comment 表说明,
+b.COLUMN_NAME 字段名,
+b.column_comment 字段说明,
+b.column_type 字段类型,
+b.column_key 约束
+FROM
+information_sc</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -178,7 +224,7 @@ package com.sajor</p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15647285252626.html">从零开始SSM开发系列十二：使用 DAO 方式整合 MyBatis-Spring</a>
+	  							<a href="15823882245344.html">MySQL 查看表注释或字段注释</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -189,7 +235,7 @@ package com.sajor</p>
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
+			    			<a class='category' href='MySQL.html'>MySQL</a>
 								
 		   						</div> 
 		   					</div> 
@@ -205,73 +251,25 @@ package com.sajor</p>
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
 						
 						</div> 
-						<a href="15647140106325.html"> 
+						<a href="15754473183515.html"> 
 							<div class="item-desc"> 
-								<p>在上一章的基础上，我们还使用c06包接着添加功能。
+								<p>缓存数据
 
-1、数据库表准备
-新建一个数据库表:jo􏰀b、j􏰀obresume 并添加几条数据
+最常用，对经常需要查询且变动不是很频繁的数据
 
-jo􏰀b 表
+排行榜应用
 
+利用Redis的有序集合zset，每次插入数据时自动调整顺序值，根据插入时的score值将value按一定顺序连续排列。
 
+计数器应用
 
+利用Redis的incr、decr命令进行原子性操作，来构建计数系统
+比如在一个web应用程序中，如果想知道用户在一年中每天的点击量，只要将用户id和相关日期信息作为键，并在每次用户点击页面时，执行一次自增操作即可。
 
-字段名称
-类型
-长度
+数据去重
 
-
-
-
-
-jobid
-int
-11（主键）
-
-
-jobtitle
-varchar
-127
-
-
-
-
-jobresume表
-
-
-
-
-字段名称
-类型
-长度
-
-
-
-
-
-id
-int
-11（主键）
-
-
-jobid
-int
-11
-
-
-resumeid
-int
-11
-
-
-
-
-2、在 model 包中创建 Job 类
-
-package com.sajor.study.c06.model;
-
-import java.util</p> 
+当需要存储一个列表数据，又不希望出现重复数据时，可以使用Redis的Set数据结构
+set内部实现是一个value永远是null的hashmap，通过has</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -282,7 +280,7 @@ import java.util</p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15647140106325.html">从零开始SSM开发系列十一：MyBatis 多对多关联关系</a>
+	  							<a href="15754473183515.html">Redis使用场景</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -293,7 +291,9 @@ import java.util</p>
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
+			    			<a class='category' href='Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0.html'>Redis设计与实现</a>
+								
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
 								
 		   						</div> 
 		   					</div> 
@@ -309,55 +309,21 @@ import java.util</p>
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
 						
 						</div> 
-						<a href="15647098694474.html"> 
+						<a href="15754418238619.html"> 
 							<div class="item-desc"> 
-								<p>在上一章的基础上，我们还使用c06包接着添加功能。
-
-1、数据库表准备
-新建一个数据库表:resume 并添加几条数据
-
-resume 表
+								<p>
+可靠性低：如果数据走云盘做高可靠存储容易受网络波动干扰，如果不走云盘宕机数据易丢失，自建多副本运维很复杂，而且Redis本身的断网导致的全量同步机制对网络和运维的要求极高；
+可用性低：自建单副本无法保证可用性，多副本对心跳检查和链路切换要求极高，传统的sentinel有很多缺陷，在执行复杂的keys flushdb等命令时很容易造成误切和雪崩；
+诸多限制：自建集群方案如redis cluster，codis也有诸多限制，redis cluster需要smart client和非常
 
 
+键值设计
 
+key名设计
 
-字段名称
-类型
-长度
+可读性和可管理性
 
-
-
-
-
-resumeid
-int
-11（主键）
-
-
-userid
-int
-11
-
-
-resumename
-varchar
-255
-
-
-resumedesc
-varchar
-255
-
-
-
-
-2、在 model 包中创建 Resume 类
-
-package com.sajor.study.c06.model;
-
-public class Resume {
-    private Integer resumeId;
-    pri</p> 
+以业务名(或数据库名)为前缀(防止key冲突)，用冒号分隔，</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -368,7 +334,7 @@ public class Resume {
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15647098694474.html">从零开始SSM开发系列十：MyBatis 一对多关联关系</a>
+	  							<a href="15754418238619.html">自建redis集群规范</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -379,7 +345,9 @@ public class Resume {
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
+			    			<a class='category' href='Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0.html'>Redis设计与实现</a>
+								
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
 								
 		   						</div> 
 		   					</div> 
@@ -395,46 +363,30 @@ public class Resume {
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
 						
 						</div> 
-						<a href="15643240518555.html"> 
+						<a href="15754270430043.html"> 
 							<div class="item-desc"> 
-								<p>1、数据库表准备
+								<p>首先安装redis
+brew install redis
 
-新建一个数据库表:card 并添加几条数据
-
-Card 表
-
-
+将/usr/local/redis/bin
+建立redis-cluster文件夹，复制六份， 三主三备份， 分别叫redis01-redis-06
 
 
-字段名称
-类型
-长度
+将每个文件夹中的redis.conf都修改一下
+例如： redis01/redis.conf
+
+port 7001
+
+cluster-enabled yes
+
+cluster-config-file  nodes_7001.conf  
+
+cluster-node-timeout  15000 
+
+pidfile  /var/run/redis_7001.pid
 
 
-
-
-
-id
-int
-11（主键）
-
-
-code
-varchar
-18
-
-
-
-
-2、创建新的 Package
-
-
-com.sajor.study.c06
-com.sajor.study.c06.model : 存放 vo 对象(业务模型对象) 
-com.sajor.study.c06.dao : 存放 dao 对象(数据库访问对象) 
-com.sajor.study.mapper : 存放 mybatis 数据库表-对象映射文件 
-test.com.sajor.study.c06 
-</p> 
+redis02-r</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -445,7 +397,7 @@ test.com.sajor.study.c06
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15643240518555.html">从零开始SSM开发系列九：MyBatis 一对一关联关系</a>
+	  							<a href="15754270430043.html">redis 集群</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -456,7 +408,9 @@ test.com.sajor.study.c06
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
+			    			<a class='category' href='Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0.html'>Redis设计与实现</a>
+								
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
 								
 		   						</div> 
 		   					</div> 
@@ -472,24 +426,59 @@ test.com.sajor.study.c06
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
 						
 						</div> 
-						<a href="15643212338496.html"> 
+						<a href="15749080605397.html"> 
 							<div class="item-desc"> 
-								<p>1、配置 MyBatis 开发环境
-
-在工程里面引用 MyBatis 核心 jar 包，以及 MyBatis 依赖的第三方 jar 包。
-点击 File&gt;Project Structure...，选中 Libraries，添加 java 引用
-选择 l􏰀ib 中的 􏰁Mybatis-3.4.5.jar 包。
-
-再次添加 java 引用，选中 lib 中的 mybatis-3.4.5-lib 文件夹
-确认。MyBatis 开发环境即搭建好了。
+								<p>
+安装目录创建
 
 
 
-2、创建新的 Package
 
 
-com.sajor.study.c05
-com.sajor.study.c05.model:存放 vo </p> 
+目录名
+用途
+
+
+
+
+
+/redis/bin
+存放redis软件本体
+
+
+/redis/conf
+存放redis实例配置文件
+
+
+/redis/logs
+存放redis标准输出日志
+
+
+/redis/backup
+存放备节点配置文件，其他备份文件
+
+
+/redis/var
+存放redis进程文件
+
+
+/redis/nodes
+存放redis集群模式nodes配置文件
+
+
+/redisdump
+存放redis持久化数据，独立的文件系统
+
+
+/redis/tmp
+存放哨兵工作目录，redis集群最初配置状态
+
+
+
+
+执行转换文件权限命令：
+
+chown -R redis:</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -500,7 +489,7 @@ com.sajor.study.c05.model:存放 vo </p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15643212338496.html">从零开始SSM开发系列八：MyBatis 入门</a>
+	  							<a href="15749080605397.html">redis 参数配置</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -511,7 +500,9 @@ com.sajor.study.c05.model:存放 vo </p>
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
+			    			<a class='category' href='Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0.html'>Redis设计与实现</a>
+								
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
 								
 		   						</div> 
 		   					</div> 
@@ -532,7 +523,7 @@ com.sajor.study.c05.model:存放 vo </p>
 				<li class=""><a href="archives.html">归档</a></li>
 
 			
-			<li class=""><a href="ssm_1.html">下一页 <span aria-hidden="true">&rarr;</span></a></li>
+			<li class=""><a href="数据库_1.html">下一页 <span aria-hidden="true">&rarr;</span></a></li>
 			
             </ol>
      </nav>

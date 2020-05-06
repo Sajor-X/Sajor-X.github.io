@@ -95,6 +95,110 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
 						
 						</div> 
+						<a href="15649246400338.html"> 
+							<div class="item-desc"> 
+								<p>关于wordpress更新提示无法创建目录问题
+
+
+进入wordpress安装目录下，修改wp-config.php文件添加：define(&quot;FS_METHOD&quot;,&quot;direct&quot;);
+chown -R sajor.sajor  xxx/wordpress/ 将存放wordpress博客的文件夹设置成sajor用户。
+修改php配置
+
+vim /etc/php-fpm.d/www.conf
+user = sajor
+group = sajor
+
+重启php-fpm
+
+systemctl restart php-fpm
+
+
+</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15649246400338.html">WordPress 博客遇到的问题</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
+						
+						</div> 
+						<a href="15649144225977.html"> 
+							<div class="item-desc"> 
+								<p>由于linux的yum源不存在php7.x，所以我们要更改yum源
+
+rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
+rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm 
+
+
+安装
+
+yum -y install php72w php72w-cli php72w-common php72w-devel php72w-embedded php72w-fpm php72w-gd php72w-mbstrin</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15649144225977.html">PHP 安装和卸载方法</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
+						
+						</div> 
 						<a href="15648434329273.html"> 
 							<div class="item-desc"> 
 								<p>今天博客遇到如下异常
@@ -140,6 +244,8 @@ service mysqld restart
 
 		   						<div class="item-meta-cat">
 	  							
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
+								
 			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
 								
 		   						</div> 
@@ -306,196 +412,6 @@ package com.sajor</p>
 		   				</div> 
    					</div>
  				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
-						
-						</div> 
-						<a href="15647140106325.html"> 
-							<div class="item-desc"> 
-								<p>在上一章的基础上，我们还使用c06包接着添加功能。
-
-1、数据库表准备
-新建一个数据库表:jo􏰀b、j􏰀obresume 并添加几条数据
-
-jo􏰀b 表
-
-
-
-
-字段名称
-类型
-长度
-
-
-
-
-
-jobid
-int
-11（主键）
-
-
-jobtitle
-varchar
-127
-
-
-
-
-jobresume表
-
-
-
-
-字段名称
-类型
-长度
-
-
-
-
-
-id
-int
-11（主键）
-
-
-jobid
-int
-11
-
-
-resumeid
-int
-11
-
-
-
-
-2、在 model 包中创建 Job 类
-
-package com.sajor.study.c06.model;
-
-import java.util</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15647140106325.html">从零开始SSM开发系列十一：MyBatis 多对多关联关系</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
-						
-						</div> 
-						<a href="15647098694474.html"> 
-							<div class="item-desc"> 
-								<p>在上一章的基础上，我们还使用c06包接着添加功能。
-
-1、数据库表准备
-新建一个数据库表:resume 并添加几条数据
-
-resume 表
-
-
-
-
-字段名称
-类型
-长度
-
-
-
-
-
-resumeid
-int
-11（主键）
-
-
-userid
-int
-11
-
-
-resumename
-varchar
-255
-
-
-resumedesc
-varchar
-255
-
-
-
-
-2、在 model 包中创建 Resume 类
-
-package com.sajor.study.c06.model;
-
-public class Resume {
-    private Integer resumeId;
-    pri</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15647098694474.html">从零开始SSM开发系列十：MyBatis 一对多关联关系</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
  			 
 		</div>
 	</div>
@@ -538,6 +454,19 @@ public class Resume {
              
             
             <li>
+            <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库&nbsp;(14)</a>
+            <p>
+            
+            <a href="MySQL.html">MySQL&nbsp;(2)</a>&nbsp;&nbsp;
+            
+            <a href="Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0.html">Redis设计与实现&nbsp;(6)</a>&nbsp;&nbsp;
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
             <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(14)</a>
             <p>
             
@@ -563,10 +492,6 @@ public class Resume {
             </li>
             
              
-            
-            <li>
-            <a href="%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html">软件安装&nbsp;(2)</a>
-            <p>
             
             </p>
             </li>
@@ -594,19 +519,19 @@ public class Resume {
           
           
          <li>
+           <a href="15823891714442.html">java和mysql转换</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="15823882245344.html">MySQL 查看表注释或字段注释</a><br>
+         </li>
+          
+          
+          
+         <li>
            <a href="15822108701088.html">jdk</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="15822104759867.html">spark</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="15819525546014.html">网易云 最嗨电音 爬虫</a><br>
          </li>
           
           

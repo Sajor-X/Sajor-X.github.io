@@ -10,7 +10,7 @@
 
     <title>
       
-    MyBatis 开启自动驼峰转换 - Sajor's Blog
+    java和mysql转换 - Sajor's Blog
     
     </title>
 
@@ -89,37 +89,147 @@
 		<div class="post-header">
 			<!-- title -->
 			<div class="post-header">
-				<h1 class="post-title itemprop="name headline">MyBatis 开启自动驼峰转换</h1>	
+				<h1 class="post-title itemprop="name headline">java和mysql转换</h1>	
 				<div class="post-data">
-					<time datetime="2020-02-25T15:20:15+08:00" pubdate data-updated="true">2020/02/25</time>
+					<time datetime="2020-02-23T00:32:51+08:00" pubdate data-updated="true">2020/02/23</time>
 				</div>
 			</div>
 		</div>
 	<div id="post-content" class="post-content" itemprop="articleBody"> 
 		<p class="post-tags"> 
 		
-		<a href='java.html'>ssm课程</a>&nbsp;
+		<a href='MySQL.html'>MySQL</a>&nbsp;
 		
 		</p>
 	<!-- 正文 -->
 		<p>
-		<p>在mybatis-config.xml文件中加入此设置</p>
-<?xml version="1.0" encoding="UTF-8" ?>
-<p>&lt;!DOCTYPE configuration<br/><br/>
-PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;<br/><br/>
-&quot;<a href="http://mybatis.org/dtd/mybatis-3-config.dtd%22%3E">http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;</a><br/><br/>
-<configuration><br/><br/>
-    <settings><br/><br/>
-        <setting name="mapUnderscoreToCamelCase" value="true" /><br/><br/>
-    </settings><br/><br/>
-</configuration></p>
+		<table>
+<thead>
+<tr>
+<th>java类</th>
+<th> </th>
+<th>mysql数据库</th>
+</tr>
+</thead>
 
-<p><img src="media/15826152154212/15826153307445.jpg" alt=""/></p>
-
-<p>参考:<br/>
-<a href="https://yq.aliyun.com/articles/662319">https://yq.aliyun.com/articles/662319</a><br/>
-<a href="https://www.cnblogs.com/pjfmeng/p/7677773.html">https://www.cnblogs.com/pjfmeng/p/7677773.html</a><br/>
-<a href="https://www.cnblogs.com/zhouricong/p/9483099.html">https://www.cnblogs.com/zhouricong/p/9483099.html</a></p>
+<tbody>
+<tr>
+<td>java.lang.Byte</td>
+<td>byte</td>
+<td>TINYINT</td>
+</tr>
+<tr>
+<td>java.lang.Short</td>
+<td>short</td>
+<td>SMALLINT</td>
+</tr>
+<tr>
+<td>java.lang.Integer</td>
+<td>integer</td>
+<td>INGEGER</td>
+</tr>
+<tr>
+<td>java.lang.Long</td>
+<td>long</td>
+<td>BIGINT</td>
+</tr>
+<tr>
+<td>java.lang.Float</td>
+<td>float</td>
+<td>FLOAT</td>
+</tr>
+<tr>
+<td>java.lang.Double</td>
+<td>double</td>
+<td>DOUBLE</td>
+</tr>
+<tr>
+<td>java.lang.BigDecimal</td>
+<td>big_decimal</td>
+<td>NUMERIC</td>
+</tr>
+<tr>
+<td>java.lang.Boolean</td>
+<td>boolean</td>
+<td>BIT</td>
+</tr>
+<tr>
+<td>java.lang.String</td>
+<td>string</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>java.lang.Boolean</td>
+<td>yes_no</td>
+<td>CHAR(1)(&#39;Y&#39;或&#39;N&#39;)</td>
+</tr>
+<tr>
+<td>java.lang.Boolean</td>
+<td>true_false</td>
+<td>CHAR(1)(‘Y’或&#39;N&#39;)</td>
+</tr>
+<tr>
+<td>java.uitl.Date</td>
+<td>java.sql.Date</td>
+<td>date</td>
+</tr>
+<tr>
+<td>java.sql.Time</td>
+<td>time</td>
+<td>TIME</td>
+</tr>
+<tr>
+<td>java.sql.Timestamp</td>
+<td>timestamp</td>
+<td>TIMESTAMP</td>
+</tr>
+<tr>
+<td>java.uitl.Calendar</td>
+<td>celendar</td>
+<td>TIMESTAMP</td>
+</tr>
+<tr>
+<td>java.uitl.Calendar</td>
+<td>calendar</td>
+<td>TIMESTAMP</td>
+</tr>
+<tr>
+<td>java.io.Serializable</td>
+<td>serializable</td>
+<td>VARBINARY/BLOB</td>
+</tr>
+<tr>
+<td>java.sql.Clob</td>
+<td>clob</td>
+<td>CLOB</td>
+</tr>
+<tr>
+<td>java.sql.Blob</td>
+<td>blob</td>
+<td>BLOB</td>
+</tr>
+<tr>
+<td>java.lang.Class</td>
+<td>class</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>java.uitl.Locale</td>
+<td>locale</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>java.uitl.TimeZone</td>
+<td>timezone</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>java.uitl.Currency</td>
+<td>currency</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
 
 		</p>
 		<!-- 侧边导航条 -->
@@ -220,7 +330,7 @@ PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;<br/><br/>
 	<!-- 版权声明 -->
 		<p class="post-info" style="color: #BCBDB6">
 				本文由 <a style="color: #BCBDB6" href="#">Sajor
-				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2020-02-25T15:20:15+08:00
+				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2020-02-23T00:32:51+08:00
 		</p>
 	<!-- 导航 -->
 			<div id="comments" class="clearfix" style="padding: 0px;">
@@ -228,14 +338,14 @@ PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;<br/><br/>
 				    <div class="meta">
 					    
 					    <P style="float: left;">
-					    	<a href="15833368444152.html" 
-					        title="Previous Post: Linux">&laquo; Linux</a>
+					    	<a href="15826152154212.html" 
+					        title="Previous Post: MyBatis 开启自动驼峰转换">&laquo; MyBatis 开启自动驼峰转换</a>
 					    </p>
 					    <p style="float:right; ">
 					    	
 					    	
-					        <a href="15823891714442.html" 
-					        title="Next Post: java和mysql转换">java和mysql转换 &raquo;</a>
+					        <a href="15823882245344.html" 
+					        title="Next Post: MySQL 查看表注释或字段注释">MySQL 查看表注释或字段注释 &raquo;</a>
 					    </p> 
 					    
 				    </div>

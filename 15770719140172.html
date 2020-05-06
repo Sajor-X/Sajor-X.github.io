@@ -10,7 +10,7 @@
 
     <title>
       
-    MyBatis 开启自动驼峰转换 - Sajor's Blog
+    redis - Sajor's Blog
     
     </title>
 
@@ -89,37 +89,103 @@
 		<div class="post-header">
 			<!-- title -->
 			<div class="post-header">
-				<h1 class="post-title itemprop="name headline">MyBatis 开启自动驼峰转换</h1>	
+				<h1 class="post-title itemprop="name headline">redis</h1>	
 				<div class="post-data">
-					<time datetime="2020-02-25T15:20:15+08:00" pubdate data-updated="true">2020/02/25</time>
+					<time datetime="2019-12-23T11:31:54+08:00" pubdate data-updated="true">2019/12/23</time>
 				</div>
 			</div>
 		</div>
 	<div id="post-content" class="post-content" itemprop="articleBody"> 
 		<p class="post-tags"> 
 		
-		<a href='java.html'>ssm课程</a>&nbsp;
+		<a href='Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0.html'>Redis设计与实现</a>&nbsp;
 		
 		</p>
 	<!-- 正文 -->
 		<p>
-		<p>在mybatis-config.xml文件中加入此设置</p>
-<?xml version="1.0" encoding="UTF-8" ?>
-<p>&lt;!DOCTYPE configuration<br/><br/>
-PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;<br/><br/>
-&quot;<a href="http://mybatis.org/dtd/mybatis-3-config.dtd%22%3E">http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;</a><br/><br/>
-<configuration><br/><br/>
-    <settings><br/><br/>
-        <setting name="mapUnderscoreToCamelCase" value="true" /><br/><br/>
-    </settings><br/><br/>
-</configuration></p>
+		<p>redis-server /usr/local/redis/etc/redis.conf</p>
 
-<p><img src="media/15826152154212/15826153307445.jpg" alt=""/></p>
+<h2 id="toc_0">redis 集群</h2>
 
-<p>参考:<br/>
-<a href="https://yq.aliyun.com/articles/662319">https://yq.aliyun.com/articles/662319</a><br/>
-<a href="https://www.cnblogs.com/pjfmeng/p/7677773.html">https://www.cnblogs.com/pjfmeng/p/7677773.html</a><br/>
-<a href="https://www.cnblogs.com/zhouricong/p/9483099.html">https://www.cnblogs.com/zhouricong/p/9483099.html</a></p>
+<p>首先安装redis<br/>
+brew install redis</p>
+
+<p>单节点<br/>
+redis-server /usr/local/redis/etc/redis.conf</p>
+
+<p>将/usr/local/redis/bin<br/>
+建立redis-cluster文件夹，复制六份， 三主三备份， 分别叫redis01-redis-06<br/>
+<img src="media/15662634729470/15663492850811.jpg" alt="" style="width:423px;"/></p>
+
+<p>将每个文件夹中的redis.conf都修改一下<br/>
+例如： redis01/redis.conf</p>
+
+<pre class="line-numbers"><code class="language-text">port 7001
+
+cluster-enabled yes
+
+cluster-config-file  nodes_7001.conf  
+
+cluster-node-timeout  15000 
+
+pidfile  /var/run/redis_7001.pid
+</code></pre>
+
+<p>redis02-redis06 的配置文件参照01的配置，将其中7001都改为2-6即可。</p>
+
+<p>编写bash脚本启动</p>
+
+<pre class="line-numbers"><code class="language-text">./redis01/redis-server ./redis01/redis.conf
+./redis02/redis-server ./redis02/redis.conf
+./redis03/redis-server ./redis03/redis.conf
+./redis04/redis-server ./redis04/redis.conf
+./redis05/redis-server ./redis05/redis.conf
+./redis06/redis-server ./redis06/redis.conf
+</code></pre>
+
+<p>运行后查看进程<br/>
+ps -ef | grep redis<br/>
+<img src="media/15662634729470/15663495776677.jpg" alt="" style="width:707px;"/></p>
+
+<p>安装ruby<br/>
+brew install ruby</p>
+
+<p>到rubypems.org下载redis工具，也可以直接wget<br/>
+brew install wget<br/>
+wget <a href="http://rubygems.org/downloads/redis-3.3.0.gem">http://rubygems.org/downloads/redis-3.3.0.gem</a><br/>
+gem install -l redis-3.3.0.gem</p>
+
+<p>创建集群</p>
+
+<pre class="line-numbers"><code class="language-text">./redis-cli --cluster create 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005 127.0.0.1:7006 --cluster-replicas 1
+</code></pre>
+
+<p>报错</p>
+
+<blockquote>
+<p>[ERR] Node 127.0.0.1:7001 is not empty. Either the node already knows other nodes (check with CLUSTER NODES) or contains some key in database 0.</p>
+</blockquote>
+
+<p>连接到每个redis 运行</p>
+
+<p>flushdb</p>
+
+<blockquote>
+<p>Node is not empty</p>
+</blockquote>
+
+<p>运行fix</p>
+
+<p>./redis-cli --cluster fix 127.0.0.1:7001</p>
+
+<p>cluster命令</p>
+
+<pre class="line-numbers"><code class="language-text">cluster info 
+cluster nodes
+</code></pre>
+
+<p>参考：<a href="https://blog.csdn.net/qq_42815754/article/details/82912130">redis集群搭建（非常详细，适合新手）</a><br/>
+<a href="https://www.jianshu.com/p/dfc6656d4287">Redis 5.0.3集群搭建</a></p>
 
 		</p>
 		<!-- 侧边导航条 -->
@@ -220,7 +286,7 @@ PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;<br/><br/>
 	<!-- 版权声明 -->
 		<p class="post-info" style="color: #BCBDB6">
 				本文由 <a style="color: #BCBDB6" href="#">Sajor
-				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2020-02-25T15:20:15+08:00
+				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2019-12-23T11:31:54+08:00
 		</p>
 	<!-- 导航 -->
 			<div id="comments" class="clearfix" style="padding: 0px;">
@@ -228,16 +294,12 @@ PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;<br/><br/>
 				    <div class="meta">
 					    
 					    <P style="float: left;">
-					    	<a href="15833368444152.html" 
-					        title="Previous Post: Linux">&laquo; Linux</a>
+					    	<a href="15518630086345.html" 
+					        title="Previous Post: Redis">&laquo; Redis</a>
 					    </p>
 					    <p style="float:right; ">
 					    	
 					    	
-					        <a href="15823891714442.html" 
-					        title="Next Post: java和mysql转换">java和mysql转换 &raquo;</a>
-					    </p> 
-					    
 				    </div>
 			  	</footer>
 	<!-- footer end -->

@@ -10,7 +10,7 @@
 
     <title>
       
-    SSM练习 - Sajor's Blog
+    数据库 - Sajor's Blog
     
     </title>
 
@@ -95,19 +95,41 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
 						
 						</div> 
-						<a href="15647300073307.html"> 
+						<a href="15748392035708.html"> 
 							<div class="item-desc"> 
-								<p>在上一章的基础上，继续使用c07包
+								<p>简介
 
-1、创建新的 Package
+背景和目的
+
+为规范生产环境部署和资源规划，更好实施资源池管理策略。用于指导Redis产品的安装配置，Redis哨兵和集群模式创建
+
+使用范围
 
 
-com.sajor.study.c07.user
-com.sajor.study.c07.user.model:存放 vo 对象(业务模型对象) 
-com.sajor.study.c07.user.dao:存放 dao 对象(数据库访问对象) 
-com.sajor.study.c07.user.mapper:存放 mybatis 数据库表-对象映射文件 
-com.sajor.study.c07.user.service:存放服务接口 
-com.sajor.study.c07.user.service.impl:存放接口实现</p> 
+适用对象： 系统规划设计人员、系统部署实施人员、系统维护人员、IT管理人员。
+适用范围：
+使用场景： 传统架构及PaaS平台均需遵守该规范
+试用版本： 目前我行生产环境使用的所有Redis版本
+
+
+术语定义
+
+
+
+
+简称\术语
+说明
+
+
+
+
+
+分布式缓存
+为了提升指令和数据存取速度，通过分布式技术实现的缓存系统。
+
+
+Redis
+开源分布式缓存产品。网址：redis.io 使用C语言编写，支持网络、可基于内存有可以支持持久化的key-val</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -118,7 +140,7 @@ com.sajor.study.c07.user.service.impl:存放接口实现</p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15647300073307.html">从零开始SSM开发系列十三：使用 Mapper 接口方式整合 MyBatis-Spring</a>
+	  							<a href="15748392035708.html">redis部署规范</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -129,7 +151,9 @@ com.sajor.study.c07.user.service.impl:存放接口实现</p>
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
+			    			<a class='category' href='Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0.html'>Redis设计与实现</a>
+								
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
 								
 		   						</div> 
 		   					</div> 
@@ -145,295 +169,27 @@ com.sajor.study.c07.user.service.impl:存放接口实现</p>
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
 						
 						</div> 
-						<a href="15647285252626.html"> 
+						<a href="15700237274379.html"> 
 							<div class="item-desc"> 
-								<p>1、引用 MyBatis-Spring 集成 jar 包
+								<p>append 追加
 
-在工程中引用 mybatis-spring-1.3.1.jar包
+append key value
 
-点击 File&gt;Project Structure...，选中 Libraries，添加 java 引用
+返回值
+Integer reply：返回append后字符串值（value）的长度。
 
+例子
 
+redis&gt; EXISTS mykey
+(integer) 0
+redis&gt; APPEND mykey &quot;Hello&quot;
+(integer) 5
+redis&gt; APPEND mykey &quot; World&quot;
+(integer) 11
+redis&gt; GET mykey
+&quot;Hello World&quot;
+redis&gt;
 
-2、创建新的 Package
-
-
-com.sajor.study.c07
-com.sajor.study.c07.dao 
-test.com.sajor.study.c07
-
-
-3、在 dao 包中创建一个 User 类
-
-在类中声明id、name、sex和email属性，及其对应的getter/setter方法。
-
-package com.sajor</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15647285252626.html">从零开始SSM开发系列十二：使用 DAO 方式整合 MyBatis-Spring</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
-						
-						</div> 
-						<a href="15647140106325.html"> 
-							<div class="item-desc"> 
-								<p>在上一章的基础上，我们还使用c06包接着添加功能。
-
-1、数据库表准备
-新建一个数据库表:jo􏰀b、j􏰀obresume 并添加几条数据
-
-jo􏰀b 表
-
-
-
-
-字段名称
-类型
-长度
-
-
-
-
-
-jobid
-int
-11（主键）
-
-
-jobtitle
-varchar
-127
-
-
-
-
-jobresume表
-
-
-
-
-字段名称
-类型
-长度
-
-
-
-
-
-id
-int
-11（主键）
-
-
-jobid
-int
-11
-
-
-resumeid
-int
-11
-
-
-
-
-2、在 model 包中创建 Job 类
-
-package com.sajor.study.c06.model;
-
-import java.util</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15647140106325.html">从零开始SSM开发系列十一：MyBatis 多对多关联关系</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
-						
-						</div> 
-						<a href="15647098694474.html"> 
-							<div class="item-desc"> 
-								<p>在上一章的基础上，我们还使用c06包接着添加功能。
-
-1、数据库表准备
-新建一个数据库表:resume 并添加几条数据
-
-resume 表
-
-
-
-
-字段名称
-类型
-长度
-
-
-
-
-
-resumeid
-int
-11（主键）
-
-
-userid
-int
-11
-
-
-resumename
-varchar
-255
-
-
-resumedesc
-varchar
-255
-
-
-
-
-2、在 model 包中创建 Resume 类
-
-package com.sajor.study.c06.model;
-
-public class Resume {
-    private Integer resumeId;
-    pri</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15647098694474.html">从零开始SSM开发系列十：MyBatis 一对多关联关系</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
-						
-						</div> 
-						<a href="15643240518555.html"> 
-							<div class="item-desc"> 
-								<p>1、数据库表准备
-
-新建一个数据库表:card 并添加几条数据
-
-Card 表
-
-
-
-
-字段名称
-类型
-长度
-
-
-
-
-
-id
-int
-11（主键）
-
-
-code
-varchar
-18
-
-
-
-
-2、创建新的 Package
-
-
-com.sajor.study.c06
-com.sajor.study.c06.model : 存放 vo 对象(业务模型对象) 
-com.sajor.study.c06.dao : 存放 dao 对象(数据库访问对象) 
-com.sajor.study.mapper : 存放 mybatis 数据库表-对象映射文件 
-test.com.sajor.study.c06 
 </p> 
 							</div> 
 						</a> 
@@ -445,7 +201,7 @@ test.com.sajor.study.c06
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15643240518555.html">从零开始SSM开发系列九：MyBatis 一对一关联关系</a>
+	  							<a href="15700237274379.html">redis命令</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -456,7 +212,9 @@ test.com.sajor.study.c06
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
+								
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
 								
 		   						</div> 
 		   					</div> 
@@ -472,24 +230,30 @@ test.com.sajor.study.c06
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
 						
 						</div> 
-						<a href="15643212338496.html"> 
+						<a href="15648434329273.html"> 
 							<div class="item-desc"> 
-								<p>1、配置 MyBatis 开发环境
-
-在工程里面引用 MyBatis 核心 jar 包，以及 MyBatis 依赖的第三方 jar 包。
-点击 File&gt;Project Structure...，选中 Libraries，添加 java 引用
-选择 l􏰀ib 中的 􏰁Mybatis-3.4.5.jar 包。
-
-再次添加 java 引用，选中 lib 中的 mybatis-3.4.5-lib 文件夹
-确认。MyBatis 开发环境即搭建好了。
+								<p>今天博客遇到如下异常
 
 
+MySQLNonTransientConnectionException: Communications link failure during rollback().
 
-2、创建新的 Package
+
+打开mysql配置文件/etc/my.cnf
+
+在[mysqld]节，增加wait_timeout配置，原来是5，看来不够用，改为50。
+
+[mysqld]
+wait_timeout=50
 
 
-com.sajor.study.c05
-com.sajor.study.c05.model:存放 vo </p> 
+重启mysqld服务，问题解决
+
+service mysqld restart
+
+
+报错信息如下：
+
+2019-08-03 22:33:17.405  WARN 29453 --- [XNIO-1 task</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -500,7 +264,7 @@ com.sajor.study.c05.model:存放 vo </p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15643212338496.html">从零开始SSM开发系列八：MyBatis 入门</a>
+	  							<a href="15648434329273.html">mysql经典的8小时问题-wait_timeout</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -511,7 +275,175 @@ com.sajor.study.c05.model:存放 vo </p>
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
+								
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
+						
+						</div> 
+						<a href="15646739216640.html"> 
+							<div class="item-desc"> 
+								<p>关系型数据库：
+
+Oracle、DB2、Microsoft SQL Server、Microsoft Access、MySQL
+
+非关系型数据库：
+
+NoSql、Cloudant、MongoDb、redis、HBase
+
+两种数据库之间的区别：
+
+关系型数据库
+
+　　关系型数据库的特性
+
+　　1、关系型数据库，是指采用了关系模型来组织数据的数据库；
+
+　　2、关系型数据库的最大特点就是事务的一致性；
+
+　　3、简单来说，关系模型指的就是二维表格模型，而一个关系型数据库就是由二维表及其之间的联系所组成的一个数据组织。
+
+　　关系型数据库的优点
+
+　　1、容易理解：二维表结构是非常贴近逻辑世界一个</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15646739216640.html">列举常见的关系型数据库和非关系型都有那些？</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
+								
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
+						
+						</div> 
+						<a href="15641490587108.html"> 
+							<div class="item-desc"> 
+								<p>今天博客突然报了这个错误：
+
+Packet for query is too large (5,215 &gt; 1,024). You can change this value on the server by setting the &#39;max_allowed_packet&#39; variable.
+
+
+百度了一下，MySQL会根据配置文件会限制server接受的数据包的大小。如果写入大数据时，因为默认的配置太小，插入和更新操作会因为 max_allowed_packet 参数限制，而导致失败。
+在MySQL中输入这条命令查询
+
+SHOW VARIABLES LIKE &#39</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15641490587108.html">在使用Mybatis generator时提示MySQL写入过大</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
+								
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
+						
+						</div> 
+						<a href="15638863087177.html"> 
+							<div class="item-desc"> 
+								<p>数据库命令规范
+
+
+所有数据库对象名称必须使用小写字母并用下划线分割
+所有数据库对象名称禁止使用 MySQL 保留关键字（如果表名中包含关键字查询时，需要将其用单引号括起来）
+数据库对象的命名要能做到见名识意，并且最后不要超过 32 个字符
+临时库表必须以 tmp_为前缀并以日期为后缀，备份表必须以 bak_为前缀并以日期 (时间戳) 为后缀
+所有存储相同数据的列名和列类型必须一致（一般作为关联列，如果查询时关联列类型不一致会自动进行数据类型隐式转换，会造成列上的索引失效，导致查询效率降低）
+## 数据库基本设计规范
+### 所有表必须使用 Innodb 存储引擎
+没有特殊要求（即 Innod</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15638863087177.html">MySQL高性能优化规范建议</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
+								
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
 								
 		   						</div> 
 		   					</div> 
@@ -526,13 +458,13 @@ com.sajor.study.c05.model:存放 vo </p>
 	<nav class="lists-navigator clearfix" style="clear: all;">
             <ol class="page-navigator">
             
-            	<li class="  disabled "><a href="#index"><span aria-hidden="true">&larr;</span> 上一页</a></li>
+            	<li class=""><a href="数据库.html"><span aria-hidden="true">&larr;</span> 上一页</a></li>
             
 
 				<li class=""><a href="archives.html">归档</a></li>
 
 			
-			<li class=""><a href="ssm_1.html">下一页 <span aria-hidden="true">&rarr;</span></a></li>
+			<li class=""><a href="数据库_2.html">下一页 <span aria-hidden="true">&rarr;</span></a></li>
 			
             </ol>
      </nav>

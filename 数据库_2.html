@@ -10,7 +10,7 @@
 
     <title>
       
-    SSM练习 - Sajor's Blog
+    数据库 - Sajor's Blog
     
     </title>
 
@@ -95,19 +95,23 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
 						
 						</div> 
-						<a href="15647300073307.html"> 
+						<a href="15518630086345.html"> 
 							<div class="item-desc"> 
-								<p>在上一章的基础上，继续使用c07包
+								<p>Redis 简介
 
-1、创建新的 Package
+Redis 是完全开源免费的，遵守BSD协议，是一个高性能的key-value数据库。
+
+Redis 与其他 key - value 缓存产品有以下三个特点：
 
 
-com.sajor.study.c07.user
-com.sajor.study.c07.user.model:存放 vo 对象(业务模型对象) 
-com.sajor.study.c07.user.dao:存放 dao 对象(数据库访问对象) 
-com.sajor.study.c07.user.mapper:存放 mybatis 数据库表-对象映射文件 
-com.sajor.study.c07.user.service:存放服务接口 
-com.sajor.study.c07.user.service.impl:存放接口实现</p> 
+Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。
+Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。
+Redis支持数据的备份，即master-slave模式的数据备份。
+
+
+Redis 数据类型
+
+Redis支持五种数据类型：string（字符串），hash（哈希），list（列表），set（集合）</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -118,7 +122,7 @@ com.sajor.study.c07.user.service.impl:存放接口实现</p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15647300073307.html">从零开始SSM开发系列十三：使用 Mapper 接口方式整合 MyBatis-Spring</a>
+	  							<a href="15518630086345.html">Redis</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -129,7 +133,7 @@ com.sajor.study.c07.user.service.impl:存放接口实现</p>
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
 								
 		   						</div> 
 		   					</div> 
@@ -145,29 +149,30 @@ com.sajor.study.c07.user.service.impl:存放接口实现</p>
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
 						
 						</div> 
-						<a href="15647285252626.html"> 
+						<a href="15770719140172.html"> 
 							<div class="item-desc"> 
-								<p>1、引用 MyBatis-Spring 集成 jar 包
+								<p>redis-server /usr/local/redis/etc/redis.conf
 
-在工程中引用 mybatis-spring-1.3.1.jar包
+redis 集群
 
-点击 File&gt;Project Structure...，选中 Libraries，添加 java 引用
+首先安装redis
+brew install redis
 
+单节点
+redis-server /usr/local/redis/etc/redis.conf
 
-
-2、创建新的 Package
-
-
-com.sajor.study.c07
-com.sajor.study.c07.dao 
-test.com.sajor.study.c07
+将/usr/local/redis/bin
+建立redis-cluster文件夹，复制六份， 三主三备份， 分别叫redis01-redis-06
 
 
-3、在 dao 包中创建一个 User 类
+将每个文件夹中的redis.conf都修改一下
+例如： redis01/redis.conf
 
-在类中声明id、name、sex和email属性，及其对应的getter/setter方法。
+port 7001
 
-package com.sajor</p> 
+cluster-enabled yes
+
+cluster-</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -178,7 +183,7 @@ package com.sajor</p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15647285252626.html">从零开始SSM开发系列十二：使用 DAO 方式整合 MyBatis-Spring</a>
+	  							<a href="15770719140172.html">redis</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -189,329 +194,7 @@ package com.sajor</p>
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
-						
-						</div> 
-						<a href="15647140106325.html"> 
-							<div class="item-desc"> 
-								<p>在上一章的基础上，我们还使用c06包接着添加功能。
-
-1、数据库表准备
-新建一个数据库表:jo􏰀b、j􏰀obresume 并添加几条数据
-
-jo􏰀b 表
-
-
-
-
-字段名称
-类型
-长度
-
-
-
-
-
-jobid
-int
-11（主键）
-
-
-jobtitle
-varchar
-127
-
-
-
-
-jobresume表
-
-
-
-
-字段名称
-类型
-长度
-
-
-
-
-
-id
-int
-11（主键）
-
-
-jobid
-int
-11
-
-
-resumeid
-int
-11
-
-
-
-
-2、在 model 包中创建 Job 类
-
-package com.sajor.study.c06.model;
-
-import java.util</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15647140106325.html">从零开始SSM开发系列十一：MyBatis 多对多关联关系</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
-						
-						</div> 
-						<a href="15647098694474.html"> 
-							<div class="item-desc"> 
-								<p>在上一章的基础上，我们还使用c06包接着添加功能。
-
-1、数据库表准备
-新建一个数据库表:resume 并添加几条数据
-
-resume 表
-
-
-
-
-字段名称
-类型
-长度
-
-
-
-
-
-resumeid
-int
-11（主键）
-
-
-userid
-int
-11
-
-
-resumename
-varchar
-255
-
-
-resumedesc
-varchar
-255
-
-
-
-
-2、在 model 包中创建 Resume 类
-
-package com.sajor.study.c06.model;
-
-public class Resume {
-    private Integer resumeId;
-    pri</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15647098694474.html">从零开始SSM开发系列十：MyBatis 一对多关联关系</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
-						
-						</div> 
-						<a href="15643240518555.html"> 
-							<div class="item-desc"> 
-								<p>1、数据库表准备
-
-新建一个数据库表:card 并添加几条数据
-
-Card 表
-
-
-
-
-字段名称
-类型
-长度
-
-
-
-
-
-id
-int
-11（主键）
-
-
-code
-varchar
-18
-
-
-
-
-2、创建新的 Package
-
-
-com.sajor.study.c06
-com.sajor.study.c06.model : 存放 vo 对象(业务模型对象) 
-com.sajor.study.c06.dao : 存放 dao 对象(数据库访问对象) 
-com.sajor.study.mapper : 存放 mybatis 数据库表-对象映射文件 
-test.com.sajor.study.c06 
-</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15643240518555.html">从零开始SSM开发系列九：MyBatis 一对一关联关系</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture);">
-						
-						</div> 
-						<a href="15643212338496.html"> 
-							<div class="item-desc"> 
-								<p>1、配置 MyBatis 开发环境
-
-在工程里面引用 MyBatis 核心 jar 包，以及 MyBatis 依赖的第三方 jar 包。
-点击 File&gt;Project Structure...，选中 Libraries，添加 java 引用
-选择 l􏰀ib 中的 􏰁Mybatis-3.4.5.jar 包。
-
-再次添加 java 引用，选中 lib 中的 mybatis-3.4.5-lib 文件夹
-确认。MyBatis 开发环境即搭建好了。
-
-
-
-2、创建新的 Package
-
-
-com.sajor.study.c05
-com.sajor.study.c05.model:存放 vo </p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15643212338496.html">从零开始SSM开发系列八：MyBatis 入门</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
+			    			<a class='category' href='Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0.html'>Redis设计与实现</a>
 								
 		   						</div> 
 		   					</div> 
@@ -526,14 +209,14 @@ com.sajor.study.c05.model:存放 vo </p>
 	<nav class="lists-navigator clearfix" style="clear: all;">
             <ol class="page-navigator">
             
-            	<li class="  disabled "><a href="#index"><span aria-hidden="true">&larr;</span> 上一页</a></li>
+            	<li class=""><a href="数据库_1.html"><span aria-hidden="true">&larr;</span> 上一页</a></li>
             
 
 				<li class=""><a href="archives.html">归档</a></li>
 
 			
-			<li class=""><a href="ssm_1.html">下一页 <span aria-hidden="true">&rarr;</span></a></li>
-			
+            	<li class=" disabled "><a href="#index">下一页 <span aria-hidden="true">&rarr;</span></a></li>
+            
             </ol>
      </nav>
 </div>

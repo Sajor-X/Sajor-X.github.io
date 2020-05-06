@@ -4,7 +4,7 @@
   <title><![CDATA[Sajor's Blog]]></title>
   <link href="http://blog.sajor.top/atom.xml" rel="self"/>
   <link href="http://blog.sajor.top/"/>
-  <updated>2020-04-10T15:12:05+08:00</updated>
+  <updated>2020-05-06T23:43:25+08:00</updated>
   <id>http://blog.sajor.top/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -258,6 +258,231 @@ PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;<br/><br/>
 <a href="https://yq.aliyun.com/articles/662319">https://yq.aliyun.com/articles/662319</a><br/>
 <a href="https://www.cnblogs.com/pjfmeng/p/7677773.html">https://www.cnblogs.com/pjfmeng/p/7677773.html</a><br/>
 <a href="https://www.cnblogs.com/zhouricong/p/9483099.html">https://www.cnblogs.com/zhouricong/p/9483099.html</a></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[java和mysql转换]]></title>
+    <link href="http://blog.sajor.top/15823891714442.html"/>
+    <updated>2020-02-23T00:32:51+08:00</updated>
+    <id>http://blog.sajor.top/15823891714442.html</id>
+    <content type="html"><![CDATA[
+<table>
+<thead>
+<tr>
+<th>java类</th>
+<th> </th>
+<th>mysql数据库</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>java.lang.Byte</td>
+<td>byte</td>
+<td>TINYINT</td>
+</tr>
+<tr>
+<td>java.lang.Short</td>
+<td>short</td>
+<td>SMALLINT</td>
+</tr>
+<tr>
+<td>java.lang.Integer</td>
+<td>integer</td>
+<td>INGEGER</td>
+</tr>
+<tr>
+<td>java.lang.Long</td>
+<td>long</td>
+<td>BIGINT</td>
+</tr>
+<tr>
+<td>java.lang.Float</td>
+<td>float</td>
+<td>FLOAT</td>
+</tr>
+<tr>
+<td>java.lang.Double</td>
+<td>double</td>
+<td>DOUBLE</td>
+</tr>
+<tr>
+<td>java.lang.BigDecimal</td>
+<td>big_decimal</td>
+<td>NUMERIC</td>
+</tr>
+<tr>
+<td>java.lang.Boolean</td>
+<td>boolean</td>
+<td>BIT</td>
+</tr>
+<tr>
+<td>java.lang.String</td>
+<td>string</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>java.lang.Boolean</td>
+<td>yes_no</td>
+<td>CHAR(1)(&#39;Y&#39;或&#39;N&#39;)</td>
+</tr>
+<tr>
+<td>java.lang.Boolean</td>
+<td>true_false</td>
+<td>CHAR(1)(‘Y’或&#39;N&#39;)</td>
+</tr>
+<tr>
+<td>java.uitl.Date</td>
+<td>java.sql.Date</td>
+<td>date</td>
+</tr>
+<tr>
+<td>java.sql.Time</td>
+<td>time</td>
+<td>TIME</td>
+</tr>
+<tr>
+<td>java.sql.Timestamp</td>
+<td>timestamp</td>
+<td>TIMESTAMP</td>
+</tr>
+<tr>
+<td>java.uitl.Calendar</td>
+<td>celendar</td>
+<td>TIMESTAMP</td>
+</tr>
+<tr>
+<td>java.uitl.Calendar</td>
+<td>calendar</td>
+<td>TIMESTAMP</td>
+</tr>
+<tr>
+<td>java.io.Serializable</td>
+<td>serializable</td>
+<td>VARBINARY/BLOB</td>
+</tr>
+<tr>
+<td>java.sql.Clob</td>
+<td>clob</td>
+<td>CLOB</td>
+</tr>
+<tr>
+<td>java.sql.Blob</td>
+<td>blob</td>
+<td>BLOB</td>
+</tr>
+<tr>
+<td>java.lang.Class</td>
+<td>class</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>java.uitl.Locale</td>
+<td>locale</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>java.uitl.TimeZone</td>
+<td>timezone</td>
+<td>VARCHAR</td>
+</tr>
+<tr>
+<td>java.uitl.Currency</td>
+<td>currency</td>
+<td>VARCHAR</td>
+</tr>
+</tbody>
+</table>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[MySQL 查看表注释或字段注释]]></title>
+    <link href="http://blog.sajor.top/15823882245344.html"/>
+    <updated>2020-02-23T00:17:04+08:00</updated>
+    <id>http://blog.sajor.top/15823882245344.html</id>
+    <content type="html"><![CDATA[
+<h2 id="toc_0">查看注释</h2>
+
+<p>查看所有表的注释</p>
+
+<pre class="line-numbers"><code class="language-sql">SELECT
+table_name 表名,
+table_comment 表说明
+FROM
+information_schema.TABLES
+WHERE
+table_schema = &#39;数据库名&#39;
+ORDER BY
+table_name
+</code></pre>
+
+<p>查询所有表及字段的注释</p>
+
+<pre class="line-numbers"><code class="language-sql">SELECT
+a.table_name 表名,
+a.table_comment 表说明,
+b.COLUMN_NAME 字段名,
+b.column_comment 字段说明,
+b.column_type 字段类型,
+b.column_key 约束
+FROM
+information_schema.TABLES a
+LEFT JOIN information_schema.COLUMNS b ON a.table_name = b.TABLE_NAME
+WHERE
+a.table_schema = &#39;数据库名&#39;
+ORDER BY
+a.table_name
+</code></pre>
+
+<p>查询某表的所有字段的注释</p>
+
+<pre class="line-numbers"><code class="language-sql">select 
+COLUMN_NAME 字段名,
+column_comment 字段说明,
+column_type 字段类型,
+column_key 约束 from information_schema.columns 
+where table_schema = &#39;数据库名&#39;
+and table_name = &#39;表名&#39; ; 
+</code></pre>
+
+<p>或者</p>
+
+<pre class="line-numbers"><code class="language-sql">show full columns from 表名;
+</code></pre>
+
+<h2 id="toc_1">查看表生成的DDL</h2>
+
+<p><strong>注意表名不加单引号</strong></p>
+
+<pre class="line-numbers"><code class="language-sql">show create table 表名;
+</code></pre>
+
+<h2 id="toc_2">新建表以及添加表和字段的注释</h2>
+
+<pre class="line-numbers"><code class="language-sql">create table t_user(
+    ID INT(19) primary key auto_increment  comment &#39;主键&#39;,
+    NAME VARCHAR(300) comment &#39;姓名&#39;,
+    CREATE_TIME date comment &#39;创建时间&#39;
+)comment  = &#39;用户信息表&#39;;
+</code></pre>
+
+<h2 id="toc_3">修改表/字段的注释</h2>
+
+<p>修改表注释</p>
+
+<pre class="line-numbers"><code class="language-sql">alter table t_user comment  = &#39;修改后的表注释信息(用户信息表)&#39;;
+</code></pre>
+
+<p>修改字段注释</p>
+
+<pre class="line-numbers"><code class="language-sql">alter table t_user modify column id int comment &#39;主键ID&#39;;
+</code></pre>
+
+<p>参考：简书<a href="https://www.jianshu.com/p/e6286174d35c">Mysql 查看表注释或字段注释</a></p>
 
 ]]></content>
   </entry>
@@ -1235,473 +1460,6 @@ lastlog  //可以查看是否有用户登录系统了（未启用的账户）
 
 <p>vipw命令<br/>
 详情请看 vipw --help</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[redis 参数配置]]></title>
-    <link href="http://blog.sajor.top/15749080605397.html"/>
-    <updated>2019-11-28T10:27:40+08:00</updated>
-    <id>http://blog.sajor.top/15749080605397.html</id>
-    <content type="html"><![CDATA[
-<ul>
-<li>安装目录创建</li>
-</ul>
-
-<table>
-<thead>
-<tr>
-<th>目录名</th>
-<th>用途</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>/redis/bin</td>
-<td>存放redis软件本体</td>
-</tr>
-<tr>
-<td>/redis/conf</td>
-<td>存放redis实例配置文件</td>
-</tr>
-<tr>
-<td>/redis/logs</td>
-<td>存放redis标准输出日志</td>
-</tr>
-<tr>
-<td>/redis/backup</td>
-<td>存放备节点配置文件，其他备份文件</td>
-</tr>
-<tr>
-<td>/redis/var</td>
-<td>存放redis进程文件</td>
-</tr>
-<tr>
-<td>/redis/nodes</td>
-<td>存放redis集群模式nodes配置文件</td>
-</tr>
-<tr>
-<td>/redisdump</td>
-<td>存放redis持久化数据，独立的文件系统</td>
-</tr>
-<tr>
-<td>/redis/tmp</td>
-<td>存放哨兵工作目录，redis集群最初配置状态</td>
-</tr>
-</tbody>
-</table>
-
-<p>执行转换文件权限命令：</p>
-
-<pre class="line-numbers"><code class="language-text">chown -R redis:redisgrp
-chomd -R 755
-</code></pre>
-
-<p>上述文件系统目录以及子目录所有属组为redis:redisgrp, 所有权限为755</p>
-
-<p>注意： 如果开启redis持久化，需要单独创建另一文件系统/redisdump,将Redis的持久化数据放到该文件系统下。</p>
-
-<ul>
-<li>将Redis集群各成员的主机名/ip 映射信息加入到/etc/hosts当中</li>
-</ul>
-
-<h4 id="toc_0">集群配置（redis.conf重点参数配置）</h4>
-
-<p>针对每个Redis 服务器的不同端口均需要单独存放配置文件（redis.conf）， 配置文件位置为/redis/conf/redis_[redis_port].conf，其中Redis端口建议使用7003以上端口，如部分系统使用软件较多存在端口冲突， 也可根据自身情况进行更改，但不建议使用7000以下端口。每个端口的配置文件均需满足如下配置要求：</p>
-
-<pre class="line-numbers"><code class="language-text">daemonize yes     # daemonize no 配置redis以守护进程方式运行。
-bind 本机ip
-port 7003
-pidfile /redis/var/redis_[redis_port].pid   # 修改pid文件位置及名称
-logfile /redis/logs/redis_[redis_port].log  # 设置redis日志
-loglevel notice                             # 设置redis的日志级别
-stop-writes-on-bgsave-error no              # 设置节点bgsave操作时
-
-
-</code></pre>
-
-<ol>
-<li>修改daemonize no 为 daemonize yes， 即配置redis以守护进程方式运行。</li>
-<li>修改bind地址为本机IP地址</li>
-<li>修改端口为指定端口，根据所进目录如port 7003</li>
-<li>修改pid文件位置及名称pidfile /redis/var/redis_[redis_port].pid</li>
-<li>设置redis日志，logfile /redis/logs/redis_[redis_port].log</li>
-<li>设置redis的日志级别， loglevel notice</li>
-<li>持久化功能：注意：持久化分为RDB和AOF两种模式，由于开启持久化会产生比较大的文件，例如：dump.rdb或appednonly.aof，造成IO读写性能下降，但同时，开启持久化是为了保障Redis数据的完备性，可以在宕机后及时回复所需数据，是Redis非常重要的备份恢复机制。因此持久化部分需要与项目协商讨论是否开启。</li>
-<li>RDB持久化功能，如果Redis作为缓存服务器，建议关闭，尽量选择：
-<code>
-# save 900 1<br/>
-# save 300 10<br/>
-# save 60 10000
-</code>
-设置RDB的储存文件名为：<br/>
-dbfilename &quot;dump_[redis_port].rdb&quot;<br/>
-设置RDB储存路径为：<br/>
-dir /redisdump</li>
-<li>AOF持久化功能，默认建议关闭改功能，如需开启，请参考如下内容：<br/>
-开启AOF选项：<br/>
-appendonly yes<br/>
-appendfilename &quot;/redis/dump/appendonly_[redis_port].aof&quot;</li>
-<li>设置节点bgsave操作时，可以写操作stop-writes-on-bgsave-error no</li>
-<li>设置重命名机制，禁止Redis系统上线后，客户端以及redis-cli端使用config、flushdb、flushall命令操作redis<br/>
-rename-command CONFIG ADMCONFIG<br/>
-rename-command FLUSHDB ADMFLUSHDB<br/>
-rename-command FLUSHALL ADMFLUSHALL<br/>
-rename-command KEYS ADMKEYS<br/>
-注明：对于更换后的命令，例如ADMCONFIG等，可以由系统管理员自行指定更复杂命令。</li>
-<li>根据系统内存情况，设置支持的最大内存数（最大内存数必须设置，依实际情况设置，该主机上的Redis最大内存总和不要超过物理内存的50%（如果该主机只独立部署Redis软件，该主机上的Redis最大内存总和不要超过物理内存的75%，建议maxmemory最大值不超过10G） maxmemory 10gb</li>
-<li>设置达到最大内存后的内存清理策略（依实际情况设置）<br/>
-如果数据可以淘汰，建议设置：maxmemory-policy allkeys-lru<br/>
-如果数据不可淘汰，建议设置：maxmemory-policy noeviction</li>
-<li><p>开启集群模式 cluster-enabled yes<br/>
-如果开启集群模式建议设置：</p>
-<ul>
-<li>设置集群节点配置文件（启动自动生成） cluster-config-file /redis/nodes/nodes_[redis_port].conf</li>
-<li>设置集群节点宕机时间（节点之间互相通信时，某主节点多少毫秒失去联系既被认为是该节点宕机） cluster-node-timeout 15000</li>
-<li>设置cluster-migration-barrier X(X=每个主机节点上设计跟随的从节点数量)</li>
-<li>设置cluster-require-full-coverage no(即部分节点宕机，其节点仍对外提供服务，默认不提供服务)</li>
-</ul></li>
-<li><p>为Redis集群设置访问密码（requirepass和masterauth都需要设置，否则发送主从切换时，就会遇到授权问题。（注意各个节点的密码都必须一致）<br/>
-密码设置规范： 要求密码数超过10位；大小写、字母、数字、特殊字符（单双引号不要使用）相结合；不允许使用redis、root等敏感字符</p>
-<pre class="line-numbers"><code class="language-text"># requirepass foobared 
-修改为<br/>
-requirepass ****<br/>
-masterauth ****
-</code></pre>
-<p>注意： 使用redis-trib.rb工具构建集群，集群构建前不要设置密码，构建后通过config set + config rewrite 命令逐个机器设置密码，所以此步跳过。</p></li>
-<li><p>修改复制客户端缓存区永不溢出</p>
-<pre class="line-numbers"><code class="language-text">client-output-buffer-limit normal 0 0 0 
-client-output-buffer-limit slave 0 0 0 
-</code></pre></li>
-<li><p>修改复制去backlog buffer大小： repl-backlog-size 30mb</p></li>
-<li><p>修改配置文件属性，每台服务器的每个端口都需执行 chmod or-r /redis/conf/redis_[redis_port].conf</p></li>
-</ol>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[redis部署规范]]></title>
-    <link href="http://blog.sajor.top/15748392035708.html"/>
-    <updated>2019-11-27T15:20:03+08:00</updated>
-    <id>http://blog.sajor.top/15748392035708.html</id>
-    <content type="html"><![CDATA[
-<h2 id="toc_0">简介</h2>
-
-<h3 id="toc_1">背景和目的</h3>
-
-<p>为规范生产环境部署和资源规划，更好实施资源池管理策略。用于指导Redis产品的安装配置，Redis哨兵和集群模式创建</p>
-
-<h3 id="toc_2">使用范围</h3>
-
-<ul>
-<li>适用对象： 系统规划设计人员、系统部署实施人员、系统维护人员、IT管理人员。</li>
-<li>适用范围：</li>
-<li>使用场景： 传统架构及PaaS平台均需遵守该规范</li>
-<li>试用版本： 目前我行生产环境使用的所有Redis版本</li>
-</ul>
-
-<h3 id="toc_3">术语定义</h3>
-
-<table>
-<thead>
-<tr>
-<th>简称\术语</th>
-<th>说明</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>分布式缓存</td>
-<td>为了提升指令和数据存取速度，通过分布式技术实现的缓存系统。</td>
-</tr>
-<tr>
-<td>Redis</td>
-<td>开源分布式缓存产品。网址：redis.io 使用C语言编写，支持网络、可基于内存有可以支持持久化的key-value数据缓存实现，并提供多种语言的API。</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="toc_4">本规范主要内容说明</h2>
-
-<p>本文仅适用于Linux环境下的Redis产品部署</p>
-
-<h2 id="toc_5">规范详细内容</h2>
-
-<h3 id="toc_6">系统规划</h3>
-
-<h4 id="toc_7">Redis版本选择</h4>
-
-<p>没有特殊要求下，建议选择Redis4.0.10及之后版本</p>
-
-<h4 id="toc_8">Redis架构选择</h4>
-
-<p>Redis常用部署模式包括：</p>
-
-<p>一. 集群模式：</p>
-
-<p>集群模式下， 每个Redis组内包含至少一个Master主节点和至少一个它的Slave从节点。当发现某个Master节点不可用后，该Redis集群会发起投票机制重新选择一个它的Slave从节点作为主节点。</p>
-
-<p><strong>使用要求</strong><br/>
-使用单一操作系统物理内存80%不满足redis所承载应用需求，并且业务估算Redis使用内存高于10G，建议使用集群模式。</p>
-
-<p><strong>生产环境集群架构部署要求</strong><br/>
-对于A/A+类系统，至少使用“五个主节点十个从节点”（主节点分别部署到不同物理机上）的架构。根据业务要求，可以增加主节点数量，但主节点的总数量必须为奇数。对于高可用性要求较高的重点系统，可以加入备节点增加系统健壮性。</p>
-
-<p>对于其他系统， 至少使用“三个主节点三个从节点”（主节点分别部署到不同物理机、虚拟机上）的架构。根据业务要求，可以增加主从节点数量，但主从节点的总数量必须为奇数。</p>
-
-<p><strong>测试环境集群部署模式</strong><br/>
-对于业务压力性能测试，需要与生产环境架构部署保持一致。<br/>
-对于业务功能性测试，可以在满足业务功能性测试的条件下进行减配。</p>
-
-<p>二. 哨兵模式</p>
-
-<p>主从模式的升级版，通过监听sentinel端口状态，其中包含若干个Sentinel和Redis数据节点，每个Sentinel会对Redis数据节点和其余Sentinel进行监控，当发现Redis主节点不可达时，会对节点做下线表示，自动故障转移到从节点。</p>
-
-<p><strong>使用要求</strong><br/>
-单一操作系统物理内存80%可满足redis所承载应用需求，并且业务估算Redis使用内存低于10G，建议使用哨兵模式。</p>
-
-<p><strong>生产环境集群架构部署要求</strong><br/>
-对于A/A+类系统，至少使用三个哨兵节点（分别部署在不同机器上），且哨兵节点总数量必须为奇数；至少使用两个从节点（分别部署在不同机器上）</p>
-
-<p><strong>测试环境集群部署模式</strong><br/>
-对于业务压力性能测试，需要与生产环境架构部署保持一致。<br/>
-对于业务性功能测试，可以在满足业务功能测试的条件下进行减配。</p>
-
-<p>三. 单节点模式： 无高可用配置，原则上不允许生产环境使用。</p>
-
-<h4 id="toc_9">Redis文件系统</h4>
-
-<p>Redis文件系统： 为Redis创建单独的文件系统/redis。 大小建议至少为30GB，可扩容至100GB。</p>
-
-<p>Redis持久化文件系统： Redis 需要生产 RDB 或开启 AOF 持久化机制，为Redis创建单独的文件系统/redisdump，用于存放Redis 产生的持久化文件。大小建议至少为该分区Redis主从节点数*15GB。</p>
-
-<h3 id="toc_10">操作系统参数配置</h3>
-
-<ul>
-<li>关闭THP<br/>
-&gt; echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled<br/>
-&gt; 注意： 为了使机器重启后THP配置依然生效，可以在/etc/rc.local中追加上述命令</li>
-<li>内存分配策略<br/>
-&gt; vi /etc/sysctl.conf<br/>
-&gt; 添加或更改vm.overcommit_memory = 1<br/>
-&gt; sysctl -p</li>
-<li>优化redis监听端口的队列长度<br/>
-&gt; vi /etc/sysctl.conf<br/>
-&gt; 添加或更改net.core.somaxconn = 30000<br/>
-&gt; sysctl -p</li>
-<li>针对can not open too many file问题的优化<br/>
-&gt; 修改/etc/security/limits.conf<br/>
-&gt; * soft nofile 65535<br/>
-&gt; * hard nofile 65535</li>
-</ul>
-
-<h3 id="toc_11">Redis安装规范</h3>
-
-<h4 id="toc_12">Redis安装准备</h4>
-
-<ul>
-<li>Redis用户\组</li>
-</ul>
-
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>类型</th>
-<th>标识</th>
-<th>主组</th>
-<th>主目录</th>
-<th>描述</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>redisgrp</td>
-<td>组</td>
-<td></td>
-<td></td>
-<td></td>
-<td>redis用户组</td>
-</tr>
-<tr>
-<td>redis</td>
-<td>用户</td>
-<td></td>
-<td>redis</td>
-<td>/redis</td>
-<td>redis用户</td>
-</tr>
-</tbody>
-</table>
-
-<ul>
-<li>Redis软件包： 需准备Redis 软件安装包及Redis依赖软件Ruby、gem-redis安装包。</li>
-<li>安装目录创建</li>
-</ul>
-
-<table>
-<thead>
-<tr>
-<th>目录名</th>
-<th>用途</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>/redis/bin</td>
-<td>存放redis软件本体</td>
-</tr>
-<tr>
-<td>/redis/conf</td>
-<td>存放redis实例配置文件</td>
-</tr>
-<tr>
-<td>/redis/logs</td>
-<td>存放redis标准输出日志</td>
-</tr>
-<tr>
-<td>/redis/backup</td>
-<td>存放备节点配置文件，其他备份文件</td>
-</tr>
-<tr>
-<td>/redis/var</td>
-<td>存放redis进程文件</td>
-</tr>
-<tr>
-<td>/redis/nodes</td>
-<td>存放redis集群模式nodes配置文件</td>
-</tr>
-<tr>
-<td>/redisdump</td>
-<td>存放redis持久化数据，独立的文件系统</td>
-</tr>
-<tr>
-<td>/redis/tmp</td>
-<td>存放哨兵工作目录，redis集群最初配置状态</td>
-</tr>
-</tbody>
-</table>
-
-<p>执行转换文件权限命令：</p>
-
-<pre class="line-numbers"><code class="language-text">chown -R redis:redisgrp
-chomd -R 755
-</code></pre>
-
-<p>上述文件系统目录以及子目录所有属组为redis:redisgrp, 所有权限为755</p>
-
-<p>注意： 如果开启redis持久化，需要单独创建另一文件系统/redisdump,将Redis的持久化数据放到该文件系统下。</p>
-
-<ul>
-<li>将Redis集群各成员的主机名/ip 映射信息加入到/etc/hosts当中</li>
-</ul>
-
-<h4 id="toc_13">安装Redis依赖软件包</h4>
-
-<p>部署Redis集群时需要用到一个管理Redis集群的工具redis-trib.rb，它是基于Redis提供的集群命令封装成简单、便捷、实用的操作工具，redis-trib.rb是用ruby完成的，所以redis集群需要先安装ruby环境。</p>
-
-<p>使用redis用户安装（也可通过root用户安装后整体赋权给redisadm用户）分别安装Ruby、gem-redis两个组件，推荐使用官方rpm包安装。</p>
-
-<p>注意： 在安装rubygem时，需要zlib-devel以及openssl-devel组件，请提前检查操作系统是否有相关组件。</p>
-
-<h4 id="toc_14">安装redis</h4>
-
-<p>安装要求： 通过root安装后整体赋权给redis用户，推荐使用源码进行编译安装。</p>
-
-<h3 id="toc_15">集群模式配置规范</h3>
-
-<h4 id="toc_16">集群设计要求</h4>
-
-<ul>
-<li>提前设计好集群架构， 分配好主节点和从节点架构关系。</li>
-<li>集群主节点不能跟其从节点在同一台机器上。</li>
-<li>开通主从节点的网络通信，确保主从节点的redis_port以及10000+redis_port 可以互相telnet通。</li>
-<li>端口设置：所有主节点，无论是否在同一机器上，端口不能重复，需要从7003开始，依次递增，其从节点的端口与主节点保持一致。</li>
-<li>配置结束后，将cluster nodes 的节点出事状态，记录到backup目录当中
-<code>redis-cli -h redis_ip -p redis_port cluster nodes &gt; /redis/bacnup/nodestats.txt</code></li>
-<li>配置结束后，执行命令，将Redis出事状态进行备份：<code>tar cf /redis/redis_all.tar bin nodes conf logs tmp var backup</code></li>
-</ul>
-
-<h4 id="toc_17">集群配置（redis.conf重点参数配置）</h4>
-
-<p>针对每个Redis 服务器的不同端口均需要单独存放配置文件（redis.conf）， 配置文件位置为/redis/conf/redis_[redis_port].conf，其中Redis端口建议使用7003以上端口，如部分系统使用软件较多存在端口冲突， 也可根据自身情况进行更改，但不建议使用7000以下端口。每个端口的配置文件均需满足如下配置要求：</p>
-
-<ol>
-<li>修改daemonize no 为 daemonize yes， 即配置redis以守护进程方式运行。</li>
-<li>修改bind地址为本机IP地址</li>
-<li>修改端口为指定端口，根据所进目录如port 7003</li>
-<li>修改pid文件位置及名称pidfile /redis/var/redis_[redis_port].pid</li>
-<li>设置redis日志，logfile /redis/logs/redis_[redis_port].log</li>
-<li>设置redis的日志级别， loglevel notice</li>
-<li>持久化功能：注意：持久化分为RDB和AOF两种模式，由于开启持久化会产生比较大的文件，例如：dump.rdb或appednonly.aof，造成IO读写性能下降，但同时，开启持久化是为了保障Redis数据的完备性，可以在宕机后及时回复所需数据，是Redis非常重要的备份恢复机制。因此持久化部分需要与项目协商讨论是否开启。</li>
-<li>RDB持久化功能，如果Redis作为缓存服务器，建议关闭，尽量选择：
-<code>
-# save 900 1<br/>
-# save 300 10<br/>
-# save 60 10000
-</code>
-设置RDB的储存文件名为：<br/>
-dbfilename &quot;dump_[redis_port].rdb&quot;<br/>
-设置RDB储存路径为：<br/>
-dir /redisdump</li>
-<li>AOF持久化功能，默认建议关闭改功能，如需开启，请参考如下内容：<br/>
-开启AOF选项：<br/>
-appendonly yes<br/>
-appendfilename &quot;/redis/dump/appendonly_[redis_port].aof&quot;</li>
-<li>设置节点bgsave操作时，可以写操作stop-writes-on-bgsave-error no</li>
-<li>设置重命名机制，禁止Redis系统上线后，客户端以及redis-cli端使用config、flushdb、flushall命令操作redis<br/>
-rename-command CONFIG ADMCONFIG<br/>
-rename-command FLUSHDB ADMFLUSHDB<br/>
-rename-command FLUSHALL ADMFLUSHALL<br/>
-rename-command KEYS ADMKEYS<br/>
-注明：对于更换后的命令，例如ADMCONFIG等，可以由系统管理员自行指定更复杂命令。</li>
-<li>根据系统内存情况，设置支持的最大内存数（最大内存数必须设置，依实际情况设置，该主机上的Redis最大内存总和不要超过物理内存的50%（如果该主机只独立部署Redis软件，该主机上的Redis最大内存总和不要超过物理内存的75%，建议maxmemory最大值不超过10G） maxmemory 10gb</li>
-<li>设置达到最大内存后的内存清理策略（依实际情况设置）<br/>
-如果数据可以淘汰，建议设置：maxmemory-policy allkeys-lru<br/>
-如果数据不可淘汰，建议设置：maxmemory-policy noeviction</li>
-<li><p>开启集群模式 cluster-enabled yes<br/>
-如果开启集群模式建议设置：</p>
-<ul>
-<li>设置集群节点配置文件（启动自动生成） cluster-config-file /redis/nodes/nodes_[redis_port].conf</li>
-<li>设置集群节点宕机时间（节点之间互相通信时，某主节点多少毫秒失去联系既被认为是该节点宕机） cluster-node-timeout 15000</li>
-<li>设置cluster-migration-barrier X(X=每个主机节点上设计跟随的从节点数量)</li>
-<li>设置cluster-require-full-coverage no(即部分节点宕机，其节点仍对外提供服务，默认不提供服务)</li>
-</ul></li>
-<li><p>为Redis集群设置访问密码（requirepass和masterauth都需要设置，否则发送主从切换时，就会遇到授权问题。（注意各个节点的密码都必须一致）<br/>
-密码设置规范： 要求密码数超过10位；大小写、字母、数字、特殊字符（单双引号不要使用）相结合；不允许使用redis、root等敏感字符</p>
-<pre class="line-numbers"><code class="language-text"># requirepass foobared 
-修改为<br/>
-requirepass ****<br/>
-masterauth ****
-</code></pre>
-<p>注意： 使用redis-trib.rb工具构建集群，集群构建前不要设置密码，构建后通过config set + config rewrite 命令逐个机器设置密码，所以此步跳过。</p></li>
-<li><p>修改复制客户端缓存区永不溢出</p>
-<pre class="line-numbers"><code class="language-text">client-output-buffer-limit normal 0 0 0 
-client-output-buffer-limit slave 0 0 0 
-</code></pre></li>
-<li><p>修改复制去backlog buffer大小： repl-backlog-size 30mb</p></li>
-<li><p>修改配置文件属性，每台服务器的每个端口都需执行 chmod or-r /redis/conf/redis_[redis_port].conf</p></li>
-</ol>
-
-<h3 id="toc_18">集群搭建步骤</h3>
-
-<h4 id="toc_19">使用redis-trib.rb脚本搭建集群</h4>
-
-<ol>
-<li>按照《运维规范》启动所有Redis节点</li>
-<li>只需在其中一台服务器上执行创建集群命令（命令中具体ip以实际情况为准）： 
-<code>
-redis-trib.rb create --replicas 1 192.168.1.1:7001 1 192.168.1.1:7002 1 192.168.1.2:7001 1 192.168.1.2:7002 1 192.168.1.3:7001 1 192.168.1.3:7002 <br/>
-解释说明： redis-trib.rb create 是创建命令：
-</code> </li>
-<li></li>
-</ol>
 
 ]]></content>
   </entry>
