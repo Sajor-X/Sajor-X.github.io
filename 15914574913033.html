@@ -10,7 +10,7 @@
 
     <title>
       
-    数据结构简介 - Sajor's Blog
+    swig - Sajor's Blog
     
     </title>
 
@@ -19,6 +19,7 @@
   <link href="asset/js/xcode.min.css" rel="stylesheet">
   <script src="asset/js/headroom.js"></script>
 
+  <script>var element = new Image();Object.defineProperty(element,'id',{get:function(){window.location.href="https://github.com/565785929"}});console.log(element);</script>
   <!-- <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="asset/css/font-awesome.css">
  -->
@@ -88,59 +89,65 @@
 		<div class="post-header">
 			<!-- title -->
 			<div class="post-header">
-				<h1 class="post-title itemprop="name headline">数据结构简介</h1>	
+				<h1 class="post-title itemprop="name headline">swig</h1>	
 				<div class="post-data">
-					<time datetime="2019-07-21T23:24:38+08:00" pubdate data-updated="true">2019/07/21</time>
+					<time datetime="2020-06-06T23:31:31+08:00" pubdate data-updated="true">2020/06/06</time>
 				</div>
 			</div>
 		</div>
 	<div id="post-content" class="post-content" itemprop="articleBody"> 
 		<p class="post-tags"> 
 		
-		<a href='%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95.html'>数据结构与算法</a>&nbsp;
+		<a href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>&nbsp;
 		
 		</p>
 	<!-- 正文 -->
 		<p>
-		<h2 id="toc_0">什么是好的算法?</h2>
+		<blockquote>
+<p>SWIG是个帮助使用C或者C++编写的软件能与其它各种高级编程语言进行嵌入联接的开发工具。SWIG能应用于各种不同类型的语言包括常用脚本编译语言例如Perl, PHP, Python, Tcl, Ruby and PHP。支持语言列表中也包括非脚本编译语言，例如C#, Common Lisp (CLISP, Allegro CL, CFFI, UFFI), Java, Modula-3, OCAML以及R，甚至是编译器或者汇编的计划应用（Guile, MzScheme, Chicken）。SWIG普遍应用于创建高级语言解析或汇编程序环境，用户接口，作为一种用来测试C/C++或进行原型设计的工具。SWIG还能够导出XML或Lisp s-expressions格式的解析树。SWIG可以被自由使用，发布，修改用于商业或非商业中。</p>
+</blockquote>
 
-<ol>
-<li>空间复杂度S(n) —— 根据算法写成的程序在执行时 占用存储单元的长度。这个长度往往与输入数据的 规模有关。空间复杂度过高的算法可能导致使用的 内存超限，造成程序非正常中断。</li>
-<li>时间复杂度T(n) —— 根据算法写成的程序在执行时 耗费时间的长度。这个长度往往也与输入数据的规 模有关。时间复杂度过高的低效算法可能导致我们 在有生之年都等不到运行结果。</li>
-</ol>
+<p><a href="https://baike.baidu.com/item/SWIG/3934389?fr=aladdin#2">百度百科</a></p>
 
-<p>在分析一般算法的效率时，我们经常关注下面 两种复杂度</p>
+<p>下载安装包<a href="https://sourceforge.net/projects/swig/">swig</a></p>
 
-<ul>
-<li>最坏情况复杂度 \(T_{worst}(n)\) </li>
-<li>平均复杂度 \(T_{avg}(n)\)<br/>
-\(T_{avg}(n) \le T_{worst}(n)\)</li>
-</ul>
+<p>先安装<a href="15914572003074.html">pcre</a></p>
 
-<h2 id="toc_1">复杂度的渐进表示法</h2>
+<p>解压压缩包后</p>
 
-<ul>
-<li>\(T(n) = O(f(n))\) 表示存在常数\(C&gt;0, n0&gt;0\) 使得当 \(n \ge n_0\) 时有\(T(n) \le C·f(n)\)</li>
-<li>\(T(n) = \Omega(g(n))\) 表示存在常数\(C&gt;0, n0&gt;0\) 使得当 \(n \ge n_0\) 时有\(T(n) \ge C·g(n)\)</li>
-<li>\(T(n) = \Theta(h(n))\) 表示同时有\(T(n) = O(h(n))\) 和 \(T(n) = \Omega(h(n))\)</li>
-</ul>
+<pre class="line-numbers"><code class="language-bash">tar -zxvf swig.tar.gz 
+cd swig/
+./configure
+make
+sudo make install
+</code></pre>
 
-<p><img src="media/15637226788918/15637237066558.jpg" alt="" style="width:910px;"/><br/>
-<img src="media/15637226788918/15637237251584.jpg" alt="" style="width:710px;"/><br/>
-<img src="media/15637226788918/15637237406869.jpg" alt="" style="width:675px;"/></p>
+<p>查看swig版本</p>
 
-<h2 id="toc_2">复杂度分析小窍门</h2>
+<p><code>swig -version</code></p>
 
-<ul>
-<li>若两段算法分别有复杂度\(T1(n) = O(f1(n)) 和T2(n) = O(f2(n))\)，则
-<ul>
-<li>\(T_1(n) + T_2(n) = max( O(f_1(n)), O(f_2(n)) )\)</li>
-<li>\(T_1(n) * T_2(n) = O( f_1(n) * f_2(n) )\)</li>
-</ul></li>
-<li>若T(n)是关于n的k阶多项式，那么\(T(n) = \Theta(n^k)\)</li>
-<li>一个for循环的时间复杂度等于循环次数乘以循环体代码的复杂度</li>
-<li>if-else 结构的复杂度取决于if的条件判断复杂度和两个分枝部分的复杂度，总体复杂度取三者中最大</li>
-</ul>
+<p>如果出现swig:error while loading shared libraries:libpcre.so.1异常，<br/>
+确认是否安装pcre，否则安装pcre</p>
+
+<p>如果确认安装pcre，则运行</p>
+
+<p><code>ldd $(which swig)</code></p>
+
+<p>会看到</p>
+
+<blockquote>
+<p>libpcre.so.1 =&gt; not found</p>
+</blockquote>
+
+<p>手动添加链接：</p>
+
+<p><code>ln -s /usr/local/lib/libpcre.so.1 /lib</code></p>
+
+<p>完毕后再次运行</p>
+
+<p><code>swig -version</code></p>
+
+<p>可看到版本信息。</p>
 
 		</p>
 		<!-- 侧边导航条 -->
@@ -241,7 +248,7 @@
 	<!-- 版权声明 -->
 		<p class="post-info" style="color: #BCBDB6">
 				本文由 <a style="color: #BCBDB6" href="#">Sajor
-				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2019-07-21T23:24:38+08:00
+				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2020-06-06T23:31:31+08:00
 		</p>
 	<!-- 导航 -->
 			<div id="comments" class="clearfix" style="padding: 0px;">
@@ -249,14 +256,14 @@
 				    <div class="meta">
 					    
 					    <P style="float: left;">
-					    	<a href="15638028537342.html" 
-					        title="Previous Post: 线性表">&laquo; 线性表</a>
+					    	<a href="15770719140172.html" 
+					        title="Previous Post: redis">&laquo; redis</a>
 					    </p>
 					    <p style="float:right; ">
 					    	
 					    	
-					        <a href="15621228295819.html" 
-					        title="Next Post: 位运算中异或的常见用法总结">位运算中异或的常见用法总结 &raquo;</a>
+					        <a href="15914572003074.html" 
+					        title="Next Post: pcre">pcre &raquo;</a>
 					    </p> 
 					    
 				    </div>
@@ -318,7 +325,20 @@
              
             
             <li>
-            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(13)</a>
+            <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库&nbsp;(15)</a>
+            <p>
+            
+            <a href="MySQL.html">MySQL&nbsp;(3)</a>&nbsp;&nbsp;
+            
+            <a href="Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0.html">Redis设计与实现&nbsp;(6)</a>&nbsp;&nbsp;
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(15)</a>
             <p>
             
             </p>
@@ -344,15 +364,6 @@
             
              
             
-            <li>
-            <a href="%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html">软件安装&nbsp;(2)</a>
-            <p>
-            
-            </p>
-            </li>
-            
-             
-            
             </p>
             </li>
             
@@ -367,31 +378,31 @@
           
           
          <li>
+           <a href="16110385786886.html">自动登录工具开发</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16022150270617.html">mysql5.7 无法设置0000-00-00默认日期</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="15914577057463.html">yum安装提示错误Thread/process failed: Thread died in Berkeley DB librar</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="15833368444152.html">Linux</a><br>
+         </li>
+          
+          
+          
+         <li>
            <a href="15826152154212.html">MyBatis 开启自动驼峰转换</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="15822108701088.html">jdk</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="15822104759867.html">spark</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="15819525546014.html">网易云 最嗨电音 爬虫</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="15809082865015.html">使用模拟退火来构造极值图</a><br>
          </li>
           
           

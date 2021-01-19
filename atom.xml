@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Sajor's Blog]]></title>
-  <link href="http://blog.sajor.top/atom.xml" rel="self"/>
-  <link href="http://blog.sajor.top/"/>
-  <updated>2020-05-06T23:54:38+08:00</updated>
-  <id>http://blog.sajor.top/</id>
+  <link href="http://565785929.github.io/atom.xml" rel="self"/>
+  <link href="http://565785929.github.io/"/>
+  <updated>2021-01-19T16:25:25+08:00</updated>
+  <id>http://565785929.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
     
@@ -14,10 +14,182 @@
 
   
   <entry>
+    <title type="html"><![CDATA[自动登录工具开发]]></title>
+    <link href="http://565785929.github.io/16110385786886.html"/>
+    <updated>2021-01-19T14:42:58+08:00</updated>
+    <id>http://565785929.github.io/16110385786886.html</id>
+    <content type="html"><![CDATA[
+<h2 id="toc_0">涉及工具技术</h2>
+
+<ul>
+<li>Tampermonkey</li>
+<li>jQuery</li>
+<li>Tesseract-OCR</li>
+<li>Flask</li>
+<li><a href="https://pillow.readthedocs.io/en/stable/">Pillow</a></li>
+</ul>
+
+<h2 id="toc_1">前言</h2>
+
+<p>开发软件系统时必然会有用户登陆的模块。每次验证自己的功能时，总是绕不开输入账号密码，这已经是很麻烦的了，还得输入不好辨认的验证码。</p>
+
+<p>为了简化登陆步骤，我通过使用图像识别 OCR 技术，和Web应用框架Flask搭建一个验证码自动识别的服务。并结合强大的浏览器插件Tampermonkey，编写一个简单的油猴脚本，在不入侵源系统的基础上，实现不输入验证码登陆。也为后期自动化测试奠定可操作的基础。</p>
+
+<h2 id="toc_2">验证码识别</h2>
+
+<p>我们开发的系统登陆页面是这样的</p>
+
+<p><img src="media/16110385786886/16110394454445.jpg" alt="" style="width:814px;"/></p>
+
+<p>其中验证码图片<br/>
+<img src="media/16110385786886/captcha3.png" alt="captcha3"/></p>
+
+<p>先分析此验证码图片有以下特点</p>
+
+<ul>
+<li>颜色多样</li>
+<li>字母较大，干扰线细</li>
+<li>线条笔直无扭曲</li>
+</ul>
+
+<p>我们可以这样处理</p>
+
+<h3 id="toc_3">颜色多样</h3>
+
+<p>针对颜色多样，我们可以先给图片做灰度处理再做二值化处理，这是识别前处理验证码的基操。</p>
+
+<blockquote>
+<p><strong>灰度图像</strong>: 每个像素用8个bit表示，0表示黑，255表示白，其他数字表示不同的灰度。<br/>
+<strong>转换公式</strong>: <code>L = R * 299/1000 + G * 587/1000+ B * 114/1000</code></p>
+</blockquote>
+
+<pre class="line-numbers"><code class="language-text">from PIL import Image
+image = Image.open(file).convert(&#39;L&#39;)
+</code></pre>
+
+<p><img src="media/16110385786886/16110398931116.jpg" alt="" style="width:323px;"/></p>
+
+<p>之后对灰度图片做二值化，使图片非黑即白，可以通过调整下图中<code>threshold</code>的值来过滤少部分颜色浅的干扰线，因为图片中字母部分也可能出现亮黄色的情况，为了防止误删要识别的文字，我将阈值先调高一些，少过滤一些颜色。</p>
+
+<blockquote>
+<p><strong>二值图像</strong>: 非黑即白。每个像素用8个bit表示，0表示黑，255表示白。</p>
+
+<pre class="line-numbers"><code class="language-text">image.convert(&#39;1&#39;)
+</code></pre>
+</blockquote>
+
+<p><img src="media/16110385786886/16110403706745.jpg" alt="" style="width:523px;"/></p>
+
+<h3 id="toc_4">字母较大，干扰线细</h3>
+
+<p>因为字母较大，像素较多，而干扰线的较细，我们可以使用这个策略来去除干扰线。</p>
+
+<pre class="line-numbers"><code class="language-text">遍历图片中每一个像素点：
+    如果这个像素点为黑色：
+        观察它四面八方的像素点颜色，如果少于四个点为黑色：
+            将这个点变为白色
+</code></pre>
+
+<p>这个策略的大致意思就是将图像中置于边缘的像素删除掉。因为字母较大，像素比较多，删除一圈也不会有什么影响。</p>
+
+<p><img src="media/16110385786886/16110409153447.jpg" alt="" style="width:310px;"/></p>
+
+<h3 id="toc_5">线条笔直无扭曲</h3>
+
+<p>通过上一步的降噪处理得到的结果已经很好了，因为线条笔直没有扭曲，可以直接丢给OCR来识别了！</p>
+
+<p>网络中现成的OCR识别工具有很多，比如百度OCR，Tesseract-OCR。</p>
+
+<p>第三方的OCR得经过注册，使用他们提供的token调用接口，我就直接使用Python的第三方库Tesseract来搞。</p>
+
+<p>安装必要的包之后直接调用即可。</p>
+
+<pre class="line-numbers"><code class="language-text">import tesserocr
+result = tesserocr.image_to_text(image)
+</code></pre>
+
+<p><img src="media/16110385786886/16110413762073.jpg" alt="" style="width:360px;"/></p>
+
+<h2 id="toc_6">编写Web接口</h2>
+
+<p>使用Jupyter notebook 验证好功能后，将代码封装成类，方便调用。</p>
+
+<p>之后使用Flask的 helloworld 工程简单修改一下，实现一个可调用的接口。</p>
+
+<h2 id="toc_7">--</h2>
+
+<p>-- 未完待续。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[mysql5.7 无法设置0000-00-00默认日期]]></title>
+    <link href="http://565785929.github.io/16022150270617.html"/>
+    <updated>2020-10-09T11:43:47+08:00</updated>
+    <id>http://565785929.github.io/16022150270617.html</id>
+    <content type="html"><![CDATA[
+<p>使用命令行。navicat不好使</p>
+
+<h2 id="toc_0">解决方案：</h2>
+
+<p>使用root登陆数据库</p>
+
+<ol>
+<li>查看sql_mode：
+<code>select @@sql_mode;</code></li>
+</ol>
+
+<p>获得结果：<br/>
+<code>ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</code></p>
+
+<ol>
+<li>NO_ZERO_IN_DATE,NO_ZERO_DATE是无法默认为‘0000-00-00 00:00:00’的根源，去掉之后再次新建表就可以了</li>
+</ol>
+
+<p><code>SET GLOBAL sql_mode=&#39;ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION&#39;;</code></p>
+
+<h2 id="toc_1">注：</h2>
+
+<p>NO_ZERO_IN_DATE：在严格模式下，不允许日期和月份为零<br/>
+NO_ZERO_DATE：设置该值，mysql数据库不允许插入零日期，插入零日期会抛出错误而不是警告。</p>
+
+<p>测试新建表，ok。可以了。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[yum安装提示错误Thread/process failed: Thread died in Berkeley DB librar]]></title>
+    <link href="http://565785929.github.io/15914577057463.html"/>
+    <updated>2020-06-06T23:35:05+08:00</updated>
+    <id>http://565785929.github.io/15914577057463.html</id>
+    <content type="html"><![CDATA[
+<p>问题描述：#<br/>
+yum 安装更新提示 rpmdb: Thread/process failed: Thread died in Berkeley DB library</p>
+
+<p>问题解决：#<br/>
+01、删除yum临时库文件</p>
+
+<p><code>rm -fr /var/lib/rpm/__db.*</code></p>
+
+<p>02、重建rpm数据库</p>
+
+<p><code>rpm --rebuilddb</code></p>
+
+<p>03、清理缓存及生产yumdb缓存</p>
+
+<p><code>yum clean all</code><br/>
+<code>yum makecache</code></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Linux]]></title>
-    <link href="http://blog.sajor.top/15833368444152.html"/>
+    <link href="http://565785929.github.io/15833368444152.html"/>
     <updated>2020-03-04T23:47:24+08:00</updated>
-    <id>http://blog.sajor.top/15833368444152.html</id>
+    <id>http://565785929.github.io/15833368444152.html</id>
     <content type="html"><![CDATA[
 <p>Linux下的程序往往使你更加有效率，因为他们可以更高效的使用电脑的资源</p>
 
@@ -237,9 +409,9 @@ l代表连接
   
   <entry>
     <title type="html"><![CDATA[MyBatis 开启自动驼峰转换]]></title>
-    <link href="http://blog.sajor.top/15826152154212.html"/>
+    <link href="http://565785929.github.io/15826152154212.html"/>
     <updated>2020-02-25T15:20:15+08:00</updated>
-    <id>http://blog.sajor.top/15826152154212.html</id>
+    <id>http://565785929.github.io/15826152154212.html</id>
     <content type="html"><![CDATA[
 <p>在mybatis-config.xml文件中加入此设置</p>
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -264,9 +436,9 @@ PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;<br/><br/>
   
   <entry>
     <title type="html"><![CDATA[java和mysql转换]]></title>
-    <link href="http://blog.sajor.top/15823891714442.html"/>
+    <link href="http://565785929.github.io/15823891714442.html"/>
     <updated>2020-02-23T00:32:51+08:00</updated>
-    <id>http://blog.sajor.top/15823891714442.html</id>
+    <id>http://565785929.github.io/15823891714442.html</id>
     <content type="html"><![CDATA[
 <table>
 <thead>
@@ -401,9 +573,9 @@ PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;<br/><br/>
   
   <entry>
     <title type="html"><![CDATA[MySQL 查看表注释或字段注释]]></title>
-    <link href="http://blog.sajor.top/15823882245344.html"/>
+    <link href="http://565785929.github.io/15823882245344.html"/>
     <updated>2020-02-23T00:17:04+08:00</updated>
-    <id>http://blog.sajor.top/15823882245344.html</id>
+    <id>http://565785929.github.io/15823882245344.html</id>
     <content type="html"><![CDATA[
 <h2 id="toc_0">查看注释</h2>
 
@@ -488,129 +660,10 @@ and table_name = &#39;表名&#39; ;
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[jdk]]></title>
-    <link href="http://blog.sajor.top/15822108701088.html"/>
-    <updated>2020-02-20T23:01:10+08:00</updated>
-    <id>http://blog.sajor.top/15822108701088.html</id>
-    <content type="html"><![CDATA[
-<p>首先下载jdk，<a href="https://www.oracle.com/java/technologies/javase-jdk8-downloads.html">jdk下载页面</a></p>
-
-<h2 id="toc_0">卸载原有jdk</h2>
-
-<p>检查操作系统是否自带openjdk </p>
-
-<p>输入<code>java -version</code>若出现java版本信息，表明操作系统目前自带的jdk，按以下方式进行卸载。</p>
-
-<p>检查操作系统上自带的jdk <br/>
-<code>rpm -qa|grep jdk</code> </p>
-
-<p>如果显示jdk的相关信息，则继续，否则跳过这一步， 卸载原有的jdk <br/>
-<code>yum remove java*</code></p>
-
-<p>检索所有的java套件 <code>rpm -qa | grep java</code></p>
-
-<p>如果显示：</p>
-
-<pre class="line-numbers"><code class="language-text">java-x.x.x-openjdk-x.x.x.xxx-x.x.x.x.el7.x86_64
-…
-java-x.x.x-openjdk-headless-x.x.x.xxx-x.b14.el7.x86_64
-…
-</code></pre>
-
-<p>则继续，否则跳过这一步。</p>
-
-<p>删除所有包含有openjdk的套件</p>
-
-<pre class="line-numbers"><code class="language-text">rpm -e --nodeps java-x.x.x-openjdk-x.x.x.xxx-x.x.x.x.el7.x86_64
-rpm -e --nodeps java-x.x.x-openjdk-headless-x.x.x.xxx-x.b14.el7.x86_64
-...
-</code></pre>
-
-<h2 id="toc_1">安装</h2>
-
-<p>java安装文件夹准备</p>
-
-<p>在/usr/local/目录下创建名称为java的文件夹：<br/>
-<code>sudo mkdir -p /usr/local/java</code></p>
-
-<p>将下载好的jdk安装包上传到服务器上。<br/>
-之后解压到<code>/usr/local/java</code>中</p>
-
-<p><code>sudo tar -zxvf jdk-8u241-linux-x64.tar.gz</code></p>
-
-<h2 id="toc_2">配置</h2>
-
-<p>编辑配置文件<code>sudo vim /etc/profile</code></p>
-
-<p>定位到最后一行，添加如下内容（版本注意修改）</p>
-
-<pre class="line-numbers"><code class="language-text"># jdk
-export JAVA_HOME=/usr/local/java/jdk1.8.0_241/
-export CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
-export PATH=$PATH:$JAVA_HOME/bin
-</code></pre>
-
-<p>之后重新加载此配置文件 <code>source /etc/profile</code></p>
-
-<p>输入</p>
-
-<pre class="line-numbers"><code class="language-text">java -version
-javac -version
-</code></pre>
-
-<p>查看是否安装成功</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[spark]]></title>
-    <link href="http://blog.sajor.top/15822104759867.html"/>
-    <updated>2020-02-20T22:54:35+08:00</updated>
-    <id>http://blog.sajor.top/15822104759867.html</id>
-    <content type="html"><![CDATA[
-<p>首先到官网<code>spark.apache.org</code>下载spark，<a href="https://spark.apache.org/downloads.html">spark下载页面</a> </p>
-
-<h2 id="toc_0">安装</h2>
-
-<p>spark安装文件夹准备</p>
-
-<p>在/usr/local/目录下创建名称为spark的文件夹：<br/>
-<code>sudo mkdir -p /usr/local/spark</code></p>
-
-<p>将下载好的spark安装包上传到服务器上。<br/>
-之后解压到<code>/usr/local/spark</code>中</p>
-
-<p><code>sudo tar -zxvf spark-2.4.5-bin-hadoop2.7.tgz</code></p>
-
-<h2 id="toc_1">配置</h2>
-
-<p>编辑配置文件<code>sudo vim /etc/profile</code></p>
-
-<p>定位到最后一行，添加如下内容（版本注意修改）</p>
-
-<pre class="line-numbers"><code class="language-text"># spark
-export SPARK_HOME=/usr/local/spark/spark-2.4.5-bin-hadoop2.7/
-export PATH=$PATH:$SPARK_HOME/bin
-</code></pre>
-
-<p>之后重新加载此配置文件 <code>source /etc/profile</code></p>
-
-<p>输入</p>
-
-<pre class="line-numbers"><code class="language-text">spark-shell
-</code></pre>
-
-<p>查看是否安装成功</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[网易云 最嗨电音 爬虫]]></title>
-    <link href="http://blog.sajor.top/15819525546014.html"/>
+    <link href="http://565785929.github.io/15819525546014.html"/>
     <updated>2020-02-17T23:15:54+08:00</updated>
-    <id>http://blog.sajor.top/15819525546014.html</id>
+    <id>http://565785929.github.io/15819525546014.html</id>
     <content type="html"><![CDATA[
 <p>抓手机包找到音乐链接 Size最大</p>
 
@@ -670,9 +723,9 @@ if __name__ == &#39;__main__&#39;:
   
   <entry>
     <title type="html"><![CDATA[cheat.sh]]></title>
-    <link href="http://blog.sajor.top/15802234606202.html"/>
+    <link href="http://565785929.github.io/15802234606202.html"/>
     <updated>2020-01-28T22:57:40+08:00</updated>
-    <id>http://blog.sajor.top/15802234606202.html</id>
+    <id>http://565785929.github.io/15802234606202.html</id>
     <content type="html"><![CDATA[
 <p>cheat是在GNU通用公共许可证下，为Linux命令行用户发行的交互式备忘单应用程序。简单来说，它没有提供其他额外多余的信息，只通过使用实例告诉你一个命令参数如何使用。</p>
 
@@ -734,9 +787,9 @@ globally: <code>source /etc/profile</code></p>
   
   <entry>
     <title type="html"><![CDATA[crontab 定时任务]]></title>
-    <link href="http://blog.sajor.top/15776732342055.html"/>
+    <link href="http://565785929.github.io/15776732342055.html"/>
     <updated>2019-12-30T10:33:54+08:00</updated>
-    <id>http://blog.sajor.top/15776732342055.html</id>
+    <id>http://565785929.github.io/15776732342055.html</id>
     <content type="html"><![CDATA[
 <h3 id="toc_0">Linux</h3>
 
@@ -789,9 +842,9 @@ crontab -r
   
   <entry>
     <title type="html"><![CDATA[监控Python 运行]]></title>
-    <link href="http://blog.sajor.top/15773499726644.html"/>
+    <link href="http://565785929.github.io/15773499726644.html"/>
     <updated>2019-12-26T16:46:12+08:00</updated>
-    <id>http://blog.sajor.top/15773499726644.html</id>
+    <id>http://565785929.github.io/15773499726644.html</id>
     <content type="html"><![CDATA[
 <p>使用memory_profiler模块</p>
 
@@ -808,9 +861,9 @@ crontab -r
   
   <entry>
     <title type="html"><![CDATA[ssh]]></title>
-    <link href="http://blog.sajor.top/15769921068601.html"/>
+    <link href="http://565785929.github.io/15769921068601.html"/>
     <updated>2019-12-22T13:21:46+08:00</updated>
-    <id>http://blog.sajor.top/15769921068601.html</id>
+    <id>http://565785929.github.io/15769921068601.html</id>
     <content type="html"><![CDATA[
 <p>systemctl stop sshd.service <br/>
 停止转发</p>
@@ -826,9 +879,9 @@ e:\htk -&gt; /root 传送文件</p>
   
   <entry>
     <title type="html"><![CDATA[pscp]]></title>
-    <link href="http://blog.sajor.top/15769920752565.html"/>
+    <link href="http://565785929.github.io/15769920752565.html"/>
     <updated>2019-12-22T13:21:15+08:00</updated>
-    <id>http://blog.sajor.top/15769920752565.html</id>
+    <id>http://565785929.github.io/15769920752565.html</id>
     <content type="html"><![CDATA[
 <p>远程传输命令 </p>
 
@@ -879,9 +932,9 @@ e:\htk -&gt; /root 传送文件</p>
   
   <entry>
     <title type="html"><![CDATA[Git]]></title>
-    <link href="http://blog.sajor.top/15769919595310.html"/>
+    <link href="http://565785929.github.io/15769919595310.html"/>
     <updated>2019-12-22T13:19:19+08:00</updated>
-    <id>http://blog.sajor.top/15769919595310.html</id>
+    <id>http://565785929.github.io/15769919595310.html</id>
     <content type="html"><![CDATA[
 <h3 id="toc_0">Git是分布式版本控制系统 自报家门</h3>
 
@@ -1053,9 +1106,9 @@ git push -u origin master
   
   <entry>
     <title type="html"><![CDATA[比特币]]></title>
-    <link href="http://blog.sajor.top/15769918912350.html"/>
+    <link href="http://565785929.github.io/15769918912350.html"/>
     <updated>2019-12-22T13:18:11+08:00</updated>
-    <id>http://blog.sajor.top/15769918912350.html</id>
+    <id>http://565785929.github.io/15769918912350.html</id>
     <content type="html"><![CDATA[
 <h3 id="toc_0">EC私钥 Elliptic Curve private key</h3>
 
@@ -1115,9 +1168,9 @@ git push -u origin master
   
   <entry>
     <title type="html"><![CDATA[brew update 缓慢]]></title>
-    <link href="http://blog.sajor.top/15765692780377.html"/>
+    <link href="http://565785929.github.io/15765692780377.html"/>
     <updated>2019-12-17T15:54:38+08:00</updated>
-    <id>http://blog.sajor.top/15765692780377.html</id>
+    <id>http://565785929.github.io/15765692780377.html</id>
     <content type="html"><![CDATA[
 <p>更新时 使用 --verbose命令可以看到运行情况</p>
 
@@ -1176,9 +1229,9 @@ brew update
   
   <entry>
     <title type="html"><![CDATA[Redis使用场景]]></title>
-    <link href="http://blog.sajor.top/15754473183515.html"/>
+    <link href="http://565785929.github.io/15754473183515.html"/>
     <updated>2019-12-04T16:15:18+08:00</updated>
-    <id>http://blog.sajor.top/15754473183515.html</id>
+    <id>http://565785929.github.io/15754473183515.html</id>
     <content type="html"><![CDATA[
 <h2 id="toc_0">缓存数据</h2>
 
@@ -1209,9 +1262,9 @@ set内部实现是一个value永远是null的hashmap，通过hash计算的方式
   
   <entry>
     <title type="html"><![CDATA[自建redis集群规范]]></title>
-    <link href="http://blog.sajor.top/15754418238619.html"/>
+    <link href="http://565785929.github.io/15754418238619.html"/>
     <updated>2019-12-04T14:43:43+08:00</updated>
-    <id>http://blog.sajor.top/15754418238619.html</id>
+    <id>http://565785929.github.io/15754418238619.html</id>
     <content type="html"><![CDATA[
 <ul>
 <li>可靠性低：如果数据走云盘做高可靠存储容易受网络波动干扰，如果不走云盘宕机数据易丢失，自建多副本运维很复杂，而且Redis本身的断网导致的全量同步机制对网络和运维的要求极高；</li>
@@ -1245,9 +1298,9 @@ set内部实现是一个value永远是null的hashmap，通过hash计算的方式
   
   <entry>
     <title type="html"><![CDATA[redis 集群]]></title>
-    <link href="http://blog.sajor.top/15754270430043.html"/>
+    <link href="http://565785929.github.io/15754270430043.html"/>
     <updated>2019-12-04T10:37:23+08:00</updated>
-    <id>http://blog.sajor.top/15754270430043.html</id>
+    <id>http://565785929.github.io/15754270430043.html</id>
     <content type="html"><![CDATA[
 <p>首先安装redis<br/>
 brew install redis</p>
@@ -1331,9 +1384,9 @@ cluster nodes
   
   <entry>
     <title type="html"><![CDATA[Linux安全查找原因]]></title>
-    <link href="http://blog.sajor.top/15753573808254.html"/>
+    <link href="http://565785929.github.io/15753573808254.html"/>
     <updated>2019-12-03T15:16:20+08:00</updated>
-    <id>http://blog.sajor.top/15753573808254.html</id>
+    <id>http://565785929.github.io/15753573808254.html</id>
     <content type="html"><![CDATA[
 <h3 id="toc_0">备份重要命令</h3>
 
@@ -1341,125 +1394,6 @@ cluster nodes
 建议备份好</p>
 
 <p><a href="https://blog.csdn.net/xinxin_2011/article/details/84936581">Linux系统发现占用CPU达100%的进程并处理</a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Linux 新建用户和组命令]]></title>
-    <link href="http://blog.sajor.top/15751320029536.html"/>
-    <updated>2019-12-01T00:40:02+08:00</updated>
-    <id>http://blog.sajor.top/15751320029536.html</id>
-    <content type="html"><![CDATA[
-<p>用户的角色是通过UID和GID识别的。</p>
-
-<p>UID用户ID：相当于各为的身份证，在系统中是唯一的</p>
-
-<p>GID组ID：相当于各为的家庭或者你们的学校。</p>
-
-<h3 id="toc_0">新建用户及设置密码命令如下：</h3>
-
-<pre class="line-numbers"><code class="language-text">useradd 【参数】 用户名
-
--g 属组
--u 设置uid
--m 创建家目录
--M 没有家目录
--G 指定属于多个组
--s 指定登录shell
--d 指定家目录
--c 注释
--D 改变它默认的属性
--e 指定的日期是帐号失效的日期,
-</code></pre>
-
-<h3 id="toc_1">新建用户及设置密码命令如下：</h3>
-
-<pre class="line-numbers"><code class="language-text">passwd 参数 用户名
-
--l：锁定已经命名的账户名称
--u：解开账户锁定状态
--x, --maximum=DAYS：密码使用最大时间（天）
--n, --minimum=DAYS：密码使用最小时间（天）
--d：删除使用者的密码
--S：检查指定使用者的密码认证种类
-
---stdin：非交互式修改/设置密码，弊端是操作日志能查密码，需要用 history -c 干掉。
-echo 123345|passwd --stdin 用户名
-history -c
-</code></pre>
-
-<h3 id="toc_2">修改用户：</h3>
-
-<pre class="line-numbers"><code class="language-text">usermod 参数 用户名
-
--c：修改用户帐号的备注文字。
--d：修改用户登入时的目录。
--e：修改帐号的有效期限。
--f： 改在密码过期后多少天即关闭该帐号。
--g：修改用户所属的群组。
--G：修改用户所属的附加群组。
--l：修改用户帐号名称。
--L：锁定用户密码，使密码无效。
--s：修改用户登入后所使用的shell。
--u：修改用户ID。
--U：解除密码锁定。
-
-常用的参数包括-c， -d， -m， -g， -G， -s， -u以及-o等，与useradd命令中的选项一样，可以为用户指定新的资源值。
-</code></pre>
-
-<h3 id="toc_3">删除用户：</h3>
-
-<pre class="line-numbers"><code class="language-text">userdel 参数 用户名
-
-常用的选项是-r，它的作用是把用户的家目录一起删除。
-
-userdel -r abc
-</code></pre>
-
-<h3 id="toc_4">创建用户组：</h3>
-
-<pre class="line-numbers"><code class="language-text">groupadd  参数  用户组名
-
--g：指定新建用户组的gid；
--r：创建系统工作组，系统用户的组ID小于500；
--K：覆盖配置文件“/ect/login.defs”；
--o：允许添加组ID号不唯一的工作组。
-</code></pre>
-
-<h3 id="toc_5">修改组：</h3>
-
-<pre class="line-numbers"><code class="language-text">groupmod 参数 用户组名
-
--g： GID 为用户组指定新的组标识号。
--o：与-g选项同时使用，用户组的新GID可以与系统已有用户组的GID相同。
--n：新用户组 将用户组的名字改为新名字
-</code></pre>
-
-<h3 id="toc_6">删除用户组：</h3>
-
-<pre class="line-numbers"><code class="language-text">groupdel  用户名
-</code></pre>
-
-<h3 id="toc_7">用户查询相关命令：</h3>
-
-<pre class="line-numbers"><code class="language-text">id   //查询用户信息，例如用户归属那个用户组，及uid和gid等。
-
-w   //查看谁登录了，并且做了什么，切换的不行，从新登录的才行。
-
-who  //查看哪些用户在登录，终端及登录时间，来源主机。
-
-users  //仅显示哪些用户在登录。 
-
-last   //显示的用户曾经加目前登录以及退出登录列表
-
-lastlog  //可以查看是否有用户登录系统了（未启用的账户）
-</code></pre>
-
-<h3 id="toc_8">解决用userdel删除不掉用户的问题</h3>
-
-<p>vipw命令<br/>
-详情请看 vipw --help</p>
 
 ]]></content>
   </entry>
