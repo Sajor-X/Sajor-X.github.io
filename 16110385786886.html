@@ -117,7 +117,78 @@
 
 <p>为了简化登陆步骤，我通过使用图像识别 OCR 技术，和Web应用框架Flask搭建一个验证码自动识别的服务。并结合强大的浏览器插件Tampermonkey，编写一个简单的油猴脚本，在不入侵源系统的基础上，实现不输入验证码登陆。也为后期自动化测试奠定可操作的基础。</p>
 
-<h2 id="toc_2">验证码识别</h2>
+<h2 id="toc_2">依赖安装</h2>
+
+<p>示例环境Centos8</p>
+
+<pre class="line-numbers"><code class="language-bash">sudo yum install epel-release
+sudo yum install tesseract-devel leptonica-devel
+ 
+yum install -y libjpeg-devel  libpng-devel
+yum install -y autoconf automake libtool
+
+yum install -y git wget
+yum install -y gcc gcc-c++
+yum install -y tesseract  tesseract-devel  
+yum install -y python36
+</code></pre>
+
+<p>创建python虚拟环境</p>
+
+<pre class="line-numbers"><code class="language-bash">python3.6 -m venv py36env
+source py36env/bin/activate
+</code></pre>
+
+<p>python依赖安装</p>
+
+<pre class="line-numbers"><code class="language-bash">pip install flask
+pip install flask_cors
+pip install tesserocr
+pip install pillow
+pip install uwsgi
+</code></pre>
+
+<h2 id="toc_3">安装常见错误</h2>
+
+<p><strong>找不到tesseract包</strong></p>
+
+<blockquote>
+<p>yum list tesseract <br/>
+无数据 </p>
+</blockquote>
+
+<p><strong>解决</strong></p>
+
+<pre class="line-numbers"><code class="language-text">yum -y install yum-utils
+yum-config-manager --add-repo https://download.opensuse.org/repositories/home:/Alexander_Pozdnyakov/CentOS_8/
+</code></pre>
+
+<p><strong>TESSDATA_PREFIX问题</strong></p>
+
+<blockquote>
+<p>[Sajor@10-7-151-243 AutoLogin]$ tesseract captcha_denoising.png result <br/>
+Error opening data file /usr/share/tesseract/4/tessdata/eng.traineddata<br/>
+Please make sure the TESSDATA_PREFIX environment variable is set to your &quot;tessdata&quot; directory.<br/>
+Failed loading language &#39;eng&#39;<br/>
+Tesseract couldn&#39;t load any languages!<br/>
+Could not initialize tesseract.</p>
+</blockquote>
+
+<p><strong>解决</strong></p>
+
+<p>搜索tessdata文件夹 </p>
+
+<pre class="line-numbers"><code class="language-text">find / -type d -iname &quot;tessdata&quot;
+</code></pre>
+
+<p>发现确实没有 <code>eng.traineddata</code> 文件，则下载一个。</p>
+
+<pre class="line-numbers"><code class="language-text">wget https://github.com/tesseract-ocr/tessdata/raw/master/eng.traineddata
+
+sudo mv -v eng.traineddata /usr/local/share/tessdata/
+</code></pre>
+
+<h2 id="toc_4">验证码识别</h2>
 
 <p>我们开发的系统登陆页面是这样的</p>
 
@@ -136,7 +207,7 @@
 
 <p>我们可以这样处理</p>
 
-<h3 id="toc_3">颜色多样</h3>
+<h3 id="toc_5">颜色多样</h3>
 
 <p>针对颜色多样，我们可以先给图片做灰度处理再做二值化处理，这是识别前处理验证码的基操。</p>
 
@@ -162,7 +233,7 @@ image = Image.open(file).convert(&#39;L&#39;)
 
 <p><img src="media/16110385786886/16110403706745.jpg" alt="" style="width:523px;"/></p>
 
-<h3 id="toc_4">字母较大，干扰线细</h3>
+<h3 id="toc_6">字母较大，干扰线细</h3>
 
 <p>因为字母较大，像素较多，而干扰线的较细，我们可以使用这个策略来去除干扰线。</p>
 
@@ -176,7 +247,7 @@ image = Image.open(file).convert(&#39;L&#39;)
 
 <p><img src="media/16110385786886/16110409153447.jpg" alt="" style="width:310px;"/></p>
 
-<h3 id="toc_5">线条笔直无扭曲</h3>
+<h3 id="toc_7">线条笔直无扭曲</h3>
 
 <p>通过上一步的降噪处理得到的结果已经很好了，因为线条笔直没有扭曲，可以直接丢给OCR来识别了！</p>
 
@@ -192,13 +263,64 @@ result = tesserocr.image_to_text(image)
 
 <p><img src="media/16110385786886/16110413762073.jpg" alt="" style="width:360px;"/></p>
 
-<h2 id="toc_6">编写Web接口</h2>
+<h2 id="toc_8">编写Web接口</h2>
 
 <p>使用Jupyter notebook 验证好功能后，将代码封装成类，方便调用。</p>
 
 <p>之后使用Flask的 helloworld 工程简单修改一下，实现一个可调用的接口。</p>
 
-<h2 id="toc_7">--</h2>
+<p>简单实用<code>uwsgi</code>部署一下这个web项目，配置<code>uwsgi.ini</code>文件将下文中<code>/root/AutoLogin</code>路径改为自己的目录。</p>
+
+<pre class="line-numbers"><code class="language-text">[uwsgi]
+master = true
+http=:5000
+chdir = /root/AutoLogin
+wsgi-file=/root/AutoLogin/app.py
+callable=app
+processes=4
+threads=2
+buffer-size = 65536
+vacuum=true
+pidfile =/root/AutoLogin/uwsgi.pid
+</code></pre>
+
+<p>启动命令：<br/>
+<code>uwsgi --ini uwsgi.ini</code><br/>
+重启命令：<br/>
+<code>uwsgi --reload uwsgi.pid</code><br/>
+关闭命令：<br/>
+<code>uwsgi --stop uwsgi.pid</code></p>
+
+<h2 id="toc_9">NginX代理</h2>
+
+<p>新建一个配置文件</p>
+
+<pre class="line-numbers"><code class="language-text">vi /etc/nginx/conf.d/autologin.conf
+</code></pre>
+
+<p>输入以下内容</p>
+
+<pre class="line-numbers"><code class="language-text">        server{
+
+                listen       80;
+                listen       [::]:80;
+                server_name  autoLogin.sajor.top;
+                access_log  /var/log/nginx/access.log;
+                error_log   /var/log/nginx/error.log;
+
+                location /{
+                        proxy_pass http://localhost:5000;
+                }
+        }
+</code></pre>
+
+<p>检查并重启</p>
+
+<pre class="line-numbers"><code class="language-text">nginx -t
+service nginx restart
+</code></pre>
+
+<h2 id="toc_10">--</h2>
 
 <p>-- 未完待续。</p>
 

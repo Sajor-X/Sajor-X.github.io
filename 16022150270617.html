@@ -103,7 +103,12 @@
 		</p>
 	<!-- 正文 -->
 		<p>
-		<p>使用命令行。navicat不好使</p>
+		<p>问题：<br/>
+<img src="media/16022150270617/16125316270697.jpg" alt=""/></p>
+
+<p><img src="media/16022150270617/16125316380058.jpg" alt=""/></p>
+
+<p>使用命令行。navicat不好使</p>
 
 <h2 id="toc_0">解决方案：</h2>
 
@@ -129,6 +134,26 @@
 NO_ZERO_DATE：设置该值，mysql数据库不允许插入零日期，插入零日期会抛出错误而不是警告。</p>
 
 <p>测试新建表，ok。可以了。</p>
+
+<h2 id="toc_2">终极解决方案</h2>
+
+<p>修改my.ini配置文件直接修改启动sql_mode<br/>
+在[mysqld]下添加<br/>
+可以设置<code>sql_mode=ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</code></p>
+
+<p>或者为了避免group by限制 直接设置为<code>STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION</code></p>
+
+<pre class="line-numbers"><code class="language-text">[mysqld]
+sql_mode=STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION
+</code></pre>
+
+<p>dos命令重启mysql</p>
+
+<pre class="line-numbers"><code class="language-dos">net stop mysql
+net start mysql
+</code></pre>
+
+<p><img src="media/16022150270617/16125316826946.jpg" alt=""/></p>
 
 		</p>
 		<!-- 侧边导航条 -->
