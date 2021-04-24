@@ -55,6 +55,8 @@
         
         <a href="archives.html">Archives</a>
         
+        <a href="asset/resume/resume.html">Resume</a>
+        
         
     </div> 
     <!-- 搜索框体 -->
@@ -77,6 +79,10 @@
           
           <li>
           <a href="archives.html">Archives</a>
+          </li>
+          
+          <li>
+          <a href="asset/resume/resume.html">Resume</a>
           </li>
           
         </ul> 
@@ -318,6 +324,11 @@ pidfile =/root/AutoLogin/uwsgi.pid
 
 <pre class="line-numbers"><code class="language-text">nginx -t
 service nginx restart
+</code></pre>
+
+<p>查看 mem top 10</p>
+
+<pre class="line-numbers"><code class="language-text">ps aux | grep -v PID | sort -rn -k 4| head
 </code></pre>
 
 <h2 id="toc_10">--</h2>

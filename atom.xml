@@ -4,7 +4,7 @@
   <title><![CDATA[Sajor's Blog]]></title>
   <link href="http://565785929.github.io/atom.xml" rel="self"/>
   <link href="http://565785929.github.io/"/>
-  <updated>2021-03-06T01:02:16+08:00</updated>
+  <updated>2021-04-24T23:57:34+08:00</updated>
   <id>http://565785929.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -236,6 +236,11 @@ pidfile =/root/AutoLogin/uwsgi.pid
 
 <pre class="line-numbers"><code class="language-text">nginx -t
 service nginx restart
+</code></pre>
+
+<p>查看 mem top 10</p>
+
+<pre class="line-numbers"><code class="language-text">ps aux | grep -v PID | sort -rn -k 4| head
 </code></pre>
 
 <h2 id="toc_10">--</h2>
