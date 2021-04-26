@@ -4,7 +4,7 @@
   <title><![CDATA[Sajor's Blog]]></title>
   <link href="http://565785929.github.io/atom.xml" rel="self"/>
   <link href="http://565785929.github.io/"/>
-  <updated>2021-04-26T08:30:18+08:00</updated>
+  <updated>2021-04-26T08:38:05+08:00</updated>
   <id>http://565785929.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -12,6 +12,130 @@
   </author>
   <generator uri="http://www.coderforart.com/">CoderForArt</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[科学上网]]></title>
+    <link href="http://565785929.github.io/16137917098988.html"/>
+    <updated>2021-02-20T11:28:29+08:00</updated>
+    <id>http://565785929.github.io/16137917098988.html</id>
+    <content type="html"><![CDATA[
+<p><img src="media/16137917098988/16193973348755.jpg" alt="" style="width:150px;"/></p>
+
+<h2 id="toc_0">背景</h2>
+
+<p>自从天朝有了言论管制，科学上网的话题就一直存在，于是大量的梯子软件应运而生。但是GFW与这些梯子软件的斗争从来都没有停止过，一直是此消彼长，墙越来越高，科学上网技术也是持续突破，不断涌现出新技术、新工具。现在最主流的科学上网技术有VPN/SS/SSR/V2Ray/Trojan/Trojan-Go，还有小众的 WireGuard、Brook、Snell 和 NaiveProxy 等，本篇文章不讨论Brook、NaiveProxy以及Snell协议。SS是科学上网代理协议的鼻祖，Snell和Brook是小众协议，Snell协议一直没有开源，是iOS平台非常知名的Surge软件团队开发的专属协议，Brook配套设施不完善；其中，VPN/SS/SSR最为出名，V2Ray和Trojan/Trojan-Go作为新星，正在受到越来越多的关注和使用。</p>
+
+<h2 id="toc_1">什么是VPN和WireGuard，它们有什么关系？</h2>
+
+<p>VPN是英文 Virtual Private Network 的缩写，中文名称为虚拟专用网络，是一种加密通信技术。VPN 只是一个统称，它有很多的具体实现，比如PPTP、L2TP、IPSec和OpenVPN等。VPN是在公用网络上建立专用网络，并对通信进行加密，防止传输数据被识别或篡改，以保障通信的安全。当你在VPN网络中通信，就相当于通过物理的内网专线进行通信。由此可见，VPN绝不是为了科学上网而生，而是更加注重数据信息的安全，很多大型企业和高校的远程SOHO办公使用VPN较多。</p>
+
+<p>WireGuard 是最新开发的VPN协议，比主流的VPN技术有明显优势，被誉为下一代VPN。WireGuard有如下特点：</p>
+
+<p>WireGuard 的优点：</p>
+
+<ul>
+<li>更轻便：以Linux内核模块的形式运行，资源占用小。</li>
+<li>更高效：相比目前主流的IPSec、OpenVPN等VPN协议，WireGuard的效率要更高。</li>
+<li>更快速：比目前主流的VPN协议，连接速度要更快。</li>
+<li>更安全：使用了更先进的加密技术。</li>
+<li>更易搭建：部署难度相对更低。</li>
+<li>更隐蔽：以UDP协议进行数据传输，比TCP协议更低调。</li>
+<li>不易被封锁：TCP阻断对WireGuard无效，IP被墙的情况下仍然可用。</li>
+<li>更省电：不使用时不进行数据传输，移动端更省电。</li>
+</ul>
+
+<p>WireGuard 的不足：</p>
+
+<ul>
+<li>处于研发初期，各种功能及支持有待完善。</li>
+<li>由于使用UDP协议，BBR、锐速等TCP网络加速工具，对WireGuard无效。</li>
+<li>部分运营商可能会对UDP协议进行QOS限速，WireGuard会受到一定影响。</li>
+<li>客户端分流功能较弱，对GFWList的支持不足。</li>
+</ul>
+
+<p>WireGuard虽然有一些不足，但WireGuard的优点更突出，而且可以拯救被封IP的VPS，所以 WireGuard 是 SS/SSR/V2Ray/Trojan 等代理工具之外的一个不错的选择。</p>
+
+<h2 id="toc_2">什么是 Shadowsocks？</h2>
+
+<p>SS 是 Shadowsocks 的缩写，中文名为影梭，为了避免关键词过滤，网友喜欢将 Shadowsocks 称为“酸酸”，是一种基于Socks5代理方式的加密传输协议，也可以指实现这个协议的各种开发包。Shadowsocks 由 Clowwindy 为了自己使用谷歌查资料而编写，Shadowsocks分为服务器端和客户端，在使用之前，需要先将服务器端程序部署到服务器上面，然后通过客户端连接并创建本地代理。后来，他觉得这个东西非常好用、速度也很快，于是他在 GitHub 上共享了源码。在天朝，本工具被广泛用于突破GFW，以浏览被封锁、遮蔽或干扰的内容，由于 Shadowsocks 被广泛传播，导致作者被请去喝茶。2015年8月22日，Shadowsocks 原作者 Clowwindy 称迫于天朝内部的压力，宣布停止维护此计划（项目），并移除其个人页面所存储的源代码，而且保证永不再参与维护更新。值得庆幸地是，Shadowsocks 仍然有不少国外社区成员在维护更新。后来贡献者Librehat也为Shadowsocks补上了一些数据混淆类特性，甚至增加了类似Tor的可插拔传输层功能。</p>
+
+<h2 id="toc_3">什么是 ShadowsocksR</h2>
+
+<p>SSR 是 ShadowsocksR 的缩写，网民爱称“酸酸乳”，是在 Shadowsocks 的作者被请去喝茶之后，网名为breakwa11的用户发起的Shadowsocks的一个分支版本，它在Shadowsocks的基础上增加了一些数据混淆方式，修复了部分安全问题并提高QoS优先级。由于 ShadowsocksR 在协议和混淆方面做了改进，更加不容易被GFW检测到，而且兼容原 Shadowsocks，并为新项目取名叫 Shadowsocks-R，一开始部分代码由社区人员进行更新。由于不完全开源，也导致后来使用 SS 和 SSR 的用户分成两个阵营，互相撕逼，直到开发者 Breakwa11(破娃) 被人肉出来。Breakwa11(破娃)最终决定删除 Shadowsocks-R 项目的所有代码，并解散了所有相关群组。</p>
+
+<p>事件始末澄清：ShadowsocksR 的作者一开始曾有过违反GPL，在发布二进制文件时不开放源码的争议。不过后来 Shadowsocks-R 项目由 breakwa11 采用了与 Shadowsocks 相同的GPL、Apache许可证、MIT许可证等多重自由软件许可协议。</p>
+
+<p>2017年7月19日，ShadowsocksR 作者 breakwa11 在Telegram频道 ShadowsocksR news 里转发了深圳市启用SS协议检测的消息并被大量用户转发，在TG圈引发恐慌。7月24日，breakwa11 发布了闭源的SS被动检测程序，引发争议。7月27日，breakwa11 遭到自称 “ESU.TV” 的不明身份人士人身攻击，对方宣称如果不停止开发并阻止用户讨论此事件将发布更多包含个人隐私的资料，随后 breakwa11 表示遭到对方人肉搜索并公开个人资料的是无关人士。为了防止对方继续伤害无关人士，breakwa11 将删除GitHub上的所有代码、解散相关交流群组，并停止 ShadowsocksR 项目。</p>
+
+<p>从本质上说，Shadowsocks 和 ShadowsocksR 的基本原理相同，都是基于 socks5 的代理工具，只在本地客户端和服务器端对数据包加解密，然后使用 socks5 协议转发加密的数据包，而不用在乎使用什么协议，所以 Socks5 代理比其他应用层代理速度要快得多。</p>
+
+<h2 id="toc_4">【科普】什么是 socks5 代理？</h2>
+
+<p>socks5 代理的原理是把你的网络数据请求先发送到你的代理服务器，然后由代理服务器转发给目标；如果目标有反馈发送到代理服务器，那么代理服务器会将数据包直接传回你的本地网络，整个过程只是数据的二次传输，并没有做额外的处理。比如，现在你在深圳，你的代理服务器在日本，如果你想要访问Google，那么你首先要把数据请求通过本地 socks5 代理客户端发给你在香港的服务器上的 socks5 代理服务端，然后你在香港的服务器将数据请求发送给Google，再把Google反馈的结果传回你的本地电脑的 socks5 客户端，这样就可以绕开GFW的检测而实现科学上网。</p>
+
+<p>显而易见，socks5代理的所有数据走的仍然是公网，而且在公网传输过程中，没有对数据进行任何加密和混淆，这跟VPN在公网建立虚拟专用通道传输过程中，对数据高强度加密的方式完全不同。Shadowsocks 和 ShadowsocksR 只在客户端和服务器端对数据做了简单加密和认证，主要功能是流量转发，过墙才是主要目的。虽然现在 ShadowsocksR 已经停止更新很久了，而 Shadowsocks 仍处于社区人员的更新维护之中，不断修复漏洞并增加新功能，所以现在 Shadowsocks 比 ShadowsocksR 更强大。</p>
+
+<p><strong>我在此提醒大家</strong>：请不要迷信 SSR 一定比 SS 强，也包括现在的V2Ray、Trojan，甚至WireGuard等，因为增加混淆意味着损失速度，混淆加密越是强悍，那么其速度和稳定性损失就越大，另外 SSR 至今已经被研究透了，而且长期没有更新维护，其流量特征是可以被GFW精准识别的，所以用 SSR 跟用 SS 没有本质区别，由于SS一直在更新维护，反而更稳定。我们要做的就是爱国爱家爱生活，勿谈国是，专心做好自己的事情就是了。天朝一直都清楚，跨境相关业务一直存在，尤其是近些年跨境电商的蓬勃发展，很多做跨境相关业务的朋友不外出通讯是不可能的一件事情，但所谓的公司备案VPN却非常昂贵，一般用户根本承担不起费用。但我们一定要“做好分内事，勿论他人非”，尤其不发表涉及天朝的言论和行为，做一个天朝的好公民、中华的好儿女，这样天朝是没有必要跟她的好儿女过不去的。</p>
+
+<h2 id="toc_5">什么是 V2Ray？</h2>
+
+<p>V2Ray 是在Shadowsocks 被封杀之后，为了表示抗议而开发的，属于后起之秀，功能更加强大，为抗GFW封锁而生。V2Ray 现在已经是 Project V 项目的核心工具，而 Project V 是一个平台，其中也包括支持 Shadowsocks 协议。由于 V2Ray 早于 Project V 项目，而且名声更大，所以我们习惯称 Project V 项目为 V2Ray，所以我们平时所说的 V2Ray 其实就是 Project V  这个平台，也就是一个工具集。其中，只有 VMess协议是V2Ray社区原创的专属加密通讯协议，被广泛应用于梯子软件。</p>
+
+<p>V2Ray目前支持以下协议（截止到2019年12月）：</p>
+
+<ul>
+<li>Blackhole：中文名称“黑洞”，是一个出站数据协议，它会阻碍所有数据的出站，配合路由（Routing）一起使用，可以达到禁止访问某些网站的效果。</li>
+<li>Dokodemo-door：中文名称“任意门”，是一个入站数据协议，它可以监听一个本地端口，并把所有进入此端口的数据发送至指定服务器的一个端口，从而达到端口映射的效果。</li>
+<li>Freedom：是一个出站协议，可以用来向任意网络发送（正常的） TCP 或 UDP 数据。</li>
+<li>HTTP：超文本传输协议，是传统的代理协议</li>
+<li>MTProto：Telegram 的开发团队开发的专用协议，是一个 Telegram 专用的代理协议。在 V2Ray 中可使用一组入站出站代理来完成 Telegram 数据的代理任务。目前只支持转发到 Telegram 的 IPv4 地址。</li>
+<li>Shadowsocks：最早被个人开发的科学上网梯子协议，但 V2Ray 目前不支持 ShadowsocksR。</li>
+<li>Socks：标准 Socks 协议实现，兼容 Socks 4、Socks 4a 和 Socks 5，也是传统的代理协议。</li>
+<li>VMess：是V2Ray 专用的加密传输协议，它分为入站和出站两部分，通常作为 V2Ray 客户端和服务器之间的桥梁。因为增加了混淆和加密，据说比 Shadowsocks 更安全。现在的机场支持 V2Ray，一般是指支持 VMess 协议。VMess 依赖于系统时间，请确保使用 V2Ray 的系统 UTC 时间误差在 90 秒之内，时区无关。在 Linux 系统中可以安装ntp服务来自动同步系统时间。</li>
+</ul>
+
+<p>截止到2019年12月，V2Ray 可选的传输层配置有：TCP、mKCP、WebSocket、HTTP/2、DomainSocket、QUIC。其中，mKCP、QUIC和TCP用于优化网络质量；WebSocket用于伪装；HTTP/2和DomainSocket用于传输以及TLS加密。</p>
+
+<p>V2Ray不仅可以在传输层配置 TLS 使 HTTP 和 SOCKS 变成 HTTPS 和 SOCKS over TLS 协议，也可以使MTProto、Shadowsocks 和 VMess 通过传输层配置TLS加密伪装成 TLS 流量。所以，VMess 配置 TLS 加密是最常见的做法，但没人会对 Shadowsocks 使用 TLS 加密，因为这完全没意义。</p>
+
+<h2 id="toc_6">什么是 Trojan/Trojan-Go？</h2>
+
+<p>Trojan，原来多是指特洛伊木马，是一种计算机病毒程序。但是，我们今天所说的Trojan是一种新的科学上网技术，全称为Trojan-GFW，是目前最成功的科学上网伪装技术之一。你可以认为Trojan是V2Ray的“WS+TLS”模式的精简版，速度比V2Ray更快，伪装比V2Ray更逼真，更难以被GFW识别。</p>
+
+<p>Trojan工作原理：Trojan通过监听443端口，模仿互联网上最常见的 HTTPS 协议，把合法的Trojan代理数据伪装成正常的 HTTPS 通信，并真正地完整完成的TLS 握手，以诱骗GFW认为它就是 HTTPS，从而不被识别。Trojan处理来自外界的 HTTPS 请求，如果是合法的，那么为该请求提供服务，否则将该流量转交给Caddy、Nginx等 web 服务器，由 Caddy、Nginx 等为其提供网页访问服务。基于整个交互过程，这样能让你的VPS更像一个正常的web服务器，因为Trojan的所有行为均与 Caddy、Nginx等 web 服务器一致，并没有引入额外特征，从而达到难以识别的效果。</p>
+
+<p>Trojan-Go是Trojan-GFW的分支项目，对Trojan进行性能优化，并增加不少新功能，Trojan-Go性能和功能均有大幅度的提升，而且支持分流和CDN。</p>
+
+<h2 id="toc_7">什么是Xray？</h2>
+
+<p>Xray与V2Ray完全类同，Xray 是 Project X 项目的核心模块。因为Xray和XTLS黑科技的作者rprx曾经是V2fly社区的重要成员，所以Xray直接Fork全部V2Ray的功能，然后进行性能优化，并增加了新功能，使Xray在功能上成为了V2Ray的超集，且完全兼容V2Ray。</p>
+
+<p>简而言之，Xray是V2Ray的项目分支，Xray是V2Ray的超集，就跟Trojan-Go和Trojan-GFW的关系类似，而且Xray性能更好、速度更快，更新迭代也更频繁。由于自V2ray-core 4.33.0 版本起，删除了XTLS黑科技，但仍然支持VLESS，所以是否原生支持XTLS是Xray和V2Ray最大的区别之一。</p>
+
+<h2 id="toc_8">VPN、SS/SSR、V2Ray/Xray 和 Trojan/Trojan-Go 之间有什么区别及优缺点</h2>
+
+<h3 id="toc_9">（1）原理不同</h3>
+
+<p>VPN强调对公网传输过程中数据的加解密，SS/SSR/V2Ray/Xray/Trojan都是专注于在客户端和服务器端加解密，公网传输数据过程中特征没有VPN明显。</p>
+
+<h3 id="toc_10">（2）目的不同</h3>
+
+<p>VPN是走在公网中自建的虚拟专用通道，使用强大的加解密算法，为数据传输安全性、私密性而生，被广泛应用于企业、高校、科研部门等远程数据传输的领域；SS/SSR/V2Ray/Xray/Trojan/Trojan-Go是为了数据能够安全通过GFW而生，更强调的是对数据的混淆和伪装，加解密只是为了更好的隐藏数据特征而顺利绕过GFW的检测，数据内容加密可以有效绕过关键词的检测。</p>
+
+<p>在天朝，如果你想用VPN翻墙几乎是不可能的，在平时不怎么限制还好，特殊时期VPN是断流最惨的。如果要需要匿名安全上网，VPN+TOR或SS/SSR+TOR也是不错的选择。当然，现在已经有了新的对抗技术，比如V2Ray/Xray、Trojan/Trojan-Go、WireGuard等。另外，有一些比较著名的工具，如红杏出墙、蓝灯（Lantern）、Tor Browser、赛风3（Psiphon3）等，都相继被墙，现在已经很少人使用了。</p>
+
+<h2 id="toc_11">项目诞生的大致时间顺序</h2>
+
+<p>VPN &gt; SS &gt; SSR/V2Ray/WireGuard &gt; Trojan/Trojan-Go &gt; Xray</p>
+
+<h2 id="toc_12">对梯子软件/科学上网工具的总结</h2>
+
+<p>VPN虽然天生不是为了做梯子，但却是最出名的梯子软件、众人皆知的科学上网工具，但是由于VPN特征太明显，现在非大陆正规公司的VPN基本被禁的差不多了；SS/SSR为科学上网而生，但是加密和混淆较弱，而且已经被GFW精准识别，在科学上网方面的前景堪忧，但是仍然适用于专线，网络速度比V2Ray/Trojan/Trojan-Go更快；V2Ray/Xray为科学上网而生，天生不凡，已经成长为一个平台框架，拥有自研协议VMess和VLESS，功能非常强大；WireGuard被誉为新一代VPN，技术强大，而且已经被写入Linux内核，前景光明，但是在科学上网方面并不够隐蔽，所以不是未来主流的科学上网工具；Trojan/Trojan-Go为科学上网而生，天生只为了模仿互联网最流行的HTTPS协议而存在，是目前最成功的伪装工具之一，功能与V2Ray的“Vmess+WS+TLS”模式相当，但是更轻量，伪装更逼真，目前GFW几乎无法识别其特征，而且目前Trojan-Go在性能和速度方面的表现均优于V2Ray的VMess和VLESS协议。所以，我认为Trojan/Trojan-Go会跟V2Ray一样成为将来科学上网的主流工具之一，SSR由于长期得不到维护而逐渐退出历史舞台，Shadowsocks/SS依然是最轻量的科学上网代理协议，没有之一。</p>
+
+<p><a href="https://iyideng.me/black-technology/cgfw/vpn-ss-ssr-v2ray-trojan-wireguard-bypass-gfw.html">来源</a></p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[自动登录工具开发]]></title>
@@ -333,6 +457,233 @@ yum 安装更新提示 rpmdb: Thread/process failed: Thread died in Berkeley DB 
 
 <p><code>yum clean all</code><br/>
 <code>yum makecache</code></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[离线支付方案]]></title>
+    <link href="http://565785929.github.io/15873033963371.html"/>
+    <updated>2020-04-19T21:36:36+08:00</updated>
+    <id>http://565785929.github.io/15873033963371.html</id>
+    <content type="html"><![CDATA[
+<h1 id="toc_0">二维码登陆+2FA双因素认证</h1>
+
+<p>二者都是很常用的技术，但是两者相结合遍可以用于二维码离线支付。</p>
+
+<h2 id="toc_1">密码安全</h2>
+
+<p>首先讨论一下如何让密码安全？<br/>
+注册时密码数据流，密码首先在web或客户端由用户手动输入，然后经过网络传输至服务端，服务端入库。<br/>
+登陆时密码数据流，密码也是在web或客户端由用户手动输入，然后经过网络传输至服务端，服务端查库。</p>
+
+<p>所以我们可以在客户端、网络传输、数据库中分别采用下图方案保护我们的密码。</p>
+
+<p><img src="media/15868546287595/15868573710308.jpg" alt="" style="width:1403px;"/></p>
+
+<h2 id="toc_2">二维码登陆原理</h2>
+
+<p>登录做两件事<br/>
+1、告诉系统我是谁;<br/>
+2、向系统证明我是谁;</p>
+
+<p>二维码其实是字符串的图片表现形式</p>
+
+<p><strong>基于token的认证机制</strong><br/>
+1、首次登录客户端向服务器传送密码+设备信息进行认证;<br/>
+2、服务端认证通过后,生成token与设备信息进行对应,并存储在服务端并将token回传到客户端;<br/>
+3、客户端每次访问API时,需要携带token+设备信息作为验证信息;<br/>
+4、服务端验证token+设备信息是否对应,验证通过后,返回API响应,验证不通过,拒绝服务;<br/>
+特别注意:token是某个客户端私有的,即使有token,没有对应的设备信息,也是验证不通过的</p>
+
+<h2 id="toc_3">双因素认证（2FA）</h2>
+
+<p>一般情况下，网站登录都使用账号密码的方式登录，这是最常见的认证方法，但是不安全，容易泄露和冒充。</p>
+
+<h3 id="toc_4">双因素认证概念：</h3>
+
+<p>一般来说，三种不同类型的证据，可以证明一个人的身份。</p>
+
+<ul>
+<li>秘密信息：只有该用户知道、其他人不知道的某种信息，比如密码</li>
+<li>个人物品：该用户的私人物品，比如身份证、钥匙、手机号</li>
+<li>生物特征：该用户的遗传特征，比如指纹、相貌、虹膜等</li>
+</ul>
+
+<p>这些证据就称为三种”因素“。因素越多，证明力就越强，身份就越可靠。</p>
+
+<p>双因素认证就是指，通过认证同事需要两个因素的证据。</p>
+
+<p>银行卡取钱就是最常见的双因素认证。用户必须同时提供银行卡和密码，才能取到现金。</p>
+
+<h3 id="toc_5">双因素认证方案</h3>
+
+<p>常用的双因素组合是密码 + 某种个人物品，比如网上银行的 U 盾。用户插上 U 盾，再输入密码，才能登录网上银行。</p>
+
+<p>但是，用户不可能随时携带 U 盾，手机才是最好的替代品。密码 + 手机就成了最佳的双因素认证方案。</p>
+
+<p>国内的很多网站要求，用户输入密码时，还要提供短消息发送的验证码，以证明用户确实拥有该手机。</p>
+
+<p>但是，短消息是不安全的，容易被拦截和伪造，SIM 卡也可以克隆。已经有案例，先伪造身份证，再申请一模一样的手机号码，把钱转走。</p>
+
+<p>因此，安全的双因素认证不是密码 + 短消息，而是下面要介绍的 TOTP。</p>
+
+<h3 id="toc_6">TOTP的概念</h3>
+
+<p>TOTP 的全称是&quot;基于时间的一次性密码&quot;（Time-based One-time Password）。它是公认的可靠解决方案，已经写入国际标准 <a href="https://tools.ietf.org/html/rfc6238">RFC6238</a>。</p>
+
+<p>它的步骤如下。</p>
+
+<p>第一步，用户开启双因素认证后，服务器生成一个密钥。</p>
+
+<p>第二步：服务器提示用户扫描二维码（或者使用其他方式），把密钥保存到用户的手机。也就是说，服务器和用户的手机，现在都有了同一把密钥。<br/>
+<img src="media/15847222662823/15847227437312.jpg" alt=""/><br/>
+注意，密钥必须跟手机绑定。一旦用户更换手机，就必须生成全新的密钥。</p>
+
+<p>第三步，用户登录时，手机客户端使用这个密钥和当前时间戳，生成一个哈希，有效期默认为30秒。用户在有效期内，把这个哈希提交给服务器。<br/>
+<img src="media/15847222662823/15847227654261.jpg" alt=""/><br/>
+第四步，服务器也使用密钥和当前时间戳，生成一个哈希，跟用户提交的哈希比对。只要两者不一致，就拒绝登录。</p>
+
+<h3 id="toc_7">TOTP算法</h3>
+
+<p>仔细看上面的步骤，你可能会有一个问题：手机客户端和服务器，如何保证30秒期间都得到同一个哈希呢？</p>
+
+<p>答案就是下面的公式。</p>
+
+<p>TC = floor((unixtime(now) − unixtime(T0)) / TS)</p>
+
+<p>上面的公式中，TC 表示一个时间计数器，unixtime(now)是当前 Unix 时间戳，unixtime(T0)是约定的起始时间点的时间戳，默认是0，也就是1970年1月1日。TS 则是哈希有效期的时间长度，默认是30秒。因此，上面的公式就变成下面的形式。</p>
+
+<p>TC = floor(unixtime(now) / 30)<br/>
+所以，只要在 30 秒以内，TC 的值都是一样的。前提是服务器和手机的时间必须同步。</p>
+
+<p>接下来，就可以算出哈希了。</p>
+
+<p>TOTP = HASH(SecretKey, TC)<br/>
+上面代码中，HASH就是约定的哈希函数，默认是 SHA-1。</p>
+
+<p>TOTP 有硬件生成器和软件生成器之分，都是采用上面的算法。</p>
+
+<h3 id="toc_8">总结</h3>
+
+<p>双因素认证的优点在于，比单纯的密码登录安全得多。就算密码泄露，只要手机还在，账户就是安全的。各种密码破解方法，都对双因素认证无效。</p>
+
+<p>缺点在于，登录多了一步，费时且麻烦，用户会感到不耐烦。而且，它也不意味着账户的绝对安全，入侵者依然可以通过盗取 cookie 或 token，劫持整个对话（session）。</p>
+
+<p>双因素认证还有一个最大的问题，那就是帐户的恢复。</p>
+
+<p>一旦忘记密码或者遗失手机，想要恢复登录，势必就要绕过双因素认证，这就形成了一个安全漏洞。除非准备两套双因素认证，一套用来登录，另一套用来恢复账户。</p>
+
+<h2 id="toc_9">二维码在线支付</h2>
+
+<p>首先谈一下在线支付方案。<br/>
+首先这个二维码其实只是用户的唯一标识。让商户端扫描之后，知道是谁要付款。</p>
+
+<p>所以简单实现，一般为客户端请求服务端，服务端在redis中存储客户信息，一分钟失效。<br/>
+然后商户端扫描redis中存储的这个uuid，通过这个uuid获取到客户的信息后，开始下订单，扣款。</p>
+
+<p><img src="media/15873033963371/15873054303125.jpg" alt="" style="width:576px;"/></p>
+
+<h2 id="toc_10">二维码离线支付</h2>
+
+<p>上文的方法有个弊端就是，如果客户端没有网络，就无法请求服务端生成二维码并支付了。这严重影响了用户的体验。</p>
+
+<p>如果客户端可以自己生成uuid就好了。</p>
+
+<ol>
+<li>服务器生成token，通过加密方式（如https）传递到客户端。</li>
+<li>打开付款码时，本地生成一段含有token和当前时间时间戳的哈希值，如sha1(token+UnixTimestamp),转换为byte[]并截取指定长度后转换为int变量otp。</li>
+<li>设置支付用户账号（手机号）为int变量id。</li>
+<li>设otp在[0, n]中，通过code=id*n+otp，即可将OTP和ID合并在同一个数字里，成为最终的二维码，并每隔指定时间更新一次。</li>
+<li>通过商家扫码枪扫描，服务器获取了code，通过(int)(code/n)得到id，通过code%n得到otp。</li>
+<li>通过id找到token，通过token和当前时间验证otp。</li>
+<li>验证通过即可下单。</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[双因素认证（2FA）]]></title>
+    <link href="http://565785929.github.io/15847222662823.html"/>
+    <updated>2020-03-21T00:37:46+08:00</updated>
+    <id>http://565785929.github.io/15847222662823.html</id>
+    <content type="html"><![CDATA[
+<p>一般情况下，网站登录都使用账号密码的方式登录，这是最常见的认证方法，但是不安全，容易泄露和冒充。</p>
+
+<h2 id="toc_0">双因素认证概念：</h2>
+
+<p>一般来说，三种不同类型的证据，可以证明一个人的身份。</p>
+
+<ul>
+<li>秘密信息：只有该用户知道、其他人不知道的某种信息，比如密码</li>
+<li>个人物品：该用户的私人物品，比如身份证、钥匙、手机号</li>
+<li>生物特征：该用户的遗传特征，比如指纹、相貌、虹膜等</li>
+</ul>
+
+<p>这些证据就称为三种”因素“。因素越多，证明力就越强，身份就越可靠。</p>
+
+<p>双因素认证就是指，通过认证同事需要两个因素的证据。</p>
+
+<p>银行卡取钱就是最常见的双因素认证。用户必须同时提供银行卡和密码，才能取到现金。</p>
+
+<h2 id="toc_1">双因素认证方案</h2>
+
+<p>常用的双因素组合是密码 + 某种个人物品，比如网上银行的 U 盾。用户插上 U 盾，再输入密码，才能登录网上银行。</p>
+
+<p>但是，用户不可能随时携带 U 盾，手机才是最好的替代品。密码 + 手机就成了最佳的双因素认证方案。</p>
+
+<p>国内的很多网站要求，用户输入密码时，还要提供短消息发送的验证码，以证明用户确实拥有该手机。</p>
+
+<p>但是，短消息是不安全的，容易被拦截和伪造，SIM 卡也可以克隆。已经有案例，先伪造身份证，再申请一模一样的手机号码，把钱转走。</p>
+
+<p>因此，安全的双因素认证不是密码 + 短消息，而是下面要介绍的 TOTP。</p>
+
+<h2 id="toc_2">TOTP的概念</h2>
+
+<p>TOTP 的全称是&quot;基于时间的一次性密码&quot;（Time-based One-time Password）。它是公认的可靠解决方案，已经写入国际标准 <a href="https://tools.ietf.org/html/rfc6238">RFC6238</a>。</p>
+
+<p>它的步骤如下。</p>
+
+<p>第一步，用户开启双因素认证后，服务器生成一个密钥。</p>
+
+<p>第二步：服务器提示用户扫描二维码（或者使用其他方式），把密钥保存到用户的手机。也就是说，服务器和用户的手机，现在都有了同一把密钥。<br/>
+<img src="media/15847222662823/15847227437312.jpg" alt=""/><br/>
+注意，密钥必须跟手机绑定。一旦用户更换手机，就必须生成全新的密钥。</p>
+
+<p>第三步，用户登录时，手机客户端使用这个密钥和当前时间戳，生成一个哈希，有效期默认为30秒。用户在有效期内，把这个哈希提交给服务器。<br/>
+<img src="media/15847222662823/15847227654261.jpg" alt=""/><br/>
+第四步，服务器也使用密钥和当前时间戳，生成一个哈希，跟用户提交的哈希比对。只要两者不一致，就拒绝登录。</p>
+
+<h2 id="toc_3">TOTP算法</h2>
+
+<p>仔细看上面的步骤，你可能会有一个问题：手机客户端和服务器，如何保证30秒期间都得到同一个哈希呢？</p>
+
+<p>答案就是下面的公式。</p>
+
+<p>TC = floor((unixtime(now) − unixtime(T0)) / TS)</p>
+
+<p>上面的公式中，TC 表示一个时间计数器，unixtime(now)是当前 Unix 时间戳，unixtime(T0)是约定的起始时间点的时间戳，默认是0，也就是1970年1月1日。TS 则是哈希有效期的时间长度，默认是30秒。因此，上面的公式就变成下面的形式。</p>
+
+<p>TC = floor(unixtime(now) / 30)<br/>
+所以，只要在 30 秒以内，TC 的值都是一样的。前提是服务器和手机的时间必须同步。</p>
+
+<p>接下来，就可以算出哈希了。</p>
+
+<p>TOTP = HASH(SecretKey, TC)<br/>
+上面代码中，HASH就是约定的哈希函数，默认是 SHA-1。</p>
+
+<p>TOTP 有硬件生成器和软件生成器之分，都是采用上面的算法。</p>
+
+<h2 id="toc_4">总结</h2>
+
+<p>双因素认证的优点在于，比单纯的密码登录安全得多。就算密码泄露，只要手机还在，账户就是安全的。各种密码破解方法，都对双因素认证无效。</p>
+
+<p>缺点在于，登录多了一步，费时且麻烦，用户会感到不耐烦。而且，它也不意味着账户的绝对安全，入侵者依然可以通过盗取 cookie 或 token，劫持整个对话（session）。</p>
+
+<p>双因素认证还有一个最大的问题，那就是帐户的恢复。</p>
+
+<p>一旦忘记密码或者遗失手机，想要恢复登录，势必就要绕过双因素认证，这就形成了一个安全漏洞。除非准备两套双因素认证，一套用来登录，另一套用来恢复账户。</p>
 
 ]]></content>
   </entry>
@@ -1408,144 +1759,6 @@ set内部实现是一个value永远是null的hashmap，通过hash计算的方式
 <p>使用Redis的list类型的lpush、rpop、lpop可实现</p>
 
 <p><a href="https://mp.weixin.qq.com/s/No0YW65zLQ9Pq25ynqSzgQ">https://mp.weixin.qq.com/s/No0YW65zLQ9Pq25ynqSzgQ</a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[自建redis集群规范]]></title>
-    <link href="http://565785929.github.io/15754418238619.html"/>
-    <updated>2019-12-04T14:43:43+08:00</updated>
-    <id>http://565785929.github.io/15754418238619.html</id>
-    <content type="html"><![CDATA[
-<ul>
-<li>可靠性低：如果数据走云盘做高可靠存储容易受网络波动干扰，如果不走云盘宕机数据易丢失，自建多副本运维很复杂，而且Redis本身的断网导致的全量同步机制对网络和运维的要求极高；</li>
-<li>可用性低：自建单副本无法保证可用性，多副本对心跳检查和链路切换要求极高，传统的sentinel有很多缺陷，在执行复杂的keys flushdb等命令时很容易造成误切和雪崩；</li>
-<li>诸多限制：自建集群方案如redis cluster，codis也有诸多限制，redis cluster需要smart client和非常</li>
-</ul>
-
-<h2 id="toc_0">键值设计</h2>
-
-<p>key名设计</p>
-
-<p>可读性和可管理性</p>
-
-<p>以业务名(或数据库名)为前缀(防止key冲突)，用冒号分隔，比如业务名:表名:id</p>
-
-<p>ugc:video:1</p>
-
-<p>简洁性</p>
-
-<p>保证语义的前提下，控制key的长度，当key较多时，内存占用也不容忽视，例如：</p>
-
-<p>user:{uid}:friends:messages:{mid}简化为u:{uid}:fr:m:{mid}。<br/>
-不要包含特殊字符</p>
-
-<p>反例：包含空格、换行、单双引号以及其他转义字符</p>
-
-<p><a href="https://www.cnblogs.com/-wenli/p/10941249.html">完整阿里云Redis开发规范</a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[redis 集群]]></title>
-    <link href="http://565785929.github.io/15754270430043.html"/>
-    <updated>2019-12-04T10:37:23+08:00</updated>
-    <id>http://565785929.github.io/15754270430043.html</id>
-    <content type="html"><![CDATA[
-<p>首先安装redis<br/>
-brew install redis</p>
-
-<p>将/usr/local/redis/bin<br/>
-建立redis-cluster文件夹，复制六份， 三主三备份， 分别叫redis01-redis-06<br/>
-<img src="media/15662634729470/15663492850811.jpg" alt="" style="width:423px;"/></p>
-
-<p>将每个文件夹中的redis.conf都修改一下<br/>
-例如： redis01/redis.conf</p>
-
-<pre class="line-numbers"><code class="language-text">port 7001
-
-cluster-enabled yes
-
-cluster-config-file  nodes_7001.conf  
-
-cluster-node-timeout  15000 
-
-pidfile  /var/run/redis_7001.pid
-</code></pre>
-
-<p>redis02-redis06 的配置文件参照01的配置，将其中7001都改为2-6即可。</p>
-
-<p>编写bash脚本启动</p>
-
-<pre class="line-numbers"><code class="language-text">./redis01/redis-server ./redis01/redis.conf
-./redis02/redis-server ./redis02/redis.conf
-./redis03/redis-server ./redis03/redis.conf
-./redis04/redis-server ./redis04/redis.conf
-./redis05/redis-server ./redis05/redis.conf
-./redis06/redis-server ./redis06/redis.conf
-</code></pre>
-
-<p>运行后查看进程<br/>
-ps -ef | grep redis<br/>
-<img src="media/15662634729470/15663495776677.jpg" alt="" style="width:707px;"/></p>
-
-<p>安装ruby<br/>
-brew install ruby</p>
-
-<p>到rubypems.org下载redis工具，也可以直接wget<br/>
-brew install wget<br/>
-wget <a href="http://rubygems.org/downloads/redis-3.3.0.gem">http://rubygems.org/downloads/redis-3.3.0.gem</a><br/>
-gem install -l redis-3.3.0.gem</p>
-
-<p>创建集群</p>
-
-<pre class="line-numbers"><code class="language-text">./redis-cli --cluster create 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005 127.0.0.1:7006 --cluster-replicas 1
-</code></pre>
-
-<p>报错</p>
-
-<blockquote>
-<p>[ERR] Node 127.0.0.1:7001 is not empty. Either the node already knows other nodes (check with CLUSTER NODES) or contains some key in database 0.</p>
-</blockquote>
-
-<p>连接到每个redis 运行</p>
-
-<p>flushdb</p>
-
-<blockquote>
-<p>Node is not empty</p>
-</blockquote>
-
-<p>运行fix</p>
-
-<p>./redis-cli --cluster fix 127.0.0.1:7001</p>
-
-<p>cluster命令</p>
-
-<pre class="line-numbers"><code class="language-text">cluster info 
-cluster nodes
-</code></pre>
-
-<p>参考：<a href="https://blog.csdn.net/qq_42815754/article/details/82912130">redis集群搭建（非常详细，适合新手）</a><br/>
-<a href="https://www.jianshu.com/p/dfc6656d4287">Redis 5.0.3集群搭建</a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Linux安全查找原因]]></title>
-    <link href="http://565785929.github.io/15753573808254.html"/>
-    <updated>2019-12-03T15:16:20+08:00</updated>
-    <id>http://565785929.github.io/15753573808254.html</id>
-    <content type="html"><![CDATA[
-<h3 id="toc_0">备份重要命令</h3>
-
-<p>高手入侵可能会修改集群中的重要命令，例如：top、ps、kill等重要命令<br/>
-建议备份好</p>
-
-<p><a href="https://blog.csdn.net/xinxin_2011/article/details/84936581">Linux系统发现占用CPU达100%的进程并处理</a></p>
 
 ]]></content>
   </entry>
