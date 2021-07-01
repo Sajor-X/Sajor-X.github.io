@@ -98,16 +98,18 @@
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16137917098988/16193973348755.jpg);">
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16137917098988.html"> 
+						<a href="16251591834641.html"> 
 							<div class="item-desc"> 
-								<p>
+								<p>Pull Requests 是 Bitbucket 上方便开发者之间协作的功能。提供了一个用户友好的 Web 界面，在集成提交的变更到正式项目前可以对变更进行讨论。
 
-背景
 
-自从天朝有了言论管制，科学上网的话题就一直存在，于是大量的梯子软件应运而生。但是GFW与这些梯子软件的斗争从来都没有停止过，一直是此消彼长，墙越来越高，科学上网技术也是持续突破，不断涌现出新技术、新工具。现在最主流的科学上网技术有VPN/SS/SSR/V2Ray/Trojan/Trojan-Go，还有小众的 WireGuard、Brook、Snell 和 NaiveProxy 等，本篇文章不讨论Brook、NaiveProxy以及Snell协议。SS是科学上网代理协议的鼻祖，Snell和Brook是小众协议，Snell协议一直没有开源，是iOS平台非常知名的Surge软件团队开发的</p> 
+
+开发者向团队成员通知功能开发已经完成，Pull Requests 是最简单的用法。开发者完成功能开发后，通过 Bitbucket 账号发起一个 Pull Request。这样让涉及这个功能的所有人知道，要去做 Code Review 和合并到 master 分支。
+
+但是，Pull Request 远不止一个简单的通知，而是为讨论提交的功能的一个专门论坛。如果变更有任何问题，团队成员反馈在 Pull Request 中，甚至</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -118,7 +120,7 @@
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16137917098988.html">科学上网</a>
+	  							<a href="16251591834641.html">Pull Request</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -129,127 +131,7 @@
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9B%B8%E5%85%B3.html'>密码学相关</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16110385786886/16110394454445.jpg);">
-						
-						</div> 
-						<a href="16110385786886.html"> 
-							<div class="item-desc"> 
-								<p>涉及工具技术
-
-
-Tampermonkey
-jQuery
-Tesseract-OCR
-Flask
-Pillow
-
-
-前言
-
-开发软件系统时必然会有用户登陆的模块。每次验证自己的功能时，总是绕不开输入账号密码，这已经是很麻烦的了，还得输入不好辨认的验证码。
-
-为了简化登陆步骤，我通过使用图像识别 OCR 技术，和Web应用框架Flask搭建一个验证码自动识别的服务。并结合强大的浏览器插件Tampermonkey，编写一个简单的油猴脚本，在不入侵源系统的基础上，实现不输入验证码登陆。也为后期自动化测试奠定可操作的基础。
-
-依赖安装
-
-示例环境Centos8
-
-sudo yum install ep</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="16110385786886.html">自动登录工具开发</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16022150270617/16125316270697.jpg);">
-						
-						</div> 
-						<a href="16022150270617.html"> 
-							<div class="item-desc"> 
-								<p>问题：
-
-
-
-
-使用命令行。navicat不好使
-
-解决方案：
-
-使用root登陆数据库
-
-
-查看sql_mode：
-select @@sql_mode;
-
-
-获得结果：
-ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
-
-
-NO_ZERO_IN_DATE,NO_ZERO_DATE是无法默认为‘0000-00-00 00:00:00’的根源，去掉之后再次新建表就可以了
-
-</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="16022150270617.html">mysql5.7 无法设置0000-00-00默认日期</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='MySQL.html'>MySQL</a>
+			    			<a class='category' href='Git.html'>Git</a>
 								
 		   						</div> 
 		   					</div> 
@@ -265,25 +147,15 @@ NO_ZERO_IN_DATE,NO_ZERO_DATE是无法默认为‘0000-00-00 00:00:00’的根源
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15914577057463.html"> 
+						<a href="16251591565160.html"> 
 							<div class="item-desc"> 
-								<p>问题描述：#
-yum 安装更新提示 rpmdb: Thread/process failed: Thread died in Berkeley DB library
+								<p>Forking 工作流和前面讨论的几种工作流有根本的不同。这种工作流不是使用单个服务端仓库作为『中央』代码基线，而让各个开发者都有一个服务端仓库。这意味着各个代码贡献者有 2 个 Git 仓库而不是 1 个：一个本地私有的，另一个服务端公开的。
 
-问题解决：#
-01、删除yum临时库文件
 
-rm -fr /var/lib/rpm/__db.*
 
-02、重建rpm数据库
+Forking 工作流的一个主要优势是，贡献的代码可以被集成，而不需要所有人都能 push 代码到仅有的中央仓库中。开发者 push 到自己的服务端仓库，而只有项目维护者才能 push 到正式仓库。这样项目维护者可以接受任何开发者的提交，但无需给他正式代码库的写权限。
 
-rpm --rebuilddb
-
-03、清理缓存及生产yumdb缓存
-
-yum clean all
-yum makecache
-</p> 
+效果就是一个分布式的工作流，能为大型、自发性的团队（包括了不受信的第三方）提</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -294,7 +166,7 @@ yum makecache
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15914577057463.html">yum安装提示错误Thread/process failed: Thread died in Berkeley DB librar</a>
+	  							<a href="16251591565160.html">Forking 工作流</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -305,7 +177,7 @@ yum makecache
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
+			    			<a class='category' href='Git.html'>Git</a>
 								
 		   						</div> 
 		   					</div> 
@@ -318,35 +190,28 @@ yum makecache
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/15873033963371/15873054303125.jpg);">
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15873033963371.html"> 
+						<a href="16251591321661.html"> 
 							<div class="item-desc"> 
-								<p>二维码登陆+2FA双因素认证
+								<p>本节视频
 
-二者都是很常用的技术，但是两者相结合遍可以用于二维码离线支付。
 
-密码安全
+  【视频】Git工作流指南-GitFlow工作流
 
-首先讨论一下如何让密码安全？
-注册时密码数据流，密码首先在web或客户端由用户手动输入，然后经过网络传输至服务端，服务端入库。
-登陆时密码数据流，密码也是在web或客户端由用户手动输入，然后经过网络传输至服务端，服务端查库。
 
-所以我们可以在客户端、网络传输、数据库中分别采用下图方案保护我们的密码。
+概述
 
 
 
-二维码登陆原理
+GitFlow 工作流定义了一个围绕项目发布的严格分支模型。虽然比功能分支工作流复杂几分，但提供了用于一个健壮的用于管理大型项目的框架。
 
-登录做两件事
-1、告诉系统我是谁;
-2、向系统证明我是谁;
+GitFlow 工作流没有用超出功能分支工作流的概念和命令，而是为不同的分支分配一个很明确的角色，并定义分支之间如何和什么时候进行交互。除了使用功能分支，在做准备、维护和记录发布也使用各自的分支。当然你可以用上功能分支工作流所有的好处：Pull Requests、隔离实验性开发和更高效的协作。
 
-二维码其实是字符串的图片表现形式
+工作方式
 
-基于token的认证机制
-1、首次登录客户端向服务器传送密码+设备</p> 
+GitFlow 工作流仍然用中央仓库作为所有开发者的交互中心。和其它</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -357,7 +222,7 @@ yum makecache
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15873033963371.html">离线支付方案</a>
+	  							<a href="16251591321661.html">GitFlow 工作流</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -368,7 +233,7 @@ yum makecache
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9B%B8%E5%85%B3.html'>密码学相关</a>
+			    			<a class='category' href='Git.html'>Git</a>
 								
 		   						</div> 
 		   					</div> 
@@ -381,32 +246,26 @@ yum makecache
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/15847222662823/15847227654261.jpg);">
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15847222662823.html"> 
+						<a href="16251589603172.html"> 
 							<div class="item-desc"> 
-								<p>一般情况下，网站登录都使用账号密码的方式登录，这是最常见的认证方法，但是不安全，容易泄露和冒充。
-
-双因素认证概念：
-
-一般来说，三种不同类型的证据，可以证明一个人的身份。
+								<p>本节视频
 
 
-秘密信息：只有该用户知道、其他人不知道的某种信息，比如密码
-个人物品：该用户的私人物品，比如身份证、钥匙、手机号
-生物特征：该用户的遗传特征，比如指纹、相貌、虹膜等
+  【视频】Git工作流指南-功能分支工作流
 
 
-这些证据就称为三种”因素“。因素越多，证明力就越强，身份就越可靠。
+概述
 
-双因素认证就是指，通过认证同事需要两个因素的证据。
 
-银行卡取钱就是最常见的双因素认证。用户必须同时提供银行卡和密码，才能取到现金。
 
-双因素认证方案
+一旦你玩转了集中式工作流，在开发过程中可以很简单地加上功能分支，用来鼓励开发者之间协作和简化交流。
 
-常用的双因素组合是密码 + </p> 
+功能分支工作流背后的核心思路是所有的功能开发应该在一个专门的分支，而不是在 master 分支上。这个隔离可以方便多个开发者在各自的功能上开发而不会弄乱主干代码。另外，也保证了 master 分支的代码一定不会是有问题的，极大有利于集成环境。
+
+功能开发隔离也让 pull requests 工作流成功可能，pull requests 工作流能为每个分支发起一个讨论，在分支合入正式项目之前，给其它开发者有表示赞同的机会。</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -417,7 +276,7 @@ yum makecache
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15847222662823.html">双因素认证（2FA）</a>
+	  							<a href="16251589603172.html">功能分支工作流</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -428,7 +287,119 @@ yum makecache
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9B%B8%E5%85%B3.html'>密码学相关</a>
+			    			<a class='category' href='Git.html'>Git</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="16251585082271.html"> 
+							<div class="item-desc"> 
+								<p>
+
+# 本节视频
+
+
+  【视频】Git工作流指南-集中式工作流
+
+
+# 概述
+
+
+
+转到分布式版本控制系统看起来像个令人生畏的任务，但不改变已用的工作流你也可以用上 Git 带来的收益。团队可以用和 Subversion 完全不变的方式来开发项目。
+
+但使用 Git 加强开发的工作流，Git 比 SVN 有几个优势。首先，每个开发可以有属于自己的整个工程的本地拷贝。隔离的环境让各个开发者的工作和项目的其他部分（修改）独立开来 —— 即自由地提交到自己的本地仓库，先完全忽略上游的开发，直到方便的时候再把修改反馈上去。
+
+其次，Git 提供了强壮的分支和合并模型。不像 SVN，Git 的分支设计</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16251585082271.html">集中式工作流</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Git.html'>Git</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="16251579849229.html"> 
+							<div class="item-desc"> 
+								<p>
+
+# 本节视频
+
+
+  【视频】Git工作流指南-工作流简介
+
+
+# 概述
+
+工作流有各式各样的用法，但也正因此使得在实际工作中如何上手使用增加了难度。这篇指南通过总览公司团队中最常用的几种 Git 工作流让大家可以上手使用。
+
+在阅读的过程中请记住，本文中的几种工作流是作为方案指导而不是条例规定。在展示了各种工作流可能的用法后，你可以从不同的工作流中挑选或揉合出一个满足你自己需求的工作流。
+
+# 集中式工作流
+
+如果你的开发团队成员已经很熟悉 Subversion，集中式工作流让你无需去适应一个全新流程就可以体验 Git 带来的收益。这个工作流也可以作为向更 Git 风格工作流迁移的友好过</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16251579849229.html">[#](#git-工作流简介) Git 工作流简介</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Git.html'>Git</a>
 								
 		   						</div> 
 		   					</div> 
@@ -478,7 +449,25 @@ yum makecache
              
             
             <li>
+            <a href="Git.html">Git&nbsp;(6)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
             <a href="%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9B%B8%E5%85%B3.html">密码学相关&nbsp;(5)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="Ray%20Tracing.html">Ray Tracing&nbsp;(1)</a>
             <p>
             
             </p>
@@ -499,18 +488,10 @@ yum makecache
             
              
             
-            <li>
-            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(15)</a>
-            <p>
-            
             </p>
             </li>
             
              
-            
-            <li>
-            <a href="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html">数据库相关&nbsp;(11)</a>
-            <p>
             
             </p>
             </li>
@@ -536,31 +517,31 @@ yum makecache
           
           
          <li>
-           <a href="16137917098988.html">科学上网</a><br>
+           <a href="16251591834641.html">Pull Request</a><br>
          </li>
           
           
           
          <li>
-           <a href="16110385786886.html">自动登录工具开发</a><br>
+           <a href="16251591565160.html">Forking 工作流</a><br>
          </li>
           
           
           
          <li>
-           <a href="16022150270617.html">mysql5.7 无法设置0000-00-00默认日期</a><br>
+           <a href="16251591321661.html">GitFlow 工作流</a><br>
          </li>
           
           
           
          <li>
-           <a href="15914577057463.html">yum安装提示错误Thread/process failed: Thread died in Berkeley DB librar</a><br>
+           <a href="16251589603172.html">功能分支工作流</a><br>
          </li>
           
           
           
          <li>
-           <a href="15873033963371.html">离线支付方案</a><br>
+           <a href="16251585082271.html">集中式工作流</a><br>
          </li>
           
           

@@ -101,30 +101,17 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15822104759867.html"> 
+						<a href="15641490587108.html"> 
 							<div class="item-desc"> 
-								<p>首先到官网spark.apache.org下载spark，spark下载页面 
+								<p>今天博客突然报了这个错误：
 
-安装
+Packet for query is too large (5,215 &gt; 1,024). You can change this value on the server by setting the &#39;max_allowed_packet&#39; variable.
 
-spark安装文件夹准备
 
-在/usr/local/目录下创建名称为spark的文件夹：
-sudo mkdir -p /usr/local/spark
+百度了一下，MySQL会根据配置文件会限制server接受的数据包的大小。如果写入大数据时，因为默认的配置太小，插入和更新操作会因为 max_allowed_packet 参数限制，而导致失败。
+在MySQL中输入这条命令查询
 
-将下载好的spark安装包上传到服务器上。
-之后解压到/usr/local/spark中
-
-sudo tar -zxvf spark-2.4.5-bin-hadoop2.7.tgz
-
-配置
-
-编辑配置文件sudo vim /etc/profile
-
-定位到最后一行，添加如下内容（版本注意修改）
-
-# spark
-export SPARK_HOME=/us</p> 
+SHOW VARIABLES LIKE &#39</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -135,7 +122,271 @@ export SPARK_HOME=/us</p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15822104759867.html">spark</a>
+	  							<a href="15641490587108.html">在使用Mybatis generator时提示MySQL写入过大</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
+								
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="15638863087177.html"> 
+							<div class="item-desc"> 
+								<p>数据库命令规范
+
+
+所有数据库对象名称必须使用小写字母并用下划线分割
+所有数据库对象名称禁止使用 MySQL 保留关键字（如果表名中包含关键字查询时，需要将其用单引号括起来）
+数据库对象的命名要能做到见名识意，并且最后不要超过 32 个字符
+临时库表必须以 tmp_为前缀并以日期为后缀，备份表必须以 bak_为前缀并以日期 (时间戳) 为后缀
+所有存储相同数据的列名和列类型必须一致（一般作为关联列，如果查询时关联列类型不一致会自动进行数据类型隐式转换，会造成列上的索引失效，导致查询效率降低）
+## 数据库基本设计规范
+### 所有表必须使用 Innodb 存储引擎
+没有特殊要求（即 Innod</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15638863087177.html">MySQL高性能优化规范建议</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
+								
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="15518630086345.html"> 
+							<div class="item-desc"> 
+								<p>Redis 简介
+
+Redis 是完全开源免费的，遵守BSD协议，是一个高性能的key-value数据库。
+
+Redis 与其他 key - value 缓存产品有以下三个特点：
+
+
+Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。
+Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。
+Redis支持数据的备份，即master-slave模式的数据备份。
+
+
+Redis 数据类型
+
+Redis支持五种数据类型：string（字符串），hash（哈希），list（列表），set（集合）</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15518630086345.html">Redis</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="15770719140172.html"> 
+							<div class="item-desc"> 
+								<p>redis-server /usr/local/redis/etc/redis.conf
+
+redis 集群
+
+首先安装redis
+brew install redis
+
+单节点
+redis-server /usr/local/redis/etc/redis.conf
+
+将/usr/local/redis/bin
+建立redis-cluster文件夹，复制六份， 三主三备份， 分别叫redis01-redis-06
+
+
+将每个文件夹中的redis.conf都修改一下
+例如： redis01/redis.conf
+
+port 7001
+
+cluster-enabled yes
+
+cluster-</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15770719140172.html">redis</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0.html'>Redis设计与实现</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="15914574913033.html"> 
+							<div class="item-desc"> 
+								<p>
+SWIG是个帮助使用C或者C++编写的软件能与其它各种高级编程语言进行嵌入联接的开发工具。SWIG能应用于各种不同类型的语言包括常用脚本编译语言例如Perl, PHP, Python, Tcl, Ruby and PHP。支持语言列表中也包括非脚本编译语言，例如C#, Common Lisp (CLISP, Allegro CL, CFFI, UFFI), Java, Modula-3, OCAML以及R，甚至是编译器或者汇编的计划应用（Guile, MzScheme, Chicken）。SWIG普遍应用于创建高级语言解析或汇编程序环境，用户接口，作为一种用来测试C/C++或进行原型设计的工</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15914574913033.html">swig</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="15914572003074.html"> 
+							<div class="item-desc"> 
+								<p>
+PCRE(Perl Compatible Regular Expressions)是一个Perl库，包括 perl 兼容的正则表达式库。这些在执行正规表达式模式匹配时用与Perl 5同样的语法和语义是很有用的。Boost太庞大了，使用boost regex后，程序的编译速度明显变慢。测试了一下，同样一个程序，使用boost::regex编译时需要3秒，而使用pcre不到1秒。因此改用pcre来解决C语言中使用正则表达式的问题
+
+
+百度百科
+
+下载安装包pcre
+
+首先需要安装g++
+
+yum install -y gcc gcc-c++
+
+否则会报错
+
+configure: error: Y</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15914572003074.html">pcre</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -167,8 +418,8 @@ export SPARK_HOME=/us</p>
 				<li class=""><a href="archives.html">归档</a></li>
 
 			
-            	<li class=" disabled "><a href="#index">下一页 <span aria-hidden="true">&rarr;</span></a></li>
-            
+			<li class=""><a href="all_11.html">下一页 <span aria-hidden="true">&rarr;</span></a></li>
+			
             </ol>
      </nav>
 </div>
@@ -196,7 +447,25 @@ export SPARK_HOME=/us</p>
              
             
             <li>
+            <a href="Git.html">Git&nbsp;(6)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
             <a href="%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9B%B8%E5%85%B3.html">密码学相关&nbsp;(5)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="Ray%20Tracing.html">Ray Tracing&nbsp;(1)</a>
             <p>
             
             </p>
@@ -217,18 +486,10 @@ export SPARK_HOME=/us</p>
             
              
             
-            <li>
-            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(15)</a>
-            <p>
-            
             </p>
             </li>
             
              
-            
-            <li>
-            <a href="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html">数据库相关&nbsp;(11)</a>
-            <p>
             
             </p>
             </li>
@@ -254,31 +515,31 @@ export SPARK_HOME=/us</p>
           
           
          <li>
-           <a href="16137917098988.html">科学上网</a><br>
+           <a href="16251591834641.html">Pull Request</a><br>
          </li>
           
           
           
          <li>
-           <a href="16110385786886.html">自动登录工具开发</a><br>
+           <a href="16251591565160.html">Forking 工作流</a><br>
          </li>
           
           
           
          <li>
-           <a href="16022150270617.html">mysql5.7 无法设置0000-00-00默认日期</a><br>
+           <a href="16251591321661.html">GitFlow 工作流</a><br>
          </li>
           
           
           
          <li>
-           <a href="15914577057463.html">yum安装提示错误Thread/process failed: Thread died in Berkeley DB librar</a><br>
+           <a href="16251589603172.html">功能分支工作流</a><br>
          </li>
           
           
           
          <li>
-           <a href="15873033963371.html">离线支付方案</a><br>
+           <a href="16251585082271.html">集中式工作流</a><br>
          </li>
           
           

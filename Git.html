@@ -10,7 +10,7 @@
 
     <title>
       
-    数据库 - Sajor's Blog
+    Git - Sajor's Blog
     
     </title>
 
@@ -98,34 +98,18 @@
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16022150270617/16125316270697.jpg);">
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16022150270617.html"> 
+						<a href="16251591834641.html"> 
 							<div class="item-desc"> 
-								<p>问题：
+								<p>Pull Requests 是 Bitbucket 上方便开发者之间协作的功能。提供了一个用户友好的 Web 界面，在集成提交的变更到正式项目前可以对变更进行讨论。
 
 
 
+开发者向团队成员通知功能开发已经完成，Pull Requests 是最简单的用法。开发者完成功能开发后，通过 Bitbucket 账号发起一个 Pull Request。这样让涉及这个功能的所有人知道，要去做 Code Review 和合并到 master 分支。
 
-使用命令行。navicat不好使
-
-解决方案：
-
-使用root登陆数据库
-
-
-查看sql_mode：
-select @@sql_mode;
-
-
-获得结果：
-ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
-
-
-NO_ZERO_IN_DATE,NO_ZERO_DATE是无法默认为‘0000-00-00 00:00:00’的根源，去掉之后再次新建表就可以了
-
-</p> 
+但是，Pull Request 远不止一个简单的通知，而是为讨论提交的功能的一个专门论坛。如果变更有任何问题，团队成员反馈在 Pull Request 中，甚至</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -136,7 +120,7 @@ NO_ZERO_IN_DATE,NO_ZERO_DATE是无法默认为‘0000-00-00 00:00:00’的根源
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16022150270617.html">mysql5.7 无法设置0000-00-00默认日期</a>
+	  							<a href="16251591834641.html">Pull Request</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -147,7 +131,7 @@ NO_ZERO_IN_DATE,NO_ZERO_DATE是无法默认为‘0000-00-00 00:00:00’的根源
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='MySQL.html'>MySQL</a>
+			    			<a class='category' href='Git.html'>Git</a>
 								
 		   						</div> 
 		   					</div> 
@@ -163,60 +147,181 @@ NO_ZERO_IN_DATE,NO_ZERO_DATE是无法默认为‘0000-00-00 00:00:00’的根源
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15823891714442.html"> 
+						<a href="16251591565160.html"> 
+							<div class="item-desc"> 
+								<p>Forking 工作流和前面讨论的几种工作流有根本的不同。这种工作流不是使用单个服务端仓库作为『中央』代码基线，而让各个开发者都有一个服务端仓库。这意味着各个代码贡献者有 2 个 Git 仓库而不是 1 个：一个本地私有的，另一个服务端公开的。
+
+
+
+Forking 工作流的一个主要优势是，贡献的代码可以被集成，而不需要所有人都能 push 代码到仅有的中央仓库中。开发者 push 到自己的服务端仓库，而只有项目维护者才能 push 到正式仓库。这样项目维护者可以接受任何开发者的提交，但无需给他正式代码库的写权限。
+
+效果就是一个分布式的工作流，能为大型、自发性的团队（包括了不受信的第三方）提</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16251591565160.html">Forking 工作流</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Git.html'>Git</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="16251591321661.html"> 
+							<div class="item-desc"> 
+								<p>本节视频
+
+
+  【视频】Git工作流指南-GitFlow工作流
+
+
+概述
+
+
+
+GitFlow 工作流定义了一个围绕项目发布的严格分支模型。虽然比功能分支工作流复杂几分，但提供了用于一个健壮的用于管理大型项目的框架。
+
+GitFlow 工作流没有用超出功能分支工作流的概念和命令，而是为不同的分支分配一个很明确的角色，并定义分支之间如何和什么时候进行交互。除了使用功能分支，在做准备、维护和记录发布也使用各自的分支。当然你可以用上功能分支工作流所有的好处：Pull Requests、隔离实验性开发和更高效的协作。
+
+工作方式
+
+GitFlow 工作流仍然用中央仓库作为所有开发者的交互中心。和其它</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16251591321661.html">GitFlow 工作流</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Git.html'>Git</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="16251589603172.html"> 
+							<div class="item-desc"> 
+								<p>本节视频
+
+
+  【视频】Git工作流指南-功能分支工作流
+
+
+概述
+
+
+
+一旦你玩转了集中式工作流，在开发过程中可以很简单地加上功能分支，用来鼓励开发者之间协作和简化交流。
+
+功能分支工作流背后的核心思路是所有的功能开发应该在一个专门的分支，而不是在 master 分支上。这个隔离可以方便多个开发者在各自的功能上开发而不会弄乱主干代码。另外，也保证了 master 分支的代码一定不会是有问题的，极大有利于集成环境。
+
+功能开发隔离也让 pull requests 工作流成功可能，pull requests 工作流能为每个分支发起一个讨论，在分支合入正式项目之前，给其它开发者有表示赞同的机会。</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16251589603172.html">功能分支工作流</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Git.html'>Git</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="16251585082271.html"> 
 							<div class="item-desc"> 
 								<p>
 
-
-java类
- 
-mysql数据库
+# 本节视频
 
 
+  【视频】Git工作流指南-集中式工作流
+
+
+# 概述
 
 
 
-java.lang.Byte
-byte
-TINYINT
+转到分布式版本控制系统看起来像个令人生畏的任务，但不改变已用的工作流你也可以用上 Git 带来的收益。团队可以用和 Subversion 完全不变的方式来开发项目。
 
+但使用 Git 加强开发的工作流，Git 比 SVN 有几个优势。首先，每个开发可以有属于自己的整个工程的本地拷贝。隔离的环境让各个开发者的工作和项目的其他部分（修改）独立开来 —— 即自由地提交到自己的本地仓库，先完全忽略上游的开发，直到方便的时候再把修改反馈上去。
 
-java.lang.Short
-short
-SMALLINT
-
-
-java.lang.Integer
-integer
-INGEGER
-
-
-java.lang.Long
-long
-BIGINT
-
-
-java.lang.Float
-float
-FLOAT
-
-
-java.lang.Double
-double
-DOUBLE
-
-
-java.lang.BigDecimal
-big_decimal
-NUMERIC
-
-
-java.lang.Boolean
-boolean
-BIT
-
-
-java.lang</p> 
+其次，Git 提供了强壮的分支和合并模型。不像 SVN，Git 的分支设计</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -227,7 +332,7 @@ java.lang</p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15823891714442.html">java和mysql转换</a>
+	  							<a href="16251585082271.html">集中式工作流</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -238,7 +343,7 @@ java.lang</p>
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='MySQL.html'>MySQL</a>
+			    			<a class='category' href='Git.html'>Git</a>
 								
 		   						</div> 
 		   					</div> 
@@ -254,144 +359,25 @@ java.lang</p>
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15823882245344.html"> 
-							<div class="item-desc"> 
-								<p>查看注释
-
-查看所有表的注释
-
-SELECT
-table_name 表名,
-table_comment 表说明
-FROM
-information_schema.TABLES
-WHERE
-table_schema = &#39;数据库名&#39;
-ORDER BY
-table_name
-
-
-查询所有表及字段的注释
-
-SELECT
-a.table_name 表名,
-a.table_comment 表说明,
-b.COLUMN_NAME 字段名,
-b.column_comment 字段说明,
-b.column_type 字段类型,
-b.column_key 约束
-FROM
-information_sc</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15823882245344.html">MySQL 查看表注释或字段注释</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='MySQL.html'>MySQL</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15754473183515.html"> 
-							<div class="item-desc"> 
-								<p>缓存数据
-
-最常用，对经常需要查询且变动不是很频繁的数据
-
-排行榜应用
-
-利用Redis的有序集合zset，每次插入数据时自动调整顺序值，根据插入时的score值将value按一定顺序连续排列。
-
-计数器应用
-
-利用Redis的incr、decr命令进行原子性操作，来构建计数系统
-比如在一个web应用程序中，如果想知道用户在一年中每天的点击量，只要将用户id和相关日期信息作为键，并在每次用户点击页面时，执行一次自增操作即可。
-
-数据去重
-
-当需要存储一个列表数据，又不希望出现重复数据时，可以使用Redis的Set数据结构
-set内部实现是一个value永远是null的hashmap，通过has</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15754473183515.html">Redis使用场景</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0.html'>Redis设计与实现</a>
-								
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15754418238619.html"> 
+						<a href="16251579849229.html"> 
 							<div class="item-desc"> 
 								<p>
-可靠性低：如果数据走云盘做高可靠存储容易受网络波动干扰，如果不走云盘宕机数据易丢失，自建多副本运维很复杂，而且Redis本身的断网导致的全量同步机制对网络和运维的要求极高；
-可用性低：自建单副本无法保证可用性，多副本对心跳检查和链路切换要求极高，传统的sentinel有很多缺陷，在执行复杂的keys flushdb等命令时很容易造成误切和雪崩；
-诸多限制：自建集群方案如redis cluster，codis也有诸多限制，redis cluster需要smart client和非常
+
+# 本节视频
 
 
-键值设计
+  【视频】Git工作流指南-工作流简介
 
-key名设计
 
-可读性和可管理性
+# 概述
 
-以业务名(或数据库名)为前缀(防止key冲突)，用冒号分隔，</p> 
+工作流有各式各样的用法，但也正因此使得在实际工作中如何上手使用增加了难度。这篇指南通过总览公司团队中最常用的几种 Git 工作流让大家可以上手使用。
+
+在阅读的过程中请记住，本文中的几种工作流是作为方案指导而不是条例规定。在展示了各种工作流可能的用法后，你可以从不同的工作流中挑选或揉合出一个满足你自己需求的工作流。
+
+# 集中式工作流
+
+如果你的开发团队成员已经很熟悉 Subversion，集中式工作流让你无需去适应一个全新流程就可以体验 Git 带来的收益。这个工作流也可以作为向更 Git 风格工作流迁移的友好过</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -402,7 +388,7 @@ key名设计
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15754418238619.html">自建redis集群规范</a>
+	  							<a href="16251579849229.html">[#](#git-工作流简介) Git 工作流简介</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -413,72 +399,7 @@ key名设计
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0.html'>Redis设计与实现</a>
-								
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15754270430043.html"> 
-							<div class="item-desc"> 
-								<p>首先安装redis
-brew install redis
-
-将/usr/local/redis/bin
-建立redis-cluster文件夹，复制六份， 三主三备份， 分别叫redis01-redis-06
-
-
-将每个文件夹中的redis.conf都修改一下
-例如： redis01/redis.conf
-
-port 7001
-
-cluster-enabled yes
-
-cluster-config-file  nodes_7001.conf  
-
-cluster-node-timeout  15000 
-
-pidfile  /var/run/redis_7001.pid
-
-
-redis02-r</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15754270430043.html">redis 集群</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0.html'>Redis设计与实现</a>
-								
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
+			    			<a class='category' href='Git.html'>Git</a>
 								
 		   						</div> 
 		   					</div> 
@@ -499,8 +420,8 @@ redis02-r</p>
 				<li class=""><a href="archives.html">归档</a></li>
 
 			
-			<li class=""><a href="数据库_1.html">下一页 <span aria-hidden="true">&rarr;</span></a></li>
-			
+            	<li class=" disabled "><a href="#index">下一页 <span aria-hidden="true">&rarr;</span></a></li>
+            
             </ol>
      </nav>
 </div>

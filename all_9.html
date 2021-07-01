@@ -101,19 +101,31 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15638863087177.html"> 
+						<a href="15643132029446.html"> 
 							<div class="item-desc"> 
-								<p>数据库命令规范
+								<p>1、引用 AspectJ jar 包
+
+点击 File&gt;Project Structure...，选中 Libraries，添加 java 引用
+在 lib 中选择 aspectj-1.8.13 文件夹
 
 
-所有数据库对象名称必须使用小写字母并用下划线分割
-所有数据库对象名称禁止使用 MySQL 保留关键字（如果表名中包含关键字查询时，需要将其用单引号括起来）
-数据库对象的命名要能做到见名识意，并且最后不要超过 32 个字符
-临时库表必须以 tmp_为前缀并以日期为后缀，备份表必须以 bak_为前缀并以日期 (时间戳) 为后缀
-所有存储相同数据的列名和列类型必须一致（一般作为关联列，如果查询时关联列类型不一致会自动进行数据类型隐式转换，会造成列上的索引失效，导致查询效率降低）
-## 数据库基本设计规范
-### 所有表必须使用 Innodb 存储引擎
-没有特殊要求（即 Innod</p> 
+
+
+
+2、创建两个新的包
+
+
+com.sajor.study.c03
+test.com.sajor.study.c03
+
+
+3、创建一个业务类 UserXML
+
+package com.sajor.study.c03;
+
+public class UserXML {
+    private int id = 20180101;
+    private String name = &q</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -124,7 +136,7 @@
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15638863087177.html">MySQL高性能优化规范建议</a>
+	  							<a href="15643132029446.html">从零开始SSM开发系列五：AOP</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -135,9 +147,7 @@
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
-								
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
+			    			<a class='category' href='ssm.html'>SSM练习</a>
 								
 		   						</div> 
 		   					</div> 
@@ -153,23 +163,19 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15518630086345.html"> 
+						<a href="15642871336794.html"> 
 							<div class="item-desc"> 
-								<p>Redis 简介
+								<p>一、依赖注入
 
-Redis 是完全开源免费的，遵守BSD协议，是一个高性能的key-value数据库。
+1、新建一个 School 类
+右键 src&gt;main&gt;java&gt;com.sajor.study.c01，点击 New&gt;Java Class
 
-Redis 与其他 key - value 缓存产品有以下三个特点：
+在 School 中引用 Student 类，并可以获得含有 Student 对象的一个 List:
 
-
-Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。
-Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。
-Redis支持数据的备份，即master-slave模式的数据备份。
-
-
-Redis 数据类型
-
-Redis支持五种数据类型：string（字符串），hash（哈希），list（列表），set（集合）</p> 
+    private int id = 2000;
+    private String name = &quot;Sajor&quot;;
+    private Student student;
+    private List&lt;Student&gt; students = new ArrayLis</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -180,7 +186,7 @@ Redis支持五种数据类型：string（字符串），hash（哈希），list�
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15518630086345.html">Redis</a>
+	  							<a href="15642871336794.html">从零开始SSM开发系列四：依赖注入及 Bean 管理</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -191,7 +197,7 @@ Redis支持五种数据类型：string（字符串），hash（哈希），list�
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
+			    			<a class='category' href='ssm.html'>SSM练习</a>
 								
 		   						</div> 
 		   					</div> 
@@ -207,30 +213,32 @@ Redis支持五种数据类型：string（字符串），hash（哈希），list�
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15770719140172.html"> 
+						<a href="15642457728170.html"> 
 							<div class="item-desc"> 
-								<p>redis-server /usr/local/redis/etc/redis.conf
+								<p>1、新建一个包 com.sajor.study.c01
 
-redis 集群
-
-首先安装redis
-brew install redis
-
-单节点
-redis-server /usr/local/redis/etc/redis.conf
-
-将/usr/local/redis/bin
-建立redis-cluster文件夹，复制六份， 三主三备份， 分别叫redis01-redis-06
+打开开发工具 Intellij IDEA，打开之前创建的工程右键 src&gt;main&gt;java&gt;com.sajor.study，点击 New&gt;Package
 
 
-将每个文件夹中的redis.conf都修改一下
-例如： redis01/redis.conf
 
-port 7001
+创建包 c01
 
-cluster-enabled yes
 
-cluster-</p> 
+
+2、新建一个 Student 类
+右键 src&gt;main&gt;java&gt;com.sajor.study.c01，点击 New&gt;Java Class
+
+
+
+创建Student类
+
+
+
+Student 类包含 4 个属性
+
+package com.sajor.study.c01;
+
+public class Stud</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -241,7 +249,7 @@ cluster-</p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15770719140172.html">redis</a>
+	  							<a href="15642457728170.html">从零开始SSM开发系列三：第一个Spring应用</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -252,7 +260,7 @@ cluster-</p>
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0.html'>Redis设计与实现</a>
+			    			<a class='category' href='ssm.html'>SSM练习</a>
 								
 		   						</div> 
 		   					</div> 
@@ -268,10 +276,29 @@ cluster-</p>
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15914574913033.html"> 
+						<a href="15642432857493.html"> 
 							<div class="item-desc"> 
-								<p>
-SWIG是个帮助使用C或者C++编写的软件能与其它各种高级编程语言进行嵌入联接的开发工具。SWIG能应用于各种不同类型的语言包括常用脚本编译语言例如Perl, PHP, Python, Tcl, Ruby and PHP。支持语言列表中也包括非脚本编译语言，例如C#, Common Lisp (CLISP, Allegro CL, CFFI, UFFI), Java, Modula-3, OCAML以及R，甚至是编译器或者汇编的计划应用（Guile, MzScheme, Chicken）。SWIG普遍应用于创建高级语言解析或汇编程序环境，用户接口，作为一种用来测试C/C++或进行原型设计的工</p> 
+								<p>创建远程仓库
+
+首先申请github账号这个不讲了，然后创建一个项目名为 SSMClass ，信息填写好之后，点击create repository
+
+
+
+之后点击Clone or download，选择use ssh，之后复制一下这个链接留作备用
+
+git@github.com:565785929/SSMClass.git
+
+
+
+
+创建本地仓库并远程
+
+1、 初始化本地git仓库
+然后使用IDEA打开这个文件夹，点击VCS -&gt; Import into Version Control -&gt; Create Git Repository。 相当于这条git命令
+
+git init
+
+</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -282,7 +309,7 @@ SWIG是个帮助使用C或者C++编写的软件能与其它各种高级编程语
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15914574913033.html">swig</a>
+	  							<a href="15642432857493.html">从零开始SSM开发系列二：GitHub配置（可以跳过）</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -293,7 +320,7 @@ SWIG是个帮助使用C或者C++编写的软件能与其它各种高级编程语
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
+			    			<a class='category' href='ssm.html'>SSM练习</a>
 								
 		   						</div> 
 		   					</div> 
@@ -309,23 +336,15 @@ SWIG是个帮助使用C或者C++编写的软件能与其它各种高级编程语
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15914572003074.html"> 
+						<a href="15642402893897.html"> 
 							<div class="item-desc"> 
-								<p>
-PCRE(Perl Compatible Regular Expressions)是一个Perl库，包括 perl 兼容的正则表达式库。这些在执行正规表达式模式匹配时用与Perl 5同样的语法和语义是很有用的。Boost太庞大了，使用boost regex后，程序的编译速度明显变慢。测试了一下，同样一个程序，使用boost::regex编译时需要3秒，而使用pcre不到1秒。因此改用pcre来解决C语言中使用正则表达式的问题
-
-
-百度百科
-
-下载安装包pcre
-
-首先需要安装g++
-
-yum install -y gcc gcc-c++
-
-否则会报错
-
-configure: error: Y</p> 
+								<p>▪ 官网 http://www.oracle.com/technetwork/java/javaee/overview/index.html java 入门指导
+▪ 博客园 https://www.cnblogs.com/ 开发者的网上家园
+▪ 开源中国 http://www.oschina.net/ 找到想要的开源项目，分享和交流
+▪ CSDN https://www.csdn.net/ 最大的程序员中文社区
+▪ ITPub http://www.itpub.net/ 数据库最好的社区
+▪ iteye http://www.iteye.com/ 曾经最好的java社区
+▪ Stackover</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -336,7 +355,7 @@ configure: error: Y</p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15914572003074.html">pcre</a>
+	  							<a href="15642402893897.html">学习资料</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -347,7 +366,7 @@ configure: error: Y</p>
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
+			    			<a class='category' href='java.html'>ssm课程</a>
 								
 		   						</div> 
 		   					</div> 
@@ -363,29 +382,35 @@ configure: error: Y</p>
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15822108701088.html"> 
+						<a href="15642392486315.html"> 
 							<div class="item-desc"> 
-								<p>首先下载jdk，jdk下载页面
+								<p>Java 开发环境配置
 
-卸载原有jdk
+1、新建 Java 工程
 
-检查操作系统是否自带openjdk 
+打开开发工具 Intellij IDEA，点击菜单 File &gt; New &gt; Project...
 
-输入java -version若出现java版本信息，表明操作系统目前自带的jdk，按以下方式进行卸载。
+2、配置 JDK
 
-检查操作系统上自带的jdk 
-rpm -qa|grep jdk 
+点击右上角“New”按钮，选择 JDK 安装的路径(Windows 与 MacOS 不一样，选择你自己安装 JDK 的 路径)
 
-如果显示jdk的相关信息，则继续，否则跳过这一步， 卸载原有的jdk 
-yum remove java*
 
-检索所有的java套件 rpm -qa | grep java
+配置好 JDK，点击下一步“Next”
+ 
 
-如果显示：
+再下一步“Next”
 
-java-x.x.x-openjdk-x.x.x.xxx-x.x.x.x.el7.x86_64
-…
-java-x.x.x-openjdk-hea</p> 
+3、设置项目信息
+设置项目存放地址，选择刚刚新建的文件夹。
+
+
+设置项目名称，之后点击完成“Finish”:
+
+选择ok
+
+
+4、拷贝开发 Spring 引用的 jar 包
+在工程根目录创建 lib 目录。右键</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -396,7 +421,7 @@ java-x.x.x-openjdk-hea</p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15822108701088.html">jdk</a>
+	  							<a href="15642392486315.html">从零开始SSM开发系列一：JAVA 开发环境配置</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -407,7 +432,7 @@ java-x.x.x-openjdk-hea</p>
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
+			    			<a class='category' href='ssm.html'>SSM练习</a>
 								
 		   						</div> 
 		   					</div> 
@@ -457,7 +482,25 @@ java-x.x.x-openjdk-hea</p>
              
             
             <li>
+            <a href="Git.html">Git&nbsp;(6)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
             <a href="%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9B%B8%E5%85%B3.html">密码学相关&nbsp;(5)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="Ray%20Tracing.html">Ray Tracing&nbsp;(1)</a>
             <p>
             
             </p>
@@ -478,18 +521,10 @@ java-x.x.x-openjdk-hea</p>
             
              
             
-            <li>
-            <a href="Linux%E7%9B%B8%E5%85%B3.html">Linux相关&nbsp;(15)</a>
-            <p>
-            
             </p>
             </li>
             
              
-            
-            <li>
-            <a href="%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html">数据库相关&nbsp;(11)</a>
-            <p>
             
             </p>
             </li>
@@ -515,31 +550,31 @@ java-x.x.x-openjdk-hea</p>
           
           
          <li>
-           <a href="16137917098988.html">科学上网</a><br>
+           <a href="16251591834641.html">Pull Request</a><br>
          </li>
           
           
           
          <li>
-           <a href="16110385786886.html">自动登录工具开发</a><br>
+           <a href="16251591565160.html">Forking 工作流</a><br>
          </li>
           
           
           
          <li>
-           <a href="16022150270617.html">mysql5.7 无法设置0000-00-00默认日期</a><br>
+           <a href="16251591321661.html">GitFlow 工作流</a><br>
          </li>
           
           
           
          <li>
-           <a href="15914577057463.html">yum安装提示错误Thread/process failed: Thread died in Berkeley DB librar</a><br>
+           <a href="16251589603172.html">功能分支工作流</a><br>
          </li>
           
           
           
          <li>
-           <a href="15873033963371.html">离线支付方案</a><br>
+           <a href="16251585082271.html">集中式工作流</a><br>
          </li>
           
           

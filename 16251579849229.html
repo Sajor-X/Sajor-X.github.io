@@ -10,7 +10,7 @@
 
     <title>
       
-    WordPress 博客遇到的问题 - Sajor's Blog
+    [#](#git-工作流简介) Git 工作流简介 - Sajor's Blog
     
     </title>
 
@@ -95,36 +95,63 @@
 		<div class="post-header">
 			<!-- title -->
 			<div class="post-header">
-				<h1 class="post-title itemprop="name headline">WordPress 博客遇到的问题</h1>	
+				<h1 class="post-title itemprop="name headline">[#](#git-工作流简介) Git 工作流简介</h1>	
 				<div class="post-data">
-					<time datetime="2019-08-04T21:17:20+08:00" pubdate data-updated="true">2019/08/04</time>
+					<time datetime="2020-07-02T00:46:24+08:00" pubdate data-updated="true">2020/07/02</time>
 				</div>
 			</div>
 		</div>
 	<div id="post-content" class="post-content" itemprop="articleBody"> 
 		<p class="post-tags"> 
 		
-		<a href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>&nbsp;
+		<a href='Git.html'>Git</a>&nbsp;
 		
 		</p>
 	<!-- 正文 -->
 		<p>
-		<h3 id="toc_0">关于wordpress更新提示无法创建目录问题</h3>
+		<h1 id="toc_0"></h1>
 
-<ol>
-<li>进入wordpress安装目录下，修改wp-config.php文件添加：define(&quot;FS_METHOD&quot;,&quot;direct&quot;);</li>
-<li>chown -R sajor.sajor  xxx/wordpress/ 将存放wordpress博客的文件夹设置成sajor用户。</li>
-<li>修改php配置
-<code>
-vim /etc/php-fpm.d/www.conf<br/>
-user = sajor<br/>
-group = sajor
-</code>
-重启php-fpm
-<code>
-systemctl restart php-fpm
-</code></li>
-</ol>
+<h2 id="toc_1"><a href="#%E6%9C%AC%E8%8A%82%E8%A7%86%E9%A2%91">#</a> 本节视频</h2>
+
+<ul>
+<li>  <a href="https://www.bilibili.com/video/av32561679/">【视频】Git工作流指南-工作流简介</a></li>
+</ul>
+
+<h2 id="toc_2"><a href="#%E6%A6%82%E8%BF%B0">#</a> 概述</h2>
+
+<p>工作流有各式各样的用法，但也正因此使得在实际工作中如何上手使用增加了难度。这篇指南通过总览公司团队中最常用的几种 Git 工作流让大家可以上手使用。</p>
+
+<p>在阅读的过程中请记住，本文中的几种工作流是作为方案指导而不是条例规定。在展示了各种工作流可能的用法后，你可以从不同的工作流中挑选或揉合出一个满足你自己需求的工作流。</p>
+
+<h3 id="toc_3"><a href="#%E9%9B%86%E4%B8%AD%E5%BC%8F%E5%B7%A5%E4%BD%9C%E6%B5%81">#</a> 集中式工作流</h3>
+
+<p>如果你的开发团队成员已经很熟悉 Subversion，集中式工作流让你无需去适应一个全新流程就可以体验 Git 带来的收益。这个工作流也可以作为向更 Git 风格工作流迁移的友好过渡。</p>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158291775-0d81e2a2-d80b-4eaf-86b2-7166979d9e2d.png" alt=""/></p>
+
+<h3 id="toc_4"><a href="#%E5%8A%9F%E8%83%BD%E5%88%86%E6%94%AF%E5%B7%A5%E4%BD%9C%E6%B5%81">#</a> 功能分支工作流</h3>
+
+<p>功能分支工作流以集中式工作流为基础，不同的是为各个新功能分配一个专门的分支来开发。这样可以在把新功能集成到正式项目前，用 <code>Pull Requests</code> 的方式讨论变更。</p>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158292284-5f3d0648-f5f0-462c-bc1b-0c94970821ea.png" alt=""/></p>
+
+<h3 id="toc_5"><a href="#gitflow-%E5%B7%A5%E4%BD%9C%E6%B5%81">#</a> GitFlow 工作流</h3>
+
+<p>GitFlow 工作流通过为功能开发、发布准备和维护分配独立的分支，让发布迭代过程更流畅。严格的分支模型也为大型项目提供了一些非常必要的结构。</p>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158292815-0b2eb829-6bcd-47c7-bd1c-cab3435c36f5.png" alt=""/></p>
+
+<h3 id="toc_6"><a href="#forking-%E5%B7%A5%E4%BD%9C%E6%B5%81">#</a> Forking 工作流</h3>
+
+<p>Forking 工作流是分布式工作流，充分利用了 Git 在分支和克隆上的优势。可以安全可靠地管理大团队的开发者（developer），并能接受不信任贡献者（contributor）的提交。</p>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158293248-03fa5fe2-ccd0-4de5-bc99-89acce1fa96b.png" alt=""/></p>
+
+<h3 id="toc_7"><a href="#pull-requests">#</a> Pull Requests</h3>
+
+<p>Pull requests 让开发者更方便地进行协作的功能，提供了友好的 Web 界面可以在提议的修改合并到正式项目之前对修改进行讨论。</p>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158293648-af4d3581-70d0-4aee-a1be-1f07a9f8ffda.png" alt=""/></p>
 
 		</p>
 		<!-- 侧边导航条 -->
@@ -225,7 +252,7 @@ systemctl restart php-fpm
 	<!-- 版权声明 -->
 		<p class="post-info" style="color: #BCBDB6">
 				本文由 <a style="color: #BCBDB6" href="#">Sajor
-				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2019-08-04T21:17:20+08:00
+				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2021-07-02T00:46:24+08:00
 		</p>
 	<!-- 导航 -->
 			<div id="comments" class="clearfix" style="padding: 0px;">
@@ -233,14 +260,14 @@ systemctl restart php-fpm
 				    <div class="meta">
 					    
 					    <P style="float: left;">
-					    	<a href="15650106911020.html" 
-					        title="Previous Post: 排序算法">&laquo; 排序算法</a>
+					    	<a href="16251585082271.html" 
+					        title="Previous Post: 集中式工作流">&laquo; 集中式工作流</a>
 					    </p>
 					    <p style="float:right; ">
 					    	
 					    	
-					        <a href="15649144225977.html" 
-					        title="Next Post: PHP 安装和卸载方法">PHP 安装和卸载方法 &raquo;</a>
+					        <a href="16197951416649.html" 
+					        title="Next Post: Ray Tracing for one week">Ray Tracing for one week &raquo;</a>
 					    </p> 
 					    
 				    </div>
