@@ -97,7 +97,7 @@
 			<div class="post-header">
 				<h1 class="post-title itemprop="name headline">Forking 工作流</h1>	
 				<div class="post-data">
-					<time datetime="2020-07-02T01:05:56+08:00" pubdate data-updated="true">2020/07/02</time>
+					<time datetime="2021-04-02T01:05:56+08:00" pubdate data-updated="true">2021/04/02</time>
 				</div>
 			</div>
 		</div>
@@ -111,7 +111,7 @@
 		<p>
 		<p>Forking 工作流和前面讨论的几种工作流有根本的不同。这种工作流不是使用单个服务端仓库作为『中央』代码基线，而让各个开发者都有一个服务端仓库。这意味着各个代码贡献者有 2 个 Git 仓库而不是 1 个：一个本地私有的，另一个服务端公开的。</p>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158462371-9a14f3f0-4337-476b-8676-25dc8b4f0fae.png" alt=""/></p>
+<p><img src="media/16251591565160/16253272304924.jpg" alt=""/></p>
 
 <p>Forking 工作流的一个主要优势是，贡献的代码可以被集成，而不需要所有人都能 push 代码到仅有的中央仓库中。开发者 push 到自己的服务端仓库，而只有项目维护者才能 push 到正式仓库。这样项目维护者可以接受任何开发者的提交，但无需给他正式代码库的写权限。</p>
 
@@ -139,7 +139,7 @@
 
 <h3 id="toc_4">项目维护者初始化正式仓库</h3>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158462737-3f108c47-e5d7-463b-96ad-97cb7c82f8d2.png" alt=""/></p>
+<p><img src="media/16251591565160/16253272681415.jpg" alt=""/></p>
 
 <p>和任何使用 Git 项目一样，第一步是创建在服务器上一个正式仓库，让所有团队成员都可以访问到。通常这个仓库也会作为项目维护者的公开仓库。</p>
 
@@ -149,14 +149,11 @@
 git init --bare /path/to/repo.git 
 </code></pre>
 
-<p>1<br/><br/>
-2  </p>
-
 <p>Bitbucket 和 Stash 提供了一个方便的 GUI 客户端以完成上面命令行做的事。这个搭建中央仓库的过程和前面提到的工作流完全一样。如果有现存的代码库，维护者也要 push 到这个仓库中。</p>
 
 <h3 id="toc_5">开发者 fork 正式仓库</h3>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158463221-fedae533-07f3-45d5-adca-8cdbeaaf5384.png" alt=""/></p>
+<p><img src="media/16251591565160/16253272775090.jpg" alt=""/></p>
 
 <p>其它所有的开发需要 fork 正式仓库。可以用 git clone 命令用 SSH 协议连通到服务器，拷贝仓库到服务器另一个位置 —— 是的，fork 操作基本上就只是一个服务端的克隆。Bitbucket 和 Stash 上可以点一下按钮就让开发者完成仓库的 fork 操作。</p>
 
@@ -164,7 +161,7 @@ git init --bare /path/to/repo.git
 
 <h3 id="toc_6">开发者克隆自己 fork 出来的仓库</h3>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158463895-89876699-dc65-4548-b1d9-9b41251c76e5.png" alt=""/></p>
+<p><img src="media/16251591565160/16253272855192.jpg" alt=""/></p>
 
 <p>下一步，各个开发者要克隆自己的公开仓库，用熟悉的 git clone 命令。</p>
 
@@ -173,27 +170,21 @@ git init --bare /path/to/repo.git
 <pre class="line-numbers"><code class="language-text">git clone https://user@bitbucket.org/user/repo.git 
 </code></pre>
 
-<p>1  </p>
-
 <p>相比前面介绍的工作流只用了一个 origin 远程别名指向中央仓库，Forking 工作流需要 2 个远程别名 —— 一个指向正式仓库，另一个指向开发者自己的服务端仓库。别名的名字可以任意命名，常见的约定是使用 origin 作为远程克隆的仓库的别名（这个别名会在运行 git clone 自动创建），upstream（上游）作为正式仓库的别名。</p>
 
 <pre class="line-numbers"><code class="language-text">git remote add upstream https://bitbucket.org/maintainer/repo 
 </code></pre>
-
-<p>1  </p>
 
 <p>需要自己用上面的命令创建 upstream 别名。这样可以简单地保持本地仓库和正式仓库的同步更新。注意，如果上游仓库需要认证（比如不是开源的），你需要提供用户：</p>
 
 <pre class="line-numbers"><code class="language-text">git remote add upstream https://user@bitbucket.org/maintainer/repo.git 
 </code></pre>
 
-<p>1  </p>
-
 <p>这时在克隆和 pull 正式仓库时，需要提供用户的密码。</p>
 
 <h3 id="toc_7">开发者开发自己的功能</h3>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158464322-60a35455-80b7-4c43-b5a2-1bb238f597df.png" alt=""/></p>
+<p><img src="media/16251591565160/16253273075088.jpg" alt=""/></p>
 
 <p>在刚克隆的本地仓库中，开发者可以像其它工作流一样的编辑代码、提交修改和新建分支：</p>
 
@@ -202,29 +193,21 @@ git init --bare /path/to/repo.git
 git commit -a -m &quot;Add first draft of some feature&quot; 
 </code></pre>
 
-<p>1<br/><br/>
-2<br/><br/>
-3  </p>
-
 <p>所有的修改都是私有的直到 push 到自己公开仓库中。如果正式项目已经往前走了，可以用 git pull 命令获得新的提交：</p>
 
 <pre class="line-numbers"><code class="language-text">git pull upstream master 
 </code></pre>
 
-<p>1  </p>
-
 <p>由于开发者应该都在专门的功能分支上工作，pull 操作结果会都是快进合并。</p>
 
 <h3 id="toc_8">开发者发布自己的功能</h3>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158464748-1e24500e-a0c3-49ac-ba52-581192dc754f.png" alt=""/></p>
+<p><img src="media/16251591565160/16253273243578.jpg" alt=""/></p>
 
 <p>一旦开发者准备好了分享新功能，需要做二件事。首先，通过push他的贡献代码到自己的公开仓库中，让其它的开发者都可以访问到。他的 origin 远程别名应该已经有了，所以要做的就是：</p>
 
 <pre class="line-numbers"><code class="language-text">git push origin feature-branch 
 </code></pre>
-
-<p>1  </p>
 
 <p>这里和之前的工作流的差异是，origin 远程别名指向开发者自己的服务端仓库，而不是正式仓库。</p>
 
@@ -232,7 +215,7 @@ git commit -a -m &quot;Add first draft of some feature&quot;
 
 <h3 id="toc_9">项目维护者集成开发者的功能</h3>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158465114-7f8d4792-8892-4c97-82c2-355d526f64aa.png" alt=""/></p>
+<p><img src="media/16251591565160/16253273375709.jpg" alt=""/></p>
 
 <p>当项目维护者收到 pull request，他要做的是决定是否集成它到正式代码库中。有二种方式来做：</p>
 
@@ -249,25 +232,18 @@ git checkout master
 git merge FETCH_HEAD 
 </code></pre>
 
-<p>1<br/><br/>
-2<br/><br/>
-3<br/><br/>
-4  </p>
-
 <p>变更集成到本地的 master 分支后，维护者要 push 变更到服务器上的正式仓库，这样其它的开发者都能访问到：</p>
 
 <p>注意，维护者的 origin 是指向他自己公开仓库的，即是项目的正式代码库。到此，开发者的贡献完全集成到了项目中</p>
 
 <h3 id="toc_10">开发者和正式仓库做同步</h3>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158465571-281df3e5-7964-4848-b7f7-1642cdc0e7f3.png" alt=""/></p>
+<p><img src="media/16251591565160/16253273515519.jpg" alt=""/></p>
 
 <p>由于正式代码库往前走了，其它的开发需要和正式仓库做同步：</p>
 
 <pre class="line-numbers"><code class="language-text">git pull upstream master 
 </code></pre>
-
-<p>1  </p>
 
 <h2 id="toc_11">总结</h2>
 
@@ -384,14 +360,14 @@ git merge FETCH_HEAD
 				    <div class="meta">
 					    
 					    <P style="float: left;">
-					    	<a href="16251591834641.html" 
-					        title="Previous Post: Pull Request">&laquo; Pull Request</a>
+					    	<a href="15822108701088.html" 
+					        title="Previous Post: jdk">&laquo; jdk</a>
 					    </p>
 					    <p style="float:right; ">
 					    	
 					    	
-					        <a href="16251591321661.html" 
-					        title="Next Post: GitFlow 工作流">GitFlow 工作流 &raquo;</a>
+					        <a href="15822104759867.html" 
+					        title="Next Post: spark">spark &raquo;</a>
 					    </p> 
 					    
 				    </div>
@@ -453,7 +429,7 @@ git merge FETCH_HEAD
              
             
             <li>
-            <a href="Git.html">Git&nbsp;(6)</a>
+            <a href="Git.html">Git&nbsp;(9)</a>
             <p>
             
             </p>
@@ -521,31 +497,31 @@ git merge FETCH_HEAD
           
           
          <li>
-           <a href="16251591834641.html">Pull Request</a><br>
+           <a href="16253298632146.html">为什么需要版本控制</a><br>
          </li>
           
           
           
          <li>
-           <a href="16251591565160.html">Forking 工作流</a><br>
+           <a href="16253295942611.html">常见Git仓库</a><br>
          </li>
           
           
           
          <li>
-           <a href="16251591321661.html">GitFlow 工作流</a><br>
+           <a href="16197951416649.html">Ray Tracing for one week</a><br>
          </li>
           
           
           
          <li>
-           <a href="16251589603172.html">功能分支工作流</a><br>
+           <a href="16137917098988.html">科学上网</a><br>
          </li>
           
           
           
          <li>
-           <a href="16251585082271.html">集中式工作流</a><br>
+           <a href="16110385786886.html">自动登录工具开发</a><br>
          </li>
           
           

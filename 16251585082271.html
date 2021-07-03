@@ -97,7 +97,7 @@
 			<div class="post-header">
 				<h1 class="post-title itemprop="name headline">集中式工作流</h1>	
 				<div class="post-data">
-					<time datetime="2020-07-02T00:55:08+08:00" pubdate data-updated="true">2020/07/02</time>
+					<time datetime="2021-04-02T00:55:08+08:00" pubdate data-updated="true">2021/04/02</time>
 				</div>
 			</div>
 		</div>
@@ -109,17 +109,9 @@
 		</p>
 	<!-- 正文 -->
 		<p>
-		<h1 id="toc_0"></h1>
+		<h2 id="toc_0">概述</h2>
 
-<h2 id="toc_1"><a href="#%E6%9C%AC%E8%8A%82%E8%A7%86%E9%A2%91">#</a> 本节视频</h2>
-
-<ul>
-<li>  <a href="https://www.bilibili.com/video/av32563618/">【视频】Git工作流指南-集中式工作流</a></li>
-</ul>
-
-<h2 id="toc_2"><a href="#%E6%A6%82%E8%BF%B0">#</a> 概述</h2>
-
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158392279-4bd0d508-179d-41ac-a42a-e196c20a535e.png" alt=""/></p>
+<p><img src="media/16251585082271/16253278891338.jpg" alt=""/></p>
 
 <p>转到分布式版本控制系统看起来像个令人生畏的任务，但不改变已用的工作流你也可以用上 Git 带来的收益。团队可以用和 Subversion 完全不变的方式来开发项目。</p>
 
@@ -127,7 +119,7 @@
 
 <p>其次，Git 提供了强壮的分支和合并模型。不像 SVN，Git 的分支设计成可以做为一种用来在仓库之间集成代码和分享修改的『失败安全』的机制。</p>
 
-<h2 id="toc_3"><a href="#%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%BC%8F">#</a> 工作方式</h2>
+<h2 id="toc_1">工作方式</h2>
 
 <p>像 Subversion 一样，集中式工作流以中央仓库作为项目所有修改的单点实体。相比 SVN 缺省的开发分支 trunk，Git 叫做 master，所有修改提交到这个分支上。该工作流只用到 master 这一个分支。</p>
 
@@ -135,46 +127,44 @@
 
 <p>要发布修改到正式项目中，开发者要把本地 master 分支的修改『推（<code>push</code>）』到中央仓库中。这相当于 svn commit 操作，但 <code>push</code> 操作会把所有还不在中央仓库的本地提交都推上去。</p>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158392648-509e90f8-c8fe-46a6-be99-2bad4fa78ae2.png" alt=""/></p>
+<p><img src="media/16251585082271/16253279050957.jpg" alt=""/></p>
 
-<h2 id="toc_4"><a href="#%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81">#</a> 解决冲突</h2>
+<h2 id="toc_2">解决冲突</h2>
 
 <p>中央仓库代表了正式项目，所以提交历史应该被尊重且是稳定不变的。如果开发者本地的提交历史和中央仓库有分歧，Git 会拒绝 <code>push</code> 提交否则会覆盖已经在中央库的正式提交。</p>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158393097-a3f96fbd-6d57-4771-9f8f-155a3874d17a.png" alt=""/></p>
+<p><img src="media/16251585082271/16253279205964.jpg" alt=""/></p>
 
 <p>在开发者提交自己功能修改到中央库前，需要先 <code>fetch</code> 在中央库的新增提交，<code>rebase</code> 自己提交到中央库提交历史之上。这样做的意思是在说，『我要把自己的修改加到别人已经完成的修改上。』最终的结果是一个完美的线性历史，就像以前的<code>SVN</code> 的工作流中一样。</p>
 
 <p>如果本地修改和上游提交有冲突，Git 会暂停 <code>rebase</code> 过程，给你手动解决冲突的机会。Git 解决合并冲突，用和生成提交一样的 <code>git status</code> 和 <code>git add</code> 命令，很一致方便。还有一点，如果解决冲突时遇到麻烦，Git 可以很简单中止整个 <code>rebase</code> 操作，重来一次（或者让别人来帮助解决）。</p>
 
-<h2 id="toc_5"><a href="#%E7%A4%BA%E4%BE%8B">#</a> 示例</h2>
+<h2 id="toc_3">示例</h2>
 
 <p>让我们一起逐步分解来看看一个常见的小团队如何用这个工作流来协作的。有两个开发者小明和小红，看他们是如何开发自己的功能并提交到中央仓库上的。</p>
 
-<h3 id="toc_6"><a href="#%E6%9C%89%E4%BA%BA%E5%85%88%E5%88%9D%E5%A7%8B%E5%8C%96%E5%A5%BD%E4%B8%AD%E5%A4%AE%E4%BB%93%E5%BA%93">#</a> 有人先初始化好中央仓库</h3>
+<h3 id="toc_4">有人先初始化好中央仓库</h3>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158393542-4b51f15b-0d5a-4757-a83c-23edf85690bc.png" alt=""/></p>
+<p><img src="media/16251585082271/16253279402525.jpg" alt=""/></p>
 
 <p>第一步，有人在服务器上创建好中央仓库。如果是新项目，你可以初始化一个空仓库；否则你要导入已有的 Git 或 SVN 仓库。</p>
 
 <p>中央仓库应该是个裸仓库（bare repository），即没有工作目录（working directory）的仓库。</p>
 
-<h3 id="toc_7"><a href="#%E6%89%80%E6%9C%89%E4%BA%BA%E5%85%8B%E9%9A%86%E4%B8%AD%E5%A4%AE%E4%BB%93%E5%BA%93">#</a> 所有人克隆中央仓库</h3>
+<h3 id="toc_5">所有人克隆中央仓库</h3>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158394016-075364b4-831b-44b4-90f8-0c9678673607.png" alt=""/></p>
+<p><img src="media/16251585082271/16253279508101.jpg" alt=""/></p>
 
 <p>下一步，各个开发者创建整个项目的本地拷贝。通过 <code>git clone</code> 命令完成：</p>
 
 <pre class="line-numbers"><code class="language-text">git clone https://github.com/path/to/repo.git 
 </code></pre>
 
-<p>1  </p>
-
 <p>基于你后续会持续和克隆的仓库做交互的假设，克隆仓库时 Git 会自动添加远程别名 origin 指回『父』仓库。</p>
 
-<h3 id="toc_8"><a href="#%E5%B0%8F%E6%98%8E%E5%BC%80%E5%8F%91%E5%8A%9F%E8%83%BD">#</a> 小明开发功能</h3>
+<h3 id="toc_6">小明开发功能</h3>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158394403-d13b3b64-8160-43f7-8077-3a1175beb453.png" alt=""/></p>
+<p><img src="media/16251585082271/16253279649557.jpg" alt=""/></p>
 
 <p>在小明的本地仓库中，他使用标准的 Git 过程开发功能：编辑、暂存（Stage）和提交。如果你不熟悉暂存区（Staging Area），这里说明一下：暂存区的用来准备一个提交，但可以不用把工作目录中所有的修改内容都包含进来。这样你可以创建一个高度聚焦的提交，尽管你本地修改很多内容。</p>
 
@@ -183,41 +173,33 @@ git add # 暂存文件
 git commit # 提交文件 
 </code></pre>
 
-<p>1<br/><br/>
-2<br/><br/>
-3  </p>
-
 <p>请记住，因为这些命令生成的是本地提交，小明可以按自己需求反复操作多次，而不用担心中央仓库上有了什么操作。对需要多个更简单更原子分块的大功能，这个做法是很有用的。</p>
 
-<h3 id="toc_9"><a href="#%E5%B0%8F%E7%BA%A2%E5%BC%80%E5%8F%91%E5%8A%9F%E8%83%BD">#</a> 小红开发功能</h3>
+<h3 id="toc_7">小红开发功能</h3>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158394720-65e3103e-c24f-45ff-bb23-4d904b66ed0b.png" alt=""/></p>
+<p><img src="media/16251585082271/16253279805407.jpg" alt=""/></p>
 
 <p>与此同时，小红在自己的本地仓库中用相同的编辑、暂存和提交过程开发功能。和小明一样，她也不关心中央仓库有没有新提交；当然更不关心小明在他的本地仓库中的操作，因为所有本地仓库都是私有的。</p>
 
-<h3 id="toc_10"><a href="#%E5%B0%8F%E6%98%8E%E5%8F%91%E5%B8%83%E5%8A%9F%E8%83%BD">#</a> 小明发布功能</h3>
+<h3 id="toc_8">小明发布功能</h3>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158395108-56fdfe1d-1d9e-43b9-9813-b7cf7341e3f9.png" alt=""/></p>
+<p><img src="media/16251585082271/16253279892160.jpg" alt=""/></p>
 
 <p>一旦小明完成了他的功能开发，会发布他的本地提交到中央仓库中，这样其它团队成员可以看到他的修改。他可以用下面的 <code>git push</code> 命令：</p>
 
 <pre class="line-numbers"><code class="language-text">git push origin master 
 </code></pre>
 
-<p>1  </p>
-
 <p>注意，origin 是在小明克隆仓库时 Git 创建的远程中央仓库别名。master 参数告诉 Git 推送的分支。由于中央仓库自从小明克隆以来还没有被更新过，所以 push 操作不会有冲突，成功完成。</p>
 
-<h3 id="toc_11"><a href="#%E5%B0%8F%E7%BA%A2%E8%AF%95%E7%9D%80%E5%8F%91%E5%B8%83%E5%8A%9F%E8%83%BD">#</a> 小红试着发布功能</h3>
+<h3 id="toc_9">小红试着发布功能</h3>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158395475-680cea9d-ec8e-41fd-99fb-efd9ec8e6995.png" alt=""/></p>
+<p><img src="media/16251585082271/16253280059800.jpg" alt=""/></p>
 
 <p>一起来看看在小明发布修改后，小红 push 修改会怎么样？她使用完全一样的 push 命令：</p>
 
 <pre class="line-numbers"><code class="language-text">git push origin master 
 </code></pre>
-
-<p>1  </p>
 
 <p>但她的本地历史已经和中央仓库有分岐了，Git 拒绝操作并给出下面很长的出错消息：</p>
 
@@ -228,34 +210,26 @@ hint: before pushing again.
 hint: See the &#39;Note about fast-forwards&#39; in &#39;git push --help&#39; for details. 
 </code></pre>
 
-<p>1<br/><br/>
-2<br/><br/>
-3<br/><br/>
-4<br/><br/>
-5  </p>
-
 <p>这避免了小红覆写正式的提交。她要先 pull 小明的更新到她的本地仓库合并上她的本地修改后，再重试。</p>
 
-<h3 id="toc_12"><a href="#%E5%B0%8F%E7%BA%A2%E5%9C%A8%E5%B0%8F%E6%98%8E%E7%9A%84%E6%8F%90%E4%BA%A4%E4%B9%8B%E4%B8%8A-rebase">#</a> 小红在小明的提交之上 rebase</h3>
+<h3 id="toc_10">小红在小明的提交之上 rebase</h3>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158395958-1737b553-4754-4dae-8cd7-df544f522530.png" alt=""/></p>
+<p><img src="media/16251585082271/16253280306232.jpg" alt=""/></p>
 
 <p>小红用 <code>git pull</code> 合并上游的修改到自己的仓库中。这条命令类似 <code>svn update</code> ——拉取所有上游提交命令到小红的本地仓库，并尝试和她的本地修改合并：</p>
 
 <pre class="line-numbers"><code class="language-text">git pull --rebase origin master 
 </code></pre>
 
-<p>1  </p>
-
 <p><code>--rebase</code> 选项告诉 Git 把小红的提交移到同步了中央仓库修改后的 master 分支的顶部，如下图所示：</p>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158396431-9566d979-f983-4c9a-a300-3c09a0fbceab.png" alt=""/></p>
+<p><img src="media/16251585082271/16253280404717.jpg" alt=""/></p>
 
 <p>如果你忘加了这个选项，pull 操作仍然可以完成，但每次 pull 操作要同步中央仓库中别人修改时，提交历史会以一个多余的『合并提交』结尾。对于集中式工作流，最好是使用 rebase 而不是生成一个合并提交。</p>
 
-<h3 id="toc_13"><a href="#%E5%B0%8F%E7%BA%A2%E8%A7%A3%E5%86%B3%E5%90%88%E5%B9%B6%E5%86%B2%E7%AA%81">#</a> 小红解决合并冲突</h3>
+<h3 id="toc_11">小红解决合并冲突</h3>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158396962-9887b337-c550-4409-a97a-a1d8d69b3fef.png" alt=""/></p>
+<p><img src="media/16251585082271/16253280500656.jpg" alt=""/></p>
 
 <p>rebase 操作过程是把本地提交一次一个地迁移到更新了的中央仓库 master 分支之上。这意味着可能要解决在迁移某个提交时出现的合并冲突，而不是解决包含了所有提交的大型合并时所出现的冲突。这样的方式让你尽可能保持每个提交的聚焦和项目历史的整洁。反过来，简化了哪里引入 Bug 的分析，如果有必要，回滚修改也可以做到对项目影响最小。</p>
 
@@ -264,9 +238,7 @@ hint: See the &#39;Note about fast-forwards&#39; in &#39;git push --help&#39; fo
 <pre class="line-numbers"><code class="language-text">CONFLICT (content): Merge conflict in 
 </code></pre>
 
-<p>1  </p>
-
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158397434-dbf24e68-bf95-4661-94cb-cb6d2c392004.png" alt=""/></p>
+<p><img src="media/16251585082271/16253280606210.jpg" alt=""/></p>
 
 <p>Git 很赞的一点是，任何人可以解决他自己的冲突。在这个例子中，小红可以简单的运行 <code>git status</code> 命令来查看哪里有问题。冲突文件列在 Unmerged paths（未合并路径）一节中：</p>
 
@@ -277,20 +249,11 @@ hint: See the &#39;Note about fast-forwards&#39; in &#39;git push --help&#39; fo
 # both modified: &lt;some-file&gt; 
 </code></pre>
 
-<p>1<br/><br/>
-2<br/><br/>
-3<br/><br/>
-4<br/><br/>
-5  </p>
-
 <p>接着小红编辑这些文件。修改完成后，用老套路暂存这些文件，并让 <code>git rebase</code> 完成剩下的事：</p>
 
 <pre class="line-numbers"><code class="language-text">git add
 git rebase --continue 
 </code></pre>
-
-<p>1<br/><br/>
-2  </p>
 
 <p>要做的就这些了。Git 会继续一个一个地合并后面的提交，如其它的提交有冲突就重复这个过程。</p>
 
@@ -299,20 +262,16 @@ git rebase --continue
 <pre class="line-numbers"><code class="language-text">git rebase --abort 
 </code></pre>
 
-<p>1  </p>
+<h3 id="toc_12">小红成功发布功能</h3>
 
-<h3 id="toc_14"><a href="#%E5%B0%8F%E7%BA%A2%E6%88%90%E5%8A%9F%E5%8F%91%E5%B8%83%E5%8A%9F%E8%83%BD">#</a> 小红成功发布功能</h3>
-
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158398030-8155d112-e1ee-4281-b265-908ce7187dce.png" alt=""/></p>
+<p><img src="media/16251585082271/16253280851518.jpg" alt=""/></p>
 
 <p>小红完成和中央仓库的同步后，就能成功发布她的修改了：</p>
 
 <pre class="line-numbers"><code class="language-text">git push origin master 
 </code></pre>
 
-<p>1  </p>
-
-<h2 id="toc_15"><a href="#%E6%80%BB%E7%BB%93">#</a> 总结</h2>
+<h2 id="toc_13">总结</h2>
 
 <p>如你所见，仅使用几个 Git 命令我们就可以模拟出传统 Subversion 开发环境。对于要从 SVN 迁移过来的团队来说这太好了，但没有发挥出 Git 分布式本质的优势。</p>
 
@@ -425,14 +384,14 @@ git rebase --continue
 				    <div class="meta">
 					    
 					    <P style="float: left;">
-					    	<a href="16251589603172.html" 
-					        title="Previous Post: 功能分支工作流">&laquo; 功能分支工作流</a>
+					    	<a href="15914574913033.html" 
+					        title="Previous Post: swig">&laquo; swig</a>
 					    </p>
 					    <p style="float:right; ">
 					    	
 					    	
-					        <a href="16251579849229.html" 
-					        title="Next Post: [#](#git-工作流简介) Git 工作流简介">[#](#git-工作流简介) Git 工作流简介 &raquo;</a>
+					        <a href="15914572003074.html" 
+					        title="Next Post: pcre">pcre &raquo;</a>
 					    </p> 
 					    
 				    </div>
@@ -494,7 +453,7 @@ git rebase --continue
              
             
             <li>
-            <a href="Git.html">Git&nbsp;(6)</a>
+            <a href="Git.html">Git&nbsp;(9)</a>
             <p>
             
             </p>
@@ -562,31 +521,31 @@ git rebase --continue
           
           
          <li>
-           <a href="16251591834641.html">Pull Request</a><br>
+           <a href="16253298632146.html">为什么需要版本控制</a><br>
          </li>
           
           
           
          <li>
-           <a href="16251591565160.html">Forking 工作流</a><br>
+           <a href="16253295942611.html">常见Git仓库</a><br>
          </li>
           
           
           
          <li>
-           <a href="16251591321661.html">GitFlow 工作流</a><br>
+           <a href="16197951416649.html">Ray Tracing for one week</a><br>
          </li>
           
           
           
          <li>
-           <a href="16251589603172.html">功能分支工作流</a><br>
+           <a href="16137917098988.html">科学上网</a><br>
          </li>
           
           
           
          <li>
-           <a href="16251585082271.html">集中式工作流</a><br>
+           <a href="16110385786886.html">自动登录工具开发</a><br>
          </li>
           
           

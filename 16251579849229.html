@@ -10,7 +10,7 @@
 
     <title>
       
-    [#](#git-工作流简介) Git 工作流简介 - Sajor's Blog
+    Git 工作流简介 - Sajor's Blog
     
     </title>
 
@@ -95,9 +95,9 @@
 		<div class="post-header">
 			<!-- title -->
 			<div class="post-header">
-				<h1 class="post-title itemprop="name headline">[#](#git-工作流简介) Git 工作流简介</h1>	
+				<h1 class="post-title itemprop="name headline">Git 工作流简介</h1>	
 				<div class="post-data">
-					<time datetime="2020-07-02T00:46:24+08:00" pubdate data-updated="true">2020/07/02</time>
+					<time datetime="2021-04-03T00:46:24+08:00" pubdate data-updated="true">2021/04/03</time>
 				</div>
 			</div>
 		</div>
@@ -109,49 +109,44 @@
 		</p>
 	<!-- 正文 -->
 		<p>
-		<h1 id="toc_0"></h1>
-
-<h2 id="toc_1"><a href="#%E6%9C%AC%E8%8A%82%E8%A7%86%E9%A2%91">#</a> 本节视频</h2>
-
-<ul>
-<li>  <a href="https://www.bilibili.com/video/av32561679/">【视频】Git工作流指南-工作流简介</a></li>
-</ul>
-
-<h2 id="toc_2"><a href="#%E6%A6%82%E8%BF%B0">#</a> 概述</h2>
+		<h2 id="toc_0">概述</h2>
 
 <p>工作流有各式各样的用法，但也正因此使得在实际工作中如何上手使用增加了难度。这篇指南通过总览公司团队中最常用的几种 Git 工作流让大家可以上手使用。</p>
 
 <p>在阅读的过程中请记住，本文中的几种工作流是作为方案指导而不是条例规定。在展示了各种工作流可能的用法后，你可以从不同的工作流中挑选或揉合出一个满足你自己需求的工作流。</p>
 
-<h3 id="toc_3"><a href="#%E9%9B%86%E4%B8%AD%E5%BC%8F%E5%B7%A5%E4%BD%9C%E6%B5%81">#</a> 集中式工作流</h3>
+<p>先贴一个最佳实践 <a href="https://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model</a><br/>
+<img src="media/16251579849229/16253284130723.jpg" alt=""/></p>
+
+<h3 id="toc_1">集中式工作流</h3>
 
 <p>如果你的开发团队成员已经很熟悉 Subversion，集中式工作流让你无需去适应一个全新流程就可以体验 Git 带来的收益。这个工作流也可以作为向更 Git 风格工作流迁移的友好过渡。</p>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158291775-0d81e2a2-d80b-4eaf-86b2-7166979d9e2d.png" alt=""/></p>
+<p><img src="media/16251579849229/16253281115928.jpg" alt=""/></p>
 
-<h3 id="toc_4"><a href="#%E5%8A%9F%E8%83%BD%E5%88%86%E6%94%AF%E5%B7%A5%E4%BD%9C%E6%B5%81">#</a> 功能分支工作流</h3>
+<h3 id="toc_2">功能分支工作流</h3>
 
 <p>功能分支工作流以集中式工作流为基础，不同的是为各个新功能分配一个专门的分支来开发。这样可以在把新功能集成到正式项目前，用 <code>Pull Requests</code> 的方式讨论变更。</p>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158292284-5f3d0648-f5f0-462c-bc1b-0c94970821ea.png" alt=""/></p>
+<p><img src="media/16251579849229/16253281454836.jpg" alt=""/></p>
 
-<h3 id="toc_5"><a href="#gitflow-%E5%B7%A5%E4%BD%9C%E6%B5%81">#</a> GitFlow 工作流</h3>
+<h3 id="toc_3">GitFlow 工作流</h3>
 
 <p>GitFlow 工作流通过为功能开发、发布准备和维护分配独立的分支，让发布迭代过程更流畅。严格的分支模型也为大型项目提供了一些非常必要的结构。</p>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158292815-0b2eb829-6bcd-47c7-bd1c-cab3435c36f5.png" alt=""/></p>
+<p><img src="media/16251579849229/16253281545658.jpg" alt=""/></p>
 
-<h3 id="toc_6"><a href="#forking-%E5%B7%A5%E4%BD%9C%E6%B5%81">#</a> Forking 工作流</h3>
+<h3 id="toc_4">Forking 工作流</h3>
 
 <p>Forking 工作流是分布式工作流，充分利用了 Git 在分支和克隆上的优势。可以安全可靠地管理大团队的开发者（developer），并能接受不信任贡献者（contributor）的提交。</p>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158293248-03fa5fe2-ccd0-4de5-bc99-89acce1fa96b.png" alt=""/></p>
+<p><img src="media/16251579849229/16253281661372.jpg" alt=""/></p>
 
-<h3 id="toc_7"><a href="#pull-requests">#</a> Pull Requests</h3>
+<h3 id="toc_5">Pull Requests</h3>
 
 <p>Pull requests 让开发者更方便地进行协作的功能，提供了友好的 Web 界面可以在提议的修改合并到正式项目之前对修改进行讨论。</p>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/738205/1625158293648-af4d3581-70d0-4aee-a1be-1f07a9f8ffda.png" alt=""/></p>
+<p><img src="media/16251579849229/16253281754127.jpg" alt=""/></p>
 
 		</p>
 		<!-- 侧边导航条 -->
@@ -260,14 +255,14 @@
 				    <div class="meta">
 					    
 					    <P style="float: left;">
-					    	<a href="16251585082271.html" 
-					        title="Previous Post: 集中式工作流">&laquo; 集中式工作流</a>
+					    	<a href="15770719140172.html" 
+					        title="Previous Post: redis">&laquo; redis</a>
 					    </p>
 					    <p style="float:right; ">
 					    	
 					    	
-					        <a href="16197951416649.html" 
-					        title="Next Post: Ray Tracing for one week">Ray Tracing for one week &raquo;</a>
+					        <a href="15914574913033.html" 
+					        title="Next Post: swig">swig &raquo;</a>
 					    </p> 
 					    
 				    </div>
@@ -329,7 +324,7 @@
              
             
             <li>
-            <a href="Git.html">Git&nbsp;(6)</a>
+            <a href="Git.html">Git&nbsp;(9)</a>
             <p>
             
             </p>
@@ -397,31 +392,31 @@
           
           
          <li>
-           <a href="16251591834641.html">Pull Request</a><br>
+           <a href="16253298632146.html">为什么需要版本控制</a><br>
          </li>
           
           
           
          <li>
-           <a href="16251591565160.html">Forking 工作流</a><br>
+           <a href="16253295942611.html">常见Git仓库</a><br>
          </li>
           
           
           
          <li>
-           <a href="16251591321661.html">GitFlow 工作流</a><br>
+           <a href="16197951416649.html">Ray Tracing for one week</a><br>
          </li>
           
           
           
          <li>
-           <a href="16251589603172.html">功能分支工作流</a><br>
+           <a href="16137917098988.html">科学上网</a><br>
          </li>
           
           
           
          <li>
-           <a href="16251585082271.html">集中式工作流</a><br>
+           <a href="16110385786886.html">自动登录工具开发</a><br>
          </li>
           
           

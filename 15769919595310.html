@@ -10,7 +10,7 @@
 
     <title>
       
-    Git - Sajor's Blog
+    Git基本使用 - Sajor's Blog
     
     </title>
 
@@ -95,7 +95,7 @@
 		<div class="post-header">
 			<!-- title -->
 			<div class="post-header">
-				<h1 class="post-title itemprop="name headline">Git</h1>	
+				<h1 class="post-title itemprop="name headline">Git基本使用</h1>	
 				<div class="post-data">
 					<time datetime="2019-12-22T13:19:19+08:00" pubdate data-updated="true">2019/12/22</time>
 				</div>
@@ -104,15 +104,16 @@
 	<div id="post-content" class="post-content" itemprop="articleBody"> 
 		<p class="post-tags"> 
 		
-		<a href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>&nbsp;
+		<a href='Git.html'>Git</a>&nbsp;
 		
 		</p>
 	<!-- 正文 -->
 		<p>
 		<h3 id="toc_0">Git是分布式版本控制系统 自报家门</h3>
 
-<p>git config --global user.name &quot;Sajor&quot;<br/>
-git config --global user.email &quot;<a href="mailto:565785929@qq.com">565785929@qq.com</a>&quot;</p>
+<pre class="line-numbers"><code class="language-text">git config --global user.name &quot;Sajor&quot;
+git config --global user.email &quot;565785929@qq.com&quot;
+</code></pre>
 
 <h2 id="toc_1">一</h2>
 
@@ -126,26 +127,24 @@ git config --global user.email &quot;<a href="mailto:565785929@qq.com">565785929
 
 <h3 id="toc_2">windows中的换行符为 CRLF， 而在linux下的换行符为LF，所以在执行add . 时出现提示，解决办法：</h3>
 
-<pre class="line-numbers"><code class="language-text">rm -rf .git  // 删除.git  
-git config --global core.autocrlf false  //禁用自动转换    
-
-git init    // 重新执行
-git add .  
+<pre class="line-numbers"><code class="language-text">    rm -rf .git  // 删除.git  
+    git config --global core.autocrlf false  //禁用自动转换    
+    
+    git init    // 重新执行
+    git add .  
 </code></pre>
 
 <h3 id="toc_3">文件添加到仓库 add</h3>
 
-<pre class="line-numbers"><code class="language-text">git add readme.txt     // filename = readme.txt
+<pre class="line-numbers"><code class="language-text">    git add readme.txt     // filename = readme.txt
 </code></pre>
 
 <h3 id="toc_4">用命令 git commit 告诉Git 文件提交到仓库</h3>
 
-<pre class="line-numbers"><code class="language-text">git commit -m &quot;wrote a readme file&quot; 
--m后面输入的是本次提交的说明
-commit可以一次提交很多文件，所以你可以多次add不同的文件
+<pre class="line-numbers"><code class="language-text">    git commit -m &quot;wrote a readme file&quot; 
+    -m后面输入的是本次提交的说明
+    commit可以一次提交很多文件，所以你可以多次add不同的文件
 </code></pre>
-
-<hr/>
 
 <h2 id="toc_5">二</h2>
 
@@ -155,17 +154,15 @@ commit可以一次提交很多文件，所以你可以多次add不同的文件
 
 <h3 id="toc_6">git status 查看当前状态</h3>
 
-<pre class="line-numbers"><code class="language-text">git status 
+<pre class="line-numbers"><code class="language-text">    git status 
 </code></pre>
 
 <h3 id="toc_7">git diff 查看做了哪些修改</h3>
 
-<pre class="line-numbers"><code class="language-text">git diff readme.txt    // filename = readme.txt
-git diff    #是工作区(work dict)和暂存区(stage)的比较
-git diff --cached    #是暂存区(stage)和分支(master)的比较（add之后）
+<pre class="line-numbers"><code class="language-text">    git diff readme.txt    // filename = readme.txt
+    git diff    #是工作区(work dict)和暂存区(stage)的比较
+    git diff --cached    #是暂存区(stage)和分支(master)的比较（add之后）
 </code></pre>
-
-<hr/>
 
 <h2 id="toc_8">三</h2>
 
@@ -177,26 +174,26 @@ git diff --cached    #是暂存区(stage)和分支(master)的比较（add之后�
 
 <h3 id="toc_9">git log 显示从最近到最远的提交日志</h3>
 
-<pre class="line-numbers"><code class="language-text">git log 
-// --pretty=oneline参数 可以在一行显示
-git log --pretty=oneline 
-前面的是commit id（版本号）
+<pre class="line-numbers"><code class="language-text">    git log 
+    // --pretty=oneline参数 可以在一行显示
+    git log --pretty=oneline 
+    前面的是commit id（版本号）
 </code></pre>
 
 <h3 id="toc_10">回退版本</h3>
 
-<pre class="line-numbers"><code class="language-text">git reset -- hard HEAD^  
-// 上一个版本是HEAD^ , 上上一个版本就是HEAD^^, 往上100个是HEAD~100
+<pre class="line-numbers"><code class="language-text">    git reset -- hard HEAD^  
+    // 上一个版本是HEAD^ , 上上一个版本就是HEAD^^, 往上100个是HEAD~100
 </code></pre>
 
 <h3 id="toc_11">再返回未来的版本可以用commit id 返回</h3>
 
-<pre class="line-numbers"><code class="language-text">git reset --hard 3628164  // commit id = 3628164
+<pre class="line-numbers"><code class="language-text">    git reset --hard 3628164  // commit id = 3628164
 </code></pre>
 
 <h3 id="toc_12">git reflog 记录你的每一次命令</h3>
 
-<pre class="line-numbers"><code class="language-text">git reflog  前面会加你的commit id
+<pre class="line-numbers"><code class="language-text">    git reflog  前面会加你的commit id
 </code></pre>
 
 <hr/>
@@ -213,31 +210,29 @@ git log --pretty=oneline
 
 <h3 id="toc_14">撤销工作区的修改</h3>
 
-<pre class="line-numbers"><code class="language-text">git checkout -- readme.txt   // filename = readme.txt
+<pre class="line-numbers"><code class="language-text">    git checkout -- readme.txt   // filename = readme.txt
 </code></pre>
 
 <h3 id="toc_15">撤销缓存区的提交</h3>
 
-<pre class="line-numbers"><code class="language-text">git reset HEAD readme.txt   // filename = readme.txt
+<pre class="line-numbers"><code class="language-text">    git reset HEAD readme.txt   // filename = readme.txt
 </code></pre>
 
 <h3 id="toc_16">工作区删除</h3>
 
-<pre class="line-numbers"><code class="language-text">rm test.txt
+<pre class="line-numbers"><code class="language-text">    rm test.txt
 </code></pre>
 
 <h3 id="toc_17">从版本库中删除该文件 git rm 删掉 并提交</h3>
 
-<pre class="line-numbers"><code class="language-text">git rm test.txt    // filename = test.txt
-git commit -m &quot;remove test.txt&quot;
+<pre class="line-numbers"><code class="language-text">    git rm test.txt    // filename = test.txt
+    git commit -m &quot;remove test.txt&quot;
 </code></pre>
 
 <h3 id="toc_18">也可以使用 git checkout 恢复</h3>
 
-<pre class="line-numbers"><code class="language-text">git checkout -- test.txt
+<pre class="line-numbers"><code class="language-text">    git checkout -- test.txt
 </code></pre>
-
-<hr/>
 
 <h2 id="toc_19">五</h2>
 
@@ -254,24 +249,24 @@ Git支持多种协议，包括https，但通过ssh支持的原生git协议速度
 
 <h3 id="toc_20">在GitHub 添加ssh秘钥</h3>
 
-<pre class="line-numbers"><code class="language-text">ssh-keygen -t rsa    生成ssh秘钥 
-cat C://Users/zzx/.ssh/id_rsa.pub   默认位置
+<pre class="line-numbers"><code class="language-text">    ssh-keygen -t rsa    生成ssh秘钥 
+    cat C://Users/zzx/.ssh/id_rsa.pub   默认位置
 </code></pre>
 
 <h3 id="toc_21">推送到远程仓库</h3>
 
-<pre class="line-numbers"><code class="language-text">git remote add origin git@github.com:565785929/learngit.git
-git push -u origin master
+<pre class="line-numbers"><code class="language-text">    git remote add origin git@github.com:565785929/learngit.git
+    git push -u origin master
 </code></pre>
 
 <h3 id="toc_22">本地做了提交再更新远程仓库</h3>
 
-<pre class="line-numbers"><code class="language-text">git push origin master 
+<pre class="line-numbers"><code class="language-text">    git push origin master 
 </code></pre>
 
 <h3 id="toc_23">远程库已经准备好了 git clone克隆一个本地库</h3>
 
-<pre class="line-numbers"><code class="language-text">git clone git@github.com:565785929/gitskills.git     // proname = gitskills
+<pre class="line-numbers"><code class="language-text">    git clone git@github.com:565785929/gitskills.git     // proname = gitskills
 </code></pre>
 
 		</p>
@@ -450,7 +445,7 @@ git push -u origin master
              
             
             <li>
-            <a href="Git.html">Git&nbsp;(6)</a>
+            <a href="Git.html">Git&nbsp;(9)</a>
             <p>
             
             </p>
@@ -518,31 +513,31 @@ git push -u origin master
           
           
          <li>
-           <a href="16251591834641.html">Pull Request</a><br>
+           <a href="16253298632146.html">为什么需要版本控制</a><br>
          </li>
           
           
           
          <li>
-           <a href="16251591565160.html">Forking 工作流</a><br>
+           <a href="16253295942611.html">常见Git仓库</a><br>
          </li>
           
           
           
          <li>
-           <a href="16251591321661.html">GitFlow 工作流</a><br>
+           <a href="16197951416649.html">Ray Tracing for one week</a><br>
          </li>
           
           
           
          <li>
-           <a href="16251589603172.html">功能分支工作流</a><br>
+           <a href="16137917098988.html">科学上网</a><br>
          </li>
           
           
           
          <li>
-           <a href="16251585082271.html">集中式工作流</a><br>
+           <a href="16110385786886.html">自动登录工具开发</a><br>
          </li>
           
           
