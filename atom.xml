@@ -4,7 +4,7 @@
   <title><![CDATA[Sajor's Blog]]></title>
   <link href="http://565785929.github.io/atom.xml" rel="self"/>
   <link href="http://565785929.github.io/"/>
-  <updated>2021-07-04T00:39:35+08:00</updated>
+  <updated>2021-08-29T10:48:30+08:00</updated>
   <id>http://565785929.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -12,6 +12,294 @@
   </author>
   <generator uri="http://www.coderforart.com/">CoderForArt</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[01 | 基础架构：一条SQL查询语句是如何执行的？]]></title>
+    <link href="http://565785929.github.io/16301414327814.html"/>
+    <updated>2021-08-28T17:03:52+08:00</updated>
+    <id>http://565785929.github.io/16301414327814.html</id>
+    <content type="html"><![CDATA[
+<ul>
+<li>
+<a href="#toc_0">Server层</a>
+<ul>
+<li>
+<a href="#toc_1">连接器</a>
+</li>
+<li>
+<a href="#toc_2">查询缓存</a>
+</li>
+<li>
+<a href="#toc_3">分析器</a>
+</li>
+<li>
+<a href="#toc_4">优化器</a>
+</li>
+<li>
+<a href="#toc_5">执行器</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#toc_6">存储引擎</a>
+</li>
+</ul>
+
+
+<blockquote>
+<p>来自MySQL实战45讲</p>
+</blockquote>
+
+<p><strong>MySQL的逻辑架构图</strong><br/>
+<img src="media/16301414327814/16301415100109.jpg" alt=""/></p>
+
+<p>大体来说，MySQL可以分为Server层和存储引擎层两部分。</p>
+
+<h2 id="toc_0">Server层</h2>
+
+<p>包括连接器、查询缓存、分析器、优化器、执行器等，涵盖MySQL的大多数核心服务功能，以及所有的内置函数（如日期、时间、数学和加密函数等），所有跨存储引擎的功能都在这一层实现，比如存储过程、触发器、视图等。</p>
+
+<h3 id="toc_1">连接器</h3>
+
+<p>第一步，你会先连接到这个数据库上，这时候接待你的就是连接器。连接器负责跟客户端建立连接、获取权限、维持和管理连接。连接命令一般是这么写的：</p>
+
+<pre class="line-numbers"><code class="language-text">mysql -h$ip -P$port -u$user -p
+</code></pre>
+
+<p>连接命令中的mysql是客户端工具，用来跟服务端建立连接。在完成经典的TCP握手后，连接器就要开始认证你的身份，这个时候用的就是你输入的用户名和密码。</p>
+
+<ul>
+<li>如果用户名或密码不对，你就会收到一个&quot;Access denied for user&quot;的错误，然后客户端程序结束执行。</li>
+<li>如果用户名密码认证通过，连接器会到权限表里面查出你拥有的权限。之后，这个连接里面的权限判断逻辑，都将依赖于此时读到的权限。</li>
+</ul>
+
+<p>这就意味着，一个用户成功建立连接后，即使你用管理员账号对这个用户的权限做了修改，也不会影响已经存在连接的权限。修改完成后，只有再新建的连接才会使用新的权限设置。</p>
+
+<p>连接完成后，如果你没有后续的动作，这个连接就处于空闲状态，你可以在<code>SHOW PROCESSLIST;</code>命令中看到它。</p>
+
+<p>文本中这个图是show processlist的结果.</p>
+
+<p><img src="media/16301414327814/16301432706534.jpg" alt="" style="width:572px;"/></p>
+
+<p>其中的Command列显示为“Sleep”的这一行，就表示现在系统里面有一个空闲连接。<br/>
+其中的Command列显示为“Query”的这一行，就表示当前正在运行<code>SHOW PROCESSLIST;</code>的连接。</p>
+
+<p>客户端如果太长时间没动静，连接器就会自动将它断开。这个时间是由参数wait_timeout控制的，默认值是8小时。可以通过<code>SHOW VARIABLES LIKE &#39;wait_timeout&#39;;</code>或<code>SELECT @@wait_timeout;</code>命令查看。<br/>
+<img src="media/16301414327814/16301437610835.jpg" alt="" style="width:307px;"/></p>
+
+<p>如果在连接被断开之后，客户端再次发送请求的话，就会收到一个错误提醒： </p>
+
+<blockquote>
+<p>Lost connection to MySQL server during query。</p>
+</blockquote>
+
+<p>这时候如果你要继续，就需要重连，然后再执行请求了。建立连接的过程通常是比较复杂的，尽量使用长连接。</p>
+
+<p>但是全部使用长连接后，有些时候MySQL占用内存涨得特别快，这是因为MySQL在执行过程中临时使用的内存是管理在连接对象里面的。这些资源会在连接断开的时候才释放。所以如果长连接累积下来，可能导致内存占用太大，被系统强行杀掉（OOM），从现象看就是MySQL异常重启了。</p>
+
+<p><strong>怎么解决长连接消耗太多内存呢？你可以考虑以下两种方案。</strong></p>
+
+<ol>
+<li><p>定期断开长连接。使用一段时间，或者程序里面判断执行过一个占用内存的大查询后，断开连接，之后要查询再重连。</p></li>
+<li><p>如果你用的是MySQL 5.7或更新版本，可以在每次执行一个比较大的操作后，通过执行 mysql_reset_connection来重新初始化连接资源。这个过程不需要重连和重新做权限验证，但是会将连接恢复到刚刚创建完时的状态。</p></li>
+</ol>
+
+<h3 id="toc_2">查询缓存</h3>
+
+<p>连接建立完成后，你就可以执行select语句了。执行逻辑就会来到第二步：查询缓存。</p>
+
+<p>MySQL拿到一个查询请求后，会先到查询缓存看看，之前是不是执行过这条语句。之前执行过的语句及其结果可能会以key-value对的形式，被直接缓存在内存中。key是查询的语句，value是查询的结果。如果你的查询能够直接在这个缓存中找到key，那么这个value就会被直接返回给客户端。</p>
+
+<p>如果语句不在查询缓存中，就会继续后面的执行阶段。执行完成后，执行结果会被存入查询缓存中。你可以看到，如果查询命中缓存，MySQL不需要执行后面的复杂操作，就可以直接返回结果，这个效率会很高。</p>
+
+<p>但是查询缓存往往弊大于利，查询缓存的失效非常频繁，只要有对一个表的更新，这个表上所有的查询缓存都会被清空。因此很可能你费劲地把结果存起来，还没使用呢，就被一个更新全清空了。对于更新压力大的数据库来说，查询缓存的命中率会非常低。除非你的业务就是有一张静态表，很长时间才会更新一次。比如，一个系统配置表，那这张表上的查询才适合使用查询缓存。</p>
+
+<p>好在MySQL也提供了这种“按需使用”的方式。你可以将参数query_cache_type设置成DEMAND，这样对于默认的SQL语句都不使用查询缓存。而对于你确定要使用查询缓存的语句，可以用SQL_CACHE显式指定，像下面这个语句一样：</p>
+
+<pre class="line-numbers"><code class="language-sql">mysql&gt; select SQL_CACHE * from T where ID=10；
+</code></pre>
+
+<p>需要注意的是，MySQL 8.0版本直接将查询缓存的整块功能删掉了，也就是说8.0开始彻底没有这个功能了。</p>
+
+<h3 id="toc_3">分析器</h3>
+
+<p>如果没有命中查询缓存，就要开始真正执行语句了。首先，MySQL需要知道你要做什么，因此需要对SQL语句做解析。</p>
+
+<p>分析器先会做“词法分析”。你输入的是由多个字符串和空格组成的一条SQL语句，MySQL需要识别出里面的字符串分别是什么，代表什么。</p>
+
+<p>然后做“语法分析”。根据词法分析的结果，语法分析器会根据语法规则，判断你输入的这个SQL语句是否满足MySQL语法。</p>
+
+<p>如果你的语句不对，就会收到类似如下错误提醒：</p>
+
+<blockquote>
+<p>ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &#39;elect * from t where ID=1&#39; at line 1</p>
+</blockquote>
+
+<p>一般语法错误会提示第一个出现错误的位置，所以你要关注的是紧接“use near”的内容。</p>
+
+<h3 id="toc_4">优化器</h3>
+
+<p>优化器是在表里面有多个索引的时候，决定使用哪个索引；或者在一个语句有多表关联（join）的时候，决定各个表的连接顺序。比如你执行下面这样的语句，这个语句是执行两个表的join：</p>
+
+<blockquote>
+<p>mysql&gt; select * from t1 join t2 using(ID)  where t1.c=10 and t2.d=20;</p>
+</blockquote>
+
+<ul>
+<li>既可以先从表t1里面取出c=10的记录的ID值，再根据ID值关联到表t2，再判断t2里面d的值是否等于20。</li>
+<li>也可以先从表t2里面取出d=20的记录的ID值，再根据ID值关联到t1，再判断t1里面c的值是否等于10。</li>
+</ul>
+
+<p>这两种执行方法的逻辑结果是一样的，但是执行的效率会有不同，而优化器的作用就是决定选择使用哪一个方案。优化器阶段完成后，这个语句的执行方案就确定下来了。</p>
+
+<h3 id="toc_5">执行器</h3>
+
+<p>MySQL通过分析器知道了你要做什么，通过优化器知道了该怎么做，于是就进入了执行器阶段，开始执行语句。</p>
+
+<p>开始执行的时候，要先判断一下你对这个表T有没有执行查询的权限，如果没有，就会返回没有权限的错误，如下所示。</p>
+
+<blockquote>
+<p>ERROR 1142 (42000): SELECT command denied to user &#39;b&#39;@&#39;localhost&#39; for table &#39;T&#39;</p>
+</blockquote>
+
+<p>如果有权限，就打开表继续执行。打开表的时候，执行器就会根据表的引擎定义，去使用这个引擎提供的接口。</p>
+
+<p>比如我们这个例子中的表T中，ID字段没有索引，那么执行器的执行流程是这样的：</p>
+
+<ol>
+<li><p>调用InnoDB引擎接口取这个表的第一行，判断ID值是不是10，如果不是则跳过，如果是则将这行存在结果集中；</p></li>
+<li><p>调用引擎接口取“下一行”，重复相同的判断逻辑，直到取到这个表的最后一行。</p></li>
+<li><p>执行器将上述遍历过程中所有满足条件的行组成的记录集作为结果集返回给客户端。</p></li>
+</ol>
+
+<p>至此，这个语句就执行完成了。</p>
+
+<p>对于有索引的表，执行的逻辑也差不多。第一次调用的是“取满足条件的第一行”这个接口，之后循环取“满足条件的下一行”这个接口，这些接口都是引擎中已经定义好的。</p>
+
+<p>你会在数据库的慢查询日志中看到一个rows_examined的字段，表示这个语句执行过程中扫描了多少行。这个值就是在执行器每次调用引擎获取数据行的时候累加的。</p>
+
+<p>在有些场景下，执行器调用一次，在引擎内部则扫描了多行，因此引擎扫描行数跟rows_examined并不是完全相同的。</p>
+
+<h2 id="toc_6">存储引擎</h2>
+
+<p>而存储引擎层负责数据的存储和提取。其架构模式是插件式的，支持</p>
+
+<ul>
+<li>InnoDB</li>
+<li>MyISAM</li>
+<li>Memory</li>
+</ul>
+
+<p>等多个存储引擎。可以通过<code>SHOW ENGINES;</code>查看，现在最常用的存储引擎是InnoDB，它从MySQL 5.5.5版本开始成为了默认存储引擎。在create table语句中使用<code>engine=memory</code>, 可以来指定使用内存引擎创建表。</p>
+
+<p><img src="media/16301414327814/16301424628810.jpg" alt="" style="width:860px;"/></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[隔离性与隔离级别]]></title>
+    <link href="http://565785929.github.io/16297270253775.html"/>
+    <updated>2021-08-23T21:57:05+08:00</updated>
+    <id>http://565785929.github.io/16297270253775.html</id>
+    <content type="html"><![CDATA[
+<p>提到事务，你肯定会想到ACID：</p>
+
+<ul>
+<li>原子性（Atomicity）</li>
+<li>一致性（Consistency）</li>
+<li>隔离性（Isolation）</li>
+<li>持久性（Durability）</li>
+</ul>
+
+<p>今天我们就来说说其中I，也就是“隔离性”。</p>
+
+<p>当数据库上有多个事务同时执行的时候，就可能出现：</p>
+
+<ul>
+<li>脏读（dirty read）</li>
+<li>不可重复读（non-repeatable read）</li>
+<li>幻读（phantom read）</li>
+</ul>
+
+<p>等的问题，为了解决这些问题，就有了“隔离级别”的概念。</p>
+
+<p>在谈隔离级别之前，你首先要知道，你隔离得越严实，效率就会越低。因此很多时候，我们都要在二者之间寻找一个平衡点。</p>
+
+<p>SQL标准的事务隔离级别包括：</p>
+
+<ul>
+<li>读未提交（read uncommitted）是指，一个事务还没提交时，它做的变更就能被别的事务看到。</li>
+<li>读提交（read committed）是指，一个事务提交之后，它做的变更才会被其他事务看到。</li>
+<li>可重复读（repeatable read）是指，一个事务执行过程中看到的数据，总是跟这个事务在启动时看到的数据是一致的。当然在可重复读隔离级别下，未提交变更对其他事务也是不可见的。</li>
+<li>串行化（serializable）是指，顾名思义是对于同一行记录，“写”会加“写锁”，“读”会加“读锁”。当出现读写锁冲突的时候，后访问的事务必须等前一个事务执行完成，才能继续执行。</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[改善代码质量规约]]></title>
+    <link href="http://565785929.github.io/16261043857914.html"/>
+    <updated>2021-07-12T23:39:45+08:00</updated>
+    <id>http://565785929.github.io/16261043857914.html</id>
+    <content type="html"><![CDATA[
+<h2 id="toc_0">命名与注释(Naming and Comments)</h2>
+
+<h3 id="toc_1">命名</h3>
+
+<h4 id="toc_2">一、命名长度</h4>
+
+<h4 id="toc_3">二、利用上下文来简化命名</h4>
+
+<pre class="line-numbers"><code class="language-text">public class User {
+  private String userName;
+  private String userPassword;
+  private String userAvatarUrl;
+  //...
+}
+</code></pre>
+
+<p>在User类这样一个上下文中，我们没有在成员变量的命名中重复添加 &quot;user&quot; 这样一个前缀单词，而是直接命名为name, password, avatarUrl。在使用这些属性的时候，我们能借助对象这样一个上下文，表意也足够明确。</p>
+
+<pre class="line-numbers"><code class="language-text">User user = new User();
+user.getName(); // 借助user对象这个上下文
+</code></pre>
+
+<p>除了类之外，函数参数也可以借助函数这个上下文来简化命名。</p>
+
+<pre class="line-numbers"><code class="language-text">public void uploadUserAvatarImageToAliyun(String userAvatarImageUri);
+// 利用上下文简化为：
+public void uploadUserAvatarImageToAliyun(String imageUri);
+</code></pre>
+
+<h4 id="toc_4">三、命名</h4>
+
+<h3 id="toc_5">注释</h3>
+
+<h4 id="toc_6">一、注释写什么</h4>
+
+<pre class="line-numbers"><code class="language-text">/**
+* (what) Bean factory to create beans. 
+* 
+* (why) The class likes Spring IOC framework, but is more lightweight. 
+*
+* (how) Create objects from different sources sequentially:
+* user specified object &gt; SPI &gt; configuration &gt; default object.
+*/
+public class BeansFactory {
+  // ...
+}
+</code></pre>
+
+<h4 id="toc_7">二、</h4>
+
+<h2 id="toc_8">代码风格(Code Style)</h2>
+
+<h2 id="toc_9">编程技巧(Coding Tips)</h2>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[为什么需要版本控制]]></title>
@@ -1490,246 +1778,6 @@ crontab -r
 
 <p>另外，建议安装psutil包，这样memory_profile会运行的快一点：<br/>
 <code>pip install psutil</code></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[ssh]]></title>
-    <link href="http://565785929.github.io/15769921068601.html"/>
-    <updated>2019-12-22T13:21:46+08:00</updated>
-    <id>http://565785929.github.io/15769921068601.html</id>
-    <content type="html"><![CDATA[
-<p>systemctl stop sshd.service <br/>
-停止转发</p>
-
-<p>lsof -i :80|grep -v &quot;PID&quot;|awk &#39;{print &quot;kill -9&quot;,$2}&#39;|sh<br/>
-关闭80端口程序</p>
-
-<p>pscp -r -l root -pw 5657 e:\htk 118.24.163.26:/root<br/>
-e:\htk -&gt; /root 传送文件</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[pscp]]></title>
-    <link href="http://565785929.github.io/15769920752565.html"/>
-    <updated>2019-12-22T13:21:15+08:00</updated>
-    <id>http://565785929.github.io/15769920752565.html</id>
-    <content type="html"><![CDATA[
-<p>远程传输命令 </p>
-
-<p>pscp和scp功能相同，但pscp同时支持windows下使用，它有效解 决了windows系统向linux服务器传输文件，而且它只有一个文件，即pscp.exe，建议将该文件放到C:\WINDOWS\system32 下面，这样就可以在任何地方调用该文件命令，你也可以放在任意你指定文件夹下。</p>
-
-<p><img src="media/15769920752565/15802251740483.jpg" alt="" style="width:682px;"/></p>
-
-<ol>
-<li>环境变量改好后，在命令行下输入 pscp就可以拷文件了：</li>
-</ol>
-
-<p>命令格式：pscp localfile rootuser@remoteip:/fileDirectory</p>
-
-<p>拷贝整个文件夹： pscp -r localDir rootuser@remoteip:/fileDirectory</p>
-
-<p>如果是从linux拷贝文件，是同样的方法，只不过是把前后地址对换一下即可;</p>
-
-<ol>
-<li>比如我想把windows下e:\htk 整个目录的所有文件复制到linux /root目录下，命令如下：</li>
-</ol>
-
-<p><strong>pscp -r -l root -pw 1234567890 e:\htk 192.168.0.204:/root</strong></p>
-
-<p>说明：</p>
-
-<p>-r 复制目录下所有文件;</p>
-
-<p>-l 对方机器(linux)的用户名(root);</p>
-
-<p>-pw 密码(1234567890 );</p>
-
-<p>e:\htk 源文件/文件夹的地址;</p>
-
-<p>192.168.0.204:/root 目的文件/文件夹的地址。192.168.0.204为linux机器的ip地址。</p>
-
-<ol>
-<li>反过来，把linux soundRcg目录下的test.txt文件传输到windows e:\下，同样在windows命令行中敲入命令： </li>
-</ol>
-
-<p>*<em>pscp -l root -pw 1234567890 192.168.0.204:/soundRcg/test.txt E:*</em></p>
-
-<p>备注：pscp似乎传输速度不是很快。</p>
-
-<p>lsof -i :80|grep -v &quot;PID&quot;|awk &#39;{print &quot;kill -9&quot;,$2}&#39;|sh</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Git基本使用]]></title>
-    <link href="http://565785929.github.io/15769919595310.html"/>
-    <updated>2019-12-22T13:19:19+08:00</updated>
-    <id>http://565785929.github.io/15769919595310.html</id>
-    <content type="html"><![CDATA[
-<h3 id="toc_0">Git是分布式版本控制系统 自报家门</h3>
-
-<pre class="line-numbers"><code class="language-text">git config --global user.name &quot;Sajor&quot;
-git config --global user.email &quot;565785929@qq.com&quot;
-</code></pre>
-
-<h2 id="toc_1">一</h2>
-
-<p>初始化一个Git仓库，使用git init命令。</p>
-
-<p>添加文件到Git仓库，分两步：</p>
-
-<p>第一步，使用命令git add <file>，注意，可反复多次使用，添加多个文件；</p>
-
-<p>第二步，使用命令git commit，完成。</p>
-
-<h3 id="toc_2">windows中的换行符为 CRLF， 而在linux下的换行符为LF，所以在执行add . 时出现提示，解决办法：</h3>
-
-<pre class="line-numbers"><code class="language-text">    rm -rf .git  // 删除.git  
-    git config --global core.autocrlf false  //禁用自动转换    
-    
-    git init    // 重新执行
-    git add .  
-</code></pre>
-
-<h3 id="toc_3">文件添加到仓库 add</h3>
-
-<pre class="line-numbers"><code class="language-text">    git add readme.txt     // filename = readme.txt
-</code></pre>
-
-<h3 id="toc_4">用命令 git commit 告诉Git 文件提交到仓库</h3>
-
-<pre class="line-numbers"><code class="language-text">    git commit -m &quot;wrote a readme file&quot; 
-    -m后面输入的是本次提交的说明
-    commit可以一次提交很多文件，所以你可以多次add不同的文件
-</code></pre>
-
-<h2 id="toc_5">二</h2>
-
-<p>要随时掌握工作区的状态，使用git status命令。</p>
-
-<p>如果git status告诉你有文件被修改过，用git diff可以查看修改内容。</p>
-
-<h3 id="toc_6">git status 查看当前状态</h3>
-
-<pre class="line-numbers"><code class="language-text">    git status 
-</code></pre>
-
-<h3 id="toc_7">git diff 查看做了哪些修改</h3>
-
-<pre class="line-numbers"><code class="language-text">    git diff readme.txt    // filename = readme.txt
-    git diff    #是工作区(work dict)和暂存区(stage)的比较
-    git diff --cached    #是暂存区(stage)和分支(master)的比较（add之后）
-</code></pre>
-
-<h2 id="toc_8">三</h2>
-
-<p>HEAD指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令git reset --hard commit_id。</p>
-
-<p>穿梭前，用git log可以查看提交历史，以便确定要回退到哪个版本。</p>
-
-<p>要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。</p>
-
-<h3 id="toc_9">git log 显示从最近到最远的提交日志</h3>
-
-<pre class="line-numbers"><code class="language-text">    git log 
-    // --pretty=oneline参数 可以在一行显示
-    git log --pretty=oneline 
-    前面的是commit id（版本号）
-</code></pre>
-
-<h3 id="toc_10">回退版本</h3>
-
-<pre class="line-numbers"><code class="language-text">    git reset -- hard HEAD^  
-    // 上一个版本是HEAD^ , 上上一个版本就是HEAD^^, 往上100个是HEAD~100
-</code></pre>
-
-<h3 id="toc_11">再返回未来的版本可以用commit id 返回</h3>
-
-<pre class="line-numbers"><code class="language-text">    git reset --hard 3628164  // commit id = 3628164
-</code></pre>
-
-<h3 id="toc_12">git reflog 记录你的每一次命令</h3>
-
-<pre class="line-numbers"><code class="language-text">    git reflog  前面会加你的commit id
-</code></pre>
-
-<hr/>
-
-<h2 id="toc_13">四</h2>
-
-<p>场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout -- file。</p>
-
-<p>场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD file，就回到了场景1，第二步按场景1操作。</p>
-
-<p>场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库。</p>
-
-<p>命令git rm用于删除一个文件。如果一个文件已经被提交到版本库，那么你永远不用担心误删，但是要小心，你只能恢复文件到最新版本，你会丢失最近一次提交后你修改的内容。</p>
-
-<h3 id="toc_14">撤销工作区的修改</h3>
-
-<pre class="line-numbers"><code class="language-text">    git checkout -- readme.txt   // filename = readme.txt
-</code></pre>
-
-<h3 id="toc_15">撤销缓存区的提交</h3>
-
-<pre class="line-numbers"><code class="language-text">    git reset HEAD readme.txt   // filename = readme.txt
-</code></pre>
-
-<h3 id="toc_16">工作区删除</h3>
-
-<pre class="line-numbers"><code class="language-text">    rm test.txt
-</code></pre>
-
-<h3 id="toc_17">从版本库中删除该文件 git rm 删掉 并提交</h3>
-
-<pre class="line-numbers"><code class="language-text">    git rm test.txt    // filename = test.txt
-    git commit -m &quot;remove test.txt&quot;
-</code></pre>
-
-<h3 id="toc_18">也可以使用 git checkout 恢复</h3>
-
-<pre class="line-numbers"><code class="language-text">    git checkout -- test.txt
-</code></pre>
-
-<h2 id="toc_19">五</h2>
-
-<p>要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git；</p>
-
-<p>关联后，使用命令git push -u origin master第一次推送master分支的所有内容；</p>
-
-<p>此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；</p>
-
-<p>分布式版本系统的最大好处之一是在本地工作完全不需要考虑远程库的存在，也就是有没有联网都可以正常工作，而SVN在没有联网的时候是拒绝干活的！当有网络的时候，再把本地提交推送一下就完成了同步，真是太方便了！</p>
-
-<p>要克隆一个仓库，首先必须知道仓库的地址，然后使用git clone命令克隆。<br/>
-Git支持多种协议，包括https，但通过ssh支持的原生git协议速度最快。</p>
-
-<h3 id="toc_20">在GitHub 添加ssh秘钥</h3>
-
-<pre class="line-numbers"><code class="language-text">    ssh-keygen -t rsa    生成ssh秘钥 
-    cat C://Users/zzx/.ssh/id_rsa.pub   默认位置
-</code></pre>
-
-<h3 id="toc_21">推送到远程仓库</h3>
-
-<pre class="line-numbers"><code class="language-text">    git remote add origin git@github.com:565785929/learngit.git
-    git push -u origin master
-</code></pre>
-
-<h3 id="toc_22">本地做了提交再更新远程仓库</h3>
-
-<pre class="line-numbers"><code class="language-text">    git push origin master 
-</code></pre>
-
-<h3 id="toc_23">远程库已经准备好了 git clone克隆一个本地库</h3>
-
-<pre class="line-numbers"><code class="language-text">    git clone git@github.com:565785929/gitskills.git     // proname = gitskills
-</code></pre>
 
 ]]></content>
   </entry>

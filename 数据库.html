@@ -98,6 +98,154 @@
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="16301414327814.html"> 
+							<div class="item-desc"> 
+								<p>
+
+Server层
+
+
+连接器
+
+
+查询缓存
+
+
+分析器
+
+
+优化器
+
+
+执行器
+
+
+
+
+存储引擎
+
+
+
+
+
+来自MySQL实战45讲
+
+
+MySQL的逻辑架构图
+
+
+大体来说，MySQL可以分为Server层和存储引擎层两部分。
+
+Server层
+
+包括连接器、查询缓存、分析器、优化器、执行器等，涵盖MySQL的大多数核心服务功能，以及所有的内置函数（如日期、时间、数学和加密函数等），所有跨存储引擎的功能都在这一层实现，比如存储过程、触发器、视图等。
+
+连接器
+
+第一步，你会先连接到这个数据库上，这时候接待你的就是连接器。连接器负责跟客户端建立连接、获取权限、维持和管理连接。连接命令一般是这</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16301414327814.html">01 | 基础架构：一条SQL查询语句是如何执行的？</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='MySQL.html'>MySQL</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="16297270253775.html"> 
+							<div class="item-desc"> 
+								<p>提到事务，你肯定会想到ACID：
+
+
+原子性（Atomicity）
+一致性（Consistency）
+隔离性（Isolation）
+持久性（Durability）
+
+
+今天我们就来说说其中I，也就是“隔离性”。
+
+当数据库上有多个事务同时执行的时候，就可能出现：
+
+
+脏读（dirty read）
+不可重复读（non-repeatable read）
+幻读（phantom read）
+
+
+等的问题，为了解决这些问题，就有了“隔离级别”的概念。
+
+在谈隔离级别之前，你首先要知道，你隔离得越严实，效率就会越低。因此很多时候，我们都要在二者之间寻找一个平衡点。
+
+SQL标准的事务隔离级别包括：
+
+
+读</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16297270253775.html">隔离性与隔离级别</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='MySQL.html'>MySQL</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
 						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16022150270617/16125316270697.jpg);">
 						
 						</div> 
@@ -369,123 +517,6 @@ set内部实现是一个value永远是null的hashmap，通过has</p>
 		   				</div> 
    					</div>
  				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15754418238619.html"> 
-							<div class="item-desc"> 
-								<p>
-可靠性低：如果数据走云盘做高可靠存储容易受网络波动干扰，如果不走云盘宕机数据易丢失，自建多副本运维很复杂，而且Redis本身的断网导致的全量同步机制对网络和运维的要求极高；
-可用性低：自建单副本无法保证可用性，多副本对心跳检查和链路切换要求极高，传统的sentinel有很多缺陷，在执行复杂的keys flushdb等命令时很容易造成误切和雪崩；
-诸多限制：自建集群方案如redis cluster，codis也有诸多限制，redis cluster需要smart client和非常
-
-
-键值设计
-
-key名设计
-
-可读性和可管理性
-
-以业务名(或数据库名)为前缀(防止key冲突)，用冒号分隔，</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15754418238619.html">自建redis集群规范</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0.html'>Redis设计与实现</a>
-								
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15754270430043.html"> 
-							<div class="item-desc"> 
-								<p>首先安装redis
-brew install redis
-
-将/usr/local/redis/bin
-建立redis-cluster文件夹，复制六份， 三主三备份， 分别叫redis01-redis-06
-
-
-将每个文件夹中的redis.conf都修改一下
-例如： redis01/redis.conf
-
-port 7001
-
-cluster-enabled yes
-
-cluster-config-file  nodes_7001.conf  
-
-cluster-node-timeout  15000 
-
-pidfile  /var/run/redis_7001.pid
-
-
-redis02-r</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15754270430043.html">redis 集群</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0.html'>Redis设计与实现</a>
-								
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
  			 
 		</div>
 	</div>
@@ -528,6 +559,15 @@ redis02-r</p>
              
             
             <li>
+            <a href="%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">设计模式&nbsp;(1)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
             <a href="Git.html">Git&nbsp;(9)</a>
             <p>
             
@@ -553,17 +593,6 @@ redis02-r</p>
             </li>
             
              
-            
-            <li>
-            <a href="%E6%95%B0%E6%8D%AE%E5%BA%93.html">数据库&nbsp;(15)</a>
-            <p>
-            
-            <a href="MySQL.html">MySQL&nbsp;(3)</a>&nbsp;&nbsp;
-            
-            <a href="Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0.html">Redis设计与实现&nbsp;(6)</a>&nbsp;&nbsp;
-            
-            </p>
-            </li>
             
              
             
@@ -596,6 +625,24 @@ redis02-r</p>
           
           
          <li>
+           <a href="16301414327814.html">01 | 基础架构：一条SQL查询语句是如何执行的？</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16297270253775.html">隔离性与隔离级别</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16261043857914.html">改善代码质量规约</a><br>
+         </li>
+          
+          
+          
+         <li>
            <a href="16253298632146.html">为什么需要版本控制</a><br>
          </li>
           
@@ -603,24 +650,6 @@ redis02-r</p>
           
          <li>
            <a href="16253295942611.html">常见Git仓库</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16197951416649.html">Ray Tracing for one week</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16137917098988.html">科学上网</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16110385786886.html">自动登录工具开发</a><br>
          </li>
           
           
