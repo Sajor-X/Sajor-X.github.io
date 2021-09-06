@@ -98,7 +98,243 @@
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16309452975279/B+Tree.png);">
+						
+						</div> 
+						<a href="16309452975279.html"> 
+							<div class="item-desc"> 
+								<p>
+
+什么是索引
+
+
+索引的常见模型
+
+
+
+
+
+来自MySQL实战45讲
+
+
+什么是索引
+
+索引的出现其实就是为了提高数据查询的效率，就像书的目录一样。
+
+一本500页的书，如果你想快速找到其中的某一个知识点，在不借助目录的情况下，那我估计你可得找一会儿。同样，对于数据库的表而言，索引其实就是它的“目录”。
+
+索引的常见模型
+
+
+哈希表
+有序数组
+搜索树
+
+
+
+
+数据结构
+</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16309452975279.html">04 | 深入浅出索引（上）</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='MySQL.html'>MySQL</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16304224326131/16306006330934.jpg);">
+						
+						</div> 
+						<a href="16304224326131.html"> 
+							<div class="item-desc"> 
+								<p>
+
+隔离性与隔离级别
+
+
+脏读
+
+
+幻读
+
+
+不可重复读
+
+
+
+
+SQL标准的事务隔离级别包括：
+
+
+案例
+
+
+事务隔离的实现
+
+
+可重复读
+
+
+事务的启动方式
+
+
+
+
+
+
+
+来自MySQL实战45讲
+
+
+隔离性与隔离级别
+
+提到事务，你肯定会想到ACID：
+
+
+原子性（Atomicity）
+一致性（Consistency）
+隔离性（Isolation）
+持久性（Durability）
+
+
+今天我们就来说说其中I，也就是“隔离性”。
+
+当数据库上有多个事务同时执行的时候，就可能出现：
+
+
+脏读（dirty read）
+不可重复读（non-repeatable read）
+幻读（phantom </p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16304224326131.html">03 | 事务隔离：为什么你改了我还看不见？</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='MySQL.html'>MySQL</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16302079765954/16302100687432.jpg);">
+						
+						</div> 
+						<a href="16302079765954.html"> 
+							<div class="item-desc"> 
+								<p>
+
+redo log（重做日志）
+
+
+binlog（归档日志）
+
+
+两阶段提交
+
+
+
+
+redo log 和 binlog 区别
+
+
+
+
+
+来自MySQL实战45讲
+
+
+与查询流程不一样的是，更新流程还涉及两个重要的日志模块，它们正是我们今天要讨论的主角：
+
+redo log（重做日志）
+
+redo log为InnoDB特有的日志，用来保证即使数据库发生异常重启，之前提交的记录都不会丢失，这个能力称为crash-safe。
+
+WAL技术，WAL的全称是Write-Ahead Logging，它的关键点就是先写日志，再写磁盘。具体来说，当有一条记录需要更新的时候，InnoDB引擎就会先把记录写到</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16302079765954.html">02 | 日志系统：一条SQL更新语句是如何执行的？</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='MySQL.html'>MySQL</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16301414327814/16301415100109.jpg);">
 						
 						</div> 
 						<a href="16301414327814.html"> 
@@ -157,72 +393,6 @@ Server层
 		 				<div class="item-label">
 	  						<div class="item-title">
 	  							<a href="16301414327814.html">01 | 基础架构：一条SQL查询语句是如何执行的？</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='MySQL.html'>MySQL</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="16297270253775.html"> 
-							<div class="item-desc"> 
-								<p>提到事务，你肯定会想到ACID：
-
-
-原子性（Atomicity）
-一致性（Consistency）
-隔离性（Isolation）
-持久性（Durability）
-
-
-今天我们就来说说其中I，也就是“隔离性”。
-
-当数据库上有多个事务同时执行的时候，就可能出现：
-
-
-脏读（dirty read）
-不可重复读（non-repeatable read）
-幻读（phantom read）
-
-
-等的问题，为了解决这些问题，就有了“隔离级别”的概念。
-
-在谈隔离级别之前，你首先要知道，你隔离得越严实，效率就会越低。因此很多时候，我们都要在二者之间寻找一个平衡点。
-
-SQL标准的事务隔离级别包括：
-
-
-读</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="16297270253775.html">隔离性与隔离级别</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -394,129 +564,6 @@ java.lang</p>
 		   				</div> 
    					</div>
  				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15823882245344.html"> 
-							<div class="item-desc"> 
-								<p>查看注释
-
-查看所有表的注释
-
-SELECT
-table_name 表名,
-table_comment 表说明
-FROM
-information_schema.TABLES
-WHERE
-table_schema = &#39;数据库名&#39;
-ORDER BY
-table_name
-
-
-查询所有表及字段的注释
-
-SELECT
-a.table_name 表名,
-a.table_comment 表说明,
-b.COLUMN_NAME 字段名,
-b.column_comment 字段说明,
-b.column_type 字段类型,
-b.column_key 约束
-FROM
-information_sc</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15823882245344.html">MySQL 查看表注释或字段注释</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='MySQL.html'>MySQL</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15754473183515.html"> 
-							<div class="item-desc"> 
-								<p>缓存数据
-
-最常用，对经常需要查询且变动不是很频繁的数据
-
-排行榜应用
-
-利用Redis的有序集合zset，每次插入数据时自动调整顺序值，根据插入时的score值将value按一定顺序连续排列。
-
-计数器应用
-
-利用Redis的incr、decr命令进行原子性操作，来构建计数系统
-比如在一个web应用程序中，如果想知道用户在一年中每天的点击量，只要将用户id和相关日期信息作为键，并在每次用户点击页面时，执行一次自增操作即可。
-
-数据去重
-
-当需要存储一个列表数据，又不希望出现重复数据时，可以使用Redis的Set数据结构
-set内部实现是一个value永远是null的hashmap，通过has</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15754473183515.html">Redis使用场景</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0.html'>Redis设计与实现</a>
-								
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
  			 
 		</div>
 	</div>
@@ -625,31 +672,31 @@ set内部实现是一个value永远是null的hashmap，通过has</p>
           
           
          <li>
+           <a href="16309452975279.html">04 | 深入浅出索引（上）</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16304224326131.html">03 | 事务隔离：为什么你改了我还看不见？</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16302079765954.html">02 | 日志系统：一条SQL更新语句是如何执行的？</a><br>
+         </li>
+          
+          
+          
+         <li>
            <a href="16301414327814.html">01 | 基础架构：一条SQL查询语句是如何执行的？</a><br>
          </li>
           
           
           
          <li>
-           <a href="16297270253775.html">隔离性与隔离级别</a><br>
-         </li>
-          
-          
-          
-         <li>
            <a href="16261043857914.html">改善代码质量规约</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16253298632146.html">为什么需要版本控制</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16253295942611.html">常见Git仓库</a><br>
          </li>
           
           

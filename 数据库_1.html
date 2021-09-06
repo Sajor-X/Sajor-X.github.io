@@ -101,6 +101,129 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
+						<a href="15823882245344.html"> 
+							<div class="item-desc"> 
+								<p>查看注释
+
+查看所有表的注释
+
+SELECT
+table_name 表名,
+table_comment 表说明
+FROM
+information_schema.TABLES
+WHERE
+table_schema = &#39;数据库名&#39;
+ORDER BY
+table_name
+
+
+查询所有表及字段的注释
+
+SELECT
+a.table_name 表名,
+a.table_comment 表说明,
+b.COLUMN_NAME 字段名,
+b.column_comment 字段说明,
+b.column_type 字段类型,
+b.column_key 约束
+FROM
+information_sc</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15823882245344.html">MySQL 查看表注释或字段注释</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='MySQL.html'>MySQL</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="15754473183515.html"> 
+							<div class="item-desc"> 
+								<p>缓存数据
+
+最常用，对经常需要查询且变动不是很频繁的数据
+
+排行榜应用
+
+利用Redis的有序集合zset，每次插入数据时自动调整顺序值，根据插入时的score值将value按一定顺序连续排列。
+
+计数器应用
+
+利用Redis的incr、decr命令进行原子性操作，来构建计数系统
+比如在一个web应用程序中，如果想知道用户在一年中每天的点击量，只要将用户id和相关日期信息作为键，并在每次用户点击页面时，执行一次自增操作即可。
+
+数据去重
+
+当需要存储一个列表数据，又不希望出现重复数据时，可以使用Redis的Set数据结构
+set内部实现是一个value永远是null的hashmap，通过has</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15754473183515.html">Redis使用场景</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0.html'>Redis设计与实现</a>
+								
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
 						<a href="15754418238619.html"> 
 							<div class="item-desc"> 
 								<p>
@@ -376,130 +499,6 @@ Redis
 		   				</div> 
    					</div>
  				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15700237274379.html"> 
-							<div class="item-desc"> 
-								<p>append 追加
-
-append key value
-
-返回值
-Integer reply：返回append后字符串值（value）的长度。
-
-例子
-
-redis&gt; EXISTS mykey
-(integer) 0
-redis&gt; APPEND mykey &quot;Hello&quot;
-(integer) 5
-redis&gt; APPEND mykey &quot; World&quot;
-(integer) 11
-redis&gt; GET mykey
-&quot;Hello World&quot;
-redis&gt;
-
-</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15700237274379.html">redis命令</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
-								
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15648434329273.html"> 
-							<div class="item-desc"> 
-								<p>今天博客遇到如下异常
-
-
-MySQLNonTransientConnectionException: Communications link failure during rollback().
-
-
-打开mysql配置文件/etc/my.cnf
-
-在[mysqld]节，增加wait_timeout配置，原来是5，看来不够用，改为50。
-
-[mysqld]
-wait_timeout=50
-
-
-重启mysqld服务，问题解决
-
-service mysqld restart
-
-
-报错信息如下：
-
-2019-08-03 22:33:17.405  WARN 29453 --- [XNIO-1 task</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15648434329273.html">mysql经典的8小时问题-wait_timeout</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
-								
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
  			 
 		</div>
 	</div>
@@ -608,31 +607,31 @@ service mysqld restart
           
           
          <li>
+           <a href="16309452975279.html">04 | 深入浅出索引（上）</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16304224326131.html">03 | 事务隔离：为什么你改了我还看不见？</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16302079765954.html">02 | 日志系统：一条SQL更新语句是如何执行的？</a><br>
+         </li>
+          
+          
+          
+         <li>
            <a href="16301414327814.html">01 | 基础架构：一条SQL查询语句是如何执行的？</a><br>
          </li>
           
           
           
          <li>
-           <a href="16297270253775.html">隔离性与隔离级别</a><br>
-         </li>
-          
-          
-          
-         <li>
            <a href="16261043857914.html">改善代码质量规约</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16253298632146.html">为什么需要版本控制</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16253295942611.html">常见Git仓库</a><br>
          </li>
           
           
