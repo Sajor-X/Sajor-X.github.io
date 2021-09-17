@@ -98,6 +98,62 @@
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="15914577057463.html"> 
+							<div class="item-desc"> 
+								<p>问题描述：#
+yum 安装更新提示 rpmdb: Thread/process failed: Thread died in Berkeley DB library
+
+问题解决：#
+01、删除yum临时库文件
+
+rm -fr /var/lib/rpm/__db.*
+
+02、重建rpm数据库
+
+rpm --rebuilddb
+
+03、清理缓存及生产yumdb缓存
+
+yum clean all
+yum makecache
+</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15914577057463.html">yum安装提示错误Thread/process failed: Thread died in Berkeley DB librar</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
 						<div class="item-thumb bg-deepgrey" style="background-image:url(media/15873033963371/15873054303125.jpg);">
 						
 						</div> 
@@ -419,71 +475,6 @@ java.lang</p>
 		   				</div> 
    					</div>
  				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15823882245344.html"> 
-							<div class="item-desc"> 
-								<p>查看注释
-
-查看所有表的注释
-
-SELECT
-table_name 表名,
-table_comment 表说明
-FROM
-information_schema.TABLES
-WHERE
-table_schema = &#39;数据库名&#39;
-ORDER BY
-table_name
-
-
-查询所有表及字段的注释
-
-SELECT
-a.table_name 表名,
-a.table_comment 表说明,
-b.COLUMN_NAME 字段名,
-b.column_comment 字段说明,
-b.column_type 字段类型,
-b.column_key 约束
-FROM
-information_sc</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15823882245344.html">MySQL 查看表注释或字段注释</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='MySQL.html'>MySQL</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
  			 
 		</div>
 	</div>
@@ -592,6 +583,12 @@ information_sc</p>
           
           
          <li>
+           <a href="16312407110535.html">MySQL数据库设计规范（仅供参考）</a><br>
+         </li>
+          
+          
+          
+         <li>
            <a href="16309452975279.html">04 | 深入浅出索引（上）</a><br>
          </li>
           
@@ -611,12 +608,6 @@ information_sc</p>
           
          <li>
            <a href="16301414327814.html">01 | 基础架构：一条SQL查询语句是如何执行的？</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16261043857914.html">改善代码质量规约</a><br>
          </li>
           
           
