@@ -10,7 +10,7 @@
 
     <title>
       
-    数据库相关 - Sajor's Blog
+    Sajor's Blog
     
     </title>
 
@@ -98,32 +98,18 @@
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16251591565160/16253272304924.jpg);">
 						
 						</div> 
-						<a href="15650106911020.html"> 
+						<a href="16251591565160.html"> 
 							<div class="item-desc"> 
-								<p>排序算法说明
+								<p>Forking 工作流和前面讨论的几种工作流有根本的不同。这种工作流不是使用单个服务端仓库作为『中央』代码基线，而让各个开发者都有一个服务端仓库。这意味着各个代码贡献者有 2 个 Git 仓库而不是 1 个：一个本地私有的，另一个服务端公开的。
 
 
-排序的定义
-对一序列对象根据某个关键字进行排序。
-术语说明
-稳定：如果a原本在b前面，而a=b，排序之后a仍然在b的前面；
-不稳定：如果a原本在b的前面，而a=b，排序之后a可能会出现在b的后面；
-内排序：所有排序操作都在内存中完成；
-外排序：由于数据太大，因此把数据放在磁盘中，而排序通过磁盘和内存的数据传输才能进行；
-时间复杂度： 一个算法执行所耗费的时间。
-空间复杂度：运行完一个程序所需内存的大小。
-算法总结
 
-图片名词解释：
-n: 数据规模
-k: “桶”的个数
-In-place: 占用常数内存，不占用额外内存
-Out-place: 占用额外内存
-比较和非比较的区别
-常见</p> 
+Forking 工作流的一个主要优势是，贡献的代码可以被集成，而不需要所有人都能 push 代码到仅有的中央仓库中。开发者 push 到自己的服务端仓库，而只有项目维护者才能 push 到正式仓库。这样项目维护者可以接受任何开发者的提交，但无需给他正式代码库的写权限。
+
+效果就是一个分布式的工作流，能为大型、自发性的团队（包括了不受信的第三方）提</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -134,7 +120,7 @@ Out-place: 占用额外内存
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15650106911020.html">排序算法</a>
+	  							<a href="16251591565160.html">Forking 工作流</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -145,7 +131,7 @@ Out-place: 占用额外内存
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
+			    			<a class='category' href='Git.html'>Git</a>
 								
 		   						</div> 
 		   					</div> 
@@ -161,30 +147,30 @@ Out-place: 占用额外内存
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15648434329273.html"> 
+						<a href="15822104759867.html"> 
 							<div class="item-desc"> 
-								<p>今天博客遇到如下异常
+								<p>首先到官网spark.apache.org下载spark，spark下载页面 
 
+安装
 
-MySQLNonTransientConnectionException: Communications link failure during rollback().
+spark安装文件夹准备
 
+在/usr/local/目录下创建名称为spark的文件夹：
+sudo mkdir -p /usr/local/spark
 
-打开mysql配置文件/etc/my.cnf
+将下载好的spark安装包上传到服务器上。
+之后解压到/usr/local/spark中
 
-在[mysqld]节，增加wait_timeout配置，原来是5，看来不够用，改为50。
+sudo tar -zxvf spark-2.4.5-bin-hadoop2.7.tgz
 
-[mysqld]
-wait_timeout=50
+配置
 
+编辑配置文件sudo vim /etc/profile
 
-重启mysqld服务，问题解决
+定位到最后一行，添加如下内容（版本注意修改）
 
-service mysqld restart
-
-
-报错信息如下：
-
-2019-08-03 22:33:17.405  WARN 29453 --- [XNIO-1 task</p> 
+# spark
+export SPARK_HOME=/us</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -195,7 +181,7 @@ service mysqld restart
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15648434329273.html">mysql经典的8小时问题-wait_timeout</a>
+	  							<a href="15822104759867.html">spark</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -206,9 +192,7 @@ service mysqld restart
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
-								
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
+			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
 								
 		   						</div> 
 		   					</div> 
@@ -221,34 +205,17 @@ service mysqld restart
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16251591834641/16253269285331.jpg);">
 						
 						</div> 
-						<a href="15646739216640.html"> 
+						<a href="16251591834641.html"> 
 							<div class="item-desc"> 
-								<p>关系型数据库：
+								<p>Pull Requests 是 Bitbucket 上方便开发者之间协作的功能。提供了一个用户友好的 Web 界面，在集成提交的变更到正式项目前可以对变更进行讨论。
 
-Oracle、DB2、Microsoft SQL Server、Microsoft Access、MySQL
 
-非关系型数据库：
+开发者向团队成员通知功能开发已经完成，Pull Requests 是最简单的用法。开发者完成功能开发后，通过 Bitbucket 账号发起一个 Pull Request。这样让涉及这个功能的所有人知道，要去做 Code Review 和合并到 master 分支。
 
-NoSql、Cloudant、MongoDb、redis、HBase
-
-两种数据库之间的区别：
-
-关系型数据库
-
-　　关系型数据库的特性
-
-　　1、关系型数据库，是指采用了关系模型来组织数据的数据库；
-
-　　2、关系型数据库的最大特点就是事务的一致性；
-
-　　3、简单来说，关系模型指的就是二维表格模型，而一个关系型数据库就是由二维表及其之间的联系所组成的一个数据组织。
-
-　　关系型数据库的优点
-
-　　1、容易理解：二维表结构是非常贴近逻辑世界一个</p> 
+但是，Pull Request 远不止一个简单的通知，而是为讨论提交的功能的一个专门论坛。如果变更有任何问题，团队成员反馈在 Pull Request 中，甚至 </p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -259,7 +226,7 @@ NoSql、Cloudant、MongoDb、redis、HBase
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15646739216640.html">列举常见的关系型数据库和非关系型都有那些？</a>
+	  							<a href="16251591834641.html">Pull Request</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -270,111 +237,7 @@ NoSql、Cloudant、MongoDb、redis、HBase
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
-								
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15641490587108.html"> 
-							<div class="item-desc"> 
-								<p>今天博客突然报了这个错误：
-
-Packet for query is too large (5,215 &gt; 1,024). You can change this value on the server by setting the &#39;max_allowed_packet&#39; variable.
-
-
-百度了一下，MySQL会根据配置文件会限制server接受的数据包的大小。如果写入大数据时，因为默认的配置太小，插入和更新操作会因为 max_allowed_packet 参数限制，而导致失败。
-在MySQL中输入这条命令查询
-
-SHOW VARIABLES LIKE &#39</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15641490587108.html">在使用Mybatis generator时提示MySQL写入过大</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
-								
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15638863087177.html"> 
-							<div class="item-desc"> 
-								<p>数据库命令规范
-
-
-所有数据库对象名称必须使用小写字母并用下划线分割
-所有数据库对象名称禁止使用 MySQL 保留关键字（如果表名中包含关键字查询时，需要将其用单引号括起来）
-数据库对象的命名要能做到见名识意，并且最后不要超过 32 个字符
-临时库表必须以 tmp_为前缀并以日期为后缀，备份表必须以 bak_为前缀并以日期 (时间戳) 为后缀
-所有存储相同数据的列名和列类型必须一致（一般作为关联列，如果查询时关联列类型不一致会自动进行数据类型隐式转换，会造成列上的索引失效，导致查询效率降低）
-## 数据库基本设计规范
-### 所有表必须使用 Innodb 存储引擎
-没有特殊要求（即 Innod</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15638863087177.html">MySQL高性能优化规范建议</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
-								
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3.html'>数据库相关</a>
+			    			<a class='category' href='Git.html'>Git</a>
 								
 		   						</div> 
 		   					</div> 
@@ -389,7 +252,7 @@ SHOW VARIABLES LIKE &#39</p>
 	<nav class="lists-navigator clearfix" style="clear: all;">
             <ol class="page-navigator">
             
-            	<li class=""><a href="数据库相关.html"><span aria-hidden="true">&larr;</span> 上一页</a></li>
+            	<li class=""><a href="all_12.html"><span aria-hidden="true">&larr;</span> 上一页</a></li>
             
 
 				<li class=""><a href="archives.html">归档</a></li>
@@ -424,7 +287,7 @@ SHOW VARIABLES LIKE &#39</p>
              
             
             <li>
-            <a href="%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">设计模式&nbsp;(1)</a>
+            <a href="%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">设计模式&nbsp;(2)</a>
             <p>
             
             </p>
@@ -433,7 +296,7 @@ SHOW VARIABLES LIKE &#39</p>
              
             
             <li>
-            <a href="Git.html">Git&nbsp;(9)</a>
+            <a href="Algorithm.html">Algorithm&nbsp;(1)</a>
             <p>
             
             </p>
@@ -442,7 +305,7 @@ SHOW VARIABLES LIKE &#39</p>
              
             
             <li>
-            <a href="%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9B%B8%E5%85%B3.html">密码学相关&nbsp;(5)</a>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(1)</a>
             <p>
             
             </p>
@@ -451,7 +314,7 @@ SHOW VARIABLES LIKE &#39</p>
              
             
             <li>
-            <a href="Ray%20Tracing.html">Ray Tracing&nbsp;(1)</a>
+            <a href="Git.html">Git&nbsp;(10)</a>
             <p>
             
             </p>
@@ -459,8 +322,6 @@ SHOW VARIABLES LIKE &#39</p>
             
              
             
-             
-            
             </p>
             </li>
             
@@ -471,8 +332,7 @@ SHOW VARIABLES LIKE &#39</p>
             
              
             
-            </p>
-            </li>
+             
             
              
             
@@ -490,6 +350,18 @@ SHOW VARIABLES LIKE &#39</p>
           
           
          <li>
+           <a href="16322341811288.html">编写爬虫获取教师账号 校园免费上网</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16319589839018.html">Commit message 规范</a><br>
+         </li>
+          
+          
+          
+         <li>
            <a href="16312407110535.html">MySQL数据库设计规范（仅供参考）</a><br>
          </li>
           
@@ -503,18 +375,6 @@ SHOW VARIABLES LIKE &#39</p>
           
          <li>
            <a href="16304224326131.html">03 | 事务隔离：为什么你改了我还看不见？</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16302079765954.html">02 | 日志系统：一条SQL更新语句是如何执行的？</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16301414327814.html">01 | 基础架构：一条SQL查询语句是如何执行的？</a><br>
          </li>
           
           

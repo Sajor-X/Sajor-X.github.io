@@ -249,6 +249,171 @@ information_sc</p>
 		   				</div> 
    					</div>
  				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="15648434329273.html"> 
+							<div class="item-desc"> 
+								<p>今天博客遇到如下异常
+
+
+MySQLNonTransientConnectionException: Communications link failure during rollback().
+
+
+打开mysql配置文件/etc/my.cnf
+
+在[mysqld]节，增加wait_timeout配置，原来是5，看来不够用，改为50。
+
+[mysqld]
+wait_timeout=50
+
+
+重启mysqld服务，问题解决
+
+service mysqld restart
+
+
+报错信息如下：
+
+2019-08-03 22:33:17.405  WARN 29453 --- [XNIO-1 task</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15648434329273.html">mysql经典的8小时问题-wait_timeout</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
+								
+			    			<a class='category' href='MySQL.html'>MySQL</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="15641490587108.html"> 
+							<div class="item-desc"> 
+								<p>今天博客突然报了这个错误：
+
+Packet for query is too large (5,215 &gt; 1,024). You can change this value on the server by setting the &#39;max_allowed_packet&#39; variable.
+
+
+百度了一下，MySQL会根据配置文件会限制server接受的数据包的大小。如果写入大数据时，因为默认的配置太小，插入和更新操作会因为 max_allowed_packet 参数限制，而导致失败。
+在MySQL中输入这条命令查询
+
+SHOW VARIABLES LIKE &#39</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15641490587108.html">在使用Mybatis generator时提示MySQL写入过大</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
+								
+			    			<a class='category' href='MySQL.html'>MySQL</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="15638863087177.html"> 
+							<div class="item-desc"> 
+								<p>数据库命令规范
+
+
+所有数据库对象名称必须使用小写字母并用下划线分割
+所有数据库对象名称禁止使用 MySQL 保留关键字（如果表名中包含关键字查询时，需要将其用单引号括起来）
+数据库对象的命名要能做到见名识意，并且最后不要超过 32 个字符
+临时库表必须以 tmp_为前缀并以日期为后缀，备份表必须以 bak_为前缀并以日期 (时间戳) 为后缀
+所有存储相同数据的列名和列类型必须一致（一般作为关联列，如果查询时关联列类型不一致会自动进行数据类型隐式转换，会造成列上的索引失效，导致查询效率降低）
+## 数据库基本设计规范
+### 所有表必须使用 Innodb 存储引擎
+没有特殊要求（即 Innod</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15638863087177.html">MySQL高性能优化规范建议</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
+								
+			    			<a class='category' href='MySQL.html'>MySQL</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
  			 
 		</div>
 	</div>
@@ -291,7 +456,7 @@ information_sc</p>
              
             
             <li>
-            <a href="%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">设计模式&nbsp;(1)</a>
+            <a href="%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">设计模式&nbsp;(2)</a>
             <p>
             
             </p>
@@ -300,7 +465,7 @@ information_sc</p>
              
             
             <li>
-            <a href="Git.html">Git&nbsp;(9)</a>
+            <a href="Algorithm.html">Algorithm&nbsp;(1)</a>
             <p>
             
             </p>
@@ -309,7 +474,7 @@ information_sc</p>
              
             
             <li>
-            <a href="%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9B%B8%E5%85%B3.html">密码学相关&nbsp;(5)</a>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(1)</a>
             <p>
             
             </p>
@@ -318,7 +483,7 @@ information_sc</p>
              
             
             <li>
-            <a href="Ray%20Tracing.html">Ray Tracing&nbsp;(1)</a>
+            <a href="Git.html">Git&nbsp;(10)</a>
             <p>
             
             </p>
@@ -326,8 +491,6 @@ information_sc</p>
             
              
             
-             
-            
             </p>
             </li>
             
@@ -338,8 +501,7 @@ information_sc</p>
             
              
             
-            </p>
-            </li>
+             
             
              
             
@@ -357,6 +519,18 @@ information_sc</p>
           
           
          <li>
+           <a href="16322341811288.html">编写爬虫获取教师账号 校园免费上网</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16319589839018.html">Commit message 规范</a><br>
+         </li>
+          
+          
+          
+         <li>
            <a href="16312407110535.html">MySQL数据库设计规范（仅供参考）</a><br>
          </li>
           
@@ -370,18 +544,6 @@ information_sc</p>
           
          <li>
            <a href="16304224326131.html">03 | 事务隔离：为什么你改了我还看不见？</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16302079765954.html">02 | 日志系统：一条SQL更新语句是如何执行的？</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16301414327814.html">01 | 基础架构：一条SQL查询语句是如何执行的？</a><br>
          </li>
           
           

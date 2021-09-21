@@ -10,7 +10,7 @@
 
     <title>
       
-    命令 - Sajor's Blog
+    NFS - Sajor's Blog
     
     </title>
 
@@ -95,23 +95,162 @@
 		<div class="post-header">
 			<!-- title -->
 			<div class="post-header">
-				<h1 class="post-title itemprop="name headline">命令</h1>	
+				<h1 class="post-title itemprop="name headline">NFS</h1>	
 				<div class="post-data">
-					<time datetime="2019-11-06T09:15:50+08:00" pubdate data-updated="true">2019/11/06</time>
+					<time datetime="2019-12-22T13:16:29+08:00" pubdate data-updated="true">2019/12/22</time>
 				</div>
 			</div>
 		</div>
 	<div id="post-content" class="post-content" itemprop="articleBody"> 
 		<p class="post-tags"> 
 		
-		<a href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>&nbsp;
+		<a href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>&nbsp;
 		
 		</p>
 	<!-- 正文 -->
 		<p>
-		<h3 id="toc_0">.java结尾的文件 行数</h3>
+		<p>NFS就是 ** Network File System ** 的缩写</p>
 
-<p>wc -l <code>find ./$1 -name &#39;*.java&#39;</code></p>
+<p><strong>本机ip：192.168.36.182</strong></p>
+
+<h2 id="toc_0">安装NFS</h2>
+
+<pre class="line-numbers"><code class="language-text">yum -y install nfs-utils rpcbind
+</code></pre>
+
+<h2 id="toc_1">服务端配置</h2>
+
+<p>在NFS服务端上创建共享目录/data/lys并设置权限</p>
+
+<pre class="line-numbers"><code class="language-text">mkdir -p /data/lys
+
+chmod 666 /data/lys/
+</code></pre>
+
+<p>编辑export文件</p>
+
+<pre class="line-numbers"><code class="language-text">vi /etc/exports 
+
+/data/lys 192.168.36.0/24(rw,no_root_squash,no_all_squash,sync)
+</code></pre>
+
+<p>配置生效</p>
+
+<pre class="line-numbers"><code class="language-text">exportfs -r
+</code></pre>
+
+<p>启动rpcbind nfs 服务</p>
+
+<pre class="line-numbers"><code class="language-text"> service rpcbind start
+ service nfs start
+</code></pre>
+
+<p>查看 RPC 服务的注册状况</p>
+
+<pre class="line-numbers"><code class="language-text">rpcinfo -p localhost
+</code></pre>
+
+<p>测试可否联机</p>
+
+<pre class="line-numbers"><code class="language-text">showmount -e localhost
+</code></pre>
+
+<p>开放端口</p>
+
+<pre class="line-numbers"><code class="language-text">netstat -nlp | grep rpc.mountd
+tcp        0      0 0.0.0.0:20048           0.0.0.0:*               LISTEN      8937/rpc.mountd     
+tcp6       0      0 :::20048                :::*                    LISTEN      8937/rpc.mountd     
+udp        0      0 0.0.0.0:20048           0.0.0.0:*                           8937/rpc.mountd     
+udp6       0      0 :::20048                :::*                                8937/rpc.mountd 
+</code></pre>
+
+<pre class="line-numbers"><code class="language-text">开放 111 2049 20048 端口
+</code></pre>
+
+<p>或者更改配置文件固定NFS服务相关端口</p>
+
+<pre class="line-numbers"><code class="language-text">为了方便配置防火墙，需要固定nfs服务端口
+
+[NFS](http://www.haiyun.me/tag/nfs)启动时会随机启动多个端口并向RPC注册，这样如果使用[iptables](http://www.haiyun.me/tag/iptables)对NFS端口进行限制就会有点麻烦，可以更改配置文件固定NFS服务相关端口。
+vim /etc/sysconfig/nfs
+
+RQUOTAD_PORT=30001
+LOCKD_TCPPORT=30002
+LOCKD_UDPPORT=30002
+MOUNTD_PORT=30003
+STATD_PORT=30004    
+</code></pre>
+
+<h2 id="toc_2">客户端配置</h2>
+
+<p>安装nfs</p>
+
+<pre class="line-numbers"><code class="language-text">yum -y install nfs-utils
+</code></pre>
+
+<p>创建挂载目录</p>
+
+<pre class="line-numbers"><code class="language-text">mkdir /lys
+</code></pre>
+
+<p>查看服务器抛出的共享目录信息</p>
+
+<pre class="line-numbers"><code class="language-text">showmount -e 192.168.36.182
+</code></pre>
+
+<p>挂载（默认使用udp，为了稳定改为tcp）</p>
+
+<pre class="line-numbers"><code class="language-text">mount -t nfs 192.168.36.182:/data/lys /lys -o proto=tcp -o nolock
+</code></pre>
+
+<p>查看挂载结果</p>
+
+<pre class="line-numbers"><code class="language-text">df -h
+
+192.168.36.182:/data/lys   39G  2.8G   36G   8% /lys
+</code></pre>
+
+<p>卸载</p>
+
+<pre class="line-numbers"><code class="language-text">umount /lys/
+</code></pre>
+
+<h2 id="toc_3">测试</h2>
+
+<p>服务端</p>
+
+<pre class="line-numbers"><code class="language-text">echo &quot;test&quot; &gt; test.txt
+</code></pre>
+
+<p>客户端</p>
+
+<pre class="line-numbers"><code class="language-text">cat /lys/test.txt 
+echo &quot;204&quot; &gt;&gt; /lys/test.txt 
+</code></pre>
+
+<p>服务端</p>
+
+<pre class="line-numbers"><code class="language-text">cat /data/lys/test.txt 
+</code></pre>
+
+<h2 id="toc_4">配置</h2>
+
+<pre class="line-numbers"><code class="language-text">常见的参数则有：
+
+参数值    内容说明
+rw　　ro    该目录分享的权限是可擦写 (read-write) 或只读 (read-only)，但最终能不能读写，还是与文件系统的 rwx 及身份有关。
+
+sync　　async    sync 代表数据会同步写入到内存与硬盘中，async 则代表数据会先暂存于内存当中，而非直接写入硬盘！
+
+no_root_squash　　root_squash    客户端使用 NFS 文件系统的账号若为 root 时，系统该如何判断这个账号的身份？预设的情况下，客户端 root 的身份会由 root_squash 的设定压缩成 nfsnobody， 如此对服务器的系统会较有保障。但如果你想要开放客户端使用 root 身份来操作服务器的文件系统，那么这里就得要开 no_root_squash 才行！
+
+all_squash    不论登入 NFS 的使用者身份为何， 他的身份都会被压缩成为匿名用户，通常也就是 nobody(nfsnobody) 啦！
+
+anonuid　　anongid    anon 意指 anonymous (匿名者) 前面关于 *_squash 提到的匿名用户的 UID 设定值，通常为 nobody(nfsnobody)，但是你可以自行设定这个 UID 的值！当然，这个 UID 必需要存在于你的 /etc/passwd 当中！ anonuid 指的是 UID 而 anongid 则是群组的 GID 啰。
+
+</code></pre>
+
+<p>参考资料：<a href="https://www.cnblogs.com/liuyisai/p/5992511.html">https://www.cnblogs.com/liuyisai/p/5992511.html</a></p>
 
 		</p>
 		<!-- 侧边导航条 -->
@@ -212,7 +351,7 @@
 	<!-- 版权声明 -->
 		<p class="post-info" style="color: #BCBDB6">
 				本文由 <a style="color: #BCBDB6" href="#">Sajor
-				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2019-11-06T09:15:50+08:00
+				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2019-12-22T13:16:29+08:00
 		</p>
 	<!-- 导航 -->
 			<div id="comments" class="clearfix" style="padding: 0px;">
@@ -220,14 +359,14 @@
 				    <div class="meta">
 					    
 					    <P style="float: left;">
-					    	<a href="15740860526446.html" 
-					        title="Previous Post: Linux安全加固脚本">&laquo; Linux安全加固脚本</a>
+					    	<a href="15769918912350.html" 
+					        title="Previous Post: 比特币">&laquo; 比特币</a>
 					    </p>
 					    <p style="float:right; ">
 					    	
 					    	
-					        <a href="15700237274379.html" 
-					        title="Next Post: redis命令">redis命令 &raquo;</a>
+					        <a href="15765692780377.html" 
+					        title="Next Post: brew update 缓慢">brew update 缓慢 &raquo;</a>
 					    </p> 
 					    
 				    </div>
@@ -289,7 +428,7 @@
              
             
             <li>
-            <a href="%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">设计模式&nbsp;(1)</a>
+            <a href="%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">设计模式&nbsp;(2)</a>
             <p>
             
             </p>
@@ -298,7 +437,7 @@
              
             
             <li>
-            <a href="Git.html">Git&nbsp;(9)</a>
+            <a href="Algorithm.html">Algorithm&nbsp;(1)</a>
             <p>
             
             </p>
@@ -307,7 +446,7 @@
              
             
             <li>
-            <a href="%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9B%B8%E5%85%B3.html">密码学相关&nbsp;(5)</a>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(1)</a>
             <p>
             
             </p>
@@ -316,7 +455,7 @@
              
             
             <li>
-            <a href="Ray%20Tracing.html">Ray Tracing&nbsp;(1)</a>
+            <a href="Git.html">Git&nbsp;(10)</a>
             <p>
             
             </p>
@@ -324,8 +463,6 @@
             
              
             
-             
-            
             </p>
             </li>
             
@@ -336,8 +473,7 @@
             
              
             
-            </p>
-            </li>
+             
             
              
             
@@ -355,6 +491,18 @@
           
           
          <li>
+           <a href="16322341811288.html">编写爬虫获取教师账号 校园免费上网</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16319589839018.html">Commit message 规范</a><br>
+         </li>
+          
+          
+          
+         <li>
            <a href="16312407110535.html">MySQL数据库设计规范（仅供参考）</a><br>
          </li>
           
@@ -368,18 +516,6 @@
           
          <li>
            <a href="16304224326131.html">03 | 事务隔离：为什么你改了我还看不见？</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16302079765954.html">02 | 日志系统：一条SQL更新语句是如何执行的？</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16301414327814.html">01 | 基础架构：一条SQL查询语句是如何执行的？</a><br>
          </li>
           
           

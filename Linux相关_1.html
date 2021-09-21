@@ -153,6 +153,76 @@ pscp和scp功能相同，但pscp同时支持windows下使用，它有效解 决�
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
+						<a href="15769917893975.html"> 
+							<div class="item-desc"> 
+								<p>NFS就是 ** Network File System ** 的缩写
+
+本机ip：192.168.36.182
+
+安装NFS
+
+yum -y install nfs-utils rpcbind
+
+
+服务端配置
+
+在NFS服务端上创建共享目录/data/lys并设置权限
+
+mkdir -p /data/lys
+
+chmod 666 /data/lys/
+
+
+编辑export文件
+
+vi /etc/exports 
+
+/data/lys 192.168.36.0/24(rw,no_root_squash,no_all_squash,sync)
+
+
+配置生效
+
+exportfs -r
+
+
+启动rp</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15769917893975.html">NFS</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
 						<a href="15765692780377.html"> 
 							<div class="item-desc"> 
 								<p>更新时 使用 --verbose命令可以看到运行情况
@@ -371,49 +441,6 @@ PASS_WARN_AGE     7                 口令失效前多少天开始通
 		   				</div> 
    					</div>
  				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15730029503820.html"> 
-							<div class="item-desc"> 
-								<p>.java结尾的文件 行数
-
-wc -l find ./$1 -name &#39;*.java&#39;
-</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15730029503820.html">命令</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
  			 
 		</div>
 	</div>
@@ -456,7 +483,7 @@ wc -l find ./$1 -name &#39;*.java&#39;
              
             
             <li>
-            <a href="%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">设计模式&nbsp;(1)</a>
+            <a href="%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">设计模式&nbsp;(2)</a>
             <p>
             
             </p>
@@ -465,7 +492,7 @@ wc -l find ./$1 -name &#39;*.java&#39;
              
             
             <li>
-            <a href="Git.html">Git&nbsp;(9)</a>
+            <a href="Algorithm.html">Algorithm&nbsp;(1)</a>
             <p>
             
             </p>
@@ -474,7 +501,7 @@ wc -l find ./$1 -name &#39;*.java&#39;
              
             
             <li>
-            <a href="%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9B%B8%E5%85%B3.html">密码学相关&nbsp;(5)</a>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(1)</a>
             <p>
             
             </p>
@@ -483,7 +510,7 @@ wc -l find ./$1 -name &#39;*.java&#39;
              
             
             <li>
-            <a href="Ray%20Tracing.html">Ray Tracing&nbsp;(1)</a>
+            <a href="Git.html">Git&nbsp;(10)</a>
             <p>
             
             </p>
@@ -491,8 +518,6 @@ wc -l find ./$1 -name &#39;*.java&#39;
             
              
             
-             
-            
             </p>
             </li>
             
@@ -503,8 +528,7 @@ wc -l find ./$1 -name &#39;*.java&#39;
             
              
             
-            </p>
-            </li>
+             
             
              
             
@@ -522,6 +546,18 @@ wc -l find ./$1 -name &#39;*.java&#39;
           
           
          <li>
+           <a href="16322341811288.html">编写爬虫获取教师账号 校园免费上网</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16319589839018.html">Commit message 规范</a><br>
+         </li>
+          
+          
+          
+         <li>
            <a href="16312407110535.html">MySQL数据库设计规范（仅供参考）</a><br>
          </li>
           
@@ -535,18 +571,6 @@ wc -l find ./$1 -name &#39;*.java&#39;
           
          <li>
            <a href="16304224326131.html">03 | 事务隔离：为什么你改了我还看不见？</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16302079765954.html">02 | 日志系统：一条SQL更新语句是如何执行的？</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16301414327814.html">01 | 基础架构：一条SQL查询语句是如何执行的？</a><br>
          </li>
           
           
