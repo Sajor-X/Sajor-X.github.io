@@ -4,7 +4,7 @@
   <title><![CDATA[Sajor's Blog]]></title>
   <link href="http://565785929.github.io/atom.xml" rel="self"/>
   <link href="http://565785929.github.io/"/>
-  <updated>2021-09-21T22:49:15+08:00</updated>
+  <updated>2021-09-21T23:17:04+08:00</updated>
   <id>http://565785929.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -175,6 +175,135 @@ s.save_id()
 <p><img src="media/16322341811288/16322343717246.jpg" alt=""/></p>
 
 <p>所以说，这都不是事。 还是抓紧时间改改自己的密码吧！</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[复杂度 Big O notation]]></title>
+    <link href="http://565785929.github.io/16321235553115.html"/>
+    <updated>2021-09-20T15:39:15+08:00</updated>
+    <id>http://565785929.github.io/16321235553115.html</id>
+    <content type="html"><![CDATA[
+<ul>
+<li>O( 1 ): Constant Complexity 常数复杂度</li>
+<li>O( logn ): Logarithmic Complexity 对数复杂度</li>
+<li>O( n ): Linear Complexity 线性时间复杂度</li>
+<li>O( n<sup>2</sup> ): N square Complexity 平⽅</li>
+<li>O( n<sup>3</sup> ): N square Complexity 立方</li>
+<li>O( 2<sup>n</sup> ): Exponential Growth 指数</li>
+<li>O( n! ): Factorial 阶乘</li>
+</ul>
+
+<p>O( 1 ) &lt; O( logn ) &lt;  O( n ) &lt; O( nlogn )  &lt; O( n<sup>2</sup> ) &lt; O( n<sup>3</sup> ) &lt; O( 2<sup>n</sup> ) &lt; O( n! ) &lt; O( n<sup>n</sup> )</p>
+
+<p><img src="media/16321235553115/16322368961150.jpg" alt="" style="width:794px;"/></p>
+
+<p>Master Theorem 主定理 递归函数 时间复杂度计算方法<br/>
+<img src="media/16321235553115/16321947691448.jpg" alt="" style="width:754px;"/></p>
+
+<h1 id="toc_0">outliers 异类: 不一样的成功启示录</h1>
+
+<p><img src="media/16321235553115/16322371489779.jpg" alt="" style="width:184px;"/></p>
+
+<ul>
+<li>Chunk it up 切碎知识点</li>
+<li>Deliberate Practicing 刻意练习</li>
+<li>feedback 反馈</li>
+</ul>
+
+<p><a href="http://naotu.baidu.com/file/b832f043e2ead159d584cca4efb19703?token=7a6a56eb2630548c">数据结构脑图</a><br/>
+<a href="http://naotu.baidu.com/file/0a53d3a5343bd86375f348b2831d3610?token=5ab1de1c90d5f3ec">算法脑图</a></p>
+
+<h2 id="toc_1">Chunk it up</h2>
+
+<p>做脑图</p>
+
+<p>来自reddit中ask me anything<br/>
+<img src="media/16321235553115/16321238197078.jpg" alt="" style="width:812px;"/></p>
+
+<h2 id="toc_2">数据结构分类</h2>
+
+<ul>
+<li>一维数据结构
+<ul>
+<li>基础</li>
+<li>数组 array(string)</li>
+<li>链表 linked list</li>
+<li>高级</li>
+<li>栈 stack</li>
+<li>队列 queue</li>
+<li>双端队列 deque(double-ended queue)</li>
+<li>集合 set</li>
+<li>映射 map(hash or map)</li>
+</ul></li>
+<li>二维数据结构
+<ul>
+<li>基础：</li>
+<li>树 tree</li>
+<li>图 graph</li>
+<li>高级：</li>
+<li>二叉搜索树 binary search tree(red-black tree, AVL)</li>
+<li>堆 heap</li>
+<li>并查集 disjoint set</li>
+<li>字典树 trie</li>
+</ul></li>
+<li>特殊数据结构
+<ul>
+<li>位运算 bitwise</li>
+<li>布隆过滤器 BloomFilter</li>
+<li>缓存 LRU Cache</li>
+</ul></li>
+</ul>
+
+<p><strong>切题四件套</strong></p>
+
+<ul>
+<li>Clarification 明确题意</li>
+<li>Possible solutions 思考多种方法
+<ul>
+<li>compare(time/space) 对比复杂度</li>
+<li>optimal 加强优化</li>
+</ul></li>
+<li>Coding 多写</li>
+<li>Test cases 用例</li>
+</ul>
+
+<h1 id="toc_3">LeetCode刷题法</h1>
+
+<h2 id="toc_4">第一遍</h2>
+
+<ul>
+<li>5mins 读题+思考</li>
+<li>直接看解法：比较各个解法优劣</li>
+<li>背诵并默写好的解法<br/>
+## 第二遍</li>
+<li>马上自己写 -&gt; 提交LeetCode</li>
+<li>多种解法比较、体会 -&gt; 优化</li>
+</ul>
+
+<h2 id="toc_5">第三遍</h2>
+
+<ul>
+<li>过了一天之后，再重复做题</li>
+<li>不同解法的熟练程度 -&gt; 专项练习</li>
+</ul>
+
+<h2 id="toc_6">第四遍</h2>
+
+<ul>
+<li>过了一周：反复回来练习不熟练的</li>
+</ul>
+
+<h2 id="toc_7">第五遍</h2>
+
+<ul>
+<li>面试前一周恢复性训练</li>
+</ul>
+
+<p>要看国际站的题解 discuss</p>
+
+<p><a href="https://www.markhneedham.com/blog/2008/09/15/clean-code-book-review/">https://www.markhneedham.com/blog/2008/09/15/clean-code-book-review/</a></p>
 
 ]]></content>
   </entry>
@@ -2237,33 +2366,6 @@ l代表连接
 
 
 </code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[MyBatis 开启自动驼峰转换]]></title>
-    <link href="http://565785929.github.io/15826152154212.html"/>
-    <updated>2020-02-25T15:20:15+08:00</updated>
-    <id>http://565785929.github.io/15826152154212.html</id>
-    <content type="html"><![CDATA[
-<p>在mybatis-config.xml文件中加入此设置</p>
-<?xml version="1.0" encoding="UTF-8" ?>
-<p>&lt;!DOCTYPE configuration<br/><br/>
-PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;<br/><br/>
-&quot;<a href="http://mybatis.org/dtd/mybatis-3-config.dtd%22%3E">http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;</a><br/><br/>
-<configuration><br/><br/>
-    <settings><br/><br/>
-        <setting name="mapUnderscoreToCamelCase" value="true" /><br/><br/>
-    </settings><br/><br/>
-</configuration></p>
-
-<p><img src="media/15826152154212/15826153307445.jpg" alt=""/></p>
-
-<p>参考:<br/>
-<a href="https://yq.aliyun.com/articles/662319">https://yq.aliyun.com/articles/662319</a><br/>
-<a href="https://www.cnblogs.com/pjfmeng/p/7677773.html">https://www.cnblogs.com/pjfmeng/p/7677773.html</a><br/>
-<a href="https://www.cnblogs.com/zhouricong/p/9483099.html">https://www.cnblogs.com/zhouricong/p/9483099.html</a></p>
 
 ]]></content>
   </entry>
