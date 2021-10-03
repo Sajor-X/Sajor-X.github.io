@@ -101,31 +101,73 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15643132029446.html"> 
+						<a href="15647140106325.html"> 
 							<div class="item-desc"> 
-								<p>1、引用 AspectJ jar 包
+								<p>在上一章的基础上，我们还使用c06包接着添加功能。
 
-点击 File&gt;Project Structure...，选中 Libraries，添加 java 引用
-在 lib 中选择 aspectj-1.8.13 文件夹
+1、数据库表准备
+新建一个数据库表:jo􏰀b、j􏰀obresume 并添加几条数据
 
-
-
-
-
-2、创建两个新的包
+jo􏰀b 表
 
 
-com.sajor.study.c03
-test.com.sajor.study.c03
 
 
-3、创建一个业务类 UserXML
+字段名称
+类型
+长度
 
-package com.sajor.study.c03;
 
-public class UserXML {
-    private int id = 20180101;
-    private String name = &q</p> 
+
+
+
+jobid
+int
+11（主键）
+
+
+jobtitle
+varchar
+127
+
+
+
+
+jobresume表
+
+
+
+
+字段名称
+类型
+长度
+
+
+
+
+
+id
+int
+11（主键）
+
+
+jobid
+int
+11
+
+
+resumeid
+int
+11
+
+
+
+
+2、在 model 包中创建 Job 类
+
+package com.sajor.study.c06.model;
+
+import java.util</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -136,7 +178,7 @@ public class UserXML {
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15643132029446.html">从零开始SSM开发系列五：AOP</a>
+	  							<a href="15647140106325.html">从零开始SSM开发系列十一：MyBatis 多对多关联关系</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -163,19 +205,55 @@ public class UserXML {
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15642871336794.html"> 
+						<a href="15647098694474.html"> 
 							<div class="item-desc"> 
-								<p>一、依赖注入
+								<p>在上一章的基础上，我们还使用c06包接着添加功能。
 
-1、新建一个 School 类
-右键 src&gt;main&gt;java&gt;com.sajor.study.c01，点击 New&gt;Java Class
+1、数据库表准备
+新建一个数据库表:resume 并添加几条数据
 
-在 School 中引用 Student 类，并可以获得含有 Student 对象的一个 List:
+resume 表
 
-    private int id = 2000;
-    private String name = &quot;Sajor&quot;;
-    private Student student;
-    private List&lt;Student&gt; students = new ArrayLis</p> 
+
+
+
+字段名称
+类型
+长度
+
+
+
+
+
+resumeid
+int
+11（主键）
+
+
+userid
+int
+11
+
+
+resumename
+varchar
+255
+
+
+resumedesc
+varchar
+255
+
+
+
+
+2、在 model 包中创建 Resume 类
+
+package com.sajor.study.c06.model;
+
+public class Resume {
+    private Integer resumeId;
+    pri</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -186,7 +264,7 @@ public class UserXML {
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15642871336794.html">从零开始SSM开发系列四：依赖注入及 Bean 管理</a>
+	  							<a href="15647098694474.html">从零开始SSM开发系列十：MyBatis 一对多关联关系</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -213,32 +291,31 @@ public class UserXML {
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15642457728170.html"> 
+						<a href="15646739216640.html"> 
 							<div class="item-desc"> 
-								<p>1、新建一个包 com.sajor.study.c01
+								<p>关系型数据库：
 
-打开开发工具 Intellij IDEA，打开之前创建的工程右键 src&gt;main&gt;java&gt;com.sajor.study，点击 New&gt;Package
+Oracle、DB2、Microsoft SQL Server、Microsoft Access、MySQL
 
+非关系型数据库：
 
+NoSql、Cloudant、MongoDb、redis、HBase
 
-创建包 c01
+两种数据库之间的区别：
 
+关系型数据库
 
+　　关系型数据库的特性
 
-2、新建一个 Student 类
-右键 src&gt;main&gt;java&gt;com.sajor.study.c01，点击 New&gt;Java Class
+　　1、关系型数据库，是指采用了关系模型来组织数据的数据库；
 
+　　2、关系型数据库的最大特点就是事务的一致性；
 
+　　3、简单来说，关系模型指的就是二维表格模型，而一个关系型数据库就是由二维表及其之间的联系所组成的一个数据组织。
 
-创建Student类
+　　关系型数据库的优点
 
-
-
-Student 类包含 4 个属性
-
-package com.sajor.study.c01;
-
-public class Stud</p> 
+　　1、容易理解：二维表结构是非常贴近逻辑世界一个</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -249,7 +326,7 @@ public class Stud</p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15642457728170.html">从零开始SSM开发系列三：第一个Spring应用</a>
+	  							<a href="15646739216640.html">列举常见的关系型数据库和非关系型都有那些？</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -260,7 +337,7 @@ public class Stud</p>
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
 								
 		   						</div> 
 		   					</div> 
@@ -276,28 +353,45 @@ public class Stud</p>
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15642432857493.html"> 
+						<a href="15643240518555.html"> 
 							<div class="item-desc"> 
-								<p>创建远程仓库
+								<p>1、数据库表准备
 
-首先申请github账号这个不讲了，然后创建一个项目名为 SSMClass ，信息填写好之后，点击create repository
+新建一个数据库表:card 并添加几条数据
 
-
-
-之后点击Clone or download，选择use ssh，之后复制一下这个链接留作备用
-
-git@github.com:565785929/SSMClass.git
+Card 表
 
 
 
 
-创建本地仓库并远程
+字段名称
+类型
+长度
 
-1、 初始化本地git仓库
-然后使用IDEA打开这个文件夹，点击VCS -&gt; Import into Version Control -&gt; Create Git Repository。 相当于这条git命令
 
-git init
 
+
+
+id
+int
+11（主键）
+
+
+code
+varchar
+18
+
+
+
+
+2、创建新的 Package
+
+
+com.sajor.study.c06
+com.sajor.study.c06.model : 存放 vo 对象(业务模型对象) 
+com.sajor.study.c06.dao : 存放 dao 对象(数据库访问对象) 
+com.sajor.study.mapper : 存放 mybatis 数据库表-对象映射文件 
+test.com.sajor.study.c06 
 </p> 
 							</div> 
 						</a> 
@@ -309,7 +403,7 @@ git init
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15642432857493.html">从零开始SSM开发系列二：GitHub配置（可以跳过）</a>
+	  							<a href="15643240518555.html">从零开始SSM开发系列九：MyBatis 一对一关联关系</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -336,15 +430,24 @@ git init
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15642402893897.html"> 
+						<a href="15643212338496.html"> 
 							<div class="item-desc"> 
-								<p>▪ 官网 http://www.oracle.com/technetwork/java/javaee/overview/index.html java 入门指导
-▪ 博客园 https://www.cnblogs.com/ 开发者的网上家园
-▪ 开源中国 http://www.oschina.net/ 找到想要的开源项目，分享和交流
-▪ CSDN https://www.csdn.net/ 最大的程序员中文社区
-▪ ITPub http://www.itpub.net/ 数据库最好的社区
-▪ iteye http://www.iteye.com/ 曾经最好的java社区
-▪ Stackover</p> 
+								<p>1、配置 MyBatis 开发环境
+
+在工程里面引用 MyBatis 核心 jar 包，以及 MyBatis 依赖的第三方 jar 包。
+点击 File&gt;Project Structure...，选中 Libraries，添加 java 引用
+选择 l􏰀ib 中的 􏰁Mybatis-3.4.5.jar 包。
+
+再次添加 java 引用，选中 lib 中的 mybatis-3.4.5-lib 文件夹
+确认。MyBatis 开发环境即搭建好了。
+
+
+
+2、创建新的 Package
+
+
+com.sajor.study.c05
+com.sajor.study.c05.model:存放 vo </p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -355,7 +458,7 @@ git init
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15642402893897.html">学习资料</a>
+	  							<a href="15643212338496.html">从零开始SSM开发系列八：MyBatis 入门</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -366,7 +469,7 @@ git init
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='java.html'>ssm课程</a>
+			    			<a class='category' href='ssm.html'>SSM练习</a>
 								
 		   						</div> 
 		   					</div> 
@@ -382,35 +485,15 @@ git init
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15642392486315.html"> 
+						<a href="15643155536877.html"> 
 							<div class="item-desc"> 
-								<p>Java 开发环境配置
+								<p>1、Spring 配置文件中声明事务
 
-1、新建 Java 工程
-
-打开开发工具 Intellij IDEA，点击菜单 File &gt; New &gt; Project...
-
-2、配置 JDK
-
-点击右上角“New”按钮，选择 JDK 安装的路径(Windows 与 MacOS 不一样，选择你自己安装 JDK 的 路径)
-
-
-配置好 JDK，点击下一步“Next”
- 
-
-再下一步“Next”
-
-3、设置项目信息
-设置项目存放地址，选择刚刚新建的文件夹。
-
-
-设置项目名称，之后点击完成“Finish”:
-
-选择ok
-
-
-4、拷贝开发 Spring 引用的 jar 包
-在工程根目录创建 lib 目录。右键</p> 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
+   </p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -421,7 +504,7 @@ git init
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15642392486315.html">从零开始SSM开发系列一：JAVA 开发环境配置</a>
+	  							<a href="15643155536877.html">从零开始SSM开发系列七：事务管理</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -491,7 +574,7 @@ git init
              
             
             <li>
-            <a href="Algorithm.html">Algorithm&nbsp;(2)</a>
+            <a href="Algorithm.html">Algorithm&nbsp;(3)</a>
             <p>
             
             </p>
@@ -500,7 +583,7 @@ git init
              
             
             <li>
-            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(1)</a>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(2)</a>
             <p>
             
             </p>
@@ -509,8 +592,13 @@ git init
              
             
             <li>
-            <a href="Git.html">Git&nbsp;(10)</a>
+            <a href="Arts.html">Arts&nbsp;(2)</a>
             <p>
+            
+            </p>
+            </li>
+            
+             
             
             </p>
             </li>
@@ -545,31 +633,31 @@ git init
           
           
          <li>
-           <a href="16322341811288.html">编写爬虫获取教师账号 校园免费上网</a><br>
+           <a href="16332745656703.html">LeetCode 1. 两数之和</a><br>
          </li>
           
           
           
          <li>
-           <a href="16321235553115.html">复杂度 Big O notation</a><br>
+           <a href="16332743074800.html">Arts打卡</a><br>
          </li>
           
           
           
          <li>
-           <a href="16319589839018.html">Commit message 规范</a><br>
+           <a href="16330152348133.html">数据库上线规范</a><br>
          </li>
           
           
           
          <li>
-           <a href="16312407110535.html">MySQL数据库设计规范（仅供参考）</a><br>
+           <a href="16329877758446.html">删除远端 .idea 配置文件</a><br>
          </li>
           
           
           
          <li>
-           <a href="16309452975279.html">04 | 深入浅出索引（上）</a><br>
+           <a href="16324912353122.html">性能优化</a><br>
          </li>
           
           

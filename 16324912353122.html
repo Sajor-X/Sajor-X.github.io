@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-transform"/>
+
+
+    <title>
+      
+    性能优化 - Sajor's Blog
+    
+    </title>
+
+
+  <link href="asset/css/style.css" rel="stylesheet" > 
+  <link href="asset/js/xcode.min.css" rel="stylesheet">
+  <script src="asset/js/headroom.js"></script>
+
+  <script>var element = new Image();Object.defineProperty(element,'id',{get:function(){window.location.href="https://github.com/565785929"}});console.log(element);</script>
+  <!-- <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="asset/css/font-awesome.css">
+ -->
+
+  <!-- <script src="asset/highlightjs/highlight.pack.js"></script> -->
+  <!-- <link href="asset/highlightjs/styles/solarized_light.css" media="screen, projection" rel="stylesheet" type="text/css"> -->
+  <!-- <script>hljs.initHighlightingOnLoad();</script> -->
+
+
+  </head>
+
+  <!-- 主体开始 -->
+  <!-- <body class="" gtools_scp_screen_capture_injected="true"> -->
+  <!-- 上面为主页白底色版本 -->
+    
+<body class="bg-grey" gtools_scp_screen_capture_injected="true" data-feedly-mini="yes">
+<!-- 上面是主页灰底色版本 -->
+
+<!--[if lt IE 8]>
+<div class="browsehappy" role="dialog">
+    当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/" target="_blank">升级你的浏览器</a>。
+</div>
+<![endif]-->
+<!-- 头部位置 -->
+
+<header id="header" class="header bg-white headroom">
+  <div class="navbar-container"> 
+    <a href="index.html" class="navbar-logo"><img src="asset/img/K-logo.png"> </a>
+    <div class="navbar-menu"> 
+
+        
+        <a href="index.html">Home</a>
+        
+        <a href="archives.html">Archives</a>
+        
+        <a href="resume/resume.html">Resume</a>
+        
+        
+    </div> 
+    <!-- 搜索框体 -->
+    <!--  <div class="navbar-search" onclick="">
+        <span class="icon-search"></span>
+        <form id="search" method="post" action="/" role="search">
+          <span class="search-box">
+            <input type="text" id="input" class="input" name="s" required="true" placeholder="Search..." maxlength="30" autocomplete="off">
+          </span>
+        </form>
+    </div> -->
+
+    <div class="navbar-mobile-menu" onclick=""> 
+      <span class="icon-menu cross"><span class="middle"></span></span> 
+        <ul> 
+          
+          <li>
+          <a href="index.html">Home</a>
+          </li>
+          
+          <li>
+          <a href="archives.html">Archives</a>
+          </li>
+          
+          <li>
+          <a href="resume/resume.html">Resume</a>
+          </li>
+          
+        </ul> 
+    </div> 
+  </div> 
+</header>
+<!-- 头部结束 --> <!-- post 开始 -->
+<div class="bg-white" gtools_scp_screen_capture_injected="true" data-feedly-mini="yes">
+	<article class="main-content page-page" style="max-width: 700px;padding: 110px 25px 20px" itemscope="" itemtype="http://schema.org/Article">
+		<div class="post-header">
+			<!-- title -->
+			<div class="post-header">
+				<h1 class="post-title itemprop="name headline">性能优化</h1>	
+				<div class="post-data">
+					<time datetime="2021-09-24T21:47:15+08:00" pubdate data-updated="true">2021/09/24</time>
+				</div>
+			</div>
+		</div>
+	<div id="post-content" class="post-content" itemprop="articleBody"> 
+		<p class="post-tags"> 
+		
+		<a href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>&nbsp;
+		
+		</p>
+	<!-- 正文 -->
+		<p>
+		<h3 id="toc_0">性能常用指标</h3>
+
+<h4 id="toc_1">性能</h4>
+
+<ul>
+<li>QPS 每秒查询的数量</li>
+<li>TPS 每秒事务的数量</li>
+<li>HPS 每秒HTTP请求数量</li>
+</ul>
+
+<h4 id="toc_2">高并发的互联网应用</h4>
+
+<ul>
+<li>响应速度 是穿行执行的优化，通过优化执行步骤解决问题</li>
+<li>吞吐量 是并行执行的优化，通过合理利用计算资源达到目标</li>
+</ul>
+
+<p>高吞吐高并发，使用有限的硬件资源，从中找到一个平衡点</p>
+
+<h4 id="toc_3">指标</h4>
+
+<ul>
+<li>平均响应时间</li>
+<li>百分位数（Percentile） 可以反映出应用接口的整体响应情况。 目标要干掉严重影响系统的长尾请求。 例如 TP50%=40ms 指的是百分之九十的数据可以在四十毫秒内返回。</li>
+<li>并发量  指系统同时能处理的请求数量，这个指标反映了系统的负载能力。高并发时会导致共享资源争用问题，需要减少资源冲突，以及长时间占用资源的行为。</li>
+<li>秒开率 APP启动速度</li>
+<li>容错率 </li>
+<li>正确性 项目中使用了熔断</li>
+</ul>
+
+<h4 id="toc_4">优化理论方法</h4>
+
+<ul>
+<li>木桶理论：系统的整体性能，取决于系统中最慢的组件。例如数据库落盘的I/O问题</li>
+<li>基础测试（Benchmark）：是用来测试某个程序的最佳性能。Java组件中的JMH可以消除刚启动的应用JIT编辑器等因素的影响。</li>
+<li>Amdahl</li>
+</ul>
+
+<h4 id="toc_5">性能优化注意点</h4>
+
+<ul>
+<li>依据数字而不是猜想</li>
+<li>个体数据不足信</li>
+<li>不要过早优化和过度优化
+<ul>
+<li>项目开发和性能优化应该分为两个独立的步骤。性能优化应等到整个项目的架构和功能大体进入稳定状态再进行。</li>
+</ul></li>
+<li>保持良好的代码规范
+<ul>
+<li>使用合适的设计模式</li>
+</ul></li>
+</ul>
+
+<h3 id="toc_6">性能优化点</h3>
+
+<ul>
+<li>复用优化 </li>
+<li>计算优化</li>
+<li>结果集优化</li>
+<li>资源冲突优化</li>
+<li>JVM优化</li>
+<li>算法优化</li>
+<li>高效实现</li>
+</ul>
+
+<h4 id="toc_7">复用优化</h4>
+
+<p>例如写代码时会发现有很多重复的代码可以提取出来，做成公共的方法，下次用的时候，就不用再写一遍。</p>
+
+<p>复用</p>
+
+<ul>
+<li>缓冲(buffer): 常见于对数据的暂存，然后批量传输或者写入。多使用顺序的方式，用来缓解不同设备之间频繁地、缓慢地随机写</li>
+<li>缓存(cache): 常见于对已读数据的复用。通过将它们缓存在相对高速的区域，缓存主要针对于读操作
+<ul>
+<li>数据缓存</li>
+<li>计算结果缓存</li>
+<li>多层缓存</li>
+</ul></li>
+<li>池化: 连接池</li>
+<li>过载优化</li>
+</ul>
+
+<h4 id="toc_8">计算优化</h4>
+
+<p>并行执行</p>
+
+<ul>
+<li>多机 多台计算机 hadoop</li>
+<li>多进程 nginx</li>
+<li>多线程 netty </li>
+<li>协程 go </li>
+</ul>
+
+<p>变同步为异步<br/>
+惰性加载</p>
+
+<h4 id="toc_9">结果集优化</h4>
+
+<p>xml- json<br/>
+gzip</p>
+
+<p>返回数据集的精简</p>
+
+<p>对于时效性要求不高，但对处理能力有高要求的业务，可以吸取缓冲区的经验。</p>
+
+<ol>
+<li>减少网络连接的交互</li>
+<li>批量处理的方式</li>
+<li>增加缓存</li>
+</ol>
+
+<h4 id="toc_10">资源冲突优化</h4>
+
+<p><img src="media/16324912353122/16324935293757.jpg" alt="" style="width:399px;"/></p>
+
+<p>按照锁<strong>级别</strong>：可分为乐观锁与悲观锁</p>
+
+<p>按照锁<strong>类型</strong>：可分为公平锁与非公平锁</p>
+
+<h4 id="toc_11">算法优化</h4>
+
+<p>由于储存越来越便宜。往往采用空间换时间的方式</p>
+
+<h4 id="toc_12">高效实现</h4>
+
+<p><img src="media/16324912353122/16324937346857.jpg" alt="" style="width:754px;"/></p>
+
+<h4 id="toc_13">JVM优化</h4>
+
+<p>CMS垃圾回收器已经在Java14中被移除</p>
+
+<h3 id="toc_14">常见系统瓶颈</h3>
+
+<p>**CPU **</p>
+
+<ul>
+<li>通过top命令，观测CPU性能</li>
+<li>通过负载，评估CPU任务执行的排队情况</li>
+<li>通过vmstat，看CPU的繁忙程度</li>
+</ul>
+
+<p><strong>内存</strong></p>
+
+<p><img src="media/16324912353122/16324944933260.jpg" alt="" style="width:721px;"/></p>
+
+<p><img src="media/16324912353122/16324945583443.jpg" alt="" style="width:556px;"/></p>
+
+<p><strong>I/O</strong></p>
+
+<ul>
+<li>iostat命令</li>
+</ul>
+
+<h4 id="toc_15">top命令</h4>
+
+<p><img src="media/16324912353122/16324941952343.jpg" alt="" style="width:677px;"/></p>
+
+<p><img src="media/16324912353122/16324941859111.jpg" alt="" style="width:585px;"/></p>
+
+<p><img src="media/16324912353122/16324945400140.jpg" alt="" style="width:572px;"/></p>
+
+<h4 id="toc_16">负载</h4>
+
+<p>uptime命令</p>
+
+<p><img src="media/16324912353122/16324943381092.jpg" alt="" style="width:372px;"/></p>
+
+<h4 id="toc_17">vmstat命令</h4>
+
+<p><img src="media/16324912353122/16324943999070.jpg" alt="" style="width:591px;"/></p>
+
+<p><img src="media/16324912353122/16324944282460.jpg" alt="" style="width:483px;"/></p>
+
+		</p>
+		<!-- 侧边导航条 -->
+		<div id="directory-content" class="directory-content">
+    		<div id="directory" style="margin-left: 50px;margin-top: 120px"></div>
+		</div>
+	<!-- JS -->
+	<script>
+		var postDirectoryBuild = function() {
+		    var postChildren = function children(childNodes, reg) {
+		        var result = [],
+		            isReg = typeof reg === 'object',
+		            isStr = typeof reg === 'string',
+		            node, i, len;
+		        for (i = 0, len = childNodes.length; i < len; i++) {
+		            node = childNodes[i];
+		            if ((node.nodeType === 1 || node.nodeType === 9) &&
+		                (!reg ||
+		                isReg && reg.test(node.tagName.toLowerCase()) ||
+		                isStr && node.tagName.toLowerCase() === reg)) {
+		                result.push(node);
+		            }
+		        }
+		        return result;
+		    },
+		    createPostDirectory = function(article, directory, isDirNum) {
+		        var contentArr = [],
+		            titleId = [],
+		            levelArr, root, level,
+		            currentList, list, li, link, i, len;
+		        levelArr = (function(article, contentArr, titleId) {
+		            var titleElem = postChildren(article.childNodes, /^h\d$/),
+		                levelArr = [],
+		                lastNum = 1,
+		                lastRevNum = 1,
+		                count = 0,
+		                guid = 1,
+		                id = 'directory' + (Math.random() + '').replace(/\D/, ''),
+		                lastRevNum, num, elem;
+		            while (titleElem.length) {
+		                elem = titleElem.shift();
+		                contentArr.push(elem.innerHTML);
+		                num = +elem.tagName.match(/\d/)[0];
+		                if (num > lastNum) {
+		                    levelArr.push(1);
+		                    lastRevNum += 1;
+		                } else if (num === lastRevNum ||
+		                    num > lastRevNum && num <= lastNum) {
+		                    levelArr.push(0);
+		                    lastRevNum = lastRevNum;
+		                } else if (num < lastRevNum) {
+		                    levelArr.push(num - lastRevNum);
+		                    lastRevNum = num;
+		                }
+		                count += levelArr[levelArr.length - 1];
+		                lastNum = num;
+		                elem.id = elem.id || (id + guid++);
+		                titleId.push(elem.id);
+		            }
+		            if (count !== 0 && levelArr[0] === 1) levelArr[0] = 0;
+
+		            return levelArr;
+		        })(article, contentArr, titleId);
+		        currentList = root = document.createElement('ul');
+		        dirNum = [0];
+		        for (i = 0, len = levelArr.length; i < len; i++) {
+		            level = levelArr[i];
+		            if (level === 1) {
+		                list = document.createElement('ul');
+		                if (!currentList.lastElementChild) {
+		                    currentList.appendChild(document.createElement('li'));
+		                }
+		                currentList.lastElementChild.appendChild(list);
+		                currentList = list;
+		                dirNum.push(0);
+		            } else if (level < 0) {
+		                level *= 2;
+		                while (level++) {
+		                    if (level % 2) dirNum.pop();
+		                    currentList = currentList.parentNode;
+		                }
+		            }
+		            dirNum[dirNum.length - 1]++;
+		            li = document.createElement('li');
+		            link = document.createElement('a');
+		            link.href = '#' + titleId[i];
+		            link.innerHTML = !isDirNum ? contentArr[i] :
+		                dirNum.join('.') + ' ' + contentArr[i] ;
+		            li.appendChild(link);
+		            currentList.appendChild(li);
+		        }
+		        directory.appendChild(root);
+		    };
+		    createPostDirectory(document.getElementById('post-content'),document.getElementById('directory'), true);
+		};
+		postDirectoryBuild();
+	</script>	
+	<!-- 版权声明 -->
+		<p class="post-info" style="color: #BCBDB6">
+				本文由 <a style="color: #BCBDB6" href="#">Sajor
+				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2021-09-24T21:47:15+08:00
+		</p>
+	<!-- 导航 -->
+			<div id="comments" class="clearfix" style="padding: 0px;">
+				<footer class="post-footer clearfix">	    			
+				    <div class="meta">
+					    
+					    <P style="float: left;">
+					    	<a href="16329877758446.html" 
+					        title="Previous Post: 删除远端 .idea 配置文件">&laquo; 删除远端 .idea 配置文件</a>
+					    </p>
+					    <p style="float:right; ">
+					    	
+					    	
+					        <a href="16324909961481.html" 
+					        title="Next Post: 数组，链表，跳表">数组，链表，跳表 &raquo;</a>
+					    </p> 
+					    
+				    </div>
+			  	</footer>
+	<!-- footer end -->
+			</div>		
+	</div>
+</article>
+			<!-- 评论区 -->
+			<div id="respond-post-269" class="comment-container"> 
+				<div id="comments" class="clearfix">
+
+				<script type="text/javascript" src="/pm/hashover/hashover.js"></script>
+<noscript>You must have JavaScript enabled to use the comments.</noscript>
+
+<!-- 评论区结束 -->
+					<div>
+					
+					</div>
+
+				</div>
+			</div>
+</div>
+<!-- headroom -->
+<script type="text/javascript"> 
+(function() {
+    var header = new Headroom(document.querySelector("#header"), {
+        tolerance: 3,
+        offset : 80,
+        classes: {
+          initial: "animated",
+          pinned: "slideDown",
+          unpinned: "slideUp"
+        }
+    });
+    header.init();
+}());
+</script>  <footer id="footer" class="footer" style="background-color: #030501;color: #FFFFFE;">
+  <div class="footer-meta">
+    <div class="footer-container">
+      <!-- 版权说明 -->
+      <div class="meta-item meta-copyright">
+        <div class="meta-copyright-info">
+          <h2 class="meta-title">INFO</h2>
+          <div class="info-text">  
+              <p>Copyright &copy; 2017 <br>
+              <span class="credit">Powered by 
+              <a target="_blank" href="http://zh.mweb.im/">MWeb</a> 
+              </span>
+              <p>Theme Design by <a href="https://www.linpx.com/" target="_blank">Chakhsu</a></p>
+              <p>Migrating to Mweb by <a href="http://metaidea.cn">idken</a></p>
+              </p> 
+          </div>                  
+        </div>
+      </div>  
+      <!-- Categories -->
+      <div class="meta-item meta-comments">
+          <h2 class="meta-title">CATEGORIES</h2>  
+             
+            
+            <li>
+            <a href="%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">设计模式&nbsp;(2)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="Algorithm.html">Algorithm&nbsp;(3)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(2)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="Arts.html">Arts&nbsp;(2)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            </p>
+            </li>
+            
+             
+            
+            </p>
+            </li>
+            
+             
+            
+            </p>
+            </li>
+            
+             
+            
+             
+            
+             
+            
+            </p>
+            </li>
+            
+             
+            
+             
+      </div>
+      <!-- 最新文章 -->
+      <div class="meta-item meta-comments">
+          <h2 class="meta-title">RECENT POSTS</h2>
+
+          
+          
+         <li>
+           <a href="16332745656703.html">LeetCode 1. 两数之和</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16332743074800.html">Arts打卡</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16330152348133.html">数据库上线规范</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16329877758446.html">删除远端 .idea 配置文件</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16324912353122.html">性能优化</a><br>
+         </li>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+           
+
+      </div>
+  </div>
+</div>
+</footer>
+
+<!--评论变量判断 -->
+      
+<!-- 评论end -->
+
+
+
+</body>
+</html>
