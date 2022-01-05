@@ -10,7 +10,7 @@
 
     <title>
       
-    排序算法 - Sajor's Blog
+    排序算法 与 时间复杂度 Big O notation - Sajor's Blog
     
     </title>
 
@@ -95,7 +95,7 @@
 		<div class="post-header">
 			<!-- title -->
 			<div class="post-header">
-				<h1 class="post-title itemprop="name headline">排序算法</h1>	
+				<h1 class="post-title itemprop="name headline">排序算法 与 时间复杂度 Big O notation</h1>	
 				<div class="post-data">
 					<time datetime="2019-08-05T21:11:31+08:00" pubdate data-updated="true">2019/08/05</time>
 				</div>
@@ -109,7 +109,32 @@
 		</p>
 	<!-- 正文 -->
 		<p>
-		<h2 id="toc_0">排序算法说明</h2>
+		<h2 id="toc_0">时间复杂度</h2>
+
+<ul>
+<li>O( 1 ): Constant Complexity 常数复杂度</li>
+<li>O( logn ): Logarithmic Complexity 对数复杂度</li>
+<li>O( n ): Linear Complexity 线性时间复杂度</li>
+<li>O( n<sup>2</sup> ): N square Complexity 平⽅</li>
+<li>O( n<sup>3</sup> ): N square Complexity 立方</li>
+<li>O( 2<sup>n</sup> ): Exponential Growth 指数</li>
+<li>O( n! ): Factorial 阶乘</li>
+</ul>
+
+<p><img src="media/16321235553115/16341386966524.jpg" alt="" style="width:939px;"/></p>
+
+<p>O( 1 ) &lt; O( logn ) &lt;  O( n ) &lt; O( nlogn )  &lt; O( n<sup>2</sup> ) &lt; O( n<sup>3</sup> ) &lt; O( 2<sup>n</sup> ) &lt; O( n! ) &lt; O( n<sup>n</sup> )</p>
+
+<p>Master Theorem 主定理 递归函数 时间复杂度计算方法<br/>
+<img src="media/16321235553115/16324968871790.jpg" alt="" style="width:696px;"/></p>
+
+<p>来源：<a href="https://www.bigocheatsheet.com/">Big-O Cheat Sheet</a></p>
+
+<h2 id="toc_1">各个排序算法的时间复杂度</h2>
+
+<p><img src="media/15650106911020/16341386661064.jpg" alt="" style="width:565px;"/></p>
+
+<h2 id="toc_2">排序算法说明</h2>
 
 <ol>
 <li>排序的定义<br/>
@@ -137,7 +162,7 @@ Out-place: 占用额外内存</p></li>
 非比较排序时间复杂度底，但由于非比较排序需要占用空间来确定唯一位置。所以对数据规模和数据分布有一定的要求。</p></li>
 </ol>
 
-<h2 id="toc_1">排序算法</h2>
+<h2 id="toc_3">排序算法</h2>
 
 <p>首先定义一个接口 <code>void X_Sort ( ElementType A[], int N )</code><br/>
 本文为简单起见，大多数情况下，讨论<strong>从小大的整数</strong>排序</p>
@@ -150,7 +175,7 @@ Out-place: 占用额外内存</p></li>
 <li>没有一种排序是任何情况下 都表现最好的</li>
 </ul>
 
-<h3 id="toc_2">冒泡排序(Bubble Sort)</h3>
+<h3 id="toc_4">冒泡排序(Bubble Sort)</h3>
 
 <p>冒泡排序每次比较相邻两个数，<code>A[i] &gt; A[i + 1]</code> 则交换位置。可以确定的是，在经过一趟排序后，整个序列的最大值一定被放到了数组的最后一位。所以只需要进行N-1次循环则可以将整个序列都排好。<br/>
 <img src="media/15650106911020/140153i7562exzjrnagaja.gif" alt="140153i7562exzjrnagaja"/></p>
@@ -188,7 +213,7 @@ Out-place: 占用额外内存</p></li>
 <p>最好情况：顺序T = O( N ) <br/>
 最坏情况：逆序T = O( N<sup>2</sup> )</p>
 
-<h3 id="toc_3">插入排序</h3>
+<h3 id="toc_5">插入排序</h3>
 
 <p>像玩牌一样，一张一张摸牌，从后往前依次比较手中有序的序列，将抽到的牌插入到第一张小于这张牌的后面。其余的牌向后错一位。<br/>
 <img src="media/15650106911020/140155h0at131fkz33j1af.gif" alt="140155h0at131fkz33j1af"/></p>
@@ -231,7 +256,7 @@ Out-place: 占用额外内存</p></li>
 <li>每次交换相隔较远的2个元素!</li>
 </ul>
 
-<h3 id="toc_4">希尔排序</h3>
+<h3 id="toc_6">希尔排序</h3>
 
 <p>定义增量序列 DM &gt; DM-1 &gt; … &gt; D1 = 1<br/>
 对每个 Dk 进行“Dk-间隔”排序( k = M, M-1, … 1 )<br/>
@@ -456,7 +481,7 @@ Out-place: 占用额外内存</p></li>
              
             
             <li>
-            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(2)</a>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(5)</a>
             <p>
             
             </p>
@@ -465,8 +490,18 @@ Out-place: 占用额外内存</p></li>
              
             
             <li>
-            <a href="Arts.html">Arts&nbsp;(2)</a>
+            <a href="Arts.html">Arts&nbsp;(3)</a>
             <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            </p>
+            </li>
+            
+             
             
             </p>
             </li>
@@ -506,31 +541,31 @@ Out-place: 占用额外内存</p></li>
           
           
          <li>
-           <a href="16332745656703.html">LeetCode 1. 两数之和</a><br>
+           <a href="16413527990433.html">Vim 跳转技巧</a><br>
          </li>
           
           
           
          <li>
-           <a href="16332743074800.html">Arts打卡</a><br>
+           <a href="16408435425370.html">tmux</a><br>
          </li>
           
           
           
          <li>
-           <a href="16330152348133.html">数据库上线规范</a><br>
+           <a href="16405110285297.html">JVM 内存模型</a><br>
          </li>
           
           
           
          <li>
-           <a href="16329877758446.html">删除远端 .idea 配置文件</a><br>
+           <a href="16405090873022.html">JVM 类加载器</a><br>
          </li>
           
           
           
          <li>
-           <a href="16324912353122.html">性能优化</a><br>
+           <a href="16405067982525.html">JVM 字节码</a><br>
          </li>
           
           

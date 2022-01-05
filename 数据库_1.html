@@ -98,12 +98,261 @@
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16304224326131/16306006330934.jpg);">
+						
+						</div> 
+						<a href="16304224326131.html"> 
+							<div class="item-desc"> 
+								<p>
+
+隔离性与隔离级别
+
+
+脏读
+
+
+幻读
+
+
+不可重复读
+
+
+
+
+SQL标准的事务隔离级别包括：
+
+
+案例
+
+
+事务隔离的实现
+
+
+可重复读
+
+
+事务的启动方式
+
+
+
+
+
+
+
+来自MySQL实战45讲
+
+
+隔离性与隔离级别
+
+提到事务，你肯定会想到ACID：
+
+
+原子性（Atomicity）
+一致性（Consistency）
+隔离性（Isolation）
+持久性（Durability）
+
+
+今天我们就来说说其中I，也就是“隔离性”。
+
+当数据库上有多个事务同时执行的时候，就可能出现：
+
+
+脏读（dirty read）
+不可重复读（non-repeatable read）
+幻读（phantom </p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16304224326131.html">03 | 事务隔离：为什么你改了我还看不见？</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='MySQL.html'>MySQL</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16302079765954/16302100687432.jpg);">
+						
+						</div> 
+						<a href="16302079765954.html"> 
+							<div class="item-desc"> 
+								<p>
+
+redo log（重做日志）
+
+
+binlog（归档日志）
+
+
+两阶段提交
+
+
+
+
+redo log 和 binlog 区别
+
+
+
+
+
+来自MySQL实战45讲
+
+
+与查询流程不一样的是，更新流程还涉及两个重要的日志模块，它们正是我们今天要讨论的主角：
+
+redo log（重做日志）
+
+redo log为InnoDB特有的日志，用来保证即使数据库发生异常重启，之前提交的记录都不会丢失，这个能力称为crash-safe。
+
+WAL技术，WAL的全称是Write-Ahead Logging，它的关键点就是先写日志，再写磁盘。具体来说，当有一条记录需要更新的时候，InnoDB引擎就会先把记录写到</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16302079765954.html">02 | 日志系统：一条SQL更新语句是如何执行的？</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='MySQL.html'>MySQL</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16301414327814/16301415100109.jpg);">
+						
+						</div> 
+						<a href="16301414327814.html"> 
+							<div class="item-desc"> 
+								<p>
+
+Server层
+
+
+连接器
+
+
+查询缓存
+
+
+分析器
+
+
+优化器
+
+
+执行器
+
+
+
+
+存储引擎
+
+
+
+
+
+来自MySQL实战45讲
+
+
+MySQL的逻辑架构图
+
+
+大体来说，MySQL可以分为Server层和存储引擎层两部分。
+
+Server层
+
+包括连接器、查询缓存、分析器、优化器、执行器等，涵盖MySQL的大多数核心服务功能，以及所有的内置函数（如日期、时间、数学和加密函数等），所有跨存储引擎的功能都在这一层实现，比如存储过程、触发器、视图等。
+
+连接器
+
+第一步，你会先连接到这个数据库上，这时候接待你的就是连接器。连接器负责跟客户端建立连接、获取权限、维持和管理连接。连接命令一般是这</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16301414327814.html">01 | 基础架构：一条SQL查询语句是如何执行的？</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='MySQL.html'>MySQL</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
 						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16022150270617/16125316270697.jpg);">
 						
 						</div> 
 						<a href="16022150270617.html"> 
 							<div class="item-desc"> 
-								<p>问题：
+								<p>无法设置0000-00-00默认日期
+
+问题：
 
 
 
@@ -123,9 +372,7 @@ select @@sql_mode;
 ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
 
 
-NO_ZERO_IN_DATE,NO_ZERO_DATE是无法默认为‘0000-00-00 00:00:00’的根源，去掉之后再次新建表就可以了
-
-</p> 
+NO_ZERO_IN_DATE,NO_ZERO_DATE是无法默认为‘0000-00-00 00:00:00</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -136,7 +383,7 @@ NO_ZERO_IN_DATE,NO_ZERO_DATE是无法默认为‘0000-00-00 00:00:00’的根源
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16022150270617.html">mysql5.7 无法设置0000-00-00默认日期</a>
+	  							<a href="16022150270617.html">mysql5.7 常见问题</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -311,175 +558,6 @@ information_sc</p>
 		   				</div> 
    					</div>
  				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15754473183515.html"> 
-							<div class="item-desc"> 
-								<p>缓存数据
-
-最常用，对经常需要查询且变动不是很频繁的数据
-
-排行榜应用
-
-利用Redis的有序集合zset，每次插入数据时自动调整顺序值，根据插入时的score值将value按一定顺序连续排列。
-
-计数器应用
-
-利用Redis的incr、decr命令进行原子性操作，来构建计数系统
-比如在一个web应用程序中，如果想知道用户在一年中每天的点击量，只要将用户id和相关日期信息作为键，并在每次用户点击页面时，执行一次自增操作即可。
-
-数据去重
-
-当需要存储一个列表数据，又不希望出现重复数据时，可以使用Redis的Set数据结构
-set内部实现是一个value永远是null的hashmap，通过has</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15754473183515.html">Redis使用场景</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Redis.html'>Redis</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15754418238619.html"> 
-							<div class="item-desc"> 
-								<p>
-可靠性低：如果数据走云盘做高可靠存储容易受网络波动干扰，如果不走云盘宕机数据易丢失，自建多副本运维很复杂，而且Redis本身的断网导致的全量同步机制对网络和运维的要求极高；
-可用性低：自建单副本无法保证可用性，多副本对心跳检查和链路切换要求极高，传统的sentinel有很多缺陷，在执行复杂的keys flushdb等命令时很容易造成误切和雪崩；
-诸多限制：自建集群方案如redis cluster，codis也有诸多限制，redis cluster需要smart client和非常
-
-
-键值设计
-
-key名设计
-
-可读性和可管理性
-
-以业务名(或数据库名)为前缀(防止key冲突)，用冒号分隔，</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15754418238619.html">自建redis集群规范</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Redis.html'>Redis</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15754270430043.html"> 
-							<div class="item-desc"> 
-								<p>首先安装redis
-brew install redis
-
-将/usr/local/redis/bin
-建立redis-cluster文件夹，复制六份， 三主三备份， 分别叫redis01-redis-06
-
-
-将每个文件夹中的redis.conf都修改一下
-例如： redis01/redis.conf
-
-port 7001
-
-cluster-enabled yes
-
-cluster-config-file  nodes_7001.conf  
-
-cluster-node-timeout  15000 
-
-pidfile  /var/run/redis_7001.pid
-
-
-redis02-r</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15754270430043.html">redis 集群</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Redis.html'>Redis</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
  			 
 		</div>
 	</div>
@@ -540,7 +618,7 @@ redis02-r</p>
              
             
             <li>
-            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(2)</a>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(5)</a>
             <p>
             
             </p>
@@ -549,8 +627,18 @@ redis02-r</p>
              
             
             <li>
-            <a href="Arts.html">Arts&nbsp;(2)</a>
+            <a href="Arts.html">Arts&nbsp;(3)</a>
             <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            </p>
+            </li>
+            
+             
             
             </p>
             </li>
@@ -590,31 +678,31 @@ redis02-r</p>
           
           
          <li>
-           <a href="16332745656703.html">LeetCode 1. 两数之和</a><br>
+           <a href="16413527990433.html">Vim 跳转技巧</a><br>
          </li>
           
           
           
          <li>
-           <a href="16332743074800.html">Arts打卡</a><br>
+           <a href="16408435425370.html">tmux</a><br>
          </li>
           
           
           
          <li>
-           <a href="16330152348133.html">数据库上线规范</a><br>
+           <a href="16405110285297.html">JVM 内存模型</a><br>
          </li>
           
           
           
          <li>
-           <a href="16329877758446.html">删除远端 .idea 配置文件</a><br>
+           <a href="16405090873022.html">JVM 类加载器</a><br>
          </li>
           
           
           
          <li>
-           <a href="16324912353122.html">性能优化</a><br>
+           <a href="16405067982525.html">JVM 字节码</a><br>
          </li>
           
           

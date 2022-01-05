@@ -101,35 +101,29 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15642392486315.html"> 
+						<a href="15647285252626.html"> 
 							<div class="item-desc"> 
-								<p>Java 开发环境配置
+								<p>1、引用 MyBatis-Spring 集成 jar 包
 
-1、新建 Java 工程
+在工程中引用 mybatis-spring-1.3.1.jar包
 
-打开开发工具 Intellij IDEA，点击菜单 File &gt; New &gt; Project...
-
-2、配置 JDK
-
-点击右上角“New”按钮，选择 JDK 安装的路径(Windows 与 MacOS 不一样，选择你自己安装 JDK 的 路径)
+点击 File&gt;Project Structure...，选中 Libraries，添加 java 引用
 
 
-配置好 JDK，点击下一步“Next”
- 
 
-再下一步“Next”
-
-3、设置项目信息
-设置项目存放地址，选择刚刚新建的文件夹。
+2、创建新的 Package
 
 
-设置项目名称，之后点击完成“Finish”:
+com.sajor.study.c07
+com.sajor.study.c07.dao 
+test.com.sajor.study.c07
 
-选择ok
 
+3、在 dao 包中创建一个 User 类
 
-4、拷贝开发 Spring 引用的 jar 包
-在工程根目录创建 lib 目录。右键</p> 
+在类中声明id、name、sex和email属性，及其对应的getter/setter方法。
+
+package com.sajor</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -140,7 +134,7 @@
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15642392486315.html">从零开始SSM开发系列一：JAVA 开发环境配置</a>
+	  							<a href="15647285252626.html">从零开始SSM开发系列十二：使用 DAO 方式整合 MyBatis-Spring</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -167,17 +161,73 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15641490587108.html"> 
+						<a href="15647140106325.html"> 
 							<div class="item-desc"> 
-								<p>今天博客突然报了这个错误：
+								<p>在上一章的基础上，我们还使用c06包接着添加功能。
 
-Packet for query is too large (5,215 &gt; 1,024). You can change this value on the server by setting the &#39;max_allowed_packet&#39; variable.
+1、数据库表准备
+新建一个数据库表:jo􏰀b、j􏰀obresume 并添加几条数据
+
+jo􏰀b 表
 
 
-百度了一下，MySQL会根据配置文件会限制server接受的数据包的大小。如果写入大数据时，因为默认的配置太小，插入和更新操作会因为 max_allowed_packet 参数限制，而导致失败。
-在MySQL中输入这条命令查询
 
-SHOW VARIABLES LIKE &#39</p> 
+
+字段名称
+类型
+长度
+
+
+
+
+
+jobid
+int
+11（主键）
+
+
+jobtitle
+varchar
+127
+
+
+
+
+jobresume表
+
+
+
+
+字段名称
+类型
+长度
+
+
+
+
+
+id
+int
+11（主键）
+
+
+jobid
+int
+11
+
+
+resumeid
+int
+11
+
+
+
+
+2、在 model 包中创建 Job 类
+
+package com.sajor.study.c06.model;
+
+import java.util</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -188,7 +238,7 @@ SHOW VARIABLES LIKE &#39</p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15641490587108.html">在使用Mybatis generator时提示MySQL写入过大</a>
+	  							<a href="15647140106325.html">从零开始SSM开发系列十一：MyBatis 多对多关联关系</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -199,9 +249,7 @@ SHOW VARIABLES LIKE &#39</p>
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
-								
-			    			<a class='category' href='MySQL.html'>MySQL</a>
+			    			<a class='category' href='ssm.html'>SSM练习</a>
 								
 		   						</div> 
 		   					</div> 
@@ -217,19 +265,55 @@ SHOW VARIABLES LIKE &#39</p>
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15638863087177.html"> 
+						<a href="15647098694474.html"> 
 							<div class="item-desc"> 
-								<p>数据库命令规范
+								<p>在上一章的基础上，我们还使用c06包接着添加功能。
+
+1、数据库表准备
+新建一个数据库表:resume 并添加几条数据
+
+resume 表
 
 
-所有数据库对象名称必须使用小写字母并用下划线分割
-所有数据库对象名称禁止使用 MySQL 保留关键字（如果表名中包含关键字查询时，需要将其用单引号括起来）
-数据库对象的命名要能做到见名识意，并且最后不要超过 32 个字符
-临时库表必须以 tmp_为前缀并以日期为后缀，备份表必须以 bak_为前缀并以日期 (时间戳) 为后缀
-所有存储相同数据的列名和列类型必须一致（一般作为关联列，如果查询时关联列类型不一致会自动进行数据类型隐式转换，会造成列上的索引失效，导致查询效率降低）
-## 数据库基本设计规范
-### 所有表必须使用 Innodb 存储引擎
-没有特殊要求（即 Innod</p> 
+
+
+字段名称
+类型
+长度
+
+
+
+
+
+resumeid
+int
+11（主键）
+
+
+userid
+int
+11
+
+
+resumename
+varchar
+255
+
+
+resumedesc
+varchar
+255
+
+
+
+
+2、在 model 包中创建 Resume 类
+
+package com.sajor.study.c06.model;
+
+public class Resume {
+    private Integer resumeId;
+    pri</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -240,7 +324,7 @@ SHOW VARIABLES LIKE &#39</p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15638863087177.html">MySQL高性能优化规范建议</a>
+	  							<a href="15647098694474.html">从零开始SSM开发系列十：MyBatis 一对多关联关系</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -251,9 +335,7 @@ SHOW VARIABLES LIKE &#39</p>
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
-								
-			    			<a class='category' href='MySQL.html'>MySQL</a>
+			    			<a class='category' href='ssm.html'>SSM练习</a>
 								
 		   						</div> 
 		   					</div> 
@@ -269,27 +351,107 @@ SHOW VARIABLES LIKE &#39</p>
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15637994923865.html"> 
+						<a href="15646739216640.html"> 
 							<div class="item-desc"> 
-								<p>安装Python36
+								<p>关系型数据库：
 
-yum -y install sudo
-sudo yum -y install epel-release
-sudo yum -y update
-sudo yum -y install python36
-python3.6 -m venv py36env
-source py36env/bin/activate
+Oracle、DB2、Microsoft SQL Server、Microsoft Access、MySQL
 
-缺少python.h
+非关系型数据库：
 
-yum search python3-devel
-sudo yum install -y python3-devel.x86_64 
+NoSql、Cloudant、MongoDb、redis、HBase
 
-监控
+两种数据库之间的区别：
 
-pip install memory_profiler
-pip install psutil
+关系型数据库
 
+　　关系型数据库的特性
+
+　　1、关系型数据库，是指采用了关系模型来组织数据的数据库；
+
+　　2、关系型数据库的最大特点就是事务的一致性；
+
+　　3、简单来说，关系模型指的就是二维表格模型，而一个关系型数据库就是由二维表及其之间的联系所组成的一个数据组织。
+
+　　关系型数据库的优点
+
+　　1、容易理解：二维表结构是非常贴近逻辑世界一个</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15646739216640.html">列举常见的关系型数据库和非关系型都有那些？</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="15643240518555.html"> 
+							<div class="item-desc"> 
+								<p>1、数据库表准备
+
+新建一个数据库表:card 并添加几条数据
+
+Card 表
+
+
+
+
+字段名称
+类型
+长度
+
+
+
+
+
+id
+int
+11（主键）
+
+
+code
+varchar
+18
+
+
+
+
+2、创建新的 Package
+
+
+com.sajor.study.c06
+com.sajor.study.c06.model : 存放 vo 对象(业务模型对象) 
+com.sajor.study.c06.dao : 存放 dao 对象(数据库访问对象) 
+com.sajor.study.mapper : 存放 mybatis 数据库表-对象映射文件 
+test.com.sajor.study.c06 
 </p> 
 							</div> 
 						</a> 
@@ -301,7 +463,7 @@ pip install psutil
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15637994923865.html">Linux Top Tips</a>
+	  							<a href="15643240518555.html">从零开始SSM开发系列九：MyBatis 一对一关联关系</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -312,7 +474,7 @@ pip install psutil
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
+			    			<a class='category' href='ssm.html'>SSM练习</a>
 								
 		   						</div> 
 		   					</div> 
@@ -328,15 +490,24 @@ pip install psutil
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15637970931428.html"> 
+						<a href="15643212338496.html"> 
 							<div class="item-desc"> 
-								<p>今天做java练习的时候发现这个BigDecimal和double一样不准，本来以为也是个辣鸡东西，后来翻了一下api文档，发现了这个，原来是我的打开方式不对。
+								<p>1、配置 MyBatis 开发环境
 
-BigDecimal
-public BigDecimal(double val)将 double 转换为 BigDecimal，后者是 double 的二进制浮点值准确的十进制表示形式。返回的 BigDecimal 的标度是使 (\(10^{scale} × val\)) 为整数的最小值。 
+在工程里面引用 MyBatis 核心 jar 包，以及 MyBatis 依赖的第三方 jar 包。
+点击 File&gt;Project Structure...，选中 Libraries，添加 java 引用
+选择 l􏰀ib 中的 􏰁Mybatis-3.4.5.jar 包。
 
-注： 
-此构造方法的结果有一定的不可预知性。有人可能认为在 Java 中写入 new BigDecimal(0.1) 所创建的 BigDec</p> 
+再次添加 java 引用，选中 lib 中的 mybatis-3.4.5-lib 文件夹
+确认。MyBatis 开发环境即搭建好了。
+
+
+
+2、创建新的 Package
+
+
+com.sajor.study.c05
+com.sajor.study.c05.model:存放 vo </p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -347,7 +518,7 @@ public BigDecimal(double val)将 double 转换为 BigDecimal，后者是 double 
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15637970931428.html">Java BigDecimal精度问题</a>
+	  							<a href="15643212338496.html">从零开始SSM开发系列八：MyBatis 入门</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -358,61 +529,7 @@ public BigDecimal(double val)将 double 转换为 BigDecimal，后者是 double 
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E8%AF%AD%E6%B3%95%E7%B1%BB.html'>语法类</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15518630086345.html"> 
-							<div class="item-desc"> 
-								<p>Redis 简介
-
-Redis 是完全开源免费的，遵守BSD协议，是一个高性能的key-value数据库。
-
-Redis 与其他 key - value 缓存产品有以下三个特点：
-
-
-Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。
-Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。
-Redis支持数据的备份，即master-slave模式的数据备份。
-
-
-Redis 数据类型
-
-Redis支持五种数据类型：string（字符串），hash（哈希），list（列表），set（集合）</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15518630086345.html">Redis</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
+			    			<a class='category' href='ssm.html'>SSM练习</a>
 								
 		   						</div> 
 		   					</div> 
@@ -480,7 +597,7 @@ Redis支持五种数据类型：string（字符串），hash（哈希），list�
              
             
             <li>
-            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(2)</a>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(5)</a>
             <p>
             
             </p>
@@ -489,8 +606,18 @@ Redis支持五种数据类型：string（字符串），hash（哈希），list�
              
             
             <li>
-            <a href="Arts.html">Arts&nbsp;(2)</a>
+            <a href="Arts.html">Arts&nbsp;(3)</a>
             <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            </p>
+            </li>
+            
+             
             
             </p>
             </li>
@@ -530,31 +657,31 @@ Redis支持五种数据类型：string（字符串），hash（哈希），list�
           
           
          <li>
-           <a href="16332745656703.html">LeetCode 1. 两数之和</a><br>
+           <a href="16413527990433.html">Vim 跳转技巧</a><br>
          </li>
           
           
           
          <li>
-           <a href="16332743074800.html">Arts打卡</a><br>
+           <a href="16408435425370.html">tmux</a><br>
          </li>
           
           
           
          <li>
-           <a href="16330152348133.html">数据库上线规范</a><br>
+           <a href="16405110285297.html">JVM 内存模型</a><br>
          </li>
           
           
           
          <li>
-           <a href="16329877758446.html">删除远端 .idea 配置文件</a><br>
+           <a href="16405090873022.html">JVM 类加载器</a><br>
          </li>
           
           
           
          <li>
-           <a href="16324912353122.html">性能优化</a><br>
+           <a href="16405067982525.html">JVM 字节码</a><br>
          </li>
           
           

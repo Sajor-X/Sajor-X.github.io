@@ -10,7 +10,7 @@
 
     <title>
       
-    mysql5.7 无法设置0000-00-00默认日期 - Sajor's Blog
+    mysql5.7 常见问题 - Sajor's Blog
     
     </title>
 
@@ -95,7 +95,7 @@
 		<div class="post-header">
 			<!-- title -->
 			<div class="post-header">
-				<h1 class="post-title itemprop="name headline">mysql5.7 无法设置0000-00-00默认日期</h1>	
+				<h1 class="post-title itemprop="name headline">mysql5.7 常见问题</h1>	
 				<div class="post-data">
 					<time datetime="2020-10-09T11:43:47+08:00" pubdate data-updated="true">2020/10/09</time>
 				</div>
@@ -109,14 +109,16 @@
 		</p>
 	<!-- 正文 -->
 		<p>
-		<p>问题：<br/>
+		<h2 id="toc_0">无法设置0000-00-00默认日期</h2>
+
+<p>问题：<br/>
 <img src="media/16022150270617/16125316270697.jpg" alt=""/></p>
 
 <p><img src="media/16022150270617/16125316380058.jpg" alt=""/></p>
 
 <p>使用命令行。navicat不好使</p>
 
-<h2 id="toc_0">解决方案：</h2>
+<h2 id="toc_1">解决方案：</h2>
 
 <p>使用root登陆数据库</p>
 
@@ -134,14 +136,14 @@
 
 <p><code>SET GLOBAL sql_mode=&#39;ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION&#39;;</code></p>
 
-<h2 id="toc_1">注：</h2>
+<h2 id="toc_2">注：</h2>
 
 <p>NO_ZERO_IN_DATE：在严格模式下，不允许日期和月份为零<br/>
 NO_ZERO_DATE：设置该值，mysql数据库不允许插入零日期，插入零日期会抛出错误而不是警告。</p>
 
 <p>测试新建表，ok。可以了。</p>
 
-<h2 id="toc_2">终极解决方案</h2>
+<h2 id="toc_3">终极解决方案</h2>
 
 <p>修改my.ini配置文件直接修改启动sql_mode<br/>
 在[mysqld]下添加<br/>
@@ -160,6 +162,18 @@ net start mysql
 </code></pre>
 
 <p><img src="media/16022150270617/16125316826946.jpg" alt=""/></p>
+
+<h2 id="toc_4">MySql报错only_full_group_by的解决办法</h2>
+
+<p>上同，去掉ONLY_FULL_GROUP_BY即可。</p>
+
+<p>mac端，配置文件可以如此查看。</p>
+
+<pre class="line-numbers"><code class="language-bash">mysql --help | grep &#39;my.cnf&#39;
+</code></pre>
+
+<p>另：<br/>
+可以在查询字段上使用<a href="https://blog.csdn.net/u014079773/article/details/93722761">any_value(field) 函数</a></p>
 
 		</p>
 		<!-- 侧边导航条 -->
@@ -355,7 +369,7 @@ net start mysql
              
             
             <li>
-            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(2)</a>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(5)</a>
             <p>
             
             </p>
@@ -364,8 +378,18 @@ net start mysql
              
             
             <li>
-            <a href="Arts.html">Arts&nbsp;(2)</a>
+            <a href="Arts.html">Arts&nbsp;(3)</a>
             <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            </p>
+            </li>
+            
+             
             
             </p>
             </li>
@@ -405,31 +429,31 @@ net start mysql
           
           
          <li>
-           <a href="16332745656703.html">LeetCode 1. 两数之和</a><br>
+           <a href="16413527990433.html">Vim 跳转技巧</a><br>
          </li>
           
           
           
          <li>
-           <a href="16332743074800.html">Arts打卡</a><br>
+           <a href="16408435425370.html">tmux</a><br>
          </li>
           
           
           
          <li>
-           <a href="16330152348133.html">数据库上线规范</a><br>
+           <a href="16405110285297.html">JVM 内存模型</a><br>
          </li>
           
           
           
          <li>
-           <a href="16329877758446.html">删除远端 .idea 配置文件</a><br>
+           <a href="16405090873022.html">JVM 类加载器</a><br>
          </li>
           
           
           
          <li>
-           <a href="16324912353122.html">性能优化</a><br>
+           <a href="16405067982525.html">JVM 字节码</a><br>
          </li>
           
           

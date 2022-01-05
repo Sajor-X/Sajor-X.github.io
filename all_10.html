@@ -101,73 +101,23 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15647140106325.html"> 
+						<a href="15740860526446.html"> 
 							<div class="item-desc"> 
-								<p>在上一章的基础上，我们还使用c06包接着添加功能。
+								<p>设定密码策略
 
-1、数据库表准备
-新建一个数据库表:jo􏰀b、j􏰀obresume 并添加几条数据
+修改  /etc/login.defs 配置文件
 
-jo􏰀b 表
+PASS_MAX_DAYS      90               密码最长有效期
+PASS_MIN_DAYS       10               密码修改之间最小的天数
+PASS_MIN_LEN          8                密码长度
+PASS_WARN_AGE     7                 口令失效前多少天开始通知用户修改密码
 
+脚本
 
-
-
-字段名称
-类型
-长度
-
-
-
-
-
-jobid
-int
-11（主键）
-
-
-jobtitle
-varchar
-127
-
-
-
-
-jobresume表
-
-
-
-
-字段名称
-类型
-长度
-
-
-
-
-
-id
-int
-11（主键）
-
-
-jobid
-int
-11
-
-
-resumeid
-int
-11
-
-
-
-
-2、在 model 包中创建 Job 类
-
-package com.sajor.study.c06.model;
-
-import java.util</p> 
+#! /bin/bash
+# Author: Sajor
+# Date: 2018-10-12
+# Function: 实现对用户密码策略</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -178,7 +128,7 @@ import java.util</p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15647140106325.html">从零开始SSM开发系列十一：MyBatis 多对多关联关系</a>
+	  							<a href="15740860526446.html">Linux安全加固脚本</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -189,7 +139,7 @@ import java.util</p>
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
+			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
 								
 		   						</div> 
 		   					</div> 
@@ -205,55 +155,28 @@ import java.util</p>
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15647098694474.html"> 
+						<a href="15700237274379.html"> 
 							<div class="item-desc"> 
-								<p>在上一章的基础上，我们还使用c06包接着添加功能。
+								<p>append 追加
 
-1、数据库表准备
-新建一个数据库表:resume 并添加几条数据
+append key value
 
-resume 表
+返回值
+Integer reply：返回append后字符串值（value）的长度。
 
+例子
 
+redis&gt; EXISTS mykey
+(integer) 0
+redis&gt; APPEND mykey &quot;Hello&quot;
+(integer) 5
+redis&gt; APPEND mykey &quot; World&quot;
+(integer) 11
+redis&gt; GET mykey
+&quot;Hello World&quot;
+redis&gt;
 
-
-字段名称
-类型
-长度
-
-
-
-
-
-resumeid
-int
-11（主键）
-
-
-userid
-int
-11
-
-
-resumename
-varchar
-255
-
-
-resumedesc
-varchar
-255
-
-
-
-
-2、在 model 包中创建 Resume 类
-
-package com.sajor.study.c06.model;
-
-public class Resume {
-    private Integer resumeId;
-    pri</p> 
+</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -264,69 +187,7 @@ public class Resume {
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15647098694474.html">从零开始SSM开发系列十：MyBatis 一对多关联关系</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15646739216640.html"> 
-							<div class="item-desc"> 
-								<p>关系型数据库：
-
-Oracle、DB2、Microsoft SQL Server、Microsoft Access、MySQL
-
-非关系型数据库：
-
-NoSql、Cloudant、MongoDb、redis、HBase
-
-两种数据库之间的区别：
-
-关系型数据库
-
-　　关系型数据库的特性
-
-　　1、关系型数据库，是指采用了关系模型来组织数据的数据库；
-
-　　2、关系型数据库的最大特点就是事务的一致性；
-
-　　3、简单来说，关系模型指的就是二维表格模型，而一个关系型数据库就是由二维表及其之间的联系所组成的一个数据组织。
-
-　　关系型数据库的优点
-
-　　1、容易理解：二维表结构是非常贴近逻辑世界一个</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15646739216640.html">列举常见的关系型数据库和非关系型都有那些？</a>
+	  							<a href="15700237274379.html">redis命令</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -339,82 +200,7 @@ NoSql、Cloudant、MongoDb、redis、HBase
 	  							
 			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
 								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15643240518555.html"> 
-							<div class="item-desc"> 
-								<p>1、数据库表准备
-
-新建一个数据库表:card 并添加几条数据
-
-Card 表
-
-
-
-
-字段名称
-类型
-长度
-
-
-
-
-
-id
-int
-11（主键）
-
-
-code
-varchar
-18
-
-
-
-
-2、创建新的 Package
-
-
-com.sajor.study.c06
-com.sajor.study.c06.model : 存放 vo 对象(业务模型对象) 
-com.sajor.study.c06.dao : 存放 dao 对象(数据库访问对象) 
-com.sajor.study.mapper : 存放 mybatis 数据库表-对象映射文件 
-test.com.sajor.study.c06 
-</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15643240518555.html">从零开始SSM开发系列九：MyBatis 一对一关联关系</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
+			    			<a class='category' href='Redis.html'>Redis</a>
 								
 		   						</div> 
 		   					</div> 
@@ -430,24 +216,18 @@ test.com.sajor.study.c06
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15643212338496.html"> 
+						<a href="15665458213371.html"> 
 							<div class="item-desc"> 
-								<p>1、配置 MyBatis 开发环境
+								<p>添加类注释：
 
-在工程里面引用 MyBatis 核心 jar 包，以及 MyBatis 依赖的第三方 jar 包。
-点击 File&gt;Project Structure...，选中 Libraries，添加 java 引用
-选择 l􏰀ib 中的 􏰁Mybatis-3.4.5.jar 包。
+File-&gt;Setting-&gt;Editor-&gt;File and Code Templates-&gt;Class
 
-再次添加 java 引用，选中 lib 中的 mybatis-3.4.5-lib 文件夹
-确认。MyBatis 开发环境即搭建好了。
-
-
-
-2、创建新的 Package
-
-
-com.sajor.study.c05
-com.sajor.study.c05.model:存放 vo </p> 
+#if (${PACKAGE_NAME} &amp;&amp; ${PACKAGE_NAME} != &quot;&quot;)package ${PACKAGE_NAME};#end
+#parse(&quot;File Header.java&quot;)
+/**
+*@description ${description}
+*@author Sajor
+*@create ${YEAR}/${MONTH}/${DAY} ${HOUR}:${MINU</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -458,7 +238,7 @@ com.sajor.study.c05.model:存放 vo </p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15643212338496.html">从零开始SSM开发系列八：MyBatis 入门</a>
+	  							<a href="15665458213371.html">idea 类注释和方法注释</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -469,7 +249,59 @@ com.sajor.study.c05.model:存放 vo </p>
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
+			    			<a class='category' href='java.html'>ssm课程</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/15659629846282/15659630849569.jpg);">
+						
+						</div> 
+						<a href="15659629846282.html"> 
+							<div class="item-desc"> 
+								<p>最近调试代码需要起服务并修改代码这就导致重复工作，目前是修改服务器配置，即当idea失去焦点时更新类和资源，但是这种只支持在debug模式且是在idea失去焦点才会触发热部署，这就相对加载的慢了。此法的配置方法：
+
+Run –&gt;Edit Configgurations
+
+
+
+如果你sever 选项卡下没有On frame deactivation，那么就需要配置 Deployment 选项卡，点击右边绿色+，选择自己对应的项目，建议选择带 exploded， 这个相当于改 Tomcat 的 CATALINA_HOME， 效率比较高。
+
+
+
+
+
+选择好后， 删掉默认的Build， 提高效率</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15659629846282.html">idea 热部署</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='java.html'>ssm课程</a>
 								
 		   						</div> 
 		   					</div> 
@@ -485,15 +317,24 @@ com.sajor.study.c05.model:存放 vo </p>
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15643155536877.html"> 
+						<a href="15659217621647.html"> 
 							<div class="item-desc"> 
-								<p>1、Spring 配置文件中声明事务
+								<p>一个项目管理工具 
 
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-       xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
-   </p> 
+
+统一开发规范与工具
+统一管理jar包
+
+
+pom.xml (Project Object Model)
+
+项目对象模型：用于描述整个Maven项目，也称为Maven描述文件。
+
+pom.xml 最基础是这样的
+
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;
+    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+    xsi:schemaLocation=&quot;http://maven.apache.o</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -504,7 +345,7 @@ com.sajor.study.c05.model:存放 vo </p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15643155536877.html">从零开始SSM开发系列七：事务管理</a>
+	  							<a href="15659217621647.html">Maven</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -515,7 +356,68 @@ com.sajor.study.c05.model:存放 vo </p>
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
+			    			<a class='category' href='java.html'>ssm课程</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/15651008291490/16193974653172.jpg);">
+						
+						</div> 
+						<a href="15651008291490.html"> 
+							<div class="item-desc"> 
+								<p>
+
+哈希
+
+输出空间 2256
+
+
+collision resistance 哈希碰撞（没有数学方法可以证明，只有实战经验）
+
+
+没有一个好的方法可以算出 X 的hash值正好等于 Y 的hash值，可以使用穷举方法 brute-force
+用处： 在上传文件时，可以先算一个 digest 在下载的时候，再算一次查看是否和之前的相等，即可发现文件是否被篡改。
+MD5 原来以为具有这个性质，但是后来被证明是可以被人为制造碰撞的。
+
+
+hiding 单向的 
+
+
+前提：输入空间比较大，且分布均匀
+X -&gt; H(X) 知道了 H(X) 并不能知道 X 的值
+
+digital commitmen</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15651008291490.html">密码学原理</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9B%B8%E5%85%B3.html'>密码学相关</a>
 								
 		   						</div> 
 		   					</div> 
@@ -583,7 +485,7 @@ com.sajor.study.c05.model:存放 vo </p>
              
             
             <li>
-            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(2)</a>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(5)</a>
             <p>
             
             </p>
@@ -592,8 +494,18 @@ com.sajor.study.c05.model:存放 vo </p>
              
             
             <li>
-            <a href="Arts.html">Arts&nbsp;(2)</a>
+            <a href="Arts.html">Arts&nbsp;(3)</a>
             <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            </p>
+            </li>
+            
+             
             
             </p>
             </li>
@@ -633,31 +545,31 @@ com.sajor.study.c05.model:存放 vo </p>
           
           
          <li>
-           <a href="16332745656703.html">LeetCode 1. 两数之和</a><br>
+           <a href="16413527990433.html">Vim 跳转技巧</a><br>
          </li>
           
           
           
          <li>
-           <a href="16332743074800.html">Arts打卡</a><br>
+           <a href="16408435425370.html">tmux</a><br>
          </li>
           
           
           
          <li>
-           <a href="16330152348133.html">数据库上线规范</a><br>
+           <a href="16405110285297.html">JVM 内存模型</a><br>
          </li>
           
           
           
          <li>
-           <a href="16329877758446.html">删除远端 .idea 配置文件</a><br>
+           <a href="16405090873022.html">JVM 类加载器</a><br>
          </li>
           
           
           
          <li>
-           <a href="16324912353122.html">性能优化</a><br>
+           <a href="16405067982525.html">JVM 字节码</a><br>
          </li>
           
           

@@ -98,12 +98,261 @@
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16304224326131/16306006330934.jpg);">
+						
+						</div> 
+						<a href="16304224326131.html"> 
+							<div class="item-desc"> 
+								<p>
+
+隔离性与隔离级别
+
+
+脏读
+
+
+幻读
+
+
+不可重复读
+
+
+
+
+SQL标准的事务隔离级别包括：
+
+
+案例
+
+
+事务隔离的实现
+
+
+可重复读
+
+
+事务的启动方式
+
+
+
+
+
+
+
+来自MySQL实战45讲
+
+
+隔离性与隔离级别
+
+提到事务，你肯定会想到ACID：
+
+
+原子性（Atomicity）
+一致性（Consistency）
+隔离性（Isolation）
+持久性（Durability）
+
+
+今天我们就来说说其中I，也就是“隔离性”。
+
+当数据库上有多个事务同时执行的时候，就可能出现：
+
+
+脏读（dirty read）
+不可重复读（non-repeatable read）
+幻读（phantom </p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16304224326131.html">03 | 事务隔离：为什么你改了我还看不见？</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='MySQL.html'>MySQL</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16302079765954/16302100687432.jpg);">
+						
+						</div> 
+						<a href="16302079765954.html"> 
+							<div class="item-desc"> 
+								<p>
+
+redo log（重做日志）
+
+
+binlog（归档日志）
+
+
+两阶段提交
+
+
+
+
+redo log 和 binlog 区别
+
+
+
+
+
+来自MySQL实战45讲
+
+
+与查询流程不一样的是，更新流程还涉及两个重要的日志模块，它们正是我们今天要讨论的主角：
+
+redo log（重做日志）
+
+redo log为InnoDB特有的日志，用来保证即使数据库发生异常重启，之前提交的记录都不会丢失，这个能力称为crash-safe。
+
+WAL技术，WAL的全称是Write-Ahead Logging，它的关键点就是先写日志，再写磁盘。具体来说，当有一条记录需要更新的时候，InnoDB引擎就会先把记录写到</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16302079765954.html">02 | 日志系统：一条SQL更新语句是如何执行的？</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='MySQL.html'>MySQL</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16301414327814/16301415100109.jpg);">
+						
+						</div> 
+						<a href="16301414327814.html"> 
+							<div class="item-desc"> 
+								<p>
+
+Server层
+
+
+连接器
+
+
+查询缓存
+
+
+分析器
+
+
+优化器
+
+
+执行器
+
+
+
+
+存储引擎
+
+
+
+
+
+来自MySQL实战45讲
+
+
+MySQL的逻辑架构图
+
+
+大体来说，MySQL可以分为Server层和存储引擎层两部分。
+
+Server层
+
+包括连接器、查询缓存、分析器、优化器、执行器等，涵盖MySQL的大多数核心服务功能，以及所有的内置函数（如日期、时间、数学和加密函数等），所有跨存储引擎的功能都在这一层实现，比如存储过程、触发器、视图等。
+
+连接器
+
+第一步，你会先连接到这个数据库上，这时候接待你的就是连接器。连接器负责跟客户端建立连接、获取权限、维持和管理连接。连接命令一般是这</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16301414327814.html">01 | 基础架构：一条SQL查询语句是如何执行的？</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='MySQL.html'>MySQL</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
 						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16022150270617/16125316270697.jpg);">
 						
 						</div> 
 						<a href="16022150270617.html"> 
 							<div class="item-desc"> 
-								<p>问题：
+								<p>无法设置0000-00-00默认日期
+
+问题：
 
 
 
@@ -123,9 +372,7 @@ select @@sql_mode;
 ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
 
 
-NO_ZERO_IN_DATE,NO_ZERO_DATE是无法默认为‘0000-00-00 00:00:00’的根源，去掉之后再次新建表就可以了
-
-</p> 
+NO_ZERO_IN_DATE,NO_ZERO_DATE是无法默认为‘0000-00-00 00:00:00</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -136,7 +383,7 @@ NO_ZERO_IN_DATE,NO_ZERO_DATE是无法默认为‘0000-00-00 00:00:00’的根源
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16022150270617.html">mysql5.7 无法设置0000-00-00默认日期</a>
+	  							<a href="16022150270617.html">mysql5.7 常见问题</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -311,171 +558,6 @@ information_sc</p>
 		   				</div> 
    					</div>
  				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15648434329273.html"> 
-							<div class="item-desc"> 
-								<p>今天博客遇到如下异常
-
-
-MySQLNonTransientConnectionException: Communications link failure during rollback().
-
-
-打开mysql配置文件/etc/my.cnf
-
-在[mysqld]节，增加wait_timeout配置，原来是5，看来不够用，改为50。
-
-[mysqld]
-wait_timeout=50
-
-
-重启mysqld服务，问题解决
-
-service mysqld restart
-
-
-报错信息如下：
-
-2019-08-03 22:33:17.405  WARN 29453 --- [XNIO-1 task</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15648434329273.html">mysql经典的8小时问题-wait_timeout</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
-								
-			    			<a class='category' href='MySQL.html'>MySQL</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15641490587108.html"> 
-							<div class="item-desc"> 
-								<p>今天博客突然报了这个错误：
-
-Packet for query is too large (5,215 &gt; 1,024). You can change this value on the server by setting the &#39;max_allowed_packet&#39; variable.
-
-
-百度了一下，MySQL会根据配置文件会限制server接受的数据包的大小。如果写入大数据时，因为默认的配置太小，插入和更新操作会因为 max_allowed_packet 参数限制，而导致失败。
-在MySQL中输入这条命令查询
-
-SHOW VARIABLES LIKE &#39</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15641490587108.html">在使用Mybatis generator时提示MySQL写入过大</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
-								
-			    			<a class='category' href='MySQL.html'>MySQL</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15638863087177.html"> 
-							<div class="item-desc"> 
-								<p>数据库命令规范
-
-
-所有数据库对象名称必须使用小写字母并用下划线分割
-所有数据库对象名称禁止使用 MySQL 保留关键字（如果表名中包含关键字查询时，需要将其用单引号括起来）
-数据库对象的命名要能做到见名识意，并且最后不要超过 32 个字符
-临时库表必须以 tmp_为前缀并以日期为后缀，备份表必须以 bak_为前缀并以日期 (时间戳) 为后缀
-所有存储相同数据的列名和列类型必须一致（一般作为关联列，如果查询时关联列类型不一致会自动进行数据类型隐式转换，会造成列上的索引失效，导致查询效率降低）
-## 数据库基本设计规范
-### 所有表必须使用 Innodb 存储引擎
-没有特殊要求（即 Innod</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15638863087177.html">MySQL高性能优化规范建议</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
-								
-			    			<a class='category' href='MySQL.html'>MySQL</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
  			 
 		</div>
 	</div>
@@ -489,8 +571,8 @@ SHOW VARIABLES LIKE &#39</p>
 				<li class=""><a href="archives.html">归档</a></li>
 
 			
-            	<li class=" disabled "><a href="#index">下一页 <span aria-hidden="true">&rarr;</span></a></li>
-            
+			<li class=""><a href="MySQL_2.html">下一页 <span aria-hidden="true">&rarr;</span></a></li>
+			
             </ol>
      </nav>
 </div>
@@ -536,7 +618,7 @@ SHOW VARIABLES LIKE &#39</p>
              
             
             <li>
-            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(2)</a>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(5)</a>
             <p>
             
             </p>
@@ -545,8 +627,18 @@ SHOW VARIABLES LIKE &#39</p>
              
             
             <li>
-            <a href="Arts.html">Arts&nbsp;(2)</a>
+            <a href="Arts.html">Arts&nbsp;(3)</a>
             <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            </p>
+            </li>
+            
+             
             
             </p>
             </li>
@@ -586,31 +678,31 @@ SHOW VARIABLES LIKE &#39</p>
           
           
          <li>
-           <a href="16332745656703.html">LeetCode 1. 两数之和</a><br>
+           <a href="16413527990433.html">Vim 跳转技巧</a><br>
          </li>
           
           
           
          <li>
-           <a href="16332743074800.html">Arts打卡</a><br>
+           <a href="16408435425370.html">tmux</a><br>
          </li>
           
           
           
          <li>
-           <a href="16330152348133.html">数据库上线规范</a><br>
+           <a href="16405110285297.html">JVM 内存模型</a><br>
          </li>
           
           
           
          <li>
-           <a href="16329877758446.html">删除远端 .idea 配置文件</a><br>
+           <a href="16405090873022.html">JVM 类加载器</a><br>
          </li>
           
           
           
          <li>
-           <a href="16324912353122.html">性能优化</a><br>
+           <a href="16405067982525.html">JVM 字节码</a><br>
          </li>
           
           

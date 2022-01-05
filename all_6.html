@@ -101,27 +101,25 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15769919595310.html"> 
+						<a href="15914577057463.html"> 
 							<div class="item-desc"> 
-								<p>Git是分布式版本控制系统 自报家门
+								<p>问题描述：#
+yum 安装更新提示 rpmdb: Thread/process failed: Thread died in Berkeley DB library
 
-git config --global user.name &quot;Sajor&quot;
-git config --global user.email &quot;565785929@qq.com&quot;
+问题解决：#
+01、删除yum临时库文件
 
+rm -fr /var/lib/rpm/__db.*
 
-一
+02、重建rpm数据库
 
-初始化一个Git仓库，使用git init命令。
+rpm --rebuilddb
 
-添加文件到Git仓库，分两步：
+03、清理缓存及生产yumdb缓存
 
-第一步，使用命令git add ，注意，可反复多次使用，添加多个文件；
-
-第二步，使用命令git commit，完成。
-
-windows中的换行符为 CRLF， 而在linux下的换行符为LF，所以在执行add . 时出现提示，解决办法：
-
-   </p> 
+yum clean all
+yum makecache
+</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -132,7 +130,7 @@ windows中的换行符为 CRLF， 而在linux下的换行符为LF，所以在执
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15769919595310.html">Git基本使用</a>
+	  							<a href="15914577057463.html">yum安装提示错误Thread/process failed: Thread died in Berkeley DB librar</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -143,7 +141,7 @@ windows中的换行符为 CRLF， 而在linux下的换行符为LF，所以在执
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='Git.html'>Git</a>
+			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
 								
 		   						</div> 
 		   					</div> 
@@ -156,20 +154,35 @@ windows中的换行符为 CRLF， 而在linux下的换行符为LF，所以在执
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/15769918912350/bitcoin_address.jpg);">
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/15873033963371/15873054303125.jpg);">
 						
 						</div> 
-						<a href="15769918912350.html"> 
+						<a href="15873033963371.html"> 
 							<div class="item-desc"> 
-								<p>EC私钥 Elliptic Curve private key
+								<p>二维码登陆+2FA双因素认证
 
-比特币私钥为一个256位的二进制随机大数 一共32字节（Random 256 bit integer）
+二者都是很常用的技术，但是两者相结合遍可以用于二维码离线支付。
 
-比特币私钥只是一个数字。你可以用硬币、铅笔和纸来随机生成你的私钥：掷硬币256次，用纸和笔记录正反面并转换为0和1，随机得到的256位二进制数字可作为比特币钱包的私钥。 
+密码安全
 
-将256位二进制大数转为十六进制（每四位二进制数转为一位十六进制数）得到一个64位的十进制字符串，这就是ec私钥（95e7e1e73b70965d31c3e56121ce14dd4f88431c8d5e7645e8fb4a73ba72ad29）
+首先讨论一下如何让密码安全？
+注册时密码数据流，密码首先在web或客户端由用户手动输入，然后经过网络传输至服务端，服务端入库。
+登陆时密码数据流，密码也是在web或客户端由用户手动输入，然后经过网络传输至服务端，服务端查库。
 
-提示比</p> 
+所以我们可以在客户端、网络传输、数据库中分别采用下图方案保护我们的密码。
+
+
+
+二维码登陆原理
+
+登录做两件事
+1、告诉系统我是谁;
+2、向系统证明我是谁;
+
+二维码其实是字符串的图片表现形式
+
+基于token的认证机制
+1、首次登录客户端向服务器传送密码+设备</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -180,7 +193,67 @@ windows中的换行符为 CRLF， 而在linux下的换行符为LF，所以在执
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15769918912350.html">比特币</a>
+	  							<a href="15873033963371.html">离线支付方案</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9B%B8%E5%85%B3.html'>密码学相关</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/15847222662823/15847227654261.jpg);">
+						
+						</div> 
+						<a href="15847222662823.html"> 
+							<div class="item-desc"> 
+								<p>一般情况下，网站登录都使用账号密码的方式登录，这是最常见的认证方法，但是不安全，容易泄露和冒充。
+
+双因素认证概念：
+
+一般来说，三种不同类型的证据，可以证明一个人的身份。
+
+
+秘密信息：只有该用户知道、其他人不知道的某种信息，比如密码
+个人物品：该用户的私人物品，比如身份证、钥匙、手机号
+生物特征：该用户的遗传特征，比如指纹、相貌、虹膜等
+
+
+这些证据就称为三种”因素“。因素越多，证明力就越强，身份就越可靠。
+
+双因素认证就是指，通过认证同事需要两个因素的证据。
+
+银行卡取钱就是最常见的双因素认证。用户必须同时提供银行卡和密码，才能取到现金。
+
+双因素认证方案
+
+常用的双因素组合是密码 + </p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15847222662823.html">双因素认证（2FA）</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -207,39 +280,25 @@ windows中的换行符为 CRLF， 而在linux下的换行符为LF，所以在执
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15769917893975.html"> 
+						<a href="15833368444152.html"> 
 							<div class="item-desc"> 
-								<p>NFS就是 ** Network File System ** 的缩写
+								<p>Linux下的程序往往使你更加有效率，因为他们可以更高效的使用电脑的资源
 
-本机ip：192.168.36.182
+不同的Linux发行版之间的主要区别：
 
-安装NFS
+1、安装方法不一样，有的复杂，有的简单。
 
-yum -y install nfs-utils rpcbind
+2、安装应用程序的方式不一样。
 
+3、预装的应用程序不一样。
 
-服务端配置
+linux发行版
 
-在NFS服务端上创建共享目录/data/lys并设置权限
+1、RedHat：性能稳定，老牌的linux发行版。收费的是RedHat Enterprise Linux（RHEL。redhat企业版）。目前RedHat分为两个系列：由RedHat公司提供收费技术支持。以及社区开发的免费的Fedora。
 
-mkdir -p /data/lys
+2、Fedora：RedHat的社区免费后继版，非常强大。
 
-chmod 666 /data/lys/
-
-
-编辑export文件
-
-vi /etc/exports 
-
-/data/lys 192.168.36.0/24(rw,no_root_squash,no_all_squash,sync)
-
-
-配置生效
-
-exportfs -r
-
-
-启动rp</p> 
+3、CentOS：国内许多企业选择CentOS，</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -250,65 +309,7 @@ exportfs -r
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15769917893975.html">NFS</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15765692780377.html"> 
-							<div class="item-desc"> 
-								<p>更新时 使用 --verbose命令可以看到运行情况
-
-brew update --verbose
-
-查看brew的当前源:
-执行下面命令可以看到, brew的官方镜像源为: https://github.com/Homebrew/homebrew
-
-cd /usr/local/Homebrew
-git remote -v
-
-
-更改brew镜像源
-
-cd /usr/local/Homebrew
-git remote set-url origin git://mirrors.tuna.tsinghua.edu.cn/homebrew.git
-
-
-可以选择下面镜像源中的一个 (第一个亲测可用)
-清</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15765692780377.html">brew update 缓慢</a>
+	  							<a href="15833368444152.html">Linux介绍</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -332,28 +333,28 @@ git remote set-url origin git://mirrors.tuna.tsinghua.edu.cn/homebrew.git
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/15826152154212/15826153307445.jpg);">
 						
 						</div> 
-						<a href="15754473183515.html"> 
+						<a href="15826152154212.html"> 
 							<div class="item-desc"> 
-								<p>缓存数据
+								<p>在mybatis-config.xml文件中加入此设置
 
-最常用，对经常需要查询且变动不是很频繁的数据
+&lt;!DOCTYPE configuration
+PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;
+&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
 
-排行榜应用
+    
+        
+    
 
-利用Redis的有序集合zset，每次插入数据时自动调整顺序值，根据插入时的score值将value按一定顺序连续排列。
 
-计数器应用
 
-利用Redis的incr、decr命令进行原子性操作，来构建计数系统
-比如在一个web应用程序中，如果想知道用户在一年中每天的点击量，只要将用户id和相关日期信息作为键，并在每次用户点击页面时，执行一次自增操作即可。
 
-数据去重
-
-当需要存储一个列表数据，又不希望出现重复数据时，可以使用Redis的Set数据结构
-set内部实现是一个value永远是null的hashmap，通过has</p> 
+参考:
+https://yq.aliyun.com/articles/662319
+https://www.cnblogs.com/pjfmeng/p/7677773.html
+https://www.cnblo</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -364,7 +365,7 @@ set内部实现是一个value永远是null的hashmap，通过has</p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15754473183515.html">Redis使用场景</a>
+	  							<a href="15826152154212.html">MyBatis 开启自动驼峰转换</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -375,7 +376,7 @@ set内部实现是一个value永远是null的hashmap，通过has</p>
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='Redis.html'>Redis</a>
+			    			<a class='category' href='java.html'>ssm课程</a>
 								
 		   						</div> 
 		   					</div> 
@@ -391,21 +392,60 @@ set内部实现是一个value永远是null的hashmap，通过has</p>
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15754418238619.html"> 
+						<a href="15823891714442.html"> 
 							<div class="item-desc"> 
 								<p>
-可靠性低：如果数据走云盘做高可靠存储容易受网络波动干扰，如果不走云盘宕机数据易丢失，自建多副本运维很复杂，而且Redis本身的断网导致的全量同步机制对网络和运维的要求极高；
-可用性低：自建单副本无法保证可用性，多副本对心跳检查和链路切换要求极高，传统的sentinel有很多缺陷，在执行复杂的keys flushdb等命令时很容易造成误切和雪崩；
-诸多限制：自建集群方案如redis cluster，codis也有诸多限制，redis cluster需要smart client和非常
 
 
-键值设计
+java类
+ 
+mysql数据库
 
-key名设计
 
-可读性和可管理性
 
-以业务名(或数据库名)为前缀(防止key冲突)，用冒号分隔，</p> 
+
+
+java.lang.Byte
+byte
+TINYINT
+
+
+java.lang.Short
+short
+SMALLINT
+
+
+java.lang.Integer
+integer
+INGEGER
+
+
+java.lang.Long
+long
+BIGINT
+
+
+java.lang.Float
+float
+FLOAT
+
+
+java.lang.Double
+double
+DOUBLE
+
+
+java.lang.BigDecimal
+big_decimal
+NUMERIC
+
+
+java.lang.Boolean
+boolean
+BIT
+
+
+java.lang</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -416,7 +456,7 @@ key名设计
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15754418238619.html">自建redis集群规范</a>
+	  							<a href="15823891714442.html">java和mysql转换</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -427,7 +467,7 @@ key名设计
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='Redis.html'>Redis</a>
+			    			<a class='category' href='MySQL.html'>MySQL</a>
 								
 		   						</div> 
 		   					</div> 
@@ -495,7 +535,7 @@ key名设计
              
             
             <li>
-            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(2)</a>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(5)</a>
             <p>
             
             </p>
@@ -504,8 +544,18 @@ key名设计
              
             
             <li>
-            <a href="Arts.html">Arts&nbsp;(2)</a>
+            <a href="Arts.html">Arts&nbsp;(3)</a>
             <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            </p>
+            </li>
+            
+             
             
             </p>
             </li>
@@ -545,31 +595,31 @@ key名设计
           
           
          <li>
-           <a href="16332745656703.html">LeetCode 1. 两数之和</a><br>
+           <a href="16413527990433.html">Vim 跳转技巧</a><br>
          </li>
           
           
           
          <li>
-           <a href="16332743074800.html">Arts打卡</a><br>
+           <a href="16408435425370.html">tmux</a><br>
          </li>
           
           
           
          <li>
-           <a href="16330152348133.html">数据库上线规范</a><br>
+           <a href="16405110285297.html">JVM 内存模型</a><br>
          </li>
           
           
           
          <li>
-           <a href="16329877758446.html">删除远端 .idea 配置文件</a><br>
+           <a href="16405090873022.html">JVM 类加载器</a><br>
          </li>
           
           
           
          <li>
-           <a href="16324912353122.html">性能优化</a><br>
+           <a href="16405067982525.html">JVM 字节码</a><br>
          </li>
           
           

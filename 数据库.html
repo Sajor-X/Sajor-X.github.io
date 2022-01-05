@@ -101,9 +101,10 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16330152348133.html"> 
+						<a href="16351769421565.html"> 
 							<div class="item-desc"> 
-								<p></p> 
+								<p>I
+</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -114,7 +115,157 @@
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16330152348133.html">数据库上线规范</a>
+	  							<a href="16351769421565.html">join 语句</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='MySQL.html'>MySQL</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="16345712700520.html"> 
+							<div class="item-desc"> 
+								<p>count(*) 的实现方式
+
+你首先要明确的是，在不同的 MySQL 引擎中，count(*) 有不同的实现方式。
+
+
+MyISAM 引擎把一个表的总行数存在了磁盘上，因此执行 count(*) 的时候会直接返回这个数，效率很高；
+而 InnoDB 引擎就麻烦了，它执行 count(*) 的时候，需要把数据一行一行地从引擎里面读出来，然后累积计数。
+
+
+这里需要注意的是，我们在这篇文章里讨论的是没有过滤条件的 count(*)，如果加了 where 条件的话，MyISAM 表也是不能返回得这么快的。
+
+计数的几种方式
+
+
+MyISAM 表虽然 count(*) 很快，但是不支持事务；
+sho</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16345712700520.html">14 | count(*)这么慢，我该怎么办？</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='MySQL.html'>MySQL</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="16345707563290.html"> 
+							<div class="item-desc"> 
+								<p>GitHub&#39;s Online Schema Migrations for MySQL
+(https://github.com/github/gh-ost)
+</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16345707563290.html">13 重构数据库</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='MySQL.html'>MySQL</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="16330152348133.html"> 
+							<div class="item-desc"> 
+								<p>什么是前缀索引？
+
+给email字符串创建索引有
+
+mysql&gt; alter table SUser add index index1(email);
+或
+mysql&gt; alter table SUser add index index2(email(6));
+
+
+索引选取的越长，占用的磁盘空间就越大，相同的数据页能放下的索引值就越少，搜索的效率也就会越低。
+
+由于email(6)这个索引结构中每个邮箱字段都只取前6个字节，所以占用的空间会更小，这就是使用前缀索引的优势。但，这同时带来的损失是，可能会增加额外的记录扫描次数。
+
+使用前缀索引，定义好长度，就可以做到既节省空间，又不用</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16330152348133.html">11 | 怎么给字符串字段加索引？</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -316,253 +467,6 @@ MySQL数据库与 Oracle、 SQL Server 等数据库相比，</p>
 		   				</div> 
    					</div>
  				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16304224326131/16306006330934.jpg);">
-						
-						</div> 
-						<a href="16304224326131.html"> 
-							<div class="item-desc"> 
-								<p>
-
-隔离性与隔离级别
-
-
-脏读
-
-
-幻读
-
-
-不可重复读
-
-
-
-
-SQL标准的事务隔离级别包括：
-
-
-案例
-
-
-事务隔离的实现
-
-
-可重复读
-
-
-事务的启动方式
-
-
-
-
-
-
-
-来自MySQL实战45讲
-
-
-隔离性与隔离级别
-
-提到事务，你肯定会想到ACID：
-
-
-原子性（Atomicity）
-一致性（Consistency）
-隔离性（Isolation）
-持久性（Durability）
-
-
-今天我们就来说说其中I，也就是“隔离性”。
-
-当数据库上有多个事务同时执行的时候，就可能出现：
-
-
-脏读（dirty read）
-不可重复读（non-repeatable read）
-幻读（phantom </p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="16304224326131.html">03 | 事务隔离：为什么你改了我还看不见？</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='MySQL.html'>MySQL</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16302079765954/16302100687432.jpg);">
-						
-						</div> 
-						<a href="16302079765954.html"> 
-							<div class="item-desc"> 
-								<p>
-
-redo log（重做日志）
-
-
-binlog（归档日志）
-
-
-两阶段提交
-
-
-
-
-redo log 和 binlog 区别
-
-
-
-
-
-来自MySQL实战45讲
-
-
-与查询流程不一样的是，更新流程还涉及两个重要的日志模块，它们正是我们今天要讨论的主角：
-
-redo log（重做日志）
-
-redo log为InnoDB特有的日志，用来保证即使数据库发生异常重启，之前提交的记录都不会丢失，这个能力称为crash-safe。
-
-WAL技术，WAL的全称是Write-Ahead Logging，它的关键点就是先写日志，再写磁盘。具体来说，当有一条记录需要更新的时候，InnoDB引擎就会先把记录写到</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="16302079765954.html">02 | 日志系统：一条SQL更新语句是如何执行的？</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='MySQL.html'>MySQL</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16301414327814/16301415100109.jpg);">
-						
-						</div> 
-						<a href="16301414327814.html"> 
-							<div class="item-desc"> 
-								<p>
-
-Server层
-
-
-连接器
-
-
-查询缓存
-
-
-分析器
-
-
-优化器
-
-
-执行器
-
-
-
-
-存储引擎
-
-
-
-
-
-来自MySQL实战45讲
-
-
-MySQL的逻辑架构图
-
-
-大体来说，MySQL可以分为Server层和存储引擎层两部分。
-
-Server层
-
-包括连接器、查询缓存、分析器、优化器、执行器等，涵盖MySQL的大多数核心服务功能，以及所有的内置函数（如日期、时间、数学和加密函数等），所有跨存储引擎的功能都在这一层实现，比如存储过程、触发器、视图等。
-
-连接器
-
-第一步，你会先连接到这个数据库上，这时候接待你的就是连接器。连接器负责跟客户端建立连接、获取权限、维持和管理连接。连接命令一般是这</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="16301414327814.html">01 | 基础架构：一条SQL查询语句是如何执行的？</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='MySQL.html'>MySQL</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
  			 
 		</div>
 	</div>
@@ -623,7 +527,7 @@ Server层
              
             
             <li>
-            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(2)</a>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(5)</a>
             <p>
             
             </p>
@@ -632,8 +536,18 @@ Server层
              
             
             <li>
-            <a href="Arts.html">Arts&nbsp;(2)</a>
+            <a href="Arts.html">Arts&nbsp;(3)</a>
             <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            </p>
+            </li>
+            
+             
             
             </p>
             </li>
@@ -673,31 +587,31 @@ Server层
           
           
          <li>
-           <a href="16332745656703.html">LeetCode 1. 两数之和</a><br>
+           <a href="16413527990433.html">Vim 跳转技巧</a><br>
          </li>
           
           
           
          <li>
-           <a href="16332743074800.html">Arts打卡</a><br>
+           <a href="16408435425370.html">tmux</a><br>
          </li>
           
           
           
          <li>
-           <a href="16330152348133.html">数据库上线规范</a><br>
+           <a href="16405110285297.html">JVM 内存模型</a><br>
          </li>
           
           
           
          <li>
-           <a href="16329877758446.html">删除远端 .idea 配置文件</a><br>
+           <a href="16405090873022.html">JVM 类加载器</a><br>
          </li>
           
           
           
          <li>
-           <a href="16324912353122.html">性能优化</a><br>
+           <a href="16405067982525.html">JVM 字节码</a><br>
          </li>
           
           

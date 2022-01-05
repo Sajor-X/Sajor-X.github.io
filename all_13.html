@@ -101,30 +101,15 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15770719140172.html"> 
+						<a href="15643155536877.html"> 
 							<div class="item-desc"> 
-								<p>redis-server /usr/local/redis/etc/redis.conf
+								<p>1、Spring 配置文件中声明事务
 
-redis 集群
-
-首先安装redis
-brew install redis
-
-单节点
-redis-server /usr/local/redis/etc/redis.conf
-
-将/usr/local/redis/bin
-建立redis-cluster文件夹，复制六份， 三主三备份， 分别叫redis01-redis-06
-
-
-将每个文件夹中的redis.conf都修改一下
-例如： redis01/redis.conf
-
-port 7001
-
-cluster-enabled yes
-
-cluster-</p> 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
+   </p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -135,7 +120,7 @@ cluster-</p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15770719140172.html">redis</a>
+	  							<a href="15643155536877.html">从零开始SSM开发系列七：事务管理</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -146,58 +131,7 @@ cluster-</p>
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='Redis.html'>Redis</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16251579849229/16253284130723.jpg);">
-						
-						</div> 
-						<a href="16251579849229.html"> 
-							<div class="item-desc"> 
-								<p>概述
-
-工作流有各式各样的用法，但也正因此使得在实际工作中如何上手使用增加了难度。这篇指南通过总览公司团队中最常用的几种 Git 工作流让大家可以上手使用。
-
-在阅读的过程中请记住，本文中的几种工作流是作为方案指导而不是条例规定。在展示了各种工作流可能的用法后，你可以从不同的工作流中挑选或揉合出一个满足你自己需求的工作流。
-
-先贴一个最佳实践 A successful Git branching model
-
-
-集中式工作流
-
-如果你的开发团队成员已经很熟悉 Subversion，集中式工作流让你无需去适应一个全新流程就可以体验 Git 带来的收益。这个工作流也可以作为向更 Git 风格工作流</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="16251579849229.html">Git 工作流简介</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Git.html'>Git</a>
+			    			<a class='category' href='ssm.html'>SSM练习</a>
 								
 		   						</div> 
 		   					</div> 
@@ -213,10 +147,35 @@ cluster-</p>
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15914574913033.html"> 
+						<a href="15643143335228.html"> 
 							<div class="item-desc"> 
-								<p>
-SWIG是个帮助使用C或者C++编写的软件能与其它各种高级编程语言进行嵌入联接的开发工具。SWIG能应用于各种不同类型的语言包括常用脚本编译语言例如Perl, PHP, Python, Tcl, Ruby and PHP。支持语言列表中也包括非脚本编译语言，例如C#, Common Lisp (CLISP, Allegro CL, CFFI, UFFI), Java, Modula-3, OCAML以及R，甚至是编译器或者汇编的计划应用（Guile, MzScheme, Chicken）。SWIG普遍应用于创建高级语言解析或汇编程序环境，用户接口，作为一种用来测试C/C++或进行原型设计的工</p> 
+								<p>创建MySQL数据库
+
+首先进入MySQL数据库创建 TestDB 数据库
+
+create database TestDB charset=utf8;
+
+
+
+
+到IDEA右侧点击Database，之后点击加号添加数据库，选择Data Source&gt;MySQL 填写连接信息
+
+
+填写好数据库信息后点击 Download 下载驱动包，下载完成后点击Test Connection 测试连接情况，之后点击ok。
+
+
+注意
+
+
+如果你要直接粘贴下面代码的话，请记得修改这些内容
+数据库名： TestDB
+数据库用户： root
+数据库密码： 123456
+
+
+创建项目
+
+1、引用 MySQL 数据库</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -227,7 +186,7 @@ SWIG是个帮助使用C或者C++编写的软件能与其它各种高级编程语
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15914574913033.html">swig</a>
+	  							<a href="15643143335228.html">从零开始SSM开发系列六：数据库开发</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -238,57 +197,7 @@ SWIG是个帮助使用C或者C++编写的软件能与其它各种高级编程语
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16251585082271/16253278891338.jpg);">
-						
-						</div> 
-						<a href="16251585082271.html"> 
-							<div class="item-desc"> 
-								<p>概述
-
-
-
-转到分布式版本控制系统看起来像个令人生畏的任务，但不改变已用的工作流你也可以用上 Git 带来的收益。团队可以用和 Subversion 完全不变的方式来开发项目。
-
-但使用 Git 加强开发的工作流，Git 比 SVN 有几个优势。首先，每个开发可以有属于自己的整个工程的本地拷贝。隔离的环境让各个开发者的工作和项目的其他部分（修改）独立开来 —— 即自由地提交到自己的本地仓库，先完全忽略上游的开发，直到方便的时候再把修改反馈上去。
-
-其次，Git 提供了强壮的分支和合并模型。不像 SVN，Git 的分支设计成可以做为一种用来在仓库之间集成代码和分享修改的『失败安全』的机制。
-
-工</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="16251585082271.html">集中式工作流</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Git.html'>Git</a>
+			    			<a class='category' href='ssm.html'>SSM练习</a>
 								
 		   						</div> 
 		   					</div> 
@@ -304,23 +213,31 @@ SWIG是个帮助使用C或者C++编写的软件能与其它各种高级编程语
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15914572003074.html"> 
+						<a href="15643132029446.html"> 
 							<div class="item-desc"> 
-								<p>
-PCRE(Perl Compatible Regular Expressions)是一个Perl库，包括 perl 兼容的正则表达式库。这些在执行正规表达式模式匹配时用与Perl 5同样的语法和语义是很有用的。Boost太庞大了，使用boost regex后，程序的编译速度明显变慢。测试了一下，同样一个程序，使用boost::regex编译时需要3秒，而使用pcre不到1秒。因此改用pcre来解决C语言中使用正则表达式的问题
+								<p>1、引用 AspectJ jar 包
+
+点击 File&gt;Project Structure...，选中 Libraries，添加 java 引用
+在 lib 中选择 aspectj-1.8.13 文件夹
 
 
-百度百科
 
-下载安装包pcre
 
-首先需要安装g++
 
-yum install -y gcc gcc-c++
+2、创建两个新的包
 
-否则会报错
 
-configure: error: Y</p> 
+com.sajor.study.c03
+test.com.sajor.study.c03
+
+
+3、创建一个业务类 UserXML
+
+package com.sajor.study.c03;
+
+public class UserXML {
+    private int id = 20180101;
+    private String name = &q</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -331,7 +248,7 @@ configure: error: Y</p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15914572003074.html">pcre</a>
+	  							<a href="15643132029446.html">从零开始SSM开发系列五：AOP</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -342,7 +259,7 @@ configure: error: Y</p>
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
+			    			<a class='category' href='ssm.html'>SSM练习</a>
 								
 		   						</div> 
 		   					</div> 
@@ -355,20 +272,22 @@ configure: error: Y</p>
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16251589603172/16253277674197.jpg);">
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16251589603172.html"> 
+						<a href="15642871336794.html"> 
 							<div class="item-desc"> 
-								<p>概述
+								<p>一、依赖注入
 
+1、新建一个 School 类
+右键 src&gt;main&gt;java&gt;com.sajor.study.c01，点击 New&gt;Java Class
 
+在 School 中引用 Student 类，并可以获得含有 Student 对象的一个 List:
 
-一旦你玩转了集中式工作流，在开发过程中可以很简单地加上功能分支，用来鼓励开发者之间协作和简化交流。
-
-功能分支工作流背后的核心思路是所有的功能开发应该在一个专门的分支，而不是在 master 分支上。这个隔离可以方便多个开发者在各自的功能上开发而不会弄乱主干代码。另外，也保证了 master 分支的代码一定不会是有问题的，极大有利于集成环境。
-
-功能开发隔离也让 pull requests 工作流成功可能，pull requests 工作流能为每个分支发起一个讨论，在分支合入正式项目之前，给其它开发者有表示赞同的机会。另外，如果你在功能开发中有问题卡住了，可以开一个 pull re</p> 
+    private int id = 2000;
+    private String name = &quot;Sajor&quot;;
+    private Student student;
+    private List&lt;Student&gt; students = new ArrayLis</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -379,7 +298,7 @@ configure: error: Y</p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16251589603172.html">功能分支工作流</a>
+	  							<a href="15642871336794.html">从零开始SSM开发系列四：依赖注入及 Bean 管理</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -390,7 +309,130 @@ configure: error: Y</p>
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='Git.html'>Git</a>
+			    			<a class='category' href='ssm.html'>SSM练习</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="15642457728170.html"> 
+							<div class="item-desc"> 
+								<p>1、新建一个包 com.sajor.study.c01
+
+打开开发工具 Intellij IDEA，打开之前创建的工程右键 src&gt;main&gt;java&gt;com.sajor.study，点击 New&gt;Package
+
+
+
+创建包 c01
+
+
+
+2、新建一个 Student 类
+右键 src&gt;main&gt;java&gt;com.sajor.study.c01，点击 New&gt;Java Class
+
+
+
+创建Student类
+
+
+
+Student 类包含 4 个属性
+
+package com.sajor.study.c01;
+
+public class Stud</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15642457728170.html">从零开始SSM开发系列三：第一个Spring应用</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='ssm.html'>SSM练习</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="15642432857493.html"> 
+							<div class="item-desc"> 
+								<p>创建远程仓库
+
+首先申请github账号这个不讲了，然后创建一个项目名为 SSMClass ，信息填写好之后，点击create repository
+
+
+
+之后点击Clone or download，选择use ssh，之后复制一下这个链接留作备用
+
+git@github.com:565785929/SSMClass.git
+
+
+
+
+创建本地仓库并远程
+
+1、 初始化本地git仓库
+然后使用IDEA打开这个文件夹，点击VCS -&gt; Import into Version Control -&gt; Create Git Repository。 相当于这条git命令
+
+git init
+
+</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15642432857493.html">从零开始SSM开发系列二：GitHub配置（可以跳过）</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='ssm.html'>SSM练习</a>
 								
 		   						</div> 
 		   					</div> 
@@ -458,7 +500,7 @@ configure: error: Y</p>
              
             
             <li>
-            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(2)</a>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(5)</a>
             <p>
             
             </p>
@@ -467,8 +509,18 @@ configure: error: Y</p>
              
             
             <li>
-            <a href="Arts.html">Arts&nbsp;(2)</a>
+            <a href="Arts.html">Arts&nbsp;(3)</a>
             <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            </p>
+            </li>
+            
+             
             
             </p>
             </li>
@@ -508,31 +560,31 @@ configure: error: Y</p>
           
           
          <li>
-           <a href="16332745656703.html">LeetCode 1. 两数之和</a><br>
+           <a href="16413527990433.html">Vim 跳转技巧</a><br>
          </li>
           
           
           
          <li>
-           <a href="16332743074800.html">Arts打卡</a><br>
+           <a href="16408435425370.html">tmux</a><br>
          </li>
           
           
           
          <li>
-           <a href="16330152348133.html">数据库上线规范</a><br>
+           <a href="16405110285297.html">JVM 内存模型</a><br>
          </li>
           
           
           
          <li>
-           <a href="16329877758446.html">删除远端 .idea 配置文件</a><br>
+           <a href="16405090873022.html">JVM 类加载器</a><br>
          </li>
           
           
           
          <li>
-           <a href="16324912353122.html">性能优化</a><br>
+           <a href="16405067982525.html">JVM 字节码</a><br>
          </li>
           
           

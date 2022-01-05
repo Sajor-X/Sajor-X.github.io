@@ -101,24 +101,127 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15649246400338.html"> 
+						<a href="15754418238619.html"> 
 							<div class="item-desc"> 
-								<p>关于wordpress更新提示无法创建目录问题
+								<p>
+可靠性低：如果数据走云盘做高可靠存储容易受网络波动干扰，如果不走云盘宕机数据易丢失，自建多副本运维很复杂，而且Redis本身的断网导致的全量同步机制对网络和运维的要求极高；
+可用性低：自建单副本无法保证可用性，多副本对心跳检查和链路切换要求极高，传统的sentinel有很多缺陷，在执行复杂的keys flushdb等命令时很容易造成误切和雪崩；
+诸多限制：自建集群方案如redis cluster，codis也有诸多限制，redis cluster需要smart client和非常
 
 
-进入wordpress安装目录下，修改wp-config.php文件添加：define(&quot;FS_METHOD&quot;,&quot;direct&quot;);
-chown -R sajor.sajor  xxx/wordpress/ 将存放wordpress博客的文件夹设置成sajor用户。
-修改php配置
+键值设计
 
-vim /etc/php-fpm.d/www.conf
-user = sajor
-group = sajor
+key名设计
 
-重启php-fpm
+可读性和可管理性
 
-systemctl restart php-fpm
+以业务名(或数据库名)为前缀(防止key冲突)，用冒号分隔，</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15754418238619.html">自建redis集群规范</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Redis.html'>Redis</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="15754270430043.html"> 
+							<div class="item-desc"> 
+								<p>首先安装redis
+brew install redis
+
+将/usr/local/redis/bin
+建立redis-cluster文件夹，复制六份， 三主三备份， 分别叫redis01-redis-06
 
 
+将每个文件夹中的redis.conf都修改一下
+例如： redis01/redis.conf
+
+port 7001
+
+cluster-enabled yes
+
+cluster-config-file  nodes_7001.conf  
+
+cluster-node-timeout  15000 
+
+pidfile  /var/run/redis_7001.pid
+
+
+redis02-r</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15754270430043.html">redis 集群</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Redis.html'>Redis</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="15753573808254.html"> 
+							<div class="item-desc"> 
+								<p>备份重要命令
+
+高手入侵可能会修改集群中的重要命令，例如：top、ps、kill等重要命令
+建议备份好
+
+Linux系统发现占用CPU达100%的进程并处理
 </p> 
 							</div> 
 						</a> 
@@ -130,7 +233,7 @@ systemctl restart php-fpm
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15649246400338.html">WordPress 博客遇到的问题</a>
+	  							<a href="15753573808254.html">Linux安全查找原因</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -157,17 +260,37 @@ systemctl restart php-fpm
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15649144225977.html"> 
+						<a href="15751320029536.html"> 
 							<div class="item-desc"> 
-								<p>由于linux的yum源不存在php7.x，所以我们要更改yum源
+								<p>用户的角色是通过UID和GID识别的。
 
-rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
-rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm 
+UID用户ID：相当于各为的身份证，在系统中是唯一的
+
+GID组ID：相当于各为的家庭或者你们的学校。
+
+新建用户及设置密码命令如下：
+
+useradd 【参数】 用户名
+
+-g 属组
+-u 设置uid
+-m 创建家目录
+-M 没有家目录
+-G 指定属于多个组
+-s 指定登录shell
+-d 指定家目录
+-c 注释
+-D 改变它默认的属性
+-e 指定的日期是帐号失效的日期,
 
 
-安装
+新建用户及设置密码命令如下：
 
-yum -y install php72w php72w-cli php72w-common php72w-devel php72w-embedded php72w-fpm php72w-gd php72w-mbstrin</p> 
+passwd 参数 用户名
+
+-l：锁定已经命名的账户名称
+-u：解开账户锁定状态
+-x, --maximum=DAYS：密码使用最大时间（天）</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -178,7 +301,7 @@ yum -y install php72w php72w-cli php72w-common php72w-devel php72w-embedded php7
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15649144225977.html">PHP 安装和卸载方法</a>
+	  							<a href="15751320029536.html">Linux 新建用户和组命令</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -205,30 +328,59 @@ yum -y install php72w php72w-cli php72w-common php72w-devel php72w-embedded php7
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15648434329273.html"> 
+						<a href="15749080605397.html"> 
 							<div class="item-desc"> 
-								<p>今天博客遇到如下异常
+								<p>
+安装目录创建
 
 
-MySQLNonTransientConnectionException: Communications link failure during rollback().
 
 
-打开mysql配置文件/etc/my.cnf
 
-在[mysqld]节，增加wait_timeout配置，原来是5，看来不够用，改为50。
-
-[mysqld]
-wait_timeout=50
+目录名
+用途
 
 
-重启mysqld服务，问题解决
-
-service mysqld restart
 
 
-报错信息如下：
 
-2019-08-03 22:33:17.405  WARN 29453 --- [XNIO-1 task</p> 
+/redis/bin
+存放redis软件本体
+
+
+/redis/conf
+存放redis实例配置文件
+
+
+/redis/logs
+存放redis标准输出日志
+
+
+/redis/backup
+存放备节点配置文件，其他备份文件
+
+
+/redis/var
+存放redis进程文件
+
+
+/redis/nodes
+存放redis集群模式nodes配置文件
+
+
+/redisdump
+存放redis持久化数据，独立的文件系统
+
+
+/redis/tmp
+存放哨兵工作目录，redis集群最初配置状态
+
+
+
+
+执行转换文件权限命令：
+
+chown -R redis:</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -239,7 +391,7 @@ service mysqld restart
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15648434329273.html">mysql经典的8小时问题-wait_timeout</a>
+	  							<a href="15749080605397.html">redis 参数配置</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -250,9 +402,7 @@ service mysqld restart
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
-								
-			    			<a class='category' href='MySQL.html'>MySQL</a>
+			    			<a class='category' href='Redis.html'>Redis</a>
 								
 		   						</div> 
 		   					</div> 
@@ -268,17 +418,41 @@ service mysqld restart
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15647321562727.html"> 
+						<a href="15748392035708.html"> 
 							<div class="item-desc"> 
-								<p>Spring概述
+								<p>简介
 
-Spring是什么
+背景和目的
+
+为规范生产环境部署和资源规划，更好实施资源池管理策略。用于指导Redis产品的安装配置，Redis哨兵和集群模式创建
+
+使用范围
 
 
-Spring是分层的JavaSE/EE full-stack 轻量级开源框架，Rod Johnson在《Expert One-on-One:J2EE Design and Development》(2002年)提出一种新的编程思想，2003 年发布 了一个新的Java开发框架-SpringFramework
+适用对象： 系统规划设计人员、系统部署实施人员、系统维护人员、IT管理人员。
+适用范围：
+使用场景： 传统架构及PaaS平台均需遵守该规范
+试用版本： 目前我行生产环境使用的所有Redis版本
 
 
-Spring以IoC（Inverse of Control 控制反转）和 AOP（Aspect Oriented Programming 面向切面编程）为内核，使用基本的JavaBean来完成以前只可能由EJB完成的工作，取代了EJB的臃肿、</p> 
+术语定义
+
+
+
+
+简称\术语
+说明
+
+
+
+
+
+分布式缓存
+为了提升指令和数据存取速度，通过分布式技术实现的缓存系统。
+
+
+Redis
+开源分布式缓存产品。网址：redis.io 使用C语言编写，支持网络、可基于内存有可以支持持久化的key-val</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -289,7 +463,7 @@ Spring以IoC（Inverse of Control 控制反转）和 AOP（Aspect Oriented Progr
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15647321562727.html">Spring入门</a>
+	  							<a href="15748392035708.html">redis部署规范</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -300,117 +474,7 @@ Spring以IoC（Inverse of Control 控制反转）和 AOP（Aspect Oriented Progr
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='java.html'>ssm课程</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15647300073307.html"> 
-							<div class="item-desc"> 
-								<p>在上一章的基础上，继续使用c07包
-
-1、创建新的 Package
-
-
-com.sajor.study.c07.user
-com.sajor.study.c07.user.model:存放 vo 对象(业务模型对象) 
-com.sajor.study.c07.user.dao:存放 dao 对象(数据库访问对象) 
-com.sajor.study.c07.user.mapper:存放 mybatis 数据库表-对象映射文件 
-com.sajor.study.c07.user.service:存放服务接口 
-com.sajor.study.c07.user.service.impl:存放接口实现</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15647300073307.html">从零开始SSM开发系列十三：使用 Mapper 接口方式整合 MyBatis-Spring</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15647285252626.html"> 
-							<div class="item-desc"> 
-								<p>1、引用 MyBatis-Spring 集成 jar 包
-
-在工程中引用 mybatis-spring-1.3.1.jar包
-
-点击 File&gt;Project Structure...，选中 Libraries，添加 java 引用
-
-
-
-2、创建新的 Package
-
-
-com.sajor.study.c07
-com.sajor.study.c07.dao 
-test.com.sajor.study.c07
-
-
-3、在 dao 包中创建一个 User 类
-
-在类中声明id、name、sex和email属性，及其对应的getter/setter方法。
-
-package com.sajor</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15647285252626.html">从零开始SSM开发系列十二：使用 DAO 方式整合 MyBatis-Spring</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
+			    			<a class='category' href='Redis.html'>Redis</a>
 								
 		   						</div> 
 		   					</div> 
@@ -478,7 +542,7 @@ package com.sajor</p>
              
             
             <li>
-            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(2)</a>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(5)</a>
             <p>
             
             </p>
@@ -487,8 +551,18 @@ package com.sajor</p>
              
             
             <li>
-            <a href="Arts.html">Arts&nbsp;(2)</a>
+            <a href="Arts.html">Arts&nbsp;(3)</a>
             <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            </p>
+            </li>
+            
+             
             
             </p>
             </li>
@@ -528,31 +602,31 @@ package com.sajor</p>
           
           
          <li>
-           <a href="16332745656703.html">LeetCode 1. 两数之和</a><br>
+           <a href="16413527990433.html">Vim 跳转技巧</a><br>
          </li>
           
           
           
          <li>
-           <a href="16332743074800.html">Arts打卡</a><br>
+           <a href="16408435425370.html">tmux</a><br>
          </li>
           
           
           
          <li>
-           <a href="16330152348133.html">数据库上线规范</a><br>
+           <a href="16405110285297.html">JVM 内存模型</a><br>
          </li>
           
           
           
          <li>
-           <a href="16329877758446.html">删除远端 .idea 配置文件</a><br>
+           <a href="16405090873022.html">JVM 类加载器</a><br>
          </li>
           
           
           
          <li>
-           <a href="16324912353122.html">性能优化</a><br>
+           <a href="16405067982525.html">JVM 字节码</a><br>
          </li>
           
           
