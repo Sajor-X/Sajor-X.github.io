@@ -4,7 +4,7 @@
   <title><![CDATA[Sajor's Blog]]></title>
   <link href="http://565785929.github.io/atom.xml" rel="self"/>
   <link href="http://565785929.github.io/"/>
-  <updated>2022-01-05T11:29:42+08:00</updated>
+  <updated>2022-01-07T16:39:13+08:00</updated>
   <id>http://565785929.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -14,12 +14,158 @@
 
   
   <entry>
+    <title type="html"><![CDATA[hydra 爆破ssh]]></title>
+    <link href="http://565785929.github.io/16415371479168.html"/>
+    <updated>2022-01-07T14:32:27+08:00</updated>
+    <id>http://565785929.github.io/16415371479168.html</id>
+    <content type="html"><![CDATA[
+<p><img src="media/16415371479168/16415378538145.jpg" alt=""/></p>
+
+<p>ssh破解神器 <a href="https://github.com/vanhauser-thc/thc-hydra">hydra</a></p>
+
+<p>这是个渗透神器，kail默认安装的工具。</p>
+
+<p>centos 安装步骤： </p>
+
+<pre class="line-numbers"><code class="language-text"># 下载最新版本的 hydra
+wget https://github.com/vanhauser-thc/thc-hydra/archive/refs/tags/v9.2.tar.gz
+
+# 解压
+tar -xvf v9.2.tar.gz
+
+cd thc-hydra-9.2
+
+# 安装
+./configure
+make
+make install
+</code></pre>
+
+<p>之后就可以使用了, 到github下载一个密码本</p>
+
+<pre class="line-numbers"><code class="language-text">git clone https://github.com/huyuanzhi2/password_brute_dictionary.git
+</code></pre>
+
+<p>输入命令开始爆破，可以用自己的服务器试试</p>
+
+<pre class="line-numbers"><code class="language-text">./hydra -l root  -P ../../password_brute_dictionary/字母与数字混合/digit_and_letter_top1000.txt -t 1 -vV -e ns  -o save.log  69.165.68.100 ssh
+</code></pre>
+
+<p>期间报错的话需要安装cmake</p>
+
+<pre class="line-numbers"><code class="language-text">[ERROR]Compiled without LIBSSH v0.4.x support, module is not available! 
+</code></pre>
+
+<pre class="line-numbers"><code class="language-text"># Download CMake from: https://cmake.org/download/
+wget https://cmake.org/files/v3.12/cmake-3.12.3.tar.gz
+
+# Compile from source and install
+tar zxvf cmake-3.*
+cd cmake-3.*
+./bootstrap --prefix=/usr/local
+make -j$(nproc)
+make install
+
+# Validate installation
+cmake --version
+
+cmake version *.*.*
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+</code></pre>
+
+<p>简单尝试了一下自己的服务器，竟然真的爆破成功了。发现自己竟然用的弱密码，密码里竟然有123，吓得我赶紧生成了一个强密码。服务器安全其实还是应该重视一下的。</p>
+
+<p>来源：<a href="https://www.cnblogs.com/ellisonzhang/p/13440614.html">Centos7安装Hydra(爆破神器) </a>、<a href="https://www.freebuf.com/sectool/159488.html">Linux SSH密码暴力破解技术及攻防实战</a></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[升级VUE版本]]></title>
+    <link href="http://565785929.github.io/16414626714891.html"/>
+    <updated>2022-01-06T17:51:11+08:00</updated>
+    <id>http://565785929.github.io/16414626714891.html</id>
+    <content type="html"><![CDATA[
+<p>在看文档<a href="https://cli.vuejs.org/zh/guide/installation.html%E4%B8%AD%EF%BC%8C%E6%8C%89%E6%AD%A5%E9%AA%A4%E5%8D%87%E7%BA%A7vue%EF%BC%9B">https://cli.vuejs.org/zh/guide/installation.html中，按步骤升级vue；</a></p>
+
+<p>于是就先通过 npm uninstall vue-cli -g卸载vue，然后再安装，但是vue -V时依然是2.9.6版本：</p>
+
+<p>第一步：npm config get registry </p>
+
+<p>第二步：npm config set registry <a href="https://registry.npm.taobao.org">https://registry.npm.taobao.org</a></p>
+
+<p>第三步：npm i -g @vue/cli</p>
+
+<p>完美，安装成功！</p>
+
+<p><img src="media/16414626714891/16414627322093.jpg" alt=""/></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Linux 目录结构]]></title>
+    <link href="http://565785929.github.io/16414407883196.html"/>
+    <updated>2022-01-06T11:46:28+08:00</updated>
+    <id>http://565785929.github.io/16414407883196.html</id>
+    <content type="html"><![CDATA[
+<p>启动Linux系统后输入 <code>ls \</code> <br/>
+<img src="media/16414407883196/16414408061006.jpg" alt=""/></p>
+
+<p>以下是对这些目录的解释：</p>
+
+<ul>
+<li>/bin：bin是Binary的缩写, 这个目录存放着最经常使用的命令。</li>
+<li><p>/boot：这里存放的是启动Linux时使用的一些核心文件，包括一些连接文件以及镜像文件。</p></li>
+<li><p>/dev ：dev是Device(设备)的缩写, 该目录下存放的是Linux的外部设备，在Linux中访问设备的方式和访问文件的方式是相同的。</p></li>
+<li><p>/etc：这个目录用来存放所有的系统管理所需要的配置文件和子目录。</p></li>
+<li><p>/home：用户的主目录，在Linux中，每个用户都有一个自己的目录，一般该目录名是以用户的账号命名的。</p></li>
+<li><p>/lib：这个目录里存放着系统最基本的动态连接共享库，其作用类似于Windows里的DLL文件。几乎所有的应用程序都需要用到这些共享库。</p></li>
+<li><p>/lost+found：这个目录一般情况下是空的，当系统非法关机后，这里就存放了一些文件。</p></li>
+<li><p>/media：linux系统会自动识别一些设备，例如U盘、光驱等等，当识别后，linux会把识别的设备挂载到这个目录下。</p></li>
+<li><p>/mnt：系统提供该目录是为了让用户临时挂载别的文件系统的，我们可以将光驱挂载在/mnt/上，然后进入该目录就可以查看光驱里的内容了。</p></li>
+<li><p>/opt：这是给主机额外安装软件所摆放的目录。比如你安装一个ORACLE数据库则就可以放到这个目录下。默认是空的。</p></li>
+<li><p>/proc：这个目录是一个虚拟的目录，它是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息。这个目录的内容不在硬盘上而是在内存里，我们也可以直接修改里面的某些文件，比如可以通过下面的命令来屏蔽主机的ping命令，使别人无法ping你的机器：<code>echo 1 &gt; /proc/sys/net/ipv4/icmp_echo_ignore_all</code></p></li>
+<li><p>/root：该目录为系统管理员，也称作超级权限者的用户主目录。</p></li>
+<li><p>/sbin：s就是Super User的意思，这里存放的是系统管理员使用的系统管理程序。</p></li>
+<li><p>/selinux：这个目录是Redhat/CentOS所特有的目录，Selinux是一个安全机制，类似于windows的防火墙，但是这套机制比较复杂，这个目录就是存放selinux相关的文件的。</p></li>
+<li><p>/srv：该目录存放一些服务启动之后需要提取的数据。</p></li>
+<li><p>/sys：这是linux2.6内核的一个很大的变化。该目录下安装了2.6内核中新出现的一个文件系统 sysfs 。</p>
+<ul>
+<li>sysfs文件系统集成了下面3种文件系统的信息：针对进程信息的proc文件系统、针对设备的devfs文件系统以及针对伪终端的devpts文件系统。</li>
+<li>该文件系统是内核设备树的一个直观反映。</li>
+<li>当一个内核对象被创建的时候，对应的文件和目录也在内核对象子系统中被创建。</li>
+</ul></li>
+<li><p>/tmp：这个目录是用来存放一些临时文件的。</p></li>
+<li><p>/usr：这是一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似与windows下的program files目录。</p></li>
+<li><p>/usr/bin：系统用户使用的应用程序。</p></li>
+<li><p>/usr/sbin：超级用户使用的比较高级的管理程序和系统守护程序。</p></li>
+<li><p>/usr/src：内核源代码默认的放置目录。</p></li>
+<li><p>/var：这个目录中存放着在不断扩充着的东西，我们习惯将那些经常被修改的目录放在这个目录下。包括各种日志文件。</p></li>
+</ul>
+
+<p>在linux系统中，有几个目录是比较重要的，平时需要注意不要误删除或者随意更改内部文件。</p>
+
+<p>/etc： 上边也提到了，这个是系统中的配置文件，如果你更改了该目录下的某个文件可能会导致系统不能启动。</p>
+
+<p>/bin, /sbin, /usr/bin, /usr/sbin: 这是系统预设的执行文件的放置目录，比如 ls 就是在/bin/ls 目录下的。</p>
+
+<p>值得提出的是，/bin, /usr/bin 是给系统用户使用的指令（除root外的普通用户），而/sbin, /usr/sbin 则是给root使用的指令。</p>
+
+<p>/var： 这是一个非常重要的目录，系统上跑了很多程序，那么每个程序都会有相应的日志产生，而这些日志就被记录到这个目录下，具体在/var/log 目录下，另外mail的预设放置也是在这里。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Vim 跳转技巧]]></title>
     <link href="http://565785929.github.io/16413527990433.html"/>
     <updated>2022-01-05T11:19:59+08:00</updated>
     <id>http://565785929.github.io/16413527990433.html</id>
     <content type="html"><![CDATA[
 <p><img src="media/16413527990433/16413528368917.jpg" alt=""/></p>
+
+<p><img src="media/16413527990433/16414412482066.jpg" alt=""/></p>
 
 <p><img src="media/16405110285297/16412884491803.jpg" alt=""/></p>
 
@@ -150,7 +296,53 @@ tmux rename-session -t &lt;old-name&gt; &lt;new-name&gt;     # Ctrl+b $
 
 <h2 id="toc_10">pane 窗格管理</h2>
 
-<p>待续。</p>
+<p>Tmux 可以将窗口分成多个窗格（pane），每个窗格运行不同的命令。以下命令都是在 Tmux 窗口中执行。<br/>
+<img src="media/16408435425370/16414372972512.jpg" alt=""/></p>
+
+<h3 id="toc_11">窗格快捷键</h3>
+
+<pre class="line-numbers"><code class="language-text">Ctrl+b %：划分左右两个窗格。
+Ctrl+b &quot;：划分上下两个窗格。
+Ctrl+b &lt;arrow key&gt;：光标切换到其他窗格。&lt;arrow key&gt;是指向要切换到的窗格的方向键，比如切换到下方窗格，就按方向键↓。
+Ctrl+b ;：光标切换到上一个窗格。
+Ctrl+b o：光标切换到下一个窗格。
+Ctrl+b {：当前窗格与上一个窗格交换位置。
+Ctrl+b }：当前窗格与下一个窗格交换位置。
+Ctrl+b Ctrl+o：所有窗格向前移动一个位置，第一个窗格变成最后一个窗格。
+Ctrl+b Alt+o：所有窗格向后移动一个位置，最后一个窗格变成第一个窗格。
+Ctrl+b x：关闭当前窗格。
+Ctrl+b !：将当前窗格拆分为一个独立窗口。
+Ctrl+b z：当前窗格全屏显示，再使用一次会变回原来大小。
+Ctrl+b Ctrl+&lt;arrow key&gt;：按箭头方向调整窗格大小。
+Ctrl+b q：显示窗格编号。
+</code></pre>
+
+<h2 id="toc_12">window 窗口管理</h2>
+
+<h3 id="toc_13">窗口快捷键</h3>
+
+<pre class="line-numbers"><code class="language-text">Ctrl+b c：创建一个新窗口，状态栏会显示多个窗口的信息。
+Ctrl+b p：切换到上一个窗口（按照状态栏上的顺序）。
+Ctrl+b n：切换到下一个窗口。
+Ctrl+b &lt;number&gt;：切换到指定编号的窗口，其中的&lt;number&gt;是状态栏上的窗口编号。
+Ctrl+b w：从列表中选择窗口。
+Ctrl+b ,：窗口重命名。
+</code></pre>
+
+<h2 id="toc_14">其他命令</h2>
+
+<pre class="line-numbers"><code class="language-text"># 列出所有快捷键，及其对应的 Tmux 命令
+$ tmux list-keys
+
+# 列出所有 Tmux 命令及其参数
+$ tmux list-commands
+
+# 列出当前所有 Tmux 会话的信息
+$ tmux info
+
+# 重新加载当前的 Tmux 配置
+$ tmux source-file ~/.tmux.conf
+</code></pre>
 
 <p>来源：<a href="https://zhuanlan.zhihu.com/p/102546608">知乎</a>、<a href="http://www.ruanyifeng.com/blog/2019/10/tmux.html">阮一峰的网络日志</a></p>
 
@@ -599,6 +791,18 @@ npm -v</p>
 
 <p>Linux允许为不同的场合，分配不同的开机启动程序，这就叫做&quot;运行级别&quot;（runlevel）。也就是说，启动时根据&quot;运行级别&quot;，确定要运行哪些程序。</p>
 
+<p><strong>Linux系统有7个运行级别(runlevel)：</strong></p>
+
+<ul>
+<li>运行级别0：系统停机状态，系统默认运行级别不能设为0，否则不能正常启动</li>
+<li>运行级别1：单用户工作状态，root权限，用于系统维护，禁止远程登陆</li>
+<li>运行级别2：多用户状态(没有NFS)</li>
+<li>运行级别3：完全的多用户状态(有NFS)，登陆后进入控制台命令行模式</li>
+<li>运行级别4：系统未使用，保留</li>
+<li>运行级别5：X11控制台，登陆后进入图形GUI模式</li>
+<li>运行级别6：系统正常关闭并重启，默认运行级别不能设为6，否则不能正常启动</li>
+</ul>
+
 ]]></content>
   </entry>
   
@@ -913,317 +1117,6 @@ npm -v</p>
 <li>Coding 多写</li>
 <li>Test cases 用例</li>
 </ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[11 | 怎么给字符串字段加索引？]]></title>
-    <link href="http://565785929.github.io/16330152348133.html"/>
-    <updated>2021-09-30T23:20:34+08:00</updated>
-    <id>http://565785929.github.io/16330152348133.html</id>
-    <content type="html"><![CDATA[
-<h2 id="toc_0">什么是前缀索引？</h2>
-
-<p>给email字符串创建索引有</p>
-
-<pre class="line-numbers"><code class="language-text">mysql&gt; alter table SUser add index index1(email);
-或
-mysql&gt; alter table SUser add index index2(email(6));
-</code></pre>
-
-<p>索引选取的越长，占用的磁盘空间就越大，相同的数据页能放下的索引值就越少，搜索的效率也就会越低。</p>
-
-<p>由于email(6)这个索引结构中每个邮箱字段都只取前6个字节，所以占用的空间会更小，这就是使用前缀索引的优势。但，这同时带来的损失是，可能会增加额外的记录扫描次数。</p>
-
-<p>使用前缀索引，定义好长度，就可以做到既节省空间，又不用额外增加太多的查询成本。</p>
-
-<h2 id="toc_1">定义多长的前缀？</h2>
-
-<p>我们在建立索引时关注的是区分度，区分度越高越好。因为区分度越高，意味着重复的键值越少。因此，我们可以通过统计索引上有多少个不同的值来判断要使用多长的前缀。</p>
-
-<p>首先，算出这个列上有多少个不同的值</p>
-
-<p>然后，依次选取不同长度的前缀来看这个值，比如我们要看一下4~7个字节的前缀索引，可以用这个语句：</p>
-
-<pre class="line-numbers"><code class="language-text">mysql&gt; select 
-  count(distinct email) as L,
-  count(distinct left(email,4)）as L4,
-  count(distinct left(email,5)）as L5,
-  count(distinct left(email,6)）as L6,
-  count(distinct left(email,7)）as L7
-from SUser;
-</code></pre>
-
-<p>当然，使用前缀索引很可能会损失区分度，所以你需要预先设定一个可以接受的损失比例，比如5%。然后，在返回的L4~L7中，找出不小于 L * 95%的值，假设这里L6、L7都满足，你就可以选择前缀长度为6。</p>
-
-<h2 id="toc_2">前缀索引对覆盖索引的影响</h2>
-
-<p>使用前缀索引用不上覆盖索引对查询性能的优化</p>
-
-<p>虽然你创建了联合索引，查询字段已经覆盖在联合索引中了，但InnoDB还是要回到id索引再查一下，因为系统并不确定前缀索引的定义是否截断了完整信息。</p>
-
-<h2 id="toc_3">其他方式</h2>
-
-<p>第一种方式是使用<strong>倒序存储</strong>。如果你存储身份证号的时候把它倒过来存，由于身份证号的最后6位没有地址码这样的重复逻辑，所以最后这6位很可能就提供了足够的区分度。当然了，实践中你不要忘记使用count(distinct)方法去做个验证。</p>
-
-<p>每次查询的时候，你可以这么写：</p>
-
-<pre class="line-numbers"><code class="language-text">mysql&gt; select field_list from t where id_card = reverse(&#39;input_id_card_string&#39;);
-</code></pre>
-
-<p>第二种方式是<strong>使用hash字段</strong>。你可以在表上再创建一个整数字段，来保存身份证的校验码，同时在这个字段上创建索引</p>
-
-<pre class="line-numbers"><code class="language-text">mysql&gt; alter table t add id_card_crc int unsigned, add index(id_card_crc);
-</code></pre>
-
-<p>然后每次插入新记录的时候，都同时用crc32()这个函数得到校验码填到这个新字段。由于校验码可能存在冲突，也就是说两个不同的身份证号通过crc32()函数得到的结果可能是相同的，所以你的查询语句where部分要判断id_card的值是否精确相同。</p>
-
-<p>这样，索引的长度变成了4个字节，比原来小了很多。</p>
-
-<pre class="line-numbers"><code class="language-text">mysql&gt; select field_list from t where id_card_crc=crc32(&#39;input_id_card_string&#39;) and id_card=&#39;input_id_card_string&#39;
-</code></pre>
-
-<h2 id="toc_4">使用倒序存储和使用hash字段这两种方法的异同点。</h2>
-
-<p>首先，它们的相同点是，都不支持范围查询。倒序存储的字段上创建的索引是按照倒序字符串的方式排序的，已经没有办法利用索引方式查出身份证号码在[ID_X, ID_Y]的所有市民了。同样地，hash字段的方式也只能支持等值查询。</p>
-
-<p>它们的区别，主要体现在以下三个方面：</p>
-
-<ul>
-<li><p>从占用的额外空间来看，倒序存储方式在主键索引上，不会消耗额外的存储空间，而hash字段方法需要增加一个字段。当然，倒序存储方式使用4个字节的前缀长度应该是不够的，如果再长一点，这个消耗跟额外这个hash字段也差不多抵消了。</p></li>
-<li><p>在CPU消耗方面，倒序方式每次写和读的时候，都需要额外调用一次reverse函数，而hash字段的方式需要额外调用一次crc32()函数。如果只从这两个函数的计算复杂度来看的话，reverse函数额外消耗的CPU资源会更小些。</p></li>
-<li><p>从查询效率上看，使用hash字段方式的查询性能相对更稳定一些。因为crc32算出来的值虽然有冲突的概率，但是概率非常小，可以认为每次查询的平均扫描行数接近1。而倒序存储方式毕竟还是用的前缀索引的方式，也就是说还是会增加扫描行数。</p></li>
-</ul>
-
-<h2 id="toc_5">小结</h2>
-
-<p>字符串字段创建索引的场景，你可以使用的方式有：</p>
-
-<ol>
-<li>直接创建完整索引，这样可能比较占用空间；</li>
-<li>创建前缀索引，节省空间，但会增加查询扫描次数，并且不能使用覆盖索引；</li>
-<li>倒序存储，再创建前缀索引，用于绕过字符串本身前缀的区分度不够的问题；</li>
-<li>创建hash字段索引，查询性能稳定，有额外的存储和计算消耗，跟第三种方式一样，都不支持范围扫描。</li>
-</ol>
-
-<p>在实际应用中，你要根据业务字段的特点选择使用哪种方式。</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[删除远端 .idea 配置文件]]></title>
-    <link href="http://565785929.github.io/16329877758446.html"/>
-    <updated>2021-09-30T15:42:55+08:00</updated>
-    <id>http://565785929.github.io/16329877758446.html</id>
-    <content type="html"><![CDATA[
-<p><img src="media/16329877758446/16413513618923.jpg" alt=""/></p>
-
-<p>进入项目根目录</p>
-
-<pre class="line-numbers"><code class="language-text">$ cd /c/users/john/blog/
-</code></pre>
-
-<p>删除缓存区.idea（保留工作区.idea）</p>
-
-<pre class="line-numbers"><code class="language-text">$ git rm --cached -r .idea
-</code></pre>
-
-<p>提交.gitiginore文件，将.idea从源代码仓库中删除（-m 表示注解）</p>
-
-<pre class="line-numbers"><code class="language-text">$ git commit -m &quot;commit and remove .idea&quot;
-</code></pre>
-
-<p>推送到远程端</p>
-
-<pre class="line-numbers"><code class="language-text">$ git push
-</code></pre>
-
-<p>来源：<a href="https://www.cnblogs.com/ifme/p/11796311.html">git删除远程.idea目录</a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[性能优化]]></title>
-    <link href="http://565785929.github.io/16324912353122.html"/>
-    <updated>2021-09-24T21:47:15+08:00</updated>
-    <id>http://565785929.github.io/16324912353122.html</id>
-    <content type="html"><![CDATA[
-<h3 id="toc_0">性能常用指标</h3>
-
-<h4 id="toc_1">性能</h4>
-
-<ul>
-<li>QPS 每秒查询的数量</li>
-<li>TPS 每秒事务的数量</li>
-<li>HPS 每秒HTTP请求数量</li>
-</ul>
-
-<h4 id="toc_2">高并发的互联网应用</h4>
-
-<ul>
-<li>响应速度 是穿行执行的优化，通过优化执行步骤解决问题</li>
-<li>吞吐量 是并行执行的优化，通过合理利用计算资源达到目标</li>
-</ul>
-
-<p>高吞吐高并发，使用有限的硬件资源，从中找到一个平衡点</p>
-
-<h4 id="toc_3">指标</h4>
-
-<ul>
-<li>平均响应时间</li>
-<li>百分位数（Percentile） 可以反映出应用接口的整体响应情况。 目标要干掉严重影响系统的长尾请求。 例如 TP50%=40ms 指的是百分之九十的数据可以在四十毫秒内返回。</li>
-<li>并发量  指系统同时能处理的请求数量，这个指标反映了系统的负载能力。高并发时会导致共享资源争用问题，需要减少资源冲突，以及长时间占用资源的行为。</li>
-<li>秒开率 APP启动速度</li>
-<li>容错率 </li>
-<li>正确性 项目中使用了熔断</li>
-</ul>
-
-<h4 id="toc_4">优化理论方法</h4>
-
-<ul>
-<li>木桶理论：系统的整体性能，取决于系统中最慢的组件。例如数据库落盘的I/O问题</li>
-<li>基础测试（Benchmark）：是用来测试某个程序的最佳性能。Java组件中的JMH可以消除刚启动的应用JIT编辑器等因素的影响。</li>
-<li>Amdahl</li>
-</ul>
-
-<h4 id="toc_5">性能优化注意点</h4>
-
-<ul>
-<li>依据数字而不是猜想</li>
-<li>个体数据不足信</li>
-<li>不要过早优化和过度优化
-<ul>
-<li>项目开发和性能优化应该分为两个独立的步骤。性能优化应等到整个项目的架构和功能大体进入稳定状态再进行。</li>
-</ul></li>
-<li>保持良好的代码规范
-<ul>
-<li>使用合适的设计模式</li>
-</ul></li>
-</ul>
-
-<h3 id="toc_6">性能优化点</h3>
-
-<ul>
-<li>复用优化 </li>
-<li>计算优化</li>
-<li>结果集优化</li>
-<li>资源冲突优化</li>
-<li>JVM优化</li>
-<li>算法优化</li>
-<li>高效实现</li>
-</ul>
-
-<h4 id="toc_7">复用优化</h4>
-
-<p>例如写代码时会发现有很多重复的代码可以提取出来，做成公共的方法，下次用的时候，就不用再写一遍。</p>
-
-<p>复用</p>
-
-<ul>
-<li>缓冲(buffer): 常见于对数据的暂存，然后批量传输或者写入。多使用顺序的方式，用来缓解不同设备之间频繁地、缓慢地随机写</li>
-<li>缓存(cache): 常见于对已读数据的复用。通过将它们缓存在相对高速的区域，缓存主要针对于读操作
-<ul>
-<li>数据缓存</li>
-<li>计算结果缓存</li>
-<li>多层缓存</li>
-</ul></li>
-<li>池化: 连接池</li>
-<li>过载优化</li>
-</ul>
-
-<h4 id="toc_8">计算优化</h4>
-
-<p>并行执行</p>
-
-<ul>
-<li>多机 多台计算机 hadoop</li>
-<li>多进程 nginx</li>
-<li>多线程 netty </li>
-<li>协程 go </li>
-</ul>
-
-<p>变同步为异步<br/>
-惰性加载</p>
-
-<h4 id="toc_9">结果集优化</h4>
-
-<p>xml- json<br/>
-gzip</p>
-
-<p>返回数据集的精简</p>
-
-<p>对于时效性要求不高，但对处理能力有高要求的业务，可以吸取缓冲区的经验。</p>
-
-<ol>
-<li>减少网络连接的交互</li>
-<li>批量处理的方式</li>
-<li>增加缓存</li>
-</ol>
-
-<h4 id="toc_10">资源冲突优化</h4>
-
-<p><img src="media/16324912353122/16324935293757.jpg" alt="" style="width:399px;"/></p>
-
-<p>按照锁<strong>级别</strong>：可分为乐观锁与悲观锁</p>
-
-<p>按照锁<strong>类型</strong>：可分为公平锁与非公平锁</p>
-
-<h4 id="toc_11">算法优化</h4>
-
-<p>由于储存越来越便宜。往往采用空间换时间的方式</p>
-
-<h4 id="toc_12">高效实现</h4>
-
-<p><img src="media/16324912353122/16324937346857.jpg" alt="" style="width:754px;"/></p>
-
-<h4 id="toc_13">JVM优化</h4>
-
-<p>CMS垃圾回收器已经在Java14中被移除</p>
-
-<h3 id="toc_14">常见系统瓶颈</h3>
-
-<p>**CPU **</p>
-
-<ul>
-<li>通过top命令，观测CPU性能</li>
-<li>通过负载，评估CPU任务执行的排队情况</li>
-<li>通过vmstat，看CPU的繁忙程度</li>
-</ul>
-
-<p><strong>内存</strong></p>
-
-<p><img src="media/16324912353122/16324944933260.jpg" alt="" style="width:721px;"/></p>
-
-<p><img src="media/16324912353122/16324945583443.jpg" alt="" style="width:556px;"/></p>
-
-<p><strong>I/O</strong></p>
-
-<ul>
-<li>iostat命令</li>
-</ul>
-
-<h4 id="toc_15">top命令</h4>
-
-<p><img src="media/16324912353122/16324941952343.jpg" alt="" style="width:677px;"/></p>
-
-<p><img src="media/16324912353122/16324941859111.jpg" alt="" style="width:585px;"/></p>
-
-<p><img src="media/16324912353122/16324945400140.jpg" alt="" style="width:572px;"/></p>
-
-<h4 id="toc_16">负载</h4>
-
-<p>uptime命令</p>
-
-<p><img src="media/16324912353122/16324943381092.jpg" alt="" style="width:372px;"/></p>
-
-<h4 id="toc_17">vmstat命令</h4>
-
-<p><img src="media/16324912353122/16324943999070.jpg" alt="" style="width:591px;"/></p>
-
-<p><img src="media/16324912353122/16324944282460.jpg" alt="" style="width:483px;"/></p>
 
 ]]></content>
   </entry>

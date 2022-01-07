@@ -10,7 +10,7 @@
 
     <title>
       
-    学习方法 - Sajor's Blog
+    hydra 爆破ssh - Sajor's Blog
     
     </title>
 
@@ -95,86 +95,77 @@
 		<div class="post-header">
 			<!-- title -->
 			<div class="post-header">
-				<h1 class="post-title itemprop="name headline">学习方法</h1>	
+				<h1 class="post-title itemprop="name headline">hydra 爆破ssh</h1>	
 				<div class="post-data">
-					<time datetime="2021-10-04T17:37:00+08:00" pubdate data-updated="true">2021/10/04</time>
+					<time datetime="2022-01-07T14:32:27+08:00" pubdate data-updated="true">2022/01/07</time>
 				</div>
 			</div>
 		</div>
 	<div id="post-content" class="post-content" itemprop="articleBody"> 
 		<p class="post-tags"> 
 		
-		<a href='Arts.html'>Arts</a>&nbsp;
+		<a href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>&nbsp;
 		
 		</p>
 	<!-- 正文 -->
 		<p>
-		<p>来自于 <outliers> 异类: 不一样的成功启示录</p>
+		<p><img src="media/16415371479168/16415378538145.jpg" alt=""/></p>
 
-<p><img src="media/16321235553115/16322371489779.jpg" alt="" style="width:184px;"/></p>
+<p>ssh破解神器 <a href="https://github.com/vanhauser-thc/thc-hydra">hydra</a></p>
 
-<ul>
-<li>Chunk it up 切碎知识点</li>
-<li>Deliberate Practicing 刻意练习</li>
-<li>feedback 反馈</li>
-</ul>
+<p>这是个渗透神器，kail默认安装的工具。</p>
 
-<p><a href="http://naotu.baidu.com/file/b832f043e2ead159d584cca4efb19703?token=7a6a56eb2630548c">数据结构脑图</a><br/>
-<a href="http://naotu.baidu.com/file/0a53d3a5343bd86375f348b2831d3610?token=5ab1de1c90d5f3ec">算法脑图</a></p>
+<p>centos 安装步骤： </p>
 
-<h2 id="toc_0">Chunk it up</h2>
+<pre class="line-numbers"><code class="language-text"># 下载最新版本的 hydra
+wget https://github.com/vanhauser-thc/thc-hydra/archive/refs/tags/v9.2.tar.gz
 
-<p>做脑图</p>
+# 解压
+tar -xvf v9.2.tar.gz
 
-<p>来自reddit中ask me anything<br/>
-<img src="media/16321235553115/16321238197078.jpg" alt="" style="width:812px;"/></p>
+cd thc-hydra-9.2
 
-<h2 id="toc_1">数据结构分类</h2>
+# 安装
+./configure
+make
+make install
+</code></pre>
 
-<ul>
-<li>一维数据结构
-<ul>
-<li>基础</li>
-<li>数组 array(string)</li>
-<li>链表 linked list</li>
-<li>高级</li>
-<li>栈 stack</li>
-<li>队列 queue</li>
-<li>双端队列 deque(double-ended queue)</li>
-<li>集合 set</li>
-<li>映射 map(hash or map)</li>
-</ul></li>
-<li>二维数据结构
-<ul>
-<li>基础：</li>
-<li>树 tree</li>
-<li>图 graph</li>
-<li>高级：</li>
-<li>二叉搜索树 binary search tree(red-black tree, AVL)</li>
-<li>堆 heap</li>
-<li>并查集 disjoint set</li>
-<li>字典树 trie</li>
-</ul></li>
-<li>特殊数据结构
-<ul>
-<li>位运算 bitwise</li>
-<li>布隆过滤器 BloomFilter</li>
-<li>缓存 LRU Cache</li>
-</ul></li>
-</ul>
+<p>之后就可以使用了, 到github下载一个密码本</p>
 
-<p><strong>切题四件套</strong></p>
+<pre class="line-numbers"><code class="language-text">git clone https://github.com/huyuanzhi2/password_brute_dictionary.git
+</code></pre>
 
-<ul>
-<li>Clarification 明确题意</li>
-<li>Possible solutions 思考多种方法
-<ul>
-<li>compare(time/space) 对比复杂度</li>
-<li>optimal 加强优化</li>
-</ul></li>
-<li>Coding 多写</li>
-<li>Test cases 用例</li>
-</ul>
+<p>输入命令开始爆破，可以用自己的服务器试试</p>
+
+<pre class="line-numbers"><code class="language-text">./hydra -l root  -P ../../password_brute_dictionary/字母与数字混合/digit_and_letter_top1000.txt -t 1 -vV -e ns  -o save.log  69.165.68.100 ssh
+</code></pre>
+
+<p>期间报错的话需要安装cmake</p>
+
+<pre class="line-numbers"><code class="language-text">[ERROR]Compiled without LIBSSH v0.4.x support, module is not available! 
+</code></pre>
+
+<pre class="line-numbers"><code class="language-text"># Download CMake from: https://cmake.org/download/
+wget https://cmake.org/files/v3.12/cmake-3.12.3.tar.gz
+
+# Compile from source and install
+tar zxvf cmake-3.*
+cd cmake-3.*
+./bootstrap --prefix=/usr/local
+make -j$(nproc)
+make install
+
+# Validate installation
+cmake --version
+
+cmake version *.*.*
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+</code></pre>
+
+<p>简单尝试了一下自己的服务器，竟然真的爆破成功了。发现自己竟然用的弱密码，密码里竟然有123，吓得我赶紧生成了一个强密码。服务器安全其实还是应该重视一下的。</p>
+
+<p>来源：<a href="https://www.cnblogs.com/ellisonzhang/p/13440614.html">Centos7安装Hydra(爆破神器) </a>、<a href="https://www.freebuf.com/sectool/159488.html">Linux SSH密码暴力破解技术及攻防实战</a></p>
 
 		</p>
 		<!-- 侧边导航条 -->
@@ -275,22 +266,16 @@
 	<!-- 版权声明 -->
 		<p class="post-info" style="color: #BCBDB6">
 				本文由 <a style="color: #BCBDB6" href="#">Sajor
-				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2021-10-04T17:37:00+08:00
+				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2022-01-07T14:32:27+08:00
 		</p>
 	<!-- 导航 -->
 			<div id="comments" class="clearfix" style="padding: 0px;">
 				<footer class="post-footer clearfix">	    			
 				    <div class="meta">
 					    
-					    <P style="float: left;">
-					    	<a href="16339276945488.html" 
-					        title="Previous Post: numpy">&laquo; numpy</a>
-					    </p>
-					    <p style="float:right; ">
 					    	
-					    	
-					        <a href="16332772077185.html" 
-					        title="Next Post: LeetCode 217.存在重复元素">LeetCode 217.存在重复元素 &raquo;</a>
+					        <a href="16414626714891.html" 
+					        title="Next Post: 升级VUE版本">升级VUE版本 &raquo;</a>
 					    </p> 
 					    
 				    </div>
@@ -379,13 +364,8 @@
              
             
             <li>
-            <a href="Arts.html">Arts&nbsp;(4)</a>
+            <a href="Arts.html">Arts&nbsp;(3)</a>
             <p>
-            
-            </p>
-            </li>
-            
-             
             
             </p>
             </li>
@@ -430,31 +410,31 @@
           
           
          <li>
+           <a href="16415371479168.html">hydra 爆破ssh</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16414626714891.html">升级VUE版本</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16414407883196.html">Linux 目录结构</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16413527990433.html">Vim 跳转技巧</a><br>
+         </li>
+          
+          
+          
+         <li>
            <a href="16408435425370.html">tmux</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16405110285297.html">JVM 内存模型</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16405090873022.html">JVM 类加载器</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16405067982525.html">JVM 字节码</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16402262289586.html">Final Shell离线激活</a><br>
          </li>
           
           

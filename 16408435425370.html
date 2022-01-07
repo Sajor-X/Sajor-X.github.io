@@ -221,7 +221,53 @@ tmux rename-session -t &lt;old-name&gt; &lt;new-name&gt;     # Ctrl+b $
 
 <h2 id="toc_10">pane 窗格管理</h2>
 
-<p>待续。</p>
+<p>Tmux 可以将窗口分成多个窗格（pane），每个窗格运行不同的命令。以下命令都是在 Tmux 窗口中执行。<br/>
+<img src="media/16408435425370/16414372972512.jpg" alt=""/></p>
+
+<h3 id="toc_11">窗格快捷键</h3>
+
+<pre class="line-numbers"><code class="language-text">Ctrl+b %：划分左右两个窗格。
+Ctrl+b &quot;：划分上下两个窗格。
+Ctrl+b &lt;arrow key&gt;：光标切换到其他窗格。&lt;arrow key&gt;是指向要切换到的窗格的方向键，比如切换到下方窗格，就按方向键↓。
+Ctrl+b ;：光标切换到上一个窗格。
+Ctrl+b o：光标切换到下一个窗格。
+Ctrl+b {：当前窗格与上一个窗格交换位置。
+Ctrl+b }：当前窗格与下一个窗格交换位置。
+Ctrl+b Ctrl+o：所有窗格向前移动一个位置，第一个窗格变成最后一个窗格。
+Ctrl+b Alt+o：所有窗格向后移动一个位置，最后一个窗格变成第一个窗格。
+Ctrl+b x：关闭当前窗格。
+Ctrl+b !：将当前窗格拆分为一个独立窗口。
+Ctrl+b z：当前窗格全屏显示，再使用一次会变回原来大小。
+Ctrl+b Ctrl+&lt;arrow key&gt;：按箭头方向调整窗格大小。
+Ctrl+b q：显示窗格编号。
+</code></pre>
+
+<h2 id="toc_12">window 窗口管理</h2>
+
+<h3 id="toc_13">窗口快捷键</h3>
+
+<pre class="line-numbers"><code class="language-text">Ctrl+b c：创建一个新窗口，状态栏会显示多个窗口的信息。
+Ctrl+b p：切换到上一个窗口（按照状态栏上的顺序）。
+Ctrl+b n：切换到下一个窗口。
+Ctrl+b &lt;number&gt;：切换到指定编号的窗口，其中的&lt;number&gt;是状态栏上的窗口编号。
+Ctrl+b w：从列表中选择窗口。
+Ctrl+b ,：窗口重命名。
+</code></pre>
+
+<h2 id="toc_14">其他命令</h2>
+
+<pre class="line-numbers"><code class="language-text"># 列出所有快捷键，及其对应的 Tmux 命令
+$ tmux list-keys
+
+# 列出所有 Tmux 命令及其参数
+$ tmux list-commands
+
+# 列出当前所有 Tmux 会话的信息
+$ tmux info
+
+# 重新加载当前的 Tmux 配置
+$ tmux source-file ~/.tmux.conf
+</code></pre>
 
 <p>来源：<a href="https://zhuanlan.zhihu.com/p/102546608">知乎</a>、<a href="http://www.ruanyifeng.com/blog/2019/10/tmux.html">阮一峰的网络日志</a></p>
 
@@ -456,11 +502,6 @@ tmux rename-session -t &lt;old-name&gt; &lt;new-name&gt;     # Ctrl+b $
             
              
             
-            </p>
-            </li>
-            
-             
-            
              
             
              
@@ -479,6 +520,24 @@ tmux rename-session -t &lt;old-name&gt; &lt;new-name&gt;     # Ctrl+b $
           
           
          <li>
+           <a href="16415371479168.html">hydra 爆破ssh</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16414626714891.html">升级VUE版本</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16414407883196.html">Linux 目录结构</a><br>
+         </li>
+          
+          
+          
+         <li>
            <a href="16413527990433.html">Vim 跳转技巧</a><br>
          </li>
           
@@ -486,24 +545,6 @@ tmux rename-session -t &lt;old-name&gt; &lt;new-name&gt;     # Ctrl+b $
           
          <li>
            <a href="16408435425370.html">tmux</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16405110285297.html">JVM 内存模型</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16405090873022.html">JVM 类加载器</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16405067982525.html">JVM 字节码</a><br>
          </li>
           
           

@@ -10,7 +10,7 @@
 
     <title>
       
-    前端 - Sajor's Blog
+    软件安装 - Sajor's Blog
     
     </title>
 
@@ -98,38 +98,26 @@
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16353269752301/16413526184515.jpg);">
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16353269752301.html"> 
+						<a href="15914572003074.html"> 
 							<div class="item-desc"> 
 								<p>
+PCRE(Perl Compatible Regular Expressions)是一个Perl库，包括 perl 兼容的正则表达式库。这些在执行正规表达式模式匹配时用与Perl 5同样的语法和语义是很有用的。Boost太庞大了，使用boost regex后，程序的编译速度明显变慢。测试了一下，同样一个程序，使用boost::regex编译时需要3秒，而使用pcre不到1秒。因此改用pcre来解决C语言中使用正则表达式的问题
 
-第一步，先查看本机node.js版本：
 
-node -v
+百度百科
 
-第二步，清除node.js的cache：
+下载安装包pcre
 
-sudo npm cache clean -f
+首先需要安装g++
 
-第三步，安装 n 工具，这个工具是专门用来管理node.js版本的，别怀疑这个工具的名字，是他是他就是他，他的名字就是 &quot;n&quot;
+yum install -y gcc gcc-c++
 
-sudo npm install -g n
+否则会报错
 
-第四步，安装最新版本的node.js
-
-sudo n stable
-
-第五步，再次查看本机的node.js版本：
-
-node -v
-
-第六步，更新npm到最新版：
-
-$ sudo npm install npm@latest -g
-
-第七步，验证</p> 
+configure: error: Y</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -140,7 +128,7 @@ $ sudo npm install npm@latest -g
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16353269752301.html">Mac 更新 node 版本</a>
+	  							<a href="15914572003074.html">pcre</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -151,7 +139,128 @@ $ sudo npm install npm@latest -g
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E5%89%8D%E7%AB%AF.html'>前端</a>
+			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="15822108701088.html"> 
+							<div class="item-desc"> 
+								<p>首先下载jdk，jdk下载页面
+
+卸载原有jdk
+
+检查操作系统是否自带openjdk 
+
+输入java -version若出现java版本信息，表明操作系统目前自带的jdk，按以下方式进行卸载。
+
+检查操作系统上自带的jdk 
+rpm -qa|grep jdk 
+
+如果显示jdk的相关信息，则继续，否则跳过这一步， 卸载原有的jdk 
+yum remove java*
+
+检索所有的java套件 rpm -qa | grep java
+
+如果显示：
+
+java-x.x.x-openjdk-x.x.x.xxx-x.x.x.x.el7.x86_64
+…
+java-x.x.x-openjdk-hea</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15822108701088.html">jdk</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="15822104759867.html"> 
+							<div class="item-desc"> 
+								<p>首先到官网spark.apache.org下载spark，spark下载页面 
+
+安装
+
+spark安装文件夹准备
+
+在/usr/local/目录下创建名称为spark的文件夹：
+sudo mkdir -p /usr/local/spark
+
+将下载好的spark安装包上传到服务器上。
+之后解压到/usr/local/spark中
+
+sudo tar -zxvf spark-2.4.5-bin-hadoop2.7.tgz
+
+配置
+
+编辑配置文件sudo vim /etc/profile
+
+定位到最后一行，添加如下内容（版本注意修改）
+
+# spark
+export SPARK_HOME=/us</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15822104759867.html">spark</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
 								
 		   						</div> 
 		   					</div> 
@@ -166,7 +275,7 @@ $ sudo npm install npm@latest -g
 	<nav class="lists-navigator clearfix" style="clear: all;">
             <ol class="page-navigator">
             
-            	<li class="  disabled "><a href="#index"><span aria-hidden="true">&larr;</span> 上一页</a></li>
+            	<li class=""><a href="软件安装.html"><span aria-hidden="true">&larr;</span> 上一页</a></li>
             
 
 				<li class=""><a href="archives.html">归档</a></li>
@@ -256,11 +365,6 @@ $ sudo npm install npm@latest -g
             
              
             
-            </p>
-            </li>
-            
-             
-            
              
             
              
@@ -279,6 +383,24 @@ $ sudo npm install npm@latest -g
           
           
          <li>
+           <a href="16415371479168.html">hydra 爆破ssh</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16414626714891.html">升级VUE版本</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16414407883196.html">Linux 目录结构</a><br>
+         </li>
+          
+          
+          
+         <li>
            <a href="16413527990433.html">Vim 跳转技巧</a><br>
          </li>
           
@@ -286,24 +408,6 @@ $ sudo npm install npm@latest -g
           
          <li>
            <a href="16408435425370.html">tmux</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16405110285297.html">JVM 内存模型</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16405090873022.html">JVM 类加载器</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16405067982525.html">JVM 字节码</a><br>
          </li>
           
           

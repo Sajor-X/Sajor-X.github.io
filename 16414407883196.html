@@ -10,7 +10,7 @@
 
     <title>
       
-    常见Git仓库 - Sajor's Blog
+    Linux 目录结构 - Sajor's Blog
     
     </title>
 
@@ -95,47 +95,64 @@
 		<div class="post-header">
 			<!-- title -->
 			<div class="post-header">
-				<h1 class="post-title itemprop="name headline">常见Git仓库</h1>	
+				<h1 class="post-title itemprop="name headline">Linux 目录结构</h1>	
 				<div class="post-data">
-					<time datetime="2021-07-04T00:26:34+08:00" pubdate data-updated="true">2021/07/04</time>
+					<time datetime="2022-01-06T11:46:28+08:00" pubdate data-updated="true">2022/01/06</time>
 				</div>
 			</div>
 		</div>
 	<div id="post-content" class="post-content" itemprop="articleBody"> 
 		<p class="post-tags"> 
 		
-		<a href='Git.html'>Git</a>&nbsp;
+		<a href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>&nbsp;
 		
 		</p>
 	<!-- 正文 -->
 		<p>
-		<h2 id="toc_0">git</h2>
+		<p>启动Linux系统后输入 <code>ls \</code> <br/>
+<img src="media/16414407883196/16414408061006.jpg" alt=""/></p>
 
-<p><img src="media/16253295942611/16413515770640.jpg" alt=""/></p>
+<p>以下是对这些目录的解释：</p>
 
-<p>git是一个版本管理软件，由linux之父花了三天搞出来的东西，他没有界面，只支持命令行。</p>
+<ul>
+<li>/bin：bin是Binary的缩写, 这个目录存放着最经常使用的命令。</li>
+<li><p>/boot：这里存放的是启动Linux时使用的一些核心文件，包括一些连接文件以及镜像文件。</p></li>
+<li><p>/dev ：dev是Device(设备)的缩写, 该目录下存放的是Linux的外部设备，在Linux中访问设备的方式和访问文件的方式是相同的。</p></li>
+<li><p>/etc：这个目录用来存放所有的系统管理所需要的配置文件和子目录。</p></li>
+<li><p>/home：用户的主目录，在Linux中，每个用户都有一个自己的目录，一般该目录名是以用户的账号命名的。</p></li>
+<li><p>/lib：这个目录里存放着系统最基本的动态连接共享库，其作用类似于Windows里的DLL文件。几乎所有的应用程序都需要用到这些共享库。</p></li>
+<li><p>/lost+found：这个目录一般情况下是空的，当系统非法关机后，这里就存放了一些文件。</p></li>
+<li><p>/media：linux系统会自动识别一些设备，例如U盘、光驱等等，当识别后，linux会把识别的设备挂载到这个目录下。</p></li>
+<li><p>/mnt：系统提供该目录是为了让用户临时挂载别的文件系统的，我们可以将光驱挂载在/mnt/上，然后进入该目录就可以查看光驱里的内容了。</p></li>
+<li><p>/opt：这是给主机额外安装软件所摆放的目录。比如你安装一个ORACLE数据库则就可以放到这个目录下。默认是空的。</p></li>
+<li><p>/proc：这个目录是一个虚拟的目录，它是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息。这个目录的内容不在硬盘上而是在内存里，我们也可以直接修改里面的某些文件，比如可以通过下面的命令来屏蔽主机的ping命令，使别人无法ping你的机器：<code>echo 1 &gt; /proc/sys/net/ipv4/icmp_echo_ignore_all</code></p></li>
+<li><p>/root：该目录为系统管理员，也称作超级权限者的用户主目录。</p></li>
+<li><p>/sbin：s就是Super User的意思，这里存放的是系统管理员使用的系统管理程序。</p></li>
+<li><p>/selinux：这个目录是Redhat/CentOS所特有的目录，Selinux是一个安全机制，类似于windows的防火墙，但是这套机制比较复杂，这个目录就是存放selinux相关的文件的。</p></li>
+<li><p>/srv：该目录存放一些服务启动之后需要提取的数据。</p></li>
+<li><p>/sys：这是linux2.6内核的一个很大的变化。该目录下安装了2.6内核中新出现的一个文件系统 sysfs 。</p>
+<ul>
+<li>sysfs文件系统集成了下面3种文件系统的信息：针对进程信息的proc文件系统、针对设备的devfs文件系统以及针对伪终端的devpts文件系统。</li>
+<li>该文件系统是内核设备树的一个直观反映。</li>
+<li>当一个内核对象被创建的时候，对应的文件和目录也在内核对象子系统中被创建。</li>
+</ul></li>
+<li><p>/tmp：这个目录是用来存放一些临时文件的。</p></li>
+<li><p>/usr：这是一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似与windows下的program files目录。</p></li>
+<li><p>/usr/bin：系统用户使用的应用程序。</p></li>
+<li><p>/usr/sbin：超级用户使用的比较高级的管理程序和系统守护程序。</p></li>
+<li><p>/usr/src：内核源代码默认的放置目录。</p></li>
+<li><p>/var：这个目录中存放着在不断扩充着的东西，我们习惯将那些经常被修改的目录放在这个目录下。包括各种日志文件。</p></li>
+</ul>
 
-<h2 id="toc_1">GitHub</h2>
+<p>在linux系统中，有几个目录是比较重要的，平时需要注意不要误删除或者随意更改内部文件。</p>
 
-<p><img src="media/16253295942611/16413515597260.jpg" alt=""/></p>
+<p>/etc： 上边也提到了，这个是系统中的配置文件，如果你更改了该目录下的某个文件可能会导致系统不能启动。</p>
 
-<p>github是一个网站，因为git没有图形界面，github它支持在线的几乎所有git的操作，最重要它也是一个包含了很多程序员的开源社区。</p>
+<p>/bin, /sbin, /usr/bin, /usr/sbin: 这是系统预设的执行文件的放置目录，比如 ls 就是在/bin/ls 目录下的。</p>
 
-<h2 id="toc_2">GitLab</h2>
+<p>值得提出的是，/bin, /usr/bin 是给系统用户使用的指令（除root外的普通用户），而/sbin, /usr/sbin 则是给root使用的指令。</p>
 
-<p><img src="media/16253295942611/16253303567762.jpg" alt=""/></p>
-
-<p><a href="http://bdgit.eigpay.com/">gitlib</a> 是用于实现git功能的开发库</p>
-
-<p>gitlab提倡开源，如果你不想开源就要花钱，你如果不愿意花钱，就自己搞个服务器，装gitlab这个软件来实现自己的版本控制，有点私服的概念。</p>
-
-<h2 id="toc_3">Gitee</h2>
-
-<p><img src="media/16253295942611/16413515402458.jpg" alt=""/></p>
-
-<p>Gitee是开源中国（OSChina）推出的基于Git的代码托管服务  </p>
-
-<p>Gitee包括三个版本，分别是：社区版、企业版和高校版</p>
+<p>/var： 这是一个非常重要的目录，系统上跑了很多程序，那么每个程序都会有相应的日志产生，而这些日志就被记录到这个目录下，具体在/var/log 目录下，另外mail的预设放置也是在这里。</p>
 
 		</p>
 		<!-- 侧边导航条 -->
@@ -236,7 +253,7 @@
 	<!-- 版权声明 -->
 		<p class="post-info" style="color: #BCBDB6">
 				本文由 <a style="color: #BCBDB6" href="#">Sajor
-				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2021-07-04T00:26:34+08:00
+				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2022-01-06T11:46:28+08:00
 		</p>
 	<!-- 导航 -->
 			<div id="comments" class="clearfix" style="padding: 0px;">
@@ -244,14 +261,14 @@
 				    <div class="meta">
 					    
 					    <P style="float: left;">
-					    	<a href="16253298632146.html" 
-					        title="Previous Post: 为什么需要版本控制">&laquo; 为什么需要版本控制</a>
+					    	<a href="16414626714891.html" 
+					        title="Previous Post: 升级VUE版本">&laquo; 升级VUE版本</a>
 					    </p>
 					    <p style="float:right; ">
 					    	
 					    	
-					        <a href="16232479391790.html" 
-					        title="Next Post: 如何写出让同事无法维护的代码">如何写出让同事无法维护的代码 &raquo;</a>
+					        <a href="16413527990433.html" 
+					        title="Next Post: Vim 跳转技巧">Vim 跳转技巧 &raquo;</a>
 					    </p> 
 					    
 				    </div>
@@ -340,13 +357,8 @@
              
             
             <li>
-            <a href="Arts.html">Arts&nbsp;(4)</a>
+            <a href="Arts.html">Arts&nbsp;(3)</a>
             <p>
-            
-            </p>
-            </li>
-            
-             
             
             </p>
             </li>
@@ -391,31 +403,31 @@
           
           
          <li>
+           <a href="16415371479168.html">hydra 爆破ssh</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16414626714891.html">升级VUE版本</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16414407883196.html">Linux 目录结构</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16413527990433.html">Vim 跳转技巧</a><br>
+         </li>
+          
+          
+          
+         <li>
            <a href="16408435425370.html">tmux</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16405110285297.html">JVM 内存模型</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16405090873022.html">JVM 类加载器</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16405067982525.html">JVM 字节码</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16402262289586.html">Final Shell离线激活</a><br>
          </li>
           
           
