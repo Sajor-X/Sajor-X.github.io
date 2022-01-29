@@ -101,6 +101,128 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
+						<a href="15769920752565.html"> 
+							<div class="item-desc"> 
+								<p>远程传输命令 
+
+pscp和scp功能相同，但pscp同时支持windows下使用，它有效解 决了windows系统向linux服务器传输文件，而且它只有一个文件，即pscp.exe，建议将该文件放到C:\WINDOWS\system32 下面，这样就可以在任何地方调用该文件命令，你也可以放在任意你指定文件夹下。
+
+
+
+
+环境变量改好后，在命令行下输入 pscp就可以拷文件了：
+
+
+命令格式：pscp localfile rootuser@remoteip:/fileDirectory
+
+拷贝整个文件夹： pscp -r localDir rootuser@remoteip:/fileDire</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15769920752565.html">pscp</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="15769917893975.html"> 
+							<div class="item-desc"> 
+								<p>NFS就是 ** Network File System ** 的缩写
+
+本机ip：192.168.36.182
+
+安装NFS
+
+yum -y install nfs-utils rpcbind
+
+
+服务端配置
+
+在NFS服务端上创建共享目录/data/lys并设置权限
+
+mkdir -p /data/lys
+
+chmod 666 /data/lys/
+
+
+编辑export文件
+
+vi /etc/exports 
+
+/data/lys 192.168.36.0/24(rw,no_root_squash,no_all_squash,sync)
+
+
+配置生效
+
+exportfs -r
+
+
+启动rp</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15769917893975.html">NFS</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
 						<a href="15765692780377.html"> 
 							<div class="item-desc"> 
 								<p>更新时 使用 --verbose命令可以看到运行情况
@@ -319,110 +441,6 @@ PASS_WARN_AGE     7                 口令失效前多少天开始通
 		   				</div> 
    					</div>
  				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15649246400338.html"> 
-							<div class="item-desc"> 
-								<p>关于wordpress更新提示无法创建目录问题
-
-
-进入wordpress安装目录下，修改wp-config.php文件添加：define(&quot;FS_METHOD&quot;,&quot;direct&quot;);
-chown -R sajor.sajor  xxx/wordpress/ 将存放wordpress博客的文件夹设置成sajor用户。
-修改php配置
-
-vim /etc/php-fpm.d/www.conf
-user = sajor
-group = sajor
-
-重启php-fpm
-
-systemctl restart php-fpm
-
-
-</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15649246400338.html">WordPress 博客遇到的问题</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15649144225977.html"> 
-							<div class="item-desc"> 
-								<p>由于linux的yum源不存在php7.x，所以我们要更改yum源
-
-rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
-rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm 
-
-
-安装
-
-yum -y install php72w php72w-cli php72w-common php72w-devel php72w-embedded php72w-fpm php72w-gd php72w-mbstrin</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15649144225977.html">PHP 安装和卸载方法</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
  			 
 		</div>
 	</div>
@@ -538,6 +556,24 @@ yum -y install php72w php72w-cli php72w-common php72w-devel php72w-embedded php7
           
           
          <li>
+           <a href="16434266223947.html">滑动验证码识别</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16425740174242.html">Linux 字体安装</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16415484666630.html">nmap 端口嗅探</a><br>
+         </li>
+          
+          
+          
+         <li>
            <a href="16415371479168.html">hydra 爆破ssh</a><br>
          </li>
           
@@ -545,24 +581,6 @@ yum -y install php72w php72w-cli php72w-common php72w-devel php72w-embedded php7
           
          <li>
            <a href="16414626714891.html">升级VUE版本</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16414407883196.html">Linux 目录结构</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16413527990433.html">Vim 跳转技巧</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16408435425370.html">tmux</a><br>
          </li>
           
           

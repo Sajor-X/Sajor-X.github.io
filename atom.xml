@@ -4,7 +4,7 @@
   <title><![CDATA[Sajor's Blog]]></title>
   <link href="http://565785929.github.io/atom.xml" rel="self"/>
   <link href="http://565785929.github.io/"/>
-  <updated>2022-01-07T16:39:13+08:00</updated>
+  <updated>2022-01-29T21:50:13+08:00</updated>
   <id>http://565785929.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -12,6 +12,201 @@
   </author>
   <generator uri="http://www.coderforart.com/">CoderForArt</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[滑动验证码识别]]></title>
+    <link href="http://565785929.github.io/16434266223947.html"/>
+    <updated>2022-01-29T11:23:42+08:00</updated>
+    <id>http://565785929.github.io/16434266223947.html</id>
+    <content type="html"><![CDATA[
+<p>今天的目标地址是抖音的<a href="https://business.oceanengine.com/site/login">巨量纵横</a>，目前东家是一家广告营销型的公司，专注于在各大平台投放信息流广告。巨量纵横为今日头条的广告平台，用于管理推广账户。今天破解一下这个平台的登陆入口，为今后的数据爬取开个头。</p>
+
+<h2 id="toc_0">涉及工具技术</h2>
+
+<ul>
+<li>selenium</li>
+<li>pandas</li>
+<li>numpy</li>
+<li>opencv</li>
+<li><a href="https://pillow.readthedocs.io/en/stable/">Pillow</a></li>
+</ul>
+
+<h2 id="toc_1">开始</h2>
+
+<p><img src="media/16434266223947/16434586795750.jpg" alt="" style="width:377px;"/></p>
+
+<p>滑动验证码就是上图这种东西，验证方式就是用鼠标拖动到缺口阴影位置松手即可。</p>
+
+<p>逻辑比较简单，目前要处理的核心问题就是怎么找到这个阴影位置，因为可能有不同的图片而且图片中缺口阴影的位置也不确定。</p>
+
+<p>问题可以简化为：<strong>如何找到背景图中缺口的准确位置</strong></p>
+
+<h2 id="toc_2">分析</h2>
+
+<p>首先通过浏览器检查工具，看一下能获得哪些信息。</p>
+
+<p><img src="media/16434266223947/16434585467283.jpg" alt="" style="width:1131px;"/></p>
+
+<p>首先可以获得<strong>滑块和缺口图片的链接</strong>，还可以获取<strong>滑块图片的高度</strong></p>
+
+<p>我们先将缺口图片下载下来，通过简单的图像变换看一下有什么特征可以利用。下面Python代码可用于下载图片。</p>
+
+<pre class="line-numbers"><code class="language-python">from urllib import request
+
+img = &#39;https://p6-catpcha.byteimg.com/tos-cn-i-188rlo5p4y/7fcb5c88410943579af133942e8f9249~tplv-188rlo5p4y-2.jpeg&#39;
+
+request.urlretrieve(img, &#39;./img.jpg&#39;)
+</code></pre>
+
+<p>将图片保存下来之后，使用较为通用的处理方法先观察一下图片特点，首先灰度处理，再手动调整阈值观察二值化后的图片。</p>
+
+<p><img src="media/16434266223947/16434598980447.jpg" alt="" style="width:945px;"/></p>
+
+<p>通过观察可以发现带缺口图片附近有一圈白色痕迹，我们就是要获取到白色方框的左半部分距离整个图片左边的距离。</p>
+
+<p>通过观察二值化后的图片特征，我想到一个办法，就是通过这张二值化后的图片，遍历每一个像素点，找到连续的、在垂直方向均为白色的位置。理论上是可行的，可能验证码图片样本不够，可能会有些图片白色部分较多，比如这张银色的车，白色的色块就比较多。</p>
+
+<p><img src="media/16434266223947/16434600496969.jpg" alt="" style="width:376px;"/></p>
+
+<h2 id="toc_3">滤波</h2>
+
+<p>因为我们只需要缺口的左边位置的坐标，所以可以通过具有提取边缘特征的水平梯度Prewitt卷积核来处理图片。通过测试我选取了下面这个3x3的卷积核。</p>
+
+<p>\[<br/>
+\begin{bmatrix}<br/>
+1 &amp; 0 &amp; -2\\<br/>
+1 &amp; 0 &amp; -2\\<br/>
+1 &amp; 0 &amp; -2\\<br/>
+\end{bmatrix}<br/>
+\]</p>
+
+<p>通过opencv库处理原图，可以发现图片缺口左边部分的边缘被突出显示了出来。<br/>
+<img src="media/16434266223947/16434607760833.jpg" alt="" style="width:861px;"/></p>
+
+<h2 id="toc_4">结果</h2>
+
+<p>有了如上的矩阵就简单了，按照之前的思路，找到垂直方向的白线就可以拿到缺口的坐标。</p>
+
+<p>遍历图片每一个点，将<strong>白色点的x坐标</strong>存入一维数组中，再求该数列的<strong>众数</strong>就能得出缺口的坐标啦！</p>
+
+<p>偷个懒，众数的不优雅表达<br/>
+<code>pd.Series(np.array(res_list)).mode()[0]</code></p>
+
+<p><img src="media/16434266223947/16434629389321.jpg" alt="" style="width:986px;"/></p>
+
+<h2 id="toc_5">切图</h2>
+
+<p>为了更高的准确率，我们之前还能拿到滑块图片的高度，我们可以将验证码无用部分，也就是缺口部分上下方图片切除掉。</p>
+
+<p>可以通过selenium库 <code>img.value_of_css_property(&quot;top&quot;)</code> 方法获取页面元素属性，拿到滑块图片的高度，通过后面测量，与原图大概是1.65倍(这个不知道是什么单位的倍数，下面会展示计算方法)，滑块高度大约110像素。numpy切片的代码就不放了。切出来的图片类似这样，再进行上面的操作，脑补是能减少误判(没测过😊)</p>
+
+<p><img src="media/16434266223947/immg1.jpg" alt="immg1"/></p>
+
+<p><img src="media/16434266223947/immg2.jpg" alt="immg2"/></p>
+
+<h2 id="toc_6">控制浏览器</h2>
+
+<p>核心难点突破之后就简单多了，使用selenium这个库来控制浏览器，使用代码的方式操纵鼠标键盘。</p>
+
+<p>未完待续...</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Linux 字体安装]]></title>
+    <link href="http://565785929.github.io/16425740174242.html"/>
+    <updated>2022-01-19T14:33:37+08:00</updated>
+    <id>http://565785929.github.io/16425740174242.html</id>
+    <content type="html"><![CDATA[
+<p><img src="media/16425740174242/16434636451231.jpg" alt=""/></p>
+
+<p>今天要实现一个freemarker模板转HTML再转成PDF 或者 图片的需求。</p>
+
+<p>本地代码执行好使，上线到linux服务器上测试就出现汉字不显示的情况。</p>
+
+<pre class="line-numbers"><code class="language-bash"># 安装字体命令
+yum -y install fontconfig
+
+# 查看linux已安装字体
+fc-list
+
+# 查看linux已安装中文字体
+fc-list :lang=zh
+</code></pre>
+
+<h2 id="toc_0">安装</h2>
+
+<pre class="line-numbers"><code class="language-bash"># 创建目录
+mkdir -p /usr/share/fonts/my_fonts
+# 将要安装的字体上传到该文件夹下
+
+# 安装字体索引指令
+yum install mkfontscale
+
+# 生成字体索引 进入目录  执行索引字体生成
+cd  /usr/share/fonts/my_fonts
+mkfontscale
+
+# 查看字体是否安装成功
+fc-list :lang=zh
+
+</code></pre>
+
+<h2 id="toc_1">给jdk安装字体</h2>
+
+<p>找到jdk安装路径 找到jre/bin/fonts 文件夹，将字体拷贝到该文件夹下。</p>
+
+<p><img src="media/16425740174242/16427460467899.jpg" alt="" style="width:1125px;"/></p>
+
+<h2 id="toc_2">给openjdk安装字体</h2>
+
+<p>openjdk没有 jre/bin/fonts文件夹。需要自己创建。</p>
+
+<pre class="line-numbers"><code class="language-bash">mkdir -p /jre/bin/fonts/fallback
+</code></pre>
+
+<p><img src="media/16425740174242/16427465274847.jpg" alt="" style="width:1146px;"/></p>
+
+<p>来源：<a href="https://wiki.archlinux.org/title/Java_Runtime_Environment_fonts">Java Runtime Environment fonts</a>、<a href="https://www.cnblogs.com/Dy1an/p/9681897.html">CENTOS 7 和 JDK 添加中文字体</a></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[nmap 端口嗅探]]></title>
+    <link href="http://565785929.github.io/16415484666630.html"/>
+    <updated>2022-01-07T17:41:06+08:00</updated>
+    <id>http://565785929.github.io/16415484666630.html</id>
+    <content type="html"><![CDATA[
+<p><img src="media/16415484666630/16434639294123.jpg" alt=""/></p>
+
+<p>Nmap，也就是Network Mapper，最早是Linux下的网络扫描和嗅探工具包。</p>
+
+<p>很多<a href="https://nmap.org/movies/">影视剧</a>里的黑客工具</p>
+
+<p>nmap 是主机探测、端口扫描、版本检测、系统检测、支持探测脚本编写。查看那个端口和开着啥</p>
+
+<p>telnet 8.8.8.8　　可以查看ip</p>
+
+<p>nmap ip -p<port>　　根据常用服务猜测他的端口，查看ip端口有没有开启</p>
+
+<p>nmap -p50-100 ip　　查看端口范围</p>
+
+<p>nmap -O ip　　　　　操作系统检测</p>
+
+<p>nmap -sP ip　　　　  类似win/linux的ping扫描</p>
+
+<p>nmap -sP ip　　　　</p>
+
+<p>通过 nmap xxx:xxx:xxx:xxx -Pn -p 可以看到端口的启用情况</p>
+
+<p><img src="media/16415484666630/16415487239028.jpg" alt=""/></p>
+
+<p>来源：<a href="https://www.cnblogs.com/wangdadada/p/12024933.html">nmap基本命令使用</a></p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[hydra 爆破ssh]]></title>
@@ -86,7 +281,9 @@ CMake suite maintained and supported by Kitware (kitware.com/cmake).
     <updated>2022-01-06T17:51:11+08:00</updated>
     <id>http://565785929.github.io/16414626714891.html</id>
     <content type="html"><![CDATA[
-<p>在看文档<a href="https://cli.vuejs.org/zh/guide/installation.html%E4%B8%AD%EF%BC%8C%E6%8C%89%E6%AD%A5%E9%AA%A4%E5%8D%87%E7%BA%A7vue%EF%BC%9B">https://cli.vuejs.org/zh/guide/installation.html中，按步骤升级vue；</a></p>
+<p><img src="media/16414626714891/16434641228384.jpg" alt="" style="width:345px;"/></p>
+
+<p>在看<a href="https://cli.vuejs.org/zh/guide/installation.html">文档</a>中，按步骤升级vue；</p>
 
 <p>于是就先通过 npm uninstall vue-cli -g卸载vue，然后再安装，但是vue -V时依然是2.9.6版本：</p>
 
@@ -826,297 +1023,6 @@ npm -v</p>
 <p>用于高性能科学计算和数据分析，是常用的高级数据分析库的基础包</p>
 
 <h1 id="toc_0">pandas</h1>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[LeetCode 217.存在重复元素]]></title>
-    <link href="http://565785929.github.io/16332772077185.html"/>
-    <updated>2021-10-04T00:06:47+08:00</updated>
-    <id>http://565785929.github.io/16332772077185.html</id>
-    <content type="html"><![CDATA[
-<p>题目链接：<a href="https://leetcode-cn.com/problems/contains-duplicate/">contains-duplicate</a></p>
-
-<blockquote>
-<p>给定一个整数数组，判断是否存在重复元素。</p>
-
-<p>如果存在一值在数组中出现至少两次，函数返回 true 。如果数组中每个元素都不相同，则返回 false 。</p>
-
-<p>示例 1:</p>
-
-<p>输入: [1,2,3,1]<br/>
-输出: true<br/>
-示例 2:</p>
-
-<p>输入: [1,2,3,4]<br/>
-输出: false<br/>
-示例 3:</p>
-
-<p>输入: [1,1,1,3,3,4,3,2,4,2]<br/>
-输出: true</p>
-</blockquote>
-
-<h2 id="toc_0">思考</h2>
-
-<p>此方法无法通过用例，Time Limit Exceeded。所以需要优化。</p>
-
-<p>解法一、暴力 \(O(n^2)\)</p>
-
-<pre class="line-numbers"><code class="language-python3">class Solution:
-    def containsDuplicate(self, nums: List[int]) -&gt; bool:
-        for i in range(len(nums) - 1):
-            for j in range(i+1, len(nums)):
-                if nums[i] == nums[j]:
-                    return True
-        return False
-</code></pre>
-
-<p>解法二、集合 \(O(n)\)</p>
-
-<pre class="line-numbers"><code class="language-python3">class Solution:
-    def containsDuplicate(self, nums: List[int]) -&gt; bool:
-        return len(nums) != len(set(nums))
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[LeetCode 1. 两数之和]]></title>
-    <link href="http://565785929.github.io/16332745656703.html"/>
-    <updated>2021-10-03T23:22:45+08:00</updated>
-    <id>http://565785929.github.io/16332745656703.html</id>
-    <content type="html"><![CDATA[
-<p>题目链接：<a href="https://leetcode-cn.com/problems/two-sum/">two-sum</a></p>
-
-<p><strong>题目</strong></p>
-
-<blockquote>
-<p>给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。<br/>
-你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。<br/>
-你可以按任意顺序返回答案。</p>
-
-<p>示例 1：<br/>
-输入：nums = [2,7,11,15], target = 9<br/>
-输出：[0,1]<br/>
-解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。</p>
-
-<p>示例 2：<br/>
-输入：nums = [3,2,4], target = 6<br/>
-输出：[1,2]</p>
-
-<p>示例 3：<br/>
-输入：nums = [3,3], target = 6<br/>
-输出：[0,1]</p>
-
-<p>提示：<br/>
-2 &lt;= nums.length &lt;= 104<br/>
--109 &lt;= nums[i] &lt;= 109<br/>
--109 &lt;= target &lt;= 109<br/>
-只会存在一个有效答案<br/>
-进阶：你可以想出一个时间复杂度小于 O(n2) 的算法吗？</p>
-</blockquote>
-
-<h2 id="toc_0">思考</h2>
-
-<p>一般套路呢，就是先写个暴力，此题暴力时间复杂度为\(O(n^2)\)，然后根据暴力的结果，寻找重复计算，或可以优化存储的点来突破，一般都是升维或用空间换时间。</p>
-
-<p>解法一、暴力 \(O(n^2)\)</p>
-
-<pre class="line-numbers"><code class="language-python3">class Solution:
-    def twoSum(self, nums: List[int], target: int) -&gt; List[int]:
-        size = len(nums)
-        for i in range(0, size-1):
-            for j in range(i+1, size):
-                if nums[i] + nums[j] == target:
-                    return(i, j)
-        return None
-</code></pre>
-
-<p>解法二、哈希表 \(O(n)\)</p>
-
-<pre class="line-numbers"><code class="language-python3">class Solution:
-    def twoSum(self, nums: List[int], target: int) -&gt; List[int]:
-        dic = {}
-        for i, item in enumerate(nums):
-            if target - item in dic:
-                return dic[target - item], i
-            dic[item] = i
-        return None
-</code></pre>
-
-<h2 id="toc_1">涨知识</h2>
-
-<p>enumerate() 函数用于将一个可遍历的数据对象(如列表、元组或字符串)组合为一个索引序列，同时列出数据和数据下标，一般用在 for 循环当中。</p>
-
-<p><strong>语法</strong><br/>
-以下是 enumerate() 方法的语法:</p>
-
-<p>enumerate(sequence, [start=0])</p>
-
-<p><strong>参数</strong></p>
-
-<ul>
-<li>sequence -- 一个序列、迭代器或其他支持迭代对象。</li>
-<li>start -- 下标起始位置。</li>
-</ul>
-
-<p><strong>普通循环</strong></p>
-
-<pre class="line-numbers"><code class="language-python3">&gt;&gt;&gt; lis = [9,8,7]
-&gt;&gt;&gt; for i in range(len(lis)):
-...     print(i, lis[i])
-...
-(0, 9)
-(1, 8)
-(2, 7)
-</code></pre>
-
-<p><strong>enumerate循环</strong></p>
-
-<pre class="line-numbers"><code class="language-python3">&gt;&gt;&gt; lis = [9,8,7]
-&gt;&gt;&gt; for i, item in enumerate(lis):
-...     print(i, item)
-...
-(0, 9)
-(1, 8)
-(2, 7)
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Arts打卡]]></title>
-    <link href="http://565785929.github.io/16332743074800.html"/>
-    <updated>2021-10-03T23:18:27+08:00</updated>
-    <id>http://565785929.github.io/16332743074800.html</id>
-    <content type="html"><![CDATA[
-<p>什么是ARTS打卡计划？</p>
-
-<p><img src="media/16332743074800/16413529946427.jpg" alt=""/></p>
-
-<h2 id="toc_0">Algorithm</h2>
-
-<p>每周至少做一个leetcode的算法题。主要是为了编程训练和学习。</p>
-
-<h2 id="toc_1">Review</h2>
-
-<p>阅读并点评至少一片英文技术文章。主要是为了学习英文，如果你英文不行，你基本上无缘技术高手。</p>
-
-<h2 id="toc_2">Tips</h2>
-
-<p>学习至少一个技术技巧。主要是为了总结和归纳你在日常工作中所遇到的知识点。</p>
-
-<h2 id="toc_3">Share</h2>
-
-<p>分享一篇有观点和思考的技术文章。主要是为了建立你的影响力，能够输出价值观。</p>
-
-<h1 id="toc_4">LeetCode刷题法</h1>
-
-<h2 id="toc_5">第一遍</h2>
-
-<ul>
-<li>5mins 读题+思考</li>
-<li>直接看解法：比较各个解法优劣</li>
-<li>背诵并默写好的解法<br/>
-## 第二遍</li>
-<li>马上自己写 -&gt; 提交LeetCode</li>
-<li>多种解法比较、体会 -&gt; 优化</li>
-</ul>
-
-<h2 id="toc_6">第三遍</h2>
-
-<ul>
-<li>过了一天之后，再重复做题</li>
-<li>不同解法的熟练程度 -&gt; 专项练习</li>
-</ul>
-
-<h2 id="toc_7">第四遍</h2>
-
-<ul>
-<li>过了一周：反复回来练习不熟练的</li>
-</ul>
-
-<h2 id="toc_8">第五遍</h2>
-
-<ul>
-<li>面试前一周恢复性训练</li>
-</ul>
-
-<p>要看国际站的题解 discuss</p>
-
-<p><a href="https://www.markhneedham.com/blog/2008/09/15/clean-code-book-review/">https://www.markhneedham.com/blog/2008/09/15/clean-code-book-review/</a></p>
-
-<h1 id="toc_9">学习方法</h1>
-
-<p>来自于 <outliers> 异类: 不一样的成功启示录</p>
-
-<p><img src="media/16321235553115/16322371489779.jpg" alt="" style="width:184px;"/></p>
-
-<ul>
-<li>Chunk it up 切碎知识点</li>
-<li>Deliberate Practicing 刻意练习</li>
-<li>feedback 反馈</li>
-</ul>
-
-<p><a href="http://naotu.baidu.com/file/b832f043e2ead159d584cca4efb19703?token=7a6a56eb2630548c">数据结构脑图</a><br/>
-<a href="http://naotu.baidu.com/file/0a53d3a5343bd86375f348b2831d3610?token=5ab1de1c90d5f3ec">算法脑图</a></p>
-
-<h2 id="toc_10">Chunk it up</h2>
-
-<p>做脑图</p>
-
-<p>来自reddit中ask me anything<br/>
-<img src="media/16321235553115/16321238197078.jpg" alt="" style="width:812px;"/></p>
-
-<h2 id="toc_11">数据结构分类</h2>
-
-<ul>
-<li>一维数据结构
-<ul>
-<li>基础</li>
-<li>数组 array(string)</li>
-<li>链表 linked list</li>
-<li>高级</li>
-<li>栈 stack</li>
-<li>队列 queue</li>
-<li>双端队列 deque(double-ended queue)</li>
-<li>集合 set</li>
-<li>映射 map(hash or map)</li>
-</ul></li>
-<li>二维数据结构
-<ul>
-<li>基础：</li>
-<li>树 tree</li>
-<li>图 graph</li>
-<li>高级：</li>
-<li>二叉搜索树 binary search tree(red-black tree, AVL)</li>
-<li>堆 heap</li>
-<li>并查集 disjoint set</li>
-<li>字典树 trie</li>
-</ul></li>
-<li>特殊数据结构
-<ul>
-<li>位运算 bitwise</li>
-<li>布隆过滤器 BloomFilter</li>
-<li>缓存 LRU Cache</li>
-</ul></li>
-</ul>
-
-<p><strong>切题四件套</strong></p>
-
-<ul>
-<li>Clarification 明确题意</li>
-<li>Possible solutions 思考多种方法
-<ul>
-<li>compare(time/space) 对比复杂度</li>
-<li>optimal 加强优化</li>
-</ul></li>
-<li>Coding 多写</li>
-<li>Test cases 用例</li>
-</ul>
 
 ]]></content>
   </entry>

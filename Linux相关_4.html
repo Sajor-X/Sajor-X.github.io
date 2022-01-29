@@ -101,6 +101,110 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
+						<a href="15649246400338.html"> 
+							<div class="item-desc"> 
+								<p>关于wordpress更新提示无法创建目录问题
+
+
+进入wordpress安装目录下，修改wp-config.php文件添加：define(&quot;FS_METHOD&quot;,&quot;direct&quot;);
+chown -R sajor.sajor  xxx/wordpress/ 将存放wordpress博客的文件夹设置成sajor用户。
+修改php配置
+
+vim /etc/php-fpm.d/www.conf
+user = sajor
+group = sajor
+
+重启php-fpm
+
+systemctl restart php-fpm
+
+
+</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15649246400338.html">WordPress 博客遇到的问题</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="15649144225977.html"> 
+							<div class="item-desc"> 
+								<p>由于linux的yum源不存在php7.x，所以我们要更改yum源
+
+rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
+rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm 
+
+
+安装
+
+yum -y install php72w php72w-cli php72w-common php72w-devel php72w-embedded php72w-fpm php72w-gd php72w-mbstrin</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15649144225977.html">PHP 安装和卸载方法</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
 						<a href="15637994923865.html"> 
 							<div class="item-desc"> 
 								<p>安装Python36
@@ -307,67 +411,6 @@ java-x.x.x-openjdk-hea</p>
 		   				</div> 
    					</div>
  				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15822104759867.html"> 
-							<div class="item-desc"> 
-								<p>首先到官网spark.apache.org下载spark，spark下载页面 
-
-安装
-
-spark安装文件夹准备
-
-在/usr/local/目录下创建名称为spark的文件夹：
-sudo mkdir -p /usr/local/spark
-
-将下载好的spark安装包上传到服务器上。
-之后解压到/usr/local/spark中
-
-sudo tar -zxvf spark-2.4.5-bin-hadoop2.7.tgz
-
-配置
-
-编辑配置文件sudo vim /etc/profile
-
-定位到最后一行，添加如下内容（版本注意修改）
-
-# spark
-export SPARK_HOME=/us</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15822104759867.html">spark</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
  			 
 		</div>
 	</div>
@@ -381,8 +424,8 @@ export SPARK_HOME=/us</p>
 				<li class=""><a href="archives.html">归档</a></li>
 
 			
-            	<li class=" disabled "><a href="#index">下一页 <span aria-hidden="true">&rarr;</span></a></li>
-            
+			<li class=""><a href="Linux相关_5.html">下一页 <span aria-hidden="true">&rarr;</span></a></li>
+			
             </ol>
      </nav>
 </div>
@@ -483,6 +526,24 @@ export SPARK_HOME=/us</p>
           
           
          <li>
+           <a href="16434266223947.html">滑动验证码识别</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16425740174242.html">Linux 字体安装</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16415484666630.html">nmap 端口嗅探</a><br>
+         </li>
+          
+          
+          
+         <li>
            <a href="16415371479168.html">hydra 爆破ssh</a><br>
          </li>
           
@@ -490,24 +551,6 @@ export SPARK_HOME=/us</p>
           
          <li>
            <a href="16414626714891.html">升级VUE版本</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16414407883196.html">Linux 目录结构</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16413527990433.html">Vim 跳转技巧</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16408435425370.html">tmux</a><br>
          </li>
           
           

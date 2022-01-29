@@ -98,40 +98,36 @@
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16322341811288/16322341983535.jpg);">
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16434266223947/16434586795750.jpg);">
 						
 						</div> 
-						<a href="16322341811288.html"> 
+						<a href="16434266223947.html"> 
 							<div class="item-desc"> 
-								<p>通过Python实现
+								<p>今天的目标地址是抖音的巨量纵横，目前东家是一家广告营销型的公司，专注于在各大平台投放信息流广告。巨量纵横为今日头条的广告平台，用于管理推广账户。今天破解一下这个平台的登陆入口，为今后的数据爬取开个头。
 
-我们学校使用移动的网络账号，修改账号密码的界面是这样的。
-
-
-
-这个页面有个漏洞，就是可以绕过验证码直接登录。 所以先使用自己的账号登录一下。登录之后点击基本信息中的变更资料
+涉及工具技术
 
 
-用户姓名就在这里
-
-使用右键复制链接地址之后
-
-
-
-你会得到 这样的网址
+selenium
+pandas
+numpy
+opencv
+Pillow
 
 
-http://10.40.4.3/userQueryAction.do?act=edit&amp;user_id=*********&amp;paratype=2
+开始
 
 
-分析一下这个网址， 其中user_id 就是你的学号
 
-通过修改这个学号就可以得到大家的姓名
+滑动验证码就是上图这种东西，验证方式就是用鼠标拖动到缺口阴影位置松手即可。
 
-import requests
-import re
+逻辑比较简单，目前要处理的核心问题就是怎么找到这个阴影位置，因为可能有不同的图片而且图片中缺口阴影的位置也不确定。
 
-</p> 
+问题可以简化为：如何找到背景图中缺口的准确位置
+
+分析
+
+首先通过浏览器检查工具，看一下能获得</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -142,7 +138,7 @@ import re
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16322341811288.html">编写爬虫获取教师账号 校园免费上网</a>
+	  							<a href="16434266223947.html">滑动验证码识别</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -202,7 +198,7 @@ sudo yum install ep</p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16110385786886.html">自动登录工具开发</a>
+	  							<a href="16110385786886.html">图片验证码识别-自动登录工具开发</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -268,6 +264,74 @@ class Electronic:
 		 				<div class="item-label">
 	  						<div class="item-title">
 	  							<a href="15819525546014.html">网易云 最嗨电音 爬虫</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E7%88%AC%E8%99%AB.html'>爬虫</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16322341811288/16322341983535.jpg);">
+						
+						</div> 
+						<a href="16322341811288.html"> 
+							<div class="item-desc"> 
+								<p>通过Python实现
+
+我们学校使用移动的网络账号，修改账号密码的界面是这样的。
+
+
+
+这个页面有个漏洞，就是可以绕过验证码直接登录。 所以先使用自己的账号登录一下。登录之后点击基本信息中的变更资料
+
+
+用户姓名就在这里
+
+使用右键复制链接地址之后
+
+
+
+你会得到 这样的网址
+
+
+http://10.40.4.3/userQueryAction.do?act=edit&amp;user_id=*********&amp;paratype=2
+
+
+分析一下这个网址， 其中user_id 就是你的学号
+
+通过修改这个学号就可以得到大家的姓名
+
+import requests
+import re
+
+</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16322341811288.html">编写爬虫获取教师账号 校园免费上网</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -401,6 +465,24 @@ class Electronic:
           
           
          <li>
+           <a href="16434266223947.html">滑动验证码识别</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16425740174242.html">Linux 字体安装</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16415484666630.html">nmap 端口嗅探</a><br>
+         </li>
+          
+          
+          
+         <li>
            <a href="16415371479168.html">hydra 爆破ssh</a><br>
          </li>
           
@@ -408,24 +490,6 @@ class Electronic:
           
          <li>
            <a href="16414626714891.html">升级VUE版本</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16414407883196.html">Linux 目录结构</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16413527990433.html">Vim 跳转技巧</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16408435425370.html">tmux</a><br>
          </li>
           
           
