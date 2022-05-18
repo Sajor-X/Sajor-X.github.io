@@ -53,7 +53,7 @@
         
         <a href="index.html">Home</a>
         
-        <a href="resume/resume.html">Resume</a>
+        <a href="archives.html">Archives</a>
         
         
     </div> 
@@ -76,7 +76,7 @@
           </li>
           
           <li>
-          <a href="resume/resume.html">Resume</a>
+          <a href="archives.html">Archives</a>
           </li>
           
         </ul> 
@@ -88,117 +88,6 @@
     <div class="post-lists">
         <div class="post-lists-body">
 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15649144225977.html"> 
-							<div class="item-desc"> 
-								<p>由于linux的yum源不存在php7.x，所以我们要更改yum源
-
-rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
-rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm 
-
-
-安装
-
-yum -y install php72w php72w-cli php72w-common php72w-devel php72w-embedded php72w-fpm php72w-gd php72w-mbstrin</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15649144225977.html">PHP 安装和卸载方法</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15648434329273.html"> 
-							<div class="item-desc"> 
-								<p>今天博客遇到如下异常
-
-
-MySQLNonTransientConnectionException: Communications link failure during rollback().
-
-
-打开mysql配置文件/etc/my.cnf
-
-在[mysqld]节，增加wait_timeout配置，原来是5，看来不够用，改为50。
-
-[mysqld]
-wait_timeout=50
-
-
-重启mysqld服务，问题解决
-
-service mysqld restart
-
-
-报错信息如下：
-
-2019-08-03 22:33:17.405  WARN 29453 --- [XNIO-1 task</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15648434329273.html">mysql经典的8小时问题-wait_timeout</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
-								
-			    			<a class='category' href='MySQL.html'>MySQL</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
 				<div class="post-list-item">
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
@@ -453,6 +342,154 @@ import java.util</p>
 		   						<div class="item-meta-cat">
 	  							
 			    			<a class='category' href='ssm.html'>SSM练习</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="15647098694474.html"> 
+							<div class="item-desc"> 
+								<p>在上一章的基础上，我们还使用c06包接着添加功能。
+
+1、数据库表准备
+新建一个数据库表:resume 并添加几条数据
+
+resume 表
+
+
+
+
+字段名称
+类型
+长度
+
+
+
+
+
+resumeid
+int
+11（主键）
+
+
+userid
+int
+11
+
+
+resumename
+varchar
+255
+
+
+resumedesc
+varchar
+255
+
+
+
+
+2、在 model 包中创建 Resume 类
+
+package com.sajor.study.c06.model;
+
+public class Resume {
+    private Integer resumeId;
+    pri</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15647098694474.html">从零开始SSM开发系列十：MyBatis 一对多关联关系</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='ssm.html'>SSM练习</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="15646739216640.html"> 
+							<div class="item-desc"> 
+								<p>关系型数据库：
+
+Oracle、DB2、Microsoft SQL Server、Microsoft Access、MySQL
+
+非关系型数据库：
+
+NoSql、Cloudant、MongoDb、redis、HBase
+
+两种数据库之间的区别：
+
+关系型数据库
+
+　　关系型数据库的特性
+
+　　1、关系型数据库，是指采用了关系模型来组织数据的数据库；
+
+　　2、关系型数据库的最大特点就是事务的一致性；
+
+　　3、简单来说，关系模型指的就是二维表格模型，而一个关系型数据库就是由二维表及其之间的联系所组成的一个数据组织。
+
+　　关系型数据库的优点
+
+　　1、容易理解：二维表结构是非常贴近逻辑世界一个</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15646739216640.html">列举常见的关系型数据库和非关系型都有那些？</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
 								
 		   						</div> 
 		   					</div> 

@@ -53,7 +53,7 @@
         
         <a href="index.html">Home</a>
         
-        <a href="resume/resume.html">Resume</a>
+        <a href="archives.html">Archives</a>
         
         
     </div> 
@@ -76,7 +76,7 @@
           </li>
           
           <li>
-          <a href="resume/resume.html">Resume</a>
+          <a href="archives.html">Archives</a>
           </li>
           
         </ul> 
@@ -88,124 +88,6 @@
     <div class="post-lists">
         <div class="post-lists-body">
 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/15769918912350/bitcoin_address.jpg);">
-						
-						</div> 
-						<a href="15769918912350.html"> 
-							<div class="item-desc"> 
-								<p>EC私钥 Elliptic Curve private key
-
-比特币私钥为一个256位的二进制随机大数 一共32字节（Random 256 bit integer）
-
-比特币私钥只是一个数字。你可以用硬币、铅笔和纸来随机生成你的私钥：掷硬币256次，用纸和笔记录正反面并转换为0和1，随机得到的256位二进制数字可作为比特币钱包的私钥。 
-
-将256位二进制大数转为十六进制（每四位二进制数转为一位十六进制数）得到一个64位的十进制字符串，这就是ec私钥（95e7e1e73b70965d31c3e56121ce14dd4f88431c8d5e7645e8fb4a73ba72ad29）
-
-提示比</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15769918912350.html">比特币</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9B%B8%E5%85%B3.html'>密码学相关</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15769917893975.html"> 
-							<div class="item-desc"> 
-								<p>NFS就是 ** Network File System ** 的缩写
-
-本机ip：192.168.36.182
-
-安装NFS
-
-yum -y install nfs-utils rpcbind
-
-
-服务端配置
-
-在NFS服务端上创建共享目录/data/lys并设置权限
-
-mkdir -p /data/lys
-
-chmod 666 /data/lys/
-
-
-编辑export文件
-
-vi /etc/exports 
-
-/data/lys 192.168.36.0/24(rw,no_root_squash,no_all_squash,sync)
-
-
-配置生效
-
-exportfs -r
-
-
-启动rp</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15769917893975.html">NFS</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
 				<div class="post-list-item">
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
@@ -424,6 +306,107 @@ PASS_WARN_AGE     7                 口令失效前多少天开始通
 		   						<div class="item-meta-cat">
 	  							
 			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="15665458213371.html"> 
+							<div class="item-desc"> 
+								<p>添加类注释：
+
+File-&gt;Setting-&gt;Editor-&gt;File and Code Templates-&gt;Class
+
+#if (${PACKAGE_NAME} &amp;&amp; ${PACKAGE_NAME} != &quot;&quot;)package ${PACKAGE_NAME};#end
+#parse(&quot;File Header.java&quot;)
+/**
+*@description ${description}
+*@author Sajor
+*@create ${YEAR}/${MONTH}/${DAY} ${HOUR}:${MINU</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15665458213371.html">idea 类注释和方法注释</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='java.html'>ssm课程</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/15659629846282/15659630849569.jpg);">
+						
+						</div> 
+						<a href="15659629846282.html"> 
+							<div class="item-desc"> 
+								<p>最近调试代码需要起服务并修改代码这就导致重复工作，目前是修改服务器配置，即当idea失去焦点时更新类和资源，但是这种只支持在debug模式且是在idea失去焦点才会触发热部署，这就相对加载的慢了。此法的配置方法：
+
+Run –&gt;Edit Configgurations
+
+
+
+如果你sever 选项卡下没有On frame deactivation，那么就需要配置 Deployment 选项卡，点击右边绿色+，选择自己对应的项目，建议选择带 exploded， 这个相当于改 Tomcat 的 CATALINA_HOME， 效率比较高。
+
+
+
+
+
+选择好后， 删掉默认的Build， 提高效率</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15659629846282.html">idea 热部署</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='java.html'>ssm课程</a>
 								
 		   						</div> 
 		   					</div> 

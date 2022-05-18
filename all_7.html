@@ -53,7 +53,7 @@
         
         <a href="index.html">Home</a>
         
-        <a href="resume/resume.html">Resume</a>
+        <a href="archives.html">Archives</a>
         
         
     </div> 
@@ -76,7 +76,7 @@
           </li>
           
           <li>
-          <a href="resume/resume.html">Resume</a>
+          <a href="archives.html">Archives</a>
           </li>
           
         </ul> 
@@ -88,103 +88,6 @@
     <div class="post-lists">
         <div class="post-lists-body">
 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="16345712700520.html"> 
-							<div class="item-desc"> 
-								<p>count(*) 的实现方式
-
-你首先要明确的是，在不同的 MySQL 引擎中，count(*) 有不同的实现方式。
-
-
-MyISAM 引擎把一个表的总行数存在了磁盘上，因此执行 count(*) 的时候会直接返回这个数，效率很高；
-而 InnoDB 引擎就麻烦了，它执行 count(*) 的时候，需要把数据一行一行地从引擎里面读出来，然后累积计数。
-
-
-这里需要注意的是，我们在这篇文章里讨论的是没有过滤条件的 count(*)，如果加了 where 条件的话，MyISAM 表也是不能返回得这么快的。
-
-计数的几种方式
-
-
-MyISAM 表虽然 count(*) 很快，但是不支持事务；
-sho</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="16345712700520.html">14 | count(*)这么慢，我该怎么办？</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='MySQL.html'>MySQL</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="16345707563290.html"> 
-							<div class="item-desc"> 
-								<p>GitHub&#39;s Online Schema Migrations for MySQL
-(https://github.com/github/gh-ost)
-</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="16345707563290.html">13 重构数据库</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='MySQL.html'>MySQL</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
 				<div class="post-list-item">
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
@@ -382,6 +285,135 @@ class Solution:
 		 				<div class="item-label">
 	  						<div class="item-title">
 	  							<a href="16332772077185.html">LeetCode 217.存在重复元素</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Arts.html'>Arts</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="16332745656703.html"> 
+							<div class="item-desc"> 
+								<p>题目链接：two-sum
+
+题目
+
+
+给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。
+你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。
+你可以按任意顺序返回答案。
+
+示例 1：
+输入：nums = [2,7,11,15], target = 9
+输出：[0,1]
+解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。
+
+示例 2：
+输入：nums = [3,2,4], target = 6
+输出：[1,2]
+
+示例 3：
+输入：num</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16332745656703.html">LeetCode 1. 两数之和</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Arts.html'>Arts</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16332743074800/16413529946427.jpg);">
+						
+						</div> 
+						<a href="16332743074800.html"> 
+							<div class="item-desc"> 
+								<p>什么是ARTS打卡计划？
+
+
+
+Algorithm
+
+每周至少做一个leetcode的算法题。主要是为了编程训练和学习。
+
+Review
+
+阅读并点评至少一片英文技术文章。主要是为了学习英文，如果你英文不行，你基本上无缘技术高手。
+
+Tips
+
+学习至少一个技术技巧。主要是为了总结和归纳你在日常工作中所遇到的知识点。
+
+Share
+
+分享一篇有观点和思考的技术文章。主要是为了建立你的影响力，能够输出价值观。
+
+LeetCode刷题法
+
+第一遍
+
+
+5mins 读题+思考
+直接看解法：比较各个解法优劣
+背诵并默写好的解法
+## 第二遍
+马上自己写 -&gt; 提交LeetCode
+多种解法比较、</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16332743074800.html">Arts打卡</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->

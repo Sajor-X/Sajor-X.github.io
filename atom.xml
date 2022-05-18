@@ -4,7 +4,7 @@
   <title><![CDATA[Sajor's Blog]]></title>
   <link href="http://565785929.github.io/atom.xml" rel="self"/>
   <link href="http://565785929.github.io/"/>
-  <updated>2022-05-18T20:42:00+08:00</updated>
+  <updated>2022-05-18T22:49:52+08:00</updated>
   <id>http://565785929.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -19,6 +19,8 @@
     <updated>2022-04-02T10:28:14+08:00</updated>
     <id>http://565785929.github.io/16488664948376.html</id>
     <content type="html"><![CDATA[
+<p><img src="media/16488664948376/16528851318715.jpg" alt=""/></p>
+
 <p>首先在linux中启动SSH连接支持</p>
 
 <pre class="line-numbers"><code class="language-text">#客户端
@@ -197,9 +199,11 @@ netsh interface portproxy delete v4tov4 listenaddress=监听地址 listenport=�
     <updated>2022-03-30T16:00:43+08:00</updated>
     <id>http://565785929.github.io/16486272439635.html</id>
     <content type="html"><![CDATA[
+<p><img src="media/16486272439635/16528852569694.jpg" alt=""/></p>
+
 <p><a href="https://github.com/amueller/word_cloud">word_cloud</a> </p>
 
-<p>积分图算法</p>
+<h2 id="toc_0">积分图算法</h2>
 
 <p><img src="media/16486272439635/16486272595252.jpg" alt="" style="width:726px;"/></p>
 

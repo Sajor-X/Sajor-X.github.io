@@ -53,7 +53,7 @@
         
         <a href="index.html">Home</a>
         
-        <a href="resume/resume.html">Resume</a>
+        <a href="archives.html">Archives</a>
         
         
     </div> 
@@ -76,7 +76,7 @@
           </li>
           
           <li>
-          <a href="resume/resume.html">Resume</a>
+          <a href="archives.html">Archives</a>
           </li>
           
         </ul> 
@@ -88,70 +88,6 @@
     <div class="post-lists">
         <div class="post-lists-body">
 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16405090873022/16405092178762.jpg);">
-						
-						</div> 
-						<a href="16405090873022.html"> 
-							<div class="item-desc"> 
-								<p>类的生命周期：
-
-
-加载：找到Class文件
-验证：验证格式、依赖
-准备：静态字段、方法表
-解析：符号解析为引用
-初始化：构造器、静态变量赋值、静态代码块
-使用
-卸载
-
-
-
-
-类的加载时机
-
-
-
-
-当虚拟机启动时，初始化用户指定的主类，就是启动执行的main方法所在的类；
-当遇到用以新建目标类示例的new指令时，初始化new指定的目标类，就是new一个类的时候要初始化；
-当遇到调用静态方法的指令时，初始化该静态方法所在的类；
-当遇到访问静态字段的指令时，初始化该静态方法所在的类；
-子类的初始化会触发父类的初始化；
-如果一个接口定义了default方法，那么直接实现或者间接实现该接口的类的初始化</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="16405090873022.html">JVM 类加载器</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='%E8%AF%AD%E6%B3%95%E7%B1%BB.html'>语法类</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
 				<div class="post-list-item">
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
@@ -404,9 +340,65 @@ $ sudo npm install npm@latest -g
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16351769421565.html"> 
+						<a href="16345712700520.html"> 
 							<div class="item-desc"> 
-								<p>I
+								<p>count(*) 的实现方式
+
+你首先要明确的是，在不同的 MySQL 引擎中，count(*) 有不同的实现方式。
+
+
+MyISAM 引擎把一个表的总行数存在了磁盘上，因此执行 count(*) 的时候会直接返回这个数，效率很高；
+而 InnoDB 引擎就麻烦了，它执行 count(*) 的时候，需要把数据一行一行地从引擎里面读出来，然后累积计数。
+
+
+这里需要注意的是，我们在这篇文章里讨论的是没有过滤条件的 count(*)，如果加了 where 条件的话，MyISAM 表也是不能返回得这么快的。
+
+计数的几种方式
+
+
+MyISAM 表虽然 count(*) 很快，但是不支持事务；
+sho</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16345712700520.html">14 | count(*)这么慢，我该怎么办？</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='MySQL.html'>MySQL</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="16345707563290.html"> 
+							<div class="item-desc"> 
+								<p>GitHub&#39;s Online Schema Migrations for MySQL
+(https://github.com/github/gh-ost)
 </p> 
 							</div> 
 						</a> 
@@ -418,7 +410,7 @@ $ sudo npm install npm@latest -g
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16351769421565.html">join 语句</a>
+	  							<a href="16345707563290.html">13 重构数据库</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
