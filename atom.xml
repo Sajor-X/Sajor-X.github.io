@@ -4,7 +4,7 @@
   <title><![CDATA[Sajor's Blog]]></title>
   <link href="http://565785929.github.io/atom.xml" rel="self"/>
   <link href="http://565785929.github.io/"/>
-  <updated>2022-05-18T22:49:52+08:00</updated>
+  <updated>2022-05-18T23:12:33+08:00</updated>
   <id>http://565785929.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -12,6 +12,135 @@
   </author>
   <generator uri="http://www.coderforart.com/">CoderForArt</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[某音APP广告爬取]]></title>
+    <link href="http://565785929.github.io/16520626552663.html"/>
+    <updated>2022-05-09T10:17:35+08:00</updated>
+    <id>http://565785929.github.io/16520626552663.html</id>
+    <content type="html"><![CDATA[
+<p>接到个工作，就是写个爬虫把广告视频数据爬下来，供公司同事模仿。</p>
+
+<p>某音有app手机端和web网页端。web端比较好分析，但是刷了半天都没有看到广告影子，不知道是没有标识，还是说就没有广告投放。所以只能搞客户端了。</p>
+
+<h2 id="toc_0">初次尝试</h2>
+
+<p>开始下载了5.0版的安卓模拟器，下载了比较旧的某音APP 17.3版本，发现是可以抓到包的，但是无法登陆，提示版本过低。所以只能升级APP版本，升级到最新版发现之前的抓包工具无法抓到包了，提示 SSL Handshake Failed。</p>
+
+<h2 id="toc_1">SSL Pinning</h2>
+
+<p>在 android 7.0+以上的版本，就会有 SSL Pinning， 只信任系统内置的证书。&quot;客户端在收到服务器的证书后，对该证书进行强校验，验证该证书是不是客户端承认的证书，如果不是，则直接断开连接。&quot;</p>
+
+<h3 id="toc_2">一：xposed 及其插件 <a href="https://github.com/Fuzion24/JustTrustMe">JustTrustMe</a> (可以配合 virtualxposed)</h3>
+
+<p>JustTrustMe 是一个用来禁用、绕过 SSL 证书检查的基于 Xposed 模块。JustTrustMe 是将 APK 中所有用于校验 SSL 证书的 API 都进行了 Hook，从而绕过证书检查。</p>
+
+<h3 id="toc_3">二：将证书安装到系统证书中（需要 root ）</h3>
+
+<p>系统证书的目录是：/system/etc/security/cacerts/<br/>
+每个证书的命名规则为：<Certificate_Hash>.<Number><br/>
+Certificate_Hash 表示证书文件的 hash 值，Number 是为了防止证书文件的 hash 值一致而增加的后缀;<br/>
+证书的 hash 值可以由命令计算出来，在终端输入 openssl x509 -subject_hash_old -in <Certificate_File>，其中 Certificate_File 为证书路径，将证书重命名为 hash.0 放入系统证书目录，之后你就可以正常抓包了。</p>
+
+<h2 id="toc_4">某音证书锁定</h2>
+
+<p>在尝试了以上方案之后，发现还是无法绕过某音的证书锁定，可能不是用系统证书做校验，而是自己的证书。于是开始调研新的方案。</p>
+
+<h2 id="toc_5">调研方案</h2>
+
+<ul>
+<li>一：修改libsscronet.so文件</li>
+<li>二：使用Android Hook框架如 Frida</li>
+<li>三：使用测试框架开源Appium或网易Airtest</li>
+</ul>
+
+<h3 id="toc_6">方案一：</h3>
+
+<p>通过修改某音编译好的so库代码，修改判断证书部分函数返回值，达到绕过ssl pinning的目的，然后使用抓包工具抓包。<br/>
+优点：不用配置hook框架，修改一次即可覆盖<br/>
+缺点：没有核心技术能力，无法主动更新迭代</p>
+
+<ul>
+<li><a href="https://bbs.pediy.com/thread-269028.htm">看雪论坛原创17.3</a></li>
+<li><a href="https://www.52pojie.cn/thread-1611180-1-1.html">吾爱破解20.0</a></li>
+<li><a href="https://www.cnblogs.com/theseventhson/p/15161954.html">网友分析</a></li>
+</ul>
+
+<h3 id="toc_7">方案二：</h3>
+
+<p>类似方案一，通过hook框架，动态修改安卓内部代码函数的入参，返回值等信息，达到绕过ssl pinning的目的，然后使用抓包工具。</p>
+
+<p>优点：框架热门资料多，较方案三可拓展性强<br/>
+缺点：</p>
+
+<ul>
+<li><a href="https://www.jianshu.com/p/56b57ceefcae">简书抖音Frida代码</a></li>
+<li><a href="https://bbs.pediy.com/thread-268014.htm">看雪论坛某书hook过程</a></li>
+<li><a href="https://blog.51cto.com/u_15101562/2622472?b=totalstatistic">51CTO抖音数据采集Frida教程，Frida Java Hook 详解：代码及示例</a></li>
+<li><a href="https://www.its404.com/searchArticle?qc=frida%20hook%20%E6%8A%93%E5%8C%85&amp;page=1">frida教程</a></li>
+<li><a href="https://www.codetd.com/article/12727405">抖音数据采集Frida脱壳工具</a></li>
+<li><a href="http://zhaoxincheng.com/index.php/2021/07/30/%e7%9f%ad%e8%a7%86%e9%a2%91%e6%9c%80%e6%96%b0%e7%89%88%e9%80%9a%e7%94%a8quic%e5%8d%8f%e8%ae%ae%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88/">快手、抖音短视频最新版抓包</a></li>
+</ul>
+
+<h3 id="toc_8">方案三：</h3>
+
+<p>通过安卓测试框架截图，拿到相关数据<br/>
+优点：简单，且多平台适用<br/>
+缺点：拿不到准确数，不好拓展</p>
+
+<ul>
+<li><a href="https://airtest.readthedocs.io/zh_CN/latest/">airtest文档</a></li>
+<li><a href="https://stackoverflow.com/questions/33225947/can-a-website-detect-when-you-are-using-selenium-with-chromedriver">防止selenium被检测</a></li>
+<li><a href="https://blog.csdn.net/sirobot/article/details/105730906">关于selenium的一些资料</a></li>
+</ul>
+
+<h2 id="toc_9">再次尝试</h2>
+
+<h3 id="toc_10">方案一：</h3>
+
+<p>首先采用修改so的方式，由于本人没有吾爱的会员，所以只能下载到看雪上17.3版本的so文件。但是之前装好的安卓5.0搭配 某音17.5 是不需要破解，直接就可以抓包。所以尝试使用新版替换一下，结果发现抖音打不开了。。</p>
+
+<p>由于不懂逆向，看不懂汇编，所以只能安装17.3版本抖音，下载原libsscronet.so文件与论坛大佬提供的做对比。</p>
+
+<pre class="line-numbers"><code class="language-text"># 使用vim对比
+vimdiff -bd org_libsscronet.so gai_libsscronet.so
+
+# 切换窗口
+ctrl+w 
+
+# 二进制转十六进制查看
+:%! xxd
+
+# 下一处不同
+[c
+# 上一处不同
+]c
+</code></pre>
+
+<p>可是只发现了两处不同，和论坛大佬提到的四处对应不上。但是也没有头绪，只能留下没有技术的眼泪。</p>
+
+<p><img src="media/16520626552663/%E9%A3%9E%E4%B9%A620220512-164224.png" alt="飞书20220512-164224"/></p>
+
+<p>之后使用<code>IDA PRO</code>工具打开两个so文件，根据<code>vim</code> 提示的地址 <code>001ccbb0</code> 在<code>IDA PRO</code>中按快捷键 <code>g</code> 跳转。</p>
+
+<p><img src="media/16520626552663/16523453793823.jpg" alt=""/></p>
+
+<p>然后对比两个文件的不同。</p>
+
+<p><img src="media/16520626552663/%E9%A3%9E%E4%B9%A620220512-171018.png" alt="飞书20220512-171018"/><br/>
+<img src="media/16520626552663/%E9%A3%9E%E4%B9%A620220512-171016.png" alt="飞书20220512-171016"/></p>
+
+<p>发现在 <code>MOVS  R0, #1</code> 这里有不同。然后记录一下周边函数名称<code>HandleVerifyResult &amp; VerifyCert</code></p>
+
+<p>于是下载某音APP20.5最新版，如法炮制。将1改为0，然后 apply patchs并将该文件放入原来位置，修改一下用户组和权限，重启虚拟机即可。</p>
+
+<h2 id="toc_11">protobuf</h2>
+
+<p>抓到包之后发现里面文字显示都不正常，通过请求头发现，原来使用的谷歌的protobuf协议，类似json和xml用于两端数据传输，因为protobuf更节省空间，传输过程中将变量名省略，变量名都以文件的方式存储在服务器和客户端上，所以我们需要使用Python的<br/>
+blackboxprotobuf库来解析。</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Windows 开启wsl并开启远程]]></title>
@@ -853,54 +982,6 @@ sudo sed -i -e &quot;s|#baseurl=http://mirror.centos.org|baseurl=http://vault.ce
 <p><img src="media/16457968431626/16457971422579.jpg" alt=""/></p>
 
 <p>参考：<a href="https://www.guru99.com/create-users-manage-permissions.html">How to Create/Add Users in Jenkins &amp; Manage Permissions</a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[提升计划]]></title>
-    <link href="http://565785929.github.io/16448925775213.html"/>
-    <updated>2022-02-15T10:36:17+08:00</updated>
-    <id>http://565785929.github.io/16448925775213.html</id>
-    <content type="html"><![CDATA[
-<ul>
-<li>MySQL</li>
-<li>Redis</li>
-<li>JVM</li>
-<li>Spring</li>
-<li>Linux</li>
-<li>MQ</li>
-<li>English</li>
-</ul>
-
-<h3 id="toc_0">Redis 3个月</h3>
-
-<ul>
-<li>1个月 通读 146-Redis核心技术与实战 专栏</li>
-<li>1个月 通读 Redis使用手册 </li>
-<li>1个月 Redis源码剖析与实战极客专栏 常用命令实战 </li>
-</ul>
-
-<p>Redis 深度历险：核心原理与应用实践<br/>
-Redis开发与运维<br/>
-Redis设计与实现<br/>
-Redis使用手册 </p>
-
-<h3 id="toc_1">Linux</h3>
-
-<ul>
-<li>1.5 个月：通读《UNIX 环境高级编程》</li>
-<li>1.5 个月：通读《Linux 系统编程》</li>
-<li>2 个月：通读《UNIX 网络编程 卷 1》</li>
-<li><p>1 个月：Linux 常用命令实战，包括 tcpdump、ps 和 top 等</p></li>
-</ul>
-
-<ol>
-<li><p>第一段是分解等级，参考专业领域的等级划分标准或公司的职级体系，在当前状态和大牛之间划分出 3～5 个中间等级，把 10 年的宏大目标分解成 2～3 年的一段目标。</p></li>
-<li><p>第二段是分解技能，参考 COMD 能力模型和招聘网站的职位描述，整理下一个等级的技能需求，列出自己需要重点提升的 3～5 个技能点，把 2～3 年的一段目标分解成 6个月左右的二段目标。</p></li>
-<li><p>第三段是分解行动，参考同行在网上发布的经验和朋友的建议，确定提升单项技能的 3～5 个具体行动，把 6 个月左右的二段目标分解成 1～2 个月的三段目标。</p></li>
-<li><p>虽然最终执行计划的时候要落实到周，但是制定计划的时候分解到月就行了，这样做的好处是，计划调整起来更加方便灵活。</p></li>
-</ol>
 
 ]]></content>
   </entry>

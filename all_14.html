@@ -95,6 +95,76 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
+						<a href="15769917893975.html"> 
+							<div class="item-desc"> 
+								<p>NFS就是 ** Network File System ** 的缩写
+
+本机ip：192.168.36.182
+
+安装NFS
+
+yum -y install nfs-utils rpcbind
+
+
+服务端配置
+
+在NFS服务端上创建共享目录/data/lys并设置权限
+
+mkdir -p /data/lys
+
+chmod 666 /data/lys/
+
+
+编辑export文件
+
+vi /etc/exports 
+
+/data/lys 192.168.36.0/24(rw,no_root_squash,no_all_squash,sync)
+
+
+配置生效
+
+exportfs -r
+
+
+启动rp</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15769917893975.html">NFS</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
 						<a href="15765692780377.html"> 
 							<div class="item-desc"> 
 								<p>更新时 使用 --verbose命令可以看到运行情况
@@ -362,58 +432,6 @@ File-&gt;Setting-&gt;Editor-&gt;File and Code Templates-&gt;Class
 		   				</div> 
    					</div>
  				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/15659629846282/15659630849569.jpg);">
-						
-						</div> 
-						<a href="15659629846282.html"> 
-							<div class="item-desc"> 
-								<p>最近调试代码需要起服务并修改代码这就导致重复工作，目前是修改服务器配置，即当idea失去焦点时更新类和资源，但是这种只支持在debug模式且是在idea失去焦点才会触发热部署，这就相对加载的慢了。此法的配置方法：
-
-Run –&gt;Edit Configgurations
-
-
-
-如果你sever 选项卡下没有On frame deactivation，那么就需要配置 Deployment 选项卡，点击右边绿色+，选择自己对应的项目，建议选择带 exploded， 这个相当于改 Tomcat 的 CATALINA_HOME， 效率比较高。
-
-
-
-
-
-选择好后， 删掉默认的Build， 提高效率</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15659629846282.html">idea 热部署</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='java.html'>ssm课程</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
  			 
 		</div>
 	</div>
@@ -536,6 +554,12 @@ Run –&gt;Edit Configgurations
           
           
          <li>
+           <a href="16520626552663.html">某音APP广告爬取</a><br>
+         </li>
+          
+          
+          
+         <li>
            <a href="16488664948376.html">Windows 开启wsl并开启远程</a><br>
          </li>
           
@@ -555,12 +579,6 @@ Run –&gt;Edit Configgurations
           
          <li>
            <a href="16486184863200.html">Python pip源 国内源</a><br>
-         </li>
-          
-          
-          
-         <li>
-           <a href="16485397489109.html">ngrok 内网穿透</a><br>
          </li>
           
           
