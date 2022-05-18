@@ -53,8 +53,6 @@
         
         <a href="index.html">Home</a>
         
-        <a href="archives.html">Archives</a>
-        
         <a href="resume/resume.html">Resume</a>
         
         
@@ -78,10 +76,6 @@
           </li>
           
           <li>
-          <a href="archives.html">Archives</a>
-          </li>
-          
-          <li>
           <a href="resume/resume.html">Resume</a>
           </li>
           
@@ -98,25 +92,36 @@
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16405090873022/16405092178762.jpg);">
 						
 						</div> 
-						<a href="16232479391790.html"> 
+						<a href="16405090873022.html"> 
 							<div class="item-desc"> 
-								<p>代码重复，无基本封装。
+								<p>类的生命周期：
 
 
-魔法值而且和数据库备注不相符
+加载：找到Class文件
+验证：验证格式、依赖
+准备：静态字段、方法表
+解析：符号解析为引用
+初始化：构造器、静态变量赋值、静态代码块
+使用
+卸载
 
 
 
-并非可复用代码，参数冗余 
+
+类的加载时机
 
 
-在构造方法里自启动 线程
 
 
-</p> 
+当虚拟机启动时，初始化用户指定的主类，就是启动执行的main方法所在的类；
+当遇到用以新建目标类示例的new指令时，初始化new指定的目标类，就是new一个类的时候要初始化；
+当遇到调用静态方法的指令时，初始化该静态方法所在的类；
+当遇到访问静态字段的指令时，初始化该静态方法所在的类；
+子类的初始化会触发父类的初始化；
+如果一个接口定义了default方法，那么直接实现或者间接实现该接口的类的初始化</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -127,7 +132,7 @@
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16232479391790.html">如何写出让同事无法维护的代码</a>
+	  							<a href="16405090873022.html">JVM 类加载器</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -138,7 +143,7 @@
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html'>设计模式</a>
+			    			<a class='category' href='%E8%AF%AD%E6%B3%95%E7%B1%BB.html'>语法类</a>
 								
 		   						</div> 
 		   					</div> 
@@ -151,13 +156,32 @@
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16405067982525/16405070154518.jpg);">
 						
 						</div> 
-						<a href="16197951416649.html"> 
+						<a href="16405067982525.html"> 
 							<div class="item-desc"> 
-								<p>Ray Tracing for one week
-</p> 
+								<p>有一个简单的类 
+
+class Hello {
+        public static void main(String[] agrs) {
+                Hello obj = new Hello();
+        }
+}
+
+
+编译：javac Hello.java
+查看字节码：javap -c Hello.class
+
+
+
+运算应在栈上操作，所以应该先将变量从本地变量表中加载到栈上，运算完成后再储存回本地变量表。
+
+
+
+更详细的内容：javap -c -verbose Hello.class
+
+&gt;&gt; javap -c -verbose ./Hello.</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -168,7 +192,7 @@
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16197951416649.html">Ray Tracing for one week</a>
+	  							<a href="16405067982525.html">JVM 字节码</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -179,7 +203,7 @@
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='Ray%20Tracing.html'>Ray Tracing</a>
+			    			<a class='category' href='%E8%AF%AD%E6%B3%95%E7%B1%BB.html'>语法类</a>
 								
 		   						</div> 
 		   					</div> 
@@ -192,16 +216,34 @@
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16137917098988/16193973348755.jpg);">
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16402262289586/16413518433356.jpg);">
 						
 						</div> 
-						<a href="16137917098988.html"> 
+						<a href="16402262289586.html"> 
 							<div class="item-desc"> 
 								<p>
 
-背景
+使用FinalShell离线激活方式升级高级版本
 
-自从天朝有了言论管制，科学上网的话题就一直存在，于是大量的梯子软件应运而生。但是GFW与这些梯子软件的斗争从来都没有停止过，一直是此消彼长，墙越来越高，科学上网技术也是持续突破，不断涌现出新技术、新工具。现在最主流的科学上网技术有VPN/SS/SSR/V2Ray/Trojan/Trojan-Go，还有小众的 WireGuard、Brook、Snell 和 NaiveProxy 等，本篇文章不讨论Brook、NaiveProxy以及Snell协议。SS是科学上网代理协议的鼻祖，Snell和Brook是小众协议，Snell协议一直没有开源，是iOS平台非常知名的Surge软件团队开发的</p> 
+使用FinalShell离线激活方式升级高级版本
+
+
+
+获取机器码(如果没有就随意输入用户名或密码执行登录)
+
+
+
+执行下面代码,输入机器码获取激活码
+
+
+import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Scanner;
+
+
+class FinalShell {
+    public static void main(String[]</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -212,7 +254,7 @@
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16137917098988.html">科学上网</a>
+	  							<a href="16402262289586.html">Final Shell离线激活</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -223,7 +265,7 @@
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9B%B8%E5%85%B3.html'>密码学相关</a>
+			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
 								
 		   						</div> 
 		   					</div> 
@@ -236,34 +278,29 @@
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16022150270617/16125316270697.jpg);">
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16378305266660/16413525261167.jpg);">
 						
 						</div> 
-						<a href="16022150270617.html"> 
+						<a href="16378305266660.html"> 
 							<div class="item-desc"> 
-								<p>无法设置0000-00-00默认日期
+								<p>
 
 问题：
 
+设置ssh免密码登陆的时候，发现有一些机器设置不生效。有一些机器正常。
+
+跟踪
+
+登陆目标机器，查看sshd的日志信息。日志信息目录为，/var/log/secure
+你会发现如下字样的日志信息。
+
+Jul 22 14:20:33 v138020.go sshd[4917]: Authentication refused: bad ownership or modes for directory /home/xinhailong
 
 
+原因
 
-使用命令行。navicat不好使
-
-解决方案：
-
-使用root登陆数据库
-
-
-查看sql_mode：
-select @@sql_mode;
-
-
-获得结果：
-ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
-
-
-NO_ZERO_IN_DATE,NO_ZERO_DATE是无法默认为‘0000-00-00 00:00:00</p> 
+sshd为了安全，对属主的目录和文件权限有所要求。如果权限不对，则ssh的免密码登陆不生效。
+用户目录权限为 755 或者 700，就是不能</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -274,65 +311,7 @@ NO_ZERO_IN_DATE,NO_ZERO_DATE是无法默认为‘0000-00-00 00:00:00</p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16022150270617.html">mysql5.7 常见问题</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='MySQL.html'>MySQL</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/15914577057463/16414397795671.jpg);">
-						
-						</div> 
-						<a href="15914577057463.html"> 
-							<div class="item-desc"> 
-								<p>
-
-问题描述：#
-yum 安装更新提示 rpmdb: Thread/process failed: Thread died in Berkeley DB library
-
-问题解决：#
-01、删除yum临时库文件
-
-rm -fr /var/lib/rpm/__db.*
-
-02、重建rpm数据库
-
-rpm --rebuilddb
-
-03、清理缓存及生产yumdb缓存
-
-yum clean all
-yum makecache
-</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15914577057463.html">yum安装提示错误Thread/process failed: Thread died in Berkeley DB librar</a>
+	  							<a href="16378305266660.html">设置ssh免密码登陆 不生效</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -356,35 +335,38 @@ yum makecache
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/15873033963371/15873054303125.jpg);">
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16353269752301/16413526184515.jpg);">
 						
 						</div> 
-						<a href="15873033963371.html"> 
+						<a href="16353269752301.html"> 
 							<div class="item-desc"> 
-								<p>二维码登陆+2FA双因素认证
+								<p>
 
-二者都是很常用的技术，但是两者相结合遍可以用于二维码离线支付。
+第一步，先查看本机node.js版本：
 
-密码安全
+node -v
 
-首先讨论一下如何让密码安全？
-注册时密码数据流，密码首先在web或客户端由用户手动输入，然后经过网络传输至服务端，服务端入库。
-登陆时密码数据流，密码也是在web或客户端由用户手动输入，然后经过网络传输至服务端，服务端查库。
+第二步，清除node.js的cache：
 
-所以我们可以在客户端、网络传输、数据库中分别采用下图方案保护我们的密码。
+sudo npm cache clean -f
 
+第三步，安装 n 工具，这个工具是专门用来管理node.js版本的，别怀疑这个工具的名字，是他是他就是他，他的名字就是 &quot;n&quot;
 
+sudo npm install -g n
 
-二维码登陆原理
+第四步，安装最新版本的node.js
 
-登录做两件事
-1、告诉系统我是谁;
-2、向系统证明我是谁;
+sudo n stable
 
-二维码其实是字符串的图片表现形式
+第五步，再次查看本机的node.js版本：
 
-基于token的认证机制
-1、首次登录客户端向服务器传送密码+设备</p> 
+node -v
+
+第六步，更新npm到最新版：
+
+$ sudo npm install npm@latest -g
+
+第七步，验证</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -395,7 +377,7 @@ yum makecache
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15873033963371.html">离线支付方案</a>
+	  							<a href="16353269752301.html">Mac 更新 node 版本</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -406,7 +388,48 @@ yum makecache
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9B%B8%E5%85%B3.html'>密码学相关</a>
+			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="16351769421565.html"> 
+							<div class="item-desc"> 
+								<p>I
+</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16351769421565.html">join 语句</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='MySQL.html'>MySQL</a>
 								
 		   						</div> 
 		   					</div> 
@@ -465,8 +488,10 @@ yum makecache
              
             
             <li>
-            <a href="Algorithm.html">Algorithm&nbsp;(3)</a>
+            <a href="Algorithm.html">Algorithm&nbsp;(7)</a>
             <p>
+            
+            <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html">数据结构&nbsp;(2)</a>&nbsp;&nbsp;
             
             </p>
             </li>
@@ -474,7 +499,7 @@ yum makecache
              
             
             <li>
-            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(5)</a>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(7)</a>
             <p>
             
             </p>
@@ -485,6 +510,11 @@ yum makecache
             <li>
             <a href="Arts.html">Arts&nbsp;(3)</a>
             <p>
+            
+            </p>
+            </li>
+            
+             
             
             </p>
             </li>
@@ -529,31 +559,31 @@ yum makecache
           
           
          <li>
-           <a href="16434266223947.html">滑动验证码识别</a><br>
+           <a href="16488664948376.html">Windows 开启wsl并开启远程</a><br>
          </li>
           
           
           
          <li>
-           <a href="16425740174242.html">Linux 字体安装</a><br>
+           <a href="16487053528391.html">Java8 特性 Optional</a><br>
          </li>
           
           
           
          <li>
-           <a href="16415484666630.html">nmap 端口嗅探</a><br>
+           <a href="16486272439635.html">Word Cloud 词云重叠算法</a><br>
          </li>
           
           
           
          <li>
-           <a href="16415371479168.html">hydra 爆破ssh</a><br>
+           <a href="16486184863200.html">Python pip源 国内源</a><br>
          </li>
           
           
           
          <li>
-           <a href="16414626714891.html">升级VUE版本</a><br>
+           <a href="16485397489109.html">ngrok 内网穿透</a><br>
          </li>
           
           

@@ -53,8 +53,6 @@
         
         <a href="index.html">Home</a>
         
-        <a href="archives.html">Archives</a>
-        
         <a href="resume/resume.html">Resume</a>
         
         
@@ -75,10 +73,6 @@
           
           <li>
           <a href="index.html">Home</a>
-          </li>
-          
-          <li>
-          <a href="archives.html">Archives</a>
           </li>
           
           <li>
@@ -342,9 +336,32 @@ service nginx restart
 <pre class="line-numbers"><code class="language-text">ps aux | grep -v PID | sort -rn -k 4| head
 </code></pre>
 
-<h2 id="toc_11">--</h2>
+<h2 id="toc_11">源码</h2>
+
+<p><a href="https://github.com/565785929/AutoLogin">GitHub</a></p>
+
+<pre class="line-numbers"><code class="language-text"># 1.0为tesseract版，最新代码已更换新ocr库
+git clone -b 1.0 https://github.com/565785929/AutoLogin
+</code></pre>
+
+<p>之后升级为 dddd_ocr 库，安装比tesseract方便很多。</p>
+
+<pre class="line-numbers"><code class="language-text"># 若报错需安装 mesa-libGL.x86_64
+&gt; ImportError: libGL.so.1: cannot open shared object file: No such file or directory
+yum install mesa-libGL.x86_64
+</code></pre>
+
+<h2 id="toc_12">--</h2>
 
 <p>-- 未完待续。</p>
+
+<h2 id="toc_13">补充</h2>
+
+<p>vue框架有双向绑定机制，在写页面插件的时候，只调用输入框的value属性并不能修改变量的值。需要调用一下 <code>.dispatchEvent(new Event(&quot;input&quot;));</code> 触发事件。</p>
+
+<pre class="line-numbers"><code class="language-text">document.getElementsByTagName(&quot;textarea&quot;)[0].value = &quot;123&quot;;
+document.getElementsByTagName(&quot;textarea&quot;)[0].dispatchEvent(new Event(&quot;input&quot;));
+</code></pre>
 
 		</p>
 		<!-- 侧边导航条 -->
@@ -453,8 +470,8 @@ service nginx restart
 				    <div class="meta">
 					    
 					    <P style="float: left;">
-					    	<a href="16251589603172.html" 
-					        title="Previous Post: 功能分支工作流">&laquo; 功能分支工作流</a>
+					    	<a href="15749080605397.html" 
+					        title="Previous Post: redis 参数配置">&laquo; redis 参数配置</a>
 					    </p>
 					    <p style="float:right; ">
 					    	
@@ -531,8 +548,10 @@ service nginx restart
              
             
             <li>
-            <a href="Algorithm.html">Algorithm&nbsp;(3)</a>
+            <a href="Algorithm.html">Algorithm&nbsp;(7)</a>
             <p>
+            
+            <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html">数据结构&nbsp;(2)</a>&nbsp;&nbsp;
             
             </p>
             </li>
@@ -540,7 +559,7 @@ service nginx restart
              
             
             <li>
-            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(5)</a>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(7)</a>
             <p>
             
             </p>
@@ -551,6 +570,11 @@ service nginx restart
             <li>
             <a href="Arts.html">Arts&nbsp;(3)</a>
             <p>
+            
+            </p>
+            </li>
+            
+             
             
             </p>
             </li>
@@ -595,31 +619,31 @@ service nginx restart
           
           
          <li>
-           <a href="16434266223947.html">滑动验证码识别</a><br>
+           <a href="16488664948376.html">Windows 开启wsl并开启远程</a><br>
          </li>
           
           
           
          <li>
-           <a href="16425740174242.html">Linux 字体安装</a><br>
+           <a href="16487053528391.html">Java8 特性 Optional</a><br>
          </li>
           
           
           
          <li>
-           <a href="16415484666630.html">nmap 端口嗅探</a><br>
+           <a href="16486272439635.html">Word Cloud 词云重叠算法</a><br>
          </li>
           
           
           
          <li>
-           <a href="16415371479168.html">hydra 爆破ssh</a><br>
+           <a href="16486184863200.html">Python pip源 国内源</a><br>
          </li>
           
           
           
          <li>
-           <a href="16414626714891.html">升级VUE版本</a><br>
+           <a href="16485397489109.html">ngrok 内网穿透</a><br>
          </li>
           
           

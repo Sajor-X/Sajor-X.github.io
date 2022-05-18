@@ -53,8 +53,6 @@
         
         <a href="index.html">Home</a>
         
-        <a href="archives.html">Archives</a>
-        
         <a href="resume/resume.html">Resume</a>
         
         
@@ -78,10 +76,6 @@
           </li>
           
           <li>
-          <a href="archives.html">Archives</a>
-          </li>
-          
-          <li>
           <a href="resume/resume.html">Resume</a>
           </li>
           
@@ -98,69 +92,12 @@
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16304224326131/16306006330934.jpg);">
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16304224326131.html"> 
+						<a href="16474850990931.html"> 
 							<div class="item-desc"> 
-								<p>
-
-隔离性与隔离级别
-
-
-脏读
-
-
-幻读
-
-
-不可重复读
-
-
-
-
-SQL标准的事务隔离级别包括：
-
-
-案例
-
-
-事务隔离的实现
-
-
-可重复读
-
-
-事务的启动方式
-
-
-
-
-
-
-
-来自MySQL实战45讲
-
-
-隔离性与隔离级别
-
-提到事务，你肯定会想到ACID：
-
-
-原子性（Atomicity）
-一致性（Consistency）
-隔离性（Isolation）
-持久性（Durability）
-
-
-今天我们就来说说其中I，也就是“隔离性”。
-
-当数据库上有多个事务同时执行的时候，就可能出现：
-
-
-脏读（dirty read）
-不可重复读（non-repeatable read）
-幻读（phantom </p> 
+								<p></p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -171,7 +108,7 @@ SQL标准的事务隔离级别包括：
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16304224326131.html">03 | 事务隔离：为什么你改了我还看不见？</a>
+	  							<a href="16474850990931.html">Redis 快速列表</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -182,7 +119,7 @@ SQL标准的事务隔离级别包括：
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='MySQL.html'>MySQL</a>
+			    			<a class='category' href='Redis.html'>Redis</a>
 								
 		   						</div> 
 		   					</div> 
@@ -195,40 +132,20 @@ SQL标准的事务隔离级别包括：
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16302079765954/16302100687432.jpg);">
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16302079765954.html"> 
+						<a href="16474850885819.html"> 
 							<div class="item-desc"> 
-								<p>
+								<p>Redis 为了节约内存空间，zset、hash容器对象在元素较少的时候，采用压缩列表（ziplist）进行存储。
 
-redo log（重做日志）
+压缩列表是一块连续的内存空间，元素之间紧挨着存储，没有任何冗余空隙。
 
-
-binlog（归档日志）
-
-
-两阶段提交
-
-
-
-
-redo log 和 binlog 区别
-
-
-
-
-
-来自MySQL实战45讲
-
-
-与查询流程不一样的是，更新流程还涉及两个重要的日志模块，它们正是我们今天要讨论的主角：
-
-redo log（重做日志）
-
-redo log为InnoDB特有的日志，用来保证即使数据库发生异常重启，之前提交的记录都不会丢失，这个能力称为crash-safe。
-
-WAL技术，WAL的全称是Write-Ahead Logging，它的关键点就是先写日志，再写磁盘。具体来说，当有一条记录需要更新的时候，InnoDB引擎就会先把记录写到</p> 
+&gt; zadd pro 1 go 2 py 3 java
+(integer) 3
+&gt; debug object pro
+Value at:0x7f9c8df044c0 refcount:1 encoding:ziplist serializedlength:32 lru:4867870 lru_seconds_idle:6
+&gt; hmset bok go fast py slow java f</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -239,7 +156,7 @@ WAL技术，WAL的全称是Write-Ahead Logging，它的关键点就是先写日�
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16302079765954.html">02 | 日志系统：一条SQL更新语句是如何执行的？</a>
+	  							<a href="16474850885819.html">Redis 压缩列表</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -250,7 +167,7 @@ WAL技术，WAL的全称是Write-Ahead Logging，它的关键点就是先写日�
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='MySQL.html'>MySQL</a>
+			    			<a class='category' href='Redis.html'>Redis</a>
 								
 		   						</div> 
 		   					</div> 
@@ -263,54 +180,13 @@ WAL技术，WAL的全称是Write-Ahead Logging，它的关键点就是先写日�
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16301414327814/16301415100109.jpg);">
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16301414327814.html"> 
+						<a href="16351769421565.html"> 
 							<div class="item-desc"> 
-								<p>
-
-Server层
-
-
-连接器
-
-
-查询缓存
-
-
-分析器
-
-
-优化器
-
-
-执行器
-
-
-
-
-存储引擎
-
-
-
-
-
-来自MySQL实战45讲
-
-
-MySQL的逻辑架构图
-
-
-大体来说，MySQL可以分为Server层和存储引擎层两部分。
-
-Server层
-
-包括连接器、查询缓存、分析器、优化器、执行器等，涵盖MySQL的大多数核心服务功能，以及所有的内置函数（如日期、时间、数学和加密函数等），所有跨存储引擎的功能都在这一层实现，比如存储过程、触发器、视图等。
-
-连接器
-
-第一步，你会先连接到这个数据库上，这时候接待你的就是连接器。连接器负责跟客户端建立连接、获取权限、维持和管理连接。连接命令一般是这</p> 
+								<p>I
+</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -321,69 +197,7 @@ Server层
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16301414327814.html">01 | 基础架构：一条SQL查询语句是如何执行的？</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='MySQL.html'>MySQL</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16022150270617/16125316270697.jpg);">
-						
-						</div> 
-						<a href="16022150270617.html"> 
-							<div class="item-desc"> 
-								<p>无法设置0000-00-00默认日期
-
-问题：
-
-
-
-
-使用命令行。navicat不好使
-
-解决方案：
-
-使用root登陆数据库
-
-
-查看sql_mode：
-select @@sql_mode;
-
-
-获得结果：
-ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
-
-
-NO_ZERO_IN_DATE,NO_ZERO_DATE是无法默认为‘0000-00-00 00:00:00</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="16022150270617.html">mysql5.7 常见问题</a>
+	  							<a href="16351769421565.html">join 语句</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -410,60 +224,24 @@ NO_ZERO_IN_DATE,NO_ZERO_DATE是无法默认为‘0000-00-00 00:00:00</p>
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15823891714442.html"> 
+						<a href="16345712700520.html"> 
 							<div class="item-desc"> 
-								<p>
+								<p>count(*) 的实现方式
+
+你首先要明确的是，在不同的 MySQL 引擎中，count(*) 有不同的实现方式。
 
 
-java类
- 
-mysql数据库
+MyISAM 引擎把一个表的总行数存在了磁盘上，因此执行 count(*) 的时候会直接返回这个数，效率很高；
+而 InnoDB 引擎就麻烦了，它执行 count(*) 的时候，需要把数据一行一行地从引擎里面读出来，然后累积计数。
 
 
+这里需要注意的是，我们在这篇文章里讨论的是没有过滤条件的 count(*)，如果加了 where 条件的话，MyISAM 表也是不能返回得这么快的。
+
+计数的几种方式
 
 
-
-java.lang.Byte
-byte
-TINYINT
-
-
-java.lang.Short
-short
-SMALLINT
-
-
-java.lang.Integer
-integer
-INGEGER
-
-
-java.lang.Long
-long
-BIGINT
-
-
-java.lang.Float
-float
-FLOAT
-
-
-java.lang.Double
-double
-DOUBLE
-
-
-java.lang.BigDecimal
-big_decimal
-NUMERIC
-
-
-java.lang.Boolean
-boolean
-BIT
-
-
-java.lang</p> 
+MyISAM 表虽然 count(*) 很快，但是不支持事务；
+sho</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -474,7 +252,7 @@ java.lang</p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15823891714442.html">java和mysql转换</a>
+	  							<a href="16345712700520.html">14 | count(*)这么慢，我该怎么办？</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -501,34 +279,11 @@ java.lang</p>
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15823882245344.html"> 
+						<a href="16345707563290.html"> 
 							<div class="item-desc"> 
-								<p>查看注释
-
-查看所有表的注释
-
-SELECT
-table_name 表名,
-table_comment 表说明
-FROM
-information_schema.TABLES
-WHERE
-table_schema = &#39;数据库名&#39;
-ORDER BY
-table_name
-
-
-查询所有表及字段的注释
-
-SELECT
-a.table_name 表名,
-a.table_comment 表说明,
-b.COLUMN_NAME 字段名,
-b.column_comment 字段说明,
-b.column_type 字段类型,
-b.column_key 约束
-FROM
-information_sc</p> 
+								<p>GitHub&#39;s Online Schema Migrations for MySQL
+(https://github.com/github/gh-ost)
+</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -539,7 +294,60 @@ information_sc</p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15823882245344.html">MySQL 查看表注释或字段注释</a>
+	  							<a href="16345707563290.html">13 重构数据库</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='MySQL.html'>MySQL</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="16330152348133.html"> 
+							<div class="item-desc"> 
+								<p>什么是前缀索引？
+
+给email字符串创建索引有
+
+mysql&gt; alter table SUser add index index1(email);
+或
+mysql&gt; alter table SUser add index index2(email(6));
+
+
+索引选取的越长，占用的磁盘空间就越大，相同的数据页能放下的索引值就越少，搜索的效率也就会越低。
+
+由于email(6)这个索引结构中每个邮箱字段都只取前6个字节，所以占用的空间会更小，这就是使用前缀索引的优势。但，这同时带来的损失是，可能会增加额外的记录扫描次数。
+
+使用前缀索引，定义好长度，就可以做到既节省空间，又不用</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16330152348133.html">11 | 怎么给字符串字段加索引？</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -609,8 +417,10 @@ information_sc</p>
              
             
             <li>
-            <a href="Algorithm.html">Algorithm&nbsp;(3)</a>
+            <a href="Algorithm.html">Algorithm&nbsp;(7)</a>
             <p>
+            
+            <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html">数据结构&nbsp;(2)</a>&nbsp;&nbsp;
             
             </p>
             </li>
@@ -618,7 +428,7 @@ information_sc</p>
              
             
             <li>
-            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(5)</a>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(7)</a>
             <p>
             
             </p>
@@ -629,6 +439,11 @@ information_sc</p>
             <li>
             <a href="Arts.html">Arts&nbsp;(3)</a>
             <p>
+            
+            </p>
+            </li>
+            
+             
             
             </p>
             </li>
@@ -673,31 +488,31 @@ information_sc</p>
           
           
          <li>
-           <a href="16434266223947.html">滑动验证码识别</a><br>
+           <a href="16488664948376.html">Windows 开启wsl并开启远程</a><br>
          </li>
           
           
           
          <li>
-           <a href="16425740174242.html">Linux 字体安装</a><br>
+           <a href="16487053528391.html">Java8 特性 Optional</a><br>
          </li>
           
           
           
          <li>
-           <a href="16415484666630.html">nmap 端口嗅探</a><br>
+           <a href="16486272439635.html">Word Cloud 词云重叠算法</a><br>
          </li>
           
           
           
          <li>
-           <a href="16415371479168.html">hydra 爆破ssh</a><br>
+           <a href="16486184863200.html">Python pip源 国内源</a><br>
          </li>
           
           
           
          <li>
-           <a href="16414626714891.html">升级VUE版本</a><br>
+           <a href="16485397489109.html">ngrok 内网穿透</a><br>
          </li>
           
           

@@ -53,8 +53,6 @@
         
         <a href="index.html">Home</a>
         
-        <a href="archives.html">Archives</a>
-        
         <a href="resume/resume.html">Resume</a>
         
         
@@ -78,10 +76,6 @@
           </li>
           
           <li>
-          <a href="archives.html">Archives</a>
-          </li>
-          
-          <li>
           <a href="resume/resume.html">Resume</a>
           </li>
           
@@ -98,130 +92,54 @@
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16301414327814/16301415100109.jpg);">
 						
 						</div> 
-						<a href="15751320029536.html"> 
-							<div class="item-desc"> 
-								<p>用户的角色是通过UID和GID识别的。
-
-UID用户ID：相当于各为的身份证，在系统中是唯一的
-
-GID组ID：相当于各为的家庭或者你们的学校。
-
-新建用户及设置密码命令如下：
-
-useradd 【参数】 用户名
-
--g 属组
--u 设置uid
--m 创建家目录
--M 没有家目录
--G 指定属于多个组
--s 指定登录shell
--d 指定家目录
--c 注释
--D 改变它默认的属性
--e 指定的日期是帐号失效的日期,
-
-
-新建用户及设置密码命令如下：
-
-passwd 参数 用户名
-
--l：锁定已经命名的账户名称
--u：解开账户锁定状态
--x, --maximum=DAYS：密码使用最大时间（天）</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15751320029536.html">Linux 新建用户和组命令</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15749080605397.html"> 
+						<a href="16301414327814.html"> 
 							<div class="item-desc"> 
 								<p>
-安装目录创建
+
+Server层
+
+
+连接器
+
+
+查询缓存
+
+
+分析器
+
+
+优化器
+
+
+执行器
+
+
+
+
+存储引擎
 
 
 
 
 
-目录名
-用途
+来自MySQL实战45讲
 
 
+MySQL的逻辑架构图
 
 
+大体来说，MySQL可以分为Server层和存储引擎层两部分。
 
-/redis/bin
-存放redis软件本体
+Server层
 
+包括连接器、查询缓存、分析器、优化器、执行器等，涵盖MySQL的大多数核心服务功能，以及所有的内置函数（如日期、时间、数学和加密函数等），所有跨存储引擎的功能都在这一层实现，比如存储过程、触发器、视图等。
 
-/redis/conf
-存放redis实例配置文件
+连接器
 
-
-/redis/logs
-存放redis标准输出日志
-
-
-/redis/backup
-存放备节点配置文件，其他备份文件
-
-
-/redis/var
-存放redis进程文件
-
-
-/redis/nodes
-存放redis集群模式nodes配置文件
-
-
-/redisdump
-存放redis持久化数据，独立的文件系统
-
-
-/redis/tmp
-存放哨兵工作目录，redis集群最初配置状态
-
-
-
-
-执行转换文件权限命令：
-
-chown -R redis:</p> 
+第一步，你会先连接到这个数据库上，这时候接待你的就是连接器。连接器负责跟客户端建立连接、获取权限、维持和管理连接。连接命令一般是这</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -232,7 +150,7 @@ chown -R redis:</p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15749080605397.html">redis 参数配置</a>
+	  							<a href="16301414327814.html">01 | 基础架构：一条SQL查询语句是如何执行的？</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -243,7 +161,132 @@ chown -R redis:</p>
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='Redis.html'>Redis</a>
+			    			<a class='category' href='MySQL.html'>MySQL</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16261043857914/16322357012159.jpg);">
+						
+						</div> 
+						<a href="16261043857914.html"> 
+							<div class="item-desc"> 
+								<p>Google Style
+
+
+命名与注释(Naming and Comments)
+
+命名
+
+一、命名长度
+
+二、利用上下文来简化命名
+
+public class User {
+  private String userName;
+  private String userPassword;
+  private String userAvatarUrl;
+  //...
+}
+
+
+在User类这样一个上下文中，我们没有在成员变量的命名中重复添加 &quot;user&quot; 这样一个前缀单词，而是直接命名为name, password, avatarUrl。在使用这些属性的时候，我们能借助对</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16261043857914.html">改善代码质量规约</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html'>设计模式</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16253298632146/16253299182713.jpg);">
+						
+						</div> 
+						<a href="16253298632146.html"> 
+							<div class="item-desc"> 
+								<p>概述
+
+在软件开发过程，每天都会产生新的代码，代码合并的过程中可能会出现如下问题：
+
+
+  代码被覆盖或丢失
+  代码写的不理想希望还原之前的版本
+  希望知道与之前版本的差别
+  是谁修改了代码以及为什么修改
+  发版时希望分成不同的版本(测试版、发行版等)
+
+
+因此，我们希望有一种机制，能够帮助我们：
+
+
+  可以随时回滚到之前的版本
+  协同开发时不会覆盖别人的代码
+  留下修改记录，以便随时查看
+  发版时可以方便的管理不同的版本
+
+
+什么是版本控制系统
+
+一个标准的版本控制系统 Version Control System (VCS)，通常需要有以下功能：
+
+
+  能够创建 Repo</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16253298632146.html">为什么需要版本控制</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Git.html'>Git</a>
 								
 		   						</div> 
 		   					</div> 
@@ -259,152 +302,20 @@ chown -R redis:</p>
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15748392035708.html"> 
+						<a href="16232479391790.html"> 
 							<div class="item-desc"> 
-								<p>简介
-
-背景和目的
-
-为规范生产环境部署和资源规划，更好实施资源池管理策略。用于指导Redis产品的安装配置，Redis哨兵和集群模式创建
-
-使用范围
+								<p>代码重复，无基本封装。
 
 
-适用对象： 系统规划设计人员、系统部署实施人员、系统维护人员、IT管理人员。
-适用范围：
-使用场景： 传统架构及PaaS平台均需遵守该规范
-试用版本： 目前我行生产环境使用的所有Redis版本
-
-
-术语定义
+魔法值而且和数据库备注不相符
 
 
 
-
-简称\术语
-说明
+并非可复用代码，参数冗余 
 
 
+在构造方法里自启动 线程
 
-
-
-分布式缓存
-为了提升指令和数据存取速度，通过分布式技术实现的缓存系统。
-
-
-Redis
-开源分布式缓存产品。网址：redis.io 使用C语言编写，支持网络、可基于内存有可以支持持久化的key-val</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15748392035708.html">redis部署规范</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Redis.html'>Redis</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15740860526446.html"> 
-							<div class="item-desc"> 
-								<p>设定密码策略
-
-修改  /etc/login.defs 配置文件
-
-PASS_MAX_DAYS      90               密码最长有效期
-PASS_MIN_DAYS       10               密码修改之间最小的天数
-PASS_MIN_LEN          8                密码长度
-PASS_WARN_AGE     7                 口令失效前多少天开始通知用户修改密码
-
-脚本
-
-#! /bin/bash
-# Author: Sajor
-# Date: 2018-10-12
-# Function: 实现对用户密码策略</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15740860526446.html">Linux安全加固脚本</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15700237274379.html"> 
-							<div class="item-desc"> 
-								<p>append 追加
-
-append key value
-
-返回值
-Integer reply：返回append后字符串值（value）的长度。
-
-例子
-
-redis&gt; EXISTS mykey
-(integer) 0
-redis&gt; APPEND mykey &quot;Hello&quot;
-(integer) 5
-redis&gt; APPEND mykey &quot; World&quot;
-(integer) 11
-redis&gt; GET mykey
-&quot;Hello World&quot;
-redis&gt;
 
 </p> 
 							</div> 
@@ -417,7 +328,7 @@ redis&gt;
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15700237274379.html">redis命令</a>
+	  							<a href="16232479391790.html">如何写出让同事无法维护的代码</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -428,9 +339,7 @@ redis&gt;
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
-								
-			    			<a class='category' href='Redis.html'>Redis</a>
+			    			<a class='category' href='%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html'>设计模式</a>
 								
 		   						</div> 
 		   					</div> 
@@ -446,18 +355,10 @@ redis&gt;
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15665458213371.html"> 
+						<a href="16197951416649.html"> 
 							<div class="item-desc"> 
-								<p>添加类注释：
-
-File-&gt;Setting-&gt;Editor-&gt;File and Code Templates-&gt;Class
-
-#if (${PACKAGE_NAME} &amp;&amp; ${PACKAGE_NAME} != &quot;&quot;)package ${PACKAGE_NAME};#end
-#parse(&quot;File Header.java&quot;)
-/**
-*@description ${description}
-*@author Sajor
-*@create ${YEAR}/${MONTH}/${DAY} ${HOUR}:${MINU</p> 
+								<p>Ray Tracing for one week
+</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -468,7 +369,7 @@ File-&gt;Setting-&gt;Editor-&gt;File and Code Templates-&gt;Class
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15665458213371.html">idea 类注释和方法注释</a>
+	  							<a href="16197951416649.html">Ray Tracing for one week</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -479,7 +380,83 @@ File-&gt;Setting-&gt;Editor-&gt;File and Code Templates-&gt;Class
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='java.html'>ssm课程</a>
+			    			<a class='category' href='Ray%20Tracing.html'>Ray Tracing</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="16186514795294.html"> 
+							<div class="item-desc"> 
+								<p>二叉树
+
+定义：二叉树的每个结点至多只有二棵子树(不存在度大于2的结点)，二叉树的子树有左右之分，次序不能颠倒。
+
+
+二叉树的第i层至多有\(2^{i-1}\)个结点；
+深度为k的二叉树至多有\(2^k-1\)个结点；
+对任何一棵二叉树T，如果其终端结点数为\(n_0\)，度为2的结点数为\(n_2\)，则\(n_0 = n_2 + 1\)。
+
+
+
+
+二叉查找树
+
+平衡二叉树
+
+AVL树
+
+红黑树
+
+B树
+
+B+树
+
+B*树
+
+Trie树 前缀树
+
+竞赛问题解决方案
+
+递归是解决树的相关问题最有效和最常用的方法之一。
+
+了解递归并利用递归解决问题并不容易。
+
+“自顶向下” 的解决方案
+
+1. </p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16186514795294.html">树 数据结构中的各种树</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html'>数据结构</a>
 								
 		   						</div> 
 		   					</div> 
@@ -538,8 +515,10 @@ File-&gt;Setting-&gt;Editor-&gt;File and Code Templates-&gt;Class
              
             
             <li>
-            <a href="Algorithm.html">Algorithm&nbsp;(3)</a>
+            <a href="Algorithm.html">Algorithm&nbsp;(7)</a>
             <p>
+            
+            <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html">数据结构&nbsp;(2)</a>&nbsp;&nbsp;
             
             </p>
             </li>
@@ -547,7 +526,7 @@ File-&gt;Setting-&gt;Editor-&gt;File and Code Templates-&gt;Class
              
             
             <li>
-            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(5)</a>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(7)</a>
             <p>
             
             </p>
@@ -558,6 +537,11 @@ File-&gt;Setting-&gt;Editor-&gt;File and Code Templates-&gt;Class
             <li>
             <a href="Arts.html">Arts&nbsp;(3)</a>
             <p>
+            
+            </p>
+            </li>
+            
+             
             
             </p>
             </li>
@@ -602,31 +586,31 @@ File-&gt;Setting-&gt;Editor-&gt;File and Code Templates-&gt;Class
           
           
          <li>
-           <a href="16434266223947.html">滑动验证码识别</a><br>
+           <a href="16488664948376.html">Windows 开启wsl并开启远程</a><br>
          </li>
           
           
           
          <li>
-           <a href="16425740174242.html">Linux 字体安装</a><br>
+           <a href="16487053528391.html">Java8 特性 Optional</a><br>
          </li>
           
           
           
          <li>
-           <a href="16415484666630.html">nmap 端口嗅探</a><br>
+           <a href="16486272439635.html">Word Cloud 词云重叠算法</a><br>
          </li>
           
           
           
          <li>
-           <a href="16415371479168.html">hydra 爆破ssh</a><br>
+           <a href="16486184863200.html">Python pip源 国内源</a><br>
          </li>
           
           
           
          <li>
-           <a href="16414626714891.html">升级VUE版本</a><br>
+           <a href="16485397489109.html">ngrok 内网穿透</a><br>
          </li>
           
           

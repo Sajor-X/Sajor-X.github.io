@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-transform"/>
+
+
+    <title>
+      
+    倒排索引-字符串相似匹配（结巴分词、中文转拼音） - Sajor's Blog
+    
+    </title>
+
+
+  <link href="asset/css/style.css" rel="stylesheet" > 
+  <link href="asset/js/xcode.min.css" rel="stylesheet">
+  <script src="asset/js/headroom.js"></script>
+
+  <script>var element = new Image();Object.defineProperty(element,'id',{get:function(){window.location.href="https://github.com/565785929"}});console.log(element);</script>
+  <!-- <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="asset/css/font-awesome.css">
+ -->
+
+  <!-- <script src="asset/highlightjs/highlight.pack.js"></script> -->
+  <!-- <link href="asset/highlightjs/styles/solarized_light.css" media="screen, projection" rel="stylesheet" type="text/css"> -->
+  <!-- <script>hljs.initHighlightingOnLoad();</script> -->
+
+
+  </head>
+
+  <!-- 主体开始 -->
+  <!-- <body class="" gtools_scp_screen_capture_injected="true"> -->
+  <!-- 上面为主页白底色版本 -->
+    
+<body class="bg-grey" gtools_scp_screen_capture_injected="true" data-feedly-mini="yes">
+<!-- 上面是主页灰底色版本 -->
+
+<!--[if lt IE 8]>
+<div class="browsehappy" role="dialog">
+    当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/" target="_blank">升级你的浏览器</a>。
+</div>
+<![endif]-->
+<!-- 头部位置 -->
+
+<header id="header" class="header bg-white headroom">
+  <div class="navbar-container"> 
+    <a href="index.html" class="navbar-logo"><img src="asset/img/K-logo.png"> </a>
+    <div class="navbar-menu"> 
+
+        
+        <a href="index.html">Home</a>
+        
+        <a href="resume/resume.html">Resume</a>
+        
+        
+    </div> 
+    <!-- 搜索框体 -->
+    <!--  <div class="navbar-search" onclick="">
+        <span class="icon-search"></span>
+        <form id="search" method="post" action="/" role="search">
+          <span class="search-box">
+            <input type="text" id="input" class="input" name="s" required="true" placeholder="Search..." maxlength="30" autocomplete="off">
+          </span>
+        </form>
+    </div> -->
+
+    <div class="navbar-mobile-menu" onclick=""> 
+      <span class="icon-menu cross"><span class="middle"></span></span> 
+        <ul> 
+          
+          <li>
+          <a href="index.html">Home</a>
+          </li>
+          
+          <li>
+          <a href="resume/resume.html">Resume</a>
+          </li>
+          
+        </ul> 
+    </div> 
+  </div> 
+</header>
+<!-- 头部结束 --> <!-- post 开始 -->
+<div class="bg-white" gtools_scp_screen_capture_injected="true" data-feedly-mini="yes">
+	<article class="main-content page-page" style="max-width: 700px;padding: 110px 25px 20px" itemscope="" itemtype="http://schema.org/Article">
+		<div class="post-header">
+			<!-- title -->
+			<div class="post-header">
+				<h1 class="post-title itemprop="name headline">倒排索引-字符串相似匹配（结巴分词、中文转拼音）</h1>	
+				<div class="post-data">
+					<time datetime="2022-03-11T09:46:42+08:00" pubdate data-updated="true">2022/03/11</time>
+				</div>
+			</div>
+		</div>
+	<div id="post-content" class="post-content" itemprop="articleBody"> 
+		<p class="post-tags"> 
+		
+		<a href='%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html'>数据结构</a>&nbsp;
+		
+		</p>
+	<!-- 正文 -->
+		<p>
+		<p>工作中，遇到有两个不同的系统，两个系统中有相同的功能，维护一个主播的名称。现在准备将两个系统的主播合并到一起。因为主播名称可能由不同的人维护的，他们也不知道主播的真实姓名，比如一条小团团，可能维护成了亿条小团团，等等。</p>
+
+<p>为了解决主播重复问题，现在想了一个办法，将要导入的一方，做一个列表，将原有系统所有与其相似的主播名称展示出来。就像这样。</p>
+
+<p><img src="media/16469632028293/16469634927751.jpg" alt="" style="width:540px;"/></p>
+
+<p>通过与大佬们的讨论、启发。现准备使用以下方案。</p>
+
+<ul>
+<li>使用正则表达式，将昵称中的emoji剔除，只提取汉字和英文数字</li>
+<li>使用中文分词法，将昵称字符串分成一个个的单词。并将词组个数为一的删去</li>
+<li>两个系统的主播昵称进行同样的操作</li>
+<li>之后遍历要导入的一方，与原有系统的拼音做对比，有重复的标记下来</li>
+<li>最后导出文件，拿给运营同事人工比对</li>
+</ul>
+
+<h2 id="toc_0">部分示例代码：</h2>
+
+<h3 id="toc_1">核心转换功能</h3>
+
+<pre class="line-numbers"><code class="language-text">import re
+import jieba
+import pypinyin
+
+def get_words(name):
+    # 提取汉字和英文数字
+    name = re.sub(&#39;[^\u4e00-\u9fa5a-zA-Z0-9]&#39;, &#39;&#39;, name)
+    seg_list = jieba.cut_for_search(name)  # 搜索引擎模式
+    word_list = []
+    for j in seg_list:
+        print(j, end=&#39;,&#39;)
+        # 去除长度为一的词
+        if len(j) != 1:
+            # 将词转换成拼音，并连接成字符串
+            word_list.append(&#39;&#39;.join(pypinyin.lazy_pinyin(j)))
+    return word_list
+    
+get_words(&quot;一条小团团&quot;)
+
+&gt; 一条,小,团团,
+&gt; [&#39;yitiao&#39;, &#39;tuantuan&#39;]
+</code></pre>
+
+<h3 id="toc_2">原有系统制作哈希字典，方便查找</h3>
+
+<pre class="line-numbers"><code class="language-text">bigMap = {}
+jeecg_data = db.execute_sql(&#39;select * from xxx&#39;, DB)[1]
+
+for jeecg in jeecg_data:
+    words = get_words(jeecg.get(&#39;name&#39;))
+    for word in words:
+        if bigMap.get(word) is None:
+            bigMap[word] = {
+                &#39;name-id&#39; = []
+            }
+        bigMap[word][&#39;name-id&#39;].append(&quot;%s#%s&quot; % (jeecg.get(&#39;name&#39;), jeecg.get(&#39;id&#39;)))
+</code></pre>
+
+<h3 id="toc_3">需导入的主播</h3>
+
+<pre class="line-numbers"><code class="language-text">result_list = []
+jane_data = db.execute_sql(&quot;select * from xxx&quot;, DB)[1]
+
+for jane in jane_data:
+    words = get_words(jane.get(&#39;name&#39;))
+    res = {
+        &#39;id&#39;: jane.get(&#39;id&#39;),
+        &#39;head&#39;: jane.get(&#39;head&#39;),
+        &#39;name&#39;: jane.get(&#39;name&#39;),
+        &#39;name-id&#39;: []
+    }
+
+    for word in words:
+        if bigMap.get(word):
+            res[&#39;name-id&#39;].extend(bigMap.get(word).get(&#39;name-id&#39;))
+            # 去重（可能一个昵称存在多个单词相同）
+            res[&#39;name-id&#39;] = list(set(res[&#39;name-id&#39;]))
+    result_list.append(res)
+</code></pre>
+
+<h3 id="toc_4">导出文件</h3>
+
+<pre class="line-numbers"><code class="language-text">for i in result_list:
+    with open(&quot;foo.txt&quot;, &quot;a+&quot;) as f:
+        for j in i.get(&#39;name-id&#39;):
+            f.write(i.get(&#39;name&#39;))
+            f.write(&#39;\t&#39;)
+            f.write(i.get(&#39;id&#39;))
+            f.write(&#39;\t&#39;)
+            f.write(j)
+            f.write(&#39;\t&#39;)
+            f.write(&#39;\n&#39;)
+</code></pre>
+
+<p>用到的库：<a href="https://github.com/fxsjy/jieba">jieba</a>, <a href="https://github.com/mozillazg/python-pinyin">pypinyin</a></p>
+
+<h2 id="toc_5">倒排索引</h2>
+
+<p>之后才知道，原来我代码中构建的bigMap其实是一个倒排索引，马上补习了关于倒排索引的知识。</p>
+
+<p>顾名思义，有倒排就有正排。正排索引-forward index；倒排索引-inverted index。正排索引都知道，就是MySQL的索引，按id给数据排索引。</p>
+
+<p><img src="media/16469632028293/16469752101409.jpg" alt="" style="width:745px;"/></p>
+
+		</p>
+		<!-- 侧边导航条 -->
+		<div id="directory-content" class="directory-content">
+    		<div id="directory" style="margin-left: 50px;margin-top: 120px"></div>
+		</div>
+	<!-- JS -->
+	<script>
+		var postDirectoryBuild = function() {
+		    var postChildren = function children(childNodes, reg) {
+		        var result = [],
+		            isReg = typeof reg === 'object',
+		            isStr = typeof reg === 'string',
+		            node, i, len;
+		        for (i = 0, len = childNodes.length; i < len; i++) {
+		            node = childNodes[i];
+		            if ((node.nodeType === 1 || node.nodeType === 9) &&
+		                (!reg ||
+		                isReg && reg.test(node.tagName.toLowerCase()) ||
+		                isStr && node.tagName.toLowerCase() === reg)) {
+		                result.push(node);
+		            }
+		        }
+		        return result;
+		    },
+		    createPostDirectory = function(article, directory, isDirNum) {
+		        var contentArr = [],
+		            titleId = [],
+		            levelArr, root, level,
+		            currentList, list, li, link, i, len;
+		        levelArr = (function(article, contentArr, titleId) {
+		            var titleElem = postChildren(article.childNodes, /^h\d$/),
+		                levelArr = [],
+		                lastNum = 1,
+		                lastRevNum = 1,
+		                count = 0,
+		                guid = 1,
+		                id = 'directory' + (Math.random() + '').replace(/\D/, ''),
+		                lastRevNum, num, elem;
+		            while (titleElem.length) {
+		                elem = titleElem.shift();
+		                contentArr.push(elem.innerHTML);
+		                num = +elem.tagName.match(/\d/)[0];
+		                if (num > lastNum) {
+		                    levelArr.push(1);
+		                    lastRevNum += 1;
+		                } else if (num === lastRevNum ||
+		                    num > lastRevNum && num <= lastNum) {
+		                    levelArr.push(0);
+		                    lastRevNum = lastRevNum;
+		                } else if (num < lastRevNum) {
+		                    levelArr.push(num - lastRevNum);
+		                    lastRevNum = num;
+		                }
+		                count += levelArr[levelArr.length - 1];
+		                lastNum = num;
+		                elem.id = elem.id || (id + guid++);
+		                titleId.push(elem.id);
+		            }
+		            if (count !== 0 && levelArr[0] === 1) levelArr[0] = 0;
+
+		            return levelArr;
+		        })(article, contentArr, titleId);
+		        currentList = root = document.createElement('ul');
+		        dirNum = [0];
+		        for (i = 0, len = levelArr.length; i < len; i++) {
+		            level = levelArr[i];
+		            if (level === 1) {
+		                list = document.createElement('ul');
+		                if (!currentList.lastElementChild) {
+		                    currentList.appendChild(document.createElement('li'));
+		                }
+		                currentList.lastElementChild.appendChild(list);
+		                currentList = list;
+		                dirNum.push(0);
+		            } else if (level < 0) {
+		                level *= 2;
+		                while (level++) {
+		                    if (level % 2) dirNum.pop();
+		                    currentList = currentList.parentNode;
+		                }
+		            }
+		            dirNum[dirNum.length - 1]++;
+		            li = document.createElement('li');
+		            link = document.createElement('a');
+		            link.href = '#' + titleId[i];
+		            link.innerHTML = !isDirNum ? contentArr[i] :
+		                dirNum.join('.') + ' ' + contentArr[i] ;
+		            li.appendChild(link);
+		            currentList.appendChild(li);
+		        }
+		        directory.appendChild(root);
+		    };
+		    createPostDirectory(document.getElementById('post-content'),document.getElementById('directory'), true);
+		};
+		postDirectoryBuild();
+	</script>	
+	<!-- 版权声明 -->
+		<p class="post-info" style="color: #BCBDB6">
+				本文由 <a style="color: #BCBDB6" href="#">Sajor
+				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2022-03-11T09:46:42+08:00
+		</p>
+	<!-- 导航 -->
+			<div id="comments" class="clearfix" style="padding: 0px;">
+				<footer class="post-footer clearfix">	    			
+				    <div class="meta">
+					    
+					    <P style="float: left;">
+					    	<a href="16474850885819.html" 
+					        title="Previous Post: Redis 压缩列表">&laquo; Redis 压缩列表</a>
+					    </p>
+					    <p style="float:right; ">
+					    	
+					    	
+					        <a href="16461235353064.html" 
+					        title="Next Post: Linux 日志切分">Linux 日志切分 &raquo;</a>
+					    </p> 
+					    
+				    </div>
+			  	</footer>
+	<!-- footer end -->
+			</div>		
+	</div>
+</article>
+			<!-- 评论区 -->
+			<div id="respond-post-269" class="comment-container"> 
+				<div id="comments" class="clearfix">
+
+				<script type="text/javascript" src="/pm/hashover/hashover.js"></script>
+<noscript>You must have JavaScript enabled to use the comments.</noscript>
+
+<!-- 评论区结束 -->
+					<div>
+					
+					</div>
+
+				</div>
+			</div>
+</div>
+<!-- headroom -->
+<script type="text/javascript"> 
+(function() {
+    var header = new Headroom(document.querySelector("#header"), {
+        tolerance: 3,
+        offset : 80,
+        classes: {
+          initial: "animated",
+          pinned: "slideDown",
+          unpinned: "slideUp"
+        }
+    });
+    header.init();
+}());
+</script>  <footer id="footer" class="footer" style="background-color: #030501;color: #FFFFFE;">
+  <div class="footer-meta">
+    <div class="footer-container">
+      <!-- 版权说明 -->
+      <div class="meta-item meta-copyright">
+        <div class="meta-copyright-info">
+          <h2 class="meta-title">INFO</h2>
+          <div class="info-text">  
+              <p>Copyright &copy; 2017 <br>
+              <span class="credit">Powered by 
+              <a target="_blank" href="http://zh.mweb.im/">MWeb</a> 
+              </span>
+              <p>Theme Design by <a href="https://www.linpx.com/" target="_blank">Chakhsu</a></p>
+              <p>Migrating to Mweb by <a href="http://metaidea.cn">idken</a></p>
+              </p> 
+          </div>                  
+        </div>
+      </div>  
+      <!-- Categories -->
+      <div class="meta-item meta-comments">
+          <h2 class="meta-title">CATEGORIES</h2>  
+             
+            
+            <li>
+            <a href="%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">设计模式&nbsp;(2)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="Algorithm.html">Algorithm&nbsp;(7)</a>
+            <p>
+            
+            <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html">数据结构&nbsp;(2)</a>&nbsp;&nbsp;
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(7)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="Arts.html">Arts&nbsp;(3)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            </p>
+            </li>
+            
+             
+            
+            </p>
+            </li>
+            
+             
+            
+            </p>
+            </li>
+            
+             
+            
+            </p>
+            </li>
+            
+             
+            
+            </p>
+            </li>
+            
+             
+            
+             
+            
+             
+            
+            </p>
+            </li>
+            
+             
+            
+             
+      </div>
+      <!-- 最新文章 -->
+      <div class="meta-item meta-comments">
+          <h2 class="meta-title">RECENT POSTS</h2>
+
+          
+          
+         <li>
+           <a href="16488664948376.html">Windows 开启wsl并开启远程</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16487053528391.html">Java8 特性 Optional</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16486272439635.html">Word Cloud 词云重叠算法</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16486184863200.html">Python pip源 国内源</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16485397489109.html">ngrok 内网穿透</a><br>
+         </li>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+           
+
+      </div>
+  </div>
+</div>
+</footer>
+
+<!--评论变量判断 -->
+      
+<!-- 评论end -->
+
+
+
+</body>
+</html>

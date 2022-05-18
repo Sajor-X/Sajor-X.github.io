@@ -53,8 +53,6 @@
         
         <a href="index.html">Home</a>
         
-        <a href="archives.html">Archives</a>
-        
         <a href="resume/resume.html">Resume</a>
         
         
@@ -78,10 +76,6 @@
           </li>
           
           <li>
-          <a href="archives.html">Archives</a>
-          </li>
-          
-          <li>
           <a href="resume/resume.html">Resume</a>
           </li>
           
@@ -101,30 +95,9 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15770719140172.html"> 
+						<a href="16474850990931.html"> 
 							<div class="item-desc"> 
-								<p>redis-server /usr/local/redis/etc/redis.conf
-
-redis 集群
-
-首先安装redis
-brew install redis
-
-单节点
-redis-server /usr/local/redis/etc/redis.conf
-
-将/usr/local/redis/bin
-建立redis-cluster文件夹，复制六份， 三主三备份， 分别叫redis01-redis-06
-
-
-将每个文件夹中的redis.conf都修改一下
-例如： redis01/redis.conf
-
-port 7001
-
-cluster-enabled yes
-
-cluster-</p> 
+								<p></p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -135,7 +108,248 @@ cluster-</p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15770719140172.html">redis</a>
+	  							<a href="16474850990931.html">Redis 快速列表</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Redis.html'>Redis</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="16474850885819.html"> 
+							<div class="item-desc"> 
+								<p>Redis 为了节约内存空间，zset、hash容器对象在元素较少的时候，采用压缩列表（ziplist）进行存储。
+
+压缩列表是一块连续的内存空间，元素之间紧挨着存储，没有任何冗余空隙。
+
+&gt; zadd pro 1 go 2 py 3 java
+(integer) 3
+&gt; debug object pro
+Value at:0x7f9c8df044c0 refcount:1 encoding:ziplist serializedlength:32 lru:4867870 lru_seconds_idle:6
+&gt; hmset bok go fast py slow java f</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16474850885819.html">Redis 压缩列表</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Redis.html'>Redis</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="15770719140172.html"> 
+							<div class="item-desc"> 
+								<p>dict 是 Redis 服务器中出现最为频繁的复合型数据结构，除了 hash 结构的数据会用到字典外，整个 Redis 数据库的所有 key 和 value 也组成了一个全局字典，还有带过期时间的 key 集合也是一个字典。zset 集合中存储 value 和 score 值的映射关系也是通过 dict 结构实现的。
+
+struct RedisDb {
+    dict* dict; // all keys  key=&gt;value
+    dict* expires; // all expired keys key=&gt;long(timestamp)
+    ...
+}
+
+stru</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15770719140172.html">Redis 字典</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Redis.html'>Redis</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="16456971885760.html"> 
+							<div class="item-desc"> 
+								<p>Redis 中的字符串是可以修改的字符串，在内存中它是以字节数组的形式存在的。Redis 没有直接使用 C 语言传统的字符串表示（以空字符结尾的字符数组， NULL 即（0x\0）作为结束符，以下简称 C 字符串），因为要获取 NULL 结尾的字符串的长度使用的是 strlen 标准库函数，这个函数的算法复杂度是 O(n)，它需要对字节数组进行遍历扫描，作为单线程的 Redis 表示承受不起。
+
+Redis是自己构建了一种名为简单动态字符串（simple dynamic string，SDS）的抽象类型，它的结构是一个带长度信息的字节数组，Redis 将 SDS 用作 Redis 的默认字符串</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16456971885760.html">Redis 字符串</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Redis.html'>Redis</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="16474792471704.html"> 
+							<div class="item-desc"> 
+								<p>Redis 是一个非常耗费内存的数据库。Redis 作者为了优化数据结构的内存占用，也苦心孤诣增加了非常多的优化点。
+
+32bit vs 64bit
+
+Redis 如果使用 32bit 进行编译，内部所有数据结构所使用的指针空间占用会少一半，如果你对 Redis 使用内存不超过 4G，可以考虑使用 32bit 进行编译，可以节约大量内存。4G 的容量作为一些小型站点的缓存数据库是绰绰有余了，如果不足还可以通过增加实例的方式来解决。
+
+小对象压缩存储 (ziplist)
+
+如果 Redis 内部管理的集合数据结构很小，它会使用紧凑存储形式压缩存储。
+
+这就好比 HashMap 本来是二维结构，但</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16474792471704.html">Redis 小对象压缩</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Redis.html'>Redis</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="16474265825347.html"> 
+							<div class="item-desc"> 
+								<p>消息多播
+
+消息多播允许生产者生产一次消息，中间件负责将消息复制到多个消息队列，每个消息队列由相应的消费组进行消费。它是分布式系统常用的一种解耦方式，用于将多个消费组的逻辑进行拆分。支持了消息多播，多个消费组的逻辑就可以放到不同的子系统中。
+
+如果是普通的消息队列，就得将多个不同的消费组逻辑串接起来放在一个子系统中，进行连续消费。
+
+
+
+如果是普通的消息队列，就得将多个不同的消费组逻辑串接起来放在一个子系统中，进行连续消费。
+
+
+PubSub
+
+为了支持消息多播，Redis 不能再依赖于那 5 种基本数据类型了。它单独使用了一个模块来支持消息多播，这个模块的名字叫着 PubSub，也就是 Pu</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16474265825347.html">Redis消息多播 PubSub</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -167,8 +381,8 @@ cluster-</p>
 				<li class=""><a href="archives.html">归档</a></li>
 
 			
-            	<li class=" disabled "><a href="#index">下一页 <span aria-hidden="true">&rarr;</span></a></li>
-            
+			<li class=""><a href="Redis_2.html">下一页 <span aria-hidden="true">&rarr;</span></a></li>
+			
             </ol>
      </nav>
 </div>
@@ -205,8 +419,10 @@ cluster-</p>
              
             
             <li>
-            <a href="Algorithm.html">Algorithm&nbsp;(3)</a>
+            <a href="Algorithm.html">Algorithm&nbsp;(7)</a>
             <p>
+            
+            <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html">数据结构&nbsp;(2)</a>&nbsp;&nbsp;
             
             </p>
             </li>
@@ -214,7 +430,7 @@ cluster-</p>
              
             
             <li>
-            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(5)</a>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(7)</a>
             <p>
             
             </p>
@@ -225,6 +441,11 @@ cluster-</p>
             <li>
             <a href="Arts.html">Arts&nbsp;(3)</a>
             <p>
+            
+            </p>
+            </li>
+            
+             
             
             </p>
             </li>
@@ -269,31 +490,31 @@ cluster-</p>
           
           
          <li>
-           <a href="16434266223947.html">滑动验证码识别</a><br>
+           <a href="16488664948376.html">Windows 开启wsl并开启远程</a><br>
          </li>
           
           
           
          <li>
-           <a href="16425740174242.html">Linux 字体安装</a><br>
+           <a href="16487053528391.html">Java8 特性 Optional</a><br>
          </li>
           
           
           
          <li>
-           <a href="16415484666630.html">nmap 端口嗅探</a><br>
+           <a href="16486272439635.html">Word Cloud 词云重叠算法</a><br>
          </li>
           
           
           
          <li>
-           <a href="16415371479168.html">hydra 爆破ssh</a><br>
+           <a href="16486184863200.html">Python pip源 国内源</a><br>
          </li>
           
           
           
          <li>
-           <a href="16414626714891.html">升级VUE版本</a><br>
+           <a href="16485397489109.html">ngrok 内网穿透</a><br>
          </li>
           
           

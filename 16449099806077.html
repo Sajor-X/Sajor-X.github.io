@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-transform"/>
+
+
+    <title>
+      
+    redis数据结构 - Sajor's Blog
+    
+    </title>
+
+
+  <link href="asset/css/style.css" rel="stylesheet" > 
+  <link href="asset/js/xcode.min.css" rel="stylesheet">
+  <script src="asset/js/headroom.js"></script>
+
+  <script>var element = new Image();Object.defineProperty(element,'id',{get:function(){window.location.href="https://github.com/565785929"}});console.log(element);</script>
+  <!-- <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="asset/css/font-awesome.css">
+ -->
+
+  <!-- <script src="asset/highlightjs/highlight.pack.js"></script> -->
+  <!-- <link href="asset/highlightjs/styles/solarized_light.css" media="screen, projection" rel="stylesheet" type="text/css"> -->
+  <!-- <script>hljs.initHighlightingOnLoad();</script> -->
+
+
+  </head>
+
+  <!-- 主体开始 -->
+  <!-- <body class="" gtools_scp_screen_capture_injected="true"> -->
+  <!-- 上面为主页白底色版本 -->
+    
+<body class="bg-grey" gtools_scp_screen_capture_injected="true" data-feedly-mini="yes">
+<!-- 上面是主页灰底色版本 -->
+
+<!--[if lt IE 8]>
+<div class="browsehappy" role="dialog">
+    当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/" target="_blank">升级你的浏览器</a>。
+</div>
+<![endif]-->
+<!-- 头部位置 -->
+
+<header id="header" class="header bg-white headroom">
+  <div class="navbar-container"> 
+    <a href="index.html" class="navbar-logo"><img src="asset/img/K-logo.png"> </a>
+    <div class="navbar-menu"> 
+
+        
+        <a href="index.html">Home</a>
+        
+        <a href="resume/resume.html">Resume</a>
+        
+        
+    </div> 
+    <!-- 搜索框体 -->
+    <!--  <div class="navbar-search" onclick="">
+        <span class="icon-search"></span>
+        <form id="search" method="post" action="/" role="search">
+          <span class="search-box">
+            <input type="text" id="input" class="input" name="s" required="true" placeholder="Search..." maxlength="30" autocomplete="off">
+          </span>
+        </form>
+    </div> -->
+
+    <div class="navbar-mobile-menu" onclick=""> 
+      <span class="icon-menu cross"><span class="middle"></span></span> 
+        <ul> 
+          
+          <li>
+          <a href="index.html">Home</a>
+          </li>
+          
+          <li>
+          <a href="resume/resume.html">Resume</a>
+          </li>
+          
+        </ul> 
+    </div> 
+  </div> 
+</header>
+<!-- 头部结束 --> <!-- post 开始 -->
+<div class="bg-white" gtools_scp_screen_capture_injected="true" data-feedly-mini="yes">
+	<article class="main-content page-page" style="max-width: 700px;padding: 110px 25px 20px" itemscope="" itemtype="http://schema.org/Article">
+		<div class="post-header">
+			<!-- title -->
+			<div class="post-header">
+				<h1 class="post-title itemprop="name headline">redis数据结构</h1>	
+				<div class="post-data">
+					<time datetime="2022-02-15T15:26:20+08:00" pubdate data-updated="true">2022/02/15</time>
+				</div>
+			</div>
+		</div>
+	<div id="post-content" class="post-content" itemprop="articleBody"> 
+		<p class="post-tags"> 
+		
+		<a href='Redis.html'>Redis</a>&nbsp;
+		
+		</p>
+	<!-- 正文 -->
+		<p>
+		<p>redis可以用来做什么，缓存，分布式锁。</p>
+
+<ol>
+<li>记录帖子的点赞数、评论数和点击数 (hash)。</li>
+<li>记录用户的帖子 ID 列表 (排序)，便于快速显示用户的帖子列表 (zset)。</li>
+<li>记录帖子的标题、摘要、作者和封面信息，用于列表页展示 (hash)。</li>
+<li>记录帖子的点赞用户 ID 列表，评论 ID 列表，用于显示和去重计数 (zset)。</li>
+<li>缓存近期热帖内容 (帖子内容空间占用比较大)，减少数据库压力 (hash)。</li>
+<li>记录帖子的相关文章 ID，根据内容推荐相关帖子 (list)。</li>
+<li>如果帖子 ID 是整数自增的，可以使用 Redis 来分配帖子 ID(计数器)。</li>
+<li>收藏集和帖子之间的关系 (zset)。</li>
+<li>记录热榜帖子 ID 列表，总热榜和分类热榜 (zset)。</li>
+<li>缓存用户行为历史，进行恶意行为过滤 (zset,hash)。</li>
+</ol>
+
+<p>Redis 由意大利人 Salvatore Sanfilippo （网名 Antirez ）开发。我们都知道 Redis 的默认端口是 6379 ，这个端口号也不是随机选的，而是由于机键盘字母“MERZ ”的位置决定的。MERZ ”在 Antirez 的朋友圈语言中是咱 ”的代名词，它由于意大利广告女郎“Alessia Merz ＂在电视节目上说了一堆愚蠢的话而被人熟知。</p>
+
+<p>拓展阅读：<br/>
+<a href="https://mp.weixin.qq.com/s/-y1zvqWEJ3Tt4h39Z0WBJg">天下无难试之Redis面试刁难大全</a></p>
+
+<p><a href="https://juejin.im/post/5b55cba6f265da0fa00a1be7">《我为 Redis 找到了一个新家—— VMWare》</a></p>
+
+<p><a href="https://juejin.im/post/5b580cc2e51d451915571071">《Redis 作者 Antirez 经历的「性别歧视」风波》</a></p>
+
+<h1 id="toc_0">redis安装</h1>
+
+<p><strong>Docker 方式</strong></p>
+
+<pre class="line-numbers"><code class="language-text"># 拉取 redis 镜像
+&gt; docker pull redis
+# 运行 redis 容器
+&gt; docker run --name myredis -d -p6379:6379 redis
+# 执行容器中的 redis-cli，可以直接使用命令行操作 redis
+&gt; docker exec -it myredis redis-cli
+</code></pre>
+
+<p><strong>Github 源码编译方式</strong></p>
+
+<pre class="line-numbers"><code class="language-text"># 下载源码
+&gt; git clone --branch 2.8 --depth 1 git@github.com:antirez/redis.git
+&gt; cd redis
+# 编译
+&gt; make
+&gt; cd src
+# 运行服务器，daemonize表示在后台运行
+&gt; ./redis-server --daemonize yes
+# 运行命令行
+&gt; ./redis-cli
+</code></pre>
+
+<p><strong>直接安装方式</strong></p>
+
+<pre class="line-numbers"><code class="language-text"># mac
+&gt; brew install redis
+# ubuntu
+&gt; apt-get install redis
+# redhat
+&gt; yum install redis
+# 运行客户端
+&gt; redis-cli
+</code></pre>
+
+<h2 id="toc_1">数据结构</h2>
+
+<p>redis基础数据结构 5种</p>
+
+<ul>
+<li>字符串String</li>
+<li>字典Hash</li>
+<li>列表List</li>
+<li>集合Set</li>
+<li>有序集合SortedSet</li>
+</ul>
+
+<p>新增:</p>
+
+<ul>
+<li>HyperLogLog </li>
+<li>Bitmap 位图</li>
+<li>GEO 地理坐标 redis3.2</li>
+<li>stream 流 redis5.0</li>
+</ul>
+
+<p>底层实现的数据结构：</p>
+
+<ul>
+<li>简单动态字符串</li>
+<li>双向链表</li>
+<li>压缩列表</li>
+<li>哈希表</li>
+<li>跳表</li>
+<li>整数数组</li>
+</ul>
+
+<p><img src="media/16449099806077/16455793177953.jpg" alt=""/></p>
+
+<p><img src="media/16449099806077/16456041031443.jpg" alt=""/></p>
+
+<h3 id="toc_2">全局哈希表</h3>
+
+<p>为了实现从键到值的快速访问，Redis 使用了一个哈希表来保存所有键值对。</p>
+
+<p>一个哈希表，其实就是一个数组，数组的每个元素称为一个哈希桶。哈希桶中的元素保存的并不是值本身，而是指向具体值的指针。这也就是说，不管值是 String，还是集合类型，哈希桶中的元素都是指向它们的指针。</p>
+
+<p>哈希桶中的 entry 元素中保存了 *key 和 *value 指针，分别指向了实际的键和值，这样一来，即使值是一个集合，也可以通过 *value 指针被查找到。<br/>
+<img src="media/16449099806077/16455803691411.jpg" alt=""/></p>
+
+<h3 id="toc_3">哈希冲突与rehash</h3>
+
+<p>哈希冲突时，使用链表。链表过长会触发rehash。<br/>
+<img src="media/16449099806077/16455946419049.jpg" alt=""/></p>
+
+<p>为了使 rehash 操作更高效，Redis 默认使用了两个全局哈希表：哈希表 1 和哈希表 2。一开始，当你刚插入数据时，默认使用哈希表 1，此时的哈希表 2 并没有被分配空间。随着数据逐步增多，Redis 开始执行 rehash，这个过程分为三步：</p>
+
+<ol>
+<li>给哈希表 2 分配更大的空间，例如是当前哈希表 1 大小的两倍；</li>
+<li>把哈希表 1 中的数据重新映射并拷贝到哈希表 2 中；</li>
+<li>释放哈希表 1 的空间。</li>
+</ol>
+
+<p>为了避免大量的数据拷贝，一次性把哈希表 1 中的数据都迁移完，造成 Redis 线程阻塞，无法服务其他请求。Redis采用渐进式rehash。</p>
+
+<p>简单来说就是在第二步拷贝数据时，Redis 仍然正常处理客户端请求，每处理一个请求时，从哈希表 1 中的第一个索引位置开始，顺带着将这个索引位置上的所有 entries 拷贝到哈希表 2 中；等处理下一个请求时，再顺带拷贝哈希表 1 中的下一个索引位置的 entries。如下图所示：</p>
+
+<p><img src="media/16449099806077/16455948380580.jpg" alt=""/></p>
+
+<h3 id="toc_4">string 字符串</h3>
+
+<p>Redis 的字符串是动态字符串，是可以修改的字符串，内部结构实现上类似于 Java 的 ArrayList，采用预分配冗余空间的方式来减少内存的频繁分配，如图中所示，内部为当前字符串实际分配的空间 capacity 一般要高于实际字符串长度 len。当字符串长度小于 1M 时，扩容都是加倍现有的空间，如果超过  1M，扩容时一次只会多扩 1M 的空间。需要注意的是字符串最大长度为 512M。</p>
+
+<p><strong>键值对</strong></p>
+
+<pre class="line-numbers"><code class="language-text">&gt; set name codehole
+OK
+&gt; get name
+&quot;codehole&quot;
+&gt; exists name
+(integer) 1
+&gt; del name
+(integer) 1
+&gt; get name
+(nil)
+</code></pre>
+
+<p><strong>批量键值对</strong></p>
+
+<p>可以批量对多个字符串进行读写，节省网络耗时开销。</p>
+
+<pre class="line-numbers"><code class="language-text">&gt; set name1 codehole
+OK
+&gt; set name2 holycoder
+OK
+&gt; mget name1 name2 name3 # 返回一个列表
+1) &quot;codehole&quot;
+2) &quot;holycoder&quot;
+3) (nil)
+&gt; mset name1 boy name2 girl name3 unknown
+&gt; mget name1 name2 name3
+1) &quot;boy&quot;
+2) &quot;girl&quot;
+3) &quot;unknown&quot;
+</code></pre>
+
+<p><strong>过期和 set 命令扩展</strong> </p>
+
+<p>可以对 key 设置过期时间，到点自动删除，这个功能常用来控制缓存的失效时间。</p>
+
+<pre class="line-numbers"><code class="language-text">&gt; set name codehole
+&gt; get name
+&quot;codehole&quot;
+&gt; expire name 5  # 5s 后过期
+...  # wait for 5s
+&gt; get name
+(nil)
+
+&gt; setex name 5 codehole  # 5s 后过期，等价于 set+expire
+&gt; get name
+&quot;codehole&quot;
+... # wait for 5s
+&gt; get name
+(nil)
+
+&gt; setnx name codehole  # 如果 name 不存在就执行 set 创建
+(integer) 1
+&gt; get name
+&quot;codehole&quot;
+&gt; setnx name holycoder
+(integer) 0  # 因为 name 已经存在，所以 set 创建不成功
+&gt; get name
+&quot;codehole&quot;  # 没有改变
+</code></pre>
+
+<p><strong>计数</strong> </p>
+
+<p>如果 value 值是一个整数，还可以对它进行自增操作。自增是有范围的，它的范围是 signed long 的最大最小值，超过了这个值，Redis 会报错。</p>
+
+<pre class="line-numbers"><code class="language-text">&gt; set age 30
+OK
+&gt; incr age
+(integer) 31
+&gt; incrby age 5
+(integer) 36
+&gt; incrby age -5
+(integer) 31
+&gt; set codehole 9223372036854775807  # Long.Max
+OK
+&gt; incr codehole
+(error) ERR increment or decrement would overflow
+</code></pre>
+
+<h3 id="toc_5">list (列表)</h3>
+
+<p>Redis 的列表相当于 Java 语言里面的 LinkedList，注意它是链表而不是数组。这意味着 list 的插入和删除操作非常快，时间复杂度为 O(1)，但是索引定位很慢，时间复杂度为 O(n)，这点让人非常意外。</p>
+
+<p>当列表弹出了最后一个元素之后，该数据结构自动被删除，内存被回收。</p>
+
+<p>Redis 的列表结构常用来做异步队列使用。将需要延后处理的任务结构体序列化成字符串塞进 Redis 的列表，另一个线程从这个列表中轮询数据进行处理。</p>
+
+<p><strong>右边进左边出：队列</strong><br/>
+队列是先进先出的数据结构，常用于消息排队和异步逻辑处理，它会确保元素<br/>
+的访问顺序性。</p>
+
+<pre class="line-numbers"><code class="language-text">&gt; rpush books python java golang
+(integer) 3
+&gt; llen books
+(integer) 3
+&gt; lpop books
+&quot;python&quot;
+&gt; lpop books
+&quot;java&quot;
+&gt; lpop books
+&quot;golang&quot;
+&gt; lpop books
+(nil)
+</code></pre>
+
+<p><strong>右边进右边出：栈</strong><br/>
+栈是先进后出的数据结构，跟队列正好相反 Redis 的列表数据结构来做栈使<br/>
+用的业务场景并不多见。</p>
+
+<pre class="line-numbers"><code class="language-text">&gt; rpush books python java golang
+(integer) 3
+&gt; rpop books
+&quot;golang&quot;
+&gt; rpop books
+&quot;java&quot;
+&gt; rpop books
+&quot;python&quot;
+&gt; rpop books
+(nil)
+</code></pre>
+
+<p><strong>慢操作</strong></p>
+
+<p>lindex 相当于 Java 链表的<code>get(int index)</code>方法，它需要对链表进行遍历，性能随着参数<code>index</code>增大而变差。</p>
+
+<p>ltrim 和字面上的含义不太一样，个人觉得它叫 lretain(保留) 更合适一些，因为 ltrim 跟的两个参数<code>start_index</code>和<code>end_index</code>定义了一个区间，在这个区间内的值，ltrim 要保留，区间之外统统砍掉。我们可以通过ltrim来实现一个定长的链表，这一点非常有用。</p>
+
+<p>index 可以为负数，<code>index=-1</code>表示倒数第一个元素，同样<code>index=-2</code>表示倒数第二个元素。</p>
+
+<pre class="line-numbers"><code class="language-text">&gt; rpush books python java golang
+(integer) 3
+&gt; lindex books 1  # O(n) 慎用
+&quot;java&quot;
+&gt; lrange books 0 -1  # 获取所有元素，O(n) 慎用
+1) &quot;python&quot;
+2) &quot;java&quot;
+3) &quot;golang&quot;
+&gt; ltrim books 1 -1 # O(n) 慎用
+OK
+&gt; lrange books 0 -1
+1) &quot;java&quot;
+2) &quot;golang&quot;
+&gt; ltrim books 1 0 # 这其实是清空了整个列表，因为区间范围长度为负
+OK
+&gt; llen books
+(integer) 0
+</code></pre>
+
+<p><strong>快速列表</strong></p>
+
+<p>如果再深入一点，你会发现 Redis 底层存储的还不是一个简单的 <code>linkedlist</code>，而是称之为快速链表 <code>quicklist</code> 的一个结构。</p>
+
+<p>首先在列表元素较少的情况下会使用一块连续的内存存储，这个结构是 <code>ziplist</code>，也即是压缩列表。它将所有的元素紧挨着一起存储，分配的是一块连续的内存。当数据量比较多的时候才会改成 <code>quicklist</code>。因为普通的链表需要的附加指针空间太大，会比较浪费空间，而且会加重内存的碎片化。比如这个列表里存的只是 <code>int</code> 类型的数据，结构上还需要两个额外的指针 <code>prev</code> 和 <code>next</code> 。所以 Redis 将链表和 <code>ziplist</code> 结合起来组成了 <code>quicklist</code>。也就是将多个 <code>ziplist</code> 使用双向指针串起来使用。这样既满足了快速的插入删除性能，又不会出现太大的空间冗余。</p>
+
+<p><img src="media/16449099806077/16449168655446.jpg" alt="" style="width:832px;"/></p>
+
+<p><strong>压缩列表</strong></p>
+
+<p>压缩列表实际上类似于一个数组，数组中的每一个元素都对应保存一个数据。和数组不同的是，压缩列表在表头有三个字段 zlbytes、zltail 和 zllen，分别表示列表长度、列表尾的偏移量和列表中的 entry 个数；压缩列表在表尾还有一个 zlend，表示列表结束。</p>
+
+<p><img src="media/16449099806077/16455955834475.jpg" alt=""/></p>
+
+<p>在压缩列表中，如果我们要查找定位第一个元素和最后一个元素，可以通过表头三个字段的长度直接定位，复杂度是 O(1)。而查找其他元素时，就没有这么高效了，只能逐个查找，此时的复杂度就是 O(N) 了。</p>
+
+<h3 id="toc_6">hash (字典)</h3>
+
+<p>Redis 的字典相当于 Java 语言里面的 HashMap，它是无序字典。内部实现结构上同 Java 的 HashMap 也是一致的，同样的数组 + 链表二维结构。第一维 hash 的数组位置碰撞时，就会将碰撞的元素使用链表串接起来。</p>
+
+<p><img src="media/16449099806077/16449798429371.jpg" alt="" style="width:621px;"/></p>
+
+<p>Java 的 HashMap 在字典很大时，rehash 是个耗时的操作，需要一次性全部 rehash。Redis 为了高性能，不能堵塞服务，所以采用了渐进式 rehash 策略。渐进式 rehash 会在 rehash 的同时，保留新旧两个 hash 结构，查询时会同时查询两个 hash 结构，然后在后续的定时任务中以及 hash 操作指令中，循序渐进地将旧 hash 的内容一点点迁移到新的 hash 结构中。当搬迁完成了，就会使用新的hash结构取而代之。</p>
+
+<p><img src="media/16449099806077/16449798285019.jpg" alt="" style="width:593px;"/></p>
+
+<p>当 hash 移除了最后一个元素之后，该数据结构自动被删除，内存被回收。</p>
+
+<p>hash 结构也可以用来存储用户信息，不同于字符串一次性需要全部序列化整个对象，hash 可以对用户结构中的每个字段单独存储。这样当我们需要获取用户信息时可以进行部分获取。而以整个字符串的形式去保存用户信息的话就只能一次性全部读取，这样就会比较浪费网络流量。</p>
+
+<p>hash 也有缺点，hash 结构的存储消耗要高于单个字符串，到底该使用 hash 还是字符串，需要根据实际情况再三权衡。</p>
+
+<pre class="line-numbers"><code class="language-text">&gt; hset books java &quot;think in java&quot;  # 命令行的字符串如果包含空格，要用引号括起来
+(integer) 1
+&gt; hset books golang &quot;concurrency in go&quot;
+(integer) 1
+&gt; hset books python &quot;python cookbook&quot;
+(integer) 1
+&gt; hgetall books  # entries()，key 和 value 间隔出现
+1) &quot;java&quot;
+2) &quot;think in java&quot;
+3) &quot;golang&quot;
+4) &quot;concurrency in go&quot;
+5) &quot;python&quot;
+6) &quot;python cookbook&quot;
+&gt; hlen books
+(integer) 3
+&gt; hget books java
+&quot;think in java&quot;
+&gt; hset books golang &quot;learning go programming&quot;  # 因为是更新操作，所以返回 0
+(integer) 0
+&gt; hget books golang
+&quot;learning go programming&quot;
+&gt; hmset books java &quot;effective java&quot; python &quot;learning python&quot; golang &quot;modern golang programming&quot;  # 批量 set
+OK
+</code></pre>
+
+<p>同字符串对象一样，hash 结构中的单个子 key 也可以进行计数，它对应的指令是 <code>hincrby</code>，和 <code>incr</code> 使用基本一样。</p>
+
+<pre class="line-numbers"><code class="language-text"># 老钱又老了一岁
+&gt; hincrby user-laoqian age 1
+(integer) 30
+</code></pre>
+
+<h3 id="toc_7">set (集合)</h3>
+
+<p>Redis 的集合相当于 Java 语言里面的 HashSet，它内部的键值对是无序的唯一的。它的内部实现相当于一个特殊的字典，字典中所有的 value 都是一个值<code>NULL</code>。</p>
+
+<p>当集合中最后一个元素移除之后，数据结构自动删除，内存被回收。</p>
+
+<pre class="line-numbers"><code class="language-text">&gt; sadd books python
+(integer) 1
+&gt; sadd books python  #  重复
+(integer) 0
+&gt; sadd books java golang
+(integer) 2
+&gt; smembers books  # 注意顺序，和插入的并不一致，因为 set 是无序的
+1) &quot;java&quot;
+2) &quot;python&quot;
+3) &quot;golang&quot;
+&gt; sismember books java  # 查询某个 value 是否存在，相当于 contains(o)
+(integer) 1
+&gt; sismember books rust
+(integer) 0
+&gt; scard books  # 获取长度相当于 count()
+(integer) 3
+&gt; spop books  # 弹出一个
+&quot;java&quot;
+</code></pre>
+
+<h3 id="toc_8">zset (有序集合)</h3>
+
+<p>zset 可能是 Redis 提供的最为特色的数据结构，它也是在面试中面试官最爱问的数据结构。它类似于 Java 的 SortedSet 和 HashMap 的结合体，一方面它是一个 set，保证了内部 value 的唯一性，另一方面它可以给每个 value 赋予一个 score，代表这个 value 的排序权重。它的内部实现用的是一种叫做「跳跃列表」的数据结构。</p>
+
+<pre class="line-numbers"><code class="language-text">&gt; zadd books 9.0 &quot;think in java&quot;
+(integer) 1
+&gt; zadd books 8.9 &quot;java concurrency&quot;
+(integer) 1
+&gt; zadd books 8.6 &quot;java cookbook&quot;
+(integer) 1
+&gt; zrange books 0 -1  # 按 score 排序列出，参数区间为排名范围
+1) &quot;java cookbook&quot;
+2) &quot;java concurrency&quot;
+3) &quot;think in java&quot;
+&gt; zrevrange books 0 -1  # 按 score 逆序列出，参数区间为排名范围
+1) &quot;think in java&quot;
+2) &quot;java concurrency&quot;
+3) &quot;java cookbook&quot;
+&gt; zcard books  # 相当于 count()
+(integer) 3
+&gt; zscore books &quot;java concurrency&quot;  # 获取指定 value 的 score
+&quot;8.9000000000000004&quot;  # 内部 score 使用 double 类型进行存储，所以存在小数点精度问题
+&gt; zrank books &quot;java concurrency&quot;  # 排名
+(integer) 1
+&gt; zrangebyscore books 0 8.91  # 根据分值区间遍历 zset
+1) &quot;java cookbook&quot;
+2) &quot;java concurrency&quot;
+&gt; zrangebyscore books -inf 8.91 withscores # 根据分值区间 (-∞, 8.91] 遍历 zset，同时返回分值。inf 代表 infinite，无穷大的意思。
+1) &quot;java cookbook&quot;
+2) &quot;8.5999999999999996&quot;
+3) &quot;java concurrency&quot;
+4) &quot;8.9000000000000004&quot;
+&gt; zrem books &quot;java concurrency&quot;  # 删除 value
+(integer) 1
+&gt; zrange books 0 -1
+1) &quot;java cookbook&quot;
+2) &quot;think in java&quot;
+</code></pre>
+
+<p><strong>跳跃列表</strong></p>
+
+<p>zset 内部的排序功能是通过「跳跃列表」数据结构来实现的，它的结构非常特殊，也比较复杂。</p>
+
+<p>因为 zset 要支持随机的插入和删除，所以它不好使用数组来表示。我们先看一个普通的链表结构。</p>
+
+<p><img src="media/16449099806077/16450908741275.jpg" alt="" style="width:1351px;"/></p>
+
+<p>我们需要这个链表按照 score 值进行排序。这意味着当有新元素需要插入时，要定位到特定位置的插入点，这样才可以继续保证链表是有序的。通常我们会通过二分查找来找到插入点，但是二分查找的对象必须是数组，只有数组才可以支持快速位置定位，链表做不到，那该怎么办？</p>
+
+<p>利用二分法，分层给数据建立索引，将时间复杂度从 O(n) -&gt; O(logn)<br/>
+<img src="media/16449099806077/16450909100482.jpg" alt="" style="width:1138px;"/></p>
+
+<p>跳表在链表的基础上，增加了多级索引，通过索引位置的几个跳转，实现数据的快速定位。例如：查找33的例子<br/>
+<img src="media/16449099806077/16456040379543.jpg" alt=""/></p>
+
+<h2 id="toc_9">容器型数据结构的通用规则</h2>
+
+<p>list/set/hash/zset 这四种数据结构是容器型数据结构，它们共享下面两条通用规则：</p>
+
+<ol>
+<li><p>create if not exists </p>
+<p>如果容器不存在，那就创建一个，再进行操作。比如 rpush 操作刚开始是没有列表的，Redis 就会自动创建一个，然后再 rpush 进去新元素。</p></li>
+<li><p>drop if no elements</p>
+<p>如果容器里元素没有了，那么立即删除元素，释放内存。这意味着 lpop 操作到最后一个元素，列表就消失了。</p></li>
+</ol>
+
+<h2 id="toc_10">过期时间</h2>
+
+<p>Redis 所有的数据结构都可以设置过期时间，时间到了，Redis 会自动删除相应的对象。需要注意的是过期是以对象为单位，比如一个 hash 结构的过期是整个 hash 对象的过期，而不是其中的某个子 key。</p>
+
+<p>还有一个需要特别注意的地方是如果一个字符串已经设置了过期时间，然后你调用了 set 方法修改了它，它的过期时间会消失。</p>
+
+<pre class="line-numbers"><code class="language-text">127.0.0.1:6379&gt; set codehole yoyo
+OK
+127.0.0.1:6379&gt; expire codehole 600
+(integer) 1
+127.0.0.1:6379&gt; ttl codehole
+(integer) 597
+127.0.0.1:6379&gt; set codehole yoyo
+OK
+127.0.0.1:6379&gt; ttl codehole
+(integer) -1
+</code></pre>
+
+<h2 id="toc_11">不同操作的复杂度</h2>
+
+<p>口诀：</p>
+
+<ul>
+<li>单元素操作是基础；</li>
+<li>范围操作非常耗时；</li>
+<li>统计操作通常高效；</li>
+<li>例外情况只有几个。</li>
+</ul>
+
+<p>第一，单元素操作，是指每一种集合类型对单个数据实现的增删改查操作。例如，Hash 类型的 HGET、HSET 和 HDEL，Set 类型的 SADD、SREM、SRANDMEMBER 等。这些操作的复杂度由集合采用的数据结构决定，例如，HGET、HSET 和 HDEL 是对哈希表做操作，所以它们的复杂度都是 O(1)；Set 类型用哈希表作为底层数据结构时，它的 SADD、SREM、SRANDMEMBER 复杂度也是 O(1)。<br/>
+这里，有个地方你需要注意一下，集合类型支持同时对多个元素进行增删改查，例如 Hash 类型的 HMGET 和 HMSET，Set 类型的 SADD 也支持同时增加多个元素。此时，这些操作的复杂度，就是由单个元素操作复杂度和元素个数决定的。例如，HMSET 增加 M 个元素时，复杂度就从 O(1) 变成 O(M) 了。</p>
+
+<p>第二，范围操作，是指集合类型中的遍历操作，可以返回集合中的所有数据，比如 Hash 类型的 HGETALL 和 Set 类型的 SMEMBERS，或者返回一个范围内的部分数据，比如 List 类型的 LRANGE 和 ZSet 类型的 ZRANGE。这类操作的复杂度一般是 O(N)，比较耗时，我们应该尽量避免。<br/>
+不过，Redis 从 2.8 版本开始提供了 SCAN 系列操作（包括 HSCAN，SSCAN 和 ZSCAN），这类操作实现了渐进式遍历，每次只返回有限数量的数据。这样一来，相比于 HGETALL、SMEMBERS 这类操作来说，就避免了一次性返回所有元素而导致的 Redis 阻塞。</p>
+
+<p>第三，统计操作，是指集合类型对集合中所有元素个数的记录，例如 LLEN 和 SCARD。这类操作复杂度只有 O(1)，这是因为当集合类型采用压缩列表、双向链表、整数数组这些数据结构时，这些结构中专门记录了元素的个数统计，因此可以高效地完成相关操作。</p>
+
+<p>第四，例外情况，是指某些数据结构的特殊记录，例如压缩列表和双向链表都会记录表头和表尾的偏移量。这样一来，对于 List 类型的 LPOP、RPOP、LPUSH、RPUSH 这四个操作来说，它们是在列表的头尾增删元素，这就可以通过偏移量直接定位，所以它们的复杂度也只有 O(1)，可以实现快速操作。</p>
+
+<h2 id="toc_12">扩展阅读</h2>
+
+<ul>
+<li><a href="https://stackoverflow.com/questions/16375188/redis-strings-vs-redis-hashes-to-represent-json-efficiency">《存结构体信息到底该使用 hash 还是 string？》</a></li>
+</ul>
+
+<p>来源：<a href="https://time.geekbang.org/column/intro/100056701">极客时间-Redis核心技术与实战</a>、<a href="https://juejin.cn/book/6844733724618129422">掘金小册-Redis 深度历险：核心原理与应用实践</a>4618129422)`</p>
+
+		</p>
+		<!-- 侧边导航条 -->
+		<div id="directory-content" class="directory-content">
+    		<div id="directory" style="margin-left: 50px;margin-top: 120px"></div>
+		</div>
+	<!-- JS -->
+	<script>
+		var postDirectoryBuild = function() {
+		    var postChildren = function children(childNodes, reg) {
+		        var result = [],
+		            isReg = typeof reg === 'object',
+		            isStr = typeof reg === 'string',
+		            node, i, len;
+		        for (i = 0, len = childNodes.length; i < len; i++) {
+		            node = childNodes[i];
+		            if ((node.nodeType === 1 || node.nodeType === 9) &&
+		                (!reg ||
+		                isReg && reg.test(node.tagName.toLowerCase()) ||
+		                isStr && node.tagName.toLowerCase() === reg)) {
+		                result.push(node);
+		            }
+		        }
+		        return result;
+		    },
+		    createPostDirectory = function(article, directory, isDirNum) {
+		        var contentArr = [],
+		            titleId = [],
+		            levelArr, root, level,
+		            currentList, list, li, link, i, len;
+		        levelArr = (function(article, contentArr, titleId) {
+		            var titleElem = postChildren(article.childNodes, /^h\d$/),
+		                levelArr = [],
+		                lastNum = 1,
+		                lastRevNum = 1,
+		                count = 0,
+		                guid = 1,
+		                id = 'directory' + (Math.random() + '').replace(/\D/, ''),
+		                lastRevNum, num, elem;
+		            while (titleElem.length) {
+		                elem = titleElem.shift();
+		                contentArr.push(elem.innerHTML);
+		                num = +elem.tagName.match(/\d/)[0];
+		                if (num > lastNum) {
+		                    levelArr.push(1);
+		                    lastRevNum += 1;
+		                } else if (num === lastRevNum ||
+		                    num > lastRevNum && num <= lastNum) {
+		                    levelArr.push(0);
+		                    lastRevNum = lastRevNum;
+		                } else if (num < lastRevNum) {
+		                    levelArr.push(num - lastRevNum);
+		                    lastRevNum = num;
+		                }
+		                count += levelArr[levelArr.length - 1];
+		                lastNum = num;
+		                elem.id = elem.id || (id + guid++);
+		                titleId.push(elem.id);
+		            }
+		            if (count !== 0 && levelArr[0] === 1) levelArr[0] = 0;
+
+		            return levelArr;
+		        })(article, contentArr, titleId);
+		        currentList = root = document.createElement('ul');
+		        dirNum = [0];
+		        for (i = 0, len = levelArr.length; i < len; i++) {
+		            level = levelArr[i];
+		            if (level === 1) {
+		                list = document.createElement('ul');
+		                if (!currentList.lastElementChild) {
+		                    currentList.appendChild(document.createElement('li'));
+		                }
+		                currentList.lastElementChild.appendChild(list);
+		                currentList = list;
+		                dirNum.push(0);
+		            } else if (level < 0) {
+		                level *= 2;
+		                while (level++) {
+		                    if (level % 2) dirNum.pop();
+		                    currentList = currentList.parentNode;
+		                }
+		            }
+		            dirNum[dirNum.length - 1]++;
+		            li = document.createElement('li');
+		            link = document.createElement('a');
+		            link.href = '#' + titleId[i];
+		            link.innerHTML = !isDirNum ? contentArr[i] :
+		                dirNum.join('.') + ' ' + contentArr[i] ;
+		            li.appendChild(link);
+		            currentList.appendChild(li);
+		        }
+		        directory.appendChild(root);
+		    };
+		    createPostDirectory(document.getElementById('post-content'),document.getElementById('directory'), true);
+		};
+		postDirectoryBuild();
+	</script>	
+	<!-- 版权声明 -->
+		<p class="post-info" style="color: #BCBDB6">
+				本文由 <a style="color: #BCBDB6" href="#">Sajor
+				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2022-02-15T15:26:20+08:00
+		</p>
+	<!-- 导航 -->
+			<div id="comments" class="clearfix" style="padding: 0px;">
+				<footer class="post-footer clearfix">	    			
+				    <div class="meta">
+					    
+					    <P style="float: left;">
+					    	<a href="16450909723300.html" 
+					        title="Previous Post: redis 线程">&laquo; redis 线程</a>
+					    </p>
+					    <p style="float:right; ">
+					    	
+					    	
+					        <a href="16449095288261.html" 
+					        title="Next Post: Redis 三个月学习计划">Redis 三个月学习计划 &raquo;</a>
+					    </p> 
+					    
+				    </div>
+			  	</footer>
+	<!-- footer end -->
+			</div>		
+	</div>
+</article>
+			<!-- 评论区 -->
+			<div id="respond-post-269" class="comment-container"> 
+				<div id="comments" class="clearfix">
+
+				<script type="text/javascript" src="/pm/hashover/hashover.js"></script>
+<noscript>You must have JavaScript enabled to use the comments.</noscript>
+
+<!-- 评论区结束 -->
+					<div>
+					
+					</div>
+
+				</div>
+			</div>
+</div>
+<!-- headroom -->
+<script type="text/javascript"> 
+(function() {
+    var header = new Headroom(document.querySelector("#header"), {
+        tolerance: 3,
+        offset : 80,
+        classes: {
+          initial: "animated",
+          pinned: "slideDown",
+          unpinned: "slideUp"
+        }
+    });
+    header.init();
+}());
+</script>  <footer id="footer" class="footer" style="background-color: #030501;color: #FFFFFE;">
+  <div class="footer-meta">
+    <div class="footer-container">
+      <!-- 版权说明 -->
+      <div class="meta-item meta-copyright">
+        <div class="meta-copyright-info">
+          <h2 class="meta-title">INFO</h2>
+          <div class="info-text">  
+              <p>Copyright &copy; 2017 <br>
+              <span class="credit">Powered by 
+              <a target="_blank" href="http://zh.mweb.im/">MWeb</a> 
+              </span>
+              <p>Theme Design by <a href="https://www.linpx.com/" target="_blank">Chakhsu</a></p>
+              <p>Migrating to Mweb by <a href="http://metaidea.cn">idken</a></p>
+              </p> 
+          </div>                  
+        </div>
+      </div>  
+      <!-- Categories -->
+      <div class="meta-item meta-comments">
+          <h2 class="meta-title">CATEGORIES</h2>  
+             
+            
+            <li>
+            <a href="%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">设计模式&nbsp;(2)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="Algorithm.html">Algorithm&nbsp;(7)</a>
+            <p>
+            
+            <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html">数据结构&nbsp;(2)</a>&nbsp;&nbsp;
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(7)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="Arts.html">Arts&nbsp;(3)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            </p>
+            </li>
+            
+             
+            
+            </p>
+            </li>
+            
+             
+            
+            </p>
+            </li>
+            
+             
+            
+            </p>
+            </li>
+            
+             
+            
+            </p>
+            </li>
+            
+             
+            
+             
+            
+             
+            
+            </p>
+            </li>
+            
+             
+            
+             
+      </div>
+      <!-- 最新文章 -->
+      <div class="meta-item meta-comments">
+          <h2 class="meta-title">RECENT POSTS</h2>
+
+          
+          
+         <li>
+           <a href="16488664948376.html">Windows 开启wsl并开启远程</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16487053528391.html">Java8 特性 Optional</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16486272439635.html">Word Cloud 词云重叠算法</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16486184863200.html">Python pip源 国内源</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16485397489109.html">ngrok 内网穿透</a><br>
+         </li>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+           
+
+      </div>
+  </div>
+</div>
+</footer>
+
+<!--评论变量判断 -->
+      
+<!-- 评论end -->
+
+
+
+</body>
+</html>

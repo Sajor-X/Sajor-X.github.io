@@ -53,8 +53,6 @@
         
         <a href="index.html">Home</a>
         
-        <a href="archives.html">Archives</a>
-        
         <a href="resume/resume.html">Resume</a>
         
         
@@ -78,10 +76,6 @@
           </li>
           
           <li>
-          <a href="archives.html">Archives</a>
-          </li>
-          
-          <li>
           <a href="resume/resume.html">Resume</a>
           </li>
           
@@ -98,23 +92,18 @@
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16413527990433/16413528368917.jpg);">
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16413527990433.html"> 
+						<a href="16476622390377.html"> 
 							<div class="item-desc"> 
-								<p>
+								<p>我们必须有一个高可用方案来抵抗节点故障，当故障发生时可以自动进行从主切换，程序可以不用重启，Redis 官方提供了这样一种方案 —— Redis Sentinel(哨兵)。
 
 
 
+我们可以将 Redis Sentinel 集群看成是一个 ZooKeeper 集群，它是集群高可用的心脏，它一般是由 3～5 个节点组成，这样挂了个别节点集群还可以正常运转。
 
-
-
-
-
-
-
-</p> 
+它负责持续监控主从节点的健康，当主节点挂掉时，自动选择一个最优的从节点切换为主节点。客户端来连接集群时，会首先连接 sentinel，通过 sentinel 来查询主节点的地址，然后再去连接主节点进行数据交互。当主节点发生故障时，客户端会重新</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -125,7 +114,7 @@
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16413527990433.html">Vim 跳转技巧</a>
+	  							<a href="16476622390377.html">Redis 集群 Sentinel 哨兵模式</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -136,74 +125,7 @@
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16408435425370/16408437247844.jpg);">
-						
-						</div> 
-						<a href="16408435425370.html"> 
-							<div class="item-desc"> 
-								<p>
-
-安装
-
-使用包管理工具
-
-# Ubuntu 或 Debian
-$ sudo apt-get install tmux
-
-# CentOS 或 Fedora
-$ sudo yum install tmux
-
-# Mac
-$ brew install tmux
-
-
-session 会话管理
-
-1. 新建会话
-
-第一个启动的 Tmux 窗口，编号是0，第二个窗口的编号是1，以此类推。这些窗口对应的会话，就是 0 号会话、1 号会话。
-
-使用编号区分会话，不太直观，更好的方法是为会话起名。
-
-$ tmux new -s &lt;session-name&gt;
-
-
-上面命令新建一个指定名称的会话。</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="16408435425370.html">tmux</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
+			    			<a class='category' href='Redis.html'>Redis</a>
 								
 		   						</div> 
 		   					</div> 
@@ -219,7 +141,54 @@ $ tmux new -s &lt;session-name&gt;
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16405110285297.html"> 
+						<a href="16475965636227.html"> 
+							<div class="item-desc"> 
+								<p>主从复制是 Redis 分布式的基础，Redis 的高可用离开了主从复制将无从进行。
+
+不过复制功能也不是必须的，如果你将 Redis 只用来做缓存，跟 memcache 一样来对待，也就无需要从库做备份，挂掉了重新启动一下就行。但是只要你使用了 Redis 的持久化功能，就必须认真对待主从复制，它是系统数据安全的基础保障。
+
+CAP 原理
+
+现代分布式系统的理论基石——CAP 原理，CAP 原理就好比分布式领域的牛顿定律，它是分布式存储的理论基石。自打 CAP 的论文发表之后，分布式存储中间件犹如雨后春笋般一个一个涌现出来。理解这个原理其实很简单，本节我们首先对这个原理进行一些简单的讲解。
+</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16475965636227.html">Redis 集群-主从同步</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Redis.html'>Redis</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="16474851306463.html"> 
 							<div class="item-desc"> 
 								<p></p> 
 							</div> 
@@ -232,7 +201,7 @@ $ tmux new -s &lt;session-name&gt;
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16405110285297.html">JVM 内存模型</a>
+	  							<a href="16474851306463.html">Redis 基数树</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -243,7 +212,7 @@ $ tmux new -s &lt;session-name&gt;
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E8%AF%AD%E6%B3%95%E7%B1%BB.html'>语法类</a>
+			    			<a class='category' href='Redis.html'>Redis</a>
 								
 		   						</div> 
 		   					</div> 
@@ -256,36 +225,12 @@ $ tmux new -s &lt;session-name&gt;
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16405090873022/16405092178762.jpg);">
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16405090873022.html"> 
+						<a href="16474851167642.html"> 
 							<div class="item-desc"> 
-								<p>类的生命周期：
-
-
-加载：找到Class文件
-验证：验证格式、依赖
-准备：静态字段、方法表
-解析：符号解析为引用
-初始化：构造器、静态变量赋值、静态代码块
-使用
-卸载
-
-
-
-
-类的加载时机
-
-
-
-
-当虚拟机启动时，初始化用户指定的主类，就是启动执行的main方法所在的类；
-当遇到用以新建目标类示例的new指令时，初始化new指定的目标类，就是new一个类的时候要初始化；
-当遇到调用静态方法的指令时，初始化该静态方法所在的类；
-当遇到访问静态字段的指令时，初始化该静态方法所在的类；
-子类的初始化会触发父类的初始化；
-如果一个接口定义了default方法，那么直接实现或者间接实现该接口的类的初始化</p> 
+								<p></p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -296,7 +241,7 @@ $ tmux new -s &lt;session-name&gt;
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16405090873022.html">JVM 类加载器</a>
+	  							<a href="16474851167642.html">Redis 紧凑列表</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -307,7 +252,7 @@ $ tmux new -s &lt;session-name&gt;
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E8%AF%AD%E6%B3%95%E7%B1%BB.html'>语法类</a>
+			    			<a class='category' href='Redis.html'>Redis</a>
 								
 		   						</div> 
 		   					</div> 
@@ -320,32 +265,12 @@ $ tmux new -s &lt;session-name&gt;
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16405067982525/16405070154518.jpg);">
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16405067982525.html"> 
+						<a href="16474851118548.html"> 
 							<div class="item-desc"> 
-								<p>有一个简单的类 
-
-class Hello {
-        public static void main(String[] agrs) {
-                Hello obj = new Hello();
-        }
-}
-
-
-编译：javac Hello.java
-查看字节码：javap -c Hello.class
-
-
-
-运算应在栈上操作，所以应该先将变量从本地变量表中加载到栈上，运算完成后再储存回本地变量表。
-
-
-
-更详细的内容：javap -c -verbose Hello.class
-
-&gt;&gt; javap -c -verbose ./Hello.</p> 
+								<p></p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -356,7 +281,7 @@ class Hello {
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16405067982525.html">JVM 字节码</a>
+	  							<a href="16474851118548.html">Redis 跳跃列表</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -367,7 +292,7 @@ class Hello {
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E8%AF%AD%E6%B3%95%E7%B1%BB.html'>语法类</a>
+			    			<a class='category' href='Redis.html'>Redis</a>
 								
 		   						</div> 
 		   					</div> 
@@ -380,34 +305,12 @@ class Hello {
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16402262289586/16413518433356.jpg);">
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16402262289586.html"> 
+						<a href="16474850990931.html"> 
 							<div class="item-desc"> 
-								<p>
-
-使用FinalShell离线激活方式升级高级版本
-
-使用FinalShell离线激活方式升级高级版本
-
-
-
-获取机器码(如果没有就随意输入用户名或密码执行登录)
-
-
-
-执行下面代码,输入机器码获取激活码
-
-
-import java.io.IOException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Scanner;
-
-
-class FinalShell {
-    public static void main(String[]</p> 
+								<p></p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -418,7 +321,7 @@ class FinalShell {
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16402262289586.html">Final Shell离线激活</a>
+	  							<a href="16474850990931.html">Redis 快速列表</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -429,7 +332,7 @@ class FinalShell {
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
+			    			<a class='category' href='Redis.html'>Redis</a>
 								
 		   						</div> 
 		   					</div> 
@@ -488,8 +391,10 @@ class FinalShell {
              
             
             <li>
-            <a href="Algorithm.html">Algorithm&nbsp;(3)</a>
+            <a href="Algorithm.html">Algorithm&nbsp;(7)</a>
             <p>
+            
+            <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html">数据结构&nbsp;(2)</a>&nbsp;&nbsp;
             
             </p>
             </li>
@@ -497,7 +402,7 @@ class FinalShell {
              
             
             <li>
-            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(5)</a>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(7)</a>
             <p>
             
             </p>
@@ -508,6 +413,11 @@ class FinalShell {
             <li>
             <a href="Arts.html">Arts&nbsp;(3)</a>
             <p>
+            
+            </p>
+            </li>
+            
+             
             
             </p>
             </li>
@@ -552,31 +462,31 @@ class FinalShell {
           
           
          <li>
-           <a href="16434266223947.html">滑动验证码识别</a><br>
+           <a href="16488664948376.html">Windows 开启wsl并开启远程</a><br>
          </li>
           
           
           
          <li>
-           <a href="16425740174242.html">Linux 字体安装</a><br>
+           <a href="16487053528391.html">Java8 特性 Optional</a><br>
          </li>
           
           
           
          <li>
-           <a href="16415484666630.html">nmap 端口嗅探</a><br>
+           <a href="16486272439635.html">Word Cloud 词云重叠算法</a><br>
          </li>
           
           
           
          <li>
-           <a href="16415371479168.html">hydra 爆破ssh</a><br>
+           <a href="16486184863200.html">Python pip源 国内源</a><br>
          </li>
           
           
           
          <li>
-           <a href="16414626714891.html">升级VUE版本</a><br>
+           <a href="16485397489109.html">ngrok 内网穿透</a><br>
          </li>
           
           

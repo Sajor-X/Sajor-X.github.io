@@ -53,8 +53,6 @@
         
         <a href="index.html">Home</a>
         
-        <a href="archives.html">Archives</a>
-        
         <a href="resume/resume.html">Resume</a>
         
         
@@ -75,10 +73,6 @@
           
           <li>
           <a href="index.html">Home</a>
-          </li>
-          
-          <li>
-          <a href="archives.html">Archives</a>
           </li>
           
           <li>
@@ -160,6 +154,64 @@ brew update
 <p><a href="https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/">https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/</a></p>
 
 <p><a href="https://blog.csdn.net/poem_2010/article/details/85049044">https://blog.csdn.net/poem_2010/article/details/85049044</a></p>
+
+<h1 id="toc_1">2022-04-22</h1>
+
+<p>在 mac 下执行 brew update 时，报如下错误：</p>
+
+<pre class="line-numbers"><code class="language-text">Error: 
+  homebrew-core is a shallow clone.
+  homebrew-cask is a shallow clone.
+To `brew update`, first run:
+  git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow
+  git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask fetch --unshallow
+These commands may take a few minutes to run due to the large size of the repositories.
+This restriction has been made on GitHub&#39;s request because updating shallow
+clones is an extremely expensive operation due to the tree layout and traffic of
+Homebrew/homebrew-core and Homebrew/homebrew-cask. We don&#39;t do this for you
+automatically to avoid repeatedly performing an expensive unshallow operation in
+CI systems (which should instead be fixed to not use shallow clones). Sorry for
+the inconvenience!
+</code></pre>
+
+<p>国外常用仓库慢的经典解决办法，自然是临时将该仓库临时源设置为国内的镜像。一般使用中科大的：</p>
+
+<pre class="line-numbers"><code class="language-text">## 更新 homebrew-cask
+cd &quot;$(brew --repo)&quot;/Library/Taps/homebrew/homebrew-cask
+
+# 更换源
+git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
+
+# 更新，由于已经 cd 到相应文件夹了，因此不需要通过 -C 指定路径了
+git fetch --unshallow 
+
+## 更新 homebrew-core
+cd &quot;$(brew --repo)&quot;/Library/Taps/homebrew/homebrew-core
+
+# 更换源
+git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
+# 更新
+git fetch --unshallow 
+</code></pre>
+
+<p>如果有问题，可以通过如下命令查看远端 repo 是不是设置错了。</p>
+
+<pre class="line-numbers"><code class="language-text">git remote -v 
+</code></pre>
+
+<p>如果错了，可以重新设置远端，然后强制更新：</p>
+
+<pre class="line-numbers"><code class="language-text">git fetch --all
+git reset --hard origin/master 
+git pull
+</code></pre>
+
+<p>最后 brew update 即可。</p>
+
+<pre class="line-numbers"><code class="language-text">cd &quot;$(brew --repo)&quot; &amp;&amp; git fetch &amp;&amp; git reset --hard origin/master &amp;&amp; brew update
+</code></pre>
+
+<p>参考：<a href="https://stackoverflow.com/questions/41337676/error-installing-python-3-with-homebrew">Error installing Python 3 with Homebrew</a>, <a href="https://zhuanlan.zhihu.com/p/351199589">brew update 更新时 shallow clone</a></p>
 
 		</p>
 		<!-- 侧边导航条 -->
@@ -274,8 +326,8 @@ brew update
 					    <p style="float:right; ">
 					    	
 					    	
-					        <a href="15754473183515.html" 
-					        title="Next Post: Redis使用场景">Redis使用场景 &raquo;</a>
+					        <a href="15753573808254.html" 
+					        title="Next Post: Linux安全查找原因">Linux安全查找原因 &raquo;</a>
 					    </p> 
 					    
 				    </div>
@@ -346,8 +398,10 @@ brew update
              
             
             <li>
-            <a href="Algorithm.html">Algorithm&nbsp;(3)</a>
+            <a href="Algorithm.html">Algorithm&nbsp;(7)</a>
             <p>
+            
+            <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html">数据结构&nbsp;(2)</a>&nbsp;&nbsp;
             
             </p>
             </li>
@@ -355,7 +409,7 @@ brew update
              
             
             <li>
-            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(5)</a>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(7)</a>
             <p>
             
             </p>
@@ -366,6 +420,11 @@ brew update
             <li>
             <a href="Arts.html">Arts&nbsp;(3)</a>
             <p>
+            
+            </p>
+            </li>
+            
+             
             
             </p>
             </li>
@@ -410,31 +469,31 @@ brew update
           
           
          <li>
-           <a href="16434266223947.html">滑动验证码识别</a><br>
+           <a href="16488664948376.html">Windows 开启wsl并开启远程</a><br>
          </li>
           
           
           
          <li>
-           <a href="16425740174242.html">Linux 字体安装</a><br>
+           <a href="16487053528391.html">Java8 特性 Optional</a><br>
          </li>
           
           
           
          <li>
-           <a href="16415484666630.html">nmap 端口嗅探</a><br>
+           <a href="16486272439635.html">Word Cloud 词云重叠算法</a><br>
          </li>
           
           
           
          <li>
-           <a href="16415371479168.html">hydra 爆破ssh</a><br>
+           <a href="16486184863200.html">Python pip源 国内源</a><br>
          </li>
           
           
           
          <li>
-           <a href="16414626714891.html">升级VUE版本</a><br>
+           <a href="16485397489109.html">ngrok 内网穿透</a><br>
          </li>
           
           

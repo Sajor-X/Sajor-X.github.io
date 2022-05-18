@@ -4,7 +4,7 @@
   <title><![CDATA[Sajor's Blog]]></title>
   <link href="http://565785929.github.io/atom.xml" rel="self"/>
   <link href="http://565785929.github.io/"/>
-  <updated>2022-01-29T21:53:07+08:00</updated>
+  <updated>2022-05-18T20:42:00+08:00</updated>
   <id>http://565785929.github.io/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -14,1015 +14,889 @@
 
   
   <entry>
-    <title type="html"><![CDATA[滑动验证码识别]]></title>
-    <link href="http://565785929.github.io/16434266223947.html"/>
-    <updated>2022-01-29T11:23:42+08:00</updated>
-    <id>http://565785929.github.io/16434266223947.html</id>
+    <title type="html"><![CDATA[Windows 开启wsl并开启远程]]></title>
+    <link href="http://565785929.github.io/16488664948376.html"/>
+    <updated>2022-04-02T10:28:14+08:00</updated>
+    <id>http://565785929.github.io/16488664948376.html</id>
     <content type="html"><![CDATA[
-<p>今天的目标地址是抖音的<a href="https://business.oceanengine.com/site/login">巨量纵横</a>，目前东家是一家广告营销型的公司，专注于在各大平台投放信息流广告。巨量纵横为今日头条的广告平台，用于管理推广账户。今天破解一下这个平台的登陆入口，为今后的数据爬取开个头。</p>
+<p>首先在linux中启动SSH连接支持</p>
 
-<h2 id="toc_0">涉及工具技术</h2>
-
-<ul>
-<li>selenium</li>
-<li>pandas</li>
-<li>numpy</li>
-<li>opencv</li>
-<li><a href="https://pillow.readthedocs.io/en/stable/">Pillow</a></li>
-</ul>
-
-<h2 id="toc_1">开始</h2>
-
-<p><img src="media/16434266223947/16434586795750.jpg" alt="" style="width:377px;"/></p>
-
-<p>滑动验证码就是上图这种东西，验证方式就是用鼠标拖动到缺口阴影位置松手即可。</p>
-
-<p>逻辑比较简单，目前要处理的核心问题就是怎么找到这个阴影位置，因为可能有不同的图片而且图片中缺口阴影的位置也不确定。</p>
-
-<p>问题可以简化为：<strong>如何找到背景图中缺口的准确位置</strong></p>
-
-<h2 id="toc_2">分析</h2>
-
-<p>首先通过浏览器检查工具，看一下能获得哪些信息。</p>
-
-<p><img src="media/16434266223947/16434585467283.jpg" alt="" style="width:1131px;"/></p>
-
-<p>首先可以获得<strong>滑块和缺口图片的链接</strong>，还可以获取<strong>滑块图片的高度</strong></p>
-
-<p>我们先将缺口图片下载下来，通过简单的图像变换看一下有什么特征可以利用。下面Python代码可用于下载图片。</p>
-
-<pre class="line-numbers"><code class="language-python">from urllib import request
-
-img = &#39;https://p6-catpcha.byteimg.com/tos-cn-i-188rlo5p4y/7fcb5c88410943579af133942e8f9249~tplv-188rlo5p4y-2.jpeg&#39;
-
-request.urlretrieve(img, &#39;./img.jpg&#39;)
+<pre class="line-numbers"><code class="language-text">#客户端
+sudo apt-get install openssh-client
+#服务器
+sudo apt-get install openssh-server
+#或
+apt-get install ssh
 </code></pre>
 
-<p>将图片保存下来之后，使用较为通用的处理方法先观察一下图片特点，首先灰度处理，再手动调整阈值观察二值化后的图片。</p>
+<p>编辑配置文件</p>
 
-<p><img src="media/16434266223947/16434598980447.jpg" alt="" style="width:945px;"/></p>
+<pre class="line-numbers"><code class="language-text">sudo vi /etc/ssh/sshd_config
+</code></pre>
 
-<p>通过观察可以发现带缺口图片附近有一圈白色痕迹，我们就是要获取到白色方框的左半部分距离整个图片左边的距离。</p>
+<p>增加以下配置</p>
 
-<p>通过观察二值化后的图片特征，我想到一个办法，就是通过这张二值化后的图片，遍历每一个像素点，找到连续的、在垂直方向均为白色的位置。理论上是可行的，可能验证码图片样本不够，可能会有些图片白色部分较多，比如这张银色的车，白色的色块就比较多。</p>
+<pre class="line-numbers"><code class="language-text">Port 2222             # wsl端口
+PermitRootLogin yes   # 可以root远程登录
+AllowUsers xxx        # 开启wsl时新建的账户
+</code></pre>
 
-<p><img src="media/16434266223947/16434600496969.jpg" alt="" style="width:376px;"/></p>
+<p><strong>重启</strong></p>
 
-<h2 id="toc_3">滤波</h2>
+<p><code>sudo service ssh --full-restart</code></p>
 
-<p>因为我们只需要缺口的左边位置的坐标，所以可以通过具有提取边缘特征的水平梯度Prewitt卷积核来处理图片。通过测试我选取了下面这个3x3的卷积核。</p>
+<p>在使用ssh连接时若报错 Disconnected:No supported authentication methods available</p>
 
-<p>\[<br/>
-\begin{bmatrix}<br/>
-1 &amp; 0 &amp; -2\\<br/>
-1 &amp; 0 &amp; -2\\<br/>
-1 &amp; 0 &amp; -2\\<br/>
-\end{bmatrix}<br/>
-\]</p>
+<p>是因为 /etc/ssh/sshd_config 中包含 这条配置</p>
 
-<p>通过opencv库处理原图，可以发现图片缺口左边部分的边缘被突出显示了出来。<br/>
-<img src="media/16434266223947/16434607760833.jpg" alt="" style="width:861px;"/></p>
+<p><code>PasswordAuthentication no</code></p>
 
-<h2 id="toc_4">结果</h2>
+<p>我们需要将它注释掉，或改为yes然后重启 ssh服务</p>
 
-<p>有了如上的矩阵就简单了，按照之前的思路，找到垂直方向的白线就可以拿到缺口的坐标。</p>
+<h2 id="toc_0">端口映射</h2>
 
-<p>遍历图片每一个点，将<strong>白色点的x坐标</strong>存入一维数组中，再求该数列的<strong>众数</strong>就能得出缺口的坐标啦！</p>
+<p>这个时候自己电脑上的xhell是可以连接的了, 但是想要在其他的计算机上访问, 就需要在windows系统作端口映射了。</p>
 
-<p>偷个懒，众数的不优雅表达<br/>
-<code>pd.Series(np.array(res_list)).mode()[0]</code></p>
+<pre class="line-numbers"><code class="language-text"># netsh interface portproxy add v4tov4 listenport=[win10端口] listenaddress=0.0.0.0 connectport=[虚拟机的端口] connectaddress=[虚拟机的ip]
+netsh interface portproxy add v4tov4 listenport=22 listenaddress=0.0.0.0 connectport=22 connectaddress=172.22.22.22
+ 
+#检测是否设置成功
+netsh interface portproxy show all
+ 
+#删除端口映射
+netsh interface portproxy delete v4tov4 listenaddress=监听地址 listenport=监听端口
+</code></pre>
 
-<p><img src="media/16434266223947/16434629389321.jpg" alt="" style="width:986px;"/></p>
+<p>此时，即可在其他电脑上用windows的IP和配置的端口进行ssh连接了。若不可以，可以尝试打开windows防火墙，新建一条入站规则 tcp端口为 2223。</p>
 
-<h2 id="toc_5">切图</h2>
+<h2 id="toc_1">桌面</h2>
 
-<p>为了更高的准确率，我们之前还能拿到滑块图片的高度，我们可以将验证码无用部分，也就是缺口部分上下方图片切除掉。</p>
+<p>后续可以在wsl中安装桌面程序 例如 <a href="https://baiyue.one/archives/1658.html">KDE</a></p>
 
-<p>可以通过selenium库 <code>img.value_of_css_property(&quot;top&quot;)</code> 方法获取页面元素属性，拿到滑块图片的高度，通过后面测量，与原图大概是1.65倍(这个不知道是什么单位的倍数，下面会展示计算方法)，滑块高度大约110像素。numpy切片的代码就不放了。切出来的图片类似这样，再进行上面的操作，脑补是能减少误判(没测过😊)</p>
-
-<p><img src="media/16434266223947/immg1.jpg" alt="immg1"/></p>
-
-<p><img src="media/16434266223947/immg2.jpg" alt="immg2"/></p>
-
-<h2 id="toc_6">控制浏览器</h2>
-
-<p>核心难点突破之后就简单多了，使用selenium这个库来控制浏览器，使用代码的方式操纵鼠标键盘。</p>
-
-<p>未完待续...</p>
+<p>参考：<a href="https://blog.csdn.net/weixin_43718675/article/details/106844150">开启WSL(win10的linux子系统)并实现远程连接</a>、<a href="https://blog.csdn.net/lcuwb/article/details/82885920">设置WSL可远程连接</a>、<a href="https://blog.csdn.net/u010328478/article/details/116457769">WSL允许用其他电脑ssh连接</a></p>
 
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Linux 字体安装]]></title>
-    <link href="http://565785929.github.io/16425740174242.html"/>
-    <updated>2022-01-19T14:33:37+08:00</updated>
-    <id>http://565785929.github.io/16425740174242.html</id>
+    <title type="html"><![CDATA[Java8 特性 Optional]]></title>
+    <link href="http://565785929.github.io/16487053528391.html"/>
+    <updated>2022-03-31T13:42:32+08:00</updated>
+    <id>http://565785929.github.io/16487053528391.html</id>
     <content type="html"><![CDATA[
-<p><img src="media/16425740174242/16434636451231.jpg" alt=""/></p>
+<p>Optional 类是一个可以为null的容器对象。如果值存在则isPresent()方法会返回true，调用get()方法会返回该对象。</p>
 
-<p>今天要实现一个freemarker模板转HTML再转成PDF 或者 图片的需求。</p>
+<p>Optional 是个容器：它可以保存类型T的值，或者仅仅保存null。Optional提供很多有用的方法，这样我们就不用显式进行空值检测。</p>
 
-<p>本地代码执行好使，上线到linux服务器上测试就出现汉字不显示的情况。</p>
+<h2 id="toc_0">创建 Option</h2>
 
-<pre class="line-numbers"><code class="language-bash"># 安装字体命令
-yum -y install fontconfig
+<p>Optional 有两个函数(of &amp; ofNullable)可以传参初始化。一个empty函数没有参数。</p>
 
-# 查看linux已安装字体
-fc-list
+<p><img src="media/16487053528391/16487116675343.jpg" alt="" style="width:611px;"/></p>
 
-# 查看linux已安装中文字体
-fc-list :lang=zh
+<h3 id="toc_1">empty</h3>
+
+<p><code>empty</code> 函数就是，直接返回 <code>new Optional()</code> 并且 <code>value</code> 为空 <code>null</code>。</p>
+
+<p><img src="media/16487053528391/16487128365738.jpg" alt="" style="width:1321px;"/></p>
+
+<h3 id="toc_2">of &amp; ofNullable</h3>
+
+<p><strong>of</strong></p>
+
+<p>首先看 <code>of</code> 我们发现这个函数就是将 <code>Optional</code> 中 <code>value</code> 的值赋值为参数传入的 <code>value</code> 值，假如传入的值为空 <code>null</code> 则抛出异常。源码如下：</p>
+
+<p><img src="media/16487053528391/16487121432837.jpg" alt=""/></p>
+
+<p><strong>ofNullable</strong></p>
+
+<p>而 <code>ofNullable</code> 就是将前两个函数 <code>empty</code> 和 <code>of</code> 结合起来，首先判断传入的值 <code>value</code> 是否为空 <code>null</code>， 为空就调用 <code>empty</code> 函数， 不为空就调用 <code>of</code> 函数。</p>
+
+<p><img src="media/16487053528391/16487123039061.jpg" alt=""/></p>
+
+<p>所以一般我们使用 ofNullable 函数来初始化 Optional 对象，方便之后调用它的方法。</p>
+
+<h2 id="toc_3">应用</h2>
+
+<pre class="line-numbers"><code class="language-java">    /**
+     * 用于测试的 User 类
+     */
+    @Data
+    @AllArgsConstructor
+    public static class User {
+        String name;
+        int id;
+    }
 </code></pre>
 
-<h2 id="toc_0">安装</h2>
-
-<pre class="line-numbers"><code class="language-bash"># 创建目录
-mkdir -p /usr/share/fonts/my_fonts
-# 将要安装的字体上传到该文件夹下
-
-# 安装字体索引指令
-yum install mkfontscale
-
-# 生成字体索引 进入目录  执行索引字体生成
-cd  /usr/share/fonts/my_fonts
-mkfontscale
-
-# 查看字体是否安装成功
-fc-list :lang=zh
-
-</code></pre>
-
-<h2 id="toc_1">给jdk安装字体</h2>
-
-<p>找到jdk安装路径 找到jre/bin/fonts 文件夹，将字体拷贝到该文件夹下。</p>
-
-<p><img src="media/16425740174242/16427460467899.jpg" alt="" style="width:1125px;"/></p>
-
-<h2 id="toc_2">给openjdk安装字体</h2>
-
-<p>openjdk没有 jre/bin/fonts文件夹。需要自己创建。</p>
-
-<pre class="line-numbers"><code class="language-bash">mkdir -p /jre/bin/fonts/fallback
-</code></pre>
-
-<p><img src="media/16425740174242/16427465274847.jpg" alt="" style="width:1146px;"/></p>
-
-<p>来源：<a href="https://wiki.archlinux.org/title/Java_Runtime_Environment_fonts">Java Runtime Environment fonts</a>、<a href="https://www.cnblogs.com/Dy1an/p/9681897.html">CENTOS 7 和 JDK 添加中文字体</a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[nmap 端口嗅探]]></title>
-    <link href="http://565785929.github.io/16415484666630.html"/>
-    <updated>2022-01-07T17:41:06+08:00</updated>
-    <id>http://565785929.github.io/16415484666630.html</id>
-    <content type="html"><![CDATA[
-<p><img src="media/16415484666630/16434639294123.jpg" alt=""/></p>
-
-<p>Nmap，也就是Network Mapper，最早是Linux下的网络扫描和嗅探工具包。</p>
-
-<p>很多<a href="https://nmap.org/movies/">影视剧</a>里的黑客工具</p>
-
-<p>nmap 是主机探测、端口扫描、版本检测、系统检测、支持探测脚本编写。查看那个端口和开着啥</p>
-
-<p>telnet 8.8.8.8　　可以查看ip</p>
-
-<p>nmap ip -p<port>　　根据常用服务猜测他的端口，查看ip端口有没有开启</p>
-
-<p>nmap -p50-100 ip　　查看端口范围</p>
-
-<p>nmap -O ip　　　　　操作系统检测</p>
-
-<p>nmap -sP ip　　　　  类似win/linux的ping扫描</p>
-
-<p>nmap -sP ip　　　　</p>
-
-<p>通过 nmap xxx:xxx:xxx:xxx -Pn -p 可以看到端口的启用情况</p>
-
-<p><img src="media/16415484666630/16415487239028.jpg" alt=""/></p>
-
-<p>来源：<a href="https://www.cnblogs.com/wangdadada/p/12024933.html">nmap基本命令使用</a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[hydra 爆破ssh]]></title>
-    <link href="http://565785929.github.io/16415371479168.html"/>
-    <updated>2022-01-07T14:32:27+08:00</updated>
-    <id>http://565785929.github.io/16415371479168.html</id>
-    <content type="html"><![CDATA[
-<p><img src="media/16415371479168/16415378538145.jpg" alt=""/></p>
-
-<p>ssh破解神器 <a href="https://github.com/vanhauser-thc/thc-hydra">hydra</a></p>
-
-<p>这是个渗透神器，kail默认安装的工具。</p>
-
-<p>centos 安装步骤： </p>
-
-<pre class="line-numbers"><code class="language-text"># 下载最新版本的 hydra
-wget https://github.com/vanhauser-thc/thc-hydra/archive/refs/tags/v9.2.tar.gz
-
-# 解压
-tar -xvf v9.2.tar.gz
-
-cd thc-hydra-9.2
-
-# 安装
-./configure
-make
-make install
-</code></pre>
-
-<p>之后就可以使用了, 到github下载一个密码本</p>
-
-<pre class="line-numbers"><code class="language-text">git clone https://github.com/huyuanzhi2/password_brute_dictionary.git
-</code></pre>
-
-<p>输入命令开始爆破，可以用自己的服务器试试</p>
-
-<pre class="line-numbers"><code class="language-text">./hydra -l root  -P ../../password_brute_dictionary/字母与数字混合/digit_and_letter_top1000.txt -t 1 -vV -e ns  -o save.log  69.165.68.100 ssh
-</code></pre>
-
-<p>期间报错的话需要安装cmake</p>
-
-<pre class="line-numbers"><code class="language-text">[ERROR]Compiled without LIBSSH v0.4.x support, module is not available! 
-</code></pre>
-
-<pre class="line-numbers"><code class="language-text"># Download CMake from: https://cmake.org/download/
-wget https://cmake.org/files/v3.12/cmake-3.12.3.tar.gz
-
-# Compile from source and install
-tar zxvf cmake-3.*
-cd cmake-3.*
-./bootstrap --prefix=/usr/local
-make -j$(nproc)
-make install
-
-# Validate installation
-cmake --version
-
-cmake version *.*.*
-CMake suite maintained and supported by Kitware (kitware.com/cmake).
-</code></pre>
-
-<p>简单尝试了一下自己的服务器，竟然真的爆破成功了。发现自己竟然用的弱密码，密码里竟然有123，吓得我赶紧生成了一个强密码。服务器安全其实还是应该重视一下的。</p>
-
-<p>来源：<a href="https://www.cnblogs.com/ellisonzhang/p/13440614.html">Centos7安装Hydra(爆破神器) </a>、<a href="https://www.freebuf.com/sectool/159488.html">Linux SSH密码暴力破解技术及攻防实战</a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[升级VUE版本]]></title>
-    <link href="http://565785929.github.io/16414626714891.html"/>
-    <updated>2022-01-06T17:51:11+08:00</updated>
-    <id>http://565785929.github.io/16414626714891.html</id>
-    <content type="html"><![CDATA[
-<p><img src="media/16414626714891/16434641228384.jpg" alt="" style="width:345px;"/></p>
-
-<p>在看<a href="https://cli.vuejs.org/zh/guide/installation.html">文档</a>中，按步骤升级vue；</p>
-
-<p>于是就先通过 npm uninstall vue-cli -g卸载vue，然后再安装，但是vue -V时依然是2.9.6版本：</p>
-
-<p>第一步：npm config get registry </p>
-
-<p>第二步：npm config set registry <a href="https://registry.npm.taobao.org">https://registry.npm.taobao.org</a></p>
-
-<p>第三步：npm i -g @vue/cli</p>
-
-<p>完美，安装成功！</p>
-
-<p><img src="media/16414626714891/16414627322093.jpg" alt=""/></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Linux 目录结构]]></title>
-    <link href="http://565785929.github.io/16414407883196.html"/>
-    <updated>2022-01-06T11:46:28+08:00</updated>
-    <id>http://565785929.github.io/16414407883196.html</id>
-    <content type="html"><![CDATA[
-<p>启动Linux系统后输入 <code>ls \</code> <br/>
-<img src="media/16414407883196/16414408061006.jpg" alt=""/></p>
-
-<p>以下是对这些目录的解释：</p>
-
-<ul>
-<li>/bin：bin是Binary的缩写, 这个目录存放着最经常使用的命令。</li>
-<li><p>/boot：这里存放的是启动Linux时使用的一些核心文件，包括一些连接文件以及镜像文件。</p></li>
-<li><p>/dev ：dev是Device(设备)的缩写, 该目录下存放的是Linux的外部设备，在Linux中访问设备的方式和访问文件的方式是相同的。</p></li>
-<li><p>/etc：这个目录用来存放所有的系统管理所需要的配置文件和子目录。</p></li>
-<li><p>/home：用户的主目录，在Linux中，每个用户都有一个自己的目录，一般该目录名是以用户的账号命名的。</p></li>
-<li><p>/lib：这个目录里存放着系统最基本的动态连接共享库，其作用类似于Windows里的DLL文件。几乎所有的应用程序都需要用到这些共享库。</p></li>
-<li><p>/lost+found：这个目录一般情况下是空的，当系统非法关机后，这里就存放了一些文件。</p></li>
-<li><p>/media：linux系统会自动识别一些设备，例如U盘、光驱等等，当识别后，linux会把识别的设备挂载到这个目录下。</p></li>
-<li><p>/mnt：系统提供该目录是为了让用户临时挂载别的文件系统的，我们可以将光驱挂载在/mnt/上，然后进入该目录就可以查看光驱里的内容了。</p></li>
-<li><p>/opt：这是给主机额外安装软件所摆放的目录。比如你安装一个ORACLE数据库则就可以放到这个目录下。默认是空的。</p></li>
-<li><p>/proc：这个目录是一个虚拟的目录，它是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息。这个目录的内容不在硬盘上而是在内存里，我们也可以直接修改里面的某些文件，比如可以通过下面的命令来屏蔽主机的ping命令，使别人无法ping你的机器：<code>echo 1 &gt; /proc/sys/net/ipv4/icmp_echo_ignore_all</code></p></li>
-<li><p>/root：该目录为系统管理员，也称作超级权限者的用户主目录。</p></li>
-<li><p>/sbin：s就是Super User的意思，这里存放的是系统管理员使用的系统管理程序。</p></li>
-<li><p>/selinux：这个目录是Redhat/CentOS所特有的目录，Selinux是一个安全机制，类似于windows的防火墙，但是这套机制比较复杂，这个目录就是存放selinux相关的文件的。</p></li>
-<li><p>/srv：该目录存放一些服务启动之后需要提取的数据。</p></li>
-<li><p>/sys：这是linux2.6内核的一个很大的变化。该目录下安装了2.6内核中新出现的一个文件系统 sysfs 。</p>
-<ul>
-<li>sysfs文件系统集成了下面3种文件系统的信息：针对进程信息的proc文件系统、针对设备的devfs文件系统以及针对伪终端的devpts文件系统。</li>
-<li>该文件系统是内核设备树的一个直观反映。</li>
-<li>当一个内核对象被创建的时候，对应的文件和目录也在内核对象子系统中被创建。</li>
-</ul></li>
-<li><p>/tmp：这个目录是用来存放一些临时文件的。</p></li>
-<li><p>/usr：这是一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似与windows下的program files目录。</p></li>
-<li><p>/usr/bin：系统用户使用的应用程序。</p></li>
-<li><p>/usr/sbin：超级用户使用的比较高级的管理程序和系统守护程序。</p></li>
-<li><p>/usr/src：内核源代码默认的放置目录。</p></li>
-<li><p>/var：这个目录中存放着在不断扩充着的东西，我们习惯将那些经常被修改的目录放在这个目录下。包括各种日志文件。</p></li>
-</ul>
-
-<p>在linux系统中，有几个目录是比较重要的，平时需要注意不要误删除或者随意更改内部文件。</p>
-
-<p>/etc： 上边也提到了，这个是系统中的配置文件，如果你更改了该目录下的某个文件可能会导致系统不能启动。</p>
-
-<p>/bin, /sbin, /usr/bin, /usr/sbin: 这是系统预设的执行文件的放置目录，比如 ls 就是在/bin/ls 目录下的。</p>
-
-<p>值得提出的是，/bin, /usr/bin 是给系统用户使用的指令（除root外的普通用户），而/sbin, /usr/sbin 则是给root使用的指令。</p>
-
-<p>/var： 这是一个非常重要的目录，系统上跑了很多程序，那么每个程序都会有相应的日志产生，而这些日志就被记录到这个目录下，具体在/var/log 目录下，另外mail的预设放置也是在这里。</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Vim 跳转技巧]]></title>
-    <link href="http://565785929.github.io/16413527990433.html"/>
-    <updated>2022-01-05T11:19:59+08:00</updated>
-    <id>http://565785929.github.io/16413527990433.html</id>
-    <content type="html"><![CDATA[
-<p><img src="media/16413527990433/16413528368917.jpg" alt=""/></p>
-
-<p><img src="media/16413527990433/16414412482066.jpg" alt=""/></p>
-
-<p><img src="media/16405110285297/16412884491803.jpg" alt=""/></p>
-
-<p><img src="media/16405110285297/16412867101612.jpg" alt=""/></p>
-
-<p><img src="media/16405110285297/16412866952994.jpg" alt=""/></p>
-
-<p><img src="media/16405110285297/16412886197662.jpg" alt=""/></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[tmux]]></title>
-    <link href="http://565785929.github.io/16408435425370.html"/>
-    <updated>2021-12-30T13:52:22+08:00</updated>
-    <id>http://565785929.github.io/16408435425370.html</id>
-    <content type="html"><![CDATA[
-<p><img src="media/16408435425370/16408437247844.jpg" alt=""/></p>
-
-<h2 id="toc_0">安装</h2>
-
-<p>使用包管理工具</p>
-
-<pre class="line-numbers"><code class="language-text"># Ubuntu 或 Debian
-$ sudo apt-get install tmux
-
-# CentOS 或 Fedora
-$ sudo yum install tmux
-
-# Mac
-$ brew install tmux
-</code></pre>
-
-<h2 id="toc_1">session 会话管理</h2>
-
-<h3 id="toc_2">1. 新建会话</h3>
-
-<p>第一个启动的 Tmux 窗口，编号是0，第二个窗口的编号是1，以此类推。这些窗口对应的会话，就是 0 号会话、1 号会话。</p>
-
-<p>使用编号区分会话，不太直观，更好的方法是为会话起名。</p>
-
-<pre class="line-numbers"><code class="language-text">$ tmux new -s &lt;session-name&gt;
-</code></pre>
-
-<p>上面命令新建一个指定名称的会话。</p>
-
-<h3 id="toc_3">2. 分离会话</h3>
-
-<p>在 Tmux 窗口中，按下<code>Ctrl+b d</code>或者输入<code>tmux detach</code>命令，就会将当前会话与窗口分离。</p>
-
-<pre class="line-numbers"><code class="language-text">$ tmux detach
-</code></pre>
-
-<p>上面命令执行后，就会退出当前 Tmux 窗口，但是会话和里面的进程仍然在后台运行。</p>
-
-<p>tmux ls命令可以查看当前所有的 Tmux 会话。</p>
-
-<pre class="line-numbers"><code class="language-text">$ tmux ls
-# or
-$ tmux list-session
-</code></pre>
-
-<h3 id="toc_4">3. 接入会话</h3>
-
-<p><code>tmux attach</code>命令用于重新接入某个已存在的会话。</p>
-
-<pre class="line-numbers"><code class="language-text"># 使用会话编号
-$ tmux attach -t 0
-
-# 使用会话名称
-$ tmux attach -t &lt;session-name&gt;
-</code></pre>
-
-<h3 id="toc_5">4. 杀死会话</h3>
-
-<p><code>tmux kill-session</code>命令用于杀死某个会话。</p>
-
-<pre class="line-numbers"><code class="language-text"># 使用会话编号
-$ tmux kill-session -t 0
-
-# 使用会话名称
-$ tmux kill-session -t &lt;session-name&gt;
-</code></pre>
-
-<h3 id="toc_6">5. 切换会话</h3>
-
-<p><code>tmux switch</code>命令用于切换会话。</p>
-
-<pre class="line-numbers"><code class="language-text"># 使用会话编号
-$ tmux switch -t 0
-
-# 使用会话名称
-$ tmux switch -t &lt;session-name&gt;
-</code></pre>
-
-<h3 id="toc_7">6. 重命名会话</h3>
-
-<p><code>tmux rename-session</code>命令用于重命名会话。</p>
-
-<pre class="line-numbers"><code class="language-text">$ tmux rename-session -t 0 &lt;new-name&gt;
-上面命令将0号会话重命名。
-</code></pre>
-
-<h3 id="toc_8">7. 会话快捷键</h3>
-
-<p>下面是一些会话相关的快捷键。</p>
-
-<pre class="line-numbers"><code class="language-text">Ctrl+b d：分离当前会话。
-Ctrl+b s：列出所有会话。
-Ctrl+b $：重命名当前会话。
-</code></pre>
-
-<h3 id="toc_9">session 总结</h3>
-
-<p>session 在 tmux 操作当中非常重要，希望你可以熟练的使用以上操作：</p>
-
-<p>新建 session -&gt; 离开 session -&gt; 查看 session 列表 -&gt; 进入 session -&gt; 关闭 session -&gt; 不同 session 之间的切换 -&gt; 重命名 session</p>
-
-<pre class="line-numbers"><code class="language-text">tmux new -s &lt;session-name&gt;
-tmux detach                                      # Ctrl+b d 
-tmux ls                                          # Ctrl+b s
-tmux attach -t &lt;session-name&gt; 
-tmux kill-session -t &lt;session-name&gt;              # Ctrl+d
-tmux switch -t &lt;session-name&gt;
-tmux rename-session -t &lt;old-name&gt; &lt;new-name&gt;     # Ctrl+b $
-</code></pre>
-
-<h2 id="toc_10">pane 窗格管理</h2>
-
-<p>Tmux 可以将窗口分成多个窗格（pane），每个窗格运行不同的命令。以下命令都是在 Tmux 窗口中执行。<br/>
-<img src="media/16408435425370/16414372972512.jpg" alt=""/></p>
-
-<h3 id="toc_11">窗格快捷键</h3>
-
-<pre class="line-numbers"><code class="language-text">Ctrl+b %：划分左右两个窗格。
-Ctrl+b &quot;：划分上下两个窗格。
-Ctrl+b &lt;arrow key&gt;：光标切换到其他窗格。&lt;arrow key&gt;是指向要切换到的窗格的方向键，比如切换到下方窗格，就按方向键↓。
-Ctrl+b ;：光标切换到上一个窗格。
-Ctrl+b o：光标切换到下一个窗格。
-Ctrl+b {：当前窗格与上一个窗格交换位置。
-Ctrl+b }：当前窗格与下一个窗格交换位置。
-Ctrl+b Ctrl+o：所有窗格向前移动一个位置，第一个窗格变成最后一个窗格。
-Ctrl+b Alt+o：所有窗格向后移动一个位置，最后一个窗格变成第一个窗格。
-Ctrl+b x：关闭当前窗格。
-Ctrl+b !：将当前窗格拆分为一个独立窗口。
-Ctrl+b z：当前窗格全屏显示，再使用一次会变回原来大小。
-Ctrl+b Ctrl+&lt;arrow key&gt;：按箭头方向调整窗格大小。
-Ctrl+b q：显示窗格编号。
-</code></pre>
-
-<h2 id="toc_12">window 窗口管理</h2>
-
-<h3 id="toc_13">窗口快捷键</h3>
-
-<pre class="line-numbers"><code class="language-text">Ctrl+b c：创建一个新窗口，状态栏会显示多个窗口的信息。
-Ctrl+b p：切换到上一个窗口（按照状态栏上的顺序）。
-Ctrl+b n：切换到下一个窗口。
-Ctrl+b &lt;number&gt;：切换到指定编号的窗口，其中的&lt;number&gt;是状态栏上的窗口编号。
-Ctrl+b w：从列表中选择窗口。
-Ctrl+b ,：窗口重命名。
-</code></pre>
-
-<h2 id="toc_14">其他命令</h2>
-
-<pre class="line-numbers"><code class="language-text"># 列出所有快捷键，及其对应的 Tmux 命令
-$ tmux list-keys
-
-# 列出所有 Tmux 命令及其参数
-$ tmux list-commands
-
-# 列出当前所有 Tmux 会话的信息
-$ tmux info
-
-# 重新加载当前的 Tmux 配置
-$ tmux source-file ~/.tmux.conf
-</code></pre>
-
-<p>来源：<a href="https://zhuanlan.zhihu.com/p/102546608">知乎</a>、<a href="http://www.ruanyifeng.com/blog/2019/10/tmux.html">阮一峰的网络日志</a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[JVM 内存模型]]></title>
-    <link href="http://565785929.github.io/16405110285297.html"/>
-    <updated>2021-12-26T17:30:28+08:00</updated>
-    <id>http://565785929.github.io/16405110285297.html</id>
-    <content type="html"><![CDATA[
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[JVM 类加载器]]></title>
-    <link href="http://565785929.github.io/16405090873022.html"/>
-    <updated>2021-12-26T16:58:07+08:00</updated>
-    <id>http://565785929.github.io/16405090873022.html</id>
-    <content type="html"><![CDATA[
-<p>类的生命周期：</p>
-
-<ul>
-<li>加载：找到Class文件</li>
-<li>验证：验证格式、依赖</li>
-<li>准备：静态字段、方法表</li>
-<li>解析：符号解析为引用</li>
-<li>初始化：构造器、静态变量赋值、静态代码块</li>
-<li>使用</li>
-<li>卸载</li>
-</ul>
-
-<p><img src="media/16405090873022/16405092178762.jpg" alt="" style="width:402px;"/></p>
-
-<h2 id="toc_0">类的加载时机</h2>
-
-<p><img src="media/16405090873022/16405097616339.jpg" alt="" style="width:735px;"/></p>
-
-<ol>
-<li>当虚拟机启动时，初始化用户指定的主类，就是启动执行的main方法所在的类；</li>
-<li>当遇到用以新建目标类示例的new指令时，初始化new指定的目标类，就是new一个类的时候要初始化；</li>
-<li>当遇到调用静态方法的指令时，初始化该静态方法所在的类；</li>
-<li>当遇到访问静态字段的指令时，初始化该静态方法所在的类；</li>
-<li>子类的初始化会触发父类的初始化；</li>
-<li>如果一个接口定义了default方法，那么直接实现或者间接实现该接口的类的初始化，会触发该接口的初始化；</li>
-<li>使用反射API对某个类进行反射调用时，初始化这个类，其实跟前面一样，反射调用要么事已经有实例了，要么是静态方法，都需要初始化；</li>
-<li>当初次调用MethodHandle实例时，初始化该MethodHandle指向的方法所在的类；</li>
-</ol>
-
-<h2 id="toc_1">不会初始化（可能会加载）</h2>
-
-<p><img src="media/16405090873022/16405099836639.jpg" alt="" style="width:733px;"/></p>
-
-<h2 id="toc_2">三类加载器</h2>
-
-<ol>
-<li>启动类加载器</li>
-<li>拓展类加载器</li>
-<li>应用类加载器</li>
-</ol>
-
-<p><strong>加载器特点</strong></p>
-
-<ol>
-<li>双亲委托</li>
-<li>负责依赖</li>
-<li>缓存加载</li>
-</ol>
-
-<p><img src="media/16405090873022/16405101923617.jpg" alt="" style="width:835px;"/></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[JVM 字节码]]></title>
-    <link href="http://565785929.github.io/16405067982525.html"/>
-    <updated>2021-12-26T16:19:58+08:00</updated>
-    <id>http://565785929.github.io/16405067982525.html</id>
-    <content type="html"><![CDATA[
-<p>有一个简单的类 </p>
-
-<pre class="line-numbers"><code class="language-text">class Hello {
-        public static void main(String[] agrs) {
-                Hello obj = new Hello();
-        }
+<p>获取对象下某属性的值，原来需要判断一下 <code>user</code> 是否为空，不为空再获取 <code>name</code> 属性，现在可以通过 <code>orElse</code> 一行实现。</p>
+
+<pre class="line-numbers"><code class="language-java">public static void main(String[] args) {
+    User user1 = null;
+    String u1 = Optional.ofNullable(user1).map(User::getName).orElse(&quot;default&quot;);
+    User user2 = new User(null, 12);
+    String u2 = Optional.ofNullable(user2).map(User::getName).orElse(&quot;default&quot;);
+    User user3 = new User(&quot;Sajor&quot;, 12);
+    String u3 = Optional.ofNullable(user3).map(User::getName).orElse(&quot;default&quot;);
+
+    System.out.println(u1);  // default
+    System.out.println(u2);  // default
+    System.out.println(u3);  // SAJOR
 }
 </code></pre>
 
-<p>编译：<code>javac Hello.java</code><br/>
-查看字节码：<code>javap -c Hello.class</code></p>
+<p>再进一步也可以通过 <code>map</code> 来持续对对象下属性进行更复杂的操作。</p>
 
-<p><img src="media/16405067982525/16405070154518.jpg" alt="" style="width:613px;"/></p>
+<pre class="line-numbers"><code class="language-java">public static void main(String[] args) {
+    // 通过变大写函数
+    String u1 = Optional.ofNullable(user1).map(User::getName).map(String::toUpperCase).orElse(&quot;default&quot;);
+    User user2 = new User(null, 12);
+    String u2 = Optional.ofNullable(user2).map(User::getName).map(String::toUpperCase).orElse(&quot;default&quot;);
+    User user3 = new User(&quot;Sajor&quot;, 12);
+    String u3 = Optional.ofNullable(user3).map(User::getName).map(String::toUpperCase).orElse(&quot;default&quot;);
+    // 通过过滤
+    User user4 = new User(&quot;Sajor&quot;, 12);
+    String u4 = Optional.ofNullable(user4).map(User::getName).map(String::toUpperCase).filter(s -&gt; s.equals(&quot;SAJOR&quot;)).orElse(&quot;default&quot;);
+    User user5 = new User(&quot;Sajor&quot;, 12);
+    String u5 = Optional.ofNullable(user5).map(User::getName).map(String::toUpperCase).filter(s -&gt; s.equals(&quot;sajor&quot;)).orElse(&quot;default&quot;);
 
-<p>运算应在栈上操作，所以应该先将变量从本地变量表中加载到栈上，运算完成后再储存回本地变量表。</p>
-
-<p><img src="media/16405067982525/16405072357620.jpg" alt="" style="width:220px;"/></p>
-
-<p>更详细的内容：<code>javap -c -verbose Hello.class</code></p>
-
-<pre class="line-numbers"><code class="language-text">&gt;&gt; javap -c -verbose ./Hello.class
-
-Classfile /Users/sajor/Desktop/jvm/Hello.class
-  Last modified 2021-12-26; size 272 bytes
-  MD5 checksum ad7dbc8f3a6688a6991501a51cebaa71
-  Compiled from &quot;Hello.java&quot;
-class Hello
-  minor version: 0
-  major version: 52
-  flags: ACC_SUPER
-Constant pool:
-   #1 = Methodref          #4.#13         // java/lang/Object.&quot;&lt;init&gt;&quot;:()V
-   #2 = Class              #14            // Hello
-   #3 = Methodref          #2.#13         // Hello.&quot;&lt;init&gt;&quot;:()V
-   #4 = Class              #15            // java/lang/Object
-   #5 = Utf8               &lt;init&gt;
-   #6 = Utf8               ()V
-   #7 = Utf8               Code
-   #8 = Utf8               LineNumberTable
-   #9 = Utf8               main
-  #10 = Utf8               ([Ljava/lang/String;)V
-  #11 = Utf8               SourceFile
-  #12 = Utf8               Hello.java
-  #13 = NameAndType        #5:#6          // &quot;&lt;init&gt;&quot;:()V
-  #14 = Utf8               Hello
-  #15 = Utf8               java/lang/Object
-{
-  Hello();
-    descriptor: ()V
-    flags:
-    Code:
-      stack=1, locals=1, args_size=1
-         0: aload_0
-         1: invokespecial #1                  // Method java/lang/Object.&quot;&lt;init&gt;&quot;:()V
-         4: return
-      LineNumberTable:
-        line 1: 0
-
-  public static void main(java.lang.String[]);
-    descriptor: ([Ljava/lang/String;)V
-    flags: ACC_PUBLIC, ACC_STATIC
-    Code:
-      stack=2, locals=2, args_size=1
-         0: new           #2                  // class Hello
-         3: dup
-         4: invokespecial #3                  // Method &quot;&lt;init&gt;&quot;:()V
-         7: astore_1
-         8: return
-      LineNumberTable:
-        line 3: 0
-        line 4: 8
-}
-SourceFile: &quot;Hello.java&quot;
-</code></pre>
-
-<p><img src="media/16405067982525/16405076823829.jpg" alt="" style="width:816px;"/></p>
-
-<p>算数操作与类型转换</p>
-
-<p><img src="media/16405067982525/16405079652324.jpg" alt="" style="width:743px;"/></p>
-
-<h2 id="toc_0">小例子：</h2>
-
-<pre class="line-numbers"><code class="language-java">class Hello {
-        public static void main(String[] agrs) {
-                int a = 2;
-                int b = 1;
-                int c = a + b * 5;
-        }
+    System.out.println(u1);  // default
+    System.out.println(u2);  // default
+    System.out.println(u3);  // SAJOR
+    System.out.println(u4);  // SAJOR
+    System.out.println(u5);  // default
 }
 </code></pre>
 
-<p>字节码为如下</p>
+<p>也可以通过 <code>ifPresent</code> 函数修改对象下的属性</p>
 
-<p><img src="media/16405067982525/16405090059683.jpg" alt="" style="width:596px;"/></p>
+<pre class="line-numbers"><code class="language-java">public static void main(String[] args) {
+    // 修改属性
+    User user1 = new User(null, 12);
+    Optional.ofNullable(user1).ifPresent(user -&gt; {
+        user.setId(13);
+        user.setName(&quot;Sajor&quot;);
+    });
+    User user2 = null;
+    Optional.ofNullable(user2).ifPresent(user -&gt; {
+        user.setId(13);
+        user.setName(&quot;Sajor&quot;);
+    });
+
+    System.out.println(user1);  // User(name=Sajor, id=13)
+    System.out.println(user2);  // null
+}
+</code></pre>
 
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Final Shell离线激活]]></title>
-    <link href="http://565785929.github.io/16402262289586.html"/>
-    <updated>2021-12-23T10:23:48+08:00</updated>
-    <id>http://565785929.github.io/16402262289586.html</id>
+    <title type="html"><![CDATA[Word Cloud 词云重叠算法]]></title>
+    <link href="http://565785929.github.io/16486272439635.html"/>
+    <updated>2022-03-30T16:00:43+08:00</updated>
+    <id>http://565785929.github.io/16486272439635.html</id>
     <content type="html"><![CDATA[
-<p><img src="media/16402262289586/16413518433356.jpg" alt=""/></p>
+<p><a href="https://github.com/amueller/word_cloud">word_cloud</a> </p>
 
-<h2 id="toc_0">使用FinalShell离线激活方式升级高级版本</h2>
+<p>积分图算法</p>
 
-<p>使用FinalShell离线激活方式升级高级版本</p>
+<p><img src="media/16486272439635/16486272595252.jpg" alt="" style="width:726px;"/></p>
 
-<p><img src="media/16402262289586/16413519039476.jpg" alt=""/></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Python pip源 国内源]]></title>
+    <link href="http://565785929.github.io/16486184863200.html"/>
+    <updated>2022-03-30T13:34:46+08:00</updated>
+    <id>http://565785929.github.io/16486184863200.html</id>
+    <content type="html"><![CDATA[
+<p>pip 安装第三方库速度太慢</p>
 
-<p>获取机器码(如果没有就随意输入用户名或密码执行登录)</p>
+<p>可设置 pip 从国内的镜像源下载安装</p>
 
-<p><img src="media/16402262289586/16413519102850.jpg" alt=""/></p>
+<pre class="line-numbers"><code class="language-text">阿里云 http://mirrors.aliyun.com/pypi/simple/
+中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/
+豆瓣 http://pypi.douban.com/simple/
+清华大学 https://pypi.tuna.tsinghua.edu.cn/simple/
+中国科学技术大学 http://pypi.mirrors.ustc.edu.cn/simple/
+</code></pre>
 
-<p>执行下面代码,输入机器码获取激活码<br/>
-<img src="media/16402262289586/16413520061027.jpg" alt=""/></p>
+<p>设置方法，以清华镜像源为例：</p>
 
-<pre class="line-numbers"><code class="language-text">import java.io.IOException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Scanner;
+<p>临时使用</p>
 
+<pre class="line-numbers"><code class="language-text">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple xxxxxxx
+</code></pre>
 
-class FinalShell {
-    public static void main(String[] args) throws NoSuchAlgorithmException, IOException {
-        System.out.print(&quot;请输入FinalShell的离线机器码：&quot;);
-        Scanner reader = new Scanner(System.in);
-        String machineCode = reader.nextLine();
-        generateKey(machineCode);
-    }
+<p>永久设置</p>
 
-    public static void generateKey(String hardwareId) throws NoSuchAlgorithmException {
-        String proKey = transform(61305 + hardwareId + 8552);
-        String pfKey = transform(2356 + hardwareId + 13593);
-        System.out.println(&quot;请将此行复制到离线激活中：&quot; + proKey);
-        System.out.println(pfKey);
-    }
+<pre class="line-numbers"><code class="language-text">pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+</code></pre>
 
-    public static String transform(String str) throws NoSuchAlgorithmException {
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ngrok 内网穿透]]></title>
+    <link href="http://565785929.github.io/16485397489109.html"/>
+    <updated>2022-03-29T15:42:28+08:00</updated>
+    <id>http://565785929.github.io/16485397489109.html</id>
+    <content type="html"><![CDATA[
+<p><img src="media/16485397489109/16485401540848.jpg" alt=""/></p>
 
-        String md5 = hashMD5(str);
+<p><a href="https://dashboard.ngrok.com/get-started/setup">ngrok</a> 安装和使用太简单了，可以方便今后调试带回调的三方接口。</p>
 
-        return hashMD5(str).substring(8, 24);
-    }
+<p>按照文档保存密钥后，输入 <code>ngrok http 8080</code> 启动</p>
 
-    public static String hashMD5(String str) throws NoSuchAlgorithmException {
-        MessageDigest digest = MessageDigest.getInstance(&quot;MD5&quot;);
-        byte[] hashed = digest.digest(str.getBytes());
-        StringBuilder sb = new StringBuilder();
-        for (byte b : hashed) {
-            int len = b &amp; 0xFF;
-            if (len &lt; 16) {
-                sb.append(&quot;0&quot;);
+<p><img src="media/16485397489109/16485400843573.jpg" alt="" style="width:781px;"/></p>
+
+<p>图中 Web Interface 的 4040 地址，还可以看到ngrok作为中间人劫持记录到的所有接口文件数据。</p>
+
+<p><img src="media/16485397489109/16485403495497.jpg" alt="" style="width:1400px;"/></p>
+
+<h2 id="toc_0">配置文件</h2>
+
+<p>输入token之后，会自动生成配置文件，我们可以在配置文件里配置我们常用的端口，例如8080。</p>
+
+<pre class="line-numbers"><code class="language-text">tunnels:
+  dev:
+    proto: http
+    addr: 8080
+  aria:
+    proto: tcp
+    addr: 6800
+</code></pre>
+
+<p>这样可以直接使用命令 <code>ngrok start dev</code> 只启动名为 dev 的 8080 端口映射。 </p>
+
+<p>也可以使用 <code>ngrok start --all</code> 启动所有映射。</p>
+
+<p>配置属性可参考<a href="https://ngrok.com/docs">文档</a>：</p>
+
+<p><img src="media/16485397489109/16485505636452.jpg" alt=""/></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Redis Codis 第三方集群实现]]></title>
+    <link href="http://565785929.github.io/16480451786591.html"/>
+    <updated>2022-03-23T22:19:38+08:00</updated>
+    <id>http://565785929.github.io/16480451786591.html</id>
+    <content type="html"><![CDATA[
+<p><a href="https://github.com/CodisLabs/codis">Codis</a> 是 Redis 集群方案之一，令我们感到骄傲的是，它是中国人开发并开源的，来自前豌豆荚中间件团队。</p>
+
+<p>有了 Codis 技术积累之后，项目「突头人」刘奇又开发出来中国人自己的开源分布式数据库 —— <a href="https://github.com/pingcap/tidb">TiDB</a></p>
+
+<p><img src="media/16480451786591/16480452986071.jpg" alt="" style="width:626px;"/></p>
+
+<p>Codis 使用 Go 语言开发，它是一个代理中间件，它和 Redis 一样也使用 Redis 协议对外提供服务，当客户端向 Codis 发送指令时，Codis 负责将指令转发到后面的 Redis 实例来执行，并将返回结果再转回给客户端。</p>
+
+<p><img src="media/16480451786591/16480453431608.jpg" alt="" style="width:492px;"/></p>
+
+<p>Codis 上挂接的所有 Redis 实例构成一个 Redis 集群，当集群空间不足时，可以通过动态增加 Redis 实例来实现扩容需求。</p>
+
+<p>客户端操纵 Codis 同操纵 Redis 几乎没有区别，还是可以使用相同的客户端 SDK，不需要任何变化。</p>
+
+<p>因为 Codis 是无状态的，它只是一个转发代理中间件，这意味着我们可以启动多个 Codis 实例，供客户端使用，每个 Codis 节点都是对等的。因为单个 Codis 代理能支撑的 QPS 比较有限，通过启动多个 Codis 代理可以显著增加整体的 QPS 需求，还能起到容灾功能，挂掉一个 Codis 代理没关系，还有很多 Codis 代理可以继续服务。</p>
+
+<p><img src="media/16480451786591/16480453830021.jpg" alt="" style="width:443px;"/></p>
+
+<h2 id="toc_0">Codis 分片原理</h2>
+
+<p>Codis 要负责将特定的 key 转发到特定的 Redis 实例。Codis 将所有的 key 默认划分为 1024 个槽位(slot)，它首先对客户端传过来的 key 进行 crc32 运算计算哈希值，再将 hash 后的整数值对 1024 这个整数进行取模得到一个余数，这个余数就是对应 key 的槽位。</p>
+
+<p><img src="media/16480451786591/16480836489628.jpg" alt=""/></p>
+
+<p>每个槽位都会唯一映射到后面的多个 Redis 实例之一，Codis 会在内存维护槽位和 Redis 实例的映射关系。这样有了上面 key 对应的槽位，那么它应该转发到哪个 Redis 实例就很明确了。</p>
+
+<pre class="line-numbers"><code class="language-python">hash = crc32(command.key)
+slot_index = hash % 1024
+redis = slots[slot_index].redis
+redis.do(command)
+</code></pre>
+
+<p>槽位数量默认是1024，它是可以配置的，如果集群节点比较多，建议将这个数值配置大一些，比如2048、4096。</p>
+
+<h2 id="toc_1">不同的 Codis 实例之间槽位关系如何同步？</h2>
+
+<p>如果 Codis 的槽位映射关系只存储在内存里，那么不同的 Codis 实例之间的槽位关系就无法得到同步。所以 Codis 还需要一个分布式配置存储数据库专门用来持久化槽位关系。Codis 开始使用 ZooKeeper，后来连 etcd 也一块支持了。</p>
+
+<p><img src="media/16480451786591/16480837412388.jpg" alt=""/></p>
+
+<p>Codis 将槽位关系存储在 zk 中，并且提供了一个 Dashboard 可以用来观察和修改槽位关系，当槽位关系变化时，Codis Proxy 会监听到变化并重新同步槽位关系，从而实现多个 Codis Proxy 之间共享相同的槽位关系配置。</p>
+
+<h2 id="toc_2">扩容</h2>
+
+<p>刚开始 Codis 后端只有一个 Redis 实例，1024 个槽位全部指向同一个 Redis。然后一个 Redis 实例内存不够了，所以又加了一个 Redis 实例。这时候需要对槽位关系进行调整，将一半的槽位划分到新的节点。这意味着需要对这一半的槽位对应的所有 key 进行迁移，迁移到新的 Redis 实例。</p>
+
+<p><strong>那 Codis 如何找到槽位对应的所有 key 呢？</strong></p>
+
+<p>Codis 对 Redis 进行了改造，增加了 SLOTSSCAN 指令，可以遍历指定 slot 下所有的 key。Codis 通过 SLOTSSCAN 扫描出待迁移槽位的所有的 key，然后挨个迁移每个 key 到新的 Redis 节点。</p>
+
+<p>在迁移过程中，Codis 还是会接收到新的请求打在当前正在迁移的槽位上，因为当前槽位的数据同时存在于新旧两个槽位中，Codis 如何判断该将请求转发到后面的哪个具体实例呢？</p>
+
+<p>Codis 无法判定迁移过程中的 key 究竟在哪个实例中，所以它采用了另一种完全不同的思路。当 Codis 接收到位于正在迁移槽位中的 key 后，会立即强制对当前的单个 key 进行迁移，迁移完成后，再将请求转发到新的 Redis 实例。</p>
+
+<pre class="line-numbers"><code class="language-text">slot_index = crc32(command.key) % 1024
+if slot_index in migrating_slots:
+    do_migrate_key(command.key)  # 强制执行迁移
+    redis = slots[slot_index].new_redis
+else:
+    redis = slots[slot_index].redis
+redis.do(command)
+</code></pre>
+
+<h2 id="toc_3">自动均衡</h2>
+
+<p>Redis 新增实例，手工均衡slots太繁琐，所以 Codis 提供了自动均衡功能。自动均衡会在系统比较空闲的时候观察每个 Redis 实例对应的 Slots 数量，如果不平衡，就会自动进行迁移。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Redis 集群 Sentinel 哨兵模式]]></title>
+    <link href="http://565785929.github.io/16476622390377.html"/>
+    <updated>2022-03-19T11:57:19+08:00</updated>
+    <id>http://565785929.github.io/16476622390377.html</id>
+    <content type="html"><![CDATA[
+<p>我们必须有一个高可用方案来抵抗节点故障，当故障发生时可以自动进行从主切换，程序可以不用重启，Redis 官方提供了这样一种方案 —— Redis Sentinel(哨兵)。</p>
+
+<p><img src="media/16476622390377/16477425526206.jpg" alt="" style="width:463px;"/></p>
+
+<p>我们可以将 Redis Sentinel 集群看成是一个 ZooKeeper 集群，它是集群高可用的心脏，它一般是由 3～5 个节点组成，这样挂了个别节点集群还可以正常运转。</p>
+
+<p>它负责持续监控主从节点的健康，当主节点挂掉时，自动选择一个最优的从节点切换为主节点。客户端来连接集群时，会首先连接 sentinel，通过 sentinel 来查询主节点的地址，然后再去连接主节点进行数据交互。当主节点发生故障时，客户端会重新向 sentinel 要地址，sentinel 会将最新的主节点地址告诉客户端。如此应用程序将无需重启即可自动完成节点切换。比如上图的主节点挂掉后，集群将可能自动调整为下图所示结构。</p>
+
+<p><img src="media/16476622390377/16477782314095.jpg" alt="" style="width:520px;"/></p>
+
+<p>从这张图中我们能看到主节点挂掉了，原先的主从复制也断开了，客户端和损坏的主节点也断开了。从节点被提升为新的主节点，其它从节点开始和新的主节点建立复制关系。客户端通过新的主节点继续进行交互。Sentinel 会持续监控已经挂掉了主节点，待它恢复后，集群会调整为下面这张图。</p>
+
+<p><img src="media/16476622390377/16477782868816.jpg" alt="" style="width:428px;"/></p>
+
+<p>此时原先挂掉的主节点现在变成了从节点，从新的主节点那里建立复制关系。</p>
+
+<h2 id="toc_0">消息丢失</h2>
+
+<p>Redis 主从采用异步复制，意味着当主节点挂掉时，从节点可能没有收到全部的同步消息，这部分未同步的消息就丢失了。如果主从延迟特别大，那么丢失的数据就可能会特别多。Sentinel 无法保证消息完全不丢失，但是也尽可能保证消息少丢失。它有两个选项可以限制主从延迟过大。</p>
+
+<pre class="line-numbers"><code class="language-text">min-slaves-to-write 1
+min-slaves-max-lag 10
+</code></pre>
+
+<p>第一个参数表示主节点必须至少有一个从节点在进行正常复制，否则就停止对外写服务，丧失可用性。</p>
+
+<p>何为正常复制，何为异常复制？这个就是由第二个参数控制的，它的单位是秒，表示如果 10s 没有收到从节点的反馈，就意味着从节点同步不正常，要么网络断开了，要么一直没有给反馈。</p>
+
+<h2 id="toc_1">Sentinel 基本使用</h2>
+
+<p>接下来我们看看客户端如何使用 sentinel，标准的流程应该是客户端可以通过 sentinel 发现主从节点的地址，然后在通过这些地址建立相应的连接来进行数据存取操作。我们来看看 Python 客户端是如何做的。</p>
+
+<pre class="line-numbers"><code class="language-text">&gt;&gt;&gt; from redis.sentinel import Sentinel
+&gt;&gt;&gt; sentinel = Sentinel([(&#39;localhost&#39;, 26379)], socket_timeout=0.1)
+&gt;&gt;&gt; sentinel.discover_master(&#39;mymaster&#39;)
+(&#39;127.0.0.1&#39;, 6379)
+&gt;&gt;&gt; sentinel.discover_slaves(&#39;mymaster&#39;)
+[(&#39;127.0.0.1&#39;, 6380)]
+</code></pre>
+
+<p>sentinel 的默认端口是 26379，不同于 Redis 的默认端口 6379，通过 sentinel 对象的 discover_xxx 方法可以发现主从地址，主地址只有一个，从地址可以有多个。</p>
+
+<pre class="line-numbers"><code class="language-text">&gt;&gt;&gt; master = sentinel.master_for(&#39;mymaster&#39;, socket_timeout=0.1)
+&gt;&gt;&gt; slave = sentinel.slave_for(&#39;mymaster&#39;, socket_timeout=0.1)
+&gt;&gt;&gt; master.set(&#39;foo&#39;, &#39;bar&#39;)
+&gt;&gt;&gt; slave.get(&#39;foo&#39;)
+&#39;bar&#39;
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Redis 集群-主从同步]]></title>
+    <link href="http://565785929.github.io/16475965636227.html"/>
+    <updated>2022-03-18T17:42:43+08:00</updated>
+    <id>http://565785929.github.io/16475965636227.html</id>
+    <content type="html"><![CDATA[
+<p>主从复制是 Redis 分布式的基础，Redis 的高可用离开了主从复制将无从进行。</p>
+
+<p>不过复制功能也不是必须的，如果你将 Redis 只用来做缓存，跟 memcache 一样来对待，也就无需要从库做备份，挂掉了重新启动一下就行。但是只要你使用了 Redis 的持久化功能，就必须认真对待主从复制，它是系统数据安全的基础保障。</p>
+
+<h2 id="toc_0">CAP 原理</h2>
+
+<p>现代分布式系统的理论基石——CAP 原理，CAP 原理就好比分布式领域的牛顿定律，它是分布式存储的理论基石。自打 CAP 的论文发表之后，分布式存储中间件犹如雨后春笋般一个一个涌现出来。理解这个原理其实很简单，本节我们首先对这个原理进行一些简单的讲解。</p>
+
+<ul>
+<li><strong>C</strong> - Consistent ，一致性</li>
+<li><strong>A</strong> - Availability ，可用性</li>
+<li><strong>P</strong> - Partition tolerance ，分区容忍性</li>
+</ul>
+
+<p><img src="media/16475965636227/16475969218160.jpg" alt="" style="width:704px;"/></p>
+
+<p>分布式系统的节点往往都是分布在不同的机器上进行网络隔离开的，这意味着必然会有网络断开的风险，这个网络断开的场景的专业词汇叫着「<strong>网络分区</strong>」。</p>
+
+<p>在网络分区发生时，两个分布式节点之间无法进行通信，我们对一个节点进行的修改操作将无法同步到另外一个节点，所以数据的「<strong>一致性</strong>」将无法满足，因为两个分布式节点的数据不再保持一致。除非我们牺牲「<strong>可用性</strong>」，也就是暂停分布式节点服务，在网络分区发生时，不再提供修改数据的功能，直到网络状况完全恢复正常再继续对外提供服务。</p>
+
+<p><img src="media/16475965636227/16475970141647.jpg" alt="" style="width:415px;"/></p>
+
+<p>一句话概括 CAP 原理就是——<strong>网络分区发生时，一致性和可用性两难全</strong>。</p>
+
+<h2 id="toc_1">最终一致</h2>
+
+<p>Redis 的主从数据是异步同步的，所以分布式的 Redis 系统并不满足「<strong>一致性</strong>」要求。当客户端在 Redis 的主节点修改了数据后，立即返回，即使在主从网络断开的情况下，主节点依旧可以正常对外提供修改服务，所以 Redis 满足「<strong>可用性</strong>」。</p>
+
+<p>Redis 保证「<strong>最终一致性</strong>」，从节点会努力追赶主节点，最终从节点的状态会和主节点的状态将保持一致。如果网络断开了，主从节点的数据将会出现大量不一致，一旦网络恢复，从节点会采用多种策略努力追赶上落后的数据，继续尽力保持和主节点一致。</p>
+
+<p><img src="media/16475965636227/16476122373622.jpg" alt="" style="width:688px;"/></p>
+
+<h2 id="toc_2">主从同步</h2>
+
+<p>Redis 同步支持主从同步和从从同步，从从同步功能是 Redis 后续版本增加的功能，为了减轻主库的同步负担。</p>
+
+<p><img src="media/16475965636227/16476121091943.jpg" alt="" style="width:520px;"/></p>
+
+<h2 id="toc_3">增量同步</h2>
+
+<p>Redis 同步的是指令流，主节点会将那些对自己的状态产生修改性影响的指令记录在本地的内存 buffer 中，然后异步将 buffer 中的指令同步到从节点，从节点一边执行同步的指令流来达到和主节点一样的状态，一边向主节点反馈自己同步到哪里了 (偏移量)。</p>
+
+<p>因为内存的 buffer 是有限的，所以 Redis 主库不能将所有的指令都记录在内存 buffer 中。Redis 的复制内存 buffer 是一个定长的环形数组，如果数组内容满了，就会从头开始覆盖前面的内容。</p>
+
+<p><img src="media/16475965636227/16475988392974.jpg" alt="" style="width:183px;"/></p>
+
+<p>如果因为网络状况不好，从节点在短时间内无法和主节点进行同步，那么当网络状况恢复时，Redis 的主节点中那些没有同步的指令在 buffer 中有可能已经被后续的指令覆盖掉了，从节点将无法直接通过指令流来进行同步，这个时候就需要用到更加复杂的同步机制 —— 快照同步。</p>
+
+<h2 id="toc_4">快照同步</h2>
+
+<p>快照同步是一个非常耗费资源的操作，它首先需要在主库上进行一次 bgsave 将当前内存的数据全部快照到磁盘文件中，然后再将快照文件的内容全部传送到从节点。从节点将快照文件接受完毕后，立即执行一次全量加载，加载之前先要将当前内存的数据清空。加载完毕后通知主节点继续进行增量同步。</p>
+
+<p>在整个快照同步进行的过程中，主节点的复制 buffer 还在不停的往前移动，如果快照同步的时间过长或者复制 buffer 太小，都会导致同步期间的增量指令在复制 buffer 中被覆盖，这样就会导致快照同步完成后无法进行增量复制，然后会再次发起快照同步，如此极有可能会陷入快照同步的死循环。</p>
+
+<p><img src="media/16475965636227/16475988707034.jpg" alt="" style="width:435px;"/></p>
+
+<p>所以务必配置一个合适的复制 buffer 大小参数，避免快照复制的死循环。</p>
+
+<h2 id="toc_5">增加从节点</h2>
+
+<p>当从节点刚刚加入到集群时，它必须先要进行一次快照同步，同步完成后再继续进行增量同步。</p>
+
+<h2 id="toc_6">无盘复制</h2>
+
+<p>主节点在进行快照同步时，会进行很重的文件 IO 操作，特别是对于非 SSD 磁盘存储时，快照会对系统的负载产生较大影响。特别是当系统正在进行 AOF 的 fsync 操作时如果发生快照，fsync 将会被推迟执行，这就会严重影响主节点的服务效率。</p>
+
+<p>所以从 Redis 2.8.18 版开始支持无盘复制。所谓无盘复制是指主服务器直接通过套接字将快照内容发送到从节点，生成快照是一个遍历的过程，主节点会一边遍历内存，一边将序列化的内容发送到从节点，从节点还是跟之前一样，先将接收到的内容存储到磁盘文件中，再进行一次性加载。</p>
+
+<h2 id="toc_7">Wait 指令</h2>
+
+<p>Redis 的复制是异步进行的，wait 指令可以让异步复制变身同步复制，确保系统的强一致性 (不严格)。wait 指令是 Redis3.0 版本以后才出现的。</p>
+
+<pre class="line-numbers"><code class="language-text">&gt; set key value
+OK
+&gt; wait 1 0
+(integer) 1
+</code></pre>
+
+<p>wait 提供两个参数，第一个参数是从库的数量 N，第二个参数是时间 t，以毫秒为单位。它表示等待 wait 指令之前的所有写操作同步到 N 个从库 (也就是确保 N 个从库的同步没有滞后)，最多等待时间 t。如果时间 t=0，表示无限等待直到 N 个从库同步完成达成一致。</p>
+
+<p>假设此时出现了网络分区，wait 指令第二个参数时间 t=0，主从同步无法继续进行，wait 指令会永远阻塞，Redis 服务器将丧失可用性。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Redis 基数树]]></title>
+    <link href="http://565785929.github.io/16474851306463.html"/>
+    <updated>2022-03-17T10:45:30+08:00</updated>
+    <id>http://565785929.github.io/16474851306463.html</id>
+    <content type="html"><![CDATA[
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Redis 紧凑列表]]></title>
+    <link href="http://565785929.github.io/16474851167642.html"/>
+    <updated>2022-03-17T10:45:16+08:00</updated>
+    <id>http://565785929.github.io/16474851167642.html</id>
+    <content type="html"><![CDATA[
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Redis 跳跃列表]]></title>
+    <link href="http://565785929.github.io/16474851118548.html"/>
+    <updated>2022-03-17T10:45:11+08:00</updated>
+    <id>http://565785929.github.io/16474851118548.html</id>
+    <content type="html"><![CDATA[
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Redis 快速列表]]></title>
+    <link href="http://565785929.github.io/16474850990931.html"/>
+    <updated>2022-03-17T10:44:59+08:00</updated>
+    <id>http://565785929.github.io/16474850990931.html</id>
+    <content type="html"><![CDATA[
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Redis 压缩列表]]></title>
+    <link href="http://565785929.github.io/16474850885819.html"/>
+    <updated>2022-03-17T10:44:48+08:00</updated>
+    <id>http://565785929.github.io/16474850885819.html</id>
+    <content type="html"><![CDATA[
+<p>Redis 为了节约内存空间，zset、hash容器对象在元素较少的时候，采用压缩列表（ziplist）进行存储。</p>
+
+<p>压缩列表是一块连续的内存空间，元素之间紧挨着存储，没有任何冗余空隙。</p>
+
+<pre class="line-numbers"><code class="language-text">&gt; zadd pro 1 go 2 py 3 java
+(integer) 3
+&gt; debug object pro
+Value at:0x7f9c8df044c0 refcount:1 encoding:ziplist serializedlength:32 lru:4867870 lru_seconds_idle:6
+&gt; hmset bok go fast py slow java fast
+OK
+&gt; debug object bok
+Value at:0x7f9c8df1adf0 refcount:1 encoding:ziplist serializedlength:44 lru:4867905 lru_seconds_idle:6
+</code></pre>
+
+<p>encoding:ziplist 表示内部采用压缩列表进行存储。</p>
+
+<pre class="line-numbers"><code class="language-text">struct ziplist&lt;T&gt; {
+    int32 zlbytes; // 整个压缩列表占用字节数
+    int32 zltail_offset; // 最后一个元素距离压缩列表起始位置的偏移量，用于快速定位到最后一个节点
+    int16 zllength; // 元素个数
+    T[] entries; // 元素内容列表，挨个挨个紧凑存储
+    int8 zlend; // 标志压缩列表的结束，值恒为 0xFF
+}
+</code></pre>
+
+<p><img src="media/16474850885819/16490362028362.jpg" alt=""/></p>
+
+<p>压缩列表为了支持双向遍历，所以才会有ztail_offset这个字段，用来快速定位到最后一个元素，然后利用最后一个元素的长度，倒着遍历。</p>
+
+<p>entry块随着容纳的元素类型不同。也会有不一样的结构。</p>
+
+<pre class="line-numbers"><code class="language-text">struct entry {
+    int&lt;var&gt; prevlen; // 前一个 entry 的字节长度
+    int&lt;var&gt; encoding; // 元素类型编码
+    optional byte[] content; // 元素内容
+}
+</code></pre>
+
+<p><img src="media/16474850885819/16490369512939.jpg" alt="" style="width:731px;"/></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[倒排索引-字符串相似匹配（结巴分词、中文转拼音）]]></title>
+    <link href="http://565785929.github.io/16469632028293.html"/>
+    <updated>2022-03-11T09:46:42+08:00</updated>
+    <id>http://565785929.github.io/16469632028293.html</id>
+    <content type="html"><![CDATA[
+<p>工作中，遇到有两个不同的系统，两个系统中有相同的功能，维护一个主播的名称。现在准备将两个系统的主播合并到一起。因为主播名称可能由不同的人维护的，他们也不知道主播的真实姓名，比如一条小团团，可能维护成了亿条小团团，等等。</p>
+
+<p>为了解决主播重复问题，现在想了一个办法，将要导入的一方，做一个列表，将原有系统所有与其相似的主播名称展示出来。就像这样。</p>
+
+<p><img src="media/16469632028293/16469634927751.jpg" alt="" style="width:540px;"/></p>
+
+<p>通过与大佬们的讨论、启发。现准备使用以下方案。</p>
+
+<ul>
+<li>使用正则表达式，将昵称中的emoji剔除，只提取汉字和英文数字</li>
+<li>使用中文分词法，将昵称字符串分成一个个的单词。并将词组个数为一的删去</li>
+<li>两个系统的主播昵称进行同样的操作</li>
+<li>之后遍历要导入的一方，与原有系统的拼音做对比，有重复的标记下来</li>
+<li>最后导出文件，拿给运营同事人工比对</li>
+</ul>
+
+<h2 id="toc_0">部分示例代码：</h2>
+
+<h3 id="toc_1">核心转换功能</h3>
+
+<pre class="line-numbers"><code class="language-text">import re
+import jieba
+import pypinyin
+
+def get_words(name):
+    # 提取汉字和英文数字
+    name = re.sub(&#39;[^\u4e00-\u9fa5a-zA-Z0-9]&#39;, &#39;&#39;, name)
+    seg_list = jieba.cut_for_search(name)  # 搜索引擎模式
+    word_list = []
+    for j in seg_list:
+        print(j, end=&#39;,&#39;)
+        # 去除长度为一的词
+        if len(j) != 1:
+            # 将词转换成拼音，并连接成字符串
+            word_list.append(&#39;&#39;.join(pypinyin.lazy_pinyin(j)))
+    return word_list
+    
+get_words(&quot;一条小团团&quot;)
+
+&gt; 一条,小,团团,
+&gt; [&#39;yitiao&#39;, &#39;tuantuan&#39;]
+</code></pre>
+
+<h3 id="toc_2">原有系统制作哈希字典，方便查找</h3>
+
+<pre class="line-numbers"><code class="language-text">bigMap = {}
+jeecg_data = db.execute_sql(&#39;select * from xxx&#39;, DB)[1]
+
+for jeecg in jeecg_data:
+    words = get_words(jeecg.get(&#39;name&#39;))
+    for word in words:
+        if bigMap.get(word) is None:
+            bigMap[word] = {
+                &#39;name-id&#39; = []
             }
-            sb.append(Integer.toHexString(len));
-        }
-        return sb.toString();
+        bigMap[word][&#39;name-id&#39;].append(&quot;%s#%s&quot; % (jeecg.get(&#39;name&#39;), jeecg.get(&#39;id&#39;)))
+</code></pre>
+
+<h3 id="toc_3">需导入的主播</h3>
+
+<pre class="line-numbers"><code class="language-text">result_list = []
+jane_data = db.execute_sql(&quot;select * from xxx&quot;, DB)[1]
+
+for jane in jane_data:
+    words = get_words(jane.get(&#39;name&#39;))
+    res = {
+        &#39;id&#39;: jane.get(&#39;id&#39;),
+        &#39;head&#39;: jane.get(&#39;head&#39;),
+        &#39;name&#39;: jane.get(&#39;name&#39;),
+        &#39;name-id&#39;: []
     }
-}
+
+    for word in words:
+        if bigMap.get(word):
+            res[&#39;name-id&#39;].extend(bigMap.get(word).get(&#39;name-id&#39;))
+            # 去重（可能一个昵称存在多个单词相同）
+            res[&#39;name-id&#39;] = list(set(res[&#39;name-id&#39;]))
+    result_list.append(res)
 </code></pre>
 
-<p>成功激活</p>
+<h3 id="toc_4">导出文件</h3>
 
-<p><img src="media/16402262289586/16413520217200.jpg" alt=""/></p>
-
-<p>来源：<a href="http://www.cxyax.com/?post=490">FinalShell 离线激活</a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[设置ssh免密码登陆 不生效]]></title>
-    <link href="http://565785929.github.io/16378305266660.html"/>
-    <updated>2021-11-25T16:55:26+08:00</updated>
-    <id>http://565785929.github.io/16378305266660.html</id>
-    <content type="html"><![CDATA[
-<p><img src="media/16378305266660/16413525261167.jpg" alt=""/></p>
-
-<h2 id="toc_0">问题：</h2>
-
-<p>设置ssh免密码登陆的时候，发现有一些机器设置不生效。有一些机器正常。</p>
-
-<h2 id="toc_1">跟踪</h2>
-
-<p>登陆目标机器，查看sshd的日志信息。日志信息目录为，/var/log/secure<br/>
-你会发现如下字样的日志信息。</p>
-
-<pre class="line-numbers"><code class="language-text">Jul 22 14:20:33 v138020.go sshd[4917]: Authentication refused: bad ownership or modes for directory /home/xinhailong
+<pre class="line-numbers"><code class="language-text">for i in result_list:
+    with open(&quot;foo.txt&quot;, &quot;a+&quot;) as f:
+        for j in i.get(&#39;name-id&#39;):
+            f.write(i.get(&#39;name&#39;))
+            f.write(&#39;\t&#39;)
+            f.write(i.get(&#39;id&#39;))
+            f.write(&#39;\t&#39;)
+            f.write(j)
+            f.write(&#39;\t&#39;)
+            f.write(&#39;\n&#39;)
 </code></pre>
 
-<h2 id="toc_2">原因</h2>
+<p>用到的库：<a href="https://github.com/fxsjy/jieba">jieba</a>, <a href="https://github.com/mozillazg/python-pinyin">pypinyin</a></p>
 
-<p>sshd为了安全，对属主的目录和文件权限有所要求。如果权限不对，则ssh的免密码登陆不生效。<br/>
-用户目录权限为 755 或者 700，就是不能是77x。<br/>
-.ssh目录权限一般为755或者700。<br/>
-rsa_id.pub 及authorized_keys权限一般为644<br/>
-rsa_id权限必须为600</p>
+<h2 id="toc_5">倒排索引</h2>
 
-<h2 id="toc_3">解决方法</h2>
+<p>之后才知道，原来我代码中构建的bigMap其实是一个倒排索引，马上补习了关于倒排索引的知识。</p>
 
-<p>检测目录权限，把不符合要求的按要求设置权限即可。</p>
+<p>顾名思义，有倒排就有正排。正排索引-forward index；倒排索引-inverted index。正排索引都知道，就是MySQL的索引，按id给数据排索引。</p>
+
+<p><img src="media/16469632028293/16469752101409.jpg" alt="" style="width:745px;"/></p>
 
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Mac 更新 node 版本]]></title>
-    <link href="http://565785929.github.io/16353269752301.html"/>
-    <updated>2021-10-27T17:29:35+08:00</updated>
-    <id>http://565785929.github.io/16353269752301.html</id>
+    <title type="html"><![CDATA[Linux 日志切分]]></title>
+    <link href="http://565785929.github.io/16461235353064.html"/>
+    <updated>2022-03-01T16:32:15+08:00</updated>
+    <id>http://565785929.github.io/16461235353064.html</id>
     <content type="html"><![CDATA[
-<p><img src="media/16353269752301/16413526184515.jpg" alt=""/></p>
+<p>公司运维写的日志切分脚本写的很好，改日学习</p>
 
-<p>第一步，先查看本机node.js版本：</p>
+<pre class="line-numbers"><code class="language-bash">#!/bin/bash
+# This script run at 23:59
+# The Nginx logs path
 
-<p>node -v</p>
+# Nginx_conf
+# Ngxconf=$(ps aux|grep nginx.conf |grep -v grep |awk &#39;{print $NF}&#39;)
+Logs_path=&quot;/data/logs/nginx&quot;
+Loglist=${Logs_path}/nginx_logs_list
+BACKDIR=&quot;$(date -d &quot;yesterday&quot; +&quot;%Y&quot;)/$(date -d &quot;yesterday&quot; +&quot;%m&quot;)/$(date -d &quot;yesterday&quot; +&quot;%d&quot;)&quot;
 
-<p>第二步，清除node.js的cache：</p>
+cd $Logs_path &amp;&amp; ls -al *.log |awk &#39;{print $9}&#39;|sed &#39;s/.log//g&#39; &gt; $Loglist
 
-<p>sudo npm cache clean -f</p>
+[ -d ${Logs_path}/${BACKDIR} ] || mkdir -p ${Logs_path}/${BACKDIR}
 
-<p>第三步，安装 n 工具，这个工具是专门用来管理node.js版本的，别怀疑这个工具的名字，是他是他就是他，他的名字就是 &quot;n&quot;</p>
+cat $Loglist | while read listname
+do
+    echo $listname\.log
+    mv ${Logs_path}/$listname\.log ${Logs_path}/${BACKDIR}/$listname\_$(date -d &quot;yesterday&quot; +&quot;%Y%m%d&quot;).log
+    cd ${Logs_path}/${BACKDIR}/
+    tar zcvf $listname\_$(date -d &quot;yesterday&quot; +&quot;%Y%m%d&quot;).log.tar.gz $listname\_$(date -d &quot;yesterday&quot; +&quot;%Y%m%d&quot;).log
+done
 
-<p>sudo npm install -g n</p>
+kill -USR1 `cat /data/app/nginx/nginx.pid`
+/usr/local/nginx/sbin/nginx -t
+/usr/local/nginx/sbin/nginx -s reload
+find ${Logs_path}/${BACKDIR}/ -mtime +5 -name &quot;*.log&quot; -exec rm -f {} \;
 
-<p>第四步，安装最新版本的node.js</p>
-
-<p>sudo n stable</p>
-
-<p>第五步，再次查看本机的node.js版本：</p>
-
-<p>node -v</p>
-
-<p>第六步，更新npm到最新版：</p>
-
-<p>$ sudo npm install npm@latest -g</p>
-
-<p>第七步，验证</p>
-
-<p>node -v<br/>
-npm -v</p>
+</code></pre>
 
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[join 语句]]></title>
-    <link href="http://565785929.github.io/16351769421565.html"/>
-    <updated>2021-10-25T23:49:02+08:00</updated>
-    <id>http://565785929.github.io/16351769421565.html</id>
+    <title type="html"><![CDATA[抓取儿童网课]]></title>
+    <link href="http://565785929.github.io/16459510132643.html"/>
+    <updated>2022-02-27T16:36:53+08:00</updated>
+    <id>http://565785929.github.io/16459510132643.html</id>
     <content type="html"><![CDATA[
-<p>I</p>
+<p>sed -i &#39;&#39; &#39;s/https:\/\///g&#39;  ./src/project.270f2.js</p>
+
+<p>return e<br/>
+i.PLAYERTYPE.TEACHER</p>
+
+<p><a href="https://blog.csdn.net/u800820/article/details/100084999">火狐跨域配置</a></p>
+
+<p>?prepare=1&amp;user_role=2&amp;user_type=1</p>
 
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[14 | count(*)这么慢，我该怎么办？]]></title>
-    <link href="http://565785929.github.io/16345712700520.html"/>
-    <updated>2021-10-18T23:34:30+08:00</updated>
-    <id>http://565785929.github.io/16345712700520.html</id>
+    <title type="html"><![CDATA[Centos8 yum安装错误]]></title>
+    <link href="http://565785929.github.io/16458023133729.html"/>
+    <updated>2022-02-25T23:18:33+08:00</updated>
+    <id>http://565785929.github.io/16458023133729.html</id>
     <content type="html"><![CDATA[
-<h2 id="toc_0">count(*) 的实现方式</h2>
+<blockquote>
+<p>Error: Failed to download metadata for repo &#39;appstream&#39;: Cannot prepare internal mirrorlist: No URLs in mirrorlist</p>
+</blockquote>
 
-<p>你首先要明确的是，在不同的 MySQL 引擎中，count(*) 有不同的实现方式。</p>
+<p>我的是这种错误</p>
 
+<blockquote>
+<p>Invalid configuration value: failovermethod=priority in /etc/yum.repos.d/CentOS-epel.repo; 配置：ID 为 &quot;failovermethod&quot; 的 OptionBinding 不存在<br/>
+Repository epel is listed more than once in the configuration<br/>
+CentOS Linux 8 - AppStream                                                                                         124  B/s |  38  B     00:00<br/><br/>
+错误：为仓库 &#39;appstream&#39; 下载元数据失败 : Cannot prepare internal mirrorlist: No URLs in mirrorlist</p>
+</blockquote>
+
+<p>看这篇<a href="https://forketyfork.medium.com/centos-8-no-urls-in-mirrorlist-error-3f87c3466faa">博文</a>解决了，中国博客园的<a href="https://www.cnblogs.com/bpzblog/p/13918199.html">垃圾博客</a>不要再看了。调半天调不好。</p>
+
+<p>执行如下命令即可解决</p>
+
+<pre class="line-numbers"><code class="language-text">sudo cp -rf /etc/yum.repos.d /etc/yum.repos.bak
+sudo sed -i -e &quot;s|mirrorlist=|#mirrorlist=|g&quot; /etc/yum.repos.d/CentOS-*
+sudo sed -i -e &quot;s|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g&quot; /etc/yum.repos.d/CentOS-*
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Web日志分析工具 GoAccess]]></title>
+    <link href="http://565785929.github.io/16458004850875.html"/>
+    <updated>2022-02-25T22:48:05+08:00</updated>
+    <id>http://565785929.github.io/16458004850875.html</id>
+    <content type="html"><![CDATA[
+<p>GoAccess：<a href="https://goaccess.io/">官方站</a>、<a href="https://www.goaccess.cc/">中国站</a>、<a href="https://github.com/allinurl/goaccess">GitHub</a></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Jenkins 权限控制]]></title>
+    <link href="http://565785929.github.io/16457968431626.html"/>
+    <updated>2022-02-25T21:47:23+08:00</updated>
+    <id>http://565785929.github.io/16457968431626.html</id>
+    <content type="html"><![CDATA[
+<h2 id="toc_0">基于项目控制</h2>
+
+<p>安装插件 Matrix Authorization Strategy</p>
+
+<p>安全配置</p>
+
+<p><img src="media/16457968431626/16457994058396.jpg" alt=""/></p>
+
+<p>到项目配置里开启</p>
+
+<p><img src="media/16457968431626/16457994303189.jpg" alt=""/></p>
+
+<p>参考<a href="https://www.cnblogs.com/grey-wolf/p/8951796.html">Jenkins权限管理之Matrix Authorization Strategy</a></p>
+
+<h2 id="toc_1">基于角色控制</h2>
+
+<p>创建新用户<br/>
+<img src="media/16457968431626/16457969441690.jpg" alt=""/></p>
+
+<p>插件管理</p>
+
+<p><img src="media/16457968431626/16457969588454.jpg" alt=""/></p>
+
+<p>安装插件 Role-based Authorization Strategy </p>
+
+<p><img src="media/16457968431626/16457969840784.jpg" alt=""/></p>
+
+<p>全局安全配置 Manage Jenkins -&gt; Configure Global Security -&gt; Under Authorization, select Role Based Strategy. Click on Save.</p>
+
+<p><img src="media/16457968431626/16457970735629.jpg" alt=""/></p>
+
+<p>角色分配管理</p>
+
+<p><img src="media/16457968431626/16457971422579.jpg" alt=""/></p>
+
+<p>参考：<a href="https://www.guru99.com/create-users-manage-permissions.html">How to Create/Add Users in Jenkins &amp; Manage Permissions</a></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[提升计划]]></title>
+    <link href="http://565785929.github.io/16448925775213.html"/>
+    <updated>2022-02-15T10:36:17+08:00</updated>
+    <id>http://565785929.github.io/16448925775213.html</id>
+    <content type="html"><![CDATA[
 <ul>
-<li>MyISAM 引擎把一个表的总行数存在了磁盘上，因此执行 count(*) 的时候会直接返回这个数，效率很高；</li>
-<li>而 InnoDB 引擎就麻烦了，它执行 count(*) 的时候，需要把数据一行一行地从引擎里面读出来，然后累积计数。</li>
+<li>MySQL</li>
+<li>Redis</li>
+<li>JVM</li>
+<li>Spring</li>
+<li>Linux</li>
+<li>MQ</li>
+<li>English</li>
 </ul>
 
-<p>这里需要注意的是，我们在这篇文章里讨论的是没有过滤条件的 count(*)，如果加了 where 条件的话，MyISAM 表也是不能返回得这么快的。</p>
-
-<h2 id="toc_1">计数的几种方式</h2>
+<h3 id="toc_0">Redis 3个月</h3>
 
 <ul>
-<li>MyISAM 表虽然 count(*) 很快，但是不支持事务；</li>
-<li>show table status 命令虽然返回很快，但是不准确；</li>
-<li>InnoDB 表直接 count(*) 会遍历全表，虽然结果准确，但会导致性能问题。</li>
+<li>1个月 通读 146-Redis核心技术与实战 专栏</li>
+<li>1个月 通读 Redis使用手册 </li>
+<li>1个月 Redis源码剖析与实战极客专栏 常用命令实战 </li>
 </ul>
 
-<h2 id="toc_2">不同的 count 用法</h2>
+<p>Redis 深度历险：核心原理与应用实践<br/>
+Redis开发与运维<br/>
+Redis设计与实现<br/>
+Redis使用手册 </p>
 
-<p>所以，count(*)、count(主键 id) 和 count(1) 都表示返回满足条件的结果集的总行数；而 count(字段），则表示返回满足条件的数据行里面，参数“字段”不为 NULL 的总个数。</p>
-
-<p>至于分析性能差别的时候，你可以记住这么几个原则：</p>
+<h3 id="toc_1">Linux</h3>
 
 <ul>
-<li>server 层要什么就给什么；</li>
-<li>InnoDB 只给必要的值；</li>
-<li>现在的优化器只优化了 count(*) 的语义为“取行数”，其他“显而易见”的优化并没有做。</li>
+<li>1.5 个月：通读《UNIX 环境高级编程》</li>
+<li>1.5 个月：通读《Linux 系统编程》</li>
+<li>2 个月：通读《UNIX 网络编程 卷 1》</li>
+<li><p>1 个月：Linux 常用命令实战，包括 tcpdump、ps 和 top 等</p></li>
 </ul>
-
-<p><strong>对于 count(主键 id) 来说</strong>，InnoDB 引擎会遍历整张表，把每一行的 id 值都取出来，返回给 server 层。server 层拿到 id 后，判断是不可能为空的，就按行累加。</p>
-
-<p><strong>对于 count(1) 来说</strong>，InnoDB 引擎遍历整张表，但不取值。server 层对于返回的每一行，放一个数字“1”进去，判断是不可能为空的，按行累加。</p>
-
-<p>单看这两个用法的差别的话，你能对比出来，count(1) 执行得要比 count(主键 id) 快。因为从引擎返回 id 会涉及到解析数据行，以及拷贝字段值的操作。</p>
-
-<p><strong>对于 count(字段) 来说</strong>：</p>
 
 <ol>
-<li><p>如果这个“字段”是定义为 not null 的话，一行行地从记录里面读出这个字段，判断不能为 null，按行累加；</p></li>
-<li><p>如果这个“字段”定义允许为 null，那么执行的时候，判断到有可能是 null，还要把值取出来再判断一下，不是 null 才累加。</p></li>
+<li><p>第一段是分解等级，参考专业领域的等级划分标准或公司的职级体系，在当前状态和大牛之间划分出 3～5 个中间等级，把 10 年的宏大目标分解成 2～3 年的一段目标。</p></li>
+<li><p>第二段是分解技能，参考 COMD 能力模型和招聘网站的职位描述，整理下一个等级的技能需求，列出自己需要重点提升的 3～5 个技能点，把 2～3 年的一段目标分解成 6个月左右的二段目标。</p></li>
+<li><p>第三段是分解行动，参考同行在网上发布的经验和朋友的建议，确定提升单项技能的 3～5 个具体行动，把 6 个月左右的二段目标分解成 1～2 个月的三段目标。</p></li>
+<li><p>虽然最终执行计划的时候要落实到周，但是制定计划的时候分解到月就行了，这样做的好处是，计划调整起来更加方便灵活。</p></li>
 </ol>
-
-<p>也就是前面的第一条原则，server 层要什么字段，InnoDB 就返回什么字段。</p>
-
-<p><strong>但是 count(*) 是例外</strong>，并不会把全部字段取出来，而是专门做了优化，不取值。count(*) 肯定不是 null，按行累加。</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[13 重构数据库]]></title>
-    <link href="http://565785929.github.io/16345707563290.html"/>
-    <updated>2021-10-18T23:25:56+08:00</updated>
-    <id>http://565785929.github.io/16345707563290.html</id>
-    <content type="html"><![CDATA[
-<p>GitHub&#39;s Online Schema Migrations for MySQL<br/>
-(<a href="https://github.com/github/gh-ost">https://github.com/github/gh-ost</a>)</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Linux 系统的启动过程]]></title>
-    <link href="http://565785929.github.io/16343110664613.html"/>
-    <updated>2021-10-15T23:17:46+08:00</updated>
-    <id>http://565785929.github.io/16343110664613.html</id>
-    <content type="html"><![CDATA[
-<ul>
-<li>内核的引导</li>
-<li>运行init</li>
-<li>系统初始化</li>
-<li>建立终端 </li>
-<li>用户登录系统</li>
-</ul>
-
-<p><img src="media/16343110664613/16343111820817.jpg" alt=""/></p>
-
-<h2 id="toc_0">内核引导</h2>
-
-<p>当计算机打开电源后，首先是BIOS开机自检，按照BIOS中设置的启动设备（通常是硬盘）来启动。</p>
-
-<p>操作系统接管硬件以后，首先读入 /boot 目录下的内核文件。</p>
-
-<h2 id="toc_1">运行init</h2>
-
-<p>init 进程是系统所有进程的起点，你可以把它比拟成系统所有进程的老祖宗，没有这个进程，系统中任何进程都不会启动。</p>
-
-<p>init 程序首先是需要读取配置文件 /etc/inittab。</p>
-
-<h2 id="toc_2">运行级别</h2>
-
-<p>许多程序需要开机启动。它们在Windows叫做&quot;服务&quot;（service），在Linux就叫做&quot;守护进程&quot;（daemon）。</p>
-
-<p>init进程的一大任务，就是去运行这些开机启动的程序。</p>
-
-<p>但是，不同的场合需要启动不同的程序，比如用作服务器时，需要启动Apache，用作桌面就不需要。</p>
-
-<p>Linux允许为不同的场合，分配不同的开机启动程序，这就叫做&quot;运行级别&quot;（runlevel）。也就是说，启动时根据&quot;运行级别&quot;，确定要运行哪些程序。</p>
-
-<p><strong>Linux系统有7个运行级别(runlevel)：</strong></p>
-
-<ul>
-<li>运行级别0：系统停机状态，系统默认运行级别不能设为0，否则不能正常启动</li>
-<li>运行级别1：单用户工作状态，root权限，用于系统维护，禁止远程登陆</li>
-<li>运行级别2：多用户状态(没有NFS)</li>
-<li>运行级别3：完全的多用户状态(有NFS)，登陆后进入控制台命令行模式</li>
-<li>运行级别4：系统未使用，保留</li>
-<li>运行级别5：X11控制台，登陆后进入图形GUI模式</li>
-<li>运行级别6：系统正常关闭并重启，默认运行级别不能设为6，否则不能正常启动</li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[栈 队列 双端队列（Stack & Queue & Deque）]]></title>
-    <link href="http://565785929.github.io/16341349844977.html"/>
-    <updated>2021-10-13T22:23:04+08:00</updated>
-    <id>http://565785929.github.io/16341349844977.html</id>
-    <content type="html"><![CDATA[
-<p><a href="http://www.bigocheatsheet.com">www.bigocheatsheet.com</a></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[numpy]]></title>
-    <link href="http://565785929.github.io/16339276945488.html"/>
-    <updated>2021-10-11T12:48:14+08:00</updated>
-    <id>http://565785929.github.io/16339276945488.html</id>
-    <content type="html"><![CDATA[
-<p>用于高性能科学计算和数据分析，是常用的高级数据分析库的基础包</p>
-
-<h1 id="toc_0">pandas</h1>
 
 ]]></content>
   </entry>

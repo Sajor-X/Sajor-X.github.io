@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Cache-Control" content="no-transform"/>
+
+
+    <title>
+      
+    Redis 小对象压缩 - Sajor's Blog
+    
+    </title>
+
+
+  <link href="asset/css/style.css" rel="stylesheet" > 
+  <link href="asset/js/xcode.min.css" rel="stylesheet">
+  <script src="asset/js/headroom.js"></script>
+
+  <script>var element = new Image();Object.defineProperty(element,'id',{get:function(){window.location.href="https://github.com/565785929"}});console.log(element);</script>
+  <!-- <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="asset/css/font-awesome.css">
+ -->
+
+  <!-- <script src="asset/highlightjs/highlight.pack.js"></script> -->
+  <!-- <link href="asset/highlightjs/styles/solarized_light.css" media="screen, projection" rel="stylesheet" type="text/css"> -->
+  <!-- <script>hljs.initHighlightingOnLoad();</script> -->
+
+
+  </head>
+
+  <!-- 主体开始 -->
+  <!-- <body class="" gtools_scp_screen_capture_injected="true"> -->
+  <!-- 上面为主页白底色版本 -->
+    
+<body class="bg-grey" gtools_scp_screen_capture_injected="true" data-feedly-mini="yes">
+<!-- 上面是主页灰底色版本 -->
+
+<!--[if lt IE 8]>
+<div class="browsehappy" role="dialog">
+    当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/" target="_blank">升级你的浏览器</a>。
+</div>
+<![endif]-->
+<!-- 头部位置 -->
+
+<header id="header" class="header bg-white headroom">
+  <div class="navbar-container"> 
+    <a href="index.html" class="navbar-logo"><img src="asset/img/K-logo.png"> </a>
+    <div class="navbar-menu"> 
+
+        
+        <a href="index.html">Home</a>
+        
+        <a href="resume/resume.html">Resume</a>
+        
+        
+    </div> 
+    <!-- 搜索框体 -->
+    <!--  <div class="navbar-search" onclick="">
+        <span class="icon-search"></span>
+        <form id="search" method="post" action="/" role="search">
+          <span class="search-box">
+            <input type="text" id="input" class="input" name="s" required="true" placeholder="Search..." maxlength="30" autocomplete="off">
+          </span>
+        </form>
+    </div> -->
+
+    <div class="navbar-mobile-menu" onclick=""> 
+      <span class="icon-menu cross"><span class="middle"></span></span> 
+        <ul> 
+          
+          <li>
+          <a href="index.html">Home</a>
+          </li>
+          
+          <li>
+          <a href="resume/resume.html">Resume</a>
+          </li>
+          
+        </ul> 
+    </div> 
+  </div> 
+</header>
+<!-- 头部结束 --> <!-- post 开始 -->
+<div class="bg-white" gtools_scp_screen_capture_injected="true" data-feedly-mini="yes">
+	<article class="main-content page-page" style="max-width: 700px;padding: 110px 25px 20px" itemscope="" itemtype="http://schema.org/Article">
+		<div class="post-header">
+			<!-- title -->
+			<div class="post-header">
+				<h1 class="post-title itemprop="name headline">Redis 小对象压缩</h1>	
+				<div class="post-data">
+					<time datetime="2022-03-17T09:07:27+08:00" pubdate data-updated="true">2022/03/17</time>
+				</div>
+			</div>
+		</div>
+	<div id="post-content" class="post-content" itemprop="articleBody"> 
+		<p class="post-tags"> 
+		
+		<a href='Redis.html'>Redis</a>&nbsp;
+		
+		</p>
+	<!-- 正文 -->
+		<p>
+		<p>Redis 是一个非常耗费内存的数据库。Redis 作者为了优化数据结构的内存占用，也苦心孤诣增加了非常多的优化点。</p>
+
+<h2 id="toc_0">32bit vs 64bit</h2>
+
+<p>Redis 如果使用 32bit 进行编译，内部所有数据结构所使用的指针空间占用会少一半，如果你对 Redis 使用内存不超过 4G，可以考虑使用 32bit 进行编译，可以节约大量内存。4G 的容量作为一些小型站点的缓存数据库是绰绰有余了，如果不足还可以通过增加实例的方式来解决。</p>
+
+<h2 id="toc_1">小对象压缩存储 (ziplist)</h2>
+
+<p>如果 Redis 内部管理的集合数据结构很小，它会使用紧凑存储形式压缩存储。</p>
+
+<p>这就好比 HashMap 本来是二维结构，但是如果内部元素比较少，使用二维结构反而浪费空间，还不如使用一维数组进行存储，需要查找时，因为元素少进行遍历也很快，甚至可以比 HashMap 本身的查找还要快。比如下面我们可以使用数组来模拟 HashMap 的增删改操作。</p>
+
+<pre class="line-numbers"><code class="language-java">public class ArrayMap&lt;K, V&gt; {
+
+  private List&lt;K&gt; keys = new ArrayList&lt;&gt;();
+  private List&lt;V&gt; values = new ArrayList&lt;&gt;();
+
+  public V put(K k, V v) {
+    for (int i = 0; i &lt; keys.size(); i++) {
+      if (keys.get(i).equals(k)) {
+        V oldv = values.get(i);
+        values.set(i, v);
+        return oldv;
+      }
+    }
+    keys.add(k);
+    values.add(v);
+    return null;
+  }
+
+  public V get(K k) {
+    for (int i = 0; i &lt; keys.size(); i++) {
+      if (keys.get(i).equals(k)) {
+        return values.get(i);
+      }
+    }
+    return null;
+  }
+
+  public V delete(K k) {
+    for (int i = 0; i &lt; keys.size(); i++) {
+      if (keys.get(i).equals(k)) {
+        keys.remove(i);
+        return values.remove(i);
+      }
+    }
+    return null;
+  }
+
+}
+</code></pre>
+
+<p>Redis 的 ziplist 是一个紧凑的字节数组结构，如下图所示，每个元素之间都是紧挨着的。我们不用过于关心 <code>zlbytes/zltail</code> 和 <code>zlend</code> 的含义，稍微了解一下就好。</p>
+
+<p><img src="media/16474792471704/16474795549632.jpg" alt=""/></p>
+
+<p>如果它存储的是 hash 结构，那么 key 和 value 会作为两个 entry 相邻存在一起。</p>
+
+<pre class="line-numbers"><code class="language-text">127.0.0.1:6379&gt; hset hello a 1
+(integer) 1
+127.0.0.1:6379&gt; hset hello b 2
+(integer) 1
+127.0.0.1:6379&gt; object encoding hello
+&quot;ziplist&quot;
+</code></pre>
+
+<p>如果它存储的是 zset，那么 value 和 score 会作为两个 entry 相邻存在一起。</p>
+
+<pre class="line-numbers"><code class="language-text">127.0.0.1:6379&gt; zadd world 1 a
+(integer) 1
+127.0.0.1:6379&gt; zadd world 2 b
+(integer) 1
+127.0.0.1:6379&gt; object encoding world
+&quot;ziplist&quot;
+</code></pre>
+
+<p>Redis 的 <code>intset</code> 是一个紧凑的整数数组结构，它用于存放元素都是整数的并且元素个数较少的 set 集合。</p>
+
+<p>如果整数可以用 uint16 表示，那么 intset 的元素就是 16 位的数组，如果新加入的整数超过了 uint16 的表示范围，那么就使用 uint32 表示，如果新加入的元素超过了 uint32 的表示范围，那么就使用 uint64 表示，Redis 支持 set 集合动态从 uint16 升级到 uint32，再升级到 uint64。insert 结构如下。</p>
+
+<p><img src="media/16474792471704/16474801083775.jpg" alt=""/></p>
+
+<pre class="line-numbers"><code class="language-text">127.0.0.1:6379&gt; sadd hello 1 2 3
+(integer) 3
+127.0.0.1:6379&gt; object encoding hello
+&quot;intset&quot;
+</code></pre>
+
+<p>如果 set 里存储的是字符串，那么 sadd 立即升级为 hashtable 结构。还记得 Java 的 HashSet 么，它内部是使用 HashMap 实现的。</p>
+
+<pre class="line-numbers"><code class="language-text">127.0.0.1:6379&gt; sadd hello yes no
+(integer) 2
+127.0.0.1:6379&gt; object encoding hello
+&quot;hashtable&quot;
+</code></pre>
+
+<p><strong>存储界限</strong><br/>
+当集合对象的元素不断增加，或者某个 value 值过大，这种小对象存储也会被升级为标准结构。Redis 规定在小对象存储结构的限制条件如下：</p>
+
+<pre class="line-numbers"><code class="language-text">hash-max-ziplist-entries 512  # hash 的元素个数超过 512 就必须用标准结构存储
+hash-max-ziplist-value 64  # hash 的任意元素的 key/value 的长度超过 64 就必须用标准结构存储
+list-max-ziplist-entries 512  # list 的元素个数超过 512 就必须用标准结构存储
+list-max-ziplist-value 64  # list 的任意元素的长度超过 64 就必须用标准结构存储
+zset-max-ziplist-entries 128  # zset 的元素个数超过 128 就必须用标准结构存储
+zset-max-ziplist-value 64  # zset 的任意元素的长度超过 64 就必须用标准结构存储
+set-max-intset-entries 512  # set 的整数元素个数超过 512 就必须用标准结构存储
+</code></pre>
+
+<p>接下来我们做一个小实验，看看这里的界限是不是真的起到作用了。</p>
+
+<pre class="line-numbers"><code class="language-text">import redis
+client = redis.StrictRedis()
+client.delete(&quot;hello&quot;)
+for i in range(512):
+    client.hset(&quot;hello&quot;, str(i), str(i))
+print client.object(&quot;encoding&quot;, &quot;hello&quot;)  # 获取对象的存储结构
+client.hset(&quot;hello&quot;, &quot;512&quot;, &quot;512&quot;)
+print client.object(&quot;encoding&quot;, &quot;hello&quot;) # 再次获取对象的存储结构
+</code></pre>
+
+<p>输出：</p>
+
+<pre class="line-numbers"><code class="language-text">ziplist
+hashtable
+</code></pre>
+
+<p>可以看出来当 hash 结构的元素个数超过 512 的时候，存储结构就发生了变化。</p>
+
+<p>接下来我们再试试递增 value 的长度，在 Python 里面对字符串乘以一个整数 n 相当于重复 n 次。</p>
+
+<pre class="line-numbers"><code class="language-text">import redis
+client = redis.StrictRedis()
+client.delete(&quot;hello&quot;)
+for i in range(64):
+    client.hset(&quot;hello&quot;, str(i), &quot;0&quot; * (i+1))
+print client.object(&quot;encoding&quot;, &quot;hello&quot;)  # 获取对象的存储结构
+client.hset(&quot;hello&quot;, &quot;512&quot;, &quot;0&quot; * 65)
+print client.object(&quot;encoding&quot;, &quot;hello&quot;) # 再次获取对象的存储结构
+</code></pre>
+
+<p>输出：</p>
+
+<pre class="line-numbers"><code class="language-text">ziplist
+hashtable
+</code></pre>
+
+<p>可以看出来当 hash 结构的任意 entry 的 value 值超过了 64，存储结构就升级成标准结构了。</p>
+
+<h2 id="toc_2">内存回收机制</h2>
+
+<p>Redis 并不总是可以将空闲内存立即归还给操作系统。</p>
+
+<p>如果当前 Redis 内存有 10G，当你删除了 1GB 的 key 后，再去观察内存，你会发现内存变化不会太大。原因是操作系统回收内存是以页为单位，如果这个页上只要有一个 key 还在使用，那么它就不能被回收。Redis 虽然删除了 1GB 的 key，但是这些 key 分散到了很多页面中，每个页面都还有其它 key 存在，这就导致了内存不会立即被回收。</p>
+
+<p>不过，如果你执行 <code>flushdb</code>，然后再观察内存会发现内存确实被回收了。原因是所有的 key 都干掉了，大部分之前使用的页面都完全干净了，会立即被操作系统回收。</p>
+
+<p>Redis 虽然无法保证立即回收已经删除的 key 的内存，但是它会重用那些尚未回收的空闲内存。这就好比电影院里虽然人走了，但是座位还在，下一波观众来了，直接坐就行。而操作系统回收内存就好比把座位都给搬走了。</p>
+
+<h2 id="toc_3">内存分配算法</h2>
+
+<p>内存分配是一个非常复杂的课题，需要适当的算法划分内存页，需要考虑内存碎片，需要平衡性能和效率。</p>
+
+<p>Redis 为了保持自身结构的简单性，在内存分配这里直接做了甩手掌柜，将内存分配的细节丢给了第三方内存分配库去实现。目前 Redis 可以使用 jemalloc(facebook) 库来管理内存，也可以切换到tcmalloc(google)。因为 jemalloc 相比 tcmalloc的性能要稍好一些，所以Redis默认使用了jemalloc。 </p>
+
+<pre class="line-numbers"><code class="language-text">127.0.0.1:6379&gt; info memory
+# Memory
+used_memory:809608
+used_memory_human:790.63K
+used_memory_rss:8232960
+used_memory_peak:566296608
+used_memory_peak_human:540.06M
+used_memory_lua:36864
+mem_fragmentation_ratio:10.17
+mem_allocator:jemalloc-3.6.0
+</code></pre>
+
+<p>通过<code>info memory</code>指令可以看到 Redis 的<code>mem_allocator</code>使用了 jemalloc。</p>
+
+<h2 id="toc_4">拓展阅读</h2>
+
+<p><a href="https://tinylab.org/memory-allocation-mystery-jemalloc-a/">jemalloc —— 内存分配的奥义</a></p>
+
+		</p>
+		<!-- 侧边导航条 -->
+		<div id="directory-content" class="directory-content">
+    		<div id="directory" style="margin-left: 50px;margin-top: 120px"></div>
+		</div>
+	<!-- JS -->
+	<script>
+		var postDirectoryBuild = function() {
+		    var postChildren = function children(childNodes, reg) {
+		        var result = [],
+		            isReg = typeof reg === 'object',
+		            isStr = typeof reg === 'string',
+		            node, i, len;
+		        for (i = 0, len = childNodes.length; i < len; i++) {
+		            node = childNodes[i];
+		            if ((node.nodeType === 1 || node.nodeType === 9) &&
+		                (!reg ||
+		                isReg && reg.test(node.tagName.toLowerCase()) ||
+		                isStr && node.tagName.toLowerCase() === reg)) {
+		                result.push(node);
+		            }
+		        }
+		        return result;
+		    },
+		    createPostDirectory = function(article, directory, isDirNum) {
+		        var contentArr = [],
+		            titleId = [],
+		            levelArr, root, level,
+		            currentList, list, li, link, i, len;
+		        levelArr = (function(article, contentArr, titleId) {
+		            var titleElem = postChildren(article.childNodes, /^h\d$/),
+		                levelArr = [],
+		                lastNum = 1,
+		                lastRevNum = 1,
+		                count = 0,
+		                guid = 1,
+		                id = 'directory' + (Math.random() + '').replace(/\D/, ''),
+		                lastRevNum, num, elem;
+		            while (titleElem.length) {
+		                elem = titleElem.shift();
+		                contentArr.push(elem.innerHTML);
+		                num = +elem.tagName.match(/\d/)[0];
+		                if (num > lastNum) {
+		                    levelArr.push(1);
+		                    lastRevNum += 1;
+		                } else if (num === lastRevNum ||
+		                    num > lastRevNum && num <= lastNum) {
+		                    levelArr.push(0);
+		                    lastRevNum = lastRevNum;
+		                } else if (num < lastRevNum) {
+		                    levelArr.push(num - lastRevNum);
+		                    lastRevNum = num;
+		                }
+		                count += levelArr[levelArr.length - 1];
+		                lastNum = num;
+		                elem.id = elem.id || (id + guid++);
+		                titleId.push(elem.id);
+		            }
+		            if (count !== 0 && levelArr[0] === 1) levelArr[0] = 0;
+
+		            return levelArr;
+		        })(article, contentArr, titleId);
+		        currentList = root = document.createElement('ul');
+		        dirNum = [0];
+		        for (i = 0, len = levelArr.length; i < len; i++) {
+		            level = levelArr[i];
+		            if (level === 1) {
+		                list = document.createElement('ul');
+		                if (!currentList.lastElementChild) {
+		                    currentList.appendChild(document.createElement('li'));
+		                }
+		                currentList.lastElementChild.appendChild(list);
+		                currentList = list;
+		                dirNum.push(0);
+		            } else if (level < 0) {
+		                level *= 2;
+		                while (level++) {
+		                    if (level % 2) dirNum.pop();
+		                    currentList = currentList.parentNode;
+		                }
+		            }
+		            dirNum[dirNum.length - 1]++;
+		            li = document.createElement('li');
+		            link = document.createElement('a');
+		            link.href = '#' + titleId[i];
+		            link.innerHTML = !isDirNum ? contentArr[i] :
+		                dirNum.join('.') + ' ' + contentArr[i] ;
+		            li.appendChild(link);
+		            currentList.appendChild(li);
+		        }
+		        directory.appendChild(root);
+		    };
+		    createPostDirectory(document.getElementById('post-content'),document.getElementById('directory'), true);
+		};
+		postDirectoryBuild();
+	</script>	
+	<!-- 版权声明 -->
+		<p class="post-info" style="color: #BCBDB6">
+				本文由 <a style="color: #BCBDB6" href="#">Sajor
+				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2022-03-17T09:07:27+08:00
+		</p>
+	<!-- 导航 -->
+			<div id="comments" class="clearfix" style="padding: 0px;">
+				<footer class="post-footer clearfix">	    			
+				    <div class="meta">
+					    
+					    <P style="float: left;">
+					    	<a href="16456971885760.html" 
+					        title="Previous Post: Redis 字符串">&laquo; Redis 字符串</a>
+					    </p>
+					    <p style="float:right; ">
+					    	
+					    	
+					        <a href="16474265825347.html" 
+					        title="Next Post: Redis消息多播 PubSub">Redis消息多播 PubSub &raquo;</a>
+					    </p> 
+					    
+				    </div>
+			  	</footer>
+	<!-- footer end -->
+			</div>		
+	</div>
+</article>
+			<!-- 评论区 -->
+			<div id="respond-post-269" class="comment-container"> 
+				<div id="comments" class="clearfix">
+
+				<script type="text/javascript" src="/pm/hashover/hashover.js"></script>
+<noscript>You must have JavaScript enabled to use the comments.</noscript>
+
+<!-- 评论区结束 -->
+					<div>
+					
+					</div>
+
+				</div>
+			</div>
+</div>
+<!-- headroom -->
+<script type="text/javascript"> 
+(function() {
+    var header = new Headroom(document.querySelector("#header"), {
+        tolerance: 3,
+        offset : 80,
+        classes: {
+          initial: "animated",
+          pinned: "slideDown",
+          unpinned: "slideUp"
+        }
+    });
+    header.init();
+}());
+</script>  <footer id="footer" class="footer" style="background-color: #030501;color: #FFFFFE;">
+  <div class="footer-meta">
+    <div class="footer-container">
+      <!-- 版权说明 -->
+      <div class="meta-item meta-copyright">
+        <div class="meta-copyright-info">
+          <h2 class="meta-title">INFO</h2>
+          <div class="info-text">  
+              <p>Copyright &copy; 2017 <br>
+              <span class="credit">Powered by 
+              <a target="_blank" href="http://zh.mweb.im/">MWeb</a> 
+              </span>
+              <p>Theme Design by <a href="https://www.linpx.com/" target="_blank">Chakhsu</a></p>
+              <p>Migrating to Mweb by <a href="http://metaidea.cn">idken</a></p>
+              </p> 
+          </div>                  
+        </div>
+      </div>  
+      <!-- Categories -->
+      <div class="meta-item meta-comments">
+          <h2 class="meta-title">CATEGORIES</h2>  
+             
+            
+            <li>
+            <a href="%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">设计模式&nbsp;(2)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="Algorithm.html">Algorithm&nbsp;(7)</a>
+            <p>
+            
+            <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html">数据结构&nbsp;(2)</a>&nbsp;&nbsp;
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(7)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            <li>
+            <a href="Arts.html">Arts&nbsp;(3)</a>
+            <p>
+            
+            </p>
+            </li>
+            
+             
+            
+            </p>
+            </li>
+            
+             
+            
+            </p>
+            </li>
+            
+             
+            
+            </p>
+            </li>
+            
+             
+            
+            </p>
+            </li>
+            
+             
+            
+            </p>
+            </li>
+            
+             
+            
+             
+            
+             
+            
+            </p>
+            </li>
+            
+             
+            
+             
+      </div>
+      <!-- 最新文章 -->
+      <div class="meta-item meta-comments">
+          <h2 class="meta-title">RECENT POSTS</h2>
+
+          
+          
+         <li>
+           <a href="16488664948376.html">Windows 开启wsl并开启远程</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16487053528391.html">Java8 特性 Optional</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16486272439635.html">Word Cloud 词云重叠算法</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16486184863200.html">Python pip源 国内源</a><br>
+         </li>
+          
+          
+          
+         <li>
+           <a href="16485397489109.html">ngrok 内网穿透</a><br>
+         </li>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+           
+
+      </div>
+  </div>
+</div>
+</footer>
+
+<!--评论变量判断 -->
+      
+<!-- 评论end -->
+
+
+
+</body>
+</html>

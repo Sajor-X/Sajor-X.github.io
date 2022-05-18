@@ -10,7 +10,7 @@
 
     <title>
       
-    滑动验证码识别 - Sajor's Blog
+    [滑动验证码识别](https://565785929.github.io/16434266223947.html) - Sajor's Blog
     
     </title>
 
@@ -53,8 +53,6 @@
         
         <a href="index.html">Home</a>
         
-        <a href="archives.html">Archives</a>
-        
         <a href="resume/resume.html">Resume</a>
         
         
@@ -78,10 +76,6 @@
           </li>
           
           <li>
-          <a href="archives.html">Archives</a>
-          </li>
-          
-          <li>
           <a href="resume/resume.html">Resume</a>
           </li>
           
@@ -95,7 +89,7 @@
 		<div class="post-header">
 			<!-- title -->
 			<div class="post-header">
-				<h1 class="post-title itemprop="name headline">滑动验证码识别</h1>	
+				<h1 class="post-title itemprop="name headline">[滑动验证码识别](https://565785929.github.io/16434266223947.html)</h1>	
 				<div class="post-data">
 					<time datetime="2022-01-29T11:23:42+08:00" pubdate data-updated="true">2022/01/29</time>
 				</div>
@@ -109,7 +103,9 @@
 		</p>
 	<!-- 正文 -->
 		<p>
-		<p>今天的目标地址是抖音的<a href="https://business.oceanengine.com/site/login">巨量纵横</a>，目前东家是一家广告营销型的公司，专注于在各大平台投放信息流广告。巨量纵横为今日头条的广告平台，用于管理推广账户。今天破解一下这个平台的登陆入口，为今后的数据爬取开个头。</p>
+		<p>今天的目标地址是字节的<a href="https://business.oceanengine.com/site/login">巨量纵横</a>，目前东家是一家广告营销型的公司，专注于在各大平台投放信息流广告。巨量纵横为字节跳动的广告平台，用于管理推广账户。今天破解一下这个平台的登陆入口，为今后的数据爬取开个头。</p>
+
+<p><img src="media/16434266223947/14.gif" alt="14"/></p>
 
 <h2 id="toc_0">涉及工具技术</h2>
 
@@ -120,6 +116,10 @@
 <li>opencv</li>
 <li><a href="https://pillow.readthedocs.io/en/stable/">Pillow</a></li>
 </ul>
+
+<pre class="line-numbers"><code class="language-bash"># python 库安装
+pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+</code></pre>
 
 <h2 id="toc_1">开始</h2>
 
@@ -160,6 +160,8 @@ request.urlretrieve(img, &#39;./img.jpg&#39;)
 
 <h2 id="toc_3">滤波</h2>
 
+<p><img src="media/16434266223947/16435539177675.jpg" alt=""/></p>
+
 <p>因为我们只需要缺口的左边位置的坐标，所以可以通过具有提取边缘特征的水平梯度Prewitt卷积核来处理图片。通过测试我选取了下面这个3x3的卷积核。</p>
 
 <p>\[<br/>
@@ -197,6 +199,78 @@ request.urlretrieve(img, &#39;./img.jpg&#39;)
 <h2 id="toc_6">控制浏览器</h2>
 
 <p>核心难点突破之后就简单多了，使用selenium这个库来控制浏览器，使用代码的方式操纵鼠标键盘。</p>
+
+<h2 id="toc_7">拟合</h2>
+
+<p><a href="https://zh.wikipedia.org/wiki/%E6%9B%B2%E7%B7%9A%E6%93%AC%E5%90%88">拟合</a>: 形象的说，拟合就是把平面上一系列的点，用一条光滑的曲线连接起来。因为这条曲线有无数种可能，从而有各种拟合方法。拟合的曲线一般可以用函数表示，根据这个函数的不同有不同的拟合名字。</p>
+
+<p>程序计算出的缺口位置，和页面上滑块移动的位置有偏差。拖动滑块位置并通过浏览器控制台可以看到滑块贴合缺口时对应的移动位置。</p>
+
+<p><img src="media/16434266223947/16435522633856.jpg" alt="" style="width:991px;"/></p>
+
+<p>我收集了几组页面滑块位置与程序计算的位置。（可能有点多）</p>
+
+<table>
+<thead>
+<tr>
+<th>页面(y)</th>
+<th>程序(x)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>246</td>
+<td>407</td>
+</tr>
+<tr>
+<td>190</td>
+<td>315</td>
+</tr>
+<tr>
+<td>221</td>
+<td>366</td>
+</tr>
+<tr>
+<td>190</td>
+<td>316</td>
+</tr>
+<tr>
+<td>97</td>
+<td>164</td>
+</tr>
+<tr>
+<td>152</td>
+<td>255</td>
+</tr>
+<tr>
+<td>241</td>
+<td>398</td>
+</tr>
+<tr>
+<td>226</td>
+<td>374</td>
+</tr>
+</tbody>
+</table>
+
+<p>不知道页面和程序输出的为啥相差这么多，可能两数是有什么关系，但是看不懂前端代码，也懒得分析，就假设几个未知数，解一下方程吧。</p>
+
+<p>假设 二元一次方程 \[ y = ax + b \] 或者 二元二次方程 \[ y = ax^2 + bx + c \] ，我记得次方越高，拟合的就会越好。 最后按一元一次解得 a=1.65</p>
+
+<h2 id="toc_8">控制浏览器</h2>
+
+<p>这部分要使用selenium库，控制浏览器，我使用的是Chrome，关于如何安装selenium以及Chrome控制器驱动程序<a href="https://registry.npmmirror.com/binary.html?path=chromedriver/">chrome driver</a>，可以参考百度或者<a href="https://www.cnblogs.com/lfri/p/10542797.html">csdn帖子</a>。</p>
+
+<p>需要查看自己电脑上的chrome版本和<a href="https://registry.npmmirror.com/binary.html?path=chromedriver/">chrome driver</a>的版本一致。</p>
+
+<p><img src="media/16434266223947/16443832358467.jpg" alt="" style="width:740px;"/></p>
+
+<h2 id="toc_9">源码</h2>
+
+<p>本文代码已上传至<a href="https://github.com/565785929/AutoLoginSlider">github</a>，欢迎交流与star。</p>
+
+<p>本文地址：<a href="https://565785929.github.io/16434266223947.html">Sajor&#39;s Blog</a></p>
 
 <p>未完待续...</p>
 
@@ -306,6 +380,12 @@ request.urlretrieve(img, &#39;./img.jpg&#39;)
 				<footer class="post-footer clearfix">	    			
 				    <div class="meta">
 					    
+					    <P style="float: left;">
+					    	<a href="16438993382108.html" 
+					        title="Previous Post: 卷积神经元网络">&laquo; 卷积神经元网络</a>
+					    </p>
+					    <p style="float:right; ">
+					    	
 					    	
 					        <a href="16425740174242.html" 
 					        title="Next Post: Linux 字体安装">Linux 字体安装 &raquo;</a>
@@ -379,8 +459,10 @@ request.urlretrieve(img, &#39;./img.jpg&#39;)
              
             
             <li>
-            <a href="Algorithm.html">Algorithm&nbsp;(3)</a>
+            <a href="Algorithm.html">Algorithm&nbsp;(7)</a>
             <p>
+            
+            <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html">数据结构&nbsp;(2)</a>&nbsp;&nbsp;
             
             </p>
             </li>
@@ -388,7 +470,7 @@ request.urlretrieve(img, &#39;./img.jpg&#39;)
              
             
             <li>
-            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(5)</a>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(7)</a>
             <p>
             
             </p>
@@ -399,6 +481,11 @@ request.urlretrieve(img, &#39;./img.jpg&#39;)
             <li>
             <a href="Arts.html">Arts&nbsp;(3)</a>
             <p>
+            
+            </p>
+            </li>
+            
+             
             
             </p>
             </li>
@@ -443,31 +530,31 @@ request.urlretrieve(img, &#39;./img.jpg&#39;)
           
           
          <li>
-           <a href="16434266223947.html">滑动验证码识别</a><br>
+           <a href="16488664948376.html">Windows 开启wsl并开启远程</a><br>
          </li>
           
           
           
          <li>
-           <a href="16425740174242.html">Linux 字体安装</a><br>
+           <a href="16487053528391.html">Java8 特性 Optional</a><br>
          </li>
           
           
           
          <li>
-           <a href="16415484666630.html">nmap 端口嗅探</a><br>
+           <a href="16486272439635.html">Word Cloud 词云重叠算法</a><br>
          </li>
           
           
           
          <li>
-           <a href="16415371479168.html">hydra 爆破ssh</a><br>
+           <a href="16486184863200.html">Python pip源 国内源</a><br>
          </li>
           
           
           
          <li>
-           <a href="16414626714891.html">升级VUE版本</a><br>
+           <a href="16485397489109.html">ngrok 内网穿透</a><br>
          </li>
           
           

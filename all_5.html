@@ -53,8 +53,6 @@
         
         <a href="index.html">Home</a>
         
-        <a href="archives.html">Archives</a>
-        
         <a href="resume/resume.html">Resume</a>
         
         
@@ -78,10 +76,6 @@
           </li>
           
           <li>
-          <a href="archives.html">Archives</a>
-          </li>
-          
-          <li>
           <a href="resume/resume.html">Resume</a>
           </li>
           
@@ -98,50 +92,36 @@
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16309452975279/B+Tree.png);">
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16415371479168/16415378538145.jpg);">
 						
 						</div> 
-						<a href="16309452975279.html"> 
+						<a href="16415371479168.html"> 
 							<div class="item-desc"> 
 								<p>
 
-什么是索引
+ssh破解神器 hydra
+
+这是个渗透神器，kail默认安装的工具。
+
+centos 安装步骤： 
+
+# 下载最新版本的 hydra
+wget https://github.com/vanhauser-thc/thc-hydra/archive/refs/tags/v9.2.tar.gz
+
+# 解压
+tar -xvf v9.2.tar.gz
+
+cd thc-hydra-9.2
+
+# 安装
+./configure
+make
+make install
 
 
-索引的常见模型
+之后就可以使用了, 到github下载一个密码本
 
-
-哈希表 hash table
-
-
-有序数组
-
-
-
-
-
-
-
-来自MySQL实战45讲
-
-
-什么是索引
-
-索引的出现其实就是为了提高数据查询的效率，就像书的目录一样。
-
-一本500页的书，如果你想快速找到其中的某一个知识点，在不借助目录的情况下，那我估计你可得找一会儿。同样，对于数据库的表而言，索引其实就是它的“目录”。
-
-索引的常见模型
-
-
-哈希表
-有序数组
-搜索树
-
-
-哈希表 hash table
-
-哈希表是一种以键-值（key-value）存储数据的结构，我们只要输入待查找的值即key，就可以找到其对应的值即Value。哈希的思路很简单，把值放在数组里</p> 
+git clone https://github.com/huyuanzhi2/pas</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -152,7 +132,7 @@
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16309452975279.html">04 | 深入浅出索引（上）</a>
+	  							<a href="16415371479168.html">hydra 爆破ssh</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -163,7 +143,7 @@
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='MySQL.html'>MySQL</a>
+			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
 								
 		   						</div> 
 		   					</div> 
@@ -176,69 +156,27 @@
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16304224326131/16306006330934.jpg);">
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16414626714891/16434641228384.jpg);">
 						
 						</div> 
-						<a href="16304224326131.html"> 
+						<a href="16414626714891.html"> 
 							<div class="item-desc"> 
 								<p>
 
-隔离性与隔离级别
+在看文档中，按步骤升级vue；
+
+于是就先通过 npm uninstall vue-cli -g卸载vue，然后再安装，但是vue -V时依然是2.9.6版本：
+
+第一步：npm config get registry 
+
+第二步：npm config set registry https://registry.npm.taobao.org
+
+第三步：npm i -g @vue/cli
+
+完美，安装成功！
 
 
-脏读
-
-
-幻读
-
-
-不可重复读
-
-
-
-
-SQL标准的事务隔离级别包括：
-
-
-案例
-
-
-事务隔离的实现
-
-
-可重复读
-
-
-事务的启动方式
-
-
-
-
-
-
-
-来自MySQL实战45讲
-
-
-隔离性与隔离级别
-
-提到事务，你肯定会想到ACID：
-
-
-原子性（Atomicity）
-一致性（Consistency）
-隔离性（Isolation）
-持久性（Durability）
-
-
-今天我们就来说说其中I，也就是“隔离性”。
-
-当数据库上有多个事务同时执行的时候，就可能出现：
-
-
-脏读（dirty read）
-不可重复读（non-repeatable read）
-幻读（phantom </p> 
+</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -249,7 +187,7 @@ SQL标准的事务隔离级别包括：
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16304224326131.html">03 | 事务隔离：为什么你改了我还看不见？</a>
+	  							<a href="16414626714891.html">升级VUE版本</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -260,7 +198,7 @@ SQL标准的事务隔离级别包括：
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='MySQL.html'>MySQL</a>
+			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
 								
 		   						</div> 
 		   					</div> 
@@ -273,40 +211,74 @@ SQL标准的事务隔离级别包括：
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16302079765954/16302100687432.jpg);">
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16414407883196/16414408061006.jpg);">
 						
 						</div> 
-						<a href="16302079765954.html"> 
+						<a href="16414407883196.html"> 
+							<div class="item-desc"> 
+								<p>启动Linux系统后输入 ls \ 
+
+
+以下是对这些目录的解释：
+
+
+/bin：bin是Binary的缩写, 这个目录存放着最经常使用的命令。
+/boot：这里存放的是启动Linux时使用的一些核心文件，包括一些连接文件以及镜像文件。
+/dev ：dev是Device(设备)的缩写, 该目录下存放的是Linux的外部设备，在Linux中访问设备的方式和访问文件的方式是相同的。
+/etc：这个目录用来存放所有的系统管理所需要的配置文件和子目录。
+/home：用户的主目录，在Linux中，每个用户都有一个自己的目录，一般该目录名是以用户的账号命名的。
+/lib：这个目录里存放着系统最基本的动态连</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16414407883196.html">Linux 目录结构</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16413527990433/16413528368917.jpg);">
+						
+						</div> 
+						<a href="16413527990433.html"> 
 							<div class="item-desc"> 
 								<p>
 
-redo log（重做日志）
-
-
-binlog（归档日志）
-
-
-两阶段提交
-
-
-
-
-redo log 和 binlog 区别
 
 
 
 
 
-来自MySQL实战45讲
 
 
-与查询流程不一样的是，更新流程还涉及两个重要的日志模块，它们正是我们今天要讨论的主角：
 
-redo log（重做日志）
 
-redo log为InnoDB特有的日志，用来保证即使数据库发生异常重启，之前提交的记录都不会丢失，这个能力称为crash-safe。
-
-WAL技术，WAL的全称是Write-Ahead Logging，它的关键点就是先写日志，再写磁盘。具体来说，当有一条记录需要更新的时候，InnoDB引擎就会先把记录写到</p> 
+</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -317,7 +289,7 @@ WAL技术，WAL的全称是Write-Ahead Logging，它的关键点就是先写日�
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16302079765954.html">02 | 日志系统：一条SQL更新语句是如何执行的？</a>
+	  							<a href="16413527990433.html">Vim 跳转技巧</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -328,7 +300,7 @@ WAL技术，WAL的全称是Write-Ahead Logging，它的关键点就是先写日�
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='MySQL.html'>MySQL</a>
+			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
 								
 		   						</div> 
 		   					</div> 
@@ -341,54 +313,39 @@ WAL技术，WAL的全称是Write-Ahead Logging，它的关键点就是先写日�
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16301414327814/16301415100109.jpg);">
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16408435425370/16408437247844.jpg);">
 						
 						</div> 
-						<a href="16301414327814.html"> 
+						<a href="16408435425370.html"> 
 							<div class="item-desc"> 
 								<p>
 
-Server层
+安装
+
+使用包管理工具
+
+# Ubuntu 或 Debian
+$ sudo apt-get install tmux
+
+# CentOS 或 Fedora
+$ sudo yum install tmux
+
+# Mac
+$ brew install tmux
 
 
-连接器
+session 会话管理
+
+1. 新建会话
+
+第一个启动的 Tmux 窗口，编号是0，第二个窗口的编号是1，以此类推。这些窗口对应的会话，就是 0 号会话、1 号会话。
+
+使用编号区分会话，不太直观，更好的方法是为会话起名。
+
+$ tmux new -s &lt;session-name&gt;
 
 
-查询缓存
-
-
-分析器
-
-
-优化器
-
-
-执行器
-
-
-
-
-存储引擎
-
-
-
-
-
-来自MySQL实战45讲
-
-
-MySQL的逻辑架构图
-
-
-大体来说，MySQL可以分为Server层和存储引擎层两部分。
-
-Server层
-
-包括连接器、查询缓存、分析器、优化器、执行器等，涵盖MySQL的大多数核心服务功能，以及所有的内置函数（如日期、时间、数学和加密函数等），所有跨存储引擎的功能都在这一层实现，比如存储过程、触发器、视图等。
-
-连接器
-
-第一步，你会先连接到这个数据库上，这时候接待你的就是连接器。连接器负责跟客户端建立连接、获取权限、维持和管理连接。连接命令一般是这</p> 
+上面命令新建一个指定名称的会话。</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -399,7 +356,7 @@ Server层
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16301414327814.html">01 | 基础架构：一条SQL查询语句是如何执行的？</a>
+	  							<a href="16408435425370.html">tmux</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -410,7 +367,7 @@ Server层
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='MySQL.html'>MySQL</a>
+			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
 								
 		   						</div> 
 		   					</div> 
@@ -423,31 +380,12 @@ Server层
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16261043857914/16322357012159.jpg);">
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16261043857914.html"> 
+						<a href="16405110285297.html"> 
 							<div class="item-desc"> 
-								<p>Google Style
-
-
-命名与注释(Naming and Comments)
-
-命名
-
-一、命名长度
-
-二、利用上下文来简化命名
-
-public class User {
-  private String userName;
-  private String userPassword;
-  private String userAvatarUrl;
-  //...
-}
-
-
-在User类这样一个上下文中，我们没有在成员变量的命名中重复添加 &quot;user&quot; 这样一个前缀单词，而是直接命名为name, password, avatarUrl。在使用这些属性的时候，我们能借助对</p> 
+								<p></p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -458,7 +396,7 @@ public class User {
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16261043857914.html">改善代码质量规约</a>
+	  							<a href="16405110285297.html">JVM 内存模型</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -469,73 +407,7 @@ public class User {
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html'>设计模式</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16253298632146/16253299182713.jpg);">
-						
-						</div> 
-						<a href="16253298632146.html"> 
-							<div class="item-desc"> 
-								<p>概述
-
-在软件开发过程，每天都会产生新的代码，代码合并的过程中可能会出现如下问题：
-
-
-  代码被覆盖或丢失
-  代码写的不理想希望还原之前的版本
-  希望知道与之前版本的差别
-  是谁修改了代码以及为什么修改
-  发版时希望分成不同的版本(测试版、发行版等)
-
-
-因此，我们希望有一种机制，能够帮助我们：
-
-
-  可以随时回滚到之前的版本
-  协同开发时不会覆盖别人的代码
-  留下修改记录，以便随时查看
-  发版时可以方便的管理不同的版本
-
-
-什么是版本控制系统
-
-一个标准的版本控制系统 Version Control System (VCS)，通常需要有以下功能：
-
-
-  能够创建 Repo</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="16253298632146.html">为什么需要版本控制</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Git.html'>Git</a>
+			    			<a class='category' href='%E8%AF%AD%E6%B3%95%E7%B1%BB.html'>语法类</a>
 								
 		   						</div> 
 		   					</div> 
@@ -594,8 +466,10 @@ public class User {
              
             
             <li>
-            <a href="Algorithm.html">Algorithm&nbsp;(3)</a>
+            <a href="Algorithm.html">Algorithm&nbsp;(7)</a>
             <p>
+            
+            <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html">数据结构&nbsp;(2)</a>&nbsp;&nbsp;
             
             </p>
             </li>
@@ -603,7 +477,7 @@ public class User {
              
             
             <li>
-            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(5)</a>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(7)</a>
             <p>
             
             </p>
@@ -614,6 +488,11 @@ public class User {
             <li>
             <a href="Arts.html">Arts&nbsp;(3)</a>
             <p>
+            
+            </p>
+            </li>
+            
+             
             
             </p>
             </li>
@@ -658,31 +537,31 @@ public class User {
           
           
          <li>
-           <a href="16434266223947.html">滑动验证码识别</a><br>
+           <a href="16488664948376.html">Windows 开启wsl并开启远程</a><br>
          </li>
           
           
           
          <li>
-           <a href="16425740174242.html">Linux 字体安装</a><br>
+           <a href="16487053528391.html">Java8 特性 Optional</a><br>
          </li>
           
           
           
          <li>
-           <a href="16415484666630.html">nmap 端口嗅探</a><br>
+           <a href="16486272439635.html">Word Cloud 词云重叠算法</a><br>
          </li>
           
           
           
          <li>
-           <a href="16415371479168.html">hydra 爆破ssh</a><br>
+           <a href="16486184863200.html">Python pip源 国内源</a><br>
          </li>
           
           
           
          <li>
-           <a href="16414626714891.html">升级VUE版本</a><br>
+           <a href="16485397489109.html">ngrok 内网穿透</a><br>
          </li>
           
           

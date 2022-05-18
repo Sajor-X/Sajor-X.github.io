@@ -53,8 +53,6 @@
         
         <a href="index.html">Home</a>
         
-        <a href="archives.html">Archives</a>
-        
         <a href="resume/resume.html">Resume</a>
         
         
@@ -78,10 +76,6 @@
           </li>
           
           <li>
-          <a href="archives.html">Archives</a>
-          </li>
-          
-          <li>
           <a href="resume/resume.html">Resume</a>
           </li>
           
@@ -98,37 +92,36 @@
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16425740174242/16434636451231.jpg);">
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16425740174242.html"> 
+						<a href="16488664948376.html"> 
 							<div class="item-desc"> 
-								<p>
+								<p>首先在linux中启动SSH连接支持
 
-今天要实现一个freemarker模板转HTML再转成PDF 或者 图片的需求。
-
-本地代码执行好使，上线到linux服务器上测试就出现汉字不显示的情况。
-
-# 安装字体命令
-yum -y install fontconfig
-
-# 查看linux已安装字体
-fc-list
-
-# 查看linux已安装中文字体
-fc-list :lang=zh
+#客户端
+sudo apt-get install openssh-client
+#服务器
+sudo apt-get install openssh-server
+#或
+apt-get install ssh
 
 
-安装
+编辑配置文件
 
-# 创建目录
-mkdir -p /usr/share/fonts/my_fonts
-# 将要安装的字体上传到该文件夹下
+sudo vi /etc/ssh/sshd_config
 
-# 安装字体索引指令
-yum install mkfontscale
 
-# 生成字体索引 进入目录  执行索引字体生</p> 
+增加以下配置
+
+Port 2222             # wsl端口
+PermitRootLogin yes   # 可以root远程登录
+AllowUsers xxx        # 开启wsl时新建的账户
+
+
+重启
+
+sudo service ssh --</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -139,7 +132,7 @@ yum install mkfontscale
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16425740174242.html">Linux 字体安装</a>
+	  							<a href="16488664948376.html">Windows 开启wsl并开启远程</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -163,32 +156,37 @@ yum install mkfontscale
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16415484666630/16434639294123.jpg);">
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16485397489109/16485401540848.jpg);">
 						
 						</div> 
-						<a href="16415484666630.html"> 
+						<a href="16485397489109.html"> 
 							<div class="item-desc"> 
 								<p>
 
-Nmap，也就是Network Mapper，最早是Linux下的网络扫描和嗅探工具包。
+ngrok 安装和使用太简单了，可以方便今后调试带回调的三方接口。
 
-很多影视剧里的黑客工具
+按照文档保存密钥后，输入 ngrok http 8080 启动
 
-nmap 是主机探测、端口扫描、版本检测、系统检测、支持探测脚本编写。查看那个端口和开着啥
 
-telnet 8.8.8.8　　可以查看ip
 
-nmap ip -p　　根据常用服务猜测他的端口，查看ip端口有没有开启
+图中 Web Interface 的 4040 地址，还可以看到ngrok作为中间人劫持记录到的所有接口文件数据。
 
-nmap -p50-100 ip　　查看端口范围
 
-nmap -O ip　　　　　操作系统检测
 
-nmap -sP ip　　　　  类似win/linux的ping扫描
+配置文件
 
-nmap -sP ip　　　　
+输入token之后，会自动生成配置文件，我们可以在配置文件里配置我们常用的端口，例如8080。
 
-通过 nmap xxx:xxx:xxx:xxx -Pn</p> 
+tunnels:
+  dev:
+    proto: http
+    addr: 8080
+  aria:
+    proto: tcp
+    addr: 6800
+
+
+这样可以直接使用命令 ngrok start de</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -199,126 +197,7 @@ nmap -sP ip　　　　
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16415484666630.html">nmap 端口嗅探</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16415371479168/16415378538145.jpg);">
-						
-						</div> 
-						<a href="16415371479168.html"> 
-							<div class="item-desc"> 
-								<p>
-
-ssh破解神器 hydra
-
-这是个渗透神器，kail默认安装的工具。
-
-centos 安装步骤： 
-
-# 下载最新版本的 hydra
-wget https://github.com/vanhauser-thc/thc-hydra/archive/refs/tags/v9.2.tar.gz
-
-# 解压
-tar -xvf v9.2.tar.gz
-
-cd thc-hydra-9.2
-
-# 安装
-./configure
-make
-make install
-
-
-之后就可以使用了, 到github下载一个密码本
-
-git clone https://github.com/huyuanzhi2/pas</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="16415371479168.html">hydra 爆破ssh</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16414626714891/16434641228384.jpg);">
-						
-						</div> 
-						<a href="16414626714891.html"> 
-							<div class="item-desc"> 
-								<p>
-
-在看文档中，按步骤升级vue；
-
-于是就先通过 npm uninstall vue-cli -g卸载vue，然后再安装，但是vue -V时依然是2.9.6版本：
-
-第一步：npm config get registry 
-
-第二步：npm config set registry https://registry.npm.taobao.org
-
-第三步：npm i -g @vue/cli
-
-完美，安装成功！
-
-
-</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="16414626714891.html">升级VUE版本</a>
+	  							<a href="16485397489109.html">ngrok 内网穿透</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -342,23 +221,22 @@ git clone https://github.com/huyuanzhi2/pas</p>
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16414407883196/16414408061006.jpg);">
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16414407883196.html"> 
+						<a href="16461235353064.html"> 
 							<div class="item-desc"> 
-								<p>启动Linux系统后输入 ls \ 
+								<p>公司运维写的日志切分脚本写的很好，改日学习
 
+#!/bin/bash
+# This script run at 23:59
+# The Nginx logs path
 
-以下是对这些目录的解释：
-
-
-/bin：bin是Binary的缩写, 这个目录存放着最经常使用的命令。
-/boot：这里存放的是启动Linux时使用的一些核心文件，包括一些连接文件以及镜像文件。
-/dev ：dev是Device(设备)的缩写, 该目录下存放的是Linux的外部设备，在Linux中访问设备的方式和访问文件的方式是相同的。
-/etc：这个目录用来存放所有的系统管理所需要的配置文件和子目录。
-/home：用户的主目录，在Linux中，每个用户都有一个自己的目录，一般该目录名是以用户的账号命名的。
-/lib：这个目录里存放着系统最基本的动态连</p> 
+# Nginx_conf
+# Ngxconf=$(ps aux|grep nginx.conf |grep -v grep |awk &#39;{print $NF}&#39;)
+Logs_path=&quot;/data/logs/nginx&quot;
+Loglist=${Logs_path}/nginx_logs_list
+BACKDIR=&quot;$(date -d &quot;yesterday&quot; +&q</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -369,7 +247,7 @@ git clone https://github.com/huyuanzhi2/pas</p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16414407883196.html">Linux 目录结构</a>
+	  							<a href="16461235353064.html">Linux 日志切分</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -393,22 +271,60 @@ git clone https://github.com/huyuanzhi2/pas</p>
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16413527990433/16413528368917.jpg);">
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16413527990433.html"> 
+						<a href="16458023133729.html"> 
 							<div class="item-desc"> 
 								<p>
+Error: Failed to download metadata for repo &#39;appstream&#39;: Cannot prepare internal mirrorlist: No URLs in mirrorlist
 
 
+我的是这种错误
 
 
+Invalid configuration value: failovermethod=priority in /etc/yum.repos.d/CentOS-epel.repo; 配置：ID 为 &quot;failovermethod&quot; 的 OptionBinding 不存在
+Repository epel is</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
 
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16458023133729.html">Centos8 yum安装错误</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
 
-
-
-
-
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="16458004850875.html"> 
+							<div class="item-desc"> 
+								<p>GoAccess：官方站、中国站、GitHub
 </p> 
 							</div> 
 						</a> 
@@ -420,7 +336,7 @@ git clone https://github.com/huyuanzhi2/pas</p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16413527990433.html">Vim 跳转技巧</a>
+	  							<a href="16458004850875.html">Web日志分析工具 GoAccess</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -431,7 +347,75 @@ git clone https://github.com/huyuanzhi2/pas</p>
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
+			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="16457968431626.html"> 
+							<div class="item-desc"> 
+								<p>基于项目控制
+
+安装插件 Matrix Authorization Strategy
+
+安全配置
+
+
+
+到项目配置里开启
+
+
+
+参考Jenkins权限管理之Matrix Authorization Strategy
+
+基于角色控制
+
+创建新用户
+
+
+插件管理
+
+
+
+安装插件 Role-based Authorization Strategy 
+
+
+
+全局安全配置 Manage Jenkins -&gt; Configure Global Security -&gt; Under Authorization, select Role Based Strategy. Click on Save.
+</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16457968431626.html">Jenkins 权限控制</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
 								
 		   						</div> 
 		   					</div> 
@@ -490,8 +474,10 @@ git clone https://github.com/huyuanzhi2/pas</p>
              
             
             <li>
-            <a href="Algorithm.html">Algorithm&nbsp;(3)</a>
+            <a href="Algorithm.html">Algorithm&nbsp;(7)</a>
             <p>
+            
+            <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html">数据结构&nbsp;(2)</a>&nbsp;&nbsp;
             
             </p>
             </li>
@@ -499,7 +485,7 @@ git clone https://github.com/huyuanzhi2/pas</p>
              
             
             <li>
-            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(5)</a>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(7)</a>
             <p>
             
             </p>
@@ -510,6 +496,11 @@ git clone https://github.com/huyuanzhi2/pas</p>
             <li>
             <a href="Arts.html">Arts&nbsp;(3)</a>
             <p>
+            
+            </p>
+            </li>
+            
+             
             
             </p>
             </li>
@@ -554,31 +545,31 @@ git clone https://github.com/huyuanzhi2/pas</p>
           
           
          <li>
-           <a href="16434266223947.html">滑动验证码识别</a><br>
+           <a href="16488664948376.html">Windows 开启wsl并开启远程</a><br>
          </li>
           
           
           
          <li>
-           <a href="16425740174242.html">Linux 字体安装</a><br>
+           <a href="16487053528391.html">Java8 特性 Optional</a><br>
          </li>
           
           
           
          <li>
-           <a href="16415484666630.html">nmap 端口嗅探</a><br>
+           <a href="16486272439635.html">Word Cloud 词云重叠算法</a><br>
          </li>
           
           
           
          <li>
-           <a href="16415371479168.html">hydra 爆破ssh</a><br>
+           <a href="16486184863200.html">Python pip源 国内源</a><br>
          </li>
           
           
           
          <li>
-           <a href="16414626714891.html">升级VUE版本</a><br>
+           <a href="16485397489109.html">ngrok 内网穿透</a><br>
          </li>
           
           

@@ -53,8 +53,6 @@
         
         <a href="index.html">Home</a>
         
-        <a href="archives.html">Archives</a>
-        
         <a href="resume/resume.html">Resume</a>
         
         
@@ -78,10 +76,6 @@
           </li>
           
           <li>
-          <a href="archives.html">Archives</a>
-          </li>
-          
-          <li>
           <a href="resume/resume.html">Resume</a>
           </li>
           
@@ -98,22 +92,20 @@
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/15769918912350/bitcoin_address.jpg);">
 						
 						</div> 
-						<a href="15642871336794.html"> 
+						<a href="15769918912350.html"> 
 							<div class="item-desc"> 
-								<p>一、依赖注入
+								<p>EC私钥 Elliptic Curve private key
 
-1、新建一个 School 类
-右键 src&gt;main&gt;java&gt;com.sajor.study.c01，点击 New&gt;Java Class
+比特币私钥为一个256位的二进制随机大数 一共32字节（Random 256 bit integer）
 
-在 School 中引用 Student 类，并可以获得含有 Student 对象的一个 List:
+比特币私钥只是一个数字。你可以用硬币、铅笔和纸来随机生成你的私钥：掷硬币256次，用纸和笔记录正反面并转换为0和1，随机得到的256位二进制数字可作为比特币钱包的私钥。 
 
-    private int id = 2000;
-    private String name = &quot;Sajor&quot;;
-    private Student student;
-    private List&lt;Student&gt; students = new ArrayLis</p> 
+将256位二进制大数转为十六进制（每四位二进制数转为一位十六进制数）得到一个64位的十进制字符串，这就是ec私钥（95e7e1e73b70965d31c3e56121ce14dd4f88431c8d5e7645e8fb4a73ba72ad29）
+
+提示比</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -124,7 +116,7 @@
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15642871336794.html">从零开始SSM开发系列四：依赖注入及 Bean 管理</a>
+	  							<a href="15769918912350.html">比特币</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -135,7 +127,7 @@
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
+			    			<a class='category' href='%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9B%B8%E5%85%B3.html'>密码学相关</a>
 								
 		   						</div> 
 		   					</div> 
@@ -151,32 +143,39 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15642457728170.html"> 
+						<a href="15769917893975.html"> 
 							<div class="item-desc"> 
-								<p>1、新建一个包 com.sajor.study.c01
+								<p>NFS就是 ** Network File System ** 的缩写
 
-打开开发工具 Intellij IDEA，打开之前创建的工程右键 src&gt;main&gt;java&gt;com.sajor.study，点击 New&gt;Package
+本机ip：192.168.36.182
 
+安装NFS
 
-
-创建包 c01
-
-
-
-2、新建一个 Student 类
-右键 src&gt;main&gt;java&gt;com.sajor.study.c01，点击 New&gt;Java Class
+yum -y install nfs-utils rpcbind
 
 
+服务端配置
 
-创建Student类
+在NFS服务端上创建共享目录/data/lys并设置权限
+
+mkdir -p /data/lys
+
+chmod 666 /data/lys/
 
 
+编辑export文件
 
-Student 类包含 4 个属性
+vi /etc/exports 
 
-package com.sajor.study.c01;
+/data/lys 192.168.36.0/24(rw,no_root_squash,no_all_squash,sync)
 
-public class Stud</p> 
+
+配置生效
+
+exportfs -r
+
+
+启动rp</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -187,7 +186,7 @@ public class Stud</p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15642457728170.html">从零开始SSM开发系列三：第一个Spring应用</a>
+	  							<a href="15769917893975.html">NFS</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -198,7 +197,7 @@ public class Stud</p>
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
+			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
 								
 		   						</div> 
 		   					</div> 
@@ -214,28 +213,72 @@ public class Stud</p>
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15642432857493.html"> 
+						<a href="15765692780377.html"> 
 							<div class="item-desc"> 
-								<p>创建远程仓库
+								<p>更新时 使用 --verbose命令可以看到运行情况
 
-首先申请github账号这个不讲了，然后创建一个项目名为 SSMClass ，信息填写好之后，点击create repository
+brew update --verbose
 
+查看brew的当前源:
+执行下面命令可以看到, brew的官方镜像源为: https://github.com/Homebrew/homebrew
 
-
-之后点击Clone or download，选择use ssh，之后复制一下这个链接留作备用
-
-git@github.com:565785929/SSMClass.git
-
-
+cd /usr/local/Homebrew
+git remote -v
 
 
-创建本地仓库并远程
+更改brew镜像源
 
-1、 初始化本地git仓库
-然后使用IDEA打开这个文件夹，点击VCS -&gt; Import into Version Control -&gt; Create Git Repository。 相当于这条git命令
+cd /usr/local/Homebrew
+git remote set-url origin git://mirrors.tuna.tsinghua.edu.cn/homebrew.git
 
-git init
 
+可以选择下面镜像源中的一个 (第一个亲测可用)
+清</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15765692780377.html">brew update 缓慢</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="15753573808254.html"> 
+							<div class="item-desc"> 
+								<p>备份重要命令
+
+高手入侵可能会修改集群中的重要命令，例如：top、ps、kill等重要命令
+建议备份好
+
+Linux系统发现占用CPU达100%的进程并处理
 </p> 
 							</div> 
 						</a> 
@@ -247,7 +290,7 @@ git init
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15642432857493.html">从零开始SSM开发系列二：GitHub配置（可以跳过）</a>
+	  							<a href="15753573808254.html">Linux安全查找原因</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -258,7 +301,7 @@ git init
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
+			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
 								
 		   						</div> 
 		   					</div> 
@@ -274,15 +317,37 @@ git init
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15642402893897.html"> 
+						<a href="15751320029536.html"> 
 							<div class="item-desc"> 
-								<p>▪ 官网 http://www.oracle.com/technetwork/java/javaee/overview/index.html java 入门指导
-▪ 博客园 https://www.cnblogs.com/ 开发者的网上家园
-▪ 开源中国 http://www.oschina.net/ 找到想要的开源项目，分享和交流
-▪ CSDN https://www.csdn.net/ 最大的程序员中文社区
-▪ ITPub http://www.itpub.net/ 数据库最好的社区
-▪ iteye http://www.iteye.com/ 曾经最好的java社区
-▪ Stackover</p> 
+								<p>用户的角色是通过UID和GID识别的。
+
+UID用户ID：相当于各为的身份证，在系统中是唯一的
+
+GID组ID：相当于各为的家庭或者你们的学校。
+
+新建用户及设置密码命令如下：
+
+useradd 【参数】 用户名
+
+-g 属组
+-u 设置uid
+-m 创建家目录
+-M 没有家目录
+-G 指定属于多个组
+-s 指定登录shell
+-d 指定家目录
+-c 注释
+-D 改变它默认的属性
+-e 指定的日期是帐号失效的日期,
+
+
+新建用户及设置密码命令如下：
+
+passwd 参数 用户名
+
+-l：锁定已经命名的账户名称
+-u：解开账户锁定状态
+-x, --maximum=DAYS：密码使用最大时间（天）</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -293,7 +358,7 @@ git init
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15642402893897.html">学习资料</a>
+	  							<a href="15751320029536.html">Linux 新建用户和组命令</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -304,7 +369,7 @@ git init
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='java.html'>ssm课程</a>
+			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
 								
 		   						</div> 
 		   					</div> 
@@ -320,35 +385,23 @@ git init
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15642392486315.html"> 
+						<a href="15740860526446.html"> 
 							<div class="item-desc"> 
-								<p>Java 开发环境配置
+								<p>设定密码策略
 
-1、新建 Java 工程
+修改  /etc/login.defs 配置文件
 
-打开开发工具 Intellij IDEA，点击菜单 File &gt; New &gt; Project...
+PASS_MAX_DAYS      90               密码最长有效期
+PASS_MIN_DAYS       10               密码修改之间最小的天数
+PASS_MIN_LEN          8                密码长度
+PASS_WARN_AGE     7                 口令失效前多少天开始通知用户修改密码
 
-2、配置 JDK
+脚本
 
-点击右上角“New”按钮，选择 JDK 安装的路径(Windows 与 MacOS 不一样，选择你自己安装 JDK 的 路径)
-
-
-配置好 JDK，点击下一步“Next”
- 
-
-再下一步“Next”
-
-3、设置项目信息
-设置项目存放地址，选择刚刚新建的文件夹。
-
-
-设置项目名称，之后点击完成“Finish”:
-
-选择ok
-
-
-4、拷贝开发 Spring 引用的 jar 包
-在工程根目录创建 lib 目录。右键</p> 
+#! /bin/bash
+# Author: Sajor
+# Date: 2018-10-12
+# Function: 实现对用户密码策略</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -359,7 +412,7 @@ git init
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15642392486315.html">从零开始SSM开发系列一：JAVA 开发环境配置</a>
+	  							<a href="15740860526446.html">Linux安全加固脚本</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -370,57 +423,7 @@ git init
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15641490587108.html"> 
-							<div class="item-desc"> 
-								<p>今天博客突然报了这个错误：
-
-Packet for query is too large (5,215 &gt; 1,024). You can change this value on the server by setting the &#39;max_allowed_packet&#39; variable.
-
-
-百度了一下，MySQL会根据配置文件会限制server接受的数据包的大小。如果写入大数据时，因为默认的配置太小，插入和更新操作会因为 max_allowed_packet 参数限制，而导致失败。
-在MySQL中输入这条命令查询
-
-SHOW VARIABLES LIKE &#39</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15641490587108.html">在使用Mybatis generator时提示MySQL写入过大</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
-								
-			    			<a class='category' href='MySQL.html'>MySQL</a>
+			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
 								
 		   						</div> 
 		   					</div> 
@@ -479,8 +482,10 @@ SHOW VARIABLES LIKE &#39</p>
              
             
             <li>
-            <a href="Algorithm.html">Algorithm&nbsp;(3)</a>
+            <a href="Algorithm.html">Algorithm&nbsp;(7)</a>
             <p>
+            
+            <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html">数据结构&nbsp;(2)</a>&nbsp;&nbsp;
             
             </p>
             </li>
@@ -488,7 +493,7 @@ SHOW VARIABLES LIKE &#39</p>
              
             
             <li>
-            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(5)</a>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(7)</a>
             <p>
             
             </p>
@@ -499,6 +504,11 @@ SHOW VARIABLES LIKE &#39</p>
             <li>
             <a href="Arts.html">Arts&nbsp;(3)</a>
             <p>
+            
+            </p>
+            </li>
+            
+             
             
             </p>
             </li>
@@ -543,31 +553,31 @@ SHOW VARIABLES LIKE &#39</p>
           
           
          <li>
-           <a href="16434266223947.html">滑动验证码识别</a><br>
+           <a href="16488664948376.html">Windows 开启wsl并开启远程</a><br>
          </li>
           
           
           
          <li>
-           <a href="16425740174242.html">Linux 字体安装</a><br>
+           <a href="16487053528391.html">Java8 特性 Optional</a><br>
          </li>
           
           
           
          <li>
-           <a href="16415484666630.html">nmap 端口嗅探</a><br>
+           <a href="16486272439635.html">Word Cloud 词云重叠算法</a><br>
          </li>
           
           
           
          <li>
-           <a href="16415371479168.html">hydra 爆破ssh</a><br>
+           <a href="16486184863200.html">Python pip源 国内源</a><br>
          </li>
           
           
           
          <li>
-           <a href="16414626714891.html">升级VUE版本</a><br>
+           <a href="16485397489109.html">ngrok 内网穿透</a><br>
          </li>
           
           

@@ -53,8 +53,6 @@
         
         <a href="index.html">Home</a>
         
-        <a href="archives.html">Archives</a>
-        
         <a href="resume/resume.html">Resume</a>
         
         
@@ -78,10 +76,6 @@
           </li>
           
           <li>
-          <a href="archives.html">Archives</a>
-          </li>
-          
-          <li>
           <a href="resume/resume.html">Resume</a>
           </li>
           
@@ -101,31 +95,25 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15646739216640.html"> 
+						<a href="15779293909375.html"> 
 							<div class="item-desc"> 
-								<p>关系型数据库：
+								<p>正如上一讲所说，RPC主要是为了解决的两个问题：
 
-Oracle、DB2、Microsoft SQL Server、Microsoft Access、MySQL
 
-非关系型数据库：
+解决分布式系统中，服务之间的调用问题。
+远程调用时，要能够像本地调用一样方便，让调用者感知不到远程调用的逻辑。
 
-NoSql、Cloudant、MongoDb、redis、HBase
 
-两种数据库之间的区别：
+还是以计算器Calculator为例，如果实现类CalculatorImpl是放在本地的，那么直接调用即可：
 
-关系型数据库
 
-　　关系型数据库的特性
+现在系统变成分布式了，CalculatorImpl和调用方不在同一个地址空间，那么就必须要进行远程过程调用：
 
-　　1、关系型数据库，是指采用了关系模型来组织数据的数据库；
 
-　　2、关系型数据库的最大特点就是事务的一致性；
+那么如何实现远程过程调用，也就是RPC呢，一个完整的RPC流程，可以用下面这张图来描述：
 
-　　3、简单来说，关系模型指的就是二维表格模型，而一个关系型数据库就是由二维表及其之间的联系所组成的一个数据组织。
 
-　　关系型数据库的优点
-
-　　1、容易理解：二维表结构是非常贴近逻辑世界一个</p> 
+其中左边的Client，对应的就是前面的Service A，而右边的Server，对应的则是Service </p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -136,7 +124,7 @@ NoSql、Cloudant、MongoDb、redis、HBase
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15646739216640.html">列举常见的关系型数据库和非关系型都有那些？</a>
+	  							<a href="15779293909375.html">RPC的实现原理</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -147,7 +135,69 @@ NoSql、Cloudant、MongoDb、redis、HBase
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
+			    			<a class='category' href='%E5%88%86%E5%B8%83%E5%BC%8F.html'>分布式</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/15776732342055/15776733247221.jpg);">
+						
+						</div> 
+						<a href="15776732342055.html"> 
+							<div class="item-desc"> 
+								<p>Linux
+
+
+
+crontab -e 
+打开编辑表达式
+
+表达式必须使用绝对路径
+
+sudo systemctl restart crond.service
+重启生效
+
+crontab -l
+查看所有定时任务表达式
+
+cht
+
+
+
+&gt; cht crontab
+# crontab
+# Schedule cron jobs to run on a time interval for the current user.
+# Job definition format: &quot;(min) (hour) (day_of_month) (month) (day_of_week) comman</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15776732342055.html">crontab 定时任务</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
 								
 		   						</div> 
 		   					</div> 
@@ -163,45 +213,17 @@ NoSql、Cloudant、MongoDb、redis、HBase
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15643240518555.html"> 
+						<a href="15773499726644.html"> 
 							<div class="item-desc"> 
-								<p>1、数据库表准备
+								<p>使用memory_profiler模块
 
-新建一个数据库表:card 并添加几条数据
+memory_profiler模块用来基于逐行测量代码的内存使用。使用这个模块会让代码运行的更慢。
 
-Card 表
+安装方法如下：
+pip install memory_profiler
 
-
-
-
-字段名称
-类型
-长度
-
-
-
-
-
-id
-int
-11（主键）
-
-
-code
-varchar
-18
-
-
-
-
-2、创建新的 Package
-
-
-com.sajor.study.c06
-com.sajor.study.c06.model : 存放 vo 对象(业务模型对象) 
-com.sajor.study.c06.dao : 存放 dao 对象(数据库访问对象) 
-com.sajor.study.mapper : 存放 mybatis 数据库表-对象映射文件 
-test.com.sajor.study.c06 
+另外，建议安装psutil包，这样memory_profile会运行的快一点：
+pip install psutil
 </p> 
 							</div> 
 						</a> 
@@ -213,7 +235,7 @@ test.com.sajor.study.c06
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15643240518555.html">从零开始SSM开发系列九：MyBatis 一对一关联关系</a>
+	  							<a href="15773499726644.html">监控Python 运行</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -224,7 +246,7 @@ test.com.sajor.study.c06
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
+			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
 								
 		   						</div> 
 		   					</div> 
@@ -240,24 +262,17 @@ test.com.sajor.study.c06
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15643212338496.html"> 
+						<a href="15769921068601.html"> 
 							<div class="item-desc"> 
-								<p>1、配置 MyBatis 开发环境
+								<p>systemctl stop sshd.service 
+停止转发
 
-在工程里面引用 MyBatis 核心 jar 包，以及 MyBatis 依赖的第三方 jar 包。
-点击 File&gt;Project Structure...，选中 Libraries，添加 java 引用
-选择 l􏰀ib 中的 􏰁Mybatis-3.4.5.jar 包。
+lsof -i :80|grep -v &quot;PID&quot;|awk &#39;{print &quot;kill -9&quot;,$2}&#39;|sh
+关闭80端口程序
 
-再次添加 java 引用，选中 lib 中的 mybatis-3.4.5-lib 文件夹
-确认。MyBatis 开发环境即搭建好了。
-
-
-
-2、创建新的 Package
-
-
-com.sajor.study.c05
-com.sajor.study.c05.model:存放 vo </p> 
+pscp -r -l root -pw 5657 e:\htk 118.24.163.26:/root
+e:\htk -&gt; /root 传送文件
+</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -268,7 +283,7 @@ com.sajor.study.c05.model:存放 vo </p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15643212338496.html">从零开始SSM开发系列八：MyBatis 入门</a>
+	  							<a href="15769921068601.html">ssh</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -279,7 +294,7 @@ com.sajor.study.c05.model:存放 vo </p>
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
+			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
 								
 		   						</div> 
 		   					</div> 
@@ -295,14 +310,78 @@ com.sajor.study.c05.model:存放 vo </p>
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15643155536877.html"> 
+						<a href="15769920752565.html"> 
 							<div class="item-desc"> 
-								<p>1、Spring 配置文件中声明事务
+								<p>远程传输命令 
 
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-       xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
+pscp和scp功能相同，但pscp同时支持windows下使用，它有效解 决了windows系统向linux服务器传输文件，而且它只有一个文件，即pscp.exe，建议将该文件放到C:\WINDOWS\system32 下面，这样就可以在任何地方调用该文件命令，你也可以放在任意你指定文件夹下。
+
+
+
+
+环境变量改好后，在命令行下输入 pscp就可以拷文件了：
+
+
+命令格式：pscp localfile rootuser@remoteip:/fileDirectory
+
+拷贝整个文件夹： pscp -r localDir rootuser@remoteip:/fileDire</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15769920752565.html">pscp</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="15769919595310.html"> 
+							<div class="item-desc"> 
+								<p>Git是分布式版本控制系统 自报家门
+
+git config --global user.name &quot;Sajor&quot;
+git config --global user.email &quot;565785929@qq.com&quot;
+
+
+一
+
+初始化一个Git仓库，使用git init命令。
+
+添加文件到Git仓库，分两步：
+
+第一步，使用命令git add ，注意，可反复多次使用，添加多个文件；
+
+第二步，使用命令git commit，完成。
+
+windows中的换行符为 CRLF， 而在linux下的换行符为LF，所以在执行add . 时出现提示，解决办法：
+
    </p> 
 							</div> 
 						</a> 
@@ -314,7 +393,7 @@ com.sajor.study.c05.model:存放 vo </p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15643155536877.html">从零开始SSM开发系列七：事务管理</a>
+	  							<a href="15769919595310.html">Git基本使用</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -325,135 +404,7 @@ com.sajor.study.c05.model:存放 vo </p>
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15643143335228.html"> 
-							<div class="item-desc"> 
-								<p>创建MySQL数据库
-
-首先进入MySQL数据库创建 TestDB 数据库
-
-create database TestDB charset=utf8;
-
-
-
-
-到IDEA右侧点击Database，之后点击加号添加数据库，选择Data Source&gt;MySQL 填写连接信息
-
-
-填写好数据库信息后点击 Download 下载驱动包，下载完成后点击Test Connection 测试连接情况，之后点击ok。
-
-
-注意
-
-
-如果你要直接粘贴下面代码的话，请记得修改这些内容
-数据库名： TestDB
-数据库用户： root
-数据库密码： 123456
-
-
-创建项目
-
-1、引用 MySQL 数据库</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15643143335228.html">从零开始SSM开发系列六：数据库开发</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15643132029446.html"> 
-							<div class="item-desc"> 
-								<p>1、引用 AspectJ jar 包
-
-点击 File&gt;Project Structure...，选中 Libraries，添加 java 引用
-在 lib 中选择 aspectj-1.8.13 文件夹
-
-
-
-
-
-2、创建两个新的包
-
-
-com.sajor.study.c03
-test.com.sajor.study.c03
-
-
-3、创建一个业务类 UserXML
-
-package com.sajor.study.c03;
-
-public class UserXML {
-    private int id = 20180101;
-    private String name = &q</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15643132029446.html">从零开始SSM开发系列五：AOP</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='ssm.html'>SSM练习</a>
+			    			<a class='category' href='Git.html'>Git</a>
 								
 		   						</div> 
 		   					</div> 
@@ -512,8 +463,10 @@ public class UserXML {
              
             
             <li>
-            <a href="Algorithm.html">Algorithm&nbsp;(3)</a>
+            <a href="Algorithm.html">Algorithm&nbsp;(7)</a>
             <p>
+            
+            <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html">数据结构&nbsp;(2)</a>&nbsp;&nbsp;
             
             </p>
             </li>
@@ -521,7 +474,7 @@ public class UserXML {
              
             
             <li>
-            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(5)</a>
+            <a href="%E8%AF%AD%E6%B3%95%E7%B1%BB.html">语法类&nbsp;(7)</a>
             <p>
             
             </p>
@@ -532,6 +485,11 @@ public class UserXML {
             <li>
             <a href="Arts.html">Arts&nbsp;(3)</a>
             <p>
+            
+            </p>
+            </li>
+            
+             
             
             </p>
             </li>
@@ -576,31 +534,31 @@ public class UserXML {
           
           
          <li>
-           <a href="16434266223947.html">滑动验证码识别</a><br>
+           <a href="16488664948376.html">Windows 开启wsl并开启远程</a><br>
          </li>
           
           
           
          <li>
-           <a href="16425740174242.html">Linux 字体安装</a><br>
+           <a href="16487053528391.html">Java8 特性 Optional</a><br>
          </li>
           
           
           
          <li>
-           <a href="16415484666630.html">nmap 端口嗅探</a><br>
+           <a href="16486272439635.html">Word Cloud 词云重叠算法</a><br>
          </li>
           
           
           
          <li>
-           <a href="16415371479168.html">hydra 爆破ssh</a><br>
+           <a href="16486184863200.html">Python pip源 国内源</a><br>
          </li>
           
           
           
          <li>
-           <a href="16414626714891.html">升级VUE版本</a><br>
+           <a href="16485397489109.html">ngrok 内网穿透</a><br>
          </li>
           
           
