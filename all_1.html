@@ -95,111 +95,18 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16480451786591.html"> 
+						<a href="16533196041081.html"> 
 							<div class="item-desc"> 
-								<p>Codis 是 Redis 集群方案之一，令我们感到骄傲的是，它是中国人开发并开源的，来自前豌豆荚中间件团队。
+								<p>安装
 
-有了 Codis 技术积累之后，项目「突头人」刘奇又开发出来中国人自己的开源分布式数据库 —— TiDB
+首先到git上下载 protoc 的二进制文件。
 
+然后下载对应语言的代码。例如python：
 
+$ python setup.py build
+$ python setup.py test
+$ python setup.py install
 
-Codis 使用 Go 语言开发，它是一个代理中间件，它和 Redis 一样也使用 Redis 协议对外提供服务，当客户端向 Codis 发送指令时，Codis 负责将指令转发到后面的 Redis 实例来执行，并将返回结果再转回给客户端。
-
-
-
-Codis 上挂接的所有 Redis 实例构成一个 Redis 集群，当集群空间不足时，可以通过动态增加 Redis 实例来实现</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="16480451786591.html">Redis Codis 第三方集群实现</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Redis.html'>Redis</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="16476622390377.html"> 
-							<div class="item-desc"> 
-								<p>我们必须有一个高可用方案来抵抗节点故障，当故障发生时可以自动进行从主切换，程序可以不用重启，Redis 官方提供了这样一种方案 —— Redis Sentinel(哨兵)。
-
-
-
-我们可以将 Redis Sentinel 集群看成是一个 ZooKeeper 集群，它是集群高可用的心脏，它一般是由 3～5 个节点组成，这样挂了个别节点集群还可以正常运转。
-
-它负责持续监控主从节点的健康，当主节点挂掉时，自动选择一个最优的从节点切换为主节点。客户端来连接集群时，会首先连接 sentinel，通过 sentinel 来查询主节点的地址，然后再去连接主节点进行数据交互。当主节点发生故障时，客户端会重新</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="16476622390377.html">Redis 集群 Sentinel 哨兵模式</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Redis.html'>Redis</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="16475965636227.html"> 
-							<div class="item-desc"> 
-								<p>主从复制是 Redis 分布式的基础，Redis 的高可用离开了主从复制将无从进行。
-
-不过复制功能也不是必须的，如果你将 Redis 只用来做缓存，跟 memcache 一样来对待，也就无需要从库做备份，挂掉了重新启动一下就行。但是只要你使用了 Redis 的持久化功能，就必须认真对待主从复制，它是系统数据安全的基础保障。
-
-CAP 原理
-
-现代分布式系统的理论基石——CAP 原理，CAP 原理就好比分布式领域的牛顿定律，它是分布式存储的理论基石。自打 CAP 的论文发表之后，分布式存储中间件犹如雨后春笋般一个一个涌现出来。理解这个原理其实很简单，本节我们首先对这个原理进行一些简单的讲解。
 </p> 
 							</div> 
 						</a> 
@@ -211,7 +118,7 @@ CAP 原理
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16475965636227.html">Redis 集群-主从同步</a>
+	  							<a href="16533196041081.html">protobuf</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -222,7 +129,7 @@ CAP 原理
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='Redis.html'>Redis</a>
+			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
 								
 		   						</div> 
 		   					</div> 
@@ -238,9 +145,31 @@ CAP 原理
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16474851306463.html"> 
+						<a href="16520626552663.html"> 
 							<div class="item-desc"> 
-								<p></p> 
+								<p>方案一：
+
+通过修改某音编译好的so库代码，修改判断证书部分函数返回值，达到绕过ssl pinning的目的，然后使用抓包工具抓包。
+优点：不用配置hook框架，修改一次即可覆盖
+缺点：没有核心技术能力，无法主动更新迭代
+
+
+看雪论坛原创17.3
+吾爱破解20.0
+网友分析
+
+
+方案二：
+
+类似方案一，通过hook框架，动态修改安卓内部代码函数的入参，返回值等信息，达到绕过ssl pinning的目的，然后使用抓包工具。
+
+优点：框架热门资料多，较方案三可拓展性强
+缺点：
+
+
+简书抖音Frida代码
+看雪论坛某书hook过程
+51CTO抖音数据采集Frida教程，Frida Java Hook</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -251,7 +180,7 @@ CAP 原理
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16474851306463.html">Redis 基数树</a>
+	  							<a href="16520626552663.html">某音APP广告爬取</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -262,7 +191,180 @@ CAP 原理
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='Redis.html'>Redis</a>
+			    			<a class='category' href='%E7%88%AC%E8%99%AB.html'>爬虫</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16488664948376/16528851318715.jpg);">
+						
+						</div> 
+						<a href="16488664948376.html"> 
+							<div class="item-desc"> 
+								<p>
+
+首先在linux中启动SSH连接支持
+
+#客户端
+sudo apt-get install openssh-client
+#服务器
+sudo apt-get install openssh-server
+#或
+apt-get install ssh
+
+
+编辑配置文件
+
+sudo vi /etc/ssh/sshd_config
+
+
+增加以下配置
+
+Port 2222             # wsl端口
+PermitRootLogin yes   # 可以root远程登录
+AllowUsers xxx        # 开启wsl时新建的账户
+
+
+重启
+
+sudo service ssh </p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16488664948376.html">Windows 开启wsl并开启远程</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16487053528391/16487116675343.jpg);">
+						
+						</div> 
+						<a href="16487053528391.html"> 
+							<div class="item-desc"> 
+								<p>Optional 类是一个可以为null的容器对象。如果值存在则isPresent()方法会返回true，调用get()方法会返回该对象。
+
+Optional 是个容器：它可以保存类型T的值，或者仅仅保存null。Optional提供很多有用的方法，这样我们就不用显式进行空值检测。
+
+创建 Option
+
+Optional 有两个函数(of &amp; ofNullable)可以传参初始化。一个empty函数没有参数。
+
+
+
+empty
+
+empty 函数就是，直接返回 new Optional() 并且 value 为空 null。
+
+
+
+of &amp; ofNullable
+
+of
+
+首</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16487053528391.html">Java8 特性 Optional</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E8%AF%AD%E6%B3%95%E7%B1%BB.html'>语法类</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16486272439635/16528852569694.jpg);">
+						
+						</div> 
+						<a href="16486272439635.html"> 
+							<div class="item-desc"> 
+								<p>
+
+word_cloud 
+
+积分图算法
+
+
+</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16486272439635.html">Word Cloud 词云重叠算法</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Algorithm.html'>Algorithm</a>
 								
 		   						</div> 
 		   					</div> 
@@ -278,9 +380,24 @@ CAP 原理
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16474851167642.html"> 
+						<a href="16486184863200.html"> 
 							<div class="item-desc"> 
-								<p></p> 
+								<p>pip 安装第三方库速度太慢
+
+可设置 pip 从国内的镜像源下载安装
+
+阿里云 http://mirrors.aliyun.com/pypi/simple/
+中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/
+豆瓣 http://pypi.douban.com/simple/
+清华大学 https://pypi.tuna.tsinghua.edu.cn/simple/
+中国科学技术大学 http://pypi.mirrors.ustc.edu.cn/simple/
+
+
+设置方法，以清华镜像源为例：
+
+临时使用
+
+pip install -i htt</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -291,7 +408,7 @@ CAP 原理
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16474851167642.html">Redis 紧凑列表</a>
+	  							<a href="16486184863200.html">Python pip源 国内源</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -302,47 +419,7 @@ CAP 原理
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='Redis.html'>Redis</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="16474851118548.html"> 
-							<div class="item-desc"> 
-								<p></p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="16474851118548.html">Redis 跳跃列表</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Redis.html'>Redis</a>
+			    			<a class='category' href='%E8%AF%AD%E6%B3%95%E7%B1%BB.html'>语法类</a>
 								
 		   						</div> 
 		   					</div> 
@@ -401,7 +478,7 @@ CAP 原理
              
             
             <li>
-            <a href="Algorithm.html">Algorithm&nbsp;(7)</a>
+            <a href="Algorithm.html">Algorithm&nbsp;(8)</a>
             <p>
             
             <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html">数据结构&nbsp;(2)</a>&nbsp;&nbsp;
@@ -472,31 +549,31 @@ CAP 原理
           
           
          <li>
-           <a href="16520626552663.html">某音APP广告爬取</a><br>
+           <a href="16565146473162.html">MySQL 索引失效</a><br>
          </li>
           
           
           
          <li>
-           <a href="16488664948376.html">Windows 开启wsl并开启远程</a><br>
+           <a href="16561548241153.html">Oh My Zsh</a><br>
          </li>
           
           
           
          <li>
-           <a href="16487053528391.html">Java8 特性 Optional</a><br>
+           <a href="16559790679652.html">mydumper & myloader</a><br>
          </li>
           
           
           
          <li>
-           <a href="16486272439635.html">Word Cloud 词云重叠算法</a><br>
+           <a href="16540505085467.html">IaaS、PaaS、SaaS的区别</a><br>
          </li>
           
           
           
          <li>
-           <a href="16486184863200.html">Python pip源 国内源</a><br>
+           <a href="16533800798764.html">敏感词匹配</a><br>
          </li>
           
           

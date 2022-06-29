@@ -10,7 +10,7 @@
 
     <title>
       
-    Redis 三个月学习计划 - Sajor's Blog
+    Oh My Zsh - Sajor's Blog
     
     </title>
 
@@ -89,60 +89,199 @@
 		<div class="post-header">
 			<!-- title -->
 			<div class="post-header">
-				<h1 class="post-title itemprop="name headline">Redis 三个月学习计划</h1>	
+				<h1 class="post-title itemprop="name headline">Oh My Zsh</h1>	
 				<div class="post-data">
-					<time datetime="2022-02-15T15:18:48+08:00" pubdate data-updated="true">2022/02/15</time>
+					<time datetime="2022-06-25T19:00:24+08:00" pubdate data-updated="true">2022/06/25</time>
 				</div>
 			</div>
 		</div>
 	<div id="post-content" class="post-content" itemprop="articleBody"> 
 		<p class="post-tags"> 
 		
-		<a href='Redis.html'>Redis</a>&nbsp;
+		<a href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>&nbsp;
 		
 		</p>
 	<!-- 正文 -->
 		<p>
-		<p>1月 Redis核心技术与实战极客时间专栏</p>
+		<h2 id="toc_0">安装命令</h2>
 
-<p>1月 Redis 深度历险：核心原理与应用实践<br/>
-1月 Redis开发与运维<br/>
-Redis设计与实现<br/>
-Redis使用手册（工具书）</p>
+<p><a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH">zsh</a> 可以提高终端使用体验，是命令行终端必装软件，下面介绍安装方法</p>
 
-<p>Redis源码剖析与实战极客专栏 （暂无资源）</p>
+<p><strong>Mac</strong></p>
 
-<h2 id="toc_0">第一个月</h2>
+<p>在 mac 上还是建议使用 item 做为命令行终端，先安装 xcode。</p>
 
-<h3 id="toc_1">第一周</h3>
+<pre class="line-numbers"><code class="language-text"># 如果没有 brew 命令请自行安装 https://brew.sh/
+brew install zsh zsh-completions
 
-<p>通读 Redis 深度历险：核心原理与应用实践 第一章</p>
+chsh -s /bin/zsh
 
-<p>路上听 Redis核心技术与实战极客时间专栏 前五章</p>
+# 如果没有 port 命令，需要先安装  https://www.macports.org/install.php
+# 安装后需要执行 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
-<h3 id="toc_2">第二周</h3>
+sudo port install zsh zsh-completions
+</code></pre>
 
-<p>通读 Redis 深度历险：核心原理与应用实践 第二章<br/>
-路上听 Redis核心技术与实战极客时间专栏 五章</p>
+<p><strong>ubuntu</strong></p>
 
-<h3 id="toc_3">第三周</h3>
+<pre class="line-numbers"><code class="language-text"># 安装zsh
+sudo apt install zsh
 
-<p>通读 Redis 深度历险：核心原理与应用实践 第三章<br/>
-路上听 Redis核心技术与实战极客时间专栏 五章</p>
+# 查看版本号，检测安装是否成功
+zsh --version
 
-<h3 id="toc_4">第四周</h3>
+# 设置默认shell
+chsh -s $(which zsh)
 
-<p>通读 Redis 深度历险：核心原理与应用实践 第四章<br/>
-路上听 Redis核心技术与实战极客时间专栏 五章</p>
+# 注销帐号后执行，查看当前shell是否是zsh
+echo $SHELL
+</code></pre>
 
-<h2 id="toc_5">第二个月</h2>
+<p><strong>centos</strong></p>
 
-<h3 id="toc_6">第五周</h3>
+<p>安装软件</p>
 
-<p>通读 Redis 深度历险：核心原理与应用实践 第五章<br/>
-路上听 Redis核心技术与实战极客时间专栏 五章</p>
+<pre class="line-numbers"><code class="language-text">sudo yum update &amp;&amp; sudo yum -y install zsh
+ 
+# 设置当前用户默认 shell
+  
+chsh -s /bin/zsh
 
-<p><a href="http://wudashan.com/2020/03/29/Learning-Method/">http://wudashan.com/2020/03/29/Learning-Method/</a></p>
+# 或
+sudo usermod -s $(which zsh) 用户名
+ 
+# 注销帐号后执行，查看当前 shell 是否是 zsh
+ 
+echo $SHELL
+</code></pre>
+
+<h2 id="toc_1">oh my zsh</h2>
+
+<p><a href="https://ohmyz.sh/">oh my zsh</a> 是管理 ZSH 的配置，并提供了丰富的插件</p>
+
+<p><img src="media/16561548241153/16561550756772.jpg" alt=""/></p>
+
+<p><strong>软件安装</strong></p>
+
+<p>因为是国外资源可能下载不成功，多试几次</p>
+
+<pre class="line-numbers"><code class="language-text">sh -c &quot;$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;
+</code></pre>
+
+<p>如果上面的不行，试试下面的命令</p>
+
+<pre class="line-numbers"><code class="language-text">sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;
+</code></pre>
+
+<p>如果还是不能下载，就再试试下面的命令</p>
+
+<pre class="line-numbers"><code class="language-text">sh -c &quot;$(curl -fsSL https://gitee.com/shmhlsy/oh-my-zsh-install.sh/raw/master/install.sh)&quot;
+</code></pre>
+
+<p><strong>初始配置</strong></p>
+
+<p>第一次安装后，需要注销后重新登录。之后会显示如下初始配置界面，选择<code>q</code>退出</p>
+
+<p><img src="media/16561548241153/16561551482665.jpg" alt=""/></p>
+
+<p>主要在配置文件 <code>~/.zshrc</code> 中修改设置。</p>
+
+<blockquote>
+<p>有些软件比如 LINUXBREW，的配置荐在<code>~/.profile</code>文件中，安装了 zsh 就需要复制到 `~/.zshrc ｀文件头部</p>
+</blockquote>
+
+<h3 id="toc_2">修改主题</h3>
+
+<p>ZSH 拥有<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes">丰富的主题</a></p>
+
+<p>修改配置文件 <code>~/.zshrc</code> 中的 <code>ZSH_THEME</code> 来设置使用的风格</p>
+
+<pre class="line-numbers"><code class="language-text">ZSH_THEME=&quot;bira&quot;
+</code></pre>
+
+<p>更新配置也可以选择重起终端</p>
+
+<pre class="line-numbers"><code class="language-text">source ~/.zshrc
+</code></pre>
+
+<h2 id="toc_3">插件扩展</h2>
+
+<h3 id="toc_4">配置文件</h3>
+
+<ul>
+<li><p>插件需要修改 <code>~/.zshrc</code> 配置文件中的 <code>plugins</code>配置段</p></li>
+<li><p>在目录 <code>~/.oh-my-zsh/plugins</code>中默认存在了大量插件，只要添加到配置项中即可。</p></li>
+<li><p>更新配置后使用<code>source ~/.zshrc</code>命令重新加载配置</p></li>
+</ul>
+
+<h3 id="toc_5">历史记录</h3>
+
+<p>这个插件需要单独下载</p>
+
+<pre class="line-numbers"><code class="language-text">git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+</code></pre>
+
+<p>下载后在配置文件的 <code>plugins</code> 选项的最后面添加即可</p>
+
+<pre class="line-numbers"><code class="language-text">plugins=(git history history-substring-search node npm wd web-search last-working-dir vi-mode zsh-autosuggestions)
+</code></pre>
+
+<p>有时 <code>zsh-autosuggestions</code> 插件的提示颜色看不清，可以通过修改颜色处理。打开配置文件 <code>~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh</code> 修改以下配置项</p>
+
+<pre class="line-numbers"><code class="language-text">typeset -g ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=&#39;fg=12&#39;
+</code></pre>
+
+<p>重新加载</p>
+
+<pre class="line-numbers"><code class="language-text">source ~/.zshrc
+</code></pre>
+
+<h3 id="toc_6">命令提示</h3>
+
+<p>通过安装 <a href="https://mimosa-pudica.net/zsh-incremental.html">incr</a> 插件就可以实现以下命令提示效果</p>
+
+<p><img src="media/16561548241153/zsh.a9a9cc11.gif" alt="zsh.a9a9c"/></p>
+
+<p>首先下载插件<br/>
+<code>wget https://mimosa-pudica.net/src/incr-0.2.zsh</code><br/>
+加载插件<br/>
+<code>source incr*.zsh</code></p>
+
+<h2 id="toc_7">　其他设置</h2>
+
+<h3 id="toc_8">中文乱码</h3>
+
+<p>ITERM2本地中文乱码问题</p>
+
+<p>输入 locale 可以查看字符编码设置情况，而我的对应值是空的。</p>
+
+<p>我在本地和服务器都用 zsh 替代了 bash，而且使用了 oh-my-zsh，而默认的.zshrc 没有设置为 utf-8 编码，所以本地和服务器端都要在.zshrc 设置，步骤如下，bash 对应.bash_profile 或.bashrc 文件。</p>
+
+<p>编辑 <code>~/.zshrc</code> 文件或 <code>/etc/profile</code>文件，在文件内容末端添加：</p>
+
+<pre class="line-numbers"><code class="language-text">export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+</code></pre>
+
+<p>接着加载文件<code>source ~/.zshrc</code>并重启终端。</p>
+
+<p>设置成功的话，在本地和登录到服务器输入 locale 回车会显示下面内容。</p>
+
+<pre class="line-numbers"><code class="language-text">LANG=&quot;en_US.UTF-8&quot;
+LC_COLLATE=&quot;en_US.UTF-8&quot;
+LC_CTYPE=&quot;en_US.UTF-8&quot;
+LC_MESSAGES=&quot;en_US.UTF-8&quot;
+LC_MONETARY=&quot;en_US.UTF-8&quot;
+LC_NUMERIC=&quot;en_US.UTF-8&quot;
+LC_TIME=&quot;en_US.UTF-8&quot;
+LC_ALL=&quot;en_US.UTF-8&quot;
+</code></pre>
+
+<h3 id="toc_9">默认编辑器</h3>
+
+<p>在 <code>~/.zshrc</code>或<code>~/.bashrc</code>配置文中件添加以下指令。例: <code>export EDITOR=code</code> 是将默认编辑器修改为 vscode  </p>
+
+<p>来源：<a href="https://doc.houdunren.com/soft/4%20zsh.html#%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85">ZSH软件安装</a></p>
 
 		</p>
 		<!-- 侧边导航条 -->
@@ -243,7 +382,7 @@ Redis使用手册（工具书）</p>
 	<!-- 版权声明 -->
 		<p class="post-info" style="color: #BCBDB6">
 				本文由 <a style="color: #BCBDB6" href="#">Sajor
-				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2022-02-15T15:18:48+08:00
+				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2022-06-25T19:00:24+08:00
 		</p>
 	<!-- 导航 -->
 			<div id="comments" class="clearfix" style="padding: 0px;">
@@ -251,14 +390,14 @@ Redis使用手册（工具书）</p>
 				    <div class="meta">
 					    
 					    <P style="float: left;">
-					    	<a href="16449099806077.html" 
-					        title="Previous Post: redis数据结构">&laquo; redis数据结构</a>
+					    	<a href="16565146473162.html" 
+					        title="Previous Post: MySQL 索引失效">&laquo; MySQL 索引失效</a>
 					    </p>
 					    <p style="float:right; ">
 					    	
 					    	
-					        <a href="15754473183515.html" 
-					        title="Next Post: Redis使用场景">Redis使用场景 &raquo;</a>
+					        <a href="16559790679652.html" 
+					        title="Next Post: mydumper & myloader">mydumper & myloader &raquo;</a>
 					    </p> 
 					    
 				    </div>
@@ -329,7 +468,7 @@ Redis使用手册（工具书）</p>
              
             
             <li>
-            <a href="Algorithm.html">Algorithm&nbsp;(7)</a>
+            <a href="Algorithm.html">Algorithm&nbsp;(8)</a>
             <p>
             
             <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html">数据结构&nbsp;(2)</a>&nbsp;&nbsp;
@@ -400,31 +539,31 @@ Redis使用手册（工具书）</p>
           
           
          <li>
-           <a href="16520626552663.html">某音APP广告爬取</a><br>
+           <a href="16565146473162.html">MySQL 索引失效</a><br>
          </li>
           
           
           
          <li>
-           <a href="16488664948376.html">Windows 开启wsl并开启远程</a><br>
+           <a href="16561548241153.html">Oh My Zsh</a><br>
          </li>
           
           
           
          <li>
-           <a href="16487053528391.html">Java8 特性 Optional</a><br>
+           <a href="16559790679652.html">mydumper & myloader</a><br>
          </li>
           
           
           
          <li>
-           <a href="16486272439635.html">Word Cloud 词云重叠算法</a><br>
+           <a href="16540505085467.html">IaaS、PaaS、SaaS的区别</a><br>
          </li>
           
           
           
          <li>
-           <a href="16486184863200.html">Python pip源 国内源</a><br>
+           <a href="16533800798764.html">敏感词匹配</a><br>
          </li>
           
           

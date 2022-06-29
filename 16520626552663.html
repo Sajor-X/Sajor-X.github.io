@@ -103,42 +103,7 @@
 		</p>
 	<!-- 正文 -->
 		<p>
-		<p>接到个工作，就是写个爬虫把广告视频数据爬下来，供公司同事模仿。</p>
-
-<p>某音有app手机端和web网页端。web端比较好分析，但是刷了半天都没有看到广告影子，不知道是没有标识，还是说就没有广告投放。所以只能搞客户端了。</p>
-
-<h2 id="toc_0">初次尝试</h2>
-
-<p>开始下载了5.0版的安卓模拟器，下载了比较旧的某音APP 17.3版本，发现是可以抓到包的，但是无法登陆，提示版本过低。所以只能升级APP版本，升级到最新版发现之前的抓包工具无法抓到包了，提示 SSL Handshake Failed。</p>
-
-<h2 id="toc_1">SSL Pinning</h2>
-
-<p>在 android 7.0+以上的版本，就会有 SSL Pinning， 只信任系统内置的证书。&quot;客户端在收到服务器的证书后，对该证书进行强校验，验证该证书是不是客户端承认的证书，如果不是，则直接断开连接。&quot;</p>
-
-<h3 id="toc_2">一：xposed 及其插件 <a href="https://github.com/Fuzion24/JustTrustMe">JustTrustMe</a> (可以配合 virtualxposed)</h3>
-
-<p>JustTrustMe 是一个用来禁用、绕过 SSL 证书检查的基于 Xposed 模块。JustTrustMe 是将 APK 中所有用于校验 SSL 证书的 API 都进行了 Hook，从而绕过证书检查。</p>
-
-<h3 id="toc_3">二：将证书安装到系统证书中（需要 root ）</h3>
-
-<p>系统证书的目录是：/system/etc/security/cacerts/<br/>
-每个证书的命名规则为：<Certificate_Hash>.<Number><br/>
-Certificate_Hash 表示证书文件的 hash 值，Number 是为了防止证书文件的 hash 值一致而增加的后缀;<br/>
-证书的 hash 值可以由命令计算出来，在终端输入 openssl x509 -subject_hash_old -in <Certificate_File>，其中 Certificate_File 为证书路径，将证书重命名为 hash.0 放入系统证书目录，之后你就可以正常抓包了。</p>
-
-<h2 id="toc_4">某音证书锁定</h2>
-
-<p>在尝试了以上方案之后，发现还是无法绕过某音的证书锁定，可能不是用系统证书做校验，而是自己的证书。于是开始调研新的方案。</p>
-
-<h2 id="toc_5">调研方案</h2>
-
-<ul>
-<li>一：修改libsscronet.so文件</li>
-<li>二：使用Android Hook框架如 Frida</li>
-<li>三：使用测试框架开源Appium或网易Airtest</li>
-</ul>
-
-<h3 id="toc_6">方案一：</h3>
+		<h3 id="toc_0">方案一：</h3>
 
 <p>通过修改某音编译好的so库代码，修改判断证书部分函数返回值，达到绕过ssl pinning的目的，然后使用抓包工具抓包。<br/>
 优点：不用配置hook框架，修改一次即可覆盖<br/>
@@ -150,7 +115,7 @@ Certificate_Hash 表示证书文件的 hash 值，Number 是为了防止证书�
 <li><a href="https://www.cnblogs.com/theseventhson/p/15161954.html">网友分析</a></li>
 </ul>
 
-<h3 id="toc_7">方案二：</h3>
+<h3 id="toc_1">方案二：</h3>
 
 <p>类似方案一，通过hook框架，动态修改安卓内部代码函数的入参，返回值等信息，达到绕过ssl pinning的目的，然后使用抓包工具。</p>
 
@@ -166,7 +131,7 @@ Certificate_Hash 表示证书文件的 hash 值，Number 是为了防止证书�
 <li><a href="http://zhaoxincheng.com/index.php/2021/07/30/%e7%9f%ad%e8%a7%86%e9%a2%91%e6%9c%80%e6%96%b0%e7%89%88%e9%80%9a%e7%94%a8quic%e5%8d%8f%e8%ae%ae%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88/">快手、抖音短视频最新版抓包</a></li>
 </ul>
 
-<h3 id="toc_8">方案三：</h3>
+<h3 id="toc_2">方案三：</h3>
 
 <p>通过安卓测试框架截图，拿到相关数据<br/>
 优点：简单，且多平台适用<br/>
@@ -178,9 +143,9 @@ Certificate_Hash 表示证书文件的 hash 值，Number 是为了防止证书�
 <li><a href="https://blog.csdn.net/sirobot/article/details/105730906">关于selenium的一些资料</a></li>
 </ul>
 
-<h2 id="toc_9">再次尝试</h2>
+<h2 id="toc_3">再次尝试</h2>
 
-<h3 id="toc_10">方案一：</h3>
+<h3 id="toc_4">方案一：</h3>
 
 <p>首先采用修改so的方式，由于本人没有吾爱的会员，所以只能下载到看雪上17.3版本的so文件。但是之前装好的安卓5.0搭配 某音17.5 是不需要破解，直接就可以抓包。所以尝试使用新版替换一下，结果发现抖音打不开了。。</p>
 
@@ -218,10 +183,169 @@ ctrl+w
 
 <p>于是下载某音APP20.5最新版，如法炮制。将1改为0，然后 apply patchs并将该文件放入原来位置，修改一下用户组和权限，重启虚拟机即可。</p>
 
-<h2 id="toc_11">protobuf</h2>
+<h2 id="toc_5">替换so文件</h2>
 
-<p>抓到包之后发现里面文字显示都不正常，通过请求头发现，原来使用的谷歌的protobuf协议，类似json和xml用于两端数据传输，因为protobuf更节省空间，传输过程中将变量名省略，变量名都以文件的方式存储在服务器和客户端上，所以我们需要使用Python的<br/>
+<p>联想模拟器：adb connect 127.0.0.1:11509<br/>
+mumu模拟器：adb connect 127.0.0.1:7555</p>
+
+<pre class="line-numbers"><code class="language-text">adb connect 127.0.0.1:11509
+adb push ./libsscronet20.7.so /data/app/com.ss.android.ugc.aweme-1/lib/arm
+
+adb shell 
+rm -rf /data/app/com.ss.android.ugc.aweme-1/lib/arm/libsscronet.so
+
+mv /data/app/com.ss.android.ugc.aweme-1/lib/arm/libsscronet20.7.so /data/app/com.ss.android.ugc.aweme-1/lib/arm/libsscronet.so 
+
+chmod 777 /data/app/com.ss.android.ugc.aweme-1/lib/arm/libsscronet.so 
+</code></pre>
+
+<h2 id="toc_6">protobuf</h2>
+
+<p>抓到包之后发现里面文字显示都不正常，通过请求头发现，原来使用的谷歌的protobuf协议，类似json和xml用于两端数据传输，因为protobuf更节省空间，传输过程中将变量名省略，变量名都以文件的方式存储在服务器和客户端上，我们可以使用Python的<br/>
 blackboxprotobuf库来解析。</p>
+
+<pre class="line-numbers"><code class="language-python">import blackboxprotobuf
+
+with open(&#39;./douyin_.txt&#39;, &#39;rb&#39;) as f:
+    print(blackboxprotobuf.protobuf_to_json(f.read()))
+</code></pre>
+
+<p>或者也可以使用官方protoc解析。需要先下载<a href="https://github.com/protocolbuffers/protobuf">protoc</a></p>
+
+<pre class="line-numbers"><code class="language-python">import subprocess
+
+
+def decodes(data):
+    &quot;&quot;&quot;
+    如果上传到linux线上服务器，需要chmod+x protoc赋予权限。
+    &quot;&quot;&quot;
+    process = subprocess.Popen([r&#39;protoc&#39;, &#39;--decode_raw&#39;],
+                               stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+    output = error = None
+    try:
+        output, error = process.communicate(data)
+    except OSError as e:
+        pass
+    finally:
+        if process.poll() != 0:
+            process.wait()
+    return output
+
+with open(&#39;./douyin_.txt&#39;, &#39;rb&#39;) as f:
+    data = str(decodes(f.read()), encoding=&#39;utf8&#39;)
+    print(data)
+</code></pre>
+
+<p>但是以上方法均不能拿到对应键值，取数据时比较麻烦。</p>
+
+<h3 id="toc_7">逆向获取proto</h3>
+
+<p>方法来源于这个帖子<a href="https://blog.csdn.net/weixin_38819889/article/details/121050835?spm=1001.2014.3001.5501">抖音直播间弹幕protocbuf分析</a></p>
+
+<p>首先用jadx反编译apk包。因为某音最新版(20.7)安装包较大。本人的16G机器hold不住。所以本人用的是13.9版本的apk包。反编译后通过搜索抓包抓到的接口地址。</p>
+
+<p><img src="media/16520626552663/16530395326677.jpg" alt="" style="width:1172px;"/></p>
+
+<p>之后查看这个类</p>
+
+<p><img src="media/16520626552663/16530395832850.jpg" alt="" style="width:1296px;"/></p>
+
+<p>需要的字段以及类型都在这里了。通过编写简单的脚本生成最终的proto文件。</p>
+
+<pre class="line-numbers"><code class="language-python">import re
+import os
+
+OUTPUT_FILENAME = &quot;Sajor.proto&quot;
+path = os.getcwd()  # 获取当前路径
+listDir = os.listdir(path)
+
+with open(OUTPUT_FILENAME, &#39;w&#39;) as fr:
+    fr.write(&#39;syntax = &quot;proto3&quot;;\n\n\n&#39;)
+
+    for file in [i for i in listDir if i.__contains__(&#39;java&#39;)]:
+
+        with open(file, &#39;r&#39;) as f:
+            data = f.read()
+        res = re.findall(r&#39;@WireField\(adapter = &quot;.*\.(.*?)#(.*?)&quot;,.* tag = (\d+)\)\n.*?public.*? .* (.*?);&#39;, data)
+
+        fr.write(&#39;message %s {\n&#39; % (file.replace(&#39;.java&#39;, &#39;&#39;)))
+
+        for item in res:
+            fr.write(&quot;{} {} = {};\n&quot;.format(item[1].lower() if item[0] == &#39;ProtoAdapter&#39; else &#39;repeated {}&#39;.format(item[0]), item[3], item[2]))
+        fr.write(&#39;}\n\n&#39;)
+
+print(&quot;---------- end ----------&quot;)
+</code></pre>
+
+<p>利用encode函数里的代码生成，更全</p>
+
+<pre class="line-numbers"><code class="language-text">import re
+import os
+
+OUTPUT_FILENAME = &quot;Sajor.proto&quot;
+path = os.getcwd()  # 获取当前路径
+listDir = os.listdir(path)
+
+with open(OUTPUT_FILENAME, &#39;w&#39;) as fr:
+    fr.write(&#39;syntax = &quot;proto3&quot;;\n\n\n&#39;)
+
+    for file in [i for i in listDir if i.__contains__(&#39;java&#39;)]:
+
+        with open(file, &#39;r&#39;) as f:
+            data = f.read()
+        res = re.findall(r&#39;(\w+)\.(.*?)\.encodeWithTag\(protoWriter, (\d+), .*?\.(.*?)\);&#39;, data)
+
+        fr.write(&#39;message %s {\n&#39; % (file.replace(&#39;.java&#39;, &#39;&#39;)))
+
+        for item in res:
+            line = &quot;{} {} = {};\n&quot;.format((&#39;repeated {}&#39;.format(item[1].lower().split(&#39;.&#39;)[0]) if item[1].lower().__contains__(&#39;asrepeated&#39;) else item[1].lower()) if item[0] == &#39;ProtoAdapter&#39; else
+                                          &#39;repeated {}&#39;.format(item[0]) if item[1] == &#39;ADAPTER.asRepeated()&#39; else item[0],
+                                          item[3],
+                                          item[2])
+            print(line)
+            fr.write(line)
+        fr.write(&#39;}\n\n&#39;)
+
+print(&quot;---------- end ----------&quot;)
+</code></pre>
+
+<p>之后就是通过该proto文件生成对应语言的版本。我这里用的是Python，于是使用该命令生成Python文件</p>
+
+<pre class="line-numbers"><code class="language-bash">protoc ./Sajor.proto --python_out=./ 
+</code></pre>
+
+<p>然后使用该文件解析请求返回的数据。</p>
+
+<pre class="line-numbers"><code class="language-text">import json
+
+from google.protobuf.json_format import MessageToDict
+
+from proto import sajor_pb2
+
+with open(&#39;./douyin.txt&#39;, &#39;rb&#39;) as f:
+    a = f.read()
+
+info = sajor_pb2.aweme_v2_feed_response()
+info.ParseFromString(a)
+print(json.dumps(MessageToDict(info, preserving_proto_field_name=True), ensure_ascii=False))
+</code></pre>
+
+<p><strong>proto与blackboxprotobuf</strong></p>
+
+<p>blackboxprotobuf是个不错的开源库，但是解析的速度与可靠性有些问题，通过对同一个文件的解析，做个对比。</p>
+
+<p>blackboxprotobuf</p>
+
+<p><img src="media/16520626552663/16533592347511.jpg" alt="" style="width:1333px;"/></p>
+
+<p>proto</p>
+
+<p><img src="media/16520626552663/16533592551492.jpg" alt="" style="width:1354px;"/></p>
+
+<p>那是因为 blackboxprotobuf 在内部是使用递归的方式，逐步猜测要解析数据的类型格式。一不小心就会陷入循环中。。</p>
+
+<p><img src="media/16520626552663/16533597992474.jpg" alt="" style="width:1365px;"/></p>
 
 		</p>
 		<!-- 侧边导航条 -->
@@ -329,6 +453,12 @@ blackboxprotobuf库来解析。</p>
 				<footer class="post-footer clearfix">	    			
 				    <div class="meta">
 					    
+					    <P style="float: left;">
+					    	<a href="16533196041081.html" 
+					        title="Previous Post: protobuf">&laquo; protobuf</a>
+					    </p>
+					    <p style="float:right; ">
+					    	
 					    	
 					        <a href="16488664948376.html" 
 					        title="Next Post: Windows 开启wsl并开启远程">Windows 开启wsl并开启远程 &raquo;</a>
@@ -402,7 +532,7 @@ blackboxprotobuf库来解析。</p>
              
             
             <li>
-            <a href="Algorithm.html">Algorithm&nbsp;(7)</a>
+            <a href="Algorithm.html">Algorithm&nbsp;(8)</a>
             <p>
             
             <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html">数据结构&nbsp;(2)</a>&nbsp;&nbsp;
@@ -473,31 +603,31 @@ blackboxprotobuf库来解析。</p>
           
           
          <li>
-           <a href="16520626552663.html">某音APP广告爬取</a><br>
+           <a href="16565146473162.html">MySQL 索引失效</a><br>
          </li>
           
           
           
          <li>
-           <a href="16488664948376.html">Windows 开启wsl并开启远程</a><br>
+           <a href="16561548241153.html">Oh My Zsh</a><br>
          </li>
           
           
           
          <li>
-           <a href="16487053528391.html">Java8 特性 Optional</a><br>
+           <a href="16559790679652.html">mydumper & myloader</a><br>
          </li>
           
           
           
          <li>
-           <a href="16486272439635.html">Word Cloud 词云重叠算法</a><br>
+           <a href="16540505085467.html">IaaS、PaaS、SaaS的区别</a><br>
          </li>
           
           
           
          <li>
-           <a href="16486184863200.html">Python pip源 国内源</a><br>
+           <a href="16533800798764.html">敏感词匹配</a><br>
          </li>
           
           

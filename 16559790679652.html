@@ -10,7 +10,7 @@
 
     <title>
       
-    提升计划 - Sajor's Blog
+    mydumper & myloader - Sajor's Blog
     
     </title>
 
@@ -89,58 +89,64 @@
 		<div class="post-header">
 			<!-- title -->
 			<div class="post-header">
-				<h1 class="post-title itemprop="name headline">提升计划</h1>	
+				<h1 class="post-title itemprop="name headline">mydumper & myloader</h1>	
 				<div class="post-data">
-					<time datetime="2022-02-15T10:36:17+08:00" pubdate data-updated="true">2022/02/15</time>
+					<time datetime="2022-06-23T18:11:07+08:00" pubdate data-updated="true">2022/06/23</time>
 				</div>
 			</div>
 		</div>
 	<div id="post-content" class="post-content" itemprop="articleBody"> 
 		<p class="post-tags"> 
 		
-		<a href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>&nbsp;
+		<a href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>&nbsp;
 		
 		</p>
 	<!-- 正文 -->
 		<p>
-		<ul>
-<li>MySQL</li>
-<li>Redis</li>
-<li>JVM</li>
-<li>Spring</li>
-<li>Linux</li>
-<li>MQ</li>
-<li>English</li>
-</ul>
+		<p><a href="https://launchpad.net/mydumper">mydumper</a> 是一款社区开源的逻辑备份工具。该工具主要由 C 语言编写，目前由 MySQL 、Facebook 等公司人员开发维护。</p>
 
-<h3 id="toc_0">Redis 3个月</h3>
+<p><a href="https://github.com/maxbube/mydumper">GitHub 地址</a></p>
+
+<p>参考官方介绍，mydumper 主要有以下几点特性：</p>
 
 <ul>
-<li>1个月 通读 146-Redis核心技术与实战 专栏</li>
-<li>1个月 通读 Redis使用手册 </li>
-<li>1个月 Redis源码剖析与实战极客专栏 常用命令实战 </li>
+<li>支持多线程导出数据，速度更快。</li>
+<li>支持一致性备份。</li>
+<li>支持将导出文件压缩，节约空间。</li>
+<li>支持多线程恢复。</li>
+<li>支持以守护进程模式工作，定时快照和连续二进制日志。</li>
+<li>支持按照指定大小将备份文件切割。</li>
+<li>数据与建表语句分离。</li>
 </ul>
 
-<p>Redis 深度历险：核心原理与应用实践<br/>
-Redis开发与运维<br/>
-Redis设计与实现<br/>
-Redis使用手册 </p>
-
-<h3 id="toc_1">Linux</h3>
+<p>可能各个版本备份出来的文件命名稍有不同，从文件命名可以较为明显的看出该文件的内容，大致总结下文件命名规则如下：</p>
 
 <ul>
-<li>1.5 个月：通读《UNIX 环境高级编程》</li>
-<li>1.5 个月：通读《Linux 系统编程》</li>
-<li>2 个月：通读《UNIX 网络编程 卷 1》</li>
-<li><p>1 个月：Linux 常用命令实战，包括 tcpdump、ps 和 top 等</p></li>
+<li>dbname-schema-create.sql：建库语句。</li>
+<li>dbname-schema-post.sql：包含事件、存储过程及函数创建语句（若存在则有该文件）。</li>
+<li>dbname.tbname.metadata：记录这个表的行数。</li>
+<li>dbname.tbname-schema.sql：此表的创建语句。</li>
+<li>dbname.tbname-schema-triggers.sql：创建触发器语句（若该表存在触发器 则有此文件）。</li>
+<li>dbname.tbname.sql：该表的插入数据语句（若该表为空 则不存在此文件）。</li>
+<li>dbname.viewname-schema.sql：创建视图语句（只列举出视图字段）。</li>
+<li>dbname.viewname-schema-view.sql：创建视图的真正语句。</li>
+<li>metadata：记录开始及结束备份的时间以及二进制日志位置。</li>
 </ul>
 
-<ol>
-<li><p>第一段是分解等级，参考专业领域的等级划分标准或公司的职级体系，在当前状态和大牛之间划分出 3～5 个中间等级，把 10 年的宏大目标分解成 2～3 年的一段目标。</p></li>
-<li><p>第二段是分解技能，参考 COMD 能力模型和招聘网站的职位描述，整理下一个等级的技能需求，列出自己需要重点提升的 3～5 个技能点，把 2～3 年的一段目标分解成 6个月左右的二段目标。</p></li>
-<li><p>第三段是分解行动，参考同行在网上发布的经验和朋友的建议，确定提升单项技能的 3～5 个具体行动，把 6 个月左右的二段目标分解成 1～2 个月的三段目标。</p></li>
-<li><p>虽然最终执行计划的时候要落实到周，但是制定计划的时候分解到月就行了，这样做的好处是，计划调整起来更加方便灵活。</p></li>
-</ol>
+<p><strong>mydumper 导出示例</strong></p>
+
+<pre class="line-numbers"><code class="language-text">mydumper -u [user] -h [ip: xxx.xxx.xx.x] -p [password] -B [database] -o [local dir: /tmp/xx] -T [table list: tb_anchor,tb_contract_anchor] 
+
+echo &quot;ending...&quot;
+</code></pre>
+
+<p><strong>myloader 导入示例</strong></p>
+
+<pre class="line-numbers"><code class="language-text">myloader -h xxx.xxx.xx.xx -p pass 
+myloader -u [user] -h [ip: 47.97.51.185] -p [password] -o -d [local dir: /tmp/jeecg/] -B [database]
+
+echo &quot;finish&quot;
+</code></pre>
 
 		</p>
 		<!-- 侧边导航条 -->
@@ -241,7 +247,7 @@ Redis使用手册 </p>
 	<!-- 版权声明 -->
 		<p class="post-info" style="color: #BCBDB6">
 				本文由 <a style="color: #BCBDB6" href="#">Sajor
-				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2022-02-15T10:36:17+08:00
+				</a> 创作，采用 <a style="color: #BCBDB6" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 2022-06-23T18:11:07+08:00
 		</p>
 	<!-- 导航 -->
 			<div id="comments" class="clearfix" style="padding: 0px;">
@@ -249,14 +255,14 @@ Redis使用手册 </p>
 				    <div class="meta">
 					    
 					    <P style="float: left;">
-					    	<a href="16457968431626.html" 
-					        title="Previous Post: Jenkins 权限控制">&laquo; Jenkins 权限控制</a>
+					    	<a href="16561548241153.html" 
+					        title="Previous Post: Oh My Zsh">&laquo; Oh My Zsh</a>
 					    </p>
 					    <p style="float:right; ">
 					    	
 					    	
-					        <a href="16448160828658.html" 
-					        title="Next Post: 贪心算法">贪心算法 &raquo;</a>
+					        <a href="16540505085467.html" 
+					        title="Next Post: IaaS、PaaS、SaaS的区别">IaaS、PaaS、SaaS的区别 &raquo;</a>
 					    </p> 
 					    
 				    </div>
@@ -327,7 +333,7 @@ Redis使用手册 </p>
              
             
             <li>
-            <a href="Algorithm.html">Algorithm&nbsp;(7)</a>
+            <a href="Algorithm.html">Algorithm&nbsp;(8)</a>
             <p>
             
             <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html">数据结构&nbsp;(2)</a>&nbsp;&nbsp;
@@ -398,31 +404,31 @@ Redis使用手册 </p>
           
           
          <li>
-           <a href="16520626552663.html">某音APP广告爬取</a><br>
+           <a href="16565146473162.html">MySQL 索引失效</a><br>
          </li>
           
           
           
          <li>
-           <a href="16488664948376.html">Windows 开启wsl并开启远程</a><br>
+           <a href="16561548241153.html">Oh My Zsh</a><br>
          </li>
           
           
           
          <li>
-           <a href="16487053528391.html">Java8 特性 Optional</a><br>
+           <a href="16559790679652.html">mydumper & myloader</a><br>
          </li>
           
           
           
          <li>
-           <a href="16486272439635.html">Word Cloud 词云重叠算法</a><br>
+           <a href="16540505085467.html">IaaS、PaaS、SaaS的区别</a><br>
          </li>
           
           
           
          <li>
-           <a href="16486184863200.html">Python pip源 国内源</a><br>
+           <a href="16533800798764.html">敏感词匹配</a><br>
          </li>
           
           

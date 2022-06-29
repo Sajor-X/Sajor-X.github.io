@@ -95,19 +95,29 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16520626552663.html"> 
+						<a href="16565146473162.html"> 
 							<div class="item-desc"> 
-								<p>接到个工作，就是写个爬虫把广告视频数据爬下来，供公司同事模仿。
+								<p>今天碰到一个MySQL索引失效的问题，想当年面试，面试官问我有没有遇到过索引失效的场景时，我羞涩的答了一个“没有”，甚是尴尬。如今也遇到了MySQL优化器判断失误的时候，特此记录下来，以备下次面试时吊打面试官。
 
-某音有app手机端和web网页端。web端比较好分析，但是刷了半天都没有看到广告影子，不知道是没有标识，还是说就没有广告投放。所以只能搞客户端了。
+记录问题
 
-初次尝试
+tb_order 表有索引
 
-开始下载了5.0版的安卓模拟器，下载了比较旧的某音APP 17.3版本，发现是可以抓到包的，但是无法登陆，提示版本过低。所以只能升级APP版本，升级到最新版发现之前的抓包工具无法抓到包了，提示 SSL Handshake Failed。
 
-SSL Pinning
 
-在 android 7.0+以上的版本，就会有 SSL Pinning， 只信任系统内置的证书。&quot</p> 
+搜索时条件也没有违反索引规则，显示可以使用索引，但却没有实际使用。
+
+
+
+强制使用 idx_contract_time 索引，发现是可以提高查询速度的。
+
+
+
+查询资料
+
+即使存在辅助索引idx_contract_time, 优化器最后可能还是选择primary聚集索引。
+
+原因是：用户选取的数据是需要整行信息，而idx_contract</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -118,7 +128,7 @@ SSL Pinning
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16520626552663.html">某音APP广告爬取</a>
+	  							<a href="16565146473162.html">MySQL 索引失效</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -129,7 +139,7 @@ SSL Pinning
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E7%88%AC%E8%99%AB.html'>爬虫</a>
+			    			<a class='category' href='MySQL.html'>MySQL</a>
 								
 		   						</div> 
 		   					</div> 
@@ -142,38 +152,28 @@ SSL Pinning
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16488664948376/16528851318715.jpg);">
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16561548241153/16561550756772.jpg);">
 						
 						</div> 
-						<a href="16488664948376.html"> 
+						<a href="16561548241153.html"> 
 							<div class="item-desc"> 
-								<p>
+								<p>安装命令
 
-首先在linux中启动SSH连接支持
+zsh 可以提高终端使用体验，是命令行终端必装软件，下面介绍安装方法
 
-#客户端
-sudo apt-get install openssh-client
-#服务器
-sudo apt-get install openssh-server
-#或
-apt-get install ssh
+Mac
 
+在 mac 上还是建议使用 item 做为命令行终端，先安装 xcode。
 
-编辑配置文件
+# 如果没有 brew 命令请自行安装 https://brew.sh/
+brew install zsh zsh-completions
 
-sudo vi /etc/ssh/sshd_config
+chsh -s /bin/zsh
 
+# 如果没有 port 命令，需要先安装  https://www.macports.org/install.php
+# 安装后需要执行 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
-增加以下配置
-
-Port 2222             # wsl端口
-PermitRootLogin yes   # 可以root远程登录
-AllowUsers xxx        # 开启wsl时新建的账户
-
-
-重启
-
-sudo service ssh </p> 
+sudo p</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -184,7 +184,7 @@ sudo service ssh </p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16488664948376.html">Windows 开启wsl并开启远程</a>
+	  							<a href="16561548241153.html">Oh My Zsh</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -208,32 +208,31 @@ sudo service ssh </p>
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16487053528391/16487116675343.jpg);">
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16487053528391.html"> 
+						<a href="16559790679652.html"> 
 							<div class="item-desc"> 
-								<p>Optional 类是一个可以为null的容器对象。如果值存在则isPresent()方法会返回true，调用get()方法会返回该对象。
+								<p>mydumper 是一款社区开源的逻辑备份工具。该工具主要由 C 语言编写，目前由 MySQL 、Facebook 等公司人员开发维护。
 
-Optional 是个容器：它可以保存类型T的值，或者仅仅保存null。Optional提供很多有用的方法，这样我们就不用显式进行空值检测。
+GitHub 地址
 
-创建 Option
-
-Optional 有两个函数(of &amp; ofNullable)可以传参初始化。一个empty函数没有参数。
+参考官方介绍，mydumper 主要有以下几点特性：
 
 
+支持多线程导出数据，速度更快。
+支持一致性备份。
+支持将导出文件压缩，节约空间。
+支持多线程恢复。
+支持以守护进程模式工作，定时快照和连续二进制日志。
+支持按照指定大小将备份文件切割。
+数据与建表语句分离。
 
-empty
 
-empty 函数就是，直接返回 new Optional() 并且 value 为空 null。
-
+可能各个版本备份出来的文件命名稍有不同，从文件命名可以较为明显的看出该文件的内容，大致总结下文件命名规则如下：
 
 
-of &amp; ofNullable
-
-of
-
-首</p> 
+dbname-schema-create.sql：建</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -244,7 +243,7 @@ of
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16487053528391.html">Java8 特性 Optional</a>
+	  							<a href="16559790679652.html">mydumper & myloader</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -255,7 +254,7 @@ of
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E8%AF%AD%E6%B3%95%E7%B1%BB.html'>语法类</a>
+			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
 								
 		   						</div> 
 		   					</div> 
@@ -268,18 +267,14 @@ of
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16486272439635/16528852569694.jpg);">
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16486272439635.html"> 
+						<a href="16540505085467.html"> 
 							<div class="item-desc"> 
 								<p>
 
-word_cloud 
-
-积分图算法
-
-
+来源：IaaS、PaaS、SaaS的区别
 </p> 
 							</div> 
 						</a> 
@@ -291,7 +286,48 @@ word_cloud
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16486272439635.html">Word Cloud 词云重叠算法</a>
+	  							<a href="16540505085467.html">IaaS、PaaS、SaaS的区别</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E7%88%AC%E8%99%AB.html'>爬虫</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="16533800798764.html"> 
+							<div class="item-desc"> 
+								<p>DFA算法和AC自动机算法
+</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16533800798764.html">敏感词匹配</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -318,24 +354,18 @@ word_cloud
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16486184863200.html"> 
+						<a href="16533777011588.html"> 
 							<div class="item-desc"> 
-								<p>pip 安装第三方库速度太慢
+								<p>如何防止selenium被检测， 这里有个工具
 
-可设置 pip 从国内的镜像源下载安装
-
-阿里云 http://mirrors.aliyun.com/pypi/simple/
-中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/
-豆瓣 http://pypi.douban.com/simple/
-清华大学 https://pypi.tuna.tsinghua.edu.cn/simple/
-中国科学技术大学 http://pypi.mirrors.ustc.edu.cn/simple/
+一些相关帖子。
 
 
-设置方法，以清华镜像源为例：
+防止selenium被检测
+别去送死了。Selenium 与 Puppeteer 能被网站探测的几十个特征
+如何正确移除Selenium中的 window.navigator.webdriver
 
-临时使用
-
-pip install -i htt</p> 
+</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -346,7 +376,7 @@ pip install -i htt</p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16486184863200.html">Python pip源 国内源</a>
+	  							<a href="16533777011588.html">selenium</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -357,72 +387,7 @@ pip install -i htt</p>
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E8%AF%AD%E6%B3%95%E7%B1%BB.html'>语法类</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16485397489109/16485401540848.jpg);">
-						
-						</div> 
-						<a href="16485397489109.html"> 
-							<div class="item-desc"> 
-								<p>
-
-ngrok 安装和使用太简单了，可以方便今后调试带回调的三方接口。
-
-按照文档保存密钥后，输入 ngrok http 8080 启动
-
-
-
-图中 Web Interface 的 4040 地址，还可以看到ngrok作为中间人劫持记录到的所有接口文件数据。
-
-
-
-配置文件
-
-输入token之后，会自动生成配置文件，我们可以在配置文件里配置我们常用的端口，例如8080。
-
-tunnels:
-  dev:
-    proto: http
-    addr: 8080
-  aria:
-    proto: tcp
-    addr: 6800
-
-
-这样可以直接使用命令 ngrok start de</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="16485397489109.html">ngrok 内网穿透</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
+			    			<a class='category' href='%E7%88%AC%E8%99%AB.html'>爬虫</a>
 								
 		   						</div> 
 		   					</div> 
@@ -481,7 +446,7 @@ tunnels:
              
             
             <li>
-            <a href="Algorithm.html">Algorithm&nbsp;(7)</a>
+            <a href="Algorithm.html">Algorithm&nbsp;(8)</a>
             <p>
             
             <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html">数据结构&nbsp;(2)</a>&nbsp;&nbsp;
@@ -552,31 +517,31 @@ tunnels:
           
           
          <li>
-           <a href="16520626552663.html">某音APP广告爬取</a><br>
+           <a href="16565146473162.html">MySQL 索引失效</a><br>
          </li>
           
           
           
          <li>
-           <a href="16488664948376.html">Windows 开启wsl并开启远程</a><br>
+           <a href="16561548241153.html">Oh My Zsh</a><br>
          </li>
           
           
           
          <li>
-           <a href="16487053528391.html">Java8 特性 Optional</a><br>
+           <a href="16559790679652.html">mydumper & myloader</a><br>
          </li>
           
           
           
          <li>
-           <a href="16486272439635.html">Word Cloud 词云重叠算法</a><br>
+           <a href="16540505085467.html">IaaS、PaaS、SaaS的区别</a><br>
          </li>
           
           
           
          <li>
-           <a href="16486184863200.html">Python pip源 国内源</a><br>
+           <a href="16533800798764.html">敏感词匹配</a><br>
          </li>
           
           

@@ -92,10 +92,218 @@
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16485397489109/16485401540848.jpg);">
+						
+						</div> 
+						<a href="16485397489109.html"> 
+							<div class="item-desc"> 
+								<p>
+
+ngrok 安装和使用太简单了，可以方便今后调试带回调的三方接口。
+
+按照文档保存密钥后，输入 ngrok http 8080 启动
+
+
+
+图中 Web Interface 的 4040 地址，还可以看到ngrok作为中间人劫持记录到的所有接口文件数据。
+
+
+
+配置文件
+
+输入token之后，会自动生成配置文件，我们可以在配置文件里配置我们常用的端口，例如8080。
+
+tunnels:
+  dev:
+    proto: http
+    addr: 8080
+  aria:
+    proto: tcp
+    addr: 6800
+
+
+这样可以直接使用命令 ngrok start de</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16485397489109.html">ngrok 内网穿透</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16474850990931.html"> 
+						<a href="16480451786591.html"> 
+							<div class="item-desc"> 
+								<p>Codis 是 Redis 集群方案之一，令我们感到骄傲的是，它是中国人开发并开源的，来自前豌豆荚中间件团队。
+
+有了 Codis 技术积累之后，项目「突头人」刘奇又开发出来中国人自己的开源分布式数据库 —— TiDB
+
+
+
+Codis 使用 Go 语言开发，它是一个代理中间件，它和 Redis 一样也使用 Redis 协议对外提供服务，当客户端向 Codis 发送指令时，Codis 负责将指令转发到后面的 Redis 实例来执行，并将返回结果再转回给客户端。
+
+
+
+Codis 上挂接的所有 Redis 实例构成一个 Redis 集群，当集群空间不足时，可以通过动态增加 Redis 实例来实现</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16480451786591.html">Redis Codis 第三方集群实现</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Redis.html'>Redis</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="16476622390377.html"> 
+							<div class="item-desc"> 
+								<p>我们必须有一个高可用方案来抵抗节点故障，当故障发生时可以自动进行从主切换，程序可以不用重启，Redis 官方提供了这样一种方案 —— Redis Sentinel(哨兵)。
+
+
+
+我们可以将 Redis Sentinel 集群看成是一个 ZooKeeper 集群，它是集群高可用的心脏，它一般是由 3～5 个节点组成，这样挂了个别节点集群还可以正常运转。
+
+它负责持续监控主从节点的健康，当主节点挂掉时，自动选择一个最优的从节点切换为主节点。客户端来连接集群时，会首先连接 sentinel，通过 sentinel 来查询主节点的地址，然后再去连接主节点进行数据交互。当主节点发生故障时，客户端会重新</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16476622390377.html">Redis 集群 Sentinel 哨兵模式</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Redis.html'>Redis</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="16475965636227.html"> 
+							<div class="item-desc"> 
+								<p>主从复制是 Redis 分布式的基础，Redis 的高可用离开了主从复制将无从进行。
+
+不过复制功能也不是必须的，如果你将 Redis 只用来做缓存，跟 memcache 一样来对待，也就无需要从库做备份，挂掉了重新启动一下就行。但是只要你使用了 Redis 的持久化功能，就必须认真对待主从复制，它是系统数据安全的基础保障。
+
+CAP 原理
+
+现代分布式系统的理论基石——CAP 原理，CAP 原理就好比分布式领域的牛顿定律，它是分布式存储的理论基石。自打 CAP 的论文发表之后，分布式存储中间件犹如雨后春笋般一个一个涌现出来。理解这个原理其实很简单，本节我们首先对这个原理进行一些简单的讲解。
+</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16475965636227.html">Redis 集群-主从同步</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Redis.html'>Redis</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="16474851306463.html"> 
 							<div class="item-desc"> 
 								<p></p> 
 							</div> 
@@ -108,7 +316,7 @@
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16474850990931.html">Redis 快速列表</a>
+	  							<a href="16474851306463.html">Redis 基数树</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -135,17 +343,9 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16474850885819.html"> 
+						<a href="16474851167642.html"> 
 							<div class="item-desc"> 
-								<p>Redis 为了节约内存空间，zset、hash容器对象在元素较少的时候，采用压缩列表（ziplist）进行存储。
-
-压缩列表是一块连续的内存空间，元素之间紧挨着存储，没有任何冗余空隙。
-
-&gt; zadd pro 1 go 2 py 3 java
-(integer) 3
-&gt; debug object pro
-Value at:0x7f9c8df044c0 refcount:1 encoding:ziplist serializedlength:32 lru:4867870 lru_seconds_idle:6
-&gt; hmset bok go fast py slow java f</p> 
+								<p></p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -156,7 +356,7 @@ Value at:0x7f9c8df044c0 refcount:1 encoding:ziplist serializedlength:32 lru:4867
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16474850885819.html">Redis 压缩列表</a>
+	  							<a href="16474851167642.html">Redis 紧凑列表</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -168,204 +368,6 @@ Value at:0x7f9c8df044c0 refcount:1 encoding:ziplist serializedlength:32 lru:4867
 		   						<div class="item-meta-cat">
 	  							
 			    			<a class='category' href='Redis.html'>Redis</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="16469632028293.html"> 
-							<div class="item-desc"> 
-								<p>工作中，遇到有两个不同的系统，两个系统中有相同的功能，维护一个主播的名称。现在准备将两个系统的主播合并到一起。因为主播名称可能由不同的人维护的，他们也不知道主播的真实姓名，比如一条小团团，可能维护成了亿条小团团，等等。
-
-为了解决主播重复问题，现在想了一个办法，将要导入的一方，做一个列表，将原有系统所有与其相似的主播名称展示出来。就像这样。
-
-
-
-通过与大佬们的讨论、启发。现准备使用以下方案。
-
-
-使用正则表达式，将昵称中的emoji剔除，只提取汉字和英文数字
-使用中文分词法，将昵称字符串分成一个个的单词。并将词组个数为一的删去
-两个系统的主播昵称进行同样的操作
-之后遍历要导入的一方，与原有系</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="16469632028293.html">倒排索引-字符串相似匹配（结巴分词、中文转拼音）</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html'>数据结构</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="16461235353064.html"> 
-							<div class="item-desc"> 
-								<p>公司运维写的日志切分脚本写的很好，改日学习
-
-#!/bin/bash
-# This script run at 23:59
-# The Nginx logs path
-
-# Nginx_conf
-# Ngxconf=$(ps aux|grep nginx.conf |grep -v grep |awk &#39;{print $NF}&#39;)
-Logs_path=&quot;/data/logs/nginx&quot;
-Loglist=${Logs_path}/nginx_logs_list
-BACKDIR=&quot;$(date -d &quot;yesterday&quot; +&q</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="16461235353064.html">Linux 日志切分</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="16459510132643.html"> 
-							<div class="item-desc"> 
-								<p>sed -i &#39;&#39; &#39;s/https:\/\///g&#39;  ./src/project.270f2.js
-
-return e
-i.PLAYERTYPE.TEACHER
-
-火狐跨域配置
-
-?prepare=1&amp;user_role=2&amp;user_type=1
-</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="16459510132643.html">抓取儿童网课</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='%E7%88%AC%E8%99%AB.html'>爬虫</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="16458023133729.html"> 
-							<div class="item-desc"> 
-								<p>
-Error: Failed to download metadata for repo &#39;appstream&#39;: Cannot prepare internal mirrorlist: No URLs in mirrorlist
-
-
-我的是这种错误
-
-
-Invalid configuration value: failovermethod=priority in /etc/yum.repos.d/CentOS-epel.repo; 配置：ID 为 &quot;failovermethod&quot; 的 OptionBinding 不存在
-Repository epel is</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="16458023133729.html">Centos8 yum安装错误</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
 								
 		   						</div> 
 		   					</div> 
@@ -424,7 +426,7 @@ Repository epel is</p>
              
             
             <li>
-            <a href="Algorithm.html">Algorithm&nbsp;(7)</a>
+            <a href="Algorithm.html">Algorithm&nbsp;(8)</a>
             <p>
             
             <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html">数据结构&nbsp;(2)</a>&nbsp;&nbsp;
@@ -495,31 +497,31 @@ Repository epel is</p>
           
           
          <li>
-           <a href="16520626552663.html">某音APP广告爬取</a><br>
+           <a href="16565146473162.html">MySQL 索引失效</a><br>
          </li>
           
           
           
          <li>
-           <a href="16488664948376.html">Windows 开启wsl并开启远程</a><br>
+           <a href="16561548241153.html">Oh My Zsh</a><br>
          </li>
           
           
           
          <li>
-           <a href="16487053528391.html">Java8 特性 Optional</a><br>
+           <a href="16559790679652.html">mydumper & myloader</a><br>
          </li>
           
           
           
          <li>
-           <a href="16486272439635.html">Word Cloud 词云重叠算法</a><br>
+           <a href="16540505085467.html">IaaS、PaaS、SaaS的区别</a><br>
          </li>
           
           
           
          <li>
-           <a href="16486184863200.html">Python pip源 国内源</a><br>
+           <a href="16533800798764.html">敏感词匹配</a><br>
          </li>
           
           

@@ -95,20 +95,19 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16449099806077.html"> 
+						<a href="16474792471704.html"> 
 							<div class="item-desc"> 
-								<p>redis可以用来做什么，缓存，分布式锁。
+								<p>Redis 是一个非常耗费内存的数据库。Redis 作者为了优化数据结构的内存占用，也苦心孤诣增加了非常多的优化点。
 
+32bit vs 64bit
 
-记录帖子的点赞数、评论数和点击数 (hash)。
-记录用户的帖子 ID 列表 (排序)，便于快速显示用户的帖子列表 (zset)。
-记录帖子的标题、摘要、作者和封面信息，用于列表页展示 (hash)。
-记录帖子的点赞用户 ID 列表，评论 ID 列表，用于显示和去重计数 (zset)。
-缓存近期热帖内容 (帖子内容空间占用比较大)，减少数据库压力 (hash)。
-记录帖子的相关文章 ID，根据内容推荐相关帖子 (list)。
-如果帖子 ID 是整数自增的，可以使用 Redis 来分配帖子 ID(计数器)。
-收藏集和帖子之间的关系 (zset)。
-</p> 
+Redis 如果使用 32bit 进行编译，内部所有数据结构所使用的指针空间占用会少一半，如果你对 Redis 使用内存不超过 4G，可以考虑使用 32bit 进行编译，可以节约大量内存。4G 的容量作为一些小型站点的缓存数据库是绰绰有余了，如果不足还可以通过增加实例的方式来解决。
+
+小对象压缩存储 (ziplist)
+
+如果 Redis 内部管理的集合数据结构很小，它会使用紧凑存储形式压缩存储。
+
+这就好比 HashMap 本来是二维结构，但</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -119,7 +118,7 @@
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16449099806077.html">redis数据结构</a>
+	  							<a href="16474792471704.html">Redis 小对象压缩</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -146,35 +145,22 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16449095288261.html"> 
+						<a href="16474265825347.html"> 
 							<div class="item-desc"> 
-								<p>1月 Redis核心技术与实战极客时间专栏
+								<p>消息多播
 
-1月 Redis 深度历险：核心原理与应用实践
-1月 Redis开发与运维
-Redis设计与实现
-Redis使用手册（工具书）
+消息多播允许生产者生产一次消息，中间件负责将消息复制到多个消息队列，每个消息队列由相应的消费组进行消费。它是分布式系统常用的一种解耦方式，用于将多个消费组的逻辑进行拆分。支持了消息多播，多个消费组的逻辑就可以放到不同的子系统中。
 
-Redis源码剖析与实战极客专栏 （暂无资源）
+如果是普通的消息队列，就得将多个不同的消费组逻辑串接起来放在一个子系统中，进行连续消费。
 
-第一个月
 
-第一周
 
-通读 Redis 深度历险：核心原理与应用实践 第一章
+如果是普通的消息队列，就得将多个不同的消费组逻辑串接起来放在一个子系统中，进行连续消费。
 
-路上听 Redis核心技术与实战极客时间专栏 前五章
 
-第二周
+PubSub
 
-通读 Redis 深度历险：核心原理与应用实践 第二章
-路上听 Redis核心技术与实战极客时间专栏 五章
-
-第三周
-
-通读 Redis 深度历险：核心原理与应用实践 第三章
-路上听 Redis核心技术与实战极客时间专栏 五章
-</p> 
+为了支持消息多播，Redis 不能再依赖于那 5 种基本数据类型了。它单独使用了一个模块来支持消息多播，这个模块的名字叫着 PubSub，也就是 Pu</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -185,7 +171,7 @@ Redis源码剖析与实战极客专栏 （暂无资源）
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16449095288261.html">Redis 三个月学习计划</a>
+	  							<a href="16474265825347.html">Redis消息多播 PubSub</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -212,25 +198,24 @@ Redis源码剖析与实战极客专栏 （暂无资源）
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15754473183515.html"> 
+						<a href="16473983096100.html"> 
 							<div class="item-desc"> 
-								<p>缓存数据
+								<p>每个事务的操作都有 begin、commit 和 rollback，begin 指示事务的开始，commit 指示事务的提交，rollback 指示事务的回滚。它大致的形式如下。
 
-最常用，对经常需要查询且变动不是很频繁的数据
+begin();
+try {
+    command1();
+    command2();
+    ....
+    commit();
+} catch(Exception e) {
+    rollback();
+}
 
-排行榜应用
 
-利用Redis的有序集合zset，每次插入数据时自动调整顺序值，根据插入时的score值将value按一定顺序连续排列。
+Redis 在形式上看起来也差不多，分别是 multi/exec/discard。multi 指示事务的开始，exec 指示事务的执行，discard 指示事务的丢弃。
 
-计数器应用
-
-利用Redis的incr、decr命令进行原子性操作，来构建计数系统
-比如在一个web应用程序中，如果想知道用户在一年中每天的点击量，只要将用户id和相关日期信息作为键，并在每次用户点击页面时，执行一次自增操作即可。
-
-数据去重
-
-当需要存储一个列表数据，又不希望出现重复数据时，可以使用Redis的Set数据结构
-set内部实现是一个value永远是null的hashmap，通过has</p> 
+&gt; multi</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -241,110 +226,7 @@ set内部实现是一个value永远是null的hashmap，通过has</p>
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15754473183515.html">Redis使用场景</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Redis.html'>Redis</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16251579849229/16253284130723.jpg);">
-						
-						</div> 
-						<a href="16251579849229.html"> 
-							<div class="item-desc"> 
-								<p>概述
-
-工作流有各式各样的用法，但也正因此使得在实际工作中如何上手使用增加了难度。这篇指南通过总览公司团队中最常用的几种 Git 工作流让大家可以上手使用。
-
-在阅读的过程中请记住，本文中的几种工作流是作为方案指导而不是条例规定。在展示了各种工作流可能的用法后，你可以从不同的工作流中挑选或揉合出一个满足你自己需求的工作流。
-
-先贴一个最佳实践 A successful Git branching model
-
-
-集中式工作流
-
-如果你的开发团队成员已经很熟悉 Subversion，集中式工作流让你无需去适应一个全新流程就可以体验 Git 带来的收益。这个工作流也可以作为向更 Git 风格工作流</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="16251579849229.html">Git 工作流简介</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Git.html'>Git</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="15754418238619.html"> 
-							<div class="item-desc"> 
-								<p>
-可靠性低：如果数据走云盘做高可靠存储容易受网络波动干扰，如果不走云盘宕机数据易丢失，自建多副本运维很复杂，而且Redis本身的断网导致的全量同步机制对网络和运维的要求极高；
-可用性低：自建单副本无法保证可用性，多副本对心跳检查和链路切换要求极高，传统的sentinel有很多缺陷，在执行复杂的keys flushdb等命令时很容易造成误切和雪崩；
-诸多限制：自建集群方案如redis cluster，codis也有诸多限制，redis cluster需要smart client和非常
-
-
-键值设计
-
-key名设计
-
-可读性和可管理性
-
-以业务名(或数据库名)为前缀(防止key冲突)，用冒号分隔，</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="15754418238619.html">自建redis集群规范</a>
+	  							<a href="16473983096100.html">Redis事务</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -371,10 +253,29 @@ key名设计
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="15914574913033.html"> 
+						<a href="16472363467246.html"> 
 							<div class="item-desc"> 
-								<p>
-SWIG是个帮助使用C或者C++编写的软件能与其它各种高级编程语言进行嵌入联接的开发工具。SWIG能应用于各种不同类型的语言包括常用脚本编译语言例如Perl, PHP, Python, Tcl, Ruby and PHP。支持语言列表中也包括非脚本编译语言，例如C#, Common Lisp (CLISP, Allegro CL, CFFI, UFFI), Java, Modula-3, OCAML以及R，甚至是编译器或者汇编的计划应用（Guile, MzScheme, Chicken）。SWIG普遍应用于创建高级语言解析或汇编程序环境，用户接口，作为一种用来测试C/C++或进行原型设计的工</p> 
+								<p>Redis Pipeline本身并不是Redis服务端提供的技术，而是由客户端提供的。
+
+Redis消息交互
+
+当我们使用客户端对Redis进行一次操作时。客户端将请求传送给服务器，服务器处理完毕之后，再将相应回复给客户端。这花费一个网络数据包来回的时间。
+
+
+
+如果连续执行多条指令，那就会花费多个网络数据包来回的时间。
+
+
+
+回到客户端代码层面，客户端是经历了 写-读-写-读 四个操作才完整地执行了两条指令。
+
+
+
+如果我们调整读写顺序，改成 写-写-读-读 这两个指令同样可以正常完成。
+
+
+
+两个连续的写操作和两个连续的读操作总共只会花费一次网络来回的时间，就好像连续的写操作合并了，连续的</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -385,7 +286,7 @@ SWIG是个帮助使用C或者C++编写的软件能与其它各种高级编程语
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="15914574913033.html">swig</a>
+	  							<a href="16472363467246.html">Redis 管道</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -396,7 +297,103 @@ SWIG是个帮助使用C或者C++编写的软件能与其它各种高级编程语
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
+			    			<a class='category' href='Redis.html'>Redis</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="16468779231260.html"> 
+							<div class="item-desc"> 
+								<p>Redis持久化有两种方式，一种是RDB快照，另一种是AOF日志。
+
+
+
+RDB快照和AOF
+
+RDB fork(多进程)
+
+Redis使用操作系统的多进程COW（copy on write）机制来实现快照持久化。
+
+Redis 在持久化时会调用 glibc 的函数fork产生一个子进程，快照持久化完全交给子进程来处理，父进程继续处理客户端请求不会进行IO操作，进而保证高性能。
+
+fork 是 Linux 操作系统的机制，为了节约内存资源，所以尽可能让它们共享起来。在进程分离的一瞬间，内存的增长几乎没有明显变化。
+
+用 Python 语言描述进程分离的逻辑如下。fork函数会在父子进程同时返回</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16468779231260.html">Redis持久化</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Redis.html'>Redis</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="16450909723300.html"> 
+							<div class="item-desc"> 
+								<p>Redis 是单线程，主要是指 Redis 的网络 IO 和键值对读写是由一个线程来完成的，这也是 Redis 对外提供键值存储服务的主要流程。但 Redis 的其他功能，比如持久化、异步删除、集群数据同步等，其实是由额外的线程执行的。
+
+假设 Redis 采用多线程设计，如下图所示，现在有两个线程 A 和 B，线程 A 对一个 List 做 LPUSH 操作，并对队列长度加 1。同时，线程 B 对该 List 执行 LPOP 操作，并对队列长度减 1。为了保证队列长度的正确性，Redis 需要让线程 A 和 B 的 LPUSH 和 LPOP 串行执行，这样一来，Redis 可以无误地记录它们</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16450909723300.html">redis 线程</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='Redis.html'>Redis</a>
 								
 		   						</div> 
 		   					</div> 
@@ -455,7 +452,7 @@ SWIG是个帮助使用C或者C++编写的软件能与其它各种高级编程语
              
             
             <li>
-            <a href="Algorithm.html">Algorithm&nbsp;(7)</a>
+            <a href="Algorithm.html">Algorithm&nbsp;(8)</a>
             <p>
             
             <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html">数据结构&nbsp;(2)</a>&nbsp;&nbsp;
@@ -526,31 +523,31 @@ SWIG是个帮助使用C或者C++编写的软件能与其它各种高级编程语
           
           
          <li>
-           <a href="16520626552663.html">某音APP广告爬取</a><br>
+           <a href="16565146473162.html">MySQL 索引失效</a><br>
          </li>
           
           
           
          <li>
-           <a href="16488664948376.html">Windows 开启wsl并开启远程</a><br>
+           <a href="16561548241153.html">Oh My Zsh</a><br>
          </li>
           
           
           
          <li>
-           <a href="16487053528391.html">Java8 特性 Optional</a><br>
+           <a href="16559790679652.html">mydumper & myloader</a><br>
          </li>
           
           
           
          <li>
-           <a href="16486272439635.html">Word Cloud 词云重叠算法</a><br>
+           <a href="16540505085467.html">IaaS、PaaS、SaaS的区别</a><br>
          </li>
           
           
           
          <li>
-           <a href="16486184863200.html">Python pip源 国内源</a><br>
+           <a href="16533800798764.html">敏感词匹配</a><br>
          </li>
           
           

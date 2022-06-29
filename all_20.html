@@ -95,19 +95,19 @@
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16474792471704.html"> 
+						<a href="15638863087177.html"> 
 							<div class="item-desc"> 
-								<p>Redis 是一个非常耗费内存的数据库。Redis 作者为了优化数据结构的内存占用，也苦心孤诣增加了非常多的优化点。
+								<p>数据库命令规范
 
-32bit vs 64bit
 
-Redis 如果使用 32bit 进行编译，内部所有数据结构所使用的指针空间占用会少一半，如果你对 Redis 使用内存不超过 4G，可以考虑使用 32bit 进行编译，可以节约大量内存。4G 的容量作为一些小型站点的缓存数据库是绰绰有余了，如果不足还可以通过增加实例的方式来解决。
-
-小对象压缩存储 (ziplist)
-
-如果 Redis 内部管理的集合数据结构很小，它会使用紧凑存储形式压缩存储。
-
-这就好比 HashMap 本来是二维结构，但</p> 
+所有数据库对象名称必须使用小写字母并用下划线分割
+所有数据库对象名称禁止使用 MySQL 保留关键字（如果表名中包含关键字查询时，需要将其用单引号括起来）
+数据库对象的命名要能做到见名识意，并且最后不要超过 32 个字符
+临时库表必须以 tmp_为前缀并以日期为后缀，备份表必须以 bak_为前缀并以日期 (时间戳) 为后缀
+所有存储相同数据的列名和列类型必须一致（一般作为关联列，如果查询时关联列类型不一致会自动进行数据类型隐式转换，会造成列上的索引失效，导致查询效率降低）
+## 数据库基本设计规范
+### 所有表必须使用 Innodb 存储引擎
+没有特殊要求（即 Innod</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -118,7 +118,7 @@ Redis 如果使用 32bit 进行编译，内部所有数据结构所使用的指�
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16474792471704.html">Redis 小对象压缩</a>
+	  							<a href="15638863087177.html">MySQL高性能优化规范建议</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -129,7 +129,9 @@ Redis 如果使用 32bit 进行编译，内部所有数据结构所使用的指�
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='Redis.html'>Redis</a>
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
+								
+			    			<a class='category' href='MySQL.html'>MySQL</a>
 								
 		   						</div> 
 		   					</div> 
@@ -145,22 +147,28 @@ Redis 如果使用 32bit 进行编译，内部所有数据结构所使用的指�
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16474265825347.html"> 
+						<a href="15637994923865.html"> 
 							<div class="item-desc"> 
-								<p>消息多播
+								<p>安装Python36
 
-消息多播允许生产者生产一次消息，中间件负责将消息复制到多个消息队列，每个消息队列由相应的消费组进行消费。它是分布式系统常用的一种解耦方式，用于将多个消费组的逻辑进行拆分。支持了消息多播，多个消费组的逻辑就可以放到不同的子系统中。
+yum -y install sudo
+sudo yum -y install epel-release
+sudo yum -y update
+sudo yum -y install python36
+python3.6 -m venv py36env
+source py36env/bin/activate
 
-如果是普通的消息队列，就得将多个不同的消费组逻辑串接起来放在一个子系统中，进行连续消费。
+缺少python.h
 
+yum search python3-devel
+sudo yum install -y python3-devel.x86_64 
 
+监控
 
-如果是普通的消息队列，就得将多个不同的消费组逻辑串接起来放在一个子系统中，进行连续消费。
+pip install memory_profiler
+pip install psutil
 
-
-PubSub
-
-为了支持消息多播，Redis 不能再依赖于那 5 种基本数据类型了。它单独使用了一个模块来支持消息多播，这个模块的名字叫着 PubSub，也就是 Pu</p> 
+</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -171,7 +179,7 @@ PubSub
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16474265825347.html">Redis消息多播 PubSub</a>
+	  							<a href="15637994923865.html">Linux Top Tips</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -182,7 +190,7 @@ PubSub
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='Redis.html'>Redis</a>
+			    			<a class='category' href='Linux%E7%9B%B8%E5%85%B3.html'>Linux相关</a>
 								
 		   						</div> 
 		   					</div> 
@@ -198,24 +206,117 @@ PubSub
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16473983096100.html"> 
+						<a href="15637970931428.html"> 
 							<div class="item-desc"> 
-								<p>每个事务的操作都有 begin、commit 和 rollback，begin 指示事务的开始，commit 指示事务的提交，rollback 指示事务的回滚。它大致的形式如下。
+								<p>今天做java练习的时候发现这个BigDecimal和double一样不准，本来以为也是个辣鸡东西，后来翻了一下api文档，发现了这个，原来是我的打开方式不对。
 
-begin();
-try {
-    command1();
-    command2();
-    ....
-    commit();
-} catch(Exception e) {
-    rollback();
+BigDecimal
+public BigDecimal(double val)将 double 转换为 BigDecimal，后者是 double 的二进制浮点值准确的十进制表示形式。返回的 BigDecimal 的标度是使 (\(10^{scale} × val\)) 为整数的最小值。 
+
+注： 
+此构造方法的结果有一定的不可预知性。有人可能认为在 Java 中写入 new BigDecimal(0.1) 所创建的 BigDec</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15637970931428.html">Java BigDecimal精度问题</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E8%AF%AD%E6%B3%95%E7%B1%BB.html'>语法类</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="15518630086345.html"> 
+							<div class="item-desc"> 
+								<p>Redis 简介
+
+Redis 是完全开源免费的，遵守BSD协议，是一个高性能的key-value数据库。
+
+Redis 与其他 key - value 缓存产品有以下三个特点：
+
+
+Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用。
+Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。
+Redis支持数据的备份，即master-slave模式的数据备份。
+
+
+Redis 数据类型
+
+Redis支持五种数据类型：string（字符串），hash（哈希），list（列表），set（集合）</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="15518630086345.html">Redis</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%BA%93.html'>数据库</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						
+						</div> 
+						<a href="15770719140172.html"> 
+							<div class="item-desc"> 
+								<p>dict 是 Redis 服务器中出现最为频繁的复合型数据结构，除了 hash 结构的数据会用到字典外，整个 Redis 数据库的所有 key 和 value 也组成了一个全局字典，还有带过期时间的 key 集合也是一个字典。zset 集合中存储 value 和 score 值的映射关系也是通过 dict 结构实现的。
+
+struct RedisDb {
+    dict* dict; // all keys  key=&gt;value
+    dict* expires; // all expired keys key=&gt;long(timestamp)
+    ...
 }
 
-
-Redis 在形式上看起来也差不多，分别是 multi/exec/discard。multi 指示事务的开始，exec 指示事务的执行，discard 指示事务的丢弃。
-
-&gt; multi</p> 
+stru</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -226,7 +327,7 @@ Redis 在形式上看起来也差不多，分别是 multi/exec/discard。multi �
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16473983096100.html">Redis事务</a>
+	  							<a href="15770719140172.html">Redis 字典</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -253,29 +354,11 @@ Redis 在形式上看起来也差不多，分别是 multi/exec/discard。multi �
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16472363467246.html"> 
+						<a href="16456971885760.html"> 
 							<div class="item-desc"> 
-								<p>Redis Pipeline本身并不是Redis服务端提供的技术，而是由客户端提供的。
+								<p>Redis 中的字符串是可以修改的字符串，在内存中它是以字节数组的形式存在的。Redis 没有直接使用 C 语言传统的字符串表示（以空字符结尾的字符数组， NULL 即（0x\0）作为结束符，以下简称 C 字符串），因为要获取 NULL 结尾的字符串的长度使用的是 strlen 标准库函数，这个函数的算法复杂度是 O(n)，它需要对字节数组进行遍历扫描，作为单线程的 Redis 表示承受不起。
 
-Redis消息交互
-
-当我们使用客户端对Redis进行一次操作时。客户端将请求传送给服务器，服务器处理完毕之后，再将相应回复给客户端。这花费一个网络数据包来回的时间。
-
-
-
-如果连续执行多条指令，那就会花费多个网络数据包来回的时间。
-
-
-
-回到客户端代码层面，客户端是经历了 写-读-写-读 四个操作才完整地执行了两条指令。
-
-
-
-如果我们调整读写顺序，改成 写-写-读-读 这两个指令同样可以正常完成。
-
-
-
-两个连续的写操作和两个连续的读操作总共只会花费一次网络来回的时间，就好像连续的写操作合并了，连续的</p> 
+Redis是自己构建了一种名为简单动态字符串（simple dynamic string，SDS）的抽象类型，它的结构是一个带长度信息的字节数组，Redis 将 SDS 用作 Redis 的默认字符串</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -286,103 +369,7 @@ Redis消息交互
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16472363467246.html">Redis 管道</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Redis.html'>Redis</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="16468779231260.html"> 
-							<div class="item-desc"> 
-								<p>Redis持久化有两种方式，一种是RDB快照，另一种是AOF日志。
-
-
-
-RDB快照和AOF
-
-RDB fork(多进程)
-
-Redis使用操作系统的多进程COW（copy on write）机制来实现快照持久化。
-
-Redis 在持久化时会调用 glibc 的函数fork产生一个子进程，快照持久化完全交给子进程来处理，父进程继续处理客户端请求不会进行IO操作，进而保证高性能。
-
-fork 是 Linux 操作系统的机制，为了节约内存资源，所以尽可能让它们共享起来。在进程分离的一瞬间，内存的增长几乎没有明显变化。
-
-用 Python 语言描述进程分离的逻辑如下。fork函数会在父子进程同时返回</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="16468779231260.html">Redis持久化</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Redis.html'>Redis</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="16450909723300.html"> 
-							<div class="item-desc"> 
-								<p>Redis 是单线程，主要是指 Redis 的网络 IO 和键值对读写是由一个线程来完成的，这也是 Redis 对外提供键值存储服务的主要流程。但 Redis 的其他功能，比如持久化、异步删除、集群数据同步等，其实是由额外的线程执行的。
-
-假设 Redis 采用多线程设计，如下图所示，现在有两个线程 A 和 B，线程 A 对一个 List 做 LPUSH 操作，并对队列长度加 1。同时，线程 B 对该 List 执行 LPOP 操作，并对队列长度减 1。为了保证队列长度的正确性，Redis 需要让线程 A 和 B 的 LPUSH 和 LPOP 串行执行，这样一来，Redis 可以无误地记录它们</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="16450909723300.html">redis 线程</a>
+	  							<a href="16456971885760.html">Redis 字符串</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -452,7 +439,7 @@ fork 是 Linux 操作系统的机制，为了节约内存资源，所以尽可�
              
             
             <li>
-            <a href="Algorithm.html">Algorithm&nbsp;(7)</a>
+            <a href="Algorithm.html">Algorithm&nbsp;(8)</a>
             <p>
             
             <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html">数据结构&nbsp;(2)</a>&nbsp;&nbsp;
@@ -523,31 +510,31 @@ fork 是 Linux 操作系统的机制，为了节约内存资源，所以尽可�
           
           
          <li>
-           <a href="16520626552663.html">某音APP广告爬取</a><br>
+           <a href="16565146473162.html">MySQL 索引失效</a><br>
          </li>
           
           
           
          <li>
-           <a href="16488664948376.html">Windows 开启wsl并开启远程</a><br>
+           <a href="16561548241153.html">Oh My Zsh</a><br>
          </li>
           
           
           
          <li>
-           <a href="16487053528391.html">Java8 特性 Optional</a><br>
+           <a href="16559790679652.html">mydumper & myloader</a><br>
          </li>
           
           
           
          <li>
-           <a href="16486272439635.html">Word Cloud 词云重叠算法</a><br>
+           <a href="16540505085467.html">IaaS、PaaS、SaaS的区别</a><br>
          </li>
           
           
           
          <li>
-           <a href="16486184863200.html">Python pip源 国内源</a><br>
+           <a href="16533800798764.html">敏感词匹配</a><br>
          </li>
           
           

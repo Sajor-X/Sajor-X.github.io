@@ -92,14 +92,36 @@
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16405090873022/16405092178762.jpg);">
 						
 						</div> 
-						<a href="16345707563290.html"> 
+						<a href="16405090873022.html"> 
 							<div class="item-desc"> 
-								<p>GitHub&#39;s Online Schema Migrations for MySQL
-(https://github.com/github/gh-ost)
-</p> 
+								<p>类的生命周期：
+
+
+加载：找到Class文件
+验证：验证格式、依赖
+准备：静态字段、方法表
+解析：符号解析为引用
+初始化：构造器、静态变量赋值、静态代码块
+使用
+卸载
+
+
+
+
+类的加载时机
+
+
+
+
+当虚拟机启动时，初始化用户指定的主类，就是启动执行的main方法所在的类；
+当遇到用以新建目标类示例的new指令时，初始化new指定的目标类，就是new一个类的时候要初始化；
+当遇到调用静态方法的指令时，初始化该静态方法所在的类；
+当遇到访问静态字段的指令时，初始化该静态方法所在的类；
+子类的初始化会触发父类的初始化；
+如果一个接口定义了default方法，那么直接实现或者间接实现该接口的类的初始化</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -110,7 +132,7 @@
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16345707563290.html">13 重构数据库</a>
+	  							<a href="16405090873022.html">JVM 类加载器</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -121,7 +143,7 @@
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='MySQL.html'>MySQL</a>
+			    			<a class='category' href='%E8%AF%AD%E6%B3%95%E7%B1%BB.html'>语法类</a>
 								
 		   						</div> 
 		   					</div> 
@@ -134,36 +156,32 @@
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16343110664613/16343111782458.jpg);">
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16405067982525/16405070154518.jpg);">
 						
 						</div> 
-						<a href="16343110664613.html"> 
+						<a href="16405067982525.html"> 
 							<div class="item-desc"> 
-								<p>
-内核的引导
-运行init
-系统初始化
-建立终端 
-用户登录系统
+								<p>有一个简单的类 
+
+class Hello {
+        public static void main(String[] agrs) {
+                Hello obj = new Hello();
+        }
+}
+
+
+编译：javac Hello.java
+查看字节码：javap -c Hello.class
 
 
 
+运算应在栈上操作，所以应该先将变量从本地变量表中加载到栈上，运算完成后再储存回本地变量表。
 
-内核引导
 
-当计算机打开电源后，首先是BIOS开机自检，按照BIOS中设置的启动设备（通常是硬盘）来启动。
 
-操作系统接管硬件以后，首先读入 /boot 目录下的内核文件。
+更详细的内容：javap -c -verbose Hello.class
 
-运行init
-
-init 进程是系统所有进程的起点，你可以把它比拟成系统所有进程的老祖宗，没有这个进程，系统中任何进程都不会启动。
-
-init 程序首先是需要读取配置文件 /etc/inittab。
-
-运行级别
-
-许多程序需要开机启动。它们在Windows叫做&quot;服务&quot;（service），在Linux就叫做&quot;守护进程&q</p> 
+&gt;&gt; javap -c -verbose ./Hello.</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -174,7 +192,126 @@ init 程序首先是需要读取配置文件 /etc/inittab。
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16343110664613.html">Linux 系统的启动过程</a>
+	  							<a href="16405067982525.html">JVM 字节码</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E8%AF%AD%E6%B3%95%E7%B1%BB.html'>语法类</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16402262289586/16413518433356.jpg);">
+						
+						</div> 
+						<a href="16402262289586.html"> 
+							<div class="item-desc"> 
+								<p>
+
+使用FinalShell离线激活方式升级高级版本
+
+使用FinalShell离线激活方式升级高级版本
+
+
+
+获取机器码(如果没有就随意输入用户名或密码执行登录)
+
+
+
+执行下面代码,输入机器码获取激活码
+
+
+import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Scanner;
+
+
+class FinalShell {
+    public static void main(String[]</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16402262289586.html">Final Shell离线激活</a>
+	  						</div>
+		   					<div class="item-meta clearfix"> 
+<!-- 自定义Icon -->
+								
+		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
+		   						</div> 
+								
+
+		   						<div class="item-meta-cat">
+	  							
+			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
+								
+		   						</div> 
+		   					</div> 
+		   					
+		   				</div> 
+   					</div>
+ 				</div>
+ 			
+				<div class="post-list-item">
+					<div class="post-list-item-container">
+ <!-- 自定post背景图 -->
+					 
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16378305266660/16413525261167.jpg);">
+						
+						</div> 
+						<a href="16378305266660.html"> 
+							<div class="item-desc"> 
+								<p>
+
+问题：
+
+设置ssh免密码登陆的时候，发现有一些机器设置不生效。有一些机器正常。
+
+跟踪
+
+登陆目标机器，查看sshd的日志信息。日志信息目录为，/var/log/secure
+你会发现如下字样的日志信息。
+
+Jul 22 14:20:33 v138020.go sshd[4917]: Authentication refused: bad ownership or modes for directory /home/xinhailong
+
+
+原因
+
+sshd为了安全，对属主的目录和文件权限有所要求。如果权限不对，则ssh的免密码登陆不生效。
+用户目录权限为 755 或者 700，就是不能</p> 
+							</div> 
+						</a> 
+<!-- 自定义Post颜色 -->
+				
+						<div class="item-slant reverse-slant bg-deepgrey"></div>
+						
+
+						<div class="item-slant"></div>
+		 				<div class="item-label">
+	  						<div class="item-title">
+	  							<a href="16378305266660.html">设置ssh免密码登陆 不生效</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -198,13 +335,38 @@ init 程序首先是需要读取配置文件 /etc/inittab。
 					<div class="post-list-item-container">
  <!-- 自定post背景图 -->
 					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
+						<div class="item-thumb bg-deepgrey" style="background-image:url(media/16353269752301/16413526184515.jpg);">
 						
 						</div> 
-						<a href="16341349844977.html"> 
+						<a href="16353269752301.html"> 
 							<div class="item-desc"> 
-								<p>www.bigocheatsheet.com
-</p> 
+								<p>
+
+第一步，先查看本机node.js版本：
+
+node -v
+
+第二步，清除node.js的cache：
+
+sudo npm cache clean -f
+
+第三步，安装 n 工具，这个工具是专门用来管理node.js版本的，别怀疑这个工具的名字，是他是他就是他，他的名字就是 &quot;n&quot;
+
+sudo npm install -g n
+
+第四步，安装最新版本的node.js
+
+sudo n stable
+
+第五步，再次查看本机的node.js版本：
+
+node -v
+
+第六步，更新npm到最新版：
+
+$ sudo npm install npm@latest -g
+
+第七步，验证</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -215,7 +377,7 @@ init 程序首先是需要读取配置文件 /etc/inittab。
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16341349844977.html">栈 队列 双端队列（Stack & Queue & Deque）</a>
+	  							<a href="16353269752301.html">Mac 更新 node 版本</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -226,7 +388,7 @@ init 程序首先是需要读取配置文件 /etc/inittab。
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='Algorithm.html'>Algorithm</a>
+			    			<a class='category' href='%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85.html'>软件安装</a>
 								
 		   						</div> 
 		   					</div> 
@@ -242,12 +404,24 @@ init 程序首先是需要读取配置文件 /etc/inittab。
                          	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
 						
 						</div> 
-						<a href="16339276945488.html"> 
+						<a href="16345712700520.html"> 
 							<div class="item-desc"> 
-								<p>用于高性能科学计算和数据分析，是常用的高级数据分析库的基础包
+								<p>count(*) 的实现方式
 
-pandas
-</p> 
+你首先要明确的是，在不同的 MySQL 引擎中，count(*) 有不同的实现方式。
+
+
+MyISAM 引擎把一个表的总行数存在了磁盘上，因此执行 count(*) 的时候会直接返回这个数，效率很高；
+而 InnoDB 引擎就麻烦了，它执行 count(*) 的时候，需要把数据一行一行地从引擎里面读出来，然后累积计数。
+
+
+这里需要注意的是，我们在这篇文章里讨论的是没有过滤条件的 count(*)，如果加了 where 条件的话，MyISAM 表也是不能返回得这么快的。
+
+计数的几种方式
+
+
+MyISAM 表虽然 count(*) 很快，但是不支持事务；
+sho</p> 
 							</div> 
 						</a> 
 <!-- 自定义Post颜色 -->
@@ -258,7 +432,7 @@ pandas
 						<div class="item-slant"></div>
 		 				<div class="item-label">
 	  						<div class="item-title">
-	  							<a href="16339276945488.html">numpy</a>
+	  							<a href="16345712700520.html">14 | count(*)这么慢，我该怎么办？</a>
 	  						</div>
 		   					<div class="item-meta clearfix"> 
 <!-- 自定义Icon -->
@@ -269,134 +443,7 @@ pandas
 
 		   						<div class="item-meta-cat">
 	  							
-			    			<a class='category' href='%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90.html'>数据分析</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="16332772077185.html"> 
-							<div class="item-desc"> 
-								<p>题目链接：contains-duplicate
-
-
-给定一个整数数组，判断是否存在重复元素。
-
-如果存在一值在数组中出现至少两次，函数返回 true 。如果数组中每个元素都不相同，则返回 false 。
-
-示例 1:
-
-输入: [1,2,3,1]
-输出: true
-示例 2:
-
-输入: [1,2,3,4]
-输出: false
-示例 3:
-
-输入: [1,1,1,3,3,4,3,2,4,2]
-输出: true
-
-
-思考
-
-此方法无法通过用例，Time Limit Exceeded。所以需要优化。
-
-解法一、暴力 \(O(n^2)\)
-
-class Solution:
-    def contai</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="16332772077185.html">LeetCode 217.存在重复元素</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Arts.html'>Arts</a>
-								
-		   						</div> 
-		   					</div> 
-		   					
-		   				</div> 
-   					</div>
- 				</div>
- 			
-				<div class="post-list-item">
-					<div class="post-list-item-container">
- <!-- 自定post背景图 -->
-					 
-                         	<div class="item-thumb bg-deepgrey" style="background-image:url(https://source.unsplash.com/random);">
-						
-						</div> 
-						<a href="16332745656703.html"> 
-							<div class="item-desc"> 
-								<p>题目链接：two-sum
-
-题目
-
-
-给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。
-你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。
-你可以按任意顺序返回答案。
-
-示例 1：
-输入：nums = [2,7,11,15], target = 9
-输出：[0,1]
-解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。
-
-示例 2：
-输入：nums = [3,2,4], target = 6
-输出：[1,2]
-
-示例 3：
-输入：num</p> 
-							</div> 
-						</a> 
-<!-- 自定义Post颜色 -->
-				
-						<div class="item-slant reverse-slant bg-deepgrey"></div>
-						
-
-						<div class="item-slant"></div>
-		 				<div class="item-label">
-	  						<div class="item-title">
-	  							<a href="16332745656703.html">LeetCode 1. 两数之和</a>
-	  						</div>
-		   					<div class="item-meta clearfix"> 
-<!-- 自定义Icon -->
-								
-		   						<div class="item-meta-ico bg-ico-note" style="background: url(asset/img/bg-ico.png) no-repeat;background-size: 40px auto;">
-		   						</div> 
-								
-
-		   						<div class="item-meta-cat">
-	  							
-			    			<a class='category' href='Arts.html'>Arts</a>
+			    			<a class='category' href='MySQL.html'>MySQL</a>
 								
 		   						</div> 
 		   					</div> 
@@ -455,7 +502,7 @@ class Solution:
              
             
             <li>
-            <a href="Algorithm.html">Algorithm&nbsp;(7)</a>
+            <a href="Algorithm.html">Algorithm&nbsp;(8)</a>
             <p>
             
             <a href="%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html">数据结构&nbsp;(2)</a>&nbsp;&nbsp;
@@ -526,31 +573,31 @@ class Solution:
           
           
          <li>
-           <a href="16520626552663.html">某音APP广告爬取</a><br>
+           <a href="16565146473162.html">MySQL 索引失效</a><br>
          </li>
           
           
           
          <li>
-           <a href="16488664948376.html">Windows 开启wsl并开启远程</a><br>
+           <a href="16561548241153.html">Oh My Zsh</a><br>
          </li>
           
           
           
          <li>
-           <a href="16487053528391.html">Java8 特性 Optional</a><br>
+           <a href="16559790679652.html">mydumper & myloader</a><br>
          </li>
           
           
           
          <li>
-           <a href="16486272439635.html">Word Cloud 词云重叠算法</a><br>
+           <a href="16540505085467.html">IaaS、PaaS、SaaS的区别</a><br>
          </li>
           
           
           
          <li>
-           <a href="16486184863200.html">Python pip源 国内源</a><br>
+           <a href="16533800798764.html">敏感词匹配</a><br>
          </li>
           
           
